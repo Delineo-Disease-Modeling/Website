@@ -1,9 +1,6 @@
 import React from "react";
-import { Dimensions } from "react";
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
@@ -76,16 +73,21 @@ const styles = {
 	}
 }
 
-const ColoredAccordion = withStyles({
-	root: {
-		backgroundColor: '#1b4441c2',
-		fontSize: '20px',
-		color: '#66FCF1'
+//This block is unused and thus causes warnings
+//I did not delete it, but only commented it out
+//in case it needs to be used again
+//- Aayush Gandhi
+
+// const ColoredAccordion = withStyles({
+// 	root: {
+// 		backgroundColor: '#1b4441c2',
+// 		fontSize: '20px',
+// 		color: '#66FCF1'
 
 
 
-	},
-})(Accordion);
+// 	},
+// })(Accordion);
 
 const AccordionDetails = withStyles((theme) => ({
 	root: {
