@@ -140,6 +140,19 @@ class Home extends Component {
                         </Grid>
                         <Grid item xs={6}>
                             <Typography variant="h5" component="h3" gutterBottom>
+                                Description of Simulator
+                            </Typography>
+                            <p style={{ fontSize: '18px' }}>
+                                The Delineo Disease Modeling Project is working to bring a fresh approach to the challenge of modeling the spread of pandemics. The project draws from a diverse set of academic fields, using knowledge and principles from computer science, applied mathematics, and public health to create a much more realistic model of disease spread. Using geo-location mobile phone data, the Delineo project seeks to model disease spread in communities ranging from sparsely inhabited rural towns to densely populated urban megacities. The goal of our project is to create a massively parallel and highly scalable system that can be run across computing platforms to create a virtual world in which the spread of a disease can be observed and measured, along with studying the impact of non-pharmaceutical interventions (NPI’s) and different types of events on the spread of the disease. The model envisions populations in terms of extremely localized and specific “modules” comprising of people, their dwellings, and shared community spaces.
+                            </p>
+                            <div className={classes.buttonContainer}>
+                                <Button className={classes.button} variant="contained" color="inherit" href="/about" style={styles.buttonStyle}>
+                                    Learn More
+                            </Button>
+                            </div>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Typography variant="h5" component="h3" gutterBottom>
                                 Description of ML
                                 </Typography>
                             <p style={{ fontSize: '18px' }}>
@@ -150,19 +163,6 @@ class Home extends Component {
                                 <Button className={classes.button} variant="contained" color="inherit" href="/about">
                                     Learn More
                                     </Button>
-                            </div>
-                        </Grid>
-                        <Grid item xs={6}>
-                            <Typography variant="h5" component="h3" gutterBottom>
-                                Description of Simulator
-                            </Typography>
-                            <p style={{ fontSize: '18px' }}>
-                                The Delineo Disease Modeling Project is working to bring a fresh approach to the challenge of modeling the spread of pandemics. The project draws from a diverse set of academic fields, using knowledge and principles from computer science, applied mathematics, and public health to create a much more realistic model of disease spread. Using geo-location mobile phone data, the Delineo project seeks to model disease spread in communities ranging from sparsely inhabited rural towns to densely populated urban megacities. The goal of our project is to create a massively parallel and highly scalable system that can be run across computing platforms to create a virtual world in which the spread of a disease can be observed and measured, along with studying the impact of non-pharmaceutical interventions (NPI’s) and different types of events on the spread of the disease. The model envisions populations in terms of extremely localized and specific “modules” comprising of people, their dwellings, and shared community spaces.
-                            </p>
-                            <div className={classes.buttonContainer}>
-                                <Button className={classes.button} variant="contained" color="inherit" href="/about" style={styles.buttonStyle}>
-                                    Learn More
-                            </Button>
                             </div>
                         </Grid>
                         <Grid item xs={6}>
