@@ -34,6 +34,10 @@ MongoDB database connection established successfully.
 Development server is running on port: 5000
 ```
 
+## `Troubleshooting`
+- if step #4 stalls, send an interrupt signal (ctrl-c on mac) and do `npm install react-scripts`
+- if you see an error like `Error: listen EADDRINUSE: address already in use :::5000` find the pid for the process running on this port and kill it
+
 ## `Structure`
 **model_app/backend/models**: contains all database schemas   
 **model_app/backend/routes**: contains all routing information for server  
