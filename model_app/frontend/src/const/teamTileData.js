@@ -1,53 +1,61 @@
 import image from '../images/person-icon.png';
+import imageOne from '../images/Sebastian Cabrejos.jpg';
+import imageTwo from '../images/Aayush Gandhi.jpeg';
+import imageThree from '../images/Kai Ko.jpg';
+import imageFour from '../images/Melody Lee.jpg';
+import imageFive from '../images/Rebecca Muratore.png';
+import imageSix from '../images/Peiyuan Xu.JPG';
+import imageSeven from '../images/David Yang.jpg';
+import imageEight from '../images/Jack Zhang.jpg';
 
 const tileData = [
   {
-    img: image,
-    name: 'Team Member 1',
-    role: 'Leader',
-    description: 'Major',
+    img: imageOne,
+    name: 'Sebastian Cabrejos',
+    role: 'Fullstack',
+    description: 'Computer Science',
   },
   {
-    img: image,
-    name: 'Team Member 2',
-    role: 'Leader',
-    description: 'Major',
+    img: imageTwo,
+    name: 'Aayush Gandhi',
+    role: 'Fullstack',
+    description: 'Chemical and Biomolecular Engineering, Computer Science',
   },
   {
-    img: image,
-    name: 'Team Member 3',
-    role: 'Leader',
-    description: 'Major',
+    img: imageThree,
+    name: 'Kai Ko',
+    role: 'Fullstack',
+    description: 'Computer Science',
   },
   {
-    img: image,
-    name: 'Team Member 4',
-    role: 'Leader',
-    description: 'Major',
+    img: imageFour,
+    name: 'Melody Lee',
+    role: 'Fullstack',
+    description: 'Computer Science, Neuroscience',
   },
   {
-    img: image,
-    name: 'Team Member 5',
-    role: 'Leader',
-    description: 'Major',
+    img: imageFive,
+    name: 'Rebecca Muratore',
+    role: 'Fullstack',
+    description: 'Computer Science',
   },
   {
-    img: image,
-    name: 'Team Member 6',
-    role: 'Leader',
-    description: 'Major',
+    img: imageSix,
+    name: 'Peiyuan Xu',
+    role: 'Fullstack',
+    description: 'Computer Science, Applied Math and Statistics',
   },
   {
-    img: image,
-    name: 'Team Member 7',
-    role: 'Leader',
-    description: 'Major',
+    img: imageSeven,
+    name: 'David Yang',
+    role: 'Fullstack',
+    description: 'Computer Science',
   },
   {
-    img: image,
-    name: 'Team Member 8',
-    role: 'Leader',
-    description: 'Major',
+    img: imageEight,
+    name: 'Jack Zhang',
+    role: 'Fullstack',
+    description: 'Computer Science, Mathematics',
   },
   {
     img: image,
