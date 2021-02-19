@@ -619,6 +619,7 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
+    Collab: 1
     UNet: 1
   luminIcon:
     m_Name: 
@@ -632,10 +633,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: c232589c-907b-4613-b2b7-d9e733625bcc
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: Anytown, USA
+  organizationId: starronix
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
