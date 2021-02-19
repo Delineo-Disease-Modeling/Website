@@ -7,6 +7,7 @@ import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import faqData from '../const/faqData';
 
 const styles = {
 	button: {
@@ -246,43 +247,26 @@ class About extends React.Component {
 					<div className="w3-container w3-padding-32 w3-grey" id="contact" >
 						<h3 className="w3-border-bottom w3-border-light-grey w3-padding-16">Frequently Asked Questions</h3>
 
-						<div style={{ padding: '50px' }}>
-							<ColAccordion>
-								<ColAccordionSummary
-									expandIcon={<ExpandMoreIcon />}
-									aria-controls="Model Param-content"
-									id="Model Param-header"
-								>
-									What is this simulator?
-						</ColAccordionSummary>
-								<AccordionDetails>
-									<Typography>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-										sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-										elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-		          </Typography>
-								</AccordionDetails>
+						{faqData.map((faq) => {
+							return (
+								<div style={{ padding: '10px' }}>
+									<ColAccordion>
+										<ColAccordionSummary
+											expandIcon={<ExpandMoreIcon />}
+											aria-controls="Model Param-content"
+											id="Model Param-header"
+										>
+											{faq.question}
+										</ColAccordionSummary>
+										<AccordionDetails>
+											<Typography>
+												{faq.answer}
+											</Typography>
+										</AccordionDetails>
 
-							</ColAccordion>
-							<br></br>
-							<ColAccordion>
-								<ColAccordionSummary
-									expandIcon={<ExpandMoreIcon />}
-									aria-controls="Model Param-content"
-									id="Model Param-header"
-								>
-									What is this simulator?
-						</ColAccordionSummary>
-								<AccordionDetails>
-									<Typography>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-										sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-										elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-		          				</Typography>
-								</AccordionDetails>
-
-							</ColAccordion>
-						</div>
+									</ColAccordion>
+								</div>)
+						})}
 					</div>
 
 
