@@ -200,7 +200,7 @@ class About extends React.Component {
 
 
 					<div className="w3-container w3-padding-32 w3-" id="projects">
-						<h3 className="w3-border-bottom w3-border-light-grey w3-padding-16">Simulation</h3>
+						<h3 className="w3-border-bottom w3-border-light-grey w3-padding-16" id="simulation">Simulation</h3>
 						<p className={classes.paragraph}>{this.SimulationDescription}</p>
 					</div>
 					<div className="w3-row-padding" style={{ padding: '0 50px 20px 50px' }}>
