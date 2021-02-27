@@ -1,37 +1,37 @@
 import image from '../images/person-icon.png';
-import imageOne from '../images/Simone Bliss.JPG';
-import imageTwo from '../images/person-icon.png';
-import imageThree from '../images/person-icon.png';
-import imageFour from '../images/person-icon.png';
-import imageFive from '../images/person-icon.png';
+import simBliImg from '../images/Simone Bliss.JPG';
+import serChanImg from '../images/person-icon.png';
+import matInsImg from '../images/Mathias Insley.JPG';
+import steLiImg from '../images/person-icon.png';
+import henNorImg from '../images/person-icon.png';
 
 const tileData = [
   {
-    img: imageOne,
+    img: simBliImg,
     name: 'Simone Bliss',
     role: 'Fullstack',
     description: 'Mathematics',
   },
   {
-    img: imageTwo,
+    img: serChanImg,
     name: 'Serena Chan',
     role: 'Information Support',
     description: 'Major',
   },
   {
-    img: imageThree,
+    img: matInsImg,
     name: 'Mathias Insley',
-    role: 'Team',
-    description: 'Major',
+    role: 'Team Lead',
+    description: 'Material Science, Computer Science',
   },
   {
-    img: imageFour,
+    img: steLiImg,
     name: 'Stephen Li',
     role: 'ML',
     description: 'Major',
   },
   {
-    img: imageFive,
+    img: henNorImg,
     name: 'Henry Noren',
     role: 'Simulation',
     description: 'Major',
