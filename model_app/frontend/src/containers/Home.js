@@ -103,6 +103,8 @@ const styles = {
         fontSize: '18px',
         marginTop: '1rem',
         marginBottom: '2rem',
+        color: '#d8e2ee',
+        textAlign: 'left',
     },
 
     blogContent: {
@@ -139,10 +141,10 @@ class Home extends Component {
 
                         </Grid>
                         <Grid item xs={6}>
-                            <Typography variant="h5" component="h3" gutterBottom>
+                            <Typography variant="h5" component="h3" style={{color: '#d8e2ee'}} gutterBottom>
                                 Description of Simulator
                             </Typography>
-                            <p style={{ fontSize: '18px' }}>
+                            <p style={{ fontSize: '18px' , color: '#d8e2ee', textAlign: 'left'}}>
                                 The Delineo Disease Modeling Project is working to bring a fresh approach to the challenge of modeling the spread of pandemics. The project draws from a diverse set of academic fields, using knowledge and principles from computer science, applied mathematics, and public health to create a much more realistic model of disease spread. Using geo-location mobile phone data, the Delineo project seeks to model disease spread in communities ranging from sparsely inhabited rural towns to densely populated urban megacities. The goal of our project is to create a massively parallel and highly scalable system that can be run across computing platforms to create a virtual world in which the spread of a disease can be observed and measured, along with studying the impact of non-pharmaceutical interventions (NPI’s) and different types of events on the spread of the disease. The model envisions populations in terms of extremely localized and specific “modules” comprising of people, their dwellings, and shared community spaces.
                             </p>
                             <div className={classes.buttonContainer}>
@@ -152,10 +154,10 @@ class Home extends Component {
                             </div>
                         </Grid>
                         <Grid item xs={6}>
-                            <Typography variant="h5" component="h3" gutterBottom>
+                            <Typography variant="h5" component="h3" gutterBottom style={{color: '#d8e2ee'}}>
                                 Description of ML
                                 </Typography>
-                            <p style={{ fontSize: '18px' }}>
+                            <p style={{ fontSize: '18px', color: '#d8e2ee', textAlign: 'left'}}>
                                 The problem of how disease moves is fundamentally a question of how people move. Leveraging mobility data provided by SafeGraph and XMode, our team is able to create realistic population movements informed by real world data. Our approach to the problem of movement utilizes statistical and machine learning methods from prior literature to form movement patterns that capture the broad range of ways that people move.
                                 </p>
                             <div className={classes.buttonContainer}>
@@ -185,12 +187,12 @@ class Home extends Component {
                                     </div>
                                     <Grid container spacing={4}>
                                         <Grid item xs={6}>
-                                            <Typography variant="h5" component="h3" gutterBottom>
+                                            <Typography variant="h5" component="h3" style={{color: '#d8e2ee'}} gutterBottom>
                                                 Title
                                             </Typography>
                                         </Grid>
                                         <Grid item xs={6}>
-                                            <Typography variant="h5" component="h3" gutterBottom>
+                                            <Typography variant="h5" component="h3" style={{color: '#d8e2ee'}} gutterBottom>
                                                 Date
                                             </Typography>
                                         </Grid>
@@ -214,12 +216,12 @@ class Home extends Component {
                                     </div>
                                     <Grid container spacing={4}>
                                         <Grid item xs={6}>
-                                            <Typography variant="h5" component="h3" gutterBottom>
+                                            <Typography variant="h5" component="h3" style={{color: '#d8e2ee'}} gutterBottom>
                                                 Title
                                             </Typography>
                                         </Grid>
                                         <Grid item xs={6}>
-                                            <Typography variant="h5" component="h3" gutterBottom>
+                                            <Typography variant="h5" component="h3" style={{color: '#d8e2ee'}} gutterBottom>
                                                 Date
                                             </Typography>
                                         </Grid>
@@ -243,12 +245,12 @@ class Home extends Component {
                                     </div>
                                     <Grid container spacing={4}>
                                         <Grid item xs={6}>
-                                            <Typography variant="h5" component="h3" gutterBottom>
+                                            <Typography variant="h5" component="h3" style={{color: '#d8e2ee'}} gutterBottom>
                                                 Title
                                             </Typography>
                                         </Grid>
                                         <Grid item xs={6}>
-                                            <Typography variant="h5" component="h3" gutterBottom>
+                                            <Typography variant="h5" component="h3" style={{color: '#d8e2ee'}} gutterBottom>
                                                 Date
                                             </Typography>
                                         </Grid>
