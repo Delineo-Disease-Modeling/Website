@@ -66,7 +66,7 @@ class TeamFilter extends Component {
                     <br></br>
                     <div className = 'CardGreenBackground1' >
                       <h3 align="left">Team Members</h3>
-                      <TeamGridList></TeamGridList>
+                      <TeamGridList role = {'all'}></TeamGridList>
                     </div>
                 </div>
 
@@ -79,7 +79,7 @@ class TeamFilter extends Component {
                   </div>
                   <div className = 'CardGreenBackground1' >
                     <h3 align="left">Team Members</h3>
-                    <TeamGridList></TeamGridList>
+                    <TeamGridList role = {'Fullstack'}></TeamGridList>
                   </div>
               </div>
               : null
