@@ -1,7 +1,7 @@
 import image from '../images/person-icon.png';
 import simBliImg from '../images/Simone Bliss.JPG';
 import serChanImg from '../images/person-icon.png';
-import matInsImg from '../images/Mathias Insley.JPG';
+import matInsImg from '../images/person-icon.png';
 import steLiImg from '../images/person-icon.png';
 import henNorImg from '../images/person-icon.png';
 

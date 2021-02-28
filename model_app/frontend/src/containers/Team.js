@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { Component }  from 'react';
+
 import leaders from '../const/leader.js';
 import members from '../const/member.js';
 import TeamGridList from '../components/TeamGridList.js'
 import SupGridList from '../components/SupGridList.js'
 import LeadGridList from '../components/LeaderGridList.js'
+import { makeStyles } from '@material-ui/core/styles';
+import TeamFilter from '../components/TeamFilter'
+import FunctionClick from '../components/FunctionClick'
+import Grid from '@material-ui/core/Grid';
+import { styled } from "@material-ui/core/styles";
+import { spacing } from "@material-ui/system";
+import MuiButton from "@material-ui/core/Button";
+
 
 import './Team.css';
+
+
+const Button = styled(MuiButton)(spacing);
 
 function Team(props){
   let supervisorList = [];
@@ -25,27 +37,63 @@ function Team(props){
     }
   });
 
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      '& > *': {
+        margin: theme.spacing(1),
+      },
+    },
+    alignItemsAndJustifyContent: {
+      width: 500,
+      height: 80,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: 'pink',
+    },
+  }));
+
+
+
   return(
+
     <div className = 'CardBackground'>
 
       <div className="MainHeader">
         <h2>Meet The Team</h2>
       </div>
 
-      <div className = 'CardGreenBackground1'>
-        <h3 align="left">Research Supervisor</h3>
-        <SupGridList></SupGridList>
-      </div>
 
-      <div className = 'CardGreenBackground1'>
-        <h3 align="left">Team Leaders</h3>
-        <LeadGridList></LeadGridList>
+
+
+
+      <div className = "Supervisor" align="center" >
+        <h3 align="center">Research Supervisor</h3>
+
+
+
+        <SupGridList   container
+  spacing={0}
+  direction="column"
+  alignItems="center"
+  justify="center"
+  style={{ minHeight: '100vh' }}  ></SupGridList>
+
+
+
+
+
       </div>
+      <br></br>
 
       <div className = 'CardGreenBackground1' >
-        <h3 align="left">Team Members</h3>
-        <TeamGridList></TeamGridList>
+        <h3 align="left">Leaders</h3>
+        <LeadGridList></LeadGridList>
       </div>
+      <br></br>
+      <TeamFilter></TeamFilter>
+
+
 
    </div>
 
