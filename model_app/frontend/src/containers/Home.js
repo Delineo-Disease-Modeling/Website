@@ -48,7 +48,7 @@ const styles = {
     },
 
     aboutSection: {
-        padding: '100px 10px 100px 10px',
+        padding: '100px 110px 100px 110px',
         backgroundColor: '#222D3C', /* Or #1C2531 ? */
         overflow: 'hidden',
 
@@ -64,7 +64,7 @@ const styles = {
     },
 
     blogSection: {
-        padding: '0px 30px 30px 30px',
+        padding: '40px 22px 0px 22px',
         backgroundColor: '#93BDC1',
         overflow: 'hidden',
 
@@ -72,6 +72,7 @@ const styles = {
             fontSize: '18px',
             marginTop: '1rem',
             marginBottom: '2rem',
+            color: 'lightgrey'
         }
     },
 
@@ -142,7 +143,7 @@ class Home extends Component {
                             <Typography variant="h5" component="h3" gutterBottom>
                                 Description of Simulator
                             </Typography>
-                            <p style={{ fontSize: '18px' }}>
+                            <p style={{ fontSize: '18px', color: 'lightgrey', borderRadius: '25px', border: '2px solid #222629', padding: '40px 30px 40px 30px', backgroundColor: '#222629' }}>
                                 The Delineo Disease Modeling Project is working to bring a fresh approach to the challenge of modeling the spread of pandemics. The project draws from a diverse set of academic fields, using knowledge and principles from computer science, applied mathematics, and public health to create a much more realistic model of disease spread. Using geo-location mobile phone data, the Delineo project seeks to model disease spread in communities ranging from sparsely inhabited rural towns to densely populated urban megacities. The goal of our project is to create a massively parallel and highly scalable system that can be run across computing platforms to create a virtual world in which the spread of a disease can be observed and measured, along with studying the impact of non-pharmaceutical interventions (NPI’s) and different types of events on the spread of the disease. The model envisions populations in terms of extremely localized and specific “modules” comprising of people, their dwellings, and shared community spaces.
                             </p>
                             <div className={classes.buttonContainer}>
@@ -155,7 +156,7 @@ class Home extends Component {
                             <Typography variant="h5" component="h3" gutterBottom>
                                 Description of ML
                                 </Typography>
-                            <p style={{ fontSize: '18px' }}>
+                                <p style={{ fontSize: '18px', color: 'lightgrey', borderRadius: '25px', border: '2px solid #222629', padding: '40px 30px 40px 30px', backgroundColor: '#222629' }}>
                                 The problem of how disease moves is fundamentally a question of how people move. Leveraging mobility data provided by SafeGraph and XMode, our team is able to create realistic population movements informed by real world data. Our approach to the problem of movement utilizes statistical and machine learning methods from prior literature to form movement patterns that capture the broad range of ways that people move.
                                 </p>
                             <div className={classes.buttonContainer}>
@@ -172,11 +173,11 @@ class Home extends Component {
                 </div>
 
                 <div className={classes.blogSection}>
-                    <Typography variant="h4" component="h2" gutterBottom className={classes.recent}>
+                    <Typography variant="h4" component="h2" gutterBottom className={classes.recent} style={{color: '#222629'}}>
                         Recent Blog Posts
                     </Typography>
 
-                    <Grid container spacing={2}>
+                    <Grid container spacing={0}>
                         <Grid item xs={4}>
                             <div className={classes.blogContainer}>
                                 <div className={classes.blogContent}>
@@ -195,7 +196,7 @@ class Home extends Component {
                                             </Typography>
                                         </Grid>
                                     </Grid>
-                                    <p className={classes.blogText}>
+                                    <p className={classes.blogText} style={{ fontSize: '18px', color: 'lightgrey' }}>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. In arcu ligula, auctor ut dictum ac, malesuada et arcu. Vestibulum ut commodo enim, in pulvinar magna. Mauris est enim, pretium id porta ut, maximus at felis. Donec aliquam, velit a tempus accumsan, lorem metus viverra augue, ac convallis quam enim quis lacus.
                                     </p>
                                     <div className={classes.buttonContainer}>
@@ -224,7 +225,7 @@ class Home extends Component {
                                             </Typography>
                                         </Grid>
                                     </Grid>
-                                    <p className={classes.blogText}>
+                                    <p className={classes.blogText} style={{ fontSize: '18px', color: 'lightgrey' }}>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. In arcu ligula, auctor ut dictum ac, malesuada et arcu. Vestibulum ut commodo enim, in pulvinar magna. Mauris est enim, pretium id porta ut, maximus at felis. Donec aliquam, velit a tempus accumsan, lorem metus viverra augue, ac convallis quam enim quis lacus.
                                     </p>
                                     <div className={classes.buttonContainer}>
@@ -253,7 +254,7 @@ class Home extends Component {
                                             </Typography>
                                         </Grid>
                                     </Grid>
-                                    <p className={classes.blogText}>
+                                    <p className={classes.blogText} style={{ fontSize: '18px', color: 'lightgrey' }}>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. In arcu ligula, auctor ut dictum ac, malesuada et arcu. Vestibulum ut commodo enim, in pulvinar magna. Mauris est enim, pretium id porta ut, maximus at felis. Donec aliquam, velit a tempus accumsan, lorem metus viverra augue, ac convallis quam enim quis lacus.
                                     </p>
                                     <div className={classes.buttonContainer}>
