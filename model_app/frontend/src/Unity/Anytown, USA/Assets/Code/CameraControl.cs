@@ -5,12 +5,12 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Camera camera;
+    private Camera player;
     public float scrollSpeed = 10;
     void Start()
     {
-        camera = GetComponent<Camera>();
-        camera.orthographicSize = 5; // Size u want to start with
+        player = GetComponent<Camera>();
+        player.orthographicSize = 5; // Size u want to start with
     }
 
     public float speed = 100;
@@ -22,11 +22,11 @@ public class CameraControl : MonoBehaviour
         float ScrollWheelChange = Input.GetAxis("Mouse ScrollWheel");
         if (ScrollWheelChange != 0)
         {
-            camera.orthographicSize -= ScrollWheelChange * scrollSpeed;
-            if (camera.orthographicSize < 1)
-                    camera.orthographicSize = 1;
-            if (camera.orthographicSize > 15)
-                camera.orthographicSize = 15;
+            player.orthographicSize -= ScrollWheelChange * scrollSpeed;
+            if (player.orthographicSize < 1)
+                player.orthographicSize = 1;
+            if (player.orthographicSize > 15)
+                player.orthographicSize = 15;
         }
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
