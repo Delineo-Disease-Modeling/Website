@@ -20,6 +20,6 @@
     "concurrently": "^5.3.0",
     "react-day-picker": "^7.4.8",
     "react-dropdown-select": "^4.6.1",
-    "react-unity-webgl": "^7.1.10"
+    "react-unity-webgl": "^8.1.3"
   }
 }
