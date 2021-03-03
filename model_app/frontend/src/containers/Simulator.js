@@ -10,9 +10,9 @@ import {withStyles, makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import Unity, { UnityContext } from "react-unity-webgl";
+import Unity, { UnityContent } from "react-unity-webgl";
 
-const unityContext = new UnityContext({
+const unityContent = new UnityContent({
     loaderUrl: "../Unity/WebGL Builds/Build/UnityLoader.js",
     dataUrl: "../Unity/WebGL Builds/Build/WebGL Builds.data.unityweb",
     frameworkUrl: "../Unity/WebGL Builds/Build/WebGL Builds.wasm.framework.unityweb",
@@ -191,7 +191,7 @@ class Simulator extends Component {
                 <Grid item xs={6}>
                     <div className='GreenBackground'>
                         <h3>Game</h3>
-                         <Unity unityContext={unityContext} />;                  
+                         <Unity unityContent={unityContent} />;                  
                     </div>
                 </Grid>
                 </Grid>
