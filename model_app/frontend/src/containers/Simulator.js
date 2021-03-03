@@ -10,13 +10,13 @@ import {withStyles, makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import Unity, { UnityContent } from "react-unity-webgl";
+import Unity, { UnityContext } from "react-unity-webgl";
 
-const unityContent = new UnityContent({
-    loaderUrl: "../Unity/WebGL Builds/Build/UnityLoader.js",
-    dataUrl: "../Unity/WebGL Builds/Build/WebGL Builds.data.unityweb",
-    frameworkUrl: "../Unity/WebGL Builds/Build/WebGL Builds.wasm.framework.unityweb",
-    codeUrl: "../Unity/WebGL Builds/Build/WebGL Builds.wasm.code.unityweb",
+const unityContext = new UnityContext({
+    loaderUrl: "./Build/Simulation.loader.js",
+    dataUrl: "./Build/Simulation.data",
+    frameworkUrl: "./Build/Simulation.framework.js",
+    codeUrl: "./Build/Simulation.wasm",
   });
 
 const ColoredAccordion = withStyles({
@@ -188,12 +188,10 @@ class Simulator extends Component {
 
                     
                 </Grid>
-                <Grid item xs={6}>
                     <div className='GreenBackground'>
                         <h3>Game</h3>
-                         <Unity unityContent={unityContent} />;                  
+                         <Unity unityContext={unityContext} />;                  
                     </div>
-                </Grid>
                 </Grid>
 
 <div className='fab'>
