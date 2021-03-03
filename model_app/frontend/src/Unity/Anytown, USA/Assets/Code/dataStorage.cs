@@ -12,7 +12,7 @@ public class dataStorage : MonoBehaviour
 
     void Start()
     {
-        InfectedToday = InfectedTotal = PeopleToday = PeopleTotal = 50;
+        InfectedToday = InfectedTotal = PeopleToday = PeopleTotal = 0;
     }
 
     // Update is called once per frame
@@ -20,4 +20,11 @@ public class dataStorage : MonoBehaviour
     {
         
     }
+    public void updateValues(int[] values)
+    {
+        InfectedToday = values[0];
+        InfectedTotal = values[1];
+        PeopleToday = values[2];
+        PeopleTotal = values[3];
+    } 
 }
