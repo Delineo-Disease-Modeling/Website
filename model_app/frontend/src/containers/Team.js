@@ -12,6 +12,9 @@ import Grid from '@material-ui/core/Grid';
 import { styled } from "@material-ui/core/styles";
 import { spacing } from "@material-ui/system";
 import MuiButton from "@material-ui/core/Button";
+import { withStyles } from '@material-ui/core';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
 
 
 import './Team.css';
@@ -19,28 +22,14 @@ import './Team.css';
 
 const Button = styled(MuiButton)(spacing);
 
-function Team(props){
-  let supervisorList = [];
-  let list = [];
-  let memberlist = [];
 
-  members.forEach(member => {
-    memberlist.push(member);
-  })
 
-  leaders.forEach(leader => {
-    if (leader.designation === 'Research Supervisor') {
-      supervisorList.push(leader);
-    }
-    else {
-      list.push(leader);
-    }
-  });
 
-  const useStyles = makeStyles((theme) => ({
+
+  const styles = {
     root: {
       '& > *': {
-        margin: theme.spacing(1),
+        margin: 1,
       },
     },
     alignItemsAndJustifyContent: {
@@ -51,123 +40,68 @@ function Team(props){
       justifyContent: 'center',
       backgroundColor: 'pink',
     },
-  }));
+    CardBackground: {
+      backgroundColor: '#C4C4C4',
+      height: '100%',
+      width: '100vh',
+      minHeight: '100%',
+      minWidth: '100%',
+      margin: 0,
+      alignContent: 'center',
+      paddingBottom: '5%',
+    },
+    MainHeader: {
+      backgroundColor: '#4A4E51',
+      height: '100px',
+      width: '100vh',
+
+      minWidth: '100%',
+      margin: 0,
+      alignContent: 'center',
+
+      paddingBottom: '20px'
+
+    },
+    h3: {
+      color: 'white',
+      marginRight: 'auto',
+      marginLeft: 'auto',
+      marginTop: 0,
+      borderBottom: '3px solid #66FCF1',
+      width: 'fit-content',
+      paddingBottom: 0,
+      paddingTop: '20px',
 
 
+    }
+  };
 
+
+  class Team extends Component {
+
+      render() {
+          const { classes } = this.props;
   return(
-
-    <div className = 'CardBackground'>
-
-      <div className="MainHeader">
-        <h2>Meet The Team</h2>
-      </div>
+    <div >
 
 
-
-
-
-      <div className = "Supervisor" align="center" >
-        <h3 align="center">Research Supervisor</h3>
-
-
-
-        <SupGridList   container
-  spacing={0}
-  direction="column"
-  alignItems="center"
-  justify="center"
-  style={{ minHeight: '100vh' }}  ></SupGridList>
-
-
-
-
+      <div className = {classes.MainHeader} align ='center' >
+        <h3 className = {classes.h3} align="center" >Meet the team</h3>
 
       </div>
-      <br></br>
 
-      <div className = 'CardGreenBackground1' >
-        <h3 align="left">Leaders</h3>
-        <LeadGridList></LeadGridList>
-      </div>
-      <br></br>
+      <div className = {classes.CardBackground}>
       <TeamFilter></TeamFilter>
 
 
 
    </div>
 
-
+</div>
  );
+}
 }
 
 
-// function LeaderList(props){
 
-//   const leaderCards = props.list.map(leader => {
-//     return(
-//       <TeamLeaderCardLeft key={leader.name} name={leader.name} description = {leader.major} />
-//     );
-//     }
-//   );
-//   return(<div>{leaderCards}</div>);
-// }
-
-// function MemberList(props){
-
-//   const memberCards = props.list.map(member => {
-//     return(
-//       <MemberCardLeft key={member.name} name={member.name} description = {member.major} />
-//     );
-//     }
-//   );
-//   return(<div>{memberCards}</div>);
-// }
-
-// function SupervisorList(props) {
-//   const supervisorCards = props.list.map(supervisor =>
-//     <SupervisorCard key={supervisor.name} name={supervisor.name} description={supervisor.profession} image={supervisor.image}/>
-//   );
-//   return <div>{supervisorCards}</div>;
-// }
-
-// function TeamLeaderCardLeft(props){
-//   return(
-//     <div align= "left" className="LeaderCard">
-//         <div className="Inner">
-//           <h4 className="LeaderName">{props.name}</h4>
-//           <h5 className="ProfessionText"> {props.description} </h5>
-//         </div>
-//     </div>
-
-//   );
-
-// }
-
-// function MemberCardLeft(props){
-//   return(
-//     <div align= "left" className="LeaderCard">
-//         <div className="Inner">
-//           <h4 className="LeaderName">{props.name}</h4>
-//           <h5 className="ProfessionText"> {props.description} </h5>
-//         </div>
-//     </div>
-
-//   );
-
-// }
-
-// function SupervisorCard(props){
-//   return(
-//     <div align= "left" className="SuperCard">
-//         <div className="Inner">
-//           <h4 className="LeaderName">{props.name}</h4>
-//           <h5 className="ProfessionText">{props.description}</h5>
-//         </div>
-//     </div>
-//   );
-// }
-
-
-
-export default Team;
+export default withStyles(styles)(Team);

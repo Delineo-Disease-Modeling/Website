@@ -1,7 +1,7 @@
 import React, { Component }  from 'react';
 
 
-import { Button } from 'reactstrap';
+
 import leaders from '../const/leader.js';
 import members from '../const/member.js';
 import TeamGridList from '../components/TeamGridList.js'
@@ -12,7 +12,49 @@ import FunctionClick from '../components/FunctionClick'
 import Grid from '@material-ui/core/Grid';
 import { styled } from "@material-ui/core/styles";
 import { spacing } from "@material-ui/system";
-import MuiButton from "@material-ui/core/Button";
+import Button from "@material-ui/core/Button";
+import { withStyles } from '@material-ui/core';
+
+const styles = {
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    overflow: 'hidden',
+    backgroundColor: '#C4C4C4',
+
+    textAlign: 'center',
+
+  },
+CardGreenBackground1: {
+  marginTop: '0%',
+  backgroundColor:'#4A4E51',
+},
+h2: {
+  color: 'white',
+  marginRight: 'auto',
+  marginLeft: 'auto',
+  marginTop: 0,
+  borderBottom: '3px solid black',
+  width: 'fit-content',
+  paddingBottom: 0,
+  paddingTop: '20px',
+
+
+}
+};
+
+const ColorButton = withStyles((theme) => ({
+  root: {
+    color: 'black',
+    fontSize: '14px',
+    backgroundColor: '#66FCF1',
+    '&:hover': {
+      backgroundColor: '#66FCF1',
+    },
+    margin: '3px'
+  },
+}))(Button);
 
 class TeamFilter extends Component {
   // This syntax ensures `this` is bound within handleClick.
@@ -42,6 +84,9 @@ class TeamFilter extends Component {
 
 
   render() {
+
+    const { classes } = this.props
+
     const { all } = this.state
     const { fs } = this.state
     const { sim } = this.state
@@ -49,23 +94,29 @@ class TeamFilter extends Component {
     const { info } = this.state
 
     const { showing} = this.state
+
     return (
-      <div>
-          <Button mt={2} variant="contained" color="primary" onClick={() => this.setState({ all: !all, fs: false, sim: false, ml: false, info: false })}>all</Button>
+      <div  >
+    <br/>
+          <ColorButton mt={2} variant="contained" color="#66FCF1" onClick={() => this.setState({ all: !all, fs: false, sim: false, ml: false, info: false })}>all</ColorButton>
 
-          <Button mt={2} variant="contained" color="primary"  onClick={() => this.setState({ all: false, fs: !fs, sim: false, ml: false, info: false})}>full stack</Button>
+          <ColorButton mt={2} variant="contained" color="#66FCF1"  onClick={() => this.setState({ all: false, fs: !fs, sim: false, ml: false, info: false})}>full stack</ColorButton>
 
-          <Button mt={2} variant="contained" color="primary"  onClick={() => this.setState({ all: false, fs: false, sim: !sim, ml: false, info: false })}>simulation</Button>
+          <ColorButton mt={2} variant="contained" color="#66FCF1"  onClick={() => this.setState({ all: false, fs: false, sim: !sim, ml: false, info: false })}>simulation</ColorButton>
 
-          <Button mt={2} variant="contained" color="primary"  onClick={() => this.setState({ all: false, fs: false, sim: false, ml: !ml, info: false })}>machine learning</Button>
+          <ColorButton mt={2} variant="contained" color="#66FCF1y"  onClick={() => this.setState({ all: false, fs: false, sim: false, ml: !ml, info: false })}>machine learning</ColorButton>
 
-          <Button mt={2} variant="contained" color="primary"  onClick={() => this.setState({ all: false, fs: false, sim: false, ml: false, info: !info })}>infop</Button>
+          <ColorButton mt={2} variant="contained" color="#66FCF1"  onClick={() => this.setState({ all: false, fs: false, sim: false, ml: false, info: !info })}>infop</ColorButton>
 
           { all
               ?  <div>
                     <br></br>
-                    <div className = 'CardGreenBackground1' >
-                      <h3 align="left">Team Members</h3>
+                    <div>
+                      <h2 className = {classes.h2} align='center'>Research Supervisor</h2>
+                      <SupGridList/>
+                      <h2 className = {classes.h2} align="center">Team Leaders</h2>
+                      <LeadGridList></LeadGridList>
+                      <h2 className = {classes.h2} align="center">Team Members</h2>
                       <TeamGridList></TeamGridList>
                     </div>
                 </div>
@@ -77,8 +128,8 @@ class TeamFilter extends Component {
                   <div className = 'TeamAbout'>
                     <h3> Full Stack Team Description </h3>
                   </div>
-                  <div className = 'CardGreenBackground1' >
-                    <h3 align="left">Team Members</h3>
+                  <div>
+                    <h2 className = {classes.h2} align="left">Team Members</h2>
                     <TeamGridList></TeamGridList>
                   </div>
               </div>
@@ -89,8 +140,8 @@ class TeamFilter extends Component {
                   <div className = 'TeamAbout'>
                     <h3> Simulation Team Description </h3>
                   </div>
-                  <div className = 'CardGreenBackground1' >
-                    <h3 align="left">Team Members</h3>
+                  <div >
+                    <h2 className = {classes.h2} align="left">Team Members</h2>
                     <TeamGridList></TeamGridList>
                   </div>
               </div>
@@ -101,8 +152,8 @@ class TeamFilter extends Component {
                   <div className = 'TeamAbout'>
                     <h3> Machine Learning Team Description </h3>
                   </div>
-                  <div className = 'CardGreenBackground1' >
-                    <h3 align="left">Team Members</h3>
+                  <div >
+                    <h2 className = {classes.h2} align="left">Team Members</h2>
                     <TeamGridList></TeamGridList>
                   </div>
               </div>
@@ -113,8 +164,8 @@ class TeamFilter extends Component {
                   <div className = 'TeamAbout'>
                     <h3> Information Team Descripiton </h3>
                   </div>
-                  <div className = 'CardGreenBackground1' >
-                    <h3 align="left">Team Members</h3>
+                  <div>
+                    <h2 className = {classes.h2} align="left">Team Members</h2>
                     <TeamGridList></TeamGridList>
                   </div>
               </div>
@@ -125,4 +176,4 @@ class TeamFilter extends Component {
     );
   }
 }
-export default TeamFilter
+export default withStyles(styles)(TeamFilter);
