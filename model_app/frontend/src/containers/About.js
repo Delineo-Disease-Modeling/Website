@@ -8,6 +8,7 @@ import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import faqData from '../const/faqData';
+import bgImg from '../images/Delineo-About.gif';
 
 const styles = {
 	button: {
@@ -72,6 +73,19 @@ const styles = {
 
 	thumbnail: {
 		width: '22vw'
+	},
+
+	title: {
+		position: 'absolute',
+		top: '230px',
+		left:'169px'
+	},
+
+	subtitle: {
+		position: 'absolute',
+		top: '320px',
+		left:'169px',
+		fontSize: '18px'
 	}
 }
 
@@ -143,12 +157,20 @@ class About extends React.Component {
 			<div className={classes.cardBackground}>
 				<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 				<div className={classes.cardGreenBackground}>
-					<img src="https://api.hub.jhu.edu/factory/sites/default/files/styles/landscape/public/Undergrad_teaching_laboratories_011917_900x600.jpg?itok=P83h8p2q" alt="Architecture" width="100%" height="800vh" />
+
+					<Typography variant="h3" component="h2" className={classes.title}>
+						ABOUT DELINEO
+					</Typography>
+					<Typography variant="subtitle" component="h2" className={classes.subtitle}>
+						Disease Modeling Simulation at Johns Hopkins University					
+					</Typography>
+					<img src={bgImg} alt="background" width='100%' height="700vh" />
+					
 
 
-					<div className="w3-display-middle w3-margin-top w3-center w3">
+					{/* <div className="w3-display-middle w3-margin-top w3-center w3">
 						<h1 className="w3-xxlarge w3-text-white"><span className="w3-padding w3-black w3-opacity-min"><b>De</b></span> <span className="w3-hide-small w3-text-light-grey">lineo</span></h1>
-					</div>
+					</div> */}
 
 					<div className="w3-container w3-padding-32 w3-grey" id="projects">
 						<h3 className="w3-border-bottom w3-border-light-grey w3-padding-16">Map Visualization</h3>
