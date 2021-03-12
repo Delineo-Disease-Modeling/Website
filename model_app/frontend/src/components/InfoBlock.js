@@ -1,0 +1,131 @@
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        padding: '200px 50px 50px 50px',
+        backgroundColor: 'C4C4C4'
+    },
+    description: {
+        fontSize: '24px',
+        letterSpacing: '2px',
+    },
+    button: {
+        borderColor: '#66FCF1',
+        backgroundColor: '#66FCF1',
+        border: '1px solid',
+        "&:hover": {
+            backgroundColor: 'transparent',
+            color: '#66FCF1',
+            borderColor: '#66FCF1',
+        },
+    },
+
+    img: {
+        width: '500px',
+        height: '100%',
+        paddingBottom: '30px',
+        borderBottom: '3px solid #66FCF1'
+    },
+
+    gallery: {
+        margin: '50px 0',
+        padding: '0 100px'
+    },
+
+    grid: {
+        marginBottom: '50px'
+    },
+
+    border: {
+        width: '200px',
+        margin: 'auto',
+        borderTop: '3px solid #66FCF1',
+        marginBottom: '50px'
+    }
+}));
+
+function setParams(subject) {
+    var title = '';
+    var description = '';
+    var buttontxt = '';
+    var images = [];
+    var captions = [];
+    if (subject === 'visualization') {
+        title = 'MAP VISUALIZATION';
+        description = "The Johns Hopkins Coronavirus Resource Center (CRC) is a continuously updated source of COVID-19 data and expert guidance. We aggregate and analyze the best data available on COVID-19—including cases, as well as testing, contact tracing and vaccine efforts—to help the public, policymakers and healthcare professionals worldwide respond to the pandemic.";
+        buttontxt = 'VIEW MAP';
+        images[0] = "https://www.washingtonpost.com/rf/image_982w/2010-2019/WashingtonPost/2020/03/14/Health-Environment-Science/Graphics/promo2-coronavirus-simulator-0313.jpg";
+        images[1] = "https://images.firstpost.com/fpimages/1200x800/fixed/jpg/2020/06/Covid-19-coronavirus-sneeze-simulation_Dassualt-Systemes-1.jpg";
+        images[2] = "https://images.theconversation.com/files/342926/original/file-20200619-70415-35zyha.jpg?ixlib=rb-1.1.0&rect=2057%2C0%2C5656%2C2822&q=45&auto=format&w=1356&h=668&fit=crop";
+        images[3] = "https://blogs.solidworks.com/solidworksblog/wp-content/uploads/sites/2/2020/04/reza_cfd_1.png";
+        captions[0] = 'County Level';
+        captions[1] = 'State Level';
+        captions[2] = 'Motion Chart';
+        captions[3] = 'Daily Summary';
+    } else if (subject === 'stimulation') {
+        title = 'SIMULATION';
+        description = "Viruses, such as the one that causes COVID-19, spread quickly through large cities because of a complex web of interactions between people taking place in a densely populated area. But how viruses move from person to person in smaller, rural communities is less well understood, resulting in public health and economic decisions that are made on the basis of scant information and overgeneralized modeling. The Delineo project is developing a distributed programming environment to run the model over large numbers of computers to scale up the areas that can be accurately modeled.";
+        buttontxt = 'VIEW SIMULATION';
+        images[0] = "https://www.washingtonpost.com/rf/image_982w/2010-2019/WashingtonPost/2020/03/14/Health-Environment-Science/Graphics/promo2-coronavirus-simulator-0313.jpg";
+        images[1] = "https://images.firstpost.com/fpimages/1200x800/fixed/jpg/2020/06/Covid-19-coronavirus-sneeze-simulation_Dassualt-Systemes-1.jpg";
+        images[2] = "https://images.theconversation.com/files/342926/original/file-20200619-70415-35zyha.jpg?ixlib=rb-1.1.0&rect=2057%2C0%2C5656%2C2822&q=45&auto=format&w=1356&h=668&fit=crop";
+        images[3] = "https://blogs.solidworks.com/solidworksblog/wp-content/uploads/sites/2/2020/04/reza_cfd_1.png";
+        captions[0] = 'Simulation 1';
+        captions[1] = 'Simulation 2';
+        captions[2] = 'Simulation 3';
+        captions[3] = 'Simulation 4';
+    }
+    return { title, description, buttontxt, images, captions };
+}
+
+export default function InfoBlock(props) {
+    const classes = useStyles();
+    const { title, description, buttontxt, images, captions } = setParams(props.subject);
+
+    return (
+        <div className={classes.root} style={{backgroundColor: props.background}}>
+            <Typography variant="h3" component="h2" >
+                {title}
+            </Typography>
+            <div className={classes.border}></div>
+            <Typography variant="body1" component="h2" className={classes.description}>
+                {description}
+            </Typography>
+            <Button className={classes.button} variant="contained" color="inherit" href="#top" >
+                {buttontxt}
+            </Button>
+
+            <Grid container spacing={3} className={classes.gallery}>
+                <Grid item xs={6} className={classes.grid}>
+                    <img className={classes.img} src={images[0]}></img>
+                    <Typography variant="h4" component="h2">
+                        {captions[0]}
+                    </Typography>
+                </Grid>
+                <Grid item xs={6} className={classes.grid}>
+                    <img className={classes.img} src={images[1]}></img>
+                    <Typography variant="h4" component="h2">
+                        {captions[1]}
+                    </Typography>
+                </Grid>
+                <Grid item xs={6} className={classes.grid}>
+                    <img className={classes.img} src={images[2]}></img>
+                    <Typography variant="h4" component="h2">
+                        {captions[2]}
+                    </Typography>
+                </Grid>
+                <Grid item xs={6} className={classes.grid}>
+                    <img className={classes.img} src={images[3]}></img>
+                    <Typography variant="h4" component="h2">
+                        {captions[3]}
+                    </Typography>
+                </Grid>
+
+            </Grid>
+        </div>
+    );
+}
