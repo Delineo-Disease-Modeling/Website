@@ -122,7 +122,6 @@ public class Window_Graph : MonoBehaviour {
     public void createGraph(List<int> valueList)
     {
         cleanGraph();
-        graph.SetActive(true);
         ShowGraph(valueList, (int _i) => "" + (_i + 1), (float _f) => "" + Mathf.RoundToInt(_f));
     }
 
@@ -133,7 +132,6 @@ public class Window_Graph : MonoBehaviour {
         {
             Destroy(temp[i]);
         }
-        graph.SetActive(false);
     }
 
 }
