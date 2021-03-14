@@ -16,15 +16,15 @@ services:
       - .:/code
       - /code/node_modules # Use local node_modules from image
     ports:
-      - "8000:8000"
-      - "3000:3000"
+      # - "8000:8000"
+      - "5000:5000"
     depends_on:
       - db
-  localssl:
-    image: jhuopensource/semesterly-caddy
-    volumes:
-      - ./build/caddy/Caddyfile:/etc/Caddyfile
-    ports:
-      - "443:443"
-    depends_on:
-      - web
+  # localssl:
+  #   image: jhuopensource/semesterly-caddy
+  #   volumes:
+  #     - ./build/caddy/Caddyfile:/etc/Caddyfile
+  #   ports:
+  #     - "443:443"
+  #   depends_on:
+  #     - web

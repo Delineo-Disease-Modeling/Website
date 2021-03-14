@@ -4,6 +4,7 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "scripts": {
+    "build": "VERSION=`git rev-parse --abbrev-ref HEAD` && react-scripts build && sed -i -- 's/%VERSION%/$VERSION/g' build/index.html",
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "npm start --prefix backend",
     "server-install": "cd backend && npm i",
