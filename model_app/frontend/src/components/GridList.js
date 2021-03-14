@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
+import GridList from '@material-ui/core/GridList';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     overflow: 'hidden',
     backgroundColor: '#C4C4C4',
-    padding: theme.spacing(6),
+    padding: theme.spacing(4),
     textAlign: 'center',
 
   },
@@ -23,13 +24,15 @@ const useStyles = makeStyles((theme) => ({
 
   displayUnder: {
     font: "Brush Script MT",
-    fontSize: 14,
+    fontSize: 20,
     border: 0,
 
     color: 'white',
     height: 10,
-    padding: theme.spacing(1),
+    paddingTop: 10,
+    paddingBottom: 5,
     textAlign: 'center',
+
 
   },
 
@@ -82,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
 
   },
-  GridListTile: {
+  gridListTile: {
     width: '210px',
     height:'300px',
 
@@ -115,26 +118,21 @@ export default function TitlebarGridList(tileData) {
         {tileData.map((tile) => (
 
           <Grid key={tile.name}  xs={12} sm={6} md={3}>
-            <GridListTile className={classes.GridListTile} key={tile.img}>
+            <GridListTile component = 'div'className={classes.gridListTile} key={tile.img}>
 
             <div className ={classes.bigCir} >
              <center><Avatar src={tile.img} className = {classes.large}/></center>
              <center>
 
-
-             <div className={classes.displayUnder}>
                <div className={classes.displayUnder}>
                  <h4 className={classes.displayUnder}>{tile.name}</h4>
                  <h4 className={classes.displayUnder}>{tile.role}</h4>
-                 
+
                </div>
-             </div>
+
 
              </center>
              </div>
-
-
-
 
             </GridListTile>
 

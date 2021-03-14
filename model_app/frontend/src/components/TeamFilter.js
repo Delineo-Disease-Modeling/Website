@@ -26,34 +26,58 @@ const styles = {
     textAlign: 'center',
 
   },
-CardGreenBackground1: {
-  marginTop: '0%',
-  backgroundColor:'#4A4E51',
-},
-h2: {
-  color: 'white',
-  marginRight: 'auto',
-  marginLeft: 'auto',
-  marginTop: 0,
-  borderBottom: '3px solid black',
-  width: 'fit-content',
-  paddingBottom: 0,
-  paddingTop: '20px',
+  CardGreenBackground1: {
+    marginTop: '0%',
+    backgroundColor:'#4A4E51',
+  },
+  h2: {
+    color: 'white',
+    marginRight: 'auto',
+    marginLeft: 'auto',
+    marginTop: 0,
+    borderBottom: '3px solid black',
+    width: 'fit-content',
+    paddingBottom: 0,
+    paddingTop: '20px',
 
 
-}
+  },
+  focus: {
+    backgroundColor: '#222629',
+    color: '#66FCF1',
+    borderColor: '#66FCF1',
+    border: '1px solid',
+  },
+  notfocus: {
+    borderColor: '#66FCF1',
+    backgroundColor: '#66FCF1',
+    border: '1px solid',
+    color: '#444f56',
+  }
+
 };
 
 const ColorButton = withStyles((theme) => ({
   root: {
-    color: 'black',
-    fontSize: '14px',
+    borderColor: '#66FCF1',
     backgroundColor: '#66FCF1',
-    '&:hover': {
-      backgroundColor: '#66FCF1',
+    border: '1px solid',
+    color: '#444f56',
+    "&:hover": {
+        backgroundColor: '#222629',
+        color: '#66FCF1',
+        borderColor: '#66FCF1',
     },
-    margin: '3px'
   },
+    "&:active": {
+    backgroundColor: '#222629',
+    color: '#66FCF1',
+    borderColor: '#66FCF1',
+    border: '1px solid',
+  }
+
+
+
 }))(Button);
 
 class TeamFilter extends Component {
@@ -67,7 +91,10 @@ class TeamFilter extends Component {
       fs: false,
       sim: false,
       ml: false,
-      info: false
+      info: false,
+      backgroundColor: '#222629',
+      color: '#66FCF1',
+      borderColor: '#66FCF1',
     }
   this.changeDiv= this.changeDiv.bind(this);
 }
@@ -84,6 +111,12 @@ class TeamFilter extends Component {
 
 
   render() {
+    let inputStyle = {
+      borderColor: '#66FCF1',
+      backgroundColor: '#66FCF1',
+      border: '1px solid',
+      color: '#444f56',
+    };
 
     const { classes } = this.props
 
@@ -95,18 +128,20 @@ class TeamFilter extends Component {
 
     const { showing} = this.state
 
+    const highlightedAll = this.state.all ?  "classes.focus" : "classes.notfocus";
+
     return (
       <div  >
     <br/>
-          <ColorButton mt={2} variant="contained" color="#66FCF1" onClick={() => this.setState({ all: !all, fs: false, sim: false, ml: false, info: false })}>all</ColorButton>
+          <ColorButton mt={2} variant="contained" color="#66FCF1" onClick={() => this.setState({ all: true, fs: false, sim: false, ml: false, info: false})}>all</ColorButton>
 
-          <ColorButton mt={2} variant="contained" color="#66FCF1"  onClick={() => this.setState({ all: false, fs: !fs, sim: false, ml: false, info: false})}>full stack</ColorButton>
+          <ColorButton mt={2} variant="contained" color="#66FCF1"  onClick={() => this.setState({ all: false, fs: true, sim: false, ml: false, info: false})}>full stack</ColorButton>
 
-          <ColorButton mt={2} variant="contained" color="#66FCF1"  onClick={() => this.setState({ all: false, fs: false, sim: !sim, ml: false, info: false })}>simulation</ColorButton>
+          <ColorButton mt={2} variant="contained" color="#66FCF1"  onClick={() => this.setState({ all: false, fs: false, sim: true, ml: false, info: false })}>simulation</ColorButton>
 
-          <ColorButton mt={2} variant="contained" color="#66FCF1y"  onClick={() => this.setState({ all: false, fs: false, sim: false, ml: !ml, info: false })}>machine learning</ColorButton>
+          <ColorButton mt={2} variant="contained" color="#66FCF1"  onClick={() => this.setState({ all: false, fs: false, sim: false, ml: true, info: false })}>machine learning</ColorButton>
 
-          <ColorButton mt={2} variant="contained" color="#66FCF1"  onClick={() => this.setState({ all: false, fs: false, sim: false, ml: false, info: !info })}>infop</ColorButton>
+          <ColorButton mt={2} variant="contained" color="#66FCF1"  onClick={() => this.setState({ all: false, fs: false, sim: false, ml: false, info: true })}>infop</ColorButton>
 
           { all
               ?  <div>
