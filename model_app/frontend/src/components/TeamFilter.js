@@ -15,6 +15,12 @@ import { spacing } from "@material-ui/system";
 import Button from "@material-ui/core/Button";
 import { withStyles } from '@material-ui/core';
 
+import FullStackGridList from '../components/FullStackGridList.js';
+import SimGridList from "../components/SimGridList.js";
+import MLGridList from '../components/MLGridList.js';
+import InfoTeamGridList from '../components/InfoTeamGridList.js';
+
+
 const styles = {
   root: {
     display: 'flex',
@@ -35,7 +41,7 @@ const styles = {
     marginRight: 'auto',
     marginLeft: 'auto',
     marginTop: 0,
-    borderBottom: '3px solid black',
+    borderBottom: '3px solid #66FCF1',
     width: 'fit-content',
     paddingBottom: 0,
     paddingTop: '20px',
@@ -165,7 +171,7 @@ class TeamFilter extends Component {
                   </div>
                   <div>
                     <h2 className = {classes.h2} align="left">Team Members</h2>
-                    <TeamGridList></TeamGridList>
+                    <FullStackGridList></FullStackGridList>
                   </div>
               </div>
               : null
@@ -177,7 +183,7 @@ class TeamFilter extends Component {
                   </div>
                   <div >
                     <h2 className = {classes.h2} align="left">Team Members</h2>
-                    <TeamGridList></TeamGridList>
+                    <SimGridList></SimGridList>
                   </div>
               </div>
               : null
@@ -189,7 +195,7 @@ class TeamFilter extends Component {
                   </div>
                   <div >
                     <h2 className = {classes.h2} align="left">Team Members</h2>
-                    <TeamGridList></TeamGridList>
+                    <MLGridList></MLGridList>
                   </div>
               </div>
               : null
@@ -201,7 +207,7 @@ class TeamFilter extends Component {
                   </div>
                   <div>
                     <h2 className = {classes.h2} align="left">Team Members</h2>
-                    <TeamGridList></TeamGridList>
+                    <InfoTeamGridList></InfoTeamGridList>
                   </div>
               </div>
               : null

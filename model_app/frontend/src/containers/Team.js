@@ -87,7 +87,7 @@ const Button = styled(MuiButton)(spacing);
 
 
       <div className = {classes.MainHeader} align ='center' >
-        <h3 className = {classes.h3} align="center" >Meet The Team</h3>
+        <h3 className = {classes.h3} align="center" >Meet the team</h3>
 
       </div>
 
