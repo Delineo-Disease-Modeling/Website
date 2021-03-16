@@ -3,6 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import GridListTile from '@material-ui/core/GridListTile';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
+import Avatar from '@material-ui/core/Avatar';
+import GridList from '@material-ui/core/GridList';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -10,14 +13,41 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
     justifyContent: 'center',
     overflow: 'hidden',
-    backgroundColor: '#1b4441c2',
-    paddingTop: theme.spacing(0),
-    paddingBottom: theme.spacing(4),
+    backgroundColor: '#C4C4C4',
+    padding: theme.spacing(4),
+    textAlign: 'center',
 
   },
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
   },
+
+  displayUnder: {
+    font: "Brush Script MT",
+    fontSize: 20,
+    border: 0,
+
+    color: 'white',
+    height: 10,
+    paddingTop: 10,
+    paddingBottom: 5,
+    textAlign: 'center',
+
+
+  },
+
+  displayUnderTitle: {
+    font: "Lucida Console",
+    fontSize: 20,
+    border: 0,
+    color: 'white',
+    height: 10,
+    textAlign: 'center',
+    padding: theme.spacing(1),
+
+  },
+
+
   displayOver: {
     height: "100%",
     left: "0",
@@ -55,19 +85,27 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
 
   },
-  GridListTile: {
-    '&:hover p, &:hover h3, &:hover h4': {
-      transform: "translate3d(0,0,0)",
-    },
-    '&:hover div': {
-      opacity: 1,
-    },
-    width: '200px',
-    height:'200px',
-
-
+  gridListTile: {
+    width: '210px',
+    height:'300px',
 
   },
+large: {
+  width: '180px',
+  height:'180px',
+  marginTop: '7.5px',
+},
+bigCir: {
+ backgroundColor: 'none',
+ height:'200px',
+ width:'200px',
+ borderRadius:'50%',
+ borderColor:'#949494',
+ borderStyle:'solid',
+ borderWidth:'3px',
+
+
+}
 }));
 
 export default function TitlebarGridList(tileData) {
@@ -78,18 +116,26 @@ export default function TitlebarGridList(tileData) {
     <Container className={classes.root} maxWidth="md">
       <Grid container spacing={4}>
         {tileData.map((tile) => (
-          <Grid item key={tile.name}  xs={12} sm={6} md={3}>
-            <GridListTile className={classes.GridListTile} key={tile.img}>
-              <img src={tile.img} alt={tile.name} />
 
-              <div className={classes.displayOver}>
-                <div className={classes.hover}>
-                  <h3 className={classes.hoverTitle}>{tile.name}</h3>
-                  <h4 className={classes.hoverSubtitle}>{tile.role}</h4>
-                  <p className={classes.hoverP}>{tile.description}</p>
-                </div>
-              </div>
+          <Grid key={tile.name}  xs={12} sm={6} md={3}>
+            <GridListTile component = 'div'className={classes.gridListTile} key={tile.img}>
+
+            <div className ={classes.bigCir} >
+             <center><Avatar src={tile.img} className = {classes.large}/></center>
+             <center>
+
+               <div className={classes.displayUnder}>
+                 <h4 className={classes.displayUnder}>{tile.name}</h4>
+                 <h4 className={classes.displayUnder}>{tile.role}</h4>
+
+               </div>
+
+
+             </center>
+             </div>
+
             </GridListTile>
+
           </Grid>
         ))}
 
