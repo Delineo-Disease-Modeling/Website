@@ -1,16 +1,16 @@
 import image from '../images/person-icon.png';
 import simBliImg from '../images/Simone Bliss.JPG';
 import serChanImg from '../images/person-icon.png';
-import matInsImg from '../images/person-icon.png';
-import steLiImg from '../images/person-icon.png';
-import henNorImg from '../images/person-icon.png';
+import matInsImg from '../images/mathias_insley.png';
+import steLiImg from '../images/Stephen Li.jpg';
+import henNorImg from '../images/Henry Noren.JPG';
 import ZoeKimImg from '../images/person-icon.png';
 
 const tileData = [
   {
     img: matInsImg,
     name: 'Mathias Insley',
-    role: 'Team Lead',
+    role: 'Project Lead',
     description: 'Materials Science, Computer Science',
   },
   {
