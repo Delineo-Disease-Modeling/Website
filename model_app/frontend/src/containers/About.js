@@ -13,15 +13,15 @@ import InfoBlock from '../components/InfoBlock';
 
 const styles = {
 	button: {
-		borderColor: '#66FCF1',
-		backgroundColor: '#66FCF1',
-		border: '1px solid',
-		"&:hover": {
-			backgroundColor: 'transparent',
-			color: '#66FCF1',
-			borderColor: '#66FCF1',
-		},
-	},
+        borderColor: '#66FCF1',
+        backgroundColor: '#66FCF1',
+        border: '1px solid',
+        "&:hover": {
+            backgroundColor: 'transparent',
+            color: '#66FCF1',
+            borderColor: '#66FCF1',
+        },
+    },
 
 	w3Image: {
 		maxWidth: '22vw',
@@ -221,9 +221,12 @@ class About extends React.Component {
 						<input className="w3-input w3-section w3-border" type="text" placeholder="Email" required name="Email" />
 						<input className="w3-input w3-section w3-border" type="text" placeholder="Subject" required name="Subject" />
 						<input className="w3-input w3-section w3-border" type="text" placeholder="Comment" required name="Comment" />
-						<button className="w3-button w3-black w3-section" type="submit">
-							<i className="fa fa-paper-plane"></i> SEND MESSAGE
-					    </button>
+						<Button className={classes.button} variant="contained" color="inherit" type="submit" size="large">
+						{/* <button className={classes.button} > */}
+							<i className="fa fa-paper-plane"></i>
+								SEND MESSAGE
+						{/* </button> */}
+						</Button>
 					</form>
 				</div>
 			</div>

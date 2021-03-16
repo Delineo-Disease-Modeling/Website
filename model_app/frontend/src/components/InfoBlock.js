@@ -10,8 +10,9 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: 'C4C4C4'
     },
     description: {
-        fontSize: '24px',
+        fontSize: '20px',
         letterSpacing: '2px',
+        padding: '30px 50px'
     },
     button: {
         borderColor: '#66FCF1',
@@ -95,7 +96,7 @@ export default function InfoBlock(props) {
             <Typography variant="body1" component="h2" className={classes.description}>
                 {description}
             </Typography>
-            <Button className={classes.button} variant="contained" color="inherit" href="#top" >
+            <Button className={classes.button} size="large" variant="contained" color="inherit" href="#top" >
                 {buttontxt}
             </Button>
 
