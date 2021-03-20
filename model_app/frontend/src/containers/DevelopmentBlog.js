@@ -248,7 +248,7 @@ function DevelopmentBlog(props) {
          </Grid>
       </Grid>
       <Container maxWidth="lg" className={classes.blogsContainer}>
-          <Card maxWidth="lg" style={{background: "white", boxShadow: "none"}} >
+          <Card maxWidth="lg" style={{background: "#D5E3DF", boxShadow: "none"}} >
 
             <CardActions style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
             <Typography variant="h4" className={classes.blogTitle}>
@@ -570,7 +570,7 @@ transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupSt
       </Container>
       <Container maxWidth="lg" className={classes.blogsContainer}>
 
-      <Card maxWidth="lg" style={{background: "white", boxShadow: "none"}} >
+      <Card maxWidth="lg" style={{backgroundColor: "#D5E3DF", boxShadow: "none"}} >
 
         <CardActions style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
         <Typography variant="h4" className={classes.blogTitle}>
@@ -839,7 +839,7 @@ transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupSt
 
       </Container>
       <Container maxWidth="lg" className={classes.blogsContainer}>
-      <Card maxWidth="lg" style={{background: "white", boxShadow: "none"}} >
+      <Card maxWidth="lg" style={{background: "#D5E3DF", boxShadow: "none"}} >
 
         <CardActions style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
         <Typography variant="h4" className={classes.blogTitle}>
