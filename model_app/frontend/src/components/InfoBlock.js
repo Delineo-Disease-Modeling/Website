@@ -1,32 +1,27 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import Button from './StyledButton';
 import Grid from '@material-ui/core/Grid';
+import Carousel from './CarouselSection';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        padding: '200px 50px 50px 50px',
-        backgroundColor: 'C4C4C4'
+    carousel: {
+        padding: '100px',
+        marginTop: '50px',
+        color: 'white'
+    },
+    base: {
+        padding: '10px 50px 10px 50px',
+        backgroundColor: 'black'//'C4C4C4'
     },
     description: {
         fontSize: '20px',
         letterSpacing: '2px',
         padding: '30px 50px'
     },
-    button: {
-        borderColor: '#66FCF1',
-        backgroundColor: '#66FCF1',
-        border: '1px solid',
-        "&:hover": {
-            backgroundColor: 'transparent',
-            color: '#66FCF1',
-            borderColor: '#66FCF1',
-        },
-    },
-
     img: {
-        width: '500px',
+        width: '70%',
         height: '100%',
         paddingBottom: '30px',
         borderBottom: '3px solid #66FCF1'
@@ -34,7 +29,10 @@ const useStyles = makeStyles((theme) => ({
 
     gallery: {
         margin: '50px 0',
-        padding: '0 100px'
+        padding: '100px 100px',
+        backgroundColor: '#222629',
+        borderRadius: '15px',
+        boxShadow: '10px 5px 5px black',
     },
 
     grid: {
@@ -45,7 +43,10 @@ const useStyles = makeStyles((theme) => ({
         width: '200px',
         margin: 'auto',
         borderTop: '3px solid #66FCF1',
-        marginBottom: '50px'
+        marginBottom: '10px'
+    },
+    paper: {
+        color: 'white'
     }
 }));
 
@@ -88,45 +89,22 @@ export default function InfoBlock(props) {
     const { title, description, buttontxt, images, captions } = setParams(props.subject);
 
     return (
-        <div className={classes.root} style={{backgroundColor: props.background}}>
-            <Typography variant="h3" component="h2" >
-                {title}
-            </Typography>
-            <div className={classes.border}></div>
-            <Typography variant="body1" component="h2" className={classes.description}>
-                {description}
-            </Typography>
-            <Button className={classes.button} size="large" variant="contained" color="inherit" href="#top" >
-                {buttontxt}
-            </Button>
+        <div className={classes.base} style={{ backgroundColor: props.background }}>
+            <div className={classes.gallery}>
+                <Typography variant="h3" component="h2" >
+                    {title}
+                </Typography>
+                <div className={classes.border}></div>
+                <Typography variant="body1" component="h2" className={classes.description}>
+                    {description}
+                </Typography>
 
-            <Grid container spacing={3} className={classes.gallery}>
-                <Grid item xs={6} className={classes.grid}>
-                    <img className={classes.img} src={images[0]}></img>
-                    <Typography variant="h4" component="h2">
-                        {captions[0]}
-                    </Typography>
-                </Grid>
-                <Grid item xs={6} className={classes.grid}>
-                    <img className={classes.img} src={images[1]}></img>
-                    <Typography variant="h4" component="h2">
-                        {captions[1]}
-                    </Typography>
-                </Grid>
-                <Grid item xs={6} className={classes.grid}>
-                    <img className={classes.img} src={images[2]}></img>
-                    <Typography variant="h4" component="h2">
-                        {captions[2]}
-                    </Typography>
-                </Grid>
-                <Grid item xs={6} className={classes.grid}>
-                    <img className={classes.img} src={images[3]}></img>
-                    <Typography variant="h4" component="h2">
-                        {captions[3]}
-                    </Typography>
-                </Grid>
-
-            </Grid>
+                <Button href='#top' size='large' color='inherit'>
+                    {buttontxt}
+                </Button>
+                
+                {Carousel(captions, images)}
+            </div>
         </div>
     );
 }

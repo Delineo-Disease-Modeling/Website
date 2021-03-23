@@ -6,22 +6,12 @@ import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import Button from '../components/StyledButton';
 import faqData from '../const/faqData';
 import bgImg from '../images/Delineo-About.gif';
 import InfoBlock from '../components/InfoBlock';
 
 const styles = {
-	button: {
-        borderColor: '#66FCF1',
-        backgroundColor: '#66FCF1',
-        border: '1px solid',
-        "&:hover": {
-            backgroundColor: 'transparent',
-            color: '#66FCF1',
-            borderColor: '#66FCF1',
-        },
-    },
 
 	w3Image: {
 		maxWidth: '22vw',
@@ -46,7 +36,7 @@ const styles = {
 	},
 
 	cardBackground: {
-		backgroundColor: '#222629',
+		backgroundColor: 'white',
 		height: '100%',
 		width: '100vh',
 		minHeight: '100%',
@@ -60,10 +50,17 @@ const styles = {
 		marginTop: '0%',
 		marginLeft: 'auto',
 		marginRight: 'auto',
-		backgroundColor: '#1b4441c2',
+		backgroundColor: 'black',
 		width: '100%',
 		alignSelf: 'center',
 		alignItems: 'center',
+	},
+
+	underline: {
+		width: '200px',
+		margin: 'auto',
+		borderTop: '3px solid #66FCF1',
+		marginBottom: '30px'
 	},
 
 	paragraph: {
@@ -100,17 +97,22 @@ const styles = {
 		margin: 'auto',
 		borderTop: '3px solid #66FCF1',
 		marginBottom: '50px'
+	},
+	faq: {
+		background: '#222629',
+		padding: '100px 0',
+	},
+	faqSlots: {
+		textAlign: 'left',
+		padding: '0 50px'
 	}
 }
 
 const ColoredAccordion = withStyles({
 	root: {
-		backgroundColor: '#1b4441c2',
+		backgroundColor: 'black',
 		fontSize: '20px',
 		color: '#66FCF1'
-
-
-
 	},
 })(Accordion);
 
@@ -122,11 +124,12 @@ const AccordionDetails = withStyles((theme) => ({
 
 const ColAccordion = withStyles({
 	root: {
-		backgroundColor: '#444F51',
+		backgroundColor: 'white',
 		fontSize: '20px',
-		color: 'white',
+		color: 'black',
 		border: '0px solid rgba(0, 0, 0, .125)',
-		boxShadow: 'none',
+		boxShadow: '5px 5px 5px black',
+		borderRadius: '20px',
 		'&:not(:last-child)': {
 			borderBottom: 0,
 		},
@@ -135,6 +138,7 @@ const ColAccordion = withStyles({
 		},
 		'&$expanded': {
 			margin: 'auto',
+			boxShadow: 'inset 0px 0px 5px black',
 		},
 	},
 	expanded: {},
@@ -142,10 +146,11 @@ const ColAccordion = withStyles({
 
 const ColAccordionSummary = withStyles({
 	root: {
-		backgroundColor: 'rgba(0, 0, 0, .4)',
+		backgroundColor: '#66FCF1',
 		borderBottom: '0px solid rgba(0, 0, 0, .125)',
 		marginBottom: 0,
 		minHeight: 56,
+		borderRadius: '15px',
 		'&$expanded': {
 			minHeight: 56,
 		},
@@ -155,7 +160,8 @@ const ColAccordionSummary = withStyles({
 			margin: '12px 0',
 		},
 	},
-	expanded: {},
+	expanded: {
+	},
 })(MuiAccordionSummary);
 
 class About extends React.Component {
@@ -185,51 +191,60 @@ class About extends React.Component {
 					<InfoBlock background={'4A4E51'} subject={'stimulation'} />
 
 				</div>
-				<div className="w3-container w3-padding-32 w3-grey" id="contact" >
-					<h3 className="w3-border-bottom w3-border-light-grey w3-padding-16">Frequently Asked Questions</h3>
+				<div className={classes.faq} id="contact">
+					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', marginTop: '50px' }}>
+						FAQ
+					</Typography>
+					<div className={classes.underline}></div>
+					<div className={classes.faqSlots}>
 
-					{faqData.map((faq) => {
-						return (
-							<div style={{ padding: '10px' }}>
-								<ColAccordion>
-									<ColAccordionSummary
-										expandIcon={<ExpandMoreIcon />}
-										aria-controls="Model Param-content"
-										id="Model Param-header"
-									>
-										{faq.question}
-									</ColAccordionSummary>
-									<AccordionDetails>
-										<Typography>
-											{faq.answer}
-										</Typography>
-									</AccordionDetails>
+						{faqData.map((faq) => {
+							return (
+								<div style={{ padding: '10px' }}>
+									<ColAccordion>
+										<ColAccordionSummary
+											expandIcon={<ExpandMoreIcon />}
+											aria-controls="Model Param-content"
+											id="Model Param-header"
+											style={{padding: '0 50px'}}
+										>
+											{faq.question}
+										</ColAccordionSummary>
+										<AccordionDetails style={{padding: '0 50px'}}>
+											<Typography style={{color: 'black', paddingBottom: '50px'}}>
+												{faq.answer}
+											</Typography>
+										</AccordionDetails>
 
-								</ColAccordion>
-							</div>)
-					})}
+									</ColAccordion>
+								</div>)
+						})}
+					</div>
 				</div>
 
 
 
 
 				<div className="w3-container w3-padding-32" id="contact" >
-					<h3 className="w3-border-bottom w3-border-light-grey w3-padding-16">Contact</h3>
-					<p className={classes.paragraph}>Let's get in touch!</p>
+					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', color: 'black' }}>
+						Contact Us!
+					</Typography>
+					<div className={classes.underline}></div>
+					<Typography varient='h3' component="h2" style={{ color: 'black' }}>
+						Let's get in touch!
+					</Typography>
 					<form style={{ padding: '0 50px' }}>
 						<input className="w3-input w3-border" type="text" placeholder="Name" required name="Name" />
 						<input className="w3-input w3-section w3-border" type="text" placeholder="Email" required name="Email" />
 						<input className="w3-input w3-section w3-border" type="text" placeholder="Subject" required name="Subject" />
 						<input className="w3-input w3-section w3-border" type="text" placeholder="Comment" required name="Comment" />
-						<Button className={classes.button} variant="contained" color="inherit" type="submit" size="large">
-						{/* <button className={classes.button} > */}
-							<i className="fa fa-paper-plane"></i>
+						<Button type="submit" size="large" varient='contained'>
+							< i className="fa fa-paper-plane"></i>
 								SEND MESSAGE
-						{/* </button> */}
 						</Button>
 					</form>
 				</div>
-			</div>
+			</div >
 		);
 	}
 }
