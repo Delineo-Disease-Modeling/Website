@@ -1,7 +1,6 @@
 import React from "react";
 import cn from "classnames";
 import "./CommentBox.css";
-import { ReactDOM } from 'react-dom';
 
 const INITIAL_HEIGHT = 46;
 class CommentBox extends React.Component {
@@ -11,7 +10,7 @@ class CommentBox extends React.Component {
     this.state = {
       showComments: false,
       comments: [
-        {id: 1, author: "Delineo", body: "This is my first comment on this forum."},
+        {id: 1, author: "Delineo", body: "Interesting matrix."},
         {id: 2, author: "Jane Doe", body: "Great article! I found this really interesting!"}
       ]
     };

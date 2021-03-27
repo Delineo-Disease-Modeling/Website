@@ -270,7 +270,7 @@ function DevelopmentBlog(props) {
               <CardContent>
               <Grid container spacing={3}>
                 {articles.map((row) => {
-                  if (row.type == 'Article')
+                  if (row.type === 'Article')
                     return   <Grid item xs={12} sm={6} md={4}>
                         <Card className={classes.card}>
                           <CardActionArea href={row.href}>
@@ -368,7 +368,7 @@ function DevelopmentBlog(props) {
 
         <Grid container spacing={3}>
           {articles.map((row) => {
-            if (row.type == 'Announcement')
+            if (row.type === 'Announcement')
               return   <Grid item xs={12} sm={6} md={4}>
                   <Card className={classes.card}>
                     <CardActionArea href={row.href}>
@@ -482,7 +482,7 @@ function DevelopmentBlog(props) {
 
           <Grid container spacing={3}>
             {articles.map((row) => {
-              if (row.type == 'News')
+              if (row.type === 'News')
                 return   <Grid item xs={12} sm={6} md={4}>
                     <Card className={classes.card}>
                       <CardActionArea href={row.href}>

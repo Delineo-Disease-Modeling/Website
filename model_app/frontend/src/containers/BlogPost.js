@@ -1,9 +1,6 @@
-import React, { useState, useRef } from "react";
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
 import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './BlogPost.css'
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -13,11 +10,10 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import { FacebookButton, TwitterButton, EmailButton } from "react-social";
-import clsx from 'clsx';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import EmailIcon from '@material-ui/icons/Email';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import CommentBox from "./CommentBox";
 
 
@@ -27,6 +23,11 @@ import CommentBox from "./CommentBox";
      justifyContent: "center",
      alignItems: "center",
      width: "70%",
+     marginBottom: "-45px"
+   },
+   top: {
+     display: "inline-block",
+     marginTop: "-45px"
    },
    text: {
      display: "flex",
@@ -36,34 +37,9 @@ import CommentBox from "./CommentBox";
    },
  }));
 
-const INITIAL_HEIGHT = 46;
 const url = 'google.com';
 function BlogPost (props) {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [commentValue, setCommentValue] = useState("");
     let history = useHistory();
-  const outerHeight = useRef(INITIAL_HEIGHT);
-  const textRef = useRef(null);
-  const containerRef = useRef(null);
-  const onExpand = () => {
-    if (!isExpanded) {
-      outerHeight.current = containerRef.current.scrollHeight;
-      setIsExpanded(true);
-    }
-  }
-  const onChange = (e) => {
-    setCommentValue(e.target.value);
-	}
-
-  const onClose = () => {
-    setCommentValue("");
-    setIsExpanded(false);
-  };
-
-  const onSubmit = (e) => {
-  e.preventDefault();
-  console.log('send the form data somewhere')
-  }
   const classes = useStyles();
    return (
 
@@ -138,7 +114,7 @@ The model also needs to account for the mobility networks of populations not inc
 
 </p>
       </div>
-        <CommentBox className="center"/>
+        <CommentBox className="top"/>
         <Toolbar></Toolbar>
 
 
