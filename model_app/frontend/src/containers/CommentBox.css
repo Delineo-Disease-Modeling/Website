@@ -133,3 +133,75 @@ button[type="submit"] {
 .comment-box.modified {
   max-height: unset;
 }
+
+
+button {
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 0.40em;
+  display: inline-block;
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+  &:focus {
+    text-decoration: none;
+    outline: none;
+  }
+}
+
+.discussion {
+  color: black;
+  background-color: #fff;
+  padding: 0.2rem 1rem 2rem;
+  max-width: 60%;
+  margin: 50px auto;
+  background: var(--white);
+  padding: 14px;
+  transition: min-height var(--transition);
+}
+
+.comment-form-fields {
+  margin-bottom: 0.25rem;
+  input, textarea {
+    border: none;
+    border-bottom: 1px solid;
+    font-size: 0.85rem;
+    padding: 0.25rem 0;
+    width: 99%;
+
+    &:focus {
+      border-bottom-color: blue;
+      outline: none;
+    }
+  }
+  textarea {
+    font-style: italic;
+  }
+}
+.comment-form-actions {
+
+}
+.comment-count {
+  color: grey;
+}
+#comment-reveal {
+  background-color: #D5E3DF;
+  border-radius: var(--border-radius);
+  color: black;
+}
+.comment {
+  border-bottom: 0.125rem solid grey;
+  color: black;
+}
+.comment-body {
+  color: black;
+}
+.comment-header {
+  text-align: left;
+  font-weight: bold;
+  color: black;
+}

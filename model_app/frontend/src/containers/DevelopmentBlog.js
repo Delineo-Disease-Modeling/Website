@@ -30,7 +30,7 @@ import { FacebookButton, TwitterButton, EmailButton } from "react-social";
 import clsx from 'clsx';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import EmailIcon from '@material-ui/icons/Email';
-import blogposts from '../const/blogposts';
+import articles from '../const/devblogposts';
 
 const rows = [
   'Article',
@@ -269,298 +269,73 @@ function DevelopmentBlog(props) {
             <Collapse in={expanded} timeout="auto" unmountOnExit>
               <CardContent>
               <Grid container spacing={3}>
-                <Grid item xs={12} sm={6} md={4}>
+                {articles.map((row) => {
+                  if (row.type == 'Article')
+                    return   <Grid item xs={12} sm={6} md={4}>
+                        <Card className={classes.card}>
+                          <CardActionArea href={row.href}>
+                            <CardMedia
+                              className={classes.media}
+                              image={row.img}
+                              title="Contemplative Reptile"
+                            />
+                            <CardContent className={classes.align}>
+                            <Typography className={classes.title} color="white" gutterBottom>
+                            {row.type}
+                            </Typography>
+                            <Typography className={classes.title} style={{fontWeight: 'bold', marginTop: '0 0px'}} gutterBottom variant="h5" component="h2">
+                            {row.title}
+                            </Typography>
+                            <Typography variant="body2" color="white" component="p">
+                              {row.subtext}
 
+                            </Typography>
+                            </CardContent>
+                          </CardActionArea>
+                          <CardActions className={classes.cardActions}>
+                            <Box className={classes.author}>
+                              <Box component="span" m={1}  className={classes.authorDate}>
+                                <Typography variant="subtitle2" component="p">
+                                <span style={{fontWeight: 'bold'}}>{row.author} </span>
+                                 - {row.date}
+                                </Typography>
 
-                  <Card className={classes.card}>
-                    <CardActionArea a href="/developmentblog/date-1">
-                      <CardMedia
-                        className={classes.media}
-                        image="https://images.pexels.com/photos/2004161/pexels-photo-2004161.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        title="Contemplative Reptile"
-                      />
-                      <div className={classes.overlay}>
-                      </div>
+                              </Box>
+                            </Box>
+                            <Box>
+                            <PopupState variant="popover" popupId="demo-popup-menu">
+              {(popupState) => (
+              <React.Fragment>
+              <IconButton aria-label="share" {...bindTrigger(popupState)}>
+              <ShareIcon  style={{color: "white"}} />
+              </IconButton>
+              <Menu   anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+              transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupState)}>
+              <MenuItem style={{color: "white"}} onClick={popupState.close}>
+              <TwitterButton url={url}>
+                 <TwitterIcon fontSize="small" />
+              </TwitterButton></MenuItem>
+              <MenuItem style={{color: "white"}} onClick={popupState.close}>
+                <FacebookButton url={url} appId={"appId"}>
+                <FacebookIcon fontSize="small" />
+              </FacebookButton>
+                          </MenuItem>
 
-                      <CardContent className={classes.align}>
-                      <Typography className={classes.title} color="white" gutterBottom>
-                      Article
-                      </Typography>
-                      <Typography className={classes.title} style={{fontWeight: 'bold', marginTop: '0 0px'}} gutterBottom variant="h5" component="h2">
-                        React Router
-                      </Typography>
-                      <Typography variant="body2" color="white" component="p">
-                        Blog 1 description
+                          <MenuItem style={{color: "white"}} onClick={popupState.close}>
+                          <EmailButton url={url}>
+                            <EmailIcon fontSize="small" />
+                          </EmailButton>
+                  </MenuItem>
+              </Menu>
+              </React.Fragment>
+              )}
+              </PopupState>
+                            </Box>
+                          </CardActions>
+                        </Card>
+                        </Grid>
 
-                      </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                    <CardActions className={classes.cardActions}>
-                      <Box className={classes.author}>
-                        <Box component="span" m={1}  className={classes.authorDate}>
-                          <Typography variant="subtitle2" component="p">
-                          <span style={{fontWeight: 'bold'}}>Author </span>
-                           - Date 1
-                          </Typography>
-
-                        </Box>
-                      </Box>
-                      <Box>
-                                        <PopupState variant="popover" popupId="demo-popup-menu">
-                   {(popupState) => (
-                     <React.Fragment>
-                       <IconButton aria-label="share" {...bindTrigger(popupState)}>
-                         <ShareIcon  style={{color: "white"}} />
-                       </IconButton>
-                       <Menu   anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-    transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupState)}>
-                         <MenuItem style={{color: "white"}} onClick={popupState.close}>
-                         <TwitterButton url={url}>
-                             <TwitterIcon fontSize="small" />
-                          </TwitterButton></MenuItem>
-                         <MenuItem style={{color: "white"}} onClick={popupState.close}> <FacebookButton url={url} appId={"appId"}>
-                        <FacebookIcon fontSize="small" /> </FacebookButton>
-                                      </MenuItem>
-
-                                      <MenuItem style={{color: "white"}} onClick={popupState.close}><EmailButton url={url}>
- <EmailIcon fontSize="small" />
-         </EmailButton>
-
-                                                   </MenuItem>
-                       </Menu>
-                     </React.Fragment>
-                   )}
-                 </PopupState>
-                      </Box>
-                    </CardActions>
-                  </Card>
-
-                </Grid>
-                <Grid item xs={12} sm={6} md={4}>
-                  <Card className={classes.card}>
-                    <CardActionArea href="/developmentblog/date-2">
-                      <CardMedia
-                        className={classes.media}
-                        image="https://images.pexels.com/photos/34600/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        title="Contemplative Reptile"
-                      />
-                      <CardContent className={classes.align}>
-                      <Typography className={classes.title} color="white" gutterBottom>
-                      Article
-                      </Typography>
-                      <Typography className={classes.title} style={{fontWeight: 'bold', marginTop: '0 0px'}} gutterBottom variant="h5" component="h2">
-                        React Router
-                      </Typography>
-                      <Typography variant="body2" color="white" component="p">
-                        Blog 2 description
-
-                      </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                    <CardActions className={classes.cardActions}>
-                      <Box className={classes.author}>
-                        <Box component="span" m={1}  className={classes.authorDate}>
-                          <Typography variant="subtitle2" component="p">
-                          <span style={{fontWeight: 'bold'}}>Author </span>
-                           - Date 2
-                          </Typography>
-
-                        </Box>
-                      </Box>
-                      <Box>
-                      <PopupState variant="popover" popupId="demo-popup-menu">
- {(popupState) => (
-   <React.Fragment>
-     <IconButton aria-label="share" {...bindTrigger(popupState)}>
-       <ShareIcon  style={{color: "white"}} />
-     </IconButton>
-     <Menu   anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupState)}>
-       <MenuItem style={{color: "white"}} onClick={popupState.close}>
-       <TwitterButton url={url}>
-
-
-           <TwitterIcon fontSize="small" />
-
-
-        </TwitterButton></MenuItem>
-       <MenuItem style={{color: "white"}} onClick={popupState.close}>           <FacebookButton url={url} appId={"appId"}>
-
-
-                      <FacebookIcon fontSize="small" />
-
-
-</FacebookButton>
-
-                    </MenuItem>
-
-                    <MenuItem style={{color: "white"}} onClick={popupState.close}>           <EmailButton url={url}>
-
-
-                                   <EmailIcon fontSize="small" />
-
-
-</EmailButton>
-
-                                 </MenuItem>
-     </Menu>
-   </React.Fragment>
- )}
-</PopupState>
-                      </Box>
-                    </CardActions>
-                  </Card>
-                </Grid>
-                <Grid item xs={12} sm={6} md={4}>
-                  <Card className={classes.card}>
-                    <CardActionArea href="/developmentblog/date-3">
-                      <CardMedia
-                        className={classes.media}
-                        image="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        title="Contemplative Reptile"
-                      />
-                      <CardContent className={classes.align}>
-                      <Typography className={classes.title} color="white" gutterBottom>
-                      Article
-                      </Typography>
-                      <Typography className={classes.title} style={{fontWeight: 'bold', marginTop: '0 0px'}} gutterBottom variant="h5" component="h2">
-                        React Router
-                      </Typography>
-                      <Typography variant="body2" color="white" component="p">
-                        Blog 3 description
-
-                      </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                    <CardActions className={classes.cardActions}>
-                      <Box className={classes.author}>
-                        <Box component="span" m={1}  className={classes.authorDate}>
-                          <Typography variant="subtitle2" component="p">
-                          <span style={{fontWeight: 'bold'}}>Author </span>
-                           - Date 3
-                          </Typography>
-
-                        </Box>
-                      </Box>
-                      <Box>
-                      <PopupState variant="popover" popupId="demo-popup-menu">
- {(popupState) => (
-   <React.Fragment>
-     <IconButton aria-label="share" {...bindTrigger(popupState)}>
-       <ShareIcon  style={{color: "white"}} />
-     </IconButton>
-     <Menu   anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupState)}>
-       <MenuItem style={{color: "white"}} onClick={popupState.close}>
-       <TwitterButton url={url}>
-
-
-           <TwitterIcon fontSize="small" />
-
-
-        </TwitterButton></MenuItem>
-       <MenuItem style={{color: "white"}} onClick={popupState.close}>           <FacebookButton url={url} appId={"appId"}>
-
-
-                      <FacebookIcon fontSize="small" />
-
-
-</FacebookButton>
-
-                    </MenuItem>
-
-                    <MenuItem style={{color: "white"}} onClick={popupState.close}>           <EmailButton url={url}>
-
-
-                                   <EmailIcon fontSize="small" />
-
-
-</EmailButton>
-
-                                 </MenuItem>
-     </Menu>
-   </React.Fragment>
- )}
-</PopupState>
-                      </Box>
-                    </CardActions>
-                  </Card>
-                </Grid>
-                <Grid item xs={12} sm={6} md={4}>
-                  <Card className={classes.card}>
-                    <CardActionArea href="/developmentblog/date-4">
-                      <CardMedia
-                        className={classes.media}
-                        image="https://images.pexels.com/photos/325111/pexels-photo-325111.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        title="Contemplative Reptile"
-                      />
-                      <CardContent className={classes.align}>
-                      <Typography className={classes.title} color="white" gutterBottom>
-                      Article
-                      </Typography>
-                      <Typography className={classes.title} style={{fontWeight: 'bold', marginTop: '0 0px'}} gutterBottom variant="h5" component="h2">
-                        React Router
-                      </Typography>
-                      <Typography variant="body2" color="white" component="p">
-                        Blog 4 description
-
-                      </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                    <CardActions className={classes.cardActions}>
-                      <Box className={classes.author}>
-                        <Box component="span" m={1}  className={classes.authorDate}>
-                          <Typography variant="subtitle2" component="p">
-                          <span style={{fontWeight: 'bold'}}>Author </span>
-                           - Date 4
-                          </Typography>
-
-                        </Box>
-                      </Box>
-                      <Box>
-                      <PopupState variant="popover" popupId="demo-popup-menu">
- {(popupState) => (
-   <React.Fragment>
-     <IconButton aria-label="share" {...bindTrigger(popupState)}>
-       <ShareIcon  style={{color: "white"}} />
-     </IconButton>
-     <Menu   anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupState)}>
-       <MenuItem style={{color: "white"}} onClick={popupState.close}>
-       <TwitterButton url={url}>
-
-
-           <TwitterIcon fontSize="small" />
-
-
-        </TwitterButton></MenuItem>
-       <MenuItem style={{color: "white"}} onClick={popupState.close}>           <FacebookButton url={url} appId={"appId"}>
-
-
-                      <FacebookIcon fontSize="small" />
-
-
-</FacebookButton>
-
-                    </MenuItem>
-
-                    <MenuItem style={{color: "white"}} onClick={popupState.close}>           <EmailButton url={url}>
-
-
-                                   <EmailIcon fontSize="small" />
-
-
-</EmailButton>
-
-                                 </MenuItem>
-     </Menu>
-   </React.Fragment>
- )}
-</PopupState>
-                      </Box>
-                    </CardActions>
-                  </Card>
-                </Grid>
+                })}
               </Grid>
               <Box my={4} className={classes.paginationContainer}>
               </Box>
@@ -591,241 +366,86 @@ transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupSt
         <Collapse in={expandedAnn} timeout="auto" unmountOnExit>
           <CardContent>
 
-
-
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={4}>
-          <Card className={classes.card}>
-            <CardActionArea a href="/developmentblog/date-1">
-              <CardMedia
-                className={classes.media}
-                image="https://images.pexels.com/photos/2004161/pexels-photo-2004161.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                title="Contemplative Reptile"
-              />
-              <div className={classes.overlay}>
-              </div>
+          {articles.map((row) => {
+            if (row.type == 'Announcement')
+              return   <Grid item xs={12} sm={6} md={4}>
+                  <Card className={classes.card}>
+                    <CardActionArea href={row.href}>
+                      <CardMedia
+                        className={classes.media}
+                        image={row.img}
+                        title="Contemplative Reptile"
+                      />
+                      <CardContent className={classes.align}>
+                      <Typography className={classes.title} color="white" gutterBottom>
+                      {row.type}
+                      </Typography>
+                      <Typography className={classes.title} style={{fontWeight: 'bold', marginTop: '0 0px'}} gutterBottom variant="h5" component="h2">
+                      {row.title}
+                      </Typography>
+                      <Typography variant="body2" color="white" component="p">
+                        {row.subtext}
 
-              <CardContent className={classes.align}>
-              <Typography className={classes.title} color="white" gutterBottom>
-              Announcement
-              </Typography>
-              <Typography className={classes.title} style={{fontWeight: 'bold', marginTop: '0 0px'}} gutterBottom variant="h5" component="h2">
-                React Router
-              </Typography>
-              <Typography variant="body2" color="white" component="p">
-                Blog 1 description
+                      </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                    <CardActions className={classes.cardActions}>
+                      <Box className={classes.author}>
+                        <Box component="span" m={1}  className={classes.authorDate}>
+                          <Typography variant="subtitle2" component="p">
+                          <span style={{fontWeight: 'bold'}}>{row.author} </span>
+                           - {row.date}
+                          </Typography>
 
-              </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions className={classes.cardActions}>
-              <Box className={classes.author}>
-                <Box component="span" m={1}  className={classes.authorDate}>
-                  <Typography variant="subtitle2" component="p">
-                  <span style={{fontWeight: 'bold'}}>Author </span>
-                   - Date 1
-                  </Typography>
-
-                </Box>
-              </Box>
-              <Box>
-              <PopupState variant="popover" popupId="demo-popup-menu">
-{(popupState) => (
-<React.Fragment>
-<IconButton aria-label="share" {...bindTrigger(popupState)}>
-<ShareIcon  style={{color: "white"}} />
-</IconButton>
-<Menu   anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupState)}>
-<MenuItem style={{color: "white"}} onClick={popupState.close}>
-<TwitterButton url={url}>
-
-
-   <TwitterIcon fontSize="small" />
+                        </Box>
+                      </Box>
+                      <Box>
+                      <PopupState variant="popover" popupId="demo-popup-menu">
+        {(popupState) => (
+        <React.Fragment>
+        <IconButton aria-label="share" {...bindTrigger(popupState)}>
+        <ShareIcon  style={{color: "white"}} />
+        </IconButton>
+        <Menu   anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupState)}>
+        <MenuItem style={{color: "white"}} onClick={popupState.close}>
+        <TwitterButton url={url}>
 
 
-</TwitterButton></MenuItem>
-<MenuItem style={{color: "white"}} onClick={popupState.close}>           <FacebookButton url={url} appId={"appId"}>
+           <TwitterIcon fontSize="small" />
 
 
-              <FacebookIcon fontSize="small" />
+        </TwitterButton></MenuItem>
+        <MenuItem style={{color: "white"}} onClick={popupState.close}>           <FacebookButton url={url} appId={"appId"}>
 
 
-</FacebookButton>
-
-            </MenuItem>
-
-            <MenuItem style={{color: "white"}} onClick={popupState.close}>           <EmailButton url={url}>
+                      <FacebookIcon fontSize="small" />
 
 
-                           <EmailIcon fontSize="small" />
+        </FacebookButton>
+
+                    </MenuItem>
+
+                    <MenuItem style={{color: "white"}} onClick={popupState.close}>           <EmailButton url={url}>
 
 
-</EmailButton>
-
-                         </MenuItem>
-</Menu>
-</React.Fragment>
-)}
-</PopupState>
-              </Box>
-            </CardActions>
-          </Card>
+                                   <EmailIcon fontSize="small" />
 
 
+        </EmailButton>
 
+                                 </MenuItem>
+        </Menu>
+        </React.Fragment>
+        )}
+        </PopupState>
+                      </Box>
+                    </CardActions>
+                  </Card>
+                  </Grid>
 
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <Card className={classes.card}>
-            <CardActionArea href="/developmentblog/date-2">
-              <CardMedia
-                className={classes.media}
-                image="https://images.pexels.com/photos/34600/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                title="Contemplative Reptile"
-              />
-              <CardContent className={classes.align}>
-              <Typography className={classes.title} color="white" gutterBottom>
-              Announcement
-              </Typography>
-              <Typography className={classes.title} style={{fontWeight: 'bold', marginTop: '0 0px'}} gutterBottom variant="h5" component="h2">
-                React Router
-              </Typography>
-              <Typography variant="body2" color="white" component="p">
-                Blog 2 description
-
-              </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions className={classes.cardActions}>
-              <Box className={classes.author}>
-                <Box component="span" m={1}  className={classes.authorDate}>
-                  <Typography variant="subtitle2" component="p">
-                  <span style={{fontWeight: 'bold'}}>Author </span>
-                   - Date 2
-                  </Typography>
-
-                </Box>
-              </Box>
-              <Box>
-              <PopupState variant="popover" popupId="demo-popup-menu">
-{(popupState) => (
-<React.Fragment>
-<IconButton aria-label="share" {...bindTrigger(popupState)}>
-<ShareIcon  style={{color: "white"}} />
-</IconButton>
-<Menu   anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupState)}>
-<MenuItem style={{color: "white"}} onClick={popupState.close}>
-<TwitterButton url={url}>
-
-
-   <TwitterIcon fontSize="small" />
-
-
-</TwitterButton></MenuItem>
-<MenuItem style={{color: "white"}} onClick={popupState.close}>           <FacebookButton url={url} appId={"appId"}>
-
-
-              <FacebookIcon fontSize="small" />
-
-
-</FacebookButton>
-
-            </MenuItem>
-
-            <MenuItem style={{color: "white"}} onClick={popupState.close}>           <EmailButton url={url}>
-
-
-                           <EmailIcon fontSize="small" />
-
-
-</EmailButton>
-
-                         </MenuItem>
-</Menu>
-</React.Fragment>
-)}
-</PopupState>
-              </Box>
-            </CardActions>
-          </Card>
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <Card className={classes.card}>
-            <CardActionArea href="/developmentblog/date-3">
-              <CardMedia
-                className={classes.media}
-                image="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                title="Contemplative Reptile"
-              />
-              <CardContent className={classes.align}>
-              <Typography className={classes.title} color="white" gutterBottom>
-              Announcement
-              </Typography>
-              <Typography className={classes.title} style={{fontWeight: 'bold', marginTop: '0 0px'}} gutterBottom variant="h5" component="h2">
-                React Router
-              </Typography>
-              <Typography variant="body2" color="white" component="p">
-                Blog 3 description
-
-              </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions className={classes.cardActions}>
-              <Box className={classes.author}>
-                <Box component="span" m={1}  className={classes.authorDate}>
-                  <Typography variant="subtitle2" component="p">
-                  <span style={{fontWeight: 'bold'}}>Author </span>
-                   - Date 3
-                  </Typography>
-
-                </Box>
-              </Box>
-              <Box>
-              <PopupState variant="popover" popupId="demo-popup-menu">
-{(popupState) => (
-<React.Fragment>
-<IconButton aria-label="share" {...bindTrigger(popupState)}>
-<ShareIcon  style={{color: "white"}} />
-</IconButton>
-<Menu   anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupState)}>
-<MenuItem style={{color: "white"}} onClick={popupState.close}>
-<TwitterButton url={url}>
-
-
-   <TwitterIcon fontSize="small" />
-
-
-</TwitterButton></MenuItem>
-<MenuItem style={{color: "white"}} onClick={popupState.close}>           <FacebookButton url={url} appId={"appId"}>
-
-
-              <FacebookIcon fontSize="small" />
-
-
-</FacebookButton>
-
-            </MenuItem>
-
-            <MenuItem style={{color: "white"}} onClick={popupState.close}>           <EmailButton url={url}>
-
-
-                           <EmailIcon fontSize="small" />
-
-
-</EmailButton>
-
-                         </MenuItem>
-</Menu>
-</React.Fragment>
-)}
-</PopupState>
-              </Box>
-            </CardActions>
-          </Card>
-          </Grid>
+          })}
         </Grid>
         <Box my={4} className={classes.paginationContainer}>
         </Box>
@@ -860,246 +480,82 @@ transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupSt
           <CardContent>
 
 
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={4}>
-          <Card className={classes.card}>
-            <CardActionArea a href="/developmentblog/date-1">
-              <CardMedia
-                className={classes.media}
-                image="https://images.pexels.com/photos/2004161/pexels-photo-2004161.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                title="Contemplative Reptile"
-              />
-              <div className={classes.overlay}>
-              </div>
+          <Grid container spacing={3}>
+            {articles.map((row) => {
+              if (row.type == 'News')
+                return   <Grid item xs={12} sm={6} md={4}>
+                    <Card className={classes.card}>
+                      <CardActionArea href={row.href}>
+                        <CardMedia
+                          className={classes.media}
+                          image={row.img}
+                          title="Contemplative Reptile"
+                        />
+                        <CardContent className={classes.align}>
+                        <Typography className={classes.title} color="white" gutterBottom>
+                        {row.type}
+                        </Typography>
+                        <Typography className={classes.title} style={{fontWeight: 'bold', marginTop: '0 0px'}} gutterBottom variant="h5" component="h2">
+                        {row.title}
+                        </Typography>
+                        <Typography variant="body2" color="white" component="p">
+                          {row.subtext}
 
-              <CardContent className={classes.align}>
-              <Typography className={classes.title} color="white" gutterBottom>
-              News
-              </Typography>
-              <Typography className={classes.title} style={{fontWeight: 'bold', marginTop: '0 0px'}} gutterBottom variant="h5" component="h2">
-                React Router
-              </Typography>
-              <Typography variant="body2" color="white" component="p">
-                Blog 1 description
+                        </Typography>
+                        </CardContent>
+                      </CardActionArea>
+                      <CardActions className={classes.cardActions}>
+                        <Box className={classes.author}>
+                          <Box component="span" m={1}  className={classes.authorDate}>
+                            <Typography variant="subtitle2" component="p">
+                            <span style={{fontWeight: 'bold'}}>{row.author} </span>
+                             - {row.date}
+                            </Typography>
 
-              </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions className={classes.cardActions}>
-              <Box className={classes.author}>
-                <Box component="span" m={1}  className={classes.authorDate}>
-                  <Typography variant="subtitle2" component="p">
-                  <span style={{fontWeight: 'bold'}}>Author </span>
-                   - Date 1
-                  </Typography>
+                          </Box>
+                        </Box>
+                        <Box>
+                        <PopupState variant="popover" popupId="demo-popup-menu">
+          {(popupState) => (
+          <React.Fragment>
+          <IconButton aria-label="share" {...bindTrigger(popupState)}>
+          <ShareIcon  style={{color: "white"}} />
+          </IconButton>
+          <Menu   anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+          transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupState)}>
+          <MenuItem style={{color: "white"}} onClick={popupState.close}>
+          <TwitterButton url={url}>
 
-                </Box>
+
+             <TwitterIcon fontSize="small" />
+
+
+          </TwitterButton></MenuItem>
+          <MenuItem style={{color: "white"}} onClick={popupState.close}>
+           <FacebookButton url={url} appId={"appId"}>
+                <FacebookIcon fontSize="small" />  </FacebookButton>
+                      </MenuItem>
+                        <MenuItem style={{color: "white"}} onClick={popupState.close}>
+                        <EmailButton url={url}>
+                        <EmailIcon fontSize="small" />
+          </EmailButton>
+          </MenuItem>
+          </Menu>
+          </React.Fragment>
+          )}
+          </PopupState>
+                        </Box>
+                      </CardActions>
+                    </Card>
+                    </Grid>
+
+            })}
+              </Grid>
+              <Box my={4} className={classes.paginationContainer}>
               </Box>
-              <Box>
-              <PopupState variant="popover" popupId="demo-popup-menu">
-{(popupState) => (
-<React.Fragment>
-<IconButton aria-label="share" {...bindTrigger(popupState)}>
-<ShareIcon  style={{color: "white"}} />
-</IconButton>
-<Menu   anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupState)}>
-<MenuItem style={{color: "white"}} onClick={popupState.close}>
-<TwitterButton url={url}>
-
-
-   <TwitterIcon fontSize="small" />
-
-
-</TwitterButton></MenuItem>
-<MenuItem style={{color: "white"}} onClick={popupState.close}>           <FacebookButton url={url} appId={"appId"}>
-
-
-              <FacebookIcon fontSize="small" />
-
-
-</FacebookButton>
-
-            </MenuItem>
-
-            <MenuItem style={{color: "white"}} onClick={popupState.close}>           <EmailButton url={url}>
-
-
-                           <EmailIcon fontSize="small" />
-
-
-</EmailButton>
-
-                         </MenuItem>
-</Menu>
-</React.Fragment>
-)}
-</PopupState>
-              </Box>
-            </CardActions>
-          </Card>
-
-
-
-
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <Card className={classes.card}>
-            <CardActionArea href="/developmentblog/date-2">
-              <CardMedia
-                className={classes.media}
-                image="https://images.pexels.com/photos/34600/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                title="Contemplative Reptile"
-              />
-              <CardContent className={classes.align}>
-              <Typography className={classes.title} color="white" gutterBottom>
-              News
-              </Typography>
-              <Typography className={classes.title} style={{fontWeight: 'bold', marginTop: '0 0px'}} gutterBottom variant="h5" component="h2">
-                React Router
-              </Typography>
-              <Typography variant="body2" color="white" component="p">
-                Blog 2 description
-
-              </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions className={classes.cardActions}>
-              <Box className={classes.author}>
-                <Box component="span" m={1}  className={classes.authorDate}>
-                  <Typography variant="subtitle2" component="p">
-                  <span style={{fontWeight: 'bold'}}>Author </span>
-                   - Date 2
-                  </Typography>
-
-                </Box>
-              </Box>
-              <Box>
-              <PopupState variant="popover" popupId="demo-popup-menu">
-{(popupState) => (
-<React.Fragment>
-<IconButton aria-label="share" {...bindTrigger(popupState)}>
-<ShareIcon  style={{color: "white"}} />
-</IconButton>
-<Menu   anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupState)}>
-<MenuItem style={{color: "white"}} onClick={popupState.close}>
-<TwitterButton url={url}>
-
-
-   <TwitterIcon fontSize="small" />
-
-
-</TwitterButton></MenuItem>
-<MenuItem style={{color: "white"}} onClick={popupState.close}>           <FacebookButton url={url} appId={"appId"}>
-
-
-              <FacebookIcon fontSize="small" />
-
-
-</FacebookButton>
-
-            </MenuItem>
-
-            <MenuItem style={{color: "white"}} onClick={popupState.close}>           <EmailButton url={url}>
-
-
-                           <EmailIcon fontSize="small" />
-
-
-</EmailButton>
-
-                         </MenuItem>
-</Menu>
-</React.Fragment>
-)}
-</PopupState>
-              </Box>
-            </CardActions>
-          </Card>
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <Card className={classes.card}>
-            <CardActionArea href="/developmentblog/date-3">
-              <CardMedia
-                className={classes.media}
-                image="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                title="Contemplative Reptile"
-              />
-              <CardContent className={classes.align}>
-              <Typography className={classes.title} color="white" gutterBottom>
-              News
-              </Typography>
-              <Typography className={classes.title} style={{fontWeight: 'bold', marginTop: '0 0px'}} gutterBottom variant="h5" component="h2">
-                React Router
-              </Typography>
-              <Typography variant="body2" color="white" component="p">
-                Blog 3 description
-
-              </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions className={classes.cardActions}>
-              <Box className={classes.author}>
-                <Box component="span" m={1}  className={classes.authorDate}>
-                  <Typography variant="subtitle2" component="p">
-                  <span style={{fontWeight: 'bold'}}>Author </span>
-                   - Date 3
-                  </Typography>
-
-                </Box>
-              </Box>
-              <Box>
-              <PopupState variant="popover" popupId="demo-popup-menu">
-{(popupState) => (
-<React.Fragment>
-<IconButton aria-label="share" {...bindTrigger(popupState)}>
-<ShareIcon  style={{color: "white"}} />
-</IconButton>
-<Menu   anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupState)}>
-<MenuItem style={{color: "white"}} onClick={popupState.close}>
-<TwitterButton url={url}>
-
-
-   <TwitterIcon fontSize="small" />
-
-
-</TwitterButton></MenuItem>
-<MenuItem style={{color: "white"}} onClick={popupState.close}>           <FacebookButton url={url} appId={"appId"}>
-
-
-              <FacebookIcon fontSize="small" />
-
-
-</FacebookButton>
-
-            </MenuItem>
-
-            <MenuItem style={{color: "white"}} onClick={popupState.close}>           <EmailButton url={url}>
-
-
-                           <EmailIcon fontSize="small" />
-
-
-</EmailButton>
-
-                         </MenuItem>
-</Menu>
-</React.Fragment>
-)}
-</PopupState>
-              </Box>
-            </CardActions>
-          </Card>
-          </Grid>
-        </Grid>
-        <Box my={4} className={classes.paginationContainer}>
-        </Box>
-
-                      </CardContent>
-                    </Collapse>
-                  </Card>
+            </CardContent>
+          </Collapse>
+        </Card>
       </Container>
     </div>
   );
