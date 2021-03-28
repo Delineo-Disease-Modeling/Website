@@ -51,7 +51,7 @@ const StyledTableRow = withStyles((theme) => ({
       backgroundColor: theme.palette.action.hover,
     },
     "&:hover": {
-      backgroundColor: '#6bd1ca'
+      backgroundColor: '#363636'
     },
     "&:onCellClick": {
       backgroundColor: "grey !important"
