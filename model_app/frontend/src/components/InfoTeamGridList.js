@@ -6,7 +6,7 @@ function InfoTeamGridList(role = 'all') {
     var InfoTeamTileData = [];
     var i = 0;
     for (i = 0; i < tileData.length; i++) {
-        if (tileData[i].role == "Informatin Support") {
+        if (tileData[i].role == "Information Support") {
             InfoTeamTileData.push(tileData[i]);
         }
     }

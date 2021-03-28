@@ -13,9 +13,11 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
     justifyContent: 'center',
     overflow: 'hidden',
-    backgroundColor: '#C4C4C4',
-    padding: theme.spacing(4),
+    backgroundColor: '#222629',
+
     textAlign: 'center',
+
+
 
   },
   icon: {
@@ -24,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
   displayUnder: {
     font: "Brush Script MT",
-    fontSize: 20,
+    fontSize: 27,
     border: 0,
 
     color: 'white',
@@ -37,13 +39,14 @@ const useStyles = makeStyles((theme) => ({
   },
 
   displayUnderTitle: {
-    font: "Lucida Console",
-    fontSize: 20,
+    font: "Brush Script MT",
+    fontSize: 22,
     border: 0,
     color: 'white',
     height: 10,
+    paddingTop: 20,
     textAlign: 'center',
-    padding: theme.spacing(1),
+
 
   },
 
@@ -86,17 +89,17 @@ const useStyles = makeStyles((theme) => ({
 
   },
   gridListTile: {
-    width: '210px',
-    height:'300px',
+    width: '260px',
+    height:'350px',
 
   },
 large: {
-  width: '180px',
-  height:'180px',
-  marginTop: '7.5px',
+  width: '230px',
+  height:'230px',
+  marginTop: '20px',
+  boxShadow: '0 0 14px 7px black',
 },
 bigCir: {
- backgroundColor: 'none',
  height:'200px',
  width:'200px',
  borderRadius:'50%',
@@ -105,7 +108,11 @@ bigCir: {
  borderWidth:'3px',
 
 
-}
+
+
+
+},
+
 }));
 
 export default function TitlebarGridList(tileData) {
@@ -113,33 +120,33 @@ export default function TitlebarGridList(tileData) {
 
 
   return (
-    <Container className={classes.root} maxWidth="md">
-      <Grid container spacing={4}>
+    <Container className={classes.root} maxWidth='lg'>
+
         {tileData.map((tile) => (
 
           <Grid key={tile.name}  xs={12} sm={6} md={3}>
             <GridListTile component = 'div'className={classes.gridListTile} key={tile.img}>
 
-            <div className ={classes.bigCir} >
+
              <center><Avatar src={tile.img} className = {classes.large}/></center>
              <center>
 
                <div className={classes.displayUnder}>
                  <h4 className={classes.displayUnder}>{tile.name}</h4>
-                 <h4 className={classes.displayUnder}>{tile.role}</h4>
+                 <h4 className={classes.displayUnderTitle}>{tile.role}</h4>
 
                </div>
 
 
              </center>
-             </div>
+
 
             </GridListTile>
 
           </Grid>
         ))}
 
-      </Grid>
+
     </Container>
   );
 }
