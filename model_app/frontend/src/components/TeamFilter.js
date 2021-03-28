@@ -325,7 +325,7 @@ class TeamFilter extends Component {
             ?  <div>
                   <div align ='center' >
 
-                    <h3 className={classes.h3} align='center'> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</h3>
+                    <h3 className={classes.h3} align='center'>Members of the fullstack team work throughout the stack. Our web application is built using the MERN stack (MongoDB, Express, ReactJS, NodeJS) and Unity Webgl. Members of this team also manage and access our geolocation data.</h3>
                   </div>
                   <div>
                     <h2 className = {classes.h2} align="left">Team Members</h2>
@@ -338,7 +338,7 @@ class TeamFilter extends Component {
           { sim
             ?  <div>
                   <div align ='center' >
-                    <h3 className={classes.h3} align ='center'> This is the simulation team mainly focusing on</h3>
+                    <h3 className={classes.h3} align ='center'>The simulation team is responsible for the implementation of the simulation that lies at the heart of the Delineo project. Team members focus on programming the various modules, algorithms, and statistical drivers that are utilized in our models.</h3>
                   </div>
                   <div >
                     <h2 className = {classes.h2} align="left">Team Members</h2>
@@ -351,7 +351,7 @@ class TeamFilter extends Component {
           { ml
             ?  <div>
                   <div align ='center' >
-                    <h3 className={classes.h3}> Machine Learning Team Description </h3>
+                    <h3 className={classes.h3}>The machine learning group is tackling the challenge of learning from the massive amounts of geolocation data the Delineo project has access to. One of the main focuses is on developing machine learning models that are capable of discerning and generating population movement patterns within communities ranging from rural towns to urban cities.</h3>
                   </div>
                   <div >
                     <h2 className = {classes.h2} align="left">Team Members</h2>
@@ -364,7 +364,7 @@ class TeamFilter extends Component {
           { info
             ?  <div>
                   <div align ='center' >
-                    <h3 className={classes.h3}> Information Team Descripiton </h3>
+                    <h3 className={classes.h3}>The information support team is responsible for gathering, summarizing, and disseminating research articles/papers that prove helpful for informing the development of Delineo's model.</h3>
                   </div>
                   <div>
                     <h2 className = {classes.h2} align="left">Team Members</h2>
