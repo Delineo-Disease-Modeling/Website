@@ -102,8 +102,10 @@ export default function InfoBlock(props) {
                 <Button href='#top' size='large' color='inherit'>
                     {buttontxt}
                 </Button>
-                
-                {Carousel(captions, images)}
+
+                <div style={{ marginTop: '30px' }}>
+                    {Carousel(captions, images)}
+                </div>
             </div>
         </div>
     );

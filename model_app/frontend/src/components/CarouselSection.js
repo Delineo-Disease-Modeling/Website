@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper'
 
 export default function CarouselSection(captions, images) {
     return (
-        <Carousel >
+        <Carousel>
             {
                 [0, 1, 2, 3].map(element => {
                     return(<Item key={element} caption={captions[element]} image={images[element]} />)
