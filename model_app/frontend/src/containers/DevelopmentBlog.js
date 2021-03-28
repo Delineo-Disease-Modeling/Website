@@ -51,26 +51,26 @@ const StyledTableRow = withStyles((theme) => ({
       backgroundColor: theme.palette.action.hover,
     },
     "&:hover": {
-     backgroundColor: "darkslategrey !important"
-   },
-   "&:onCellClick": {
-    backgroundColor: "grey !important"
-  }
+      backgroundColor: '#6bd1ca'
+    },
+    "&:onCellClick": {
+      backgroundColor: "grey !important"
+    }
 
   },
 }))(TableRow);
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    backgroundColor: "#fff"
+    backgroundColor: '#222629'
   },
   table: {
-     fontSize: 14,
-     color: theme.palette.common.white,
+    fontSize: 14,
+    color: theme.palette.common.white,
   },
   hidden: {
-   padding: '0 !important',
- },
+    padding: '0 !important',
+  },
   hero: {
     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5)), url('/blog.jpg')`,
     height: "520px",
@@ -96,29 +96,29 @@ const useStyles = makeStyles((theme) => ({
       transform: 'rotate(0deg)',
       marginLeft: 'auto',
       transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
+        duration: theme.transitions.duration.shortest,
       }),
     },
     ann: {
       transform: 'rotate(0deg)',
       marginLeft: 'auto',
       transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
+        duration: theme.transitions.duration.shortest,
       }),
     },
     news: {
       transform: 'rotate(0deg)',
       marginLeft: 'auto',
       transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
+        duration: theme.transitions.duration.shortest,
       }),
     },
   },
 
   expandOpen: {
-    art: {transform: 'rotate(180deg)'},
-    ann: {transform: 'rotate(180deg)'},
-    news: {transform: 'rotate(180deg)'},
+    art: { transform: 'rotate(180deg)' },
+    ann: { transform: 'rotate(180deg)' },
+    news: { transform: 'rotate(180deg)' },
   },
   blogsContainer: {
     paddingTop: theme.spacing(3)
@@ -127,13 +127,14 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 800,
     alignItems: "center",
     textAlign: "center",
-    color: "black",
+    color: "white",
     paddingBottom: theme.spacing(3)
   },
   title: {
     marginBottom: '0 0px',
     marginTop: '0 0px',
-    color: "white"
+    color: "white",
+    
   },
   authorDate: {
     width: "300px",
@@ -146,28 +147,32 @@ const useStyles = makeStyles((theme) => ({
   card: {
     maxWidth: "100%",
     position: 'relative',
+    '&:hover' :{
+      backgroundColor: '#6bd1ca',
+      textDecoration: 'none'
+    }
   },
   subtextalign: {
     textAlign: "justify",
     alignItems: "justifyContent"
   },
   overlay: {
-     position: 'absolute',
-     top: '20px',
-     left: '20px',
-     color: 'white',
-     maxWidth: "100%",
+    position: 'absolute',
+    top: '20px',
+    left: '20px',
+    color: 'white',
+    maxWidth: "100%",
   },
   subtitle: {
     fontSize: 16,
     marginLeft: '0 0px',
     marginTop: '0 0px',
     padding: '0 0px',
-
   },
 
   root: {
     maxWidth: 345,
+    backgroundColor: '#222629'
   },
   media: {
     height: 240
@@ -215,250 +220,250 @@ function DevelopmentBlog(props) {
   }
 
   return (
-    <div className="App">
-      <AppBar className={classes.appBar} style={{background: "white", boxShadow: "none"}} position="static">
+    <div className="App" style={{backgroundColor: '#222629'}}>
+      <AppBar className={classes.appBar} style={{ background: '#222629', boxShadow: "none" }} position="static">
         <Toolbar>
         </Toolbar>
       </AppBar>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} >
 
         <Grid item xs>
           <Box className={classes.hero}>
             <Box><Typography>Articles & Announcements</Typography><Typography variant='h1'>Delineo Blog</Typography></Box>
 
           </Box>
-          </Grid>
-         <Grid item xs={3}>
-         <TableContainer component={Paper}>
-     <Table className={classes.table} aria-label="customized table">
-       <TableHead>
-         <TableRow>
-           <StyledTableCell align="left"><span style={{fontWeight: 'bold', fontSize: "18px"}}>Latest Posts</span></StyledTableCell>
-         </TableRow>
-       </TableHead>
-       <TableBody>
-         {articles.map((row) => {
-          if (row.id <= 6)
-           return <StyledTableRow key={row}>
-             <StyledTableCell onClick={handleClick(row.id, row.title)} align="left" component="th" scope="row">
-                  <span style={{fontWeight: 'bold', color: 'grey'}}>{row.date} </span><br /><Typography className={classes.subtitle}>{row.title}</Typography>
-             </StyledTableCell>
-           </StyledTableRow>
-         })}
-       </TableBody>
-     </Table>
-   </TableContainer>
-         </Grid>
+        </Grid>
+        <Grid item xs={3}>
+          <TableContainer component={Paper}>
+            <Table className={classes.table} aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell align="left"><span style={{ fontWeight: 'bold', fontSize: "18px" }}>Latest Posts</span></StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {articles.map((row) => {
+                  if (row.id <= 6)
+                    return <StyledTableRow key={row}>
+                      <StyledTableCell onClick={handleClick(row.id, row.title)} align="left" component="th" scope="row">
+                        <span style={{ fontWeight: 'bold', color: '#6bd1ca' }}>{row.date} </span><br /><Typography className={classes.subtitle}>{row.title}</Typography>
+                      </StyledTableCell>
+                    </StyledTableRow>
+                })}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Grid>
       </Grid>
-      <Container maxWidth="lg" className={classes.blogsContainer}>
-          <Card maxWidth="lg" style={{background: "white", boxShadow: "none"}} >
+      <Container maxWidth="lg" className={classes.blogsContainer} >
+        <Card maxWidth="lg" style={{ background: '#222629', boxShadow: "none" }} >
 
-            <CardActions style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
+          <CardActions style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
             <Typography variant="h4" className={classes.blogTitle}>
               Articles
             </Typography>
 
-              <IconButton
-                className={clsx(classes.expand.art, {
-                  [classes.expandOpen.art]: expanded,
-                })}
-                onClick={handleExpandClick}
-                aria-expanded={expanded}
-                aria-label="show more"
-                style={{justifyContent: 'center', alignItems: 'center', textAlign: 'center', marginTop: "-20px"}}
-              >
-                <ExpandMoreIcon />
-              </IconButton>
-            </CardActions>
-            <Collapse in={expanded} timeout="auto" unmountOnExit>
-              <CardContent>
+            <IconButton
+              className={clsx(classes.expand.art, {
+                [classes.expandOpen.art]: expanded,
+              })}
+              onClick={handleExpandClick}
+              aria-expanded={expanded}
+              aria-label="show more"
+              style={{ justifyContent: 'center', alignItems: 'center', textAlign: 'center', marginTop: "-20px", color: 'white' }}
+            >
+              <ExpandMoreIcon />
+            </IconButton>
+          </CardActions>
+          <Collapse in={expanded} timeout="auto" unmountOnExit>
+            <CardContent>
               <Grid container
-  spacing={3}
-  alignItems="center"
-  justify="center">
+                spacing={3}
+                alignItems="center"
+                justify="center">
                 {articles.map((row) => {
                   if (row.type === 'Article')
-                    return   <Grid item xs={12} sm={6} md={4}>
-                        <Card className={classes.card}>
-                          <CardActionArea href={row.href}>
-                            <CardMedia
-                              className={classes.media}
-                              image={row.img}
-                              title="Development Blog Img"
-                            />
-                            <CardContent className={classes.align}>
-                            <Typography className={classes.title} style={{fontWeight: 'bold', marginTop: '0 0px'}} gutterBottom variant="h5" component="h2">
-                            {row.title}
+                    return <Grid item xs={12} sm={6} md={4}>
+                      <Card className={classes.card}>
+                        <CardActionArea href={row.href}>
+                          <CardMedia
+                            className={classes.media}
+                            image={row.img}
+                            title="Development Blog Img"
+                          />
+                          <CardContent className={classes.align}>
+                            <Typography className={classes.title} style={{ fontWeight: 'bold', marginTop: '0 0px' }} gutterBottom variant="h5" component="h2">
+                              {row.title}
                             </Typography>
                             <Typography className={classes.subtextalign} variant="body2" color="white" component="p">
                               {row.subtext}
 
                             </Typography>
-                            </CardContent>
-                          </CardActionArea>
-                          <CardActions className={classes.cardActions}>
-                            <Box className={classes.author}>
-                              <Box component="span" m={1}  className={classes.authorDate}>
-                                <Typography variant="subtitle2" component="p">
-                                <span style={{fontWeight: 'bold'}}>{row.author} </span>
+                          </CardContent>
+                        </CardActionArea>
+                        <CardActions className={classes.cardActions}>
+                          <Box className={classes.author}>
+                            <Box component="span" m={1} className={classes.authorDate}>
+                              <Typography variant="subtitle2" component="p">
+                                <span style={{ fontWeight: 'bold' }}>{row.author} </span>
                                  - {row.date}
-                                </Typography>
+                              </Typography>
 
-                              </Box>
                             </Box>
-                            <Box>
+                          </Box>
+                          <Box>
                             <PopupState variant="popover" popupId="demo-popup-menu">
-              {(popupState) => (
-              <React.Fragment>
-              <IconButton aria-label="share" {...bindTrigger(popupState)}>
-              <ShareIcon  style={{color: "white"}} />
-              </IconButton>
-              <Menu   anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-              transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupState)}>
-              <MenuItem style={{color: "white"}} onClick={popupState.close}>
-              <TwitterButton url={url}>
-                 <TwitterIcon fontSize="small" />
-              </TwitterButton></MenuItem>
-              <MenuItem style={{color: "white"}} onClick={popupState.close}>
-                <FacebookButton url={url} appId={"appId"}>
-                <FacebookIcon fontSize="small" />
-              </FacebookButton>
-                          </MenuItem>
+                              {(popupState) => (
+                                <React.Fragment>
+                                  <IconButton aria-label="share" {...bindTrigger(popupState)}>
+                                    <ShareIcon style={{ color: "white" }} />
+                                  </IconButton>
+                                  <Menu anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                                    transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupState)}>
+                                    <MenuItem style={{ color: "white" }} onClick={popupState.close}>
+                                      <TwitterButton url={url}>
+                                        <TwitterIcon fontSize="small" />
+                                      </TwitterButton></MenuItem>
+                                    <MenuItem style={{ color: "white" }} onClick={popupState.close}>
+                                      <FacebookButton url={url} appId={"appId"}>
+                                        <FacebookIcon fontSize="small" />
+                                      </FacebookButton>
+                                    </MenuItem>
 
-                          <MenuItem style={{color: "white"}} onClick={popupState.close}>
-                          <EmailButton url={url}>
-                            <EmailIcon fontSize="small" />
-                          </EmailButton>
-                  </MenuItem>
-              </Menu>
-              </React.Fragment>
-              )}
-              </PopupState>
-                            </Box>
-                          </CardActions>
-                        </Card>
-                        </Grid>
+                                    <MenuItem style={{ color: "white" }} onClick={popupState.close}>
+                                      <EmailButton url={url}>
+                                        <EmailIcon fontSize="small" />
+                                      </EmailButton>
+                                    </MenuItem>
+                                  </Menu>
+                                </React.Fragment>
+                              )}
+                            </PopupState>
+                          </Box>
+                        </CardActions>
+                      </Card>
+                    </Grid>
 
                 })}
               </Grid>
               <Box my={4} className={classes.paginationContainer}>
               </Box>
-              </CardContent>
-            </Collapse>
-          </Card>
+            </CardContent>
+          </Collapse>
+        </Card>
       </Container>
       <Container maxWidth="lg" className={classes.blogsContainer}>
 
-      <Card maxWidth="lg" style={{backgroundColor: "white", boxShadow: "none"}} >
+        <Card maxWidth="lg" style={{ backgroundColor: '#222629', boxShadow: "none" }} >
 
-        <CardActions style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
-        <Typography variant="h4" className={classes.blogTitle}>
-          Announcements
+          <CardActions style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
+            <Typography variant="h4" className={classes.blogTitle}>
+              Announcements
         </Typography>
 
-          <IconButton
-            className={clsx(classes.expand.ann, {
-              [classes.expandOpen.ann]: expandedAnn,
-            })}
-            onClick={handleExpandClickAnn}
-            aria-expanded={expandedAnn}
-            aria-label="show more"
-            style={{justifyContent: 'center', alignItems: 'center', textAlign: 'center', marginTop: "-20px"}}
-          >
-            <ExpandMoreIcon />
-          </IconButton>
-        </CardActions>
-        <Collapse in={expandedAnn} timeout="auto" unmountOnExit>
-          <CardContent>
+            <IconButton
+              className={clsx(classes.expand.ann, {
+                [classes.expandOpen.ann]: expandedAnn,
+              })}
+              onClick={handleExpandClickAnn}
+              aria-expanded={expandedAnn}
+              aria-label="show more"
+              style={{ justifyContent: 'center', alignItems: 'center', textAlign: 'center', marginTop: "-20px" , color: 'white' }}
+            >
+              <ExpandMoreIcon />
+            </IconButton>
+          </CardActions>
+          <Collapse in={expandedAnn} timeout="auto" unmountOnExit>
+            <CardContent>
 
-        <Grid  container
-spacing={3}
-alignItems="center"
-justify="center"
->
-          {articles.map((row) => {
-            if (row.type === 'Announcement')
-              return   <Grid item xs={12} sm={6} md={4}>
-                  <Card className={classes.card}>
-                    <CardActionArea href={row.href}>
-                      <CardMedia
-                        className={classes.media}
-                        image={row.img}
-                        title="Contemplative Reptile"
-                      />
-                      <CardContent className={classes.align}>
-                      <Typography className={classes.title} style={{fontWeight: 'bold', marginTop: '0 0px'}} gutterBottom variant="h5" component="h2">
-                      {row.title}
-                      </Typography>
-                      <Typography className={classes.subtextalign} variant="body2" color="white" component="p">
-                        {row.subtext}
+              <Grid container
+                spacing={3}
+                alignItems="center"
+                justify="center"
+              >
+                {articles.map((row) => {
+                  if (row.type === 'Announcement')
+                    return <Grid item xs={12} sm={6} md={4}>
+                      <Card className={classes.card}>
+                        <CardActionArea href={row.href} >
+                          <CardMedia
+                            className={classes.media}
+                            image={row.img}
+                            title="Contemplative Reptile"
+                          />
+                          <CardContent className={classes.align}>
+                            <Typography className={classes.title} style={{ fontWeight: 'bold', marginTop: '0 0px' }} gutterBottom variant="h5" component="h2">
+                              {row.title}
+                            </Typography>
+                            <Typography className={classes.subtextalign} variant="body2" color="white" component="p">
+                              {row.subtext}
 
-                      </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                    <CardActions className={classes.cardActions}>
-                      <Box className={classes.author}>
-                        <Box component="span" m={1}  className={classes.authorDate}>
-                          <Typography variant="subtitle2" component="p">
-                          <span style={{fontWeight: 'bold'}}>{row.author} </span>
+                            </Typography>
+                          </CardContent>
+                        </CardActionArea>
+                        <CardActions className={classes.cardActions}>
+                          <Box className={classes.author}>
+                            <Box component="span" m={1} className={classes.authorDate}>
+                              <Typography variant="subtitle2" component="p">
+                                <span style={{ fontWeight: 'bold' }}>{row.author} </span>
                            - {row.date}
-                          </Typography>
+                              </Typography>
 
-                        </Box>
-                      </Box>
-                      <Box>
-                      <PopupState variant="popover" popupId="demo-popup-menu">
-        {(popupState) => (
-        <React.Fragment>
-        <IconButton aria-label="share" {...bindTrigger(popupState)}>
-        <ShareIcon  style={{color: "white"}} />
-        </IconButton>
-        <Menu   anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-        transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupState)}>
-        <MenuItem style={{color: "white"}} onClick={popupState.close}>
-        <TwitterButton url={url}>
-
-
-           <TwitterIcon fontSize="small" />
+                            </Box>
+                          </Box>
+                          <Box>
+                            <PopupState variant="popover" popupId="demo-popup-menu">
+                              {(popupState) => (
+                                <React.Fragment>
+                                  <IconButton aria-label="share" {...bindTrigger(popupState)}>
+                                    <ShareIcon style={{ color: "white" }} />
+                                  </IconButton>
+                                  <Menu anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                                    transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupState)}>
+                                    <MenuItem style={{ color: "white" }} onClick={popupState.close}>
+                                      <TwitterButton url={url}>
 
 
-        </TwitterButton></MenuItem>
-        <MenuItem style={{color: "white"}} onClick={popupState.close}>           <FacebookButton url={url} appId={"appId"}>
+                                        <TwitterIcon fontSize="small" />
 
 
-                      <FacebookIcon fontSize="small" />
+                                      </TwitterButton></MenuItem>
+                                    <MenuItem style={{ color: "white" }} onClick={popupState.close}>           <FacebookButton url={url} appId={"appId"}>
 
 
-        </FacebookButton>
-
-                    </MenuItem>
-
-                    <MenuItem style={{color: "white"}} onClick={popupState.close}>           <EmailButton url={url}>
+                                      <FacebookIcon fontSize="small" />
 
 
-                                   <EmailIcon fontSize="small" />
+                                    </FacebookButton>
+
+                                    </MenuItem>
+
+                                    <MenuItem style={{ color: "white" }} onClick={popupState.close}>           <EmailButton url={url}>
 
 
-        </EmailButton>
+                                      <EmailIcon fontSize="small" />
 
-                                 </MenuItem>
-        </Menu>
-        </React.Fragment>
-        )}
-        </PopupState>
-                      </Box>
-                    </CardActions>
-                  </Card>
-                  </Grid>
 
-          })}
-        </Grid>
-        <Box my={4} className={classes.paginationContainer}>
-        </Box>
+                                    </EmailButton>
 
-                      </CardContent>
-                    </Collapse>
-                  </Card>
+                                    </MenuItem>
+                                  </Menu>
+                                </React.Fragment>
+                              )}
+                            </PopupState>
+                          </Box>
+                        </CardActions>
+                      </Card>
+                    </Grid>
+
+                })}
+              </Grid>
+              <Box my={4} className={classes.paginationContainer}>
+              </Box>
+
+            </CardContent>
+          </Collapse>
+        </Card>
 
 
 
