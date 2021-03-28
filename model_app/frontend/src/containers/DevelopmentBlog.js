@@ -159,13 +159,19 @@ const useStyles = makeStyles((theme) => ({
      maxWidth: "100%",
   },
   subtitle: {
-    fontSize: 16,
+    fontSize: 18,
     marginLeft: '0 0px',
     marginTop: '0 0px',
     padding: '0 0px',
 
   },
+  subtitle: {
+    fontSize: 14,
+    marginLeft: '0 0px',
+    marginTop: '0 0px',
+    padding: '0 0px',
 
+  },
   root: {
     maxWidth: 345,
   },
@@ -210,7 +216,7 @@ function DevelopmentBlog(props) {
 
   const handleClick = (id, title) => {
     return (event) => {
-      console.log(`You clicked on row with id ${id}, in column ${title}.`);
+      window.location.assign('/developmentblog/Post'+ id);
     }
   }
 
@@ -238,10 +244,11 @@ function DevelopmentBlog(props) {
        </TableHead>
        <TableBody>
          {articles.map((row) => {
-          if (row.id <= 6)
+          if (row.id <= 3)
            return <StyledTableRow key={row}>
-             <StyledTableCell onClick={handleClick(row.id, row.title)} align="left" component="th" scope="row">
-                  <span style={{fontWeight: 'bold', color: 'grey'}}>{row.date} </span><br /><Typography className={classes.subtitle}>{row.title}</Typography>
+             <StyledTableCell style={{paddingTop: "20px", paddingBottom: "20px"}} onClick={handleClick(row.id, row.title)} align="left" component="th" scope="row">
+                  <span style={{fontWeight: 'bold', color: 'grey'}}>{row.date} </span><br /><Typography className={classes.subtitle2}>{row.title}</Typography>
+                  <Typography className={classes.subtitle}>{row.subtext}</Typography>
              </StyledTableCell>
            </StyledTableRow>
          })}
