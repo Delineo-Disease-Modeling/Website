@@ -8,7 +8,7 @@ import ariBaoImg from '../images/Ariel Bao.jpg';
 import sebCabImg from '../images/Sebastian Cabrejos.jpg';
 import shaCaoImg from '../images/Shanelle Cao.jpg';
 import ameDehImg from '../images/Ameya Dehade.jpg';
-import saiEarImg from '../images/person-icon.png';
+import saiEarImg from '../images/Saidaman Earla.JPG';
 import aayGanImg from '../images/Aayush Gandhi.jpeg';
 import munJiaImg from '../images/person-icon.png';
 import kaiKoImg from '../images/Kai Ko.jpg';
@@ -19,7 +19,7 @@ import ireLiaImg from '../images/Irena Lian.jpeg';
 import alaLiImg from '../images/Alan Li.jpg';
 import davLuImg from '../images/David_Lu.PNG';
 import rebMurImg from '../images/Rebecca Muratore.png';
-import nadNajImg from '../images/person-icon.png';
+import nadNajImg from '../images/Nader Najjar.jpg';
 import chiNwoImg from '../images/Chioma Nwosu.JPG';
 import yixPanImg from '../images/Yixin Pan.jpg';
 import josParImg from '../images/Joshua Park.JPG';
@@ -36,6 +36,10 @@ import davYanImg from '../images/David Yang.jpg';
 import jesYuImg from '../images/person-icon.png';
 import ryaYuImg from '../images/Ryan Yu.jpg';
 import jacZhaImg from '../images/Jack Zhang.jpg';
+import henNorImg from '../images/Henry Noren.JPG';
+import stepLiImg from '../images/Stephen Li.jpg';
+
+
 
 const tileData = [
   {
@@ -175,13 +179,13 @@ const tileData = [
     name: 'Yixin Pan',
     role: 'ML',
     description: 'Computer Science',
-  }, 
+  },
   {
     img: josParImg,
     name: 'Joshua Park',
     role: 'ML',
     description: 'Biomedical Engineering, Applied Math and Statistics',
-  }, 
+  },
   {
     img: steLiImg,
     name: 'Stella Li',
@@ -193,37 +197,37 @@ const tileData = [
     name: 'Shardul Rakshit',
     role: 'ML',
     description: 'Biomedical Engineering',
-  },  
+  },
   {
     img: eugSonImg,
     name: 'Eugene Song ',
     role: 'Simulation',
     description: 'Computer Science, Applied Math and Statistics',
-  }, 
+  },
   {
     img: emeSulImg,
     name: 'Emerson Sullivan',
     role: 'Simulation',
     description: 'Computer Science',
-  }, 
+  },
   {
     img: oliWanImg,
     name: 'Olivia Wang',
     role: 'ML',
     description: 'Computer Science',
-  }, 
+  },
   {
     img: aleWeiImg,
     name: 'Alex Wei',
     role: 'Simulation',
     description: 'Computer Science',
-  }, 
+  },
   {
     img: oreWeiImg,
     name: 'Oren Wei',
     role: 'ML',
     description: 'Molecular and Cellular Biology, Spanish',
-  }, 
+  },
   {
     img: peiXuImg,
     name: 'Peiyuan Xu',
@@ -260,6 +264,38 @@ const tileData = [
     role: 'Fullstack',
     description: 'Computer Science, Mathematics',
   },
+  {
+    img: image,
+    name: 'Zoe Kim',
+    role: 'Information Support',
+    description: '-',
+  },
+  {
+    img: henNorImg,
+    name: 'Henry Noren',
+    role: 'Simulation',
+    description: 'Biomedical Engineering',
+  },
+  {
+    img: image,
+    name: 'Yilin Chen',
+    role: 'Simulation',
+    description: 'Computer Science, Biophysics',
+  },
+  {
+    img: image,
+    name: 'Serena Chan',
+    role: 'Simulation',
+    description: 'Molecular and Cellular Biology, Women, Gender, and Sexuality',
+  },
+  {
+    img: stepLiImg,
+    name: 'Stephen Li',
+    role: 'ML',
+    description: 'Biomedical Engineering',
+  },
+
+
 ];
 
 export default tileData;

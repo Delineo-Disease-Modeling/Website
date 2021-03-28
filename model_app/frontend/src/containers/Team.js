@@ -41,7 +41,7 @@ const Button = styled(MuiButton)(spacing);
       backgroundColor: 'pink',
     },
     CardBackground: {
-      backgroundColor: '#C4C4C4',
+      backgroundColor: '#222629',
       height: '100%',
       width: '100vh',
       minHeight: '100%',
@@ -51,7 +51,7 @@ const Button = styled(MuiButton)(spacing);
       paddingBottom: '5%',
     },
     MainHeader: {
-      backgroundColor: '#4A4E51',
+      backgroundColor: '#222629',
       height: '100px',
       width: '100vh',
 
@@ -87,7 +87,7 @@ const Button = styled(MuiButton)(spacing);
 
 
       <div className = {classes.MainHeader} align ='center' >
-        <h3 className = {classes.h3} align="center" >Meet the team</h3>
+        <h3 className = {classes.h3} align="center" >Meet the Team</h3>
 
       </div>
 
