@@ -32,15 +32,6 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import EmailIcon from '@material-ui/icons/Email';
 import articles from '../const/devblogposts';
 
-const rows = [
-  'Article',
-  'Announcement',
-  'Article',
-  'News',
-  'Article',
-  'News'
-];
-
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -145,7 +136,7 @@ const useStyles = makeStyles((theme) => ({
     color: "white"
   },
   authorDate: {
-    width: "150px",
+    width: "300px",
     marginLeft: '0 0px',
     marginTop: '0 0px',
     padding: '0 0px',
@@ -155,6 +146,10 @@ const useStyles = makeStyles((theme) => ({
   card: {
     maxWidth: "100%",
     position: 'relative',
+  },
+  subtextalign: {
+    textAlign: "justify",
+    alignItems: "justifyContent"
   },
   overlay: {
      position: 'absolute',
@@ -170,6 +165,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '0 0px',
 
   },
+
   root: {
     maxWidth: 345,
   },
@@ -212,6 +208,12 @@ function DevelopmentBlog(props) {
     setExpandedNews(!expandedNews);
   };
 
+  const handleClick = (id, title) => {
+    return (event) => {
+      console.log(`You clicked on row with id ${id}, in column ${title}.`);
+    }
+  }
+
   return (
     <div className="App">
       <AppBar className={classes.appBar} style={{background: "white", boxShadow: "none"}} position="static">
@@ -222,7 +224,7 @@ function DevelopmentBlog(props) {
 
         <Grid item xs>
           <Box className={classes.hero}>
-            <Box><Typography>Articles, Announcements, News & More!</Typography><Typography variant='h1'>Delineo Blog</Typography></Box>
+            <Box><Typography>Articles & Announcements</Typography><Typography variant='h1'>Delineo Blog</Typography></Box>
 
           </Box>
           </Grid>
@@ -235,22 +237,23 @@ function DevelopmentBlog(props) {
          </TableRow>
        </TableHead>
        <TableBody>
-         {rows.map((row) => (
-           <StyledTableRow key={row}>
-             <StyledTableCell align="left" component="th" scope="row">
-                  <span style={{fontWeight: 'bold', color: 'grey'}}>{row} </span><br /><Typography className={classes.subtitle}>Title of {row}</Typography>
+         {articles.map((row) => {
+          if (row.id <= 6)
+           return <StyledTableRow key={row}>
+             <StyledTableCell onClick={handleClick(row.id, row.title)} align="left" component="th" scope="row">
+                  <span style={{fontWeight: 'bold', color: 'grey'}}>{row.date} </span><br /><Typography className={classes.subtitle}>{row.title}</Typography>
              </StyledTableCell>
            </StyledTableRow>
-         ))}
+         })}
        </TableBody>
      </Table>
    </TableContainer>
          </Grid>
       </Grid>
       <Container maxWidth="lg" className={classes.blogsContainer}>
-          <Card maxWidth="lg" style={{background: "#D5E3DF", boxShadow: "none"}} >
+          <Card maxWidth="lg" style={{background: "white", boxShadow: "none"}} >
 
-            <CardActions style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
+            <CardActions style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
             <Typography variant="h4" className={classes.blogTitle}>
               Articles
             </Typography>
@@ -262,13 +265,17 @@ function DevelopmentBlog(props) {
                 onClick={handleExpandClick}
                 aria-expanded={expanded}
                 aria-label="show more"
+                style={{justifyContent: 'center', alignItems: 'center', textAlign: 'center', marginTop: "-20px"}}
               >
                 <ExpandMoreIcon />
               </IconButton>
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
               <CardContent>
-              <Grid container spacing={3}>
+              <Grid container
+  spacing={3}
+  alignItems="center"
+  justify="center">
                 {articles.map((row) => {
                   if (row.type === 'Article')
                     return   <Grid item xs={12} sm={6} md={4}>
@@ -277,16 +284,13 @@ function DevelopmentBlog(props) {
                             <CardMedia
                               className={classes.media}
                               image={row.img}
-                              title="Contemplative Reptile"
+                              title="Development Blog Img"
                             />
                             <CardContent className={classes.align}>
-                            <Typography className={classes.title} color="white" gutterBottom>
-                            {row.type}
-                            </Typography>
                             <Typography className={classes.title} style={{fontWeight: 'bold', marginTop: '0 0px'}} gutterBottom variant="h5" component="h2">
                             {row.title}
                             </Typography>
-                            <Typography variant="body2" color="white" component="p">
+                            <Typography className={classes.subtextalign} variant="body2" color="white" component="p">
                               {row.subtext}
 
                             </Typography>
@@ -345,9 +349,9 @@ function DevelopmentBlog(props) {
       </Container>
       <Container maxWidth="lg" className={classes.blogsContainer}>
 
-      <Card maxWidth="lg" style={{backgroundColor: "#D5E3DF", boxShadow: "none"}} >
+      <Card maxWidth="lg" style={{backgroundColor: "white", boxShadow: "none"}} >
 
-        <CardActions style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
+        <CardActions style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
         <Typography variant="h4" className={classes.blogTitle}>
           Announcements
         </Typography>
@@ -359,6 +363,7 @@ function DevelopmentBlog(props) {
             onClick={handleExpandClickAnn}
             aria-expanded={expandedAnn}
             aria-label="show more"
+            style={{justifyContent: 'center', alignItems: 'center', textAlign: 'center', marginTop: "-20px"}}
           >
             <ExpandMoreIcon />
           </IconButton>
@@ -366,7 +371,11 @@ function DevelopmentBlog(props) {
         <Collapse in={expandedAnn} timeout="auto" unmountOnExit>
           <CardContent>
 
-        <Grid container spacing={3}>
+        <Grid  container
+spacing={3}
+alignItems="center"
+justify="center"
+>
           {articles.map((row) => {
             if (row.type === 'Announcement')
               return   <Grid item xs={12} sm={6} md={4}>
@@ -378,13 +387,10 @@ function DevelopmentBlog(props) {
                         title="Contemplative Reptile"
                       />
                       <CardContent className={classes.align}>
-                      <Typography className={classes.title} color="white" gutterBottom>
-                      {row.type}
-                      </Typography>
                       <Typography className={classes.title} style={{fontWeight: 'bold', marginTop: '0 0px'}} gutterBottom variant="h5" component="h2">
                       {row.title}
                       </Typography>
-                      <Typography variant="body2" color="white" component="p">
+                      <Typography className={classes.subtextalign} variant="body2" color="white" component="p">
                         {row.subtext}
 
                       </Typography>
@@ -457,105 +463,6 @@ function DevelopmentBlog(props) {
 
 
 
-      </Container>
-      <Container maxWidth="lg" className={classes.blogsContainer}>
-      <Card maxWidth="lg" style={{background: "#D5E3DF", boxShadow: "none"}} >
-
-        <CardActions style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
-        <Typography variant="h4" className={classes.blogTitle}>
-         News and More
-        </Typography>
-          <IconButton
-            className={clsx(classes.expand.news, {
-              [classes.expandOpen.news]: expandedNews,
-            })}
-            onClick={handleExpandClickNews}
-            aria-expanded={expandedNews}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </IconButton>
-        </CardActions>
-        <Collapse in={expandedNews} timeout="auto" unmountOnExit>
-          <CardContent>
-
-
-          <Grid container spacing={3}>
-            {articles.map((row) => {
-              if (row.type === 'News')
-                return   <Grid item xs={12} sm={6} md={4}>
-                    <Card className={classes.card}>
-                      <CardActionArea href={row.href}>
-                        <CardMedia
-                          className={classes.media}
-                          image={row.img}
-                          title="Contemplative Reptile"
-                        />
-                        <CardContent className={classes.align}>
-                        <Typography className={classes.title} color="white" gutterBottom>
-                        {row.type}
-                        </Typography>
-                        <Typography className={classes.title} style={{fontWeight: 'bold', marginTop: '0 0px'}} gutterBottom variant="h5" component="h2">
-                        {row.title}
-                        </Typography>
-                        <Typography variant="body2" color="white" component="p">
-                          {row.subtext}
-
-                        </Typography>
-                        </CardContent>
-                      </CardActionArea>
-                      <CardActions className={classes.cardActions}>
-                        <Box className={classes.author}>
-                          <Box component="span" m={1}  className={classes.authorDate}>
-                            <Typography variant="subtitle2" component="p">
-                            <span style={{fontWeight: 'bold'}}>{row.author} </span>
-                             - {row.date}
-                            </Typography>
-
-                          </Box>
-                        </Box>
-                        <Box>
-                        <PopupState variant="popover" popupId="demo-popup-menu">
-          {(popupState) => (
-          <React.Fragment>
-          <IconButton aria-label="share" {...bindTrigger(popupState)}>
-          <ShareIcon  style={{color: "white"}} />
-          </IconButton>
-          <Menu   anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-          transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupState)}>
-          <MenuItem style={{color: "white"}} onClick={popupState.close}>
-          <TwitterButton url={url}>
-
-
-             <TwitterIcon fontSize="small" />
-
-
-          </TwitterButton></MenuItem>
-          <MenuItem style={{color: "white"}} onClick={popupState.close}>
-           <FacebookButton url={url} appId={"appId"}>
-                <FacebookIcon fontSize="small" />  </FacebookButton>
-                      </MenuItem>
-                        <MenuItem style={{color: "white"}} onClick={popupState.close}>
-                        <EmailButton url={url}>
-                        <EmailIcon fontSize="small" />
-          </EmailButton>
-          </MenuItem>
-          </Menu>
-          </React.Fragment>
-          )}
-          </PopupState>
-                        </Box>
-                      </CardActions>
-                    </Card>
-                    </Grid>
-
-            })}
-              </Grid>
-              <Box my={4} className={classes.paginationContainer}>
-              </Box>
-            </CardContent>
-          </Collapse>
-        </Card>
       </Container>
     </div>
   );

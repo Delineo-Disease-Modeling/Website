@@ -17,6 +17,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import CommentBox from "./CommentBox";
 
 
+
  const useStyles = makeStyles((theme) => ({
    center: {
      display: "flex",
@@ -90,19 +91,21 @@ function BlogPost (props) {
         </IconButton>
         <br/>
           <span style={{ fontWeight: "bold"}}> Collaborators:</span> <br/> Dr. Kimia Ghobadi & more background on the author.</p>
+
+
         </aside>
         <p class="text">Our model uses the Iterative Proportional Fitting Procedure (IPFP), a classical algorithm in computer science that performs data scaling based on current datasets, to create a mobility network containing information about the number of individuals (agents) traveling from each Census Block Group (CBG) to Point of Interest (POI). A Census Block Group is the smallest geographical unit for which the Census bureau publishes sample data, and has a population of around 600 to 3000 people. We define a POI as any location that an agent can visit such as a coffee shop, school, workplace, etc.</p>
         <figure>
           <div>
             <img width="60%" height="40%" src="/blogpostPic1.png" alt=" " title="POI Visual" />
-            <figcaption>Figure 1 - Caption the Figure</figcaption>
+            <figcaption>Figure 1 - Person of Interest Visual</figcaption>
           </div>
         </figure>
         <p class="text">Data company Safegraph provides our model with accurate datasets outlining how many people from each CBG arrive at a particular POI every hour. In line with the value we place in users’ privacy, Safegraph data is completely anonymous and does not reveal any identifying information. We leverage this dataset to construct a CBG Marginal and a POI Marginal that are linked to the Visit Matrix which records the number of people travelling from a Census Block Group to a Point of Interest. Since all POI’s have varying durations of visit, we made two assumptions. One, that each visitor to a POI spends a median length of time calculated in that POI and two, that each new visitor in a POI is equally likely to arrive again any time from that time to the next hour. Extreme outliers are also truncated. The Dwell Time Correction Factor is then used to adjust the CBG and POI values, which are used in IPFP to calculate the adjusted visitor matrix that can serve as a probabilistic model for the general mobility network.</p>
         <figure>
           <div>
             <img src="/blogpostPic2.png" alt=" " title="Visit Matrix Visual" />
-            <figcaption>Figure 2 - Caption the Figure</figcaption>
+            <figcaption>Figure 2 - Visit Matrix Visual</figcaption>
           </div>
         </figure>
         <p class="text">Through our past work, we modeled trajectories for individual agents. After extrapolating that data to represent 20 % of the US population,  we scaled it up by a predetermined factor in the IPFP process to accurately delineate the complete picture. Our method also tries to reduce information entropy and limits the amount of error.
@@ -114,7 +117,6 @@ The model also needs to account for the mobility networks of populations not inc
 
 </p>
       </div>
-        <CommentBox className="top"/>
         <Toolbar></Toolbar>
 
 
