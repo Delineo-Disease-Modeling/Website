@@ -9,16 +9,16 @@ const useStyles = makeStyles((theme) => ({
     carousel: {
         padding: '100px',
         marginTop: '50px',
-        color: 'white'
+        color: 'black'
     },
     base: {
         padding: '10px 50px 10px 50px',
-        backgroundColor: 'black'//'C4C4C4'
     },
     description: {
         fontSize: '20px',
         letterSpacing: '2px',
-        padding: '30px 50px'
+        padding: '30px 50px',
+        color: 'black'
     },
     img: {
         width: '70%',
@@ -29,10 +29,8 @@ const useStyles = makeStyles((theme) => ({
 
     gallery: {
         margin: '50px 0',
-        padding: '100px 100px',
-        backgroundColor: '#222629',
+        padding: '50px 50px',
         borderRadius: '15px',
-        boxShadow: '10px 5px 5px black',
     },
 
     grid: {
@@ -46,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: '10px'
     },
     paper: {
-        color: 'white'
+        color: 'black'
     }
 }));
 
@@ -89,9 +87,9 @@ export default function InfoBlock(props) {
     const { title, description, buttontxt, images, captions } = setParams(props.subject);
 
     return (
-        <div className={classes.base} style={{ backgroundColor: props.background }}>
+        <div className={classes.base}  style={{ backgroundColor: props.background }}>
             <div className={classes.gallery}>
-                <Typography variant="h3" component="h2" >
+                <Typography variant="h3" component="h2" style={{color: 'black'}}>
                     {title}
                 </Typography>
                 <div className={classes.border}></div>
@@ -99,7 +97,7 @@ export default function InfoBlock(props) {
                     {description}
                 </Typography>
 
-                <Button href='#top' size='large' color='inherit'>
+                <Button href='#top' size='large' color='inherit' style={{color: 'black'}}>
                     {buttontxt}
                 </Button>
 
