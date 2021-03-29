@@ -45,13 +45,15 @@ const StyledTableCell = withStyles((theme) => ({
 
 const StyledTableRow = withStyles((theme) => ({
   color: theme.palette.common.white,
+  
   root: {
+    backgroundColor: '#383838',
     '&:nth-of-type(odd)': {
       color: theme.palette.common.white,
-      backgroundColor: theme.palette.action.hover,
+      // backgroundColor: '#404040'
     },
     "&:hover": {
-      backgroundColor: '#363636'
+      backgroundColor: '#484848'
     },
     "&:onCellClick": {
       backgroundColor: "grey !important"
