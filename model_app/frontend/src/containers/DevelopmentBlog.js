@@ -91,7 +91,7 @@ function DevelopmentBlog(props) {
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={4}>
             <Card className={classes.card}>
-              <CardActionArea a href="/developmentblog/date-1"> 
+              <CardActionArea href="/developmentblog/date-1"> 
                 <CardMedia
                   className={classes.media}
                   image="https://images.pexels.com/photos/2004161/pexels-photo-2004161.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"

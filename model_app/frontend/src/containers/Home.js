@@ -69,7 +69,7 @@ const styles = {
     },
 
     aboutSection: {
-        padding: '100px 10px 100px 10px',
+        padding: '100px 110px 100px 110px',
         backgroundColor: '#222D3C', /* Or #1C2531 ? */
         overflow: 'hidden',
 
@@ -85,6 +85,7 @@ const styles = {
     },
 
     blogSection: {
+
         padding: '20px 200px 60px 200px',
         backgroundColor: '#d5d7db',
         overflow: 'hidden',
@@ -93,6 +94,7 @@ const styles = {
             fontSize: '18px',
             marginTop: '1rem',
             marginBottom: '2rem',
+            color: 'lightgrey'
         }
     },
 
@@ -163,8 +165,6 @@ class Home extends Component {
 
                 <HomeCarousel/>
 
-
-
                 <div className={classes.blogSection}>
                     <Typography variant="h4" component="h2" gutterBottom className={classes.recent}>
                         Read Our Blog Posts
@@ -191,6 +191,7 @@ class Home extends Component {
                             imgURL = {blogfake3}
                             title = {"White House reviews whether to lift intellectual property shield on Covid-19 vaccines"}
                             brief = {"The crisis in Papua New Guinea is a reminder that the virus will keep wreaking havoc until the whole world is vaccinated."}/>
+
                         </Grid>
                     </Grid>
                 </div>
