@@ -151,7 +151,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     backgroundColor: 'white',
     '&:hover' :{
-      backgroundColor: '#6bd1ca',
+      backgroundColor: '#66FCF1',
       textDecoration: 'none'
     }
   },
@@ -326,7 +326,7 @@ function DevelopmentBlog(props) {
                               {(popupState) => (
                                 <React.Fragment>
                                   <IconButton aria-label="share" {...bindTrigger(popupState)}>
-                                    <ShareIcon style={{ color: "white" }} />
+                                    <ShareIcon style={{ color: "black" }} />
                                   </IconButton>
                                   <Menu anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
                                     transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupState)}>
