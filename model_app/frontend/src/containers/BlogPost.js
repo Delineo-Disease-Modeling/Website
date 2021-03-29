@@ -1,6 +1,6 @@
 import React from "react";
 import Button from '@material-ui/core/Button';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import './BlogPost.css'
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -15,7 +15,6 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import EmailIcon from '@material-ui/icons/Email';
 import { makeStyles } from '@material-ui/core/styles';
 import CommentBox from "./CommentBox";
-
 
 
  const useStyles = makeStyles((theme) => ({
@@ -50,12 +49,11 @@ function Post1 (props) {
       <div className="center">
 
         <h2 style={{ color: "black", fontWeight: 'bold', marginBottom: '-30px'}}>Machine Learning Website Development</h2>
-        <h4 style={{ color: "grey", fontWeight: 'bold', marginBottom: '-2px'}}>Subtitle of Blog Post</h4>
         <div>
         <div className="relative m-r-10 w-50 h-50 b-r-full" style={{backgroundImage: 'url("https://webassets.mongodb.com/_com_assets/cms/Siya-adfnai3e2j.jpg")', backgroundSize: 'cover', backgroundPosition: 'center'}} />
 
           <small>
-          <img class="photo" src="/iconPerson.png"/>Author Name &#8226; Date of Blog
+          <img class="photo" src="/iconPerson.png"/>Author Name &#8226; March 2021
           <PopupState variant="popover" popupId="demo-popup-menu">
             {(popupState) => (
               <React.Fragment>
@@ -142,7 +140,7 @@ function Post2 (props) {
         <div className="relative m-r-10 w-50 h-50 b-r-full" style={{backgroundImage: 'url("https://webassets.mongodb.com/_com_assets/cms/Siya-adfnai3e2j.jpg")', backgroundSize: 'cover', backgroundPosition: 'center'}} />
 
           <small>
-          <img class="photo" src="/iconPerson.png"/>Author Name &#8226; Date of Blog
+          <img class="photo" src="/iconPerson.png"/>Author Name &#8226; March 2021
           <PopupState variant="popover" popupId="demo-popup-menu">
             {(popupState) => (
               <React.Fragment>
