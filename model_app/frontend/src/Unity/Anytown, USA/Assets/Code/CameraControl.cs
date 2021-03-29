@@ -5,18 +5,21 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Camera player;
-    public float scrollSpeed = 10;
+    private Camera player; //Camera Object of the player.
+    public float scrollSpeed = 10; //Speed the user is allowed to scroll at.
+    public float speed = 100; //Speed of movement
+    public Transform obj; //Object we're moving
+    public int maxX, maxY, minX, minY; //Bounds of the box
+
+    //Start gets called once per playtime.
     void Start()
     {
         player = GetComponent<Camera>();
         player.orthographicSize = 5; // Size u want to start with
     }
 
-    public float speed = 100;
-    public Transform obj;
-    public int maxX,maxY,minX,minY;
 
+    //Handles Scroll Wheel, Movement, and Bounds.
     public void Update()
     {
         float ScrollWheelChange = Input.GetAxis("Mouse ScrollWheel");
@@ -44,6 +47,7 @@ public class CameraControl : MonoBehaviour
         }
     }
 
+    //Make sure we're in boundary.
     void checkBoundary(Vector3 newPos)
     {
         //Convert to camera view point

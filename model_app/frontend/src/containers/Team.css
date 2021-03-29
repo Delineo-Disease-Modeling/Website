@@ -1,5 +1,8 @@
 .SuperCard {
+    margin: 0 auto;
+    text-align: center;
     overflow: hidden;
+    
     padding-left: 20px;
     border: 1px transparent;
     width: 90%;
@@ -10,6 +13,7 @@
     display: inline-block;
     box-sizing: border-box;
     margin-bottom: 20px;
+
   }
 
   .LeaderCard {
@@ -108,27 +112,9 @@ h3{
   margin-right: auto;
   margin-left: auto;
   margin-top: 0%;
-  font-size: 20px;
+  font-size: 10px;
 
 }
-
-h4{
-  color: white;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 0%;
-  font-size: 15px;
-
-}
-
-p{
-  color: white;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 0%;
-  font-size: 15px;
-}
-
 
 .ProfessionText{
   text-align: left;
@@ -136,6 +122,8 @@ p{
   font-weight: normal;
   color: #ffffff;
 }
+
+
 
 .LeaderList{
   display: block;
@@ -156,4 +144,10 @@ p{
   margin-left: 7.5%;
   margin-top:-20px;
   padding:0;
+}
+
+button {
+  margin-top:10px;
+  margin-bottom:10px;
+  margin-right: 10px;
 }

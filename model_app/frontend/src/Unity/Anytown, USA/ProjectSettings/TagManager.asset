@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Information Panel
   - Building
+  - Lazer
+  - LazerHead
+  - C#Manager
+  - Temp
+  - Graph
   layers:
   - Default
   - TransparentFX
