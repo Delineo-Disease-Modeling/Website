@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Header, Footer } from './components';
-import { Home, About, Simulator, DevelopmentBlog, Team, Example} from './containers';
+import { Home, About, Simulator, DevelopmentBlog, Team, Post1, Post2} from './containers';
 import { Provider } from 'react-redux';
 import store from './store';
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -11,7 +11,6 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Redirect
 } from "react-router-dom";
 
 function App() {
@@ -27,7 +26,8 @@ function App() {
                       <Route exact path="/simulator" component={Simulator} />
                       <Route exact path="/team" component={Team} />
                       <Route exact path="/developmentblog" component={DevelopmentBlog} />
-                      <Route exact path="/developmentblog/:example" component={Example} />
+                      <Route exact path="/developmentblog/post1" component={Post1} />
+                      <Route exact path="/developmentblog/post2" component={Post2} />
                   </Switch>
                   <Footer />
               </Router>

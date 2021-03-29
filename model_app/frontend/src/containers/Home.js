@@ -4,6 +4,12 @@ import Grid from '@material-ui/core/Grid';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
+import BlogCard from '../components/BlogCard'
+import blogfake1 from '../images/blogfake1.jpg';
+import blogfake2 from '../images/blogfake2.jpg';
+import blogfake3 from '../images/blogfake3.jpg';
+import HomeCarousel from '../components/Carousel';
+import TeamMemberJoin from '../images/teammemberjoin.jpg'
 
 const styles = {
     button: {
@@ -18,37 +24,52 @@ const styles = {
         },
     },
 
+    bigButton: {
+        borderColor: '#66FCF1',
+        backgroundColor: '#66FCF1',
+        border: '1px solid',
+        color: '#444f56',
+        "&:hover": {
+            backgroundColor: '#222629',
+            color: '#66FCF1',
+            borderColor: '#66FCF1',
+        },
+        fontSize: '20px'
+    },
+
     buttonContainer: {
         width: '100%'
     },
 
+
     imageBox: {
-        ///* Here's the trick */
         background: "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))",
         backgroundImage: "url('https://9to5mac.com/wp-content/uploads/sites/6/2020/01/Coronavirus.jpg?quality=82&strip=all')",
         backgroundSize: "cover",
-        //backgroundImage: "url('https://images.pexels.com/photos/60597/dahlia-red-blossom-bloom-60597.jpeg?cs=srgb&dl=pexels-pixabay-60597.jpg&fm=jpg')",
 
-        ///* Here's the same styles we applied to our content-div earlier */
         color: "white",
         height: "100vh",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-
+        opacity: "0.9",
         boxShadow: "inset 0 0 0 100vw rgba(0,0,0,0.5)",
-        //transition: "background 0.5s ease-in-out",
+    },
 
-        /*
-        "&:hover": {
-            boxShadow: "inset 0 0 0 100vw rgba(0,0,0,0.5)",
-            transition: background 0.5s ease-in-out;
-        },
-        */
+    teamPage: {
+        background: "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))",
+        backgroundSize: "cover",
+        color: "white",
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        opacity: "0.9",
+        boxShadow: "inset 0 0 0 100vw rgba(0,0,0,0.5)",
     },
 
     aboutSection: {
-        padding: '100px 10px 100px 10px',
+        padding: '100px 110px 100px 110px',
         backgroundColor: '#222D3C', /* Or #1C2531 ? */
         overflow: 'hidden',
 
@@ -64,21 +85,24 @@ const styles = {
     },
 
     blogSection: {
-        padding: '0px 30px 30px 30px',
-        backgroundColor: '#93BDC1',
+
+        padding: '20px 200px 60px 200px',
+        backgroundColor: '#d5d7db',
         overflow: 'hidden',
 
         "> p": {
             fontSize: '18px',
             marginTop: '1rem',
             marginBottom: '2rem',
+            color: 'lightgrey'
         }
     },
 
     recent: {
         color: '#212628',
         //fontStyle: 'strong',
-        
+        fontSize: "40px",
+        marginTop: "30px"
     },
 
     blogImg: {
@@ -103,6 +127,8 @@ const styles = {
         fontSize: '18px',
         marginTop: '1rem',
         marginBottom: '2rem',
+        color: '#d8e2ee',
+        textAlign: 'left',
     },
 
     blogContent: {
@@ -111,11 +137,15 @@ const styles = {
 
     imgContainer: {
         padding: '0px 20px 20px 20px'
-    }
+    },
+
 
 };
 
+
 class Home extends Component {
+
+    
 
     render() {
         const { classes } = this.props;
@@ -125,147 +155,59 @@ class Home extends Component {
                 <CssBaseline />
                 <div className={classes.imageBox}>
                     <div className="header-text">
-                        <h1>Interactive Disease Simulation</h1>
-                        <Button className={classes.button} variant="contained" color="inherit" href="/simulator">
+                        <h1 style={{ fontSize: '50px', marginBottom: "30px"}}>Interactive Disease Simulation</h1>
+                        <h5 style={{marginBottom: "30px"}}>Bring a fresh approach to the challenge of modeling the spread of pandemics</h5>
+                        <Button className={classes.bigButton} variant="contained" color="inherit" href="/simulator">
                             Explore Simulation
                         </Button>
                     </div>
                 </div>
 
-                <div className={classes.aboutSection}>
-                    <Grid container spacing={3}>
-                        <Grid item xs={6}>
-                            <img className={classes.whiteBackground} src='https://icon-library.com/images/simulator-icon/simulator-icon-2.jpg' alt="Simulator" title="Simulator" />
-
-                        </Grid>
-                        <Grid item xs={6}>
-                            <Typography variant="h5" component="h3" gutterBottom>
-                                Description of ML
-                                </Typography>
-                            <p style={{ fontSize: '18px' }}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In arcu ligula, auctor ut dictum ac, malesuada et arcu. Vestibulum ut commodo enim, in pulvinar magna. Mauris est enim, pretium id porta ut, maximus at felis. Donec aliquam, velit a tempus accumsan, lorem metus viverra augue, ac convallis quam enim quis lacus. Aliquam ipsum orci, ullamcorper vel erat in, semper posuere tortor. Vestibulum consequat ante nec mauris iaculis ultrices. Vivamus non sagittis sem. Duis a laoreet ante, in facilisis nisl. Quisque tempor non orci id accumsan. Ut nulla augue, ultricies vel odio sed, porta finibus massa. Nunc auctor ante sit amet mi fermentum accumsan. Phasellus fermentum sed lacus id ornare. Curabitur congue, neque sed porta faucibus, risus orci aliquet ex, id fermentum nisl sapien vel sem. Nunc sodales, elit et hendrerit consectetur, sem mauris tempus ligula, sed faucibus quam libero a nibh. Sed orci ex, imperdiet dignissim urna ac, egestas bibendum tortor.
-                                </p>
-                            <div className={classes.buttonContainer}>
-
-                                <Button className={classes.button} variant="contained" color="inherit" href="#top">
-                                    Learn More
-                                    </Button>
-                            </div>
-                        </Grid>
-                        <Grid item xs={6}>
-                            <Typography variant="h5" component="h3" gutterBottom>
-                                Description of Simulator
-                            </Typography>
-                            <p style={{ fontSize: '18px' }}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In arcu ligula, auctor ut dictum ac, malesuada et arcu. Vestibulum ut commodo enim, in pulvinar magna. Mauris est enim, pretium id porta ut, maximus at felis. Donec aliquam, velit a tempus accumsan, lorem metus viverra augue, ac convallis quam enim quis lacus. Aliquam ipsum orci, ullamcorper vel erat in, semper posuere tortor. Vestibulum consequat ante nec mauris iaculis ultrices. Vivamus non sagittis sem. Duis a laoreet ante, in facilisis nisl. Quisque tempor non orci id accumsan. Ut nulla augue, ultricies vel odio sed, porta finibus massa. Nunc auctor ante sit amet mi fermentum accumsan. Phasellus fermentum sed lacus id ornare. Curabitur congue, neque sed porta faucibus, risus orci aliquet ex, id fermentum nisl sapien vel sem. Nunc sodales, elit et hendrerit consectetur, sem mauris tempus ligula, sed faucibus quam libero a nibh. Sed orci ex, imperdiet dignissim urna ac, egestas bibendum tortor.
-                            </p>
-                            <div className={classes.buttonContainer}>
-                                <Button className={classes.button} variant="contained" color="inherit" href="#top" style={styles.buttonStyle}>
-                                    Learn More
-                            </Button>
-                            </div>
-                        </Grid>
-                        <Grid item xs={6}>
-                            <img className={classes.whiteBackground} src='https://icon-library.com/images/simulator-icon/simulator-icon-2.jpg' alt="Simulator" title="Simulator" />
-                        </Grid>
-                    </Grid>
-                </div>
+                <HomeCarousel/>
 
                 <div className={classes.blogSection}>
                     <Typography variant="h4" component="h2" gutterBottom className={classes.recent}>
-                        Recent Blog Posts
+                        Read Our Blog Posts
                     </Typography>
 
-                    <Grid container spacing={2}>
+                    <Grid container spacing={10} >
                         <Grid item xs={4}>
-                            <div className={classes.blogContainer}>
-                                <div className={classes.blogContent}>
-                                    <div className={classes.imgContainer}>
-                                        <img className={classes.blogImg}  src='https://icon-library.com/images/009_070_checkpoint_geo_location_geolocation_target_here-512.png' />
-                                    </div>
-                                    <Grid container spacing={4}>
-                                        <Grid item xs={6}>
-                                            <Typography variant="h5" component="h3" gutterBottom>
-                                                Title
-                                            </Typography>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Typography variant="h5" component="h3" gutterBottom>
-                                                Date
-                                            </Typography>
-                                        </Grid>
-                                    </Grid>
-                                    <p className={classes.blogText}>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In arcu ligula, auctor ut dictum ac, malesuada et arcu. Vestibulum ut commodo enim, in pulvinar magna. Mauris est enim, pretium id porta ut, maximus at felis. Donec aliquam, velit a tempus accumsan, lorem metus viverra augue, ac convallis quam enim quis lacus.
-                                    </p>
-                                    <div className={classes.buttonContainer}>
-                                        <Button className={classes.button} variant="contained" color="inherit" href="#top" style={styles.buttonStyle}>
-                                            Read More
-                                        </Button>
-                                    </div>
-                                </div>
-                            </div>
+                            <BlogCard
+                            imgURL = {blogfake1}
+                            title = {"Ex-CDC head claims without evidence Covid-19 began in a China lab"}
+                            brief = {"The crisis in Papua New Guinea is a reminder that the virus will keep wreaking havoc until the whole world is vaccinated."}/>
+                            
+
                         </Grid>
                         <Grid item xs={4}>
-                            <div className={classes.blogContainer}>
-                                <div className={classes.blogContent}>
-                                    <div className={classes.imgContainer}>
-                                        <img className={classes.blogImg} src='https://icon-library.com/images/1276.svg.svg' />
-                                    </div>
-                                    <Grid container spacing={4}>
-                                        <Grid item xs={6}>
-                                            <Typography variant="h5" component="h3" gutterBottom>
-                                                Title
-                                            </Typography>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Typography variant="h5" component="h3" gutterBottom>
-                                                Date
-                                            </Typography>
-                                        </Grid>
-                                    </Grid>
-                                    <p className={classes.blogText}>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In arcu ligula, auctor ut dictum ac, malesuada et arcu. Vestibulum ut commodo enim, in pulvinar magna. Mauris est enim, pretium id porta ut, maximus at felis. Donec aliquam, velit a tempus accumsan, lorem metus viverra augue, ac convallis quam enim quis lacus.
-                                    </p>
-                                    <div className={classes.buttonContainer}>
-                                        <Button className={classes.button} variant="contained" color="inherit" href="#top" style={styles.buttonStyle}>
-                                            Read More
-                                        </Button>
-                                    </div>
-                                </div>
-                            </div>
+                            <BlogCard                            
+                            imgURL = {blogfake2}
+                            title = {"This Island Nation Had Zero Covid Cases for Months"}
+                            brief = {"The crisis in Papua New Guinea is a reminder that the virus will keep wreaking havoc until the whole world is vaccinated."}/>
+                            
                         </Grid>
                         <Grid item xs={4}>
-                            <div className={classes.blogContainer}>
-                                <div className={classes.blogContent}>
-                                    <div className={classes.imgContainer}>
-                                        <img className={classes.blogImg} src='https://icon-library.com/images/072_chocolatebar-512_4905.png' />
-                                    </div>
-                                    <Grid container spacing={4}>
-                                        <Grid item xs={6}>
-                                            <Typography variant="h5" component="h3" gutterBottom>
-                                                Title
-                                            </Typography>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Typography variant="h5" component="h3" gutterBottom>
-                                                Date
-                                            </Typography>
-                                        </Grid>
-                                    </Grid>
-                                    <p className={classes.blogText}>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In arcu ligula, auctor ut dictum ac, malesuada et arcu. Vestibulum ut commodo enim, in pulvinar magna. Mauris est enim, pretium id porta ut, maximus at felis. Donec aliquam, velit a tempus accumsan, lorem metus viverra augue, ac convallis quam enim quis lacus.
-                                    </p>
-                                    <div className={classes.buttonContainer}>
-                                        <Button className={classes.button} variant="contained" color="inherit" href="#top">
-                                            Read More
-                                        </Button>
-                                    </div>
-                                </div>
-                            </div>
+                            <BlogCard                            
+                            imgURL = {blogfake3}
+                            title = {"White House reviews whether to lift intellectual property shield on Covid-19 vaccines"}
+                            brief = {"The crisis in Papua New Guinea is a reminder that the virus will keep wreaking havoc until the whole world is vaccinated."}/>
+
                         </Grid>
                     </Grid>
                 </div>
+                <div className={classes.teamPage} style={{ backgroundImage:`url(${TeamMemberJoin})`}}>
+                    <div className="header-text">
+                        <h1 style={{ fontSize: '50px', marginBottom: "30px"}}>We Are Delineo</h1>
+                        <h5 style={{marginBottom: "30px"}}>Bring a fresh approach to the challenge of modeling the spread of pandemics</h5>
+                        <Button className={classes.bigButton} style={{marginRight: "30px"}} variant="contained" color="inherit" href="/simulator">
+                            Meet Our Team
+                        </Button>
+                        <Button className={classes.bigButton} style={{marginLeft: "30px"}} variant="contained" color="inherit" href="/simulator">
+                            Join Our Team
+                        </Button>
+                    </div>
+                </div>
+
             </React.Fragment>
         );
     }
