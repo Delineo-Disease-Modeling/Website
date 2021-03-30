@@ -10,10 +10,10 @@ import Grid from "@material-ui/core/Grid";
 import Unity, { UnityContext } from "react-unity-webgl";
 
 const unityContext = new UnityContext({
-  loaderUrl: "./Build/Simulation.loader.js",
-  dataUrl: "./Build/Simulation.data",
-  frameworkUrl: "./Build/Simulation.framework.js",
-  codeUrl: "./Build/Simulation.wasm",
+  loaderUrl: "./Build/March326.loader.js",
+  dataUrl: "./Build/March326.data",
+  frameworkUrl: "./Build/March326.framework.js",
+  codeUrl: "./Build/March326.wasm",
 });
 
 const ColoredAccordion = withStyles({
