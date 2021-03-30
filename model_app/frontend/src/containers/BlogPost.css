@@ -1,4 +1,28 @@
 .text {
     color: black;
-    
+    width: 65%;
+    line-height: 2.5;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.black {
+    color: black;
+    text-align: left;
+    padding: 0;
+}
+
+.photo {
+  height: 30px;
+  width: 30px;
+}
+
+aside {
+  width: 15%;
+  padding-left: 15px;
+  margin-left: 15px;
+  float: left;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }

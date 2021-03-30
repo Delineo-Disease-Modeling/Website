@@ -76,14 +76,18 @@ const styles = {
 	title: {
 		position: 'absolute',
 		top: '230px',
-		left: '169px'
+		left: '169px',
+		fontWeight: 'bold',
+		letterSpacing: '1.2px',
+		textShadow: '2px 2px 10px black'
 	},
 
 	subtitle: {
 		position: 'absolute',
 		top: '320px',
 		left: '169px',
-		fontSize: '18px'
+		fontSize: '18px',
+		textShadow: '2px 2px 10px black'
 	},
 
 	block: {
@@ -178,7 +182,7 @@ class About extends React.Component {
 				<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 				<div > {/*className={classes.cardGreenBackground}*/}
 
-					<Typography variant="h3" component="h2" className={classes.title}>
+					<Typography variant="h2" component="h2" className={classes.title}>
 						ABOUT DELINEO
 					</Typography>
 					<div className={classes.border}></div>
@@ -187,8 +191,8 @@ class About extends React.Component {
 					</Typography>
 					<img src={bgImg} alt="background" width='100%' height="700vh" />
 
-					<InfoBlock background={'C4C4C4'} subject={'visualization'} />
-					<InfoBlock background={'4A4E51'} subject={'stimulation'} />
+					<InfoBlock background={'white'} subject={'visualization'} />
+					<InfoBlock background={'#d5d7db'} subject={'stimulation'} />
 
 				</div>
 				<div className={classes.faq} id="contact">
@@ -206,12 +210,12 @@ class About extends React.Component {
 											expandIcon={<ExpandMoreIcon />}
 											aria-controls="Model Param-content"
 											id="Model Param-header"
-											style={{padding: '0 50px'}}
+											style={{ padding: '0 50px' }}
 										>
 											{faq.question}
 										</ColAccordionSummary>
-										<AccordionDetails style={{padding: '0 50px'}}>
-											<Typography style={{color: 'black', paddingBottom: '50px'}}>
+										<AccordionDetails style={{ padding: '0 50px' }}>
+											<Typography style={{ color: 'black', paddingBottom: '50px' }}>
 												{faq.answer}
 											</Typography>
 										</AccordionDetails>

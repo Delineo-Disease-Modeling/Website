@@ -1,154 +1,233 @@
 import React from "react";
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import { Link } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import './BlogPost.css'
- 
-function BlogPost (props) {
-   return (
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import ShareIcon from '@material-ui/icons/Share';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
+import { FacebookButton, TwitterButton, EmailButton } from "react-social";
+import TwitterIcon from '@material-ui/icons/Twitter';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import EmailIcon from '@material-ui/icons/Email';
+import { makeStyles } from '@material-ui/core/styles';
+import CommentBox from "./CommentBox";
 
-    <div>
-        {/* Hello world */}
-       
-        
-        <title>Built with MongoDB: Interseller | MongoDB Blog</title>
-        <meta name="description" content="Interseller is a recruiting tech startup that uses MongoDB to help 4,000 recruiters quickly hire the right candidates. " />
-        <meta property="og:site_name" content="MongoDB" />
-        <meta property="og:title" content="Built with MongoDB: Interseller | MongoDB Blog" />
-        <meta name="og:description" content="Interseller is a recruiting tech startup that uses MongoDB to help 4,000 recruiters quickly hire the right candidates. " />
-        <meta property="og:type" content="article" />
-        <meta property="og:image" content="https://webassets.mongodb.com/_com_assets/cms/0 (2)-19amvr4s7p.jpeg" />
-        <meta property="og:image:secure_url" content="https://webassets.mongodb.com/_com_assets/cms/0 (2)-19amvr4s7p.jpeg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@mongodb" />
-        <meta name="twitter:title" content="Built with MongoDB: Interseller | MongoDB Blog" />
-        <meta name="twitter:description" content="Interseller is a recruiting tech startup that uses MongoDB to help 4,000 recruiters quickly hire the right candidates. " />
-        <meta name="twitter:image" content="https://webassets.mongodb.com/_com_assets/cms/0 (2)-19amvr4s7p.jpeg" />
 
-        
-        <link rel="stylesheet" type="text/css" href="https://static.mongodb.com/blog/index.7065fd35cc8803bd38d6ae9ddeb9748e.css" />
-        <noscript>
-          &lt;style&gt;
-          .card {'{'}
-          opacity: 1 !important;
-          transform: none !important
-          {'}'}
-          &lt;/style&gt;
-        </noscript>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
-        <noscript>
-          &lt;iframe style="display:none" src="https://www.googletagmanager.com/ns.html?id=GTM-GDFN&amp;nojscript=true"&gt;&lt;/iframe&gt;
-        </noscript>
-        <div id="mongo-app">
-          <main className="app">
-            
-            <div className="relative w-full overflow-hidden fl fl-center-x fl-wrap">
-              <header className="header relative fl fl-center fl-column w-full z-index-10 m-t-70 m-b-10 p-20 h-360">
-                <div className="absolute top left w-full h-full" style={{backgroundImage: 'url("https://webassets.mongodb.com/_com_assets/cms/Screen Shot 2020-12-02 at 4.26.35 PM-tfox8tnrhh.png")', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}} />
-                <div className="absolute top left w-full h-full" style={{backgroundColor: 'rgba(0, 0, 0, 0.4)'}} />
-                <h1 className="relative white w-max-800 m-h-20 m-t-0 m-b-10 txt-center font-40 font-mobile-25">Blog Title</h1>
-                <a href="https://developer.mongodb.com/learn/">
-                  <button className="relative btn-green m-5">Link for button!</button>
-                </a>
-              </header>
-              <div className="relative p-h-20 p-v-30 w-full w-max-800">
-                <div className="fl fl-wrap fl-center-y m-b-20">
-                  <div className="fl fl-wrap p-v-10">
-                    <a href="/blog/search/Siya%20Raj%20Purohit">
-                      <div className="relative m-r-10 w-50 h-50 b-r-full" style={{backgroundImage: 'url("https://webassets.mongodb.com/_com_assets/cms/Siya-adfnai3e2j.jpg")', backgroundSize: 'cover', backgroundPosition: 'center'}} />
-                    </a>
-                  </div>
-                  <div>
-                    <small>
-                      <a href="/blog/search/Siya%20Raj%20Purohit">Author Name</a>
-                    </small>
-                    <br />
-                    <small className="post-date">Date of Blog</small>
-                    <br />
-                    
-                  </div>
-                </div>
-                <div className="cms-content h2-30">
-                  <p class="text">
-                    Text
-                  </p>
-                  <figure>
-                    <div className="fl-center">
-                    </div>
-                  </figure>
-                  <p class="text">
-                    Text
-                  </p>
-                  <h4>How did you pick this problem to work on?</h4>
-                  <p class="text">While working as an engineer, I helped teach and recruit many other tech professionals. That’s when I realized that good engineers don’t find jobs. They get poached. Sourcing is essential for assembling great teams, but with the low industry response rate, I knew we needed a new solution.</p>
-                  <p class="text">I started looking into recruiting technology and was frankly surprised by how outdated the solutions were. We began by addressing three parts of sourcing:</p>
-                  <ul>
-                    <li>Research</li>
-                    <li>Outreach</li>
-                    <li>Data Management</li>
-                  </ul>
-                  <figure>
-                    <div className="fl-center">
-                      <img src="https://webassets.mongodb.com/_com_assets/cms/Screen Shot 2020-12-02 at 4.06.45 PM-bbv49crcxj.png" alt=" " title=" " />
-                    </div>
-                  </figure>
-                  <p class="text">
-                    To help us get started, Interseller went through <a href="https://www.expa.com/" target="_blank">Expa</a>
-                    , <a href="https://en.wikipedia.org/wiki/Garrett_Camp" target="_blank">Garrett Camp’s</a>
-                    accelerator. We’ve been bootstrapping since then. We’re a team of 13, but we expect to grow to about 25 in another year.
-                  </p>
-                  <p class="text">We serve about 4,000 recruiters, 75% of whom use us every single day. Some of our customers include Squarespace, Honey, and Compass. Overall, we have had about 2 million candidates respond to us, boosting our average response rate from the industry average of 7% to between 40% and 60%. We attempt to close candidates within 21 days.</p>
-                  <h4>How did you decide to have Interseller #BuiltWithMongoDB?</h4>
-                  <figure>
-                    <div className="fl-center">
-                      <img src="https://webassets.mongodb.com/_com_assets/cms/Screen Shot 2020-12-02 at 4.08.21 PM-xy41b57f1w.png" alt=" " title=" " />
-                    </div>
-                  </figure>
-                  <p class="text">Like an engineer, I hate database migrations. I hate having to build around the database rather than the database building around my product. I remember using MongoDB at Compass in 2012—we were a MongoDB shop.</p>
-                  <p class="text">After that, I went to another company that was using SQL and a relational database and I felt we were constantly being blocked by database migrations. I had to depend on our CTO to run the database migration before I could merge anything. I have such bad memories from that experience. I would rather have my engineering team push things faster than have to wait on the database side.</p>
-                  <p class="text">MongoDB helped solve this. It worked well because it was so adaptable. I don’t know about scaling database solutions since we don’t have millions of users yet, but MongoDB has been a crucial part of getting core functionality, features, and bug fixes out much faster. Outside of MongoDB, we primarily use Node, Javascript, React, and AWS.</p>
-                  <p class="text">Our release schedule is really short: as a startup, you have to keep pumping things out, and if half your time is spent on database migration, you won’t be able to serve customers. That’s why MongoDB Atlas is so core to our business. It’s reliable, and I don’t have to deal with database versions.</p>
-                  <div className="callout">
-                    <p class="text">
-                      Building something cool with MongoDB? Check out our <a href="https://developer.mongodb.com/learn/" target="_blank">developer resources</a>
-                      , and <a href="https://docs.google.com/forms/d/e/1FAIpQLSeuoc0--D-VbCsR6gBY6FCbwnFMPo0qdP30U8VKc_4or5Jzdg/viewform" target="_blank">let us know</a>
-                      if you want your startup to be featured in our #BuiltWithMongoDB series.
-                    </p>
-                  </div>
-                </div>
-                <div className="w-full fl fl-center m-v-20">
-                  <div className="w-full w-max-300" style={{height: '1px', background: '#C9E0E0'}} />
-                  <div className="fl fl-center p-20">
-                    
-                  </div>
-                  <div className="w-full w-max-300" style={{height: '1px', background: '#D9E0E0'}} />
-                </div>
-                
-                
-              </div>
-            </div>
-           
-          </main>
-         
+const useStyles = makeStyles((theme) => ({
+  center: {
+    //display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    //width: "70%",
+    marginBottom: "-45px"
+  },
+  top: {
+    display: "inline-block",
+    marginTop: "-45px"
+  },
+  text: {
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: 'center',
+    lineHeight: '1.5',
+    padding: '20px 50px',
+    fontSize: '20px'
+  },
+}));
+
+const url = 'google.com';
+function Post1(props) {
+  let history = useHistory();
+  const classes = useStyles();
+  return (
+
+    <div className="App">
+      <Toolbar></Toolbar>
+
+      <div className="center">
+
+        <h2 style={{ color: "black", fontWeight: 'bold', marginBottom: '-30px' }}>Machine Learning Website Development</h2>
+        <div>
+          <div className="relative m-r-10 w-50 h-50 b-r-full" style={{ backgroundImage: 'url("https://webassets.mongodb.com/_com_assets/cms/Siya-adfnai3e2j.jpg")', backgroundSize: 'cover', backgroundPosition: 'center' }} />
+
+          <small>
+            <img class="photo" src="/iconPerson.png" />Author Name &#8226; March 2021
+          <PopupState variant="popover" popupId="demo-popup-menu">
+              {(popupState) => (
+                <React.Fragment>
+                  <IconButton aria-label="share" {...bindTrigger(popupState)}>
+                    <ShareIcon style={{ color: "black" }} />
+                  </IconButton>
+                  <Menu anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                    transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupState)}>
+                    <MenuItem style={{ color: "black" }} onClick={popupState.close}>
+                      <TwitterButton url={url}>
+                        <TwitterIcon fontSize="small" />
+                      </TwitterButton></MenuItem>
+                    <MenuItem style={{ color: "black" }} onClick={popupState.close}> <FacebookButton url={url} appId={"appId"}>
+                      <FacebookIcon fontSize="small" /> </FacebookButton>
+                    </MenuItem>
+                    <MenuItem style={{ color: "white" }} onClick={popupState.close}><EmailButton url={url}>
+                      <EmailIcon fontSize="small" />
+                    </EmailButton>
+
+                    </MenuItem>
+                  </Menu>
+                </React.Fragment>)}
+            </PopupState>
+          </small>
+          <br />
+
         </div>
-        <p />
-      </div>
 
-       
-   );
+        <aside>
+          <p class="black">
+            <IconButton aria-label="ArrowBackIos" onClick={() => history.goBack()}>
+              <ArrowBackIosIcon fontSize="small" /> <span style={{ fontSize: "18px" }}> Back </span>
+            </IconButton>
+            <br />
+            <span style={{ fontWeight: "bold" }}> Collaborators:</span> <br /> Dr. Kimia Ghobadi & more background on the author.</p>
+
+
+        </aside>
+        <p className={classes.text}>Our model uses the Iterative Proportional Fitting Procedure (IPFP), a classical algorithm in computer science that performs data scaling based on current datasets, to create a mobility network containing information about the number of individuals (agents) traveling from each Census Block Group (CBG) to Point of Interest (POI). A Census Block Group is the smallest geographical unit for which the Census bureau publishes sample data, and has a population of around 600 to 3000 people. We define a POI as any location that an agent can visit such as a coffee shop, school, workplace, etc.</p>
+        <figure>
+          <div>
+            <img width="60%" height="40%" src="/blogpostPic1.png" alt=" " title="POI Visual" />
+            <figcaption>Figure 1 - Person of Interest Visual</figcaption>
+          </div>
+        </figure>
+        <p className={classes.text}>Data company Safegraph provides our model with accurate datasets outlining how many people from each CBG arrive at a particular POI every hour. In line with the value we place in users’ privacy, Safegraph data is completely anonymous and does not reveal any identifying information. We leverage this dataset to construct a CBG Marginal and a POI Marginal that are linked to the Visit Matrix which records the number of people travelling from a Census Block Group to a Point of Interest. Since all POI’s have varying durations of visit, we made two assumptions. One, that each visitor to a POI spends a median length of time calculated in that POI and two, that each new visitor in a POI is equally likely to arrive again any time from that time to the next hour. Extreme outliers are also truncated. The Dwell Time Correction Factor is then used to adjust the CBG and POI values, which are used in IPFP to calculate the adjusted visitor matrix that can serve as a probabilistic model for the general mobility network.</p>
+        <figure>
+          <div>
+            <img src="/blogpostPic2.png" alt=" " title="Visit Matrix Visual" />
+            <figcaption>Figure 2 - Visit Matrix Visual</figcaption>
+          </div>
+        </figure>
+        <p className={classes.text}>Through our past work, we modeled trajectories for individual agents. After extrapolating that data to represent 20 % of the US population,  we scaled it up by a predetermined factor in the IPFP process to accurately delineate the complete picture. Our method also tries to reduce information entropy and limits the amount of error.
+
+        Once a mobility network has been assembled using our Machine Learning model, we intend to integrate it with the main simulation. We can then assign members of our synthetic population to each ‘role’ (POI) depending on their CBG and have a simulation that accurately tracks real-world behaviour, trends, demographics and restrictions such as stay-at-home orders.
+
+        In the future, we plan to utilize and compare Safegraph data over different months (eg, in January 2020, when there were no COVID restrictions, compared to March 2020, when regional lockdowns were in place) to search for notable patterns and supply our model different training sets. We also plan to incorporate more metrics such as how many people from each POI go to another POI, which will enhance the precision of our model.
+        The model also needs to account for the mobility networks of populations not included in the dataset such as prisoners, homeless individuals, children under 13, or adults without cell phones.
+
+</p>
+      </div>
+      <Toolbar></Toolbar>
+
+
+    </div>
+
+
+  );
+}
+
+function Post2(props) {
+  let history = useHistory();
+  const classes = useStyles();
+  return (
+
+    <div className="App">
+      <Toolbar></Toolbar>
+
+      <div className="center">
+
+        <h2 style={{ color: "black", fontWeight: 'bold', marginBottom: '-30px' }}>Simulation Development</h2>
+        <h4 style={{ color: "grey", fontWeight: 'bold', marginBottom: '-2px' }}>Learn more on the simulation process!</h4>
+        <div>
+          <div className="relative m-r-10 w-50 h-50 b-r-full" style={{ backgroundImage: 'url("https://webassets.mongodb.com/_com_assets/cms/Siya-adfnai3e2j.jpg")', backgroundSize: 'cover', backgroundPosition: 'center' }} />
+
+          <small>
+            <img class="photo" src="/iconPerson.png" />Author Name &#8226; March 2021
+          <PopupState variant="popover" popupId="demo-popup-menu">
+              {(popupState) => (
+                <React.Fragment>
+                  <IconButton aria-label="share" {...bindTrigger(popupState)}>
+                    <ShareIcon style={{ color: "black" }} />
+                  </IconButton>
+                  <Menu anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                    transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupState)}>
+                    <MenuItem style={{ color: "black" }} onClick={popupState.close}>
+                      <TwitterButton url={url}>
+                        <TwitterIcon fontSize="small" />
+                      </TwitterButton></MenuItem>
+                    <MenuItem style={{ color: "black" }} onClick={popupState.close}> <FacebookButton url={url} appId={"appId"}>
+                      <FacebookIcon fontSize="small" /> </FacebookButton>
+                    </MenuItem>
+                    <MenuItem style={{ color: "white" }} onClick={popupState.close}><EmailButton url={url}>
+                      <EmailIcon fontSize="small" />
+                    </EmailButton>
+
+                    </MenuItem>
+                  </Menu>
+                </React.Fragment>)}
+            </PopupState>
+          </small>
+          <br />
+
+        </div>
+
+        <aside>
+          <p class="black">
+            <IconButton aria-label="ArrowBackIos" onClick={() => history.goBack()}>
+              <ArrowBackIosIcon fontSize="small" /> <span style={{ fontSize: "18px" }}> Back </span>
+            </IconButton>
+            <br />
+            <span style={{ fontWeight: "bold" }}> About the Author:</span> <br /> Background on the author.</p>
+
+
+        </aside>
+        <p className={classes.text}>Currently, the simulation team is working on the severity risk matrix, which is how they decide whether an agent is asymptomatic, mild, severe, or critical after their incubation period is over after exposure. The figure below illustrates the different stages before reaching the severity risk matrix determination.</p>
+        <figure>
+          <div>
+            <img width="60%" height="40%" src="/blogpostPic3.png" alt=" " title="Severity Risk Matrix Determination" />
+            <figcaption>Figure 1 - Severity Risk Matrix Determination</figcaption>
+          </div>
+        </figure>
+        <p className={classes.text}>Currently, this is the proposed structure of the severity risk matrix.</p>
+        <figure>
+          <div>
+            <img src="/blogpostPic4.png" width="60%" height="40%" alt=" " title="Severity Risk Matrix" />
+            <figcaption>Figure 2 - Severity Risk Matrix</figcaption>
+          </div>
+        </figure>
+        <p className={classes.text}>For the remainder of the semester, the simulation team will work on tasks related to the population and submodule representation.
+        The population group will take the underlying health conditions and find distributions for population based on age and sex in order to distribute their findings to the synthetic population.
+        The submodule representation group will instantiate a module with submodules corresponding the facilities list used in the prototype. Using a 24-hour period, 3 trajectories will be created, where one trajectory has 24 nodes, representing a facility type: one for each of child, young adult, adult. Each person will be assigned a workplace and/or school corresponding to an appropriate submodule.
+        A trajectory may look something like this:
+        Home (12am - 8am) → Work (8am - 4pm) → Retail (4pm - 6pm) → Home (6pm onwards)
+        A person assigned ‘retail’ on their trajectory for the specific hour will be randomly assigned to a specific facility/submodule of that type. Each submodule should have a subgraph that connects people to each other.
+        For the upcoming semester, the team would like to focus on assigning the probability of infection in its simulations. To start out, the group will analyze the simulation with a constant probability of infection.
+        The steps are as follows:
+        Before the simulation starts, infect a few random people in the population.
+        Initially, all edge weights for each submodule graph can be set so that there’s a 30% chance someone gets infected if they are connected to an infected person.
+        The output will be plotted to show the infected vs. time graph using matplotlib, which is similar to the initial prototype simulation.
+        The Delineo team and simulation group also plan on implementing intervention for the upcoming semester.
+
+</p>
+      </div>
+      <Toolbar></Toolbar>
+
+
+    </div>
+
+
+  );
 }
 
 class BackButton {
-    handleClick = () => {
-        this.props.goBack();
-    };
+  handleClick = () => {
+    this.props.goBack();
+  };
 
-    render() {
-        return <Button variant="contained" color="primary" onClick={this.handleClick}>Go Back</Button>;
-    }
+  render() {
+    return <Button variant="contained" color="primary" onClick={this.handleClick}>Go Back</Button>;
+  }
 }
 
- 
-export default BlogPost;
+
+export { Post1 as default, Post2 };
