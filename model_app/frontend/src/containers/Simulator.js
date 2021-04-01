@@ -10,9 +10,9 @@ import Grid from "@material-ui/core/Grid";
 import Unity, { UnityContext } from "react-unity-webgl";
 
 const unityContext = new UnityContext({
-  loaderUrl: "./Build/VerMarch313.loader.js",
-  dataUrl: "./Build/VerMarch313.data",
-  frameworkUrl: "./Build/VerMarch313.framework.js",
+  loaderUrl: "./Build/VerMarch312.loader.js",
+  dataUrl: "./Build/VerMarch312.data",
+  frameworkUrl: "./Build/VerMarch312.framework.js",
   codeUrl: "./Build/VerMarch312.wasm",
 });
 
