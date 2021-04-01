@@ -34,8 +34,8 @@ import articles from '../const/devblogposts';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
+    backgroundColor: theme.palette.common.white,
+    color: theme.palette.common.black,
   },
   body: {
     color: theme.palette.common.white,
@@ -50,10 +50,10 @@ const StyledTableRow = withStyles((theme) => ({
     backgroundColor: '#383838',
     '&:nth-of-type(odd)': {
       color: theme.palette.common.white,
-      // backgroundColor: '#404040'
     },
     "&:hover": {
-      backgroundColor: '#484848'
+      backgroundColor: '#505050',
+      cursor:'pointer'
     },
     "&:onCellClick": {
       backgroundColor: "grey !important"
@@ -135,7 +135,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     marginBottom: '0 0px',
     marginTop: '0 0px',
-    color: "white",
+    color: "black",
 
   },
   authorDate: {
@@ -149,8 +149,9 @@ const useStyles = makeStyles((theme) => ({
   card: {
     maxWidth: "100%",
     position: 'relative',
+    backgroundColor: 'white',
     '&:hover' :{
-      backgroundColor: '#6bd1ca',
+      backgroundColor: '#66FCF1',
       textDecoration: 'none'
     }
   },
@@ -183,7 +184,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#222629'
   },
   media: {
-    height: 240
+    height: 240,
   },
   align: {
     textAlign: 'justifyContent'
@@ -325,7 +326,7 @@ function DevelopmentBlog(props) {
                               {(popupState) => (
                                 <React.Fragment>
                                   <IconButton aria-label="share" {...bindTrigger(popupState)}>
-                                    <ShareIcon style={{ color: "white" }} />
+                                    <ShareIcon style={{ color: "black" }} />
                                   </IconButton>
                                   <Menu anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
                                     transformOrigin={{ vertical: "top", horizontal: "center" }} {...bindMenu(popupState)}>
