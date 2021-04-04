@@ -1,4 +1,4 @@
-import GridList from './GridList';
+import GridList from './SectionGridList';
 import tileData from '../const/teamTileData.js';
 import { any } from 'prop-types';
 

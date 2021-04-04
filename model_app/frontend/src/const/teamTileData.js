@@ -1,6 +1,6 @@
 import image from '../images/person-icon.png';
 import rohAbiImg from '../images/Rohan Abichandani.JPG';
-import mehAgaImg from '../images/person-icon.png';
+import mehAgaImg from '../images/Mehul Agarwal.jpg';
 import eugAsaImg from '../images/person-icon.png';
 import chrBakImg from '../images/Christian Bakhit.jpg';
 import jonBakImg from '../images/Jonathan Bakhit.PNG';
@@ -12,7 +12,7 @@ import saiEarImg from '../images/Saidaman Earla.JPG';
 import aayGanImg from '../images/Aayush Gandhi.jpeg';
 import munJiaImg from '../images/person-icon.png';
 import kaiKoImg from '../images/Kai Ko.jpg';
-import jamHuaImg from '../images/person-icon.png';
+import jamHuaImg from '../images/Jamie Huang.jpg';
 import breLeeImg from '../images/Brendan_Lee.png';
 import melLeeImg from '../images/Melody Lee.jpg';
 import ireLiaImg from '../images/Irena Lian.jpeg';
@@ -38,6 +38,7 @@ import ryaYuImg from '../images/Ryan Yu.jpg';
 import jacZhaImg from '../images/Jack Zhang.jpg';
 import henNorImg from '../images/Henry Noren.JPG';
 import stepLiImg from '../images/Stephen Li.jpg';
+
 
 
 
