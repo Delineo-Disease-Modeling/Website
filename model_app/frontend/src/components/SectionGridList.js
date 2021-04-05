@@ -40,12 +40,14 @@ const useStyles = makeStyles((theme) => ({
 
   displayUnderTitle: {
     font: "Brush Script MT",
-    fontSize: 18,
+    fontSize: 16,
     border: 0,
     color: 'white',
     height: 10,
     paddingTop: 20,
     textAlign: 'center',
+    fontStyle: 'italic',
+
 
 
   },
@@ -133,7 +135,7 @@ export default function TitlebarGridList(tileData) {
 
                <div className={classes.displayUnder}>
                  <h4 className={classes.displayUnder}>{tile.name}</h4>
-                 <h4 className={classes.displayUnderTitle}>{tile.description}</h4>
+                 <h1 className={classes.displayUnderTitle}>{tile.description}</h1>
 
                </div>
 
