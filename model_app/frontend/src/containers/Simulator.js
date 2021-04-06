@@ -162,7 +162,15 @@ class Simulator extends Component {
           </Grid>
           <div className="GreenBackground">
             <h3>Unity Simulation: Anytown USA</h3>
-            <Unity unityContext={unityContext} />;
+            <Unity 
+              unityContext={unityContext}
+              style={{
+                height: "100%",
+                width: 950,
+                border: "2px solid black",
+                background: "grey",
+              }}
+            />;
           </div>
         </Grid>
       </div>
