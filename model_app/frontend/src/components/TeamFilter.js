@@ -307,7 +307,7 @@ class TeamFilter extends Component {
               ?  <div>
                     <br></br>
                     <div>
-                      <h2 className = {classes.h2} align='center'>Research Supervisor</h2>
+                      <h2 className = {classes.h2} align='center'>Principle Investigator</h2>
                       <br/>
                       <SupGridList/>
                       <h2 className = {classes.h2} align="center">Team Leaders</h2>
