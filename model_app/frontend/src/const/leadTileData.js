@@ -4,7 +4,7 @@ import serChanImg from '../images/person-icon.png';
 import matInsImg from '../images/mathias_insley.png';
 import steLiImg from '../images/Stephen Li.jpg';
 import henNorImg from '../images/Henry Noren.JPG';
-import ZoeKimImg from '../images/person-icon.png';
+import ZoeKimImg from '../images/Zoe Kim.jpg';
 
 const tileData = [
   {
