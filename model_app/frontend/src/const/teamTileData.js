@@ -1,6 +1,6 @@
 import image from '../images/person-icon.png';
 import rohAbiImg from '../images/Rohan Abichandani.JPG';
-import mehAgaImg from '../images/person-icon.png';
+import mehAgaImg from '../images/Mehul Agarwal.jpg';
 import eugAsaImg from '../images/person-icon.png';
 import chrBakImg from '../images/Christian Bakhit.jpg';
 import jonBakImg from '../images/Jonathan Bakhit.PNG';
@@ -10,9 +10,8 @@ import shaCaoImg from '../images/Shanelle Cao.jpg';
 import ameDehImg from '../images/Ameya Dehade.jpg';
 import saiEarImg from '../images/Saidaman Earla.JPG';
 import aayGanImg from '../images/Aayush Gandhi.jpeg';
-import munJiaImg from '../images/person-icon.png';
 import kaiKoImg from '../images/Kai Ko.jpg';
-import jamHuaImg from '../images/person-icon.png';
+import jamHuaImg from '../images/Jamie Huang.jpg';
 import breLeeImg from '../images/Brendan_Lee.png';
 import melLeeImg from '../images/Melody Lee.jpg';
 import ireLiaImg from '../images/Irena Lian.jpeg';
@@ -25,19 +24,32 @@ import yixPanImg from '../images/Yixin Pan.jpg';
 import josParImg from '../images/Joshua Park.JPG';
 import steLiImg from  '../images/Stella Li.png';
 import shaRakImg from '../images/Shardul Rakshit.jpg';
-import eugSonImg from '../images/person-icon.png';
+import eugSonImg from '../images/Eugene Song.jpg';
 import emeSulImg from '../images/Emerson_Sullivan.jpg';
 import oliWanImg from '../images/Olivia Wang.jpg';
 import aleWeiImg from '../images/Alex Wei.JPG';
 import oreWeiImg from '../images/Oren Wei.jpg';
 import peiXuImg from '../images/Peiyuan Xu.JPG';
-import daveYangImg from '../images/person-icon.png';
+import daveYangImg from '../images/Dave Yang.jpg';
 import davYanImg from '../images/David Yang.jpg';
-import jesYuImg from '../images/person-icon.png';
+import jesYuImg from '../images/Jessica Yu.jpg';
 import ryaYuImg from '../images/Ryan Yu.jpg';
 import jacZhaImg from '../images/Jack Zhang.jpg';
 import henNorImg from '../images/Henry Noren.JPG';
 import stepLiImg from '../images/Stephen Li.jpg';
+import ZoeKimImg from '../images/Zoe Kim.jpg';
+import tadBerImg from '../images/person-icon.png';
+import munJiaImg from '../images/MungYao Jia.jpg';
+import louDiBImg from '../images/Louie DiBernardo.jpg';
+import yinZhaImg from '../images/Ying Zhang.JPG';
+import serChaImg from '../images/Serena Chan.jpg';
+import yiCheImg from '../images/Yilin Chen.jpg';
+
+
+
+
+
+
 
 
 
@@ -265,7 +277,7 @@ const tileData = [
     description: 'Computer Science, Mathematics',
   },
   {
-    img: image,
+    img: ZoeKimImg,
     name: 'Zoe Kim',
     role: 'Information Support',
     description: '-',
@@ -277,23 +289,44 @@ const tileData = [
     description: 'Biomedical Engineering',
   },
   {
-    img: image,
+    img: yiCheImg,
     name: 'Yilin Chen',
     role: 'Simulation',
     description: 'Computer Science, Biophysics',
   },
   {
-    img: image,
+    img: serChaImg,
     name: 'Serena Chan',
     role: 'Simulation',
     description: 'Molecular and Cellular Biology, Women, Gender, and Sexuality',
   },
   {
-    img: stepLiImg,
-    name: 'Stephen Li',
-    role: 'ML',
-    description: 'Biomedical Engineering',
+    img: serChaImg,
+    name: 'Serena Chan',
+    role: 'Information Support',
+    description: 'Molecular and Cellular Biology, Women, Gender, and Sexuality',
   },
+  {
+    img: louDiBImg,
+    name: 'Louie DiBernardo',
+    role: 'Simulation',
+    description: 'Computer Science',
+  },
+
+  {
+    img: tadBerImg,
+    name: 'Tad Berkery',
+    role: 'Simulation',
+    description: 'Computer Science, Economics',
+  },
+
+  {
+    img: yinZhaImg,
+    name: 'Ying Zhang',
+    role: 'ML',
+    description: 'Applied Mathematics and Statistics, Computer Science',
+  },
+
 
 
 ];
