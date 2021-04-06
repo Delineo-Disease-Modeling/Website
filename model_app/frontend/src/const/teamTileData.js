@@ -35,14 +35,10 @@ import davYanImg from '../images/David Yang.jpg';
 import jesYuImg from '../images/Jessica Yu.jpg';
 import ryaYuImg from '../images/Ryan Yu.jpg';
 import jacZhaImg from '../images/Jack Zhang.jpg';
-import henNorImg from '../images/Henry Noren.JPG';
-import stepLiImg from '../images/Stephen Li.jpg';
-import ZoeKimImg from '../images/Zoe Kim.jpg';
 import tadBerImg from '../images/person-icon.png';
 import munJiaImg from '../images/MungYao Jia.jpg';
 import louDiBImg from '../images/Louie DiBernardo.jpg';
 import yinZhaImg from '../images/Ying Zhang.JPG';
-import serChaImg from '../images/Serena Chan.jpg';
 import yiCheImg from '../images/Yilin Chen.jpg';
 
 
@@ -217,12 +213,6 @@ const tileData = [
     description: 'Computer Science, Applied Math and Statistics',
   },
   {
-    img: emeSulImg,
-    name: 'Emerson Sullivan',
-    role: 'Simulation',
-    description: 'Computer Science',
-  },
-  {
     img: oliWanImg,
     name: 'Olivia Wang',
     role: 'ML',
@@ -277,34 +267,10 @@ const tileData = [
     description: 'Computer Science, Mathematics',
   },
   {
-    img: ZoeKimImg,
-    name: 'Zoe Kim',
-    role: 'Information Support',
-    description: '-',
-  },
-  {
-    img: henNorImg,
-    name: 'Henry Noren',
-    role: 'Simulation',
-    description: 'Biomedical Engineering',
-  },
-  {
     img: yiCheImg,
     name: 'Yilin Chen',
     role: 'Simulation',
     description: 'Computer Science, Biophysics',
-  },
-  {
-    img: serChaImg,
-    name: 'Serena Chan',
-    role: 'Simulation',
-    description: 'Molecular and Cellular Biology, Women, Gender, and Sexuality',
-  },
-  {
-    img: serChaImg,
-    name: 'Serena Chan',
-    role: 'Information Support',
-    description: 'Molecular and Cellular Biology, Women, Gender, and Sexuality',
   },
   {
     img: louDiBImg,
