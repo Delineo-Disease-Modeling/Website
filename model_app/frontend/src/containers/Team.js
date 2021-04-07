@@ -12,9 +12,9 @@ import Grid from '@material-ui/core/Grid';
 import { styled } from "@material-ui/core/styles";
 import { spacing } from "@material-ui/system";
 import MuiButton from "@material-ui/core/Button";
-import { withStyles } from '@material-ui/core';
+import { Container, withStyles } from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
-
+import TeamApplication from './TeamApplication'
 
 
 import './Team.css';
@@ -97,6 +97,8 @@ const Button = styled(MuiButton)(spacing);
 
 
    </div>
+
+
 
 </div>
  );

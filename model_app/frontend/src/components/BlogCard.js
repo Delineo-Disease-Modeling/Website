@@ -45,14 +45,6 @@ export default function BlogCard({
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="black">
-          Share
-        </Button>
-        <Button size="small" color="black">
-          Read More
-        </Button>
-      </CardActions>
     </Card>
   );
 }

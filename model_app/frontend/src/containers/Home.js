@@ -10,6 +10,7 @@ import blogfake2 from '../images/blogfake2.jpg';
 import blogfake3 from '../images/blogfake3.jpg';
 import HomeCarousel from '../components/Carousel';
 import TeamMemberJoin from '../images/teammemberjoin.jpg'
+import blogbackground from '../images/blogbackgroud.PNG'
 
 const styles = {
     button: {
@@ -60,7 +61,7 @@ const styles = {
         background: "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))",
         backgroundSize: "cover",
         color: "white",
-        height: "100vh",
+        height: "120vh",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -78,67 +79,24 @@ const styles = {
         }
     },
 
-    whiteBackground: {
-        backgroundColor: 'white',
-        marginBottom: '50px',
-        borderRadius: '30px 30px 30px 30px'
-    },
-
     blogSection: {
-
+        height: "65vh",
         padding: '20px 200px 60px 200px',
-        backgroundColor: '#d5d7db',
         overflow: 'hidden',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        
 
-        "> p": {
-            fontSize: '18px',
-            marginTop: '1rem',
-            marginBottom: '2rem',
-            color: 'lightgrey'
-        }
     },
 
     recent: {
-        color: '#212628',
+        color: 'black',
         //fontStyle: 'strong',
         fontSize: "40px",
-        marginTop: "30px"
+        marginTop: "30px",
+        marginBottom:"50px"
+        
     },
-
-    blogImg: {
-        backgroundColor: 'white',
-        maxWidth: ' 100%',
-        maxHeight: '100%',
-        borderRadius: '30px 30px 30px 30px',
-        overflow: 'hidden',
-    },
-
-    blogContainer: {
-        paddingTop: '30px',
-        textAlign: 'center',
-        backgroundColor: '#212628',
-        borderRadius: '30px 30px 30px 30px',
-        minHeight: '600px',
-        overflow: 'hidden',
-        margin: '25px'
-    },
-
-    blogText: {
-        fontSize: '18px',
-        marginTop: '1rem',
-        marginBottom: '2rem',
-        color: '#d8e2ee',
-        textAlign: 'left',
-    },
-
-    blogContent: {
-        padding: '20px'
-    },
-
-    imgContainer: {
-        padding: '0px 20px 20px 20px'
-    },
-
 
 };
 
@@ -165,9 +123,9 @@ class Home extends Component {
 
                 <HomeCarousel/>
 
-                <div className={classes.blogSection}>
-                    <Typography variant="h4" component="h2" gutterBottom className={classes.recent}>
-                        Read Our Blog Posts
+                <div className={classes.blogSection} style={{ backgroundImage:`url(${blogbackground})`}}>
+                    <Typography className={classes.recent}>
+                        Checkout Our Blogs
                     </Typography>
 
                     <Grid container spacing={10} >
@@ -199,11 +157,11 @@ class Home extends Component {
                     <div className="header-text">
                         <h1 style={{ fontSize: '50px', marginBottom: "30px"}}>We Are Delineo</h1>
                         <h5 style={{marginBottom: "30px"}}>Bring a fresh approach to the challenge of modeling the spread of pandemics</h5>
-                        <Button className={classes.bigButton} style={{marginRight: "30px"}} variant="contained" color="inherit" href="/simulator">
-                            Meet Our Team
+                        <Button className={classes.bigButton} style={{marginRight: "30px"}} variant="contained" color="inherit" href="/team">
+                            Meet the Team
                         </Button>
-                        <Button className={classes.bigButton} style={{marginLeft: "30px"}} variant="contained" color="inherit" href="/simulator">
-                            Join Our Team
+                        <Button className={classes.bigButton} style={{marginLeft: "30px"}} variant="contained" color="inherit" href="/teamapplication">
+                            Join the Team
                         </Button>
                     </div>
                 </div>
