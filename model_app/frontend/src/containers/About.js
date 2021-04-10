@@ -10,6 +10,8 @@ import Button from '../components/StyledButton';
 import faqData from '../const/faqData';
 import bgImg from '../images/Delineo-About.gif';
 import InfoBlock from '../components/InfoBlock';
+import SendIcon from '@material-ui/icons/Send';
+import { Send } from "@material-ui/icons";
 
 const styles = {
 
@@ -109,6 +111,22 @@ const styles = {
 	faqSlots: {
 		textAlign: 'left',
 		padding: '0 50px'
+	},
+	input: {
+		padding: '10px',
+		minWidth: '300px',
+		margin: '10px 30px'
+	},
+	form: {
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center'
+	},
+	button: {
+		marginTop: '30px'
+	},
+	contactSection: {
+		paddingTop: '70px'
 	}
 }
 
@@ -179,7 +197,6 @@ class About extends React.Component {
 		const { classes } = this.props;
 		return (
 			<div className={classes.cardBackground}>
-				<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 				<div > {/*className={classes.cardGreenBackground}*/}
 
 					<Typography variant="h2" component="h2" className={classes.title}>
@@ -229,7 +246,7 @@ class About extends React.Component {
 
 
 
-				<div className="w3-container w3-padding-32" id="contact" >
+				<div className={classes.contactSection} id="contact" >
 					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', color: 'black' }}>
 						Contact Us!
 					</Typography>
@@ -237,14 +254,13 @@ class About extends React.Component {
 					<Typography varient='h3' component="h2" style={{ color: 'black' }}>
 						Let's get in touch!
 					</Typography>
-					<form style={{ padding: '0 50px' }}>
-						<input className="w3-input w3-border" type="text" placeholder="Name" required name="Name" />
-						<input className="w3-input w3-section w3-border" type="text" placeholder="Email" required name="Email" />
-						<input className="w3-input w3-section w3-border" type="text" placeholder="Subject" required name="Subject" />
-						<input className="w3-input w3-section w3-border" type="text" placeholder="Comment" required name="Comment" />
-						<Button type="submit" size="large" varient='contained'>
-							< i className="fa fa-paper-plane"></i>
-								SEND MESSAGE
+					<form style={{ padding: '0 50px' }} className={classes.form} noValidate autoComplete="off">
+						<input className={classes.input} type="text" placeholder="Name" required name="Name" />
+						<input className={classes.input} type="text" placeholder="Email" required name="Email" />
+						<input className={classes.input} type="text" placeholder="Subject" required name="Subject" />
+						<input className={classes.input} type="text" placeholder="Comment" required name="Comment" />
+						<Button endIcon={<SendIcon/>} className={classes.button} type="submit" size="large" varient='contained'>
+							SEND MESSAGE
 						</Button>
 					</form>
 				</div>
