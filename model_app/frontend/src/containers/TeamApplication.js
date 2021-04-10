@@ -41,7 +41,7 @@ const TeamApplication = function TeamApplication() {
   const classes = useStyles();
 
   return (
-    <Container style={{ padding: '30px 20%', backgroundColor: '#66FCF1', margin: '0' }}>
+    <Container style={{ padding: '30px 20%', backgroundColor: '#222629', margin: '0' }}>
       <Card style={{ justifyContent: 'center', padding: '30px 15%', backgroundColor: 'white' }}>
 
         <Box py={2} bgcolor="white" style={{ color: "#222629" }} align="center" >
