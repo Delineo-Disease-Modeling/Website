@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import Accordion from '@material-ui/core/Accordion';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { withStyles } from '@material-ui/core/styles';
@@ -11,7 +11,6 @@ import faqData from '../const/faqData';
 import bgImg from '../images/Delineo-About.gif';
 import InfoBlock from '../components/InfoBlock';
 import SendIcon from '@material-ui/icons/Send';
-import { Send } from "@material-ui/icons";
 
 const styles = {
 
@@ -129,12 +128,12 @@ const styles = {
 		paddingTop: '70px'
 	},
 	description: {
-        fontSize: '16px',
-        letterSpacing: '1.2px',
-        color: 'black',
-		paddingBottom: '50px', 
+		fontSize: '16px',
+		letterSpacing: '1.2px',
+		color: 'black',
+		paddingBottom: '50px',
 		paddingTop: '50px'
-    },
+	},
 }
 
 const ColoredAccordion = withStyles({
@@ -192,7 +191,7 @@ const ColAccordionSummary = withStyles({
 	},
 })(MuiAccordionSummary);
 
-class About extends React.Component {
+class About extends Component {
 	constructor() {
 		super();
 		this.MapDescription = "The Johns Hopkins Coronavirus Resource Center (CRC) is a continuously updated source of COVID-19 data and expert guidance. We aggregate and analyze the best data available on COVID-19—including cases, as well as testing, contact tracing and vaccine efforts—to help the public, policymakers and healthcare professionals worldwide respond to the pandemic.";
@@ -202,75 +201,77 @@ class About extends React.Component {
 	render() {
 		const { classes } = this.props;
 		return (
-			<div className={classes.cardBackground}>
-				<div > {/*className={classes.cardGreenBackground}*/}
+			<React.Fragment>
+				<div className={classes.cardBackground}>
+					<div >
 
-					<Typography variant="h2" component="h2" className={classes.title}>
-						ABOUT DELINEO
+						<Typography variant="h2" component="h2" className={classes.title}>
+							ABOUT DELINEO
 					</Typography>
-					<div className={classes.border}></div>
-					<Typography variant="subtitle" component="h2" className={classes.subtitle}>
-						Disease Modeling Simulation at Johns Hopkins University
+						<div className={classes.border}></div>
+						<Typography variant="subtitle" component="h2" className={classes.subtitle}>
+							Disease Modeling Simulation at Johns Hopkins University
 					</Typography>
-					<img src={bgImg} alt="background" width='100%' height="700vh" />
+						<img src={bgImg} alt="background" width='100%' height="700vh" />
 
-					<InfoBlock background={'white'} subject={'visualization'} />
-					<InfoBlock background={'#d5d7db'} subject={'stimulation'} />
+						<InfoBlock background={'white'} subject={'visualization'} />
+						<InfoBlock background={'#d5d7db'} subject={'stimulation'} />
 
-				</div>
-				<div className={classes.faq} id="contact">
-					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', marginTop: '50px' }}>
-						FAQ
-					</Typography>
-					<div className={classes.underline}></div>
-					<div className={classes.faqSlots}>
-
-						{faqData.map((faq) => {
-							return (
-								<div style={{ padding: '10px' }}>
-									<ColAccordion>
-										<ColAccordionSummary
-											expandIcon={<ExpandMoreIcon />}
-											aria-controls="Model Param-content"
-											id="Model Param-header"
-											style={{ padding: '0 50px', fontWeight: '600' }}
-										>
-											{faq.question}
-										</ColAccordionSummary>
-										<AccordionDetails style={{ padding: '0 50px' }}>
-											<Typography className={classes.description}>
-												{faq.answer}
-											</Typography>
-										</AccordionDetails>
-
-									</ColAccordion>
-								</div>)
-						})}
 					</div>
-				</div>
-
-
-
-
-				<div className={classes.contactSection} id="contact" >
-					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', color: 'black' }}>
-						Contact Us!
+					<div className={classes.faq} id="contact">
+						<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', marginTop: '50px' }}>
+							FAQ
 					</Typography>
-					<div className={classes.underline}></div>
-					<Typography varient='h3' component="h2" style={{ color: 'black' }}>
-						Let's get in touch!
+						<div className={classes.underline}></div>
+						<div className={classes.faqSlots}>
+
+							{faqData.map((faq) => {
+								return (
+									<div style={{ padding: '10px' }}>
+										<ColAccordion>
+											<ColAccordionSummary
+												expandIcon={<ExpandMoreIcon />}
+												aria-controls="Model Param-content"
+												id="Model Param-header"
+												style={{ padding: '0 50px', fontWeight: '600' }}
+											>
+												{faq.question}
+											</ColAccordionSummary>
+											<AccordionDetails style={{ padding: '0 50px' }}>
+												<Typography className={classes.description}>
+													{faq.answer}
+												</Typography>
+											</AccordionDetails>
+
+										</ColAccordion>
+									</div>)
+							})}
+						</div>
+					</div>
+
+
+
+
+					<div className={classes.contactSection} id="contact" >
+						<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', color: 'black' }}>
+							Contact Us!
 					</Typography>
-					<form style={{ padding: '0 50px' }} className={classes.form} noValidate autoComplete="off">
-						<input className={classes.input} type="text" placeholder="Name" required name="Name" />
-						<input className={classes.input} type="text" placeholder="Email" required name="Email" />
-						<input className={classes.input} type="text" placeholder="Subject" required name="Subject" />
-						<input className={classes.input} type="text" placeholder="Comment" required name="Comment" />
-						<Button endIcon={<SendIcon/>} className={classes.button} type="submit" size="large" varient='contained'>
-							SEND MESSAGE
+						<div className={classes.underline}></div>
+						<Typography varient='h3' component="h2" style={{ color: 'black' }}>
+							Let's get in touch!
+					</Typography>
+						<form style={{ padding: '0 50px' }} className={classes.form} noValidate autoComplete="off">
+							<input className={classes.input} type="text" placeholder="Name" required name="Name" />
+							<input className={classes.input} type="text" placeholder="Email" required name="Email" />
+							<input className={classes.input} type="text" placeholder="Subject" required name="Subject" />
+							<input className={classes.input} type="text" placeholder="Comment" required name="Comment" />
+							<Button endIcon={<SendIcon />} className={classes.button} type="submit" size="large" varient='contained'>
+								SEND MESSAGE
 						</Button>
-					</form>
-				</div>
-			</div >
+						</form>
+					</div>
+				</div >
+			</React.Fragment>
 		);
 	}
 }
