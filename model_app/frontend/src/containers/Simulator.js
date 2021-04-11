@@ -8,6 +8,7 @@ import Accordion from "@material-ui/core/Accordion";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Unity, { UnityContext } from "react-unity-webgl";
+import Button from "@material-ui/core/Button";
 
 const unityContext = new UnityContext({
   loaderUrl: "./Build/April7.loader.js",
@@ -153,13 +154,18 @@ class Simulator extends Component {
                   <p>loading...</p>
                 ) : (
                   <div className="GreenBackground">
-                    <h3>Analysis</h3>
+                    <h3>Analysis YEE</h3>
                     <SimulationTimeseries infected={data[1]} deaths={data[2]} />
                   </div>
                 )
               ) : null}
             </div>
           </Grid>
+          <div>
+            <Button variant="contained" color="primary">
+                  Send dummy JSON
+            </Button>
+          </div>
           <div className="GreenBackground">
             <h3>Unity Simulation: Anytown USA</h3>
             <Unity 
