@@ -61,6 +61,8 @@ class Simulator extends Component {
       jobId: null,
     };
     this._isMounted = false;
+
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
@@ -140,6 +142,20 @@ class Simulator extends Component {
   }
   //<p style={{ textAlign: 'left', fontSize: '20px', color: '#66FCF1' }}>Model Parameters</p>
 
+  handleClick = () => {
+    console.log("button clicked");
+    axios.post('http://covidmod.local/', {
+      "maskWearing":0,"roomCapacity":0,"dailyTesting":0,"contactTracing":0,"stayHome":false
+    })
+    .then((response) => {
+      console.log("sent sent to server!");
+      console.log(response);
+    }, (error) => {
+      console.log(error);
+    });
+    console.log("request sent");
+  }
+
   render() {
     const { data, jobId, loading } = this.state;
 
@@ -162,7 +178,7 @@ class Simulator extends Component {
             </div>
           </Grid>
           <div>
-            <Button variant="contained" color="primary">
+            <Button className='button' variant="contained" color="primary" onClick={(e)=>this.handleClick(e)}>
                   Send dummy JSON
             </Button>
           </div>
