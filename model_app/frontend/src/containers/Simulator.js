@@ -8,12 +8,13 @@ import Accordion from "@material-ui/core/Accordion";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Unity, { UnityContext } from "react-unity-webgl";
+import Button from "@material-ui/core/Button";
 
 const unityContext = new UnityContext({
-  loaderUrl: "./Build/verMach312.loader.js",
-  dataUrl: "./Build/verMach312.data",
-  frameworkUrl: "./Build/verMach312.framework.js",
-  codeUrl: "./Build/verMach312.wasm",
+  loaderUrl: "./Build/April7.loader.js",
+  dataUrl: "./Build/April7.data",
+  frameworkUrl: "./Build/April7.framework.js",
+  codeUrl: "./Build/April7.wasm",
 });
 
 const ColoredAccordion = withStyles({
@@ -60,6 +61,8 @@ class Simulator extends Component {
       jobId: null,
     };
     this._isMounted = false;
+
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
@@ -139,6 +142,20 @@ class Simulator extends Component {
   }
   //<p style={{ textAlign: 'left', fontSize: '20px', color: '#66FCF1' }}>Model Parameters</p>
 
+  handleClick = () => {
+    console.log("button clicked");
+    axios.post('https://covidmod.isi.jhu.edu/', {
+      "maskWearing":0,"roomCapacity":0,"dailyTesting":0,"contactTracing":0,"stayHome":false
+    })
+    .then((response) => {
+      console.log("sent sent to server!");
+      console.log(response);
+    }, (error) => {
+      console.log(error);
+    });
+    console.log("request sent");
+  }
+
   render() {
     const { data, jobId, loading } = this.state;
 
@@ -153,16 +170,29 @@ class Simulator extends Component {
                   <p>loading...</p>
                 ) : (
                   <div className="GreenBackground">
-                    <h3>Analysis</h3>
+                    <h3>Analysis YEE</h3>
                     <SimulationTimeseries infected={data[1]} deaths={data[2]} />
                   </div>
                 )
               ) : null}
             </div>
           </Grid>
+          <div>
+            <Button className='button' variant="contained" color="primary" onClick={(e)=>this.handleClick(e)}>
+                  Send dummy JSON
+            </Button>
+          </div>
           <div className="GreenBackground">
             <h3>Unity Simulation: Anytown USA</h3>
-            <Unity unityContext={unityContext} />;
+            <Unity 
+              unityContext={unityContext}
+              style={{
+                height: "100%",
+                width: 950,
+                border: "2px solid black",
+                background: "grey",
+              }}
+            />;
           </div>
         </Grid>
       </div>

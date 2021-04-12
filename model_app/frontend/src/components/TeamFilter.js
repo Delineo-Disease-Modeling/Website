@@ -374,7 +374,6 @@ class TeamFilter extends Component {
           </div>
           : null
         }
-
       </div>
     );
   }
