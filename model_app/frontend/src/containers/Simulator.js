@@ -144,7 +144,7 @@ class Simulator extends Component {
 
   handleClick = () => {
     console.log("button clicked");
-    axios.post('http://covidmod.local/', {
+    axios.post('https://covidmod.isi.jhu.edu/', {
       "maskWearing":0,"roomCapacity":0,"dailyTesting":0,"contactTracing":0,"stayHome":false
     })
     .then((response) => {
