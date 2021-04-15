@@ -76,11 +76,10 @@ const styles = {
 
 	title: {
 		position: 'absolute',
-		top: '230px',
+		top: '210px',
 		left: '169px',
-		fontWeight: 'bold',
-		letterSpacing: '1.2px',
-		textShadow: '2px 2px 10px black'
+		letterSpacing: '1.5px',
+		textShadow: '2px 2px 15px black'
 	},
 
 	subtitle: {
@@ -209,9 +208,9 @@ class About extends Component {
 							ABOUT DELINEO
 					</Typography>
 						<div className={classes.border}></div>
-						<Typography variant="subtitle" component="h2" className={classes.subtitle}>
+						<Typography variant="h2" component="h2" className={classes.subtitle}>
 							Disease Modeling Simulation at Johns Hopkins University
-					</Typography>
+						</Typography>
 						<img src={bgImg} alt="background" width='100%' height="700vh" />
 
 						<InfoBlock background={'white'} subject={'visualization'} />
@@ -260,15 +259,19 @@ class About extends Component {
 						<Typography varient='h3' component="h2" style={{ color: 'black' }}>
 							Let's get in touch!
 					</Typography>
-						<form style={{ padding: '0 50px' }} className={classes.form} noValidate autoComplete="off">
-							<input className={classes.input} type="text" placeholder="Name" required name="Name" />
-							<input className={classes.input} type="text" placeholder="Email" required name="Email" />
-							<input className={classes.input} type="text" placeholder="Subject" required name="Subject" />
-							<input className={classes.input} type="text" placeholder="Comment" required name="Comment" />
-							<Button endIcon={<SendIcon />} className={classes.button} type="submit" size="large" varient='contained'>
-								SEND MESSAGE
-						</Button>
-						</form>
+						<Typography varient='h1' component="h2" style={{ color: 'black' }}>
+
+							<form style={{ padding: '0 50px' }} className={classes.form} noValidate autoComplete="off">
+								<input className={classes.input} type="text" placeholder="Name" required name="Name" />
+								<input className={classes.input} type="text" placeholder="Email" required name="Email" />
+								<input className={classes.input} type="text" placeholder="Subject" required name="Subject" />
+								<input className={classes.input} type="text" placeholder="Comment" required name="Comment" />
+
+								<Button endIcon={<SendIcon />} className={classes.button} type="submit" size="large" varient='contained'>
+									SEND MESSAGE
+								</Button>
+							</form>
+						</Typography>
 					</div>
 				</div >
 			</React.Fragment>

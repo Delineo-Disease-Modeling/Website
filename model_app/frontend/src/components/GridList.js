@@ -43,8 +43,8 @@ const useStyles = makeStyles((theme) => ({
     border: 0,
     color: 'white',
     height: 10,
-    paddingTop: 20,
-    textAlign: 'center',]
+    paddingTop: 30,
+    textAlign: 'center',
     fontStyle: 'italic',
   },
 
