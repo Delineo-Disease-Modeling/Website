@@ -18,13 +18,15 @@ export const theme = createMuiTheme({
     primary: {
       main: ''
     },
-  
+
   },
 
   typography: {
-    primary: {
-      main: 'Calibri',
-    }
+    "fontFamily": `"Montserrat", "Helvetica", "Arial", sans-serif`,
+    "fontSize": 14,
+    "fontWeightLight": 300,
+    "fontWeightRegular": 400,
+    "fontWeightMedium": 500
   }
 });
 

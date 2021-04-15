@@ -14,6 +14,7 @@ import { spacing } from "@material-ui/system";
 import MuiButton from "@material-ui/core/Button";
 import { withStyles } from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography'
 
 
 
@@ -87,7 +88,7 @@ const Button = styled(MuiButton)(spacing);
 
 
       <div className = {classes.MainHeader} align ='center' >
-        <h3 className = {classes.h3} align="center" >Meet the Team</h3>
+      <Typography varient='h3' className={classes.h3} align="center" >Meet the Team</Typography>
 
       </div>
 
