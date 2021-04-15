@@ -3,7 +3,7 @@ import rohAbiImg from '../images/Rohan Abichandani.JPG';
 import mehAgaImg from '../images/Mehul Agarwal.jpg';
 import eugAsaImg from '../images/person-icon.png';
 import chrBakImg from '../images/Christian Bakhit.jpg';
-import jonBakImg from '../images/Jonathan Bakhit.PNG';
+import jonBakImg from '../images/Jonathan Bakhit.jpg';
 import ariBaoImg from '../images/Ariel Bao.jpg';
 import sebCabImg from '../images/Sebastian Cabrejos.jpg';
 import shaCaoImg from '../images/Shanelle Cao.jpg';
