@@ -11,10 +11,10 @@ import Unity, { UnityContext } from "react-unity-webgl";
 import Button from "@material-ui/core/Button";
 
 const unityContext = new UnityContext({
-  loaderUrl: "./Build/Arpil14(3).loader.js",
-  dataUrl: "./Build/Arpil14(3).data",
-  frameworkUrl: "./Build/Arpil14(3).framework.js",
-  codeUrl: "./Build/Arpil14(3).wasm",
+  loaderUrl: "./Build/April15.loader.js",
+  dataUrl: "./Build/April15.data",
+  frameworkUrl: "./Build/April15.framework.js",
+  codeUrl: "./Build/April15.wasm",
 });
 
 const ColoredAccordion = withStyles({
@@ -102,7 +102,7 @@ class Simulator extends Component {
     };
     this._isMounted = false;
 
-    this.handleClick = this.handleClick.bind(this)
+    //this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
@@ -182,6 +182,8 @@ class Simulator extends Component {
   }
   //<p style={{ textAlign: 'left', fontSize: '20px', color: '#66FCF1' }}>Model Parameters</p>
 
+
+  /*
   handleClick = () => {
     console.log("button clicked");
     axios.post('https://covidmod.isi.jhu.edu/', {
@@ -195,6 +197,7 @@ class Simulator extends Component {
     });
     console.log("request sent");
   }
+  */
 
   render() {
     const { data, jobId, loading } = this.state;
@@ -218,16 +221,16 @@ class Simulator extends Component {
               ) : null}
             </div>
           </Grid>
-          <div>
-            <Button className='button' variant="contained" color="primary" onClick={(e)=>this.handleClick(e)}>
-                  Send dummy JSON
-            </Button>
-          </div>
           <div className="GreenBackground">
+<<<<<<< HEAD
             <h3>Unity Simulation: Anytown USA</h3>
             <div className={classes.h3} align='center'> Members of the fullstack team work throughout the stack. Our web application is built using the MERN stack (MongoDB, Express, ReactJS, NodeJS) and Unity Webgl. Members of this team also manage and access our geolocation data.</div>
             <br></br>
             <Unity
+=======
+            <h3>Welcome to Anytown, USA</h3>
+            <Unity 
+>>>>>>> master
               unityContext={unityContext}
               style={{
                 height: "100%",

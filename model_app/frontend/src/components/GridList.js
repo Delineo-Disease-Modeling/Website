@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
+import GridList from '@material-ui/core/GridList';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,9 +44,11 @@ const useStyles = makeStyles((theme) => ({
     border: 0,
     color: 'white',
     height: 10,
-    paddingTop: 20,
-    textAlign: 'center',]
+    paddingTop: 30,
+    textAlign: 'center',
     fontStyle: 'italic',
+
+
   },
 
 
@@ -130,8 +133,8 @@ export default function TitlebarGridList(tileData) {
              <center>
 
                <div className={classes.displayUnder}>
-                 <Typography varient='h4' className={classes.displayUnder}>{tile.name}</Typography>
-                 <Typography className={classes.displayUnderTitle}>{tile.role}</Typography>
+                 <h4 className={classes.displayUnder}>{tile.name}</h4>
+                 <h4 className={classes.displayUnderTitle}>{tile.role}</h4>
 
                </div>
 

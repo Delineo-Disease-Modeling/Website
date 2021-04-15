@@ -41,6 +41,7 @@ class Header extends Component{
             color:'#66FCF1', 
             borderBottom: '1px solid #66FCF1', 
             paddingBottom: '4px', 
+        
         }
 
         return (
