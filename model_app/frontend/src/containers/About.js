@@ -1,6 +1,7 @@
 import React from "react";
 import Accordion from '@material-ui/core/Accordion';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import SendIcon from '@material-ui/icons/Send';
 import { withStyles } from '@material-ui/core/styles';
 import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
@@ -184,11 +185,11 @@ class About extends React.Component {
 					<Typography variant="h2" component="h2" className={classes.title}>
 						ABOUT DELINEO
 					</Typography>
-						<div className={classes.border}></div>
-						<Typography variant="h2" component="h2" className={classes.subtitle}>
-							Disease Modeling Simulation at Johns Hopkins University
+					<div className={classes.border}></div>
+					<Typography variant="h2" component="h2" className={classes.subtitle}>
+						Disease Modeling Simulation at Johns Hopkins University
 						</Typography>
-						<img src={bgImg} alt="background" width='100%' height="700vh" />
+					<img src={bgImg} alt="background" width='100%' height="700vh" />
 
 					<InfoBlock background={'white'} subject={'visualization'} />
 					<InfoBlock background={'#d5d7db'} subject={'stimulation'} />
@@ -236,22 +237,21 @@ class About extends React.Component {
 					<Typography varient='h3' component="h2" style={{ color: 'black' }}>
 						Let's get in touch!
 					</Typography>
-						<Typography varient='h1' component="h2" style={{ color: 'black' }}>
+					<Typography varient='h1' component="h2" style={{ color: 'black' }}>
 
-							<form style={{ padding: '0 50px' }} className={classes.form} noValidate autoComplete="off">
-								<input className={classes.input} type="text" placeholder="Name" required name="Name" />
-								<input className={classes.input} type="text" placeholder="Email" required name="Email" />
-								<input className={classes.input} type="text" placeholder="Subject" required name="Subject" />
-								<input className={classes.input} type="text" placeholder="Comment" required name="Comment" />
+						<form style={{ padding: '0 50px' }} className={classes.form} noValidate autoComplete="off">
+							<input className={classes.input} type="text" placeholder="Name" required name="Name" />
+							<input className={classes.input} type="text" placeholder="Email" required name="Email" />
+							<input className={classes.input} type="text" placeholder="Subject" required name="Subject" />
+							<input className={classes.input} type="text" placeholder="Comment" required name="Comment" />
 
-								<Button endIcon={<SendIcon />} className={classes.button} type="submit" size="large" varient='contained'>
-									SEND MESSAGE
+							<Button endIcon={<SendIcon />} className={classes.button} type="submit" size="large" varient='contained'>
+								SEND MESSAGE
 								</Button>
-							</form>
-						</Typography>
-					</div>
-				</div >
-			</React.Fragment>
+						</form>
+					</Typography>
+				</div>
+			</div >
 		);
 	}
 }
