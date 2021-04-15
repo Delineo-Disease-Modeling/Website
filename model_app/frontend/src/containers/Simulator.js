@@ -62,7 +62,7 @@ class Simulator extends Component {
     };
     this._isMounted = false;
 
-    this.handleClick = this.handleClick.bind(this)
+    //this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
@@ -142,6 +142,8 @@ class Simulator extends Component {
   }
   //<p style={{ textAlign: 'left', fontSize: '20px', color: '#66FCF1' }}>Model Parameters</p>
 
+
+  /*
   handleClick = () => {
     console.log("button clicked");
     axios.post('https://covidmod.isi.jhu.edu/', {
@@ -155,6 +157,7 @@ class Simulator extends Component {
     });
     console.log("request sent");
   }
+  */
 
   render() {
     const { data, jobId, loading } = this.state;
@@ -177,13 +180,8 @@ class Simulator extends Component {
               ) : null}
             </div>
           </Grid>
-          <div>
-            <Button className='button' variant="contained" color="primary" onClick={(e)=>this.handleClick(e)}>
-                  Send dummy JSON
-            </Button>
-          </div>
           <div className="GreenBackground">
-            <h3>Unity Simulation: Anytown USA</h3>
+            <h3>Welcome to Anytown, USA</h3>
             <Unity 
               unityContext={unityContext}
               style={{
