@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Accordion from '@material-ui/core/Accordion';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { withStyles } from '@material-ui/core/styles';
@@ -10,7 +10,6 @@ import Button from '../components/StyledButton';
 import faqData from '../const/faqData';
 import bgImg from '../images/Delineo-About.gif';
 import InfoBlock from '../components/InfoBlock';
-import SendIcon from '@material-ui/icons/Send';
 
 const styles = {
 
@@ -109,30 +108,7 @@ const styles = {
 	faqSlots: {
 		textAlign: 'left',
 		padding: '0 50px'
-	},
-	input: {
-		padding: '10px',
-		minWidth: '300px',
-		margin: '10px 30px'
-	},
-	form: {
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center'
-	},
-	button: {
-		marginTop: '30px'
-	},
-	contactSection: {
-		paddingTop: '70px'
-	},
-	description: {
-		fontSize: '16px',
-		letterSpacing: '1.2px',
-		color: 'black',
-		paddingBottom: '50px',
-		paddingTop: '50px'
-	},
+	}
 }
 
 const ColoredAccordion = withStyles({
@@ -165,7 +141,7 @@ const ColAccordion = withStyles({
 		},
 		'&$expanded': {
 			margin: 'auto',
-			// boxShadow: 'inset 0px 0px 5px black',
+			boxShadow: 'inset 0px 0px 5px black',
 		},
 	},
 	expanded: {},
@@ -177,6 +153,7 @@ const ColAccordionSummary = withStyles({
 		borderBottom: '0px solid rgba(0, 0, 0, .125)',
 		marginBottom: 0,
 		minHeight: 56,
+		borderRadius: '15px',
 		'&$expanded': {
 			minHeight: 56,
 		},
@@ -190,7 +167,7 @@ const ColAccordionSummary = withStyles({
 	},
 })(MuiAccordionSummary);
 
-class About extends Component {
+class About extends React.Component {
 	constructor() {
 		super();
 		this.MapDescription = "The Johns Hopkins Coronavirus Resource Center (CRC) is a continuously updated source of COVID-19 data and expert guidance. We aggregate and analyze the best data available on COVID-19—including cases, as well as testing, contact tracing and vaccine efforts—to help the public, policymakers and healthcare professionals worldwide respond to the pandemic.";
@@ -200,12 +177,12 @@ class About extends Component {
 	render() {
 		const { classes } = this.props;
 		return (
-			<React.Fragment>
-				<div className={classes.cardBackground}>
-					<div >
+			<div className={classes.cardBackground}>
+				<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+				<div > {/*className={classes.cardGreenBackground}*/}
 
-						<Typography variant="h2" component="h2" className={classes.title}>
-							ABOUT DELINEO
+					<Typography variant="h2" component="h2" className={classes.title}>
+						ABOUT DELINEO
 					</Typography>
 						<div className={classes.border}></div>
 						<Typography variant="h2" component="h2" className={classes.subtitle}>
@@ -213,51 +190,51 @@ class About extends Component {
 						</Typography>
 						<img src={bgImg} alt="background" width='100%' height="700vh" />
 
-						<InfoBlock background={'white'} subject={'visualization'} />
-						<InfoBlock background={'#d5d7db'} subject={'stimulation'} />
+					<InfoBlock background={'white'} subject={'visualization'} />
+					<InfoBlock background={'#d5d7db'} subject={'stimulation'} />
 
-					</div>
-					<div className={classes.faq} id="contact">
-						<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', marginTop: '50px' }}>
-							FAQ
+				</div>
+				<div className={classes.faq} id="contact">
+					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', marginTop: '50px' }}>
+						FAQ
 					</Typography>
-						<div className={classes.underline}></div>
-						<div className={classes.faqSlots}>
+					<div className={classes.underline}></div>
+					<div className={classes.faqSlots}>
 
-							{faqData.map((faq) => {
-								return (
-									<div style={{ padding: '10px' }}>
-										<ColAccordion>
-											<ColAccordionSummary
-												expandIcon={<ExpandMoreIcon />}
-												aria-controls="Model Param-content"
-												id="Model Param-header"
-												style={{ padding: '0 50px', fontWeight: '600' }}
-											>
-												{faq.question}
-											</ColAccordionSummary>
-											<AccordionDetails style={{ padding: '0 50px' }}>
-												<Typography className={classes.description}>
-													{faq.answer}
-												</Typography>
-											</AccordionDetails>
+						{faqData.map((faq) => {
+							return (
+								<div style={{ padding: '10px' }}>
+									<ColAccordion>
+										<ColAccordionSummary
+											expandIcon={<ExpandMoreIcon />}
+											aria-controls="Model Param-content"
+											id="Model Param-header"
+											style={{ padding: '0 50px' }}
+										>
+											{faq.question}
+										</ColAccordionSummary>
+										<AccordionDetails style={{ padding: '0 50px' }}>
+											<Typography style={{ color: 'black', paddingBottom: '50px' }}>
+												{faq.answer}
+											</Typography>
+										</AccordionDetails>
 
-										</ColAccordion>
-									</div>)
-							})}
-						</div>
+									</ColAccordion>
+								</div>)
+						})}
 					</div>
+				</div>
 
 
 
 
-					<div className={classes.contactSection} id="contact" >
-						<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', color: 'black' }}>
-							Contact Us!
+				<div className="w3-container w3-padding-32" id="contact" >
+					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', color: 'black' }}>
+						Contact Us!
 					</Typography>
-						<div className={classes.underline}></div>
-						<Typography varient='h3' component="h2" style={{ color: 'black' }}>
-							Let's get in touch!
+					<div className={classes.underline}></div>
+					<Typography varient='h3' component="h2" style={{ color: 'black' }}>
+						Let's get in touch!
 					</Typography>
 						<Typography varient='h1' component="h2" style={{ color: 'black' }}>
 

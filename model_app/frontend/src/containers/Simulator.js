@@ -11,10 +11,10 @@ import Unity, { UnityContext } from "react-unity-webgl";
 import Button from "@material-ui/core/Button";
 
 const unityContext = new UnityContext({
-  loaderUrl: "./Build/April7.loader.js",
-  dataUrl: "./Build/April7.data",
-  frameworkUrl: "./Build/April7.framework.js",
-  codeUrl: "./Build/April7.wasm",
+  loaderUrl: "./Build/April15.loader.js",
+  dataUrl: "./Build/April15.data",
+  frameworkUrl: "./Build/April15.framework.js",
+  codeUrl: "./Build/April15.wasm",
 });
 
 const ColoredAccordion = withStyles({
