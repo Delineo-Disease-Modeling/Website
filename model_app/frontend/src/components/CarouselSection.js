@@ -1,6 +1,7 @@
 import React from 'react';
 import Carousel from 'react-material-ui-carousel'
 import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
 
 export default function CarouselSection(captions, images) {
     return (
@@ -17,7 +18,7 @@ export default function CarouselSection(captions, images) {
 function Item(props) {
     return (
         <Paper style={{padding: '30px', borderRadius: '15px', backgroundColor: 'transparent', border: '2px solid black'}} >
-            <h2 style={{color: 'black'}}>{props.caption}</h2>
+            <Typography varient='h2' component='h2' style={{color: 'black', fontSize: '36px'}}>{props.caption}</Typography>
             <img style={{width: '100%', height: '400px'}} src={props.image} />
         </Paper>
     )
