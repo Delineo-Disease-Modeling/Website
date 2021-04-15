@@ -20,18 +20,20 @@ const useStyles = makeStyles((theme) => ({
   },
 
   displayUnder: {
-    font: "Brush Script MT",
-    fontSize: 27,
+    fontSize: 25,
     border: 0,
+
     color: 'white',
     height: 10,
     paddingTop: 10,
     paddingBottom: 5,
     textAlign: 'center',
+    fontWeight: 'bold'
+
+
   },
 
   displayUnderTitle: {
-    font: "Brush Script MT",
     fontSize: 16,
     border: 0,
     color: 'white',
@@ -39,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: 30,
     textAlign: 'center',
     fontStyle: 'italic',
+
+
+
   },
 
 

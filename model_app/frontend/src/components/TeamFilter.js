@@ -19,6 +19,8 @@ import FullStackGridList from '../components/FullStackGridList.js';
 import SimGridList from "../components/SimGridList.js";
 import MLGridList from '../components/MLGridList.js';
 import InfoTeamGridList from '../components/InfoTeamGridList.js';
+import PastGridList from '../components/PastGridList.js';
+
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -307,7 +309,7 @@ class TeamFilter extends Component {
           ? <div>
             <br></br>
             <div>
-              <Typography varient='h2' className={classes.h2} align='center'>Principle Investigator</Typography>
+              <Typography varient='h2' className={classes.h2} align='center'>Research Supervisor</Typography>
               <br />
               <SupGridList />
               <Typography varient='h2' className={classes.h2} align="center">Team Leaders</Typography>
@@ -316,6 +318,10 @@ class TeamFilter extends Component {
               <Typography varient='h2' className={classes.h2} align="center">Team Members</Typography>
               <br />
               <TeamGridList></TeamGridList>
+              <Typography varient='h2' className={classes.h2} align="center">Past Members</Typography>
+              <br />
+              <PastGridList />
+
             </div>
           </div>
 
@@ -328,7 +334,7 @@ class TeamFilter extends Component {
               <Typography varient='h3' className={classes.h3} align='center'>Members of the fullstack team work throughout the stack. Our web application is built using the MERN stack (MongoDB, Express, ReactJS, NodeJS) and Unity Webgl. Members of this team also manage and access our geolocation data.</Typography>
             </div>
             <div>
-              <Typography varient='h2' className={classes.h2} align="left">Team Members</Typography>
+            <Typography varient='h2' className={classes.h2} align="left">Team Members</Typography>
               <br />
               <FullStackGridList></FullStackGridList>
             </div>
@@ -341,7 +347,7 @@ class TeamFilter extends Component {
               <Typography varient='h3' className={classes.h3} align='center'>The simulation team is responsible for the implementation of the simulation that lies at the heart of the Delineo project. Team members focus on programming the various modules, algorithms, and statistical drivers that are utilized in our models.</Typography>
             </div>
             <div >
-              <Typography varient='h2' className={classes.h2} align="left">Team Members</Typography>
+            <Typography varient='h2' className={classes.h2} align="left">Team Members</Typography>
               <br />
               <SimGridList></SimGridList>
             </div>
@@ -374,7 +380,6 @@ class TeamFilter extends Component {
           </div>
           : null
         }
-
       </div>
     );
   }
