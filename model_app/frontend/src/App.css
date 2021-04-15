@@ -31,11 +31,6 @@ address{
 .App {
   text-align: center;
 }
-
-@font-face {
-  font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
-  src: url();
-}
 /*
 .App-logo {
   height: 40vmin;
