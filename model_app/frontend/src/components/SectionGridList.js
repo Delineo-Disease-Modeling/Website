@@ -135,7 +135,7 @@ export default function TitlebarGridList(tileData) {
 
                <div className={classes.displayUnder}>
                  <h4 className={classes.displayUnder}>{tile.name}</h4>
-                 <h1 className={classes.displayUnderTitle}>{tile.description}</h1>
+                 <h4 className={classes.displayUnderTitle}>{tile.description}</h4>
 
                </div>
 

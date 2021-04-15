@@ -25,9 +25,30 @@ const ColoredAccordion = withStyles({
   },
 })(Accordion);
 
+
+const styles = {
+  h3: {
+    color: 'white',
+    marginRight: 100,
+    marginLeft: 100,
+
+    width: 'fit-content',
+
+    fontSize: 20,
+    textAlign: 'left',
+    alignSelf: 'center',
+    alignItems: 'center',
+     borderRadius: '25px',
+     border: '2px solid #2f3538',
+     padding: '20px 20px 20px 20px',
+    backgroundColor: '#2f3538'
+
+  },
+}
+
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor:'#222629',
     width: 400,
     position: "relative",
     minHeight: 200,
@@ -45,6 +66,25 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     top: 90,
     height: "90%",
+  },
+  h3: {
+    color: 'white',
+    marginRight: 100,
+    marginLeft: 100,
+    marginTop: 40,
+
+    width: 'fit-content',
+
+    fontSize: 20,
+    textAlign: 'center',
+    alignSelf: 'center',
+    alignItems: 'center',
+     borderRadius: '25px',
+     border: '2px solid #2f3538',
+     padding: '20px 20px 20px 20px',
+    backgroundColor: '#2f3538'
+
+
   },
 }));
 
@@ -158,6 +198,7 @@ class Simulator extends Component {
 
   render() {
     const { data, jobId, loading } = this.state;
+    const { classes } = this.props;
 
     // no timeseries: replace with simulation timeseries
     return (
@@ -184,7 +225,9 @@ class Simulator extends Component {
           </div>
           <div className="GreenBackground">
             <h3>Unity Simulation: Anytown USA</h3>
-            <Unity 
+            <div className={classes.h3} align='center'> Members of the fullstack team work throughout the stack. Our web application is built using the MERN stack (MongoDB, Express, ReactJS, NodeJS) and Unity Webgl. Members of this team also manage and access our geolocation data.</div>
+            <br></br>
+            <Unity
               unityContext={unityContext}
               style={{
                 height: "100%",
@@ -200,4 +243,4 @@ class Simulator extends Component {
   }
 }
 
-export default Simulator;
+export default withStyles(styles)(Simulator);
