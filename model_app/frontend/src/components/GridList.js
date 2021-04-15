@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     border: 0,
     color: 'white',
     height: 10,
-    paddingTop: 20,
+    paddingTop: 30,
     textAlign: 'center',
     fontStyle: 'italic',
 

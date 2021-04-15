@@ -97,7 +97,7 @@ export default function InfoBlock(props) {
                     {description}
                 </Typography>
 
-                <Button href='#top' size='large' color='inherit' style={{color: 'black'}}>
+                <Button href='#top' size='large' color='inherit' >
                     {buttontxt}
                 </Button>
 
