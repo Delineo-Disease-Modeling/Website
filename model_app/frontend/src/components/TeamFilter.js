@@ -1,25 +1,18 @@
 import React, { Component } from 'react';
 
-
-
-import leaders from '../const/leader.js';
-import members from '../const/member.js';
+//These imports are for the default team page view
 import TeamGridList from '../components/TeamGridList.js'
 import SupGridList from '../components/SupGridList.js'
 import LeadGridList from '../components/LeaderGridList.js'
-import { makeStyles } from '@material-ui/core/styles';
-import FunctionClick from '../components/FunctionClick'
-import Grid from '@material-ui/core/Grid';
-import { styled } from "@material-ui/core/styles";
-import { spacing } from "@material-ui/system";
+import PastTeamGridList from '../components/PastTeamGridList.js'
 import Button from "@material-ui/core/Button";
 import { withStyles } from '@material-ui/core';
 
+//These imports are for when someone actually wants to filter
 import FullStackGridList from '../components/FullStackGridList.js';
 import SimGridList from "../components/SimGridList.js";
 import MLGridList from '../components/MLGridList.js';
 import InfoTeamGridList from '../components/InfoTeamGridList.js';
-import PastGridList from '../components/PastGridList.js';
 
 
 import List from '@material-ui/core/List';
@@ -309,7 +302,7 @@ class TeamFilter extends Component {
           ? <div>
             <br></br>
             <div>
-              <Typography varient='h2' className={classes.h2} align='center'>Research Supervisor</Typography>
+              <Typography varient='h2' className={classes.h2} align='center'>Principle Investigator</Typography>
               <br />
               <SupGridList />
               <Typography varient='h2' className={classes.h2} align="center">Team Leaders</Typography>
@@ -320,7 +313,7 @@ class TeamFilter extends Component {
               <TeamGridList></TeamGridList>
               <Typography varient='h2' className={classes.h2} align="center">Past Members</Typography>
               <br />
-              <PastGridList />
+              <PastTeamGridList></PastTeamGridList>
 
             </div>
           </div>
