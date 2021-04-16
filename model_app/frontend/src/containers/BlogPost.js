@@ -55,7 +55,7 @@ function Post1(props) {
           <div className="relative m-r-10 w-50 h-50 b-r-full" style={{ backgroundImage: 'url("https://webassets.mongodb.com/_com_assets/cms/Siya-adfnai3e2j.jpg")', backgroundSize: 'cover', backgroundPosition: 'center' }} />
 
           <small>
-            <img class="photo" src="/iconPerson.png" />Author Name &#8226; March 2021
+            <img class="photo" src="/iconPerson.png" />Ameya Dehade &#8226; March 2021
           <PopupState variant="popover" popupId="demo-popup-menu">
               {(popupState) => (
                 <React.Fragment>
@@ -101,7 +101,7 @@ function Post1(props) {
             <figcaption>Figure 1 - Person of Interest Visual</figcaption>
           </div>
         </figure>
-        <p className={classes.text}>Data company Safegraph provides our model with accurate datasets outlining how many people from each CBG arrive at a particular POI every hour. In line with the value we place in users’ privacy, Safegraph data is completely anonymous and does not reveal any identifying information. We leverage this dataset to construct a CBG Marginal and a POI Marginal that are linked to the Visit Matrix which records the number of people travelling from a Census Block Group to a Point of Interest. Since all POI’s have varying durations of visit, we made two assumptions. One, that each visitor to a POI spends a median length of time calculated in that POI and two, that each new visitor in a POI is equally likely to arrive again any time from that time to the next hour. Extreme outliers are also truncated. The Dwell Time Correction Factor is then used to adjust the CBG and POI values, which are used in IPFP to calculate the adjusted visitor matrix that can serve as a probabilistic model for the general mobility network.</p>
+        <p className={classes.text}>The data company Safegraph provides our model with accurate datasets outlining how many people from each CBG arrive at a particular POI every hour. In line with the value we place in users’ privacy, Safegraph data is completely anonymous and does not reveal any identifying information. We leverage this dataset to construct a CBG Marginal and a POI Marginal that are linked to the Visit Matrix which records the number of people travelling from a Census Block Group to a Point of Interest. Since all POI’s have varying durations of visit, we made two assumptions. One, that each visitor to a POI spends a median length of time calculated in that POI and two, that each new visitor in a POI is equally likely to arrive again any time from that time to the next hour. Extreme outliers are also truncated. The Dwell Time Correction Factor is then used to adjust the CBG and POI values, which are used in IPFP to calculate the adjusted visitor matrix that can serve as a probabilistic model for the general mobility network.</p>
         <figure>
           <div>
             <img src="/blogpostPic2.png" alt=" " title="Visit Matrix Visual" />
@@ -142,7 +142,7 @@ function Post2(props) {
           <div className="relative m-r-10 w-50 h-50 b-r-full" style={{ backgroundImage: 'url("https://webassets.mongodb.com/_com_assets/cms/Siya-adfnai3e2j.jpg")', backgroundSize: 'cover', backgroundPosition: 'center' }} />
 
           <small>
-            <img class="photo" src="/iconPerson.png" />Author Name &#8226; March 2021
+            <img class="photo" src="/iconPerson.png" />Ameya Dehade &#8226; March 2021
           <PopupState variant="popover" popupId="demo-popup-menu">
               {(popupState) => (
                 <React.Fragment>

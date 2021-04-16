@@ -1,10 +1,6 @@
 import React from 'react'
 
-import leaders from '../const/leader.js';
-import members from '../const/member.js';
-import TeamGridList from '../components/TeamGridList.js'
-import SupGridList from '../components/SupGridList.js'
-import LeadGridList from '../components/LeaderGridList.js'
+//Why does this exist??
 
 function FunctionClick() {
     function clickHandler() {

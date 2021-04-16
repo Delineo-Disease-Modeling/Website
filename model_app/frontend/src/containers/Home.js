@@ -156,7 +156,7 @@ class Home extends Component {
                 <div className={classes.imageBox}>
                     <div className="header-text">
                         <h1 style={{ fontSize: '50px', marginBottom: "30px"}}>Interactive Disease Simulation</h1>
-                        <h5 style={{marginBottom: "30px"}}>Bring a fresh approach to the challenge of modeling the spread of pandemics</h5>
+                        <h5 style={{marginBottom: "30px"}}>Bringing a fresh approach to modeling the spread of pandemics</h5>
                         <Button className={classes.bigButton} variant="contained" color="inherit" href="/simulator">
                             Explore Simulation
                         </Button>
