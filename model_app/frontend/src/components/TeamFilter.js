@@ -5,20 +5,20 @@ import TeamGridList from '../components/TeamGridList.js'
 import SupGridList from '../components/SupGridList.js'
 import LeadGridList from '../components/LeaderGridList.js'
 import PastTeamGridList from '../components/PastTeamGridList.js'
-import Button from "@material-ui/core/Button";
+//import Button from "@material-ui/core/Button";
 import { withStyles } from '@material-ui/core';
 
 //These imports are for when someone actually wants to filter
 import FullStackGridList from '../components/FullStackGridList.js';
 import SimGridList from "../components/SimGridList.js";
 import MLGridList from '../components/MLGridList.js';
-import InfoTeamGridList from '../components/InfoTeamGridList.js';
+import InfoTeamGridList from '../components/InfoTeamGridList.js';  
 
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
+//import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText'; 
 import Typography from '@material-ui/core/Typography';
 
 
@@ -29,7 +29,6 @@ const styles = {
     border: '2px solid',
     color: '#66FCF1',
     fontWeight: 'bold',
-
     width: '200px',
     textAlign: 'center',
 
@@ -124,7 +123,7 @@ const styles = {
 
 
 };
-
+/*
 const ColorButton = withStyles((theme) => ({
   root: {
     borderColor: '#66FCF1',
@@ -145,9 +144,8 @@ const ColorButton = withStyles((theme) => ({
     border: '1px solid',
   }
 
-
-
 }))(Button);
+*/
 
 const ColorListItem = withStyles((theme) => ({
   root: {
@@ -177,7 +175,6 @@ const ColorListItem = withStyles((theme) => ({
 
     }
   }
-
 
 }))(ListItem);
 
@@ -215,13 +212,15 @@ class TeamFilter extends Component {
 
 
   render() {
+
+    /*
     let inputStyle = {
       borderColor: '#66FCF1',
       backgroundColor: '#66FCF1',
-      border: '1px solid',
+      border: '1px solid', 
       color: '#444f56',
     };
-
+    */
 
     const { classes } = this.props
 
@@ -232,9 +231,9 @@ class TeamFilter extends Component {
     const { ml } = this.state
     const { info } = this.state
 
-    const { showing } = this.state
+    //const { showing } = this.state
 
-    const highlightedAll = this.state.all ? "classes.focus" : "classes.notfocus";
+    //const highlightedAll = this.state.all ? "classes.focus" : "classes.notfocus";
 
 
     return (
@@ -313,7 +312,7 @@ class TeamFilter extends Component {
               <TeamGridList></TeamGridList>
               <Typography varient='h2' className={classes.h2} align="center">Past Members</Typography>
               <br />
-              <PastTeamGridList></PastTeamGridList>
+              <PastTeamGridList></PastTeamGridList> 
 
             </div>
           </div>

@@ -1,6 +1,6 @@
 import React from "react";
-import Button from '@material-ui/core/Button';
-import { useHistory, useParams } from 'react-router-dom';
+//import Button from '@material-ui/core/Button';
+import { useHistory } from 'react-router-dom';
 import './BlogPost.css'
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -14,7 +14,6 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import EmailIcon from '@material-ui/icons/Email';
 import { makeStyles } from '@material-ui/core/styles';
-import CommentBox from "./CommentBox";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -55,7 +54,7 @@ function Post1(props) {
           <div className="relative m-r-10 w-50 h-50 b-r-full" style={{ backgroundImage: 'url("https://webassets.mongodb.com/_com_assets/cms/Siya-adfnai3e2j.jpg")', backgroundSize: 'cover', backgroundPosition: 'center' }} />
 
           <small>
-            <img class="photo" src="/iconPerson.png" />Ameya Dehade &#8226; March 2021
+            <img alt="Ameya Dehade, Author Icon" class="photo" src="/iconPerson.png" />Ameya Dehade &#8226; March 2021
           <PopupState variant="popover" popupId="demo-popup-menu">
               {(popupState) => (
                 <React.Fragment>
@@ -142,7 +141,7 @@ function Post2(props) {
           <div className="relative m-r-10 w-50 h-50 b-r-full" style={{ backgroundImage: 'url("https://webassets.mongodb.com/_com_assets/cms/Siya-adfnai3e2j.jpg")', backgroundSize: 'cover', backgroundPosition: 'center' }} />
 
           <small>
-            <img class="photo" src="/iconPerson.png" />Ameya Dehade &#8226; March 2021
+            <img alt="Ameya Dehade, Author Icon" class="photo" src="/iconPerson.png" />Ameya Dehade &#8226; March 2021
           <PopupState variant="popover" popupId="demo-popup-menu">
               {(popupState) => (
                 <React.Fragment>
@@ -219,6 +218,7 @@ function Post2(props) {
   );
 }
 
+/*
 class BackButton {
   handleClick = () => {
     this.props.goBack();
@@ -228,6 +228,7 @@ class BackButton {
     return <Button variant="contained" color="primary" onClick={this.handleClick}>Go Back</Button>;
   }
 }
+*/
 
 
 export { Post1 as default, Post2 };

@@ -1,4 +1,4 @@
-import image from '../images/person-icon.png';
+//import image from '../images/person-icon.png';
 import simBliImg from '../images/Simone Bliss.JPG';
 import serChanImg from '../images/Serena Chan.jpg';
 import matInsImg from '../images/mathias_insley.png';

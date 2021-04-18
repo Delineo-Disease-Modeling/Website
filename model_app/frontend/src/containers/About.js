@@ -1,5 +1,5 @@
 import React from "react";
-import Accordion from '@material-ui/core/Accordion';
+//import Accordion from '@material-ui/core/Accordion';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import SendIcon from '@material-ui/icons/Send';
 import { withStyles } from '@material-ui/core/styles';
@@ -135,6 +135,7 @@ const styles = {
 	},
 }
 
+/*
 const ColoredAccordion = withStyles({
 	root: {
 		backgroundColor: 'black',
@@ -142,6 +143,7 @@ const ColoredAccordion = withStyles({
 		color: '#66FCF1'
 	},
 })(Accordion);
+*/
 
 const AccordionDetails = withStyles((theme) => ({
 	root: {
@@ -225,7 +227,7 @@ class About extends React.Component {
 
 						{faqData.map((faq) => {
 							return (
-								<div style={{ padding: '10px' }}>
+								<div style={{ padding: '10px' }}> 
 									<ColAccordion>
 										<ColAccordionSummary
 											expandIcon={<ExpandMoreIcon />}
