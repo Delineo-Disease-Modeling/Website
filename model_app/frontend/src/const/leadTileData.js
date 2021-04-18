@@ -23,7 +23,7 @@ const tileData = [
     img: serChanImg,
     name: 'Serena Chan',
     role: 'Simulation Lead',
-    description: 'Major'
+    description: 'Molecular and Cellular Biology'
   },
   {
     img: ZoeKimImg,
