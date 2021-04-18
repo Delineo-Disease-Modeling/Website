@@ -29,7 +29,7 @@ const tileData = [
     img: ZoeKimImg,
     name: 'Zoe Kim',
     role: 'Information Support',
-    description: 'Major',
+    description: 'Computer Science',
   },
   {
     img: steLiImg,
