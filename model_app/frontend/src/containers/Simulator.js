@@ -13,10 +13,10 @@ import Typography from '@material-ui/core/Typography';
 
 
 const unityContext = new UnityContext({
-  loaderUrl: "./Build/Arpil14(3).loader.js",
-  dataUrl: "./Build/Arpil14(3).data",
-  frameworkUrl: "./Build/Arpil14(3).framework.js",
-  codeUrl: "./Build/Arpil14(3).wasm",
+  loaderUrl: "./Build/April18.loader.js",
+  dataUrl: "./Build/April18.data",
+  frameworkUrl: "./Build/April18.framework.js",
+  codeUrl: "./Build/April18.wasm",
 });
 
 const ColoredAccordion = withStyles({
