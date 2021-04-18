@@ -19,7 +19,7 @@ function Item(props) {
     return (
         <Paper style={{padding: '30px', borderRadius: '15px', backgroundColor: 'transparent', border: '2px solid black'}} >
             <Typography varient='h2' component='h2' style={{color: 'black', fontSize: '36px'}}>{props.caption}</Typography>
-            <img style={{width: '100%', height: '400px'}} src={props.image} />
+            <img alt="" style={{width: '100%', height: '400px'}} src={props.image} />
         </Paper>
     )
 }

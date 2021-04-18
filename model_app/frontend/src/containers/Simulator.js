@@ -4,11 +4,11 @@ import {
 } from "../components";
 import "./Simulator.css";
 import axios from "axios";
-import Accordion from "@material-ui/core/Accordion";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
+//import Accordion from "@material-ui/core/Accordion";
+import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Unity, { UnityContext } from "react-unity-webgl";
-import Button from "@material-ui/core/Button";
+//import Button from "@material-ui/core/Button";
 import Typography from '@material-ui/core/Typography';
 
 
@@ -19,6 +19,7 @@ const unityContext = new UnityContext({
   codeUrl: "./Build/April18.wasm",
 });
 
+/*
 const ColoredAccordion = withStyles({
   root: {
     backgroundColor: "#1b4441c2",
@@ -26,7 +27,7 @@ const ColoredAccordion = withStyles({
     color: "#66FCF1",
   },
 })(Accordion);
-
+*/
 
 const styles = theme => ( {
   bubble: {
@@ -69,76 +70,6 @@ const styles = theme => ( {
 
   },
 });
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor:'#222629',
-    width: 400,
-    position: "relative",
-    minHeight: 200,
-  },
-  fab: {
-    position: "fixed",
-    right: theme.spacing(4),
-    zIndex: 99,
-    color: theme.palette.common.black,
-    backgroundColor: "cyan",
-    "&:hover": {
-      backgroundColor: "#0fe0e0",
-    },
-  },
-  drawer: {
-    top: 90,
-    height: "90%",
-  },
-  h3: {
-    color: 'white',
-    marginRight: 100,
-    marginLeft: 100,
-    marginTop: 40,
-
-    width: 'fit-content',
-
-    fontSize: 20,
-    textAlign: 'center',
-    alignSelf: 'center',
-    alignItems: 'center',
-     borderRadius: '25px',
-     border: '2px solid #2f3538',
-     padding: '20px 20px 20px 20px',
-    backgroundColor: '#2f3538'
-
-
-  },
-
-  bubble: {
-    color: 'white',
-
-    width: 950,
-    position: 'relative',
-    fontSize: 15,
-    textAlign: 'left',
-    alignSelf: 'center',
-    alignItems: 'center',
-     borderRadius: '25px',
-     border: '2px solid #2f3538',
-     padding: '15px 15px 20px 20px',
-    backgroundColor: '#2f3538',
-    whiteSpace: 'pre-wrap'
-
-  },
-  bold: {
-    color: 'white',
-    fontWeight: 'bold',
-
-    fontSize: 18,
-    textAlign: 'left',
-    alignSelf: 'center',
-    alignItems: 'center',
-    whiteSpace: 'pre-wrap'
-
-  },
-}));
 
 class Simulator extends Component {
   // classes = useStyles();

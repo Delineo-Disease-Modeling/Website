@@ -1,4 +1,3 @@
-import image from '../images/person-icon.png';
 import rohAbiImg from '../images/Rohan Abichandani.JPG';
 import mehAgaImg from '../images/Mehul Agarwal.jpg';
 import eugAsaImg from '../images/person-icon.png';
@@ -25,7 +24,6 @@ import josParImg from '../images/Joshua Park.JPG';
 import steLiImg from  '../images/Stella Li.png';
 import shaRakImg from '../images/Shardul Rakshit.jpg';
 import eugSonImg from '../images/Eugene Song.jpg';
-import emeSulImg from '../images/Emerson_Sullivan.jpg';
 import oliWanImg from '../images/Olivia Wang.jpg';
 import aleWeiImg from '../images/Alex Wei.JPG';
 import oreWeiImg from '../images/Oren Wei.jpg';

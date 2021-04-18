@@ -1,7 +1,7 @@
 import React from 'react';
 import '../containers/Simulator.css'
 import Slider from '@material-ui/core/Slider'
-import {withStyles, makeStyles} from '@material-ui/core/styles';
+//import { withStyles } from '@material-ui/core/styles';
 //import Select from "react-dropdown-select";
 
 import Radio from '@material-ui/core/Radio';
@@ -13,12 +13,15 @@ import { Dropdown } from 'reactstrap';
 
 
 
-//used to change various styles of the slider
+//used to change various styles of the slider 
+//curently unused, uncomment if you want to use it again 
+/*
 const DaySlider = withStyles({
     root: {
         color: '#ffbb00',
     },
 })(Slider);
+*/
 
 //just a place holder for now for returning the values
 
