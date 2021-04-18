@@ -185,7 +185,9 @@ class About extends React.Component {
 					<Typography variant="h2" component="h2" className={classes.title}>
 						ABOUT DELINEO
 					</Typography>
-					<div className={classes.border}></div>
+					<div className={classes.border}>
+
+					</div>
 					<Typography variant="subtitle" component="h2" className={classes.subtitle}>
 						Disease Modeling Simulation at Johns Hopkins University
 					</Typography>
@@ -194,7 +196,7 @@ class About extends React.Component {
 					<InfoBlock background={'white'} subject={'visualization'} />
 					<InfoBlock background={'#d5d7db'} subject={'stimulation'} />
 
-				</div>
+				</div>  
 				<div className={classes.faq} id="contact">
 					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', marginTop: '50px' }}>
 						FAQ

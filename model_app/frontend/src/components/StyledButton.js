@@ -10,10 +10,8 @@ const StyledButton = styled(Button)({
     height: 48,
     padding: '0 30px',
     borderRadius: 3,
-    background: '#66FCF1',
-    color: 'white',
-    "&:hover": {
-        backgroundColor: 'transparent',
+    "&:hover": { 
+        backgroundColor: '#222629',
         color: '#66FCF1',
         borderColor: '#66FCF1',
     },

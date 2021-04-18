@@ -18,7 +18,7 @@ function Item(props) {
     return (
         <Paper style={{padding: '30px', borderRadius: '15px', backgroundColor: 'transparent', border: '2px solid black'}} >
             <h2 style={{color: 'black'}}>{props.caption}</h2>
-            <img style={{width: '100%', height: '400px'}} src={props.image} />
+            <img alt="carousel component" style={{width: '100%', height: '400px'}} src={props.image} />
         </Paper>
     )
 }

@@ -1,26 +1,13 @@
 import React, { Component }  from 'react';
-
-import leaders from '../const/leader.js';
-import members from '../const/member.js';
-import TeamGridList from '../components/TeamGridList.js'
-import SupGridList from '../components/SupGridList.js'
-import LeadGridList from '../components/LeaderGridList.js'
-import { makeStyles } from '@material-ui/core/styles';
 import TeamFilter from '../components/TeamFilter'
-import FunctionClick from '../components/FunctionClick'
-import Grid from '@material-ui/core/Grid';
-import { styled } from "@material-ui/core/styles";
-import { spacing } from "@material-ui/system";
-import MuiButton from "@material-ui/core/Button";
 import { withStyles } from '@material-ui/core';
-import CssBaseline from '@material-ui/core/CssBaseline';
 
 
 
 import './Team.css';
 
 
-const Button = styled(MuiButton)(spacing);
+//const Button = styled(MuiButton)(spacing);
 
 
 
@@ -94,15 +81,11 @@ const Button = styled(MuiButton)(spacing);
       <div className = {classes.CardBackground}>
       <TeamFilter></TeamFilter>
 
-
-
    </div>
 
 </div>
  );
 }
 }
-
-
 
 export default withStyles(styles)(Team);

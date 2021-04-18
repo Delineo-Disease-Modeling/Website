@@ -3,11 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import GridListTile from '@material-ui/core/GridListTile';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
-import GridList from '@material-ui/core/GridList';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({ 
   root: {
     display: 'flex',
     flexWrap: 'wrap',
