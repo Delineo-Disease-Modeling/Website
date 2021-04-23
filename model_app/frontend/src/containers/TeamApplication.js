@@ -5,6 +5,8 @@ import Card from '@material-ui/core/Card';
 import { Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+import TeamMemberJoin from '../images/teammemberjoin.jpg'
+
 const useStyles = makeStyles((theme) => ({
   title: {
 		fontWeight: 'normal',
@@ -17,6 +19,15 @@ const useStyles = makeStyles((theme) => ({
 		borderTop: '3px solid #66FCF1',
 		marginBottom: '50px'
 	},
+  teamPage: {
+    backgroundSize: "cover",
+    height: "130vh",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    opacity: "0.85",
+    boxShadow: "inset 0 0 0 100vw rgba(0,0,0,0.5)",
+},
 }));
 
 const TeamApplication = function TeamApplication() {
@@ -24,11 +35,11 @@ const TeamApplication = function TeamApplication() {
   const classes = useStyles();
 
   return (
-      <Card style={{ justifyContent: 'center', padding: '30px 15%', backgroundColor: 'white' }}>
+      <Card className={classes.teamPage} style={{ justifyContent: 'center', padding: '30px 15%', backgroundColor: 'white', backgroundImage:`url(${TeamMemberJoin})` }}>
 
         <Box py={2} bgcolor="white" style={{ color: "#222629" }} align="center" >
         <Typography variant="h3" component="h3" className={classes.title}>
-						JOIN TEAM
+						JOIN OUR TEAM
 					</Typography>
 					<div className={classes.border}></div>
 
