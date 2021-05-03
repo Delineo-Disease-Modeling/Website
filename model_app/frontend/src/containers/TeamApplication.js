@@ -9,8 +9,13 @@ const useStyles = makeStyles((theme) => ({
   title: {
 		fontWeight: 'normal',
 		letterSpacing: '1.2px',
+    maxWidth: '80%',
+    minWidth: '50%',
     color: '#222629'
 	},
+  link: {
+    minWidth: '10%',
+  },
   border: {
 		width: '150px',
 		margin: 'auto',
@@ -32,12 +37,15 @@ const TeamApplication = function TeamApplication() {
 					</Typography>
 					<div className={classes.border}></div>
 
-
-          <Typography variant="h5" component="h5" className={classes.title}>
-						If you are a Hopkins student and are interested in joining our team. </Typography>
-          <Typography variant="h5" component="h5" className={classes.title}>
-          Send us an email at delineodiseasemodeling@gmail.com with your resume and interested team(Fullstack, Simulation, Machine learning, Information Support)
-					</Typography>
+          
+          <Typography align="justified" variant="h5" component="h5" className={classes.title}>
+						If you are a current student at Johns Hopkins University 
+            and are interested in joining our team, send us an email at
+            <a href="mailto:delineodiseasemodeling@gmail.com?subject=Intrested Student"> delineodiseasemodeling@gmail.com </a> 
+            along with your resume and 
+            area of interest.
+          </Typography>
+          
         </Box>
       </Card>
   )
