@@ -2,7 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
-import { Container } from '@material-ui/core';
+//import { Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -38,7 +38,7 @@ const TeamApplication = function TeamApplication() {
 					<div className={classes.border}></div>
 
           
-          <Typography align="justified" variant="h5" component="h5" className={classes.title}>
+          <Typography align="center" variant="h5" component="h5" className={classes.title}>
 						If you are a current student at Johns Hopkins University 
             and are interested in joining our team, send us an email at
             <a href="mailto:delineodiseasemodeling@gmail.com?subject=Intrested Student"> delineodiseasemodeling@gmail.com </a> 
