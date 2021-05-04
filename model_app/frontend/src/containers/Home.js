@@ -5,10 +5,10 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
 import HomeCarousel from '../components/Carousel';
 import TeamMemberJoin from '../images/teammemberjoin.jpg'
-import blogbackground from '../images/blogbackgroud.PNG'
 import Link from '@material-ui/core/Link';
 import DevelopmentBlogCards from './DevelopmentBlogCards.js'
 import anytownScreenshot from '../images/anytownScreenshot.png'
+import HomeBlog from './HomeBlog.js'
 
 const styles = {
 
@@ -57,7 +57,7 @@ const styles = {
         overflow: 'hidden',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        
+
 
     },
 
@@ -66,21 +66,21 @@ const styles = {
         //fontStyle: 'strong',
         fontSize: "40px",
         marginTop: "30px",
-        marginBottom:"50px"
-        
+        marginBottom: "50px"
+
     },
 
     link: {
         '&:hover': {
             color: 'white',
         }
-      }
+    }
 };
 
 
 class Home extends Component {
 
-    
+
 
     render() {
         const { classes } = this.props;
@@ -88,35 +88,29 @@ class Home extends Component {
         return (
             <React.Fragment>
                 <CssBaseline />
-                <div className={classes.imageBox} style={{ backgroundImage:`url(${anytownScreenshot})`}}>
+                <div className={classes.imageBox} style={{ backgroundImage: `url(${anytownScreenshot})` }}>
                     <div className="header-text">
-                        <h1 style={{ fontSize: '50px', marginBottom: "30px"}}>Interactive Disease Simulation</h1>
-                        <h5 style={{marginBottom: "30px"}}>Bring a fresh approach to the challenge of modeling the spread of pandemics</h5>
+                        <h1 style={{ fontSize: '50px', marginBottom: "30px" }}>Interactive Disease Simulation</h1>
+                        <h5 style={{ marginBottom: "30px" }}>Bring a fresh approach to the challenge of modeling the spread of pandemics</h5>
                         <Button className={classes.bigButton} variant="contained" color="inherit" href="/simulator">
-                        Visit Anytown, USA 
+                            Visit Anytown, USA
                         </Button>
                     </div>
                 </div>
 
-                <HomeCarousel/>
+                <HomeCarousel />
 
-                <div className={classes.blogSection} style={{ backgroundImage:`url(${blogbackground})`}}>
-                    <Typography className={classes.recent}>
-                    Check Out Our Blog
-                    </Typography>
-
-                    <DevelopmentBlogCards/>
-                </div>
-                <div className={classes.teamPage} style={{ backgroundImage:`url(${TeamMemberJoin})`}}>
+                <HomeBlog/>
+                <div className={classes.teamPage} style={{ backgroundImage: `url(${TeamMemberJoin})` }}>
                     <div className="header-text">
-                        <h1 style={{ fontSize: '50px', marginBottom: "30px"}}>We Are Delineo</h1>
-                        <h5 style={{marginBottom: "30px"}}>Bring a fresh approach to the challenge of modeling the spread of pandemics</h5>
+                        <h1 style={{ fontSize: '50px', marginBottom: "30px" }}>We Are Delineo</h1>
+                        <h5 style={{ marginBottom: "30px" }}>Bring a fresh approach to the challenge of modeling the spread of pandemics</h5>
                         <Button className={classes.bigButton} variant="contained" color="inherit" href="/team">
                             Meet the Team
                         </Button>
-                        <h5 style={{marginTop: "30px"}}>
-                        <Link  className={classes.link} color="inherit" href="/teamapplication">
-                            Interested in joining our team?
+                        <h5 style={{ marginTop: "30px" }}>
+                            <Link className={classes.link} color="inherit" href="/teamapplication">
+                                Interested in joining our team?
                         </Link >
                         </h5>
 
