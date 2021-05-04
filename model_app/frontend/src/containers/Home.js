@@ -1,25 +1,12 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
 import HomeCarousel from '../components/Carousel';
 import TeamMemberJoin from '../images/teammemberjoin.jpg'
 import Link from '@material-ui/core/Link';
-import DevelopmentBlogCards from './DevelopmentBlogCards.js'
 import anytownScreenshot from '../images/anytownScreenshot.png'
 import HomeBlog from './HomeBlog.js'
-import React, { Component } from "react";
-import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core";
-import HomeCarousel from "../components/Carousel";
-import TeamMemberJoin from "../images/teammemberjoin.jpg";
-import blogbackground from "../images/blogbackgroud.PNG";
-import Link from "@material-ui/core/Link";
-import DevelopmentBlogCards from "./DevelopmentBlogCards.js";
-import anytownScreenshot from "../images/anytownScreenshot.png";
 
 const styles = {
   bigButton: {

@@ -78,13 +78,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '0 0px',
     padding: '0 0px',
   },
-  subtitle: {
-    fontSize: 14,
-    marginLeft: '0 0px',
-    marginTop: '0 0px',
-    padding: '0 0px',
 
-  },
 }));
 
 function DevelopmentBlog(props) {
