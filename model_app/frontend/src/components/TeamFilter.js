@@ -73,7 +73,8 @@ const styles = {
     borderRadius: '25px',
     border: '2px solid #2f3538',
     padding: '20px 20px 20px 20px',
-    backgroundColor: '#2f3538'
+    backgroundColor: '#2f3538',
+    maxWidth:'1000px'
 
 
   },
