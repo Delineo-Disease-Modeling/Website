@@ -38,10 +38,10 @@ class Header extends Component{
         }
 
         const active={
-            color:'#66FCF1', 
-            borderBottom: '1px solid #66FCF1', 
-            paddingBottom: '4px', 
-        
+            color:'#66FCF1',
+            borderBottom: '1px solid #66FCF1',
+            paddingBottom: '4px',
+
         }
 
         return (
@@ -55,7 +55,11 @@ class Header extends Component{
                     <Nav navbar className="ml-auto">
 
                         <NavItem>
-                            <NavLink className="Nav-link" to='/simulator' activeClassName='active' activeStyle={active} style={styleSheet}> Simulator</NavLink>
+                            <NavLink className="Nav-link" to='/Anytown' activeClassName='active' activeStyle={active} style={styleSheet}> Anytown</NavLink>
+                        </NavItem>
+
+                        <NavItem>
+                            <NavLink className="Nav-link"  to='/simulator' activeClassName='active' activeStyle={active} style={styleSheet}> Simulator</NavLink>
                         </NavItem>
 
                         <NavItem>
@@ -69,11 +73,13 @@ class Header extends Component{
                         <NavItem>
                             <NavLink className="Nav-link"  to='/developmentblog' activeClassName='active' activeStyle={active} style={styleSheet}> Development Blog</NavLink>
                         </NavItem>
+
+
                     </Nav>
                 </Collapse>
                 </div>
             </Navbar>
-            
+
         );
     }
 }

@@ -12,13 +12,13 @@ import { withStyles } from '@material-ui/core';
 import FullStackGridList from '../components/FullStackGridList.js';
 import SimGridList from "../components/SimGridList.js";
 import MLGridList from '../components/MLGridList.js';
-import InfoTeamGridList from '../components/InfoTeamGridList.js';  
+import InfoTeamGridList from '../components/InfoTeamGridList.js';
 
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 //import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText'; 
+import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
 
 
@@ -33,21 +33,6 @@ const styles = {
     textAlign: 'center',
 
 
-    '&$selected, &$selected:hover': {
-      backgroundColor: '#66FCF1',
-      color: '#222629',
-      borderColor: '#66FCF1',
-    },
-    "&:hover": {
-      backgroundColor: '#66FCF1',
-      color: '#222629',
-      borderColor: '#66FCF1',
-    },
-    '&:hover $selectedColor': {
-
-      color: '#222629',
-
-    }
 
   },
 
@@ -217,7 +202,7 @@ class TeamFilter extends Component {
     let inputStyle = {
       borderColor: '#66FCF1',
       backgroundColor: '#66FCF1',
-      border: '1px solid', 
+      border: '1px solid',
       color: '#444f56',
     };
     */
@@ -301,7 +286,7 @@ class TeamFilter extends Component {
           ? <div>
             <br></br>
             <div>
-              <Typography varient='h2' className={classes.h2} align='center'>Principle Investigator</Typography>
+              <Typography varient='h2' className={classes.h2} align='center'>Principal Investigator</Typography>
               <br />
               <SupGridList />
               <Typography varient='h2' className={classes.h2} align="center">Team Leaders</Typography>
@@ -312,7 +297,7 @@ class TeamFilter extends Component {
               <TeamGridList></TeamGridList>
               <Typography varient='h2' className={classes.h2} align="center">Past Members</Typography>
               <br />
-              <PastTeamGridList></PastTeamGridList> 
+              <PastTeamGridList></PastTeamGridList>
 
             </div>
           </div>

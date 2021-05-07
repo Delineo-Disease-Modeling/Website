@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Header, Footer } from './components';
-import { Home, About, Simulator, DevelopmentBlog, Team, Post1, Post2} from './containers';
+import { Home, About, DevelopmentBlog, Team, Post1, Post2, Anytown, RealSimulator} from './containers';
 import { Provider } from 'react-redux';
 import store from './store';
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -23,7 +23,8 @@ function App() {
                   <Switch>
                       <Route exact path="/" component={Home} />
                       <Route exact path="/about" component={About} />
-                      <Route exact path="/simulator" component={Simulator} />
+                      <Route exact path="/simulator" component={RealSimulator} />
+                      <Route exact path="/anytown" component={Anytown} />
                       <Route exact path="/team" component={Team} />
                       <Route exact path="/developmentblog" component={DevelopmentBlog} />
                       <Route exact path="/developmentblog/post1" component={Post1} />

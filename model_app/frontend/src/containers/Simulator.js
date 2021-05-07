@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {
-  SimulationTimeseries, 
+  SimulationTimeseries,
 } from "../components";
 import "./Simulator.css";
 import axios from "axios";
