@@ -34,7 +34,10 @@ const TeamApplication = function TeamApplication() {
 
   return (
 
-    <div style = {{
+    <div style = {{     opacity: "0.9", 
+    background: "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))",
+    
+    boxShadow: "inset 0 0 0 100vw rgba(0,0,0,0.5)",
       backgroundImage: `url(${TeamMemberJoin})` , backgroundSize: "cover",}}>
   <Container maxWidth="lg" className={classes.teamContainer} >
 

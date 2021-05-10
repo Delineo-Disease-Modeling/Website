@@ -53,6 +53,7 @@ const styles = {
     overflow: "hidden",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
+    boxShadow: "inset 0 0 0 100vw rgba(0,0,0,0.5)",
   },
 
   recent: {
