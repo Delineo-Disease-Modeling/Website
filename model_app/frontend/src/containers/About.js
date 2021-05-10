@@ -1,5 +1,4 @@
 import React from "react";
-//import Accordion from '@material-ui/core/Accordion';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import SendIcon from '@material-ui/icons/Send';
 import { withStyles } from '@material-ui/core/styles';
@@ -13,29 +12,6 @@ import bgImg from '../images/Delineo-About.gif';
 import InfoBlock from '../components/InfoBlock';
 
 const styles = {
-
-	w3Image: {
-		maxWidth: '22vw',
-		height: '180px',
-	},
-
-	w3DisplayContainer: {
-		width: '100%',
-		display: 'flex',
-		paddingBottom: '50px',
-		flexDirection: 'row',
-		justifyContent: 'center',
-		alignItems: 'center',
-		flexWrap: 'wrap'
-	},
-
-	buttonContainer: {
-		width: '100%',
-		alignContent: 'center',
-		paddingTop: '0%',
-		paddingBottom: '5%',
-	},
-
 	cardBackground: {
 		backgroundColor: 'white',
 		height: '100%',
@@ -46,34 +22,12 @@ const styles = {
 		alignContent: 'center',
 		paddingBottom: '5%',
 	},
-
-	cardGreenBackground: {
-		marginTop: '0%',
-		marginLeft: 'auto',
-		marginRight: 'auto',
-		backgroundColor: 'black',
-		width: '100%',
-		alignSelf: 'center',
-		alignItems: 'center',
-	},
-
 	underline: {
 		width: '200px',
 		margin: 'auto',
 		borderTop: '3px solid #66FCF1',
 		marginBottom: '30px'
 	},
-
-	paragraph: {
-		color: 'white',
-		paddingLeft: '5%',
-		paddingRight: '5%',
-	},
-
-	thumbnail: {
-		width: '22vw'
-	},
-
 	title: {
 		position: 'absolute',
 		top: '210px',
@@ -81,17 +35,12 @@ const styles = {
 		letterSpacing: '1.5px',
 		textShadow: '2px 2px 15px black'
 	},
-
 	subtitle: {
 		position: 'absolute',
 		top: '320px',
 		left: '169px',
 		fontSize: '18px',
 		textShadow: '2px 2px 10px black'
-	},
-
-	block: {
-		margin: '50px'
 	},
 	border: {
 		position: 'absolute',
@@ -123,9 +72,6 @@ const styles = {
 	button: {
 		marginTop: '30px'
 	},
-	contactSection: {
-		paddingTop: '70px'
-	},
 	description: {
 		fontSize: '16px',
 		letterSpacing: '1.2px',
@@ -134,16 +80,6 @@ const styles = {
 		paddingTop: '50px'
 	},
 }
-
-/*
-const ColoredAccordion = withStyles({
-	root: {
-		backgroundColor: 'black',
-		fontSize: '20px',
-		color: '#66FCF1'
-	},
-})(Accordion);
-*/
 
 const AccordionDetails = withStyles((theme) => ({
 	root: {
@@ -203,7 +139,7 @@ class About extends React.Component {
 		return (
 			<div className={classes.cardBackground}>
 				<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-				<div > {/*className={classes.cardGreenBackground}*/}
+				<div > 
 
 					<Typography variant="h2" component="h2" className={classes.title}>
 						ABOUT DELINEO
@@ -225,9 +161,9 @@ class About extends React.Component {
 					<div className={classes.underline}></div>
 					<div className={classes.faqSlots}>
 
-						{faqData.map((faq) => {
+						{faqData.map((faq, i) => {
 							return (
-								<div style={{ padding: '10px' }}> 
+								<div style={{ padding: '10px' }} key={i+'faq'}> 
 									<ColAccordion>
 										<ColAccordionSummary
 											expandIcon={<ExpandMoreIcon />}
