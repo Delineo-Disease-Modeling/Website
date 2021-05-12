@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { withStyles } from '@material-ui/core';
+import { withStyles, Typography } from '@material-ui/core';
 import BlogCard from '../components/BlogCard'
 import blogfake1 from '../images/blogfake1.jpg';
 import blogfake2 from '../images/blogfake2.jpg';
