@@ -10,6 +10,7 @@ import Button from '../components/StyledButton';
 import faqData from '../const/faqData';
 import bgImg from '../images/Delineo-About.gif';
 import InfoBlock from '../components/InfoBlock';
+import './About.css'
 
 const styles = {
 	cardBackground: {
@@ -30,22 +31,25 @@ const styles = {
 	},
 	title: {
 		position: 'absolute',
-		top: '210px',
-		left: '169px',
+		top: '190px',
+		left: '20%',
 		letterSpacing: '1.5px',
-		textShadow: '2px 2px 15px black'
+		lineHeight: '50px',
+		textShadow: '2px 2px 15px black',
+		textAlign: 'left'
 	},
 	subtitle: {
 		position: 'absolute',
 		top: '320px',
-		left: '169px',
+		left: '20%',
 		fontSize: '18px',
-		textShadow: '2px 2px 10px black'
+		textShadow: '2px 2px 10px black',
+		textAlign: 'left'
 	},
 	border: {
 		position: 'absolute',
 		top: '300px',
-		left: '169px',
+		left: '20%',
 		width: '100px',
 		margin: 'auto',
 		borderTop: '3px solid #66FCF1',
@@ -138,10 +142,9 @@ class About extends React.Component {
 		const { classes } = this.props;
 		return (
 			<div className={classes.cardBackground}>
-				<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 				<div > 
 
-					<Typography variant="h2" component="h2" className={classes.title}>
+					<Typography key='h2' variant="h2" component="h2" className={classes.title}>
 						ABOUT DELINEO
 					</Typography>
 					<div className={classes.border}></div>
@@ -188,8 +191,8 @@ class About extends React.Component {
 
 
 
-				<div className="w3-container w3-padding-32" id="contact" >
-					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', color: 'black' }}>
+				<div id="contact" >
+					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', color: 'black', marginTop: '50px'}}>
 						Contact Us!
 					</Typography>
 					<div className={classes.underline}></div>
