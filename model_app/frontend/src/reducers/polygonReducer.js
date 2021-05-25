@@ -1,7 +1,7 @@
 // check action and dispatch to reducer
 import { ADD_POLYGON, DELETE_POLYGON, RESET_POLYGON } from "../actions/types";
 
-export default function (state=[], action) {
+export default function polygonReducer(state=[], action) {
     switch (action.type) {
         case ADD_POLYGON:
             return [

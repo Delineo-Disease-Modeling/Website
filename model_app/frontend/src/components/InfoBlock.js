@@ -2,23 +2,22 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from './StyledButton';
-import Grid from '@material-ui/core/Grid';
 import Carousel from './CarouselSection';
 
 const useStyles = makeStyles((theme) => ({
     carousel: {
         padding: '100px',
         marginTop: '50px',
-        color: 'white'
+        color: 'black'
     },
     base: {
         padding: '10px 50px 10px 50px',
-        backgroundColor: 'black'//'C4C4C4'
     },
     description: {
         fontSize: '20px',
         letterSpacing: '2px',
-        padding: '30px 50px'
+        padding: '30px 50px',
+        color: 'black'
     },
     img: {
         width: '70%',
@@ -29,10 +28,8 @@ const useStyles = makeStyles((theme) => ({
 
     gallery: {
         margin: '50px 0',
-        padding: '100px 100px',
-        backgroundColor: '#222629',
+        padding: '50px 50px',
         borderRadius: '15px',
-        boxShadow: '10px 5px 5px black',
     },
 
     grid: {
@@ -46,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: '10px'
     },
     paper: {
-        color: 'white'
+        color: 'black'
     }
 }));
 
@@ -60,10 +57,10 @@ function setParams(subject) {
         title = 'MAP VISUALIZATION';
         description = "The Johns Hopkins Coronavirus Resource Center (CRC) is a continuously updated source of COVID-19 data and expert guidance. We aggregate and analyze the best data available on COVID-19—including cases, as well as testing, contact tracing and vaccine efforts—to help the public, policymakers and healthcare professionals worldwide respond to the pandemic.";
         buttontxt = 'VIEW MAP';
-        images[0] = "https://www.washingtonpost.com/rf/image_982w/2010-2019/WashingtonPost/2020/03/14/Health-Environment-Science/Graphics/promo2-coronavirus-simulator-0313.jpg";
-        images[1] = "https://images.firstpost.com/fpimages/1200x800/fixed/jpg/2020/06/Covid-19-coronavirus-sneeze-simulation_Dassualt-Systemes-1.jpg";
-        images[2] = "https://images.theconversation.com/files/342926/original/file-20200619-70415-35zyha.jpg?ixlib=rb-1.1.0&rect=2057%2C0%2C5656%2C2822&q=45&auto=format&w=1356&h=668&fit=crop";
-        images[3] = "https://blogs.solidworks.com/solidworksblog/wp-content/uploads/sites/2/2020/04/reza_cfd_1.png";
+        images[0] = "https://foxbaltimore.com/resources/media/61c51eec-222d-4918-88c3-0b23fbe9da54-large16x9_mdcases.PNG?1584798406087";
+        images[1] = "https://mma.prnewswire.com/media/1154534/Perception_Health_COVID_Map_2020.jpg?p=publish&w=950";
+        images[2] = "https://www.amcharts.com/wp-content/uploads/2014/02/motion-chart-shot.png";
+        images[3] = "https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/asset/1b910723-0066-4d56-b1fc-a26b052120ea/gr1.jpg";
         captions[0] = 'County Level';
         captions[1] = 'State Level';
         captions[2] = 'Motion Chart';
@@ -89,9 +86,9 @@ export default function InfoBlock(props) {
     const { title, description, buttontxt, images, captions } = setParams(props.subject);
 
     return (
-        <div className={classes.base} style={{ backgroundColor: props.background }}>
+        <div className={classes.base}  style={{ backgroundColor: props.background }}>
             <div className={classes.gallery}>
-                <Typography variant="h3" component="h2" >
+                <Typography variant="h3" component="h2" style={{color: 'black'}}>
                     {title}
                 </Typography>
                 <div className={classes.border}></div>
@@ -99,11 +96,13 @@ export default function InfoBlock(props) {
                     {description}
                 </Typography>
 
-                <Button href='#top' size='large' color='inherit'>
+                <Button href='#top' size='large' color='inherit' >
                     {buttontxt}
                 </Button>
-                
-                {Carousel(captions, images)}
+
+                <div style={{ marginTop: '30px' }}>
+                    {Carousel(captions, images)}
+                </div>
             </div>
         </div>
     );

@@ -12,22 +12,7 @@ The fullstack group is responsible for deploying the web application that will m
 	npm run client-install
 	```
 
-2. Set up environment variables: Create two .env files, one in **model_app/frontend** and one in **model_app/backend**.
-
-The frontend .env file looks like
-```
-MAP_API=<your-map-api>
-```
-
-The backend .env file looks like
-```
-ATLAS_URI=<MongoDB-URI>
-
-```
-
-3. Activate the virtual environment for the synthpops simulation. Instructions for creating the virtual environment are found in **model_app/backend/synthpops**
-
-4. Begin website development: In **model_app**, enter `npm run dev` to start the client and server connections. When you make changes to any file, the servers will restart. You should see a message
+2. Begin website development: In the **model_app** folder, enter `npm run dev` to start the client and server connections. When you make changes to any file, the servers will restart. You should see a message
 
 ```
 MongoDB database connection established successfully.
@@ -35,9 +20,9 @@ Development server is running on port: 5000
 ```
 
 ## `Troubleshooting`
-- If step #4 stalls, send an interrupt signal (ctrl-c on mac) and do `npm install react-scripts`
+- If step #2 stalls, send an interrupt signal (ctrl-c on mac) and do `npm install react-scripts`
 - If you see an error like `Error: listen EADDRINUSE: address already in use :::5000` find the pid for the process running on this port and kill it
-- If you ever see a babel-jest error after pulling, go into your package.json and remove the react-scripts from your dependencies, and run `npm install` again.
+- If you ever see a babel-jest error after pulling, go into your package.json and remove the react-scripts from your dependencies, and run `npm install` again
 
 ## `Structure`
 **model_app/backend/models**: contains all database schemas   

@@ -1,16 +1,17 @@
-import image from '../images/person-icon.png';
+//import image from '../images/person-icon.png';
 import simBliImg from '../images/Simone Bliss.JPG';
-import serChanImg from '../images/person-icon.png';
+import serChanImg from '../images/Serena Chan.jpg';
 import matInsImg from '../images/mathias_insley.png';
 import steLiImg from '../images/Stephen Li.jpg';
 import henNorImg from '../images/Henry Noren.JPG';
-import ZoeKimImg from '../images/person-icon.png';
+import ZoeKimImg from '../images/Zoe Kim.jpg';
+import emeSulImg from '../images/Emerson_Sullivan.jpg';
 
 const tileData = [
   {
     img: matInsImg,
     name: 'Mathias Insley',
-    role: 'Project Lead',
+    role: 'Project Manager',
     description: 'Materials Science, Computer Science',
   },
   {
@@ -23,7 +24,7 @@ const tileData = [
     img: serChanImg,
     name: 'Serena Chan',
     role: 'Simulation Lead',
-    description: 'Major'
+    description: 'Molecular and Cellular Biology, Women, Gender, and Sexuality'
   },
   {
     img: ZoeKimImg,
@@ -43,6 +44,12 @@ const tileData = [
     role: 'Simulation Lead',
     description: 'Biomedical Engineering',
   },
+  {
+    img: emeSulImg,
+    name: 'Emerson Sullivan',
+    role: 'Simulation Lead',
+    description: 'Computer Science'
+  }
 ];
 
 export default tileData;
