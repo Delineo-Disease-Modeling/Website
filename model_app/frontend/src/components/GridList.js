@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
-import GridList from '@material-ui/core/GridList';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,19 +13,14 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     overflow: 'hidden',
     backgroundColor: '#222629',
-
     textAlign: 'center',
-
-
-
   },
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
   },
 
   displayUnder: {
-    font: "Brush Script MT",
-    fontSize: 27,
+    fontSize: 25,
     border: 0,
 
     color: 'white',
@@ -34,18 +28,20 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: 10,
     paddingBottom: 5,
     textAlign: 'center',
+    fontWeight: 'bold'
 
 
   },
 
   displayUnderTitle: {
-    font: "Brush Script MT",
-    fontSize: 22,
+    fontSize: 16,
     border: 0,
     color: 'white',
     height: 10,
-    paddingTop: 20,
+    paddingTop: 30,
     textAlign: 'center',
+    fontStyle: 'italic',
+
 
 
   },
@@ -90,61 +86,54 @@ const useStyles = makeStyles((theme) => ({
   },
   gridListTile: {
     width: '260px',
-    height:'350px',
+    height: '350px',
 
   },
-large: {
-  width: '230px',
-  height:'230px',
-  marginTop: '20px',
-  boxShadow: '0 0 14px 7px black',
-},
-bigCir: {
- height:'200px',
- width:'200px',
- borderRadius:'50%',
- borderColor:'#949494',
- borderStyle:'solid',
- borderWidth:'3px',
-
-
-
-
-
-},
+  large: {
+    width: '230px',
+    height: '230px',
+    marginTop: '20px',
+    boxShadow: '0 0 14px 7px black',
+  },
+  bigCir: {
+    height: '200px',
+    width: '200px',
+    borderRadius: '50%',
+    borderColor: '#949494',
+    borderStyle: 'solid',
+    borderWidth: '3px',
+  },
 
 }));
 
 export default function TitlebarGridList(tileData) {
   const classes = useStyles();
 
-
   return (
     <Container className={classes.root} maxWidth='lg'>
 
-        {tileData.map((tile) => (
+      {tileData.map((tile) => (
 
-          <Grid key={tile.name}  xs={12} sm={6} md={3}>
-            <GridListTile component = 'div'className={classes.gridListTile} key={tile.img}>
-
-
-             <center><Avatar src={tile.img} className = {classes.large}/></center>
-             <center>
-
-               <div className={classes.displayUnder}>
-                 <h4 className={classes.displayUnder}>{tile.name}</h4>
-                 <h4 className={classes.displayUnderTitle}>{tile.role}</h4>
-
-               </div>
+        <Grid key={tile.name} xs={12} sm={6} md={3}>
+          <GridListTile component='div' className={classes.gridListTile} key={tile.img}>
 
 
-             </center>
+            <center><Avatar src={tile.img} className={classes.large} /></center>
+            <center>
+
+              <div className={classes.displayUnder}>
+                <Typography varient='h4' className={classes.displayUnder}>{tile.name}</Typography>
+                <Typography className={classes.displayUnderTitle}>{tile.role}</Typography>
+              </div>
 
 
-            </GridListTile>
+            </center>
 
-          </Grid>
-        ))}
+
+          </GridListTile>
+
+        </Grid>
+      ))}
 
 
     </Container>

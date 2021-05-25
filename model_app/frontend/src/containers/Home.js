@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core';
+import { withStyles, Typography } from '@material-ui/core';
 import BlogCard from '../components/BlogCard'
 import blogfake1 from '../images/blogfake1.jpg';
 import blogfake2 from '../images/blogfake2.jpg';
@@ -142,10 +141,7 @@ const styles = {
 
 };
 
-
 class Home extends Component {
-
-    
 
     render() {
         const { classes } = this.props;
@@ -156,7 +152,7 @@ class Home extends Component {
                 <div className={classes.imageBox}>
                     <div className="header-text">
                         <h1 style={{ fontSize: '50px', marginBottom: "30px"}}>Interactive Disease Simulation</h1>
-                        <h5 style={{marginBottom: "30px"}}>Bring a fresh approach to the challenge of modeling the spread of pandemics</h5>
+                        <h5 style={{marginBottom: "30px"}}>Bringing a fresh approach to modeling the spread of pandemics</h5>
                         <Button className={classes.bigButton} variant="contained" color="inherit" href="/simulator">
                             Explore Simulation
                         </Button>

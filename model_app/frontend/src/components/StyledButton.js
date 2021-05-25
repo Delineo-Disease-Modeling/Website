@@ -3,19 +3,18 @@ import Button from '@material-ui/core/Button';
 
 
 const StyledButton = styled(Button)({
+    height: 48,
+    padding: '0 30px',
+    borderRadius: 3,
     borderColor: '#66FCF1',
     backgroundColor: '#66FCF1',
     border: '1px solid',
     color: '#444f56',
-    height: 48,
-    padding: '0 30px',
-    borderRadius: 3,
-    background: '#66FCF1',
-    color: 'white',
     "&:hover": {
-        backgroundColor: 'transparent',
+        backgroundColor: '#222629',
         color: '#66FCF1',
         borderColor: '#66FCF1',
+        boxShadow: '0px 0px 10px #222629',
     },
 });
 

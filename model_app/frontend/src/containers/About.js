@@ -1,6 +1,6 @@
 import React from "react";
-import Accordion from '@material-ui/core/Accordion';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import SendIcon from '@material-ui/icons/Send';
 import { withStyles } from '@material-ui/core/styles';
 import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
@@ -10,31 +10,9 @@ import Button from '../components/StyledButton';
 import faqData from '../const/faqData';
 import bgImg from '../images/Delineo-About.gif';
 import InfoBlock from '../components/InfoBlock';
+import './About.css'
 
 const styles = {
-
-	w3Image: {
-		maxWidth: '22vw',
-		height: '180px',
-	},
-
-	w3DisplayContainer: {
-		width: '100%',
-		display: 'flex',
-		paddingBottom: '50px',
-		flexDirection: 'row',
-		justifyContent: 'center',
-		alignItems: 'center',
-		flexWrap: 'wrap'
-	},
-
-	buttonContainer: {
-		width: '100%',
-		alignContent: 'center',
-		paddingTop: '0%',
-		paddingBottom: '5%',
-	},
-
 	cardBackground: {
 		backgroundColor: 'white',
 		height: '100%',
@@ -45,58 +23,33 @@ const styles = {
 		alignContent: 'center',
 		paddingBottom: '5%',
 	},
-
-	cardGreenBackground: {
-		marginTop: '0%',
-		marginLeft: 'auto',
-		marginRight: 'auto',
-		backgroundColor: 'black',
-		width: '100%',
-		alignSelf: 'center',
-		alignItems: 'center',
-	},
-
 	underline: {
 		width: '200px',
 		margin: 'auto',
 		borderTop: '3px solid #66FCF1',
 		marginBottom: '30px'
 	},
-
-	paragraph: {
-		color: 'white',
-		paddingLeft: '5%',
-		paddingRight: '5%',
-	},
-
-	thumbnail: {
-		width: '22vw'
-	},
-
 	title: {
 		position: 'absolute',
-		top: '230px',
-		left: '169px',
-		fontWeight: 'bold',
-		letterSpacing: '1.2px',
-		textShadow: '2px 2px 10px black'
+		top: '190px',
+		left: '20%',
+		letterSpacing: '1.5px',
+		lineHeight: '50px',
+		textShadow: '2px 2px 15px black',
+		textAlign: 'left'
 	},
-
 	subtitle: {
 		position: 'absolute',
 		top: '320px',
-		left: '169px',
+		left: '20%',
 		fontSize: '18px',
-		textShadow: '2px 2px 10px black'
-	},
-
-	block: {
-		margin: '50px'
+		textShadow: '2px 2px 10px black',
+		textAlign: 'left'
 	},
 	border: {
 		position: 'absolute',
 		top: '300px',
-		left: '169px',
+		left: '20%',
 		width: '100px',
 		margin: 'auto',
 		borderTop: '3px solid #66FCF1',
@@ -109,16 +62,28 @@ const styles = {
 	faqSlots: {
 		textAlign: 'left',
 		padding: '0 50px'
-	}
-}
-
-const ColoredAccordion = withStyles({
-	root: {
-		backgroundColor: 'black',
-		fontSize: '20px',
-		color: '#66FCF1'
 	},
-})(Accordion);
+	input: {
+		padding: '10px',
+		minWidth: '300px',
+		margin: '10px 30px'
+	},
+	form: {
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center'
+	},
+	button: {
+		marginTop: '30px'
+	},
+	description: {
+		fontSize: '16px',
+		letterSpacing: '1.2px',
+		color: 'black',
+		paddingBottom: '50px',
+		paddingTop: '50px'
+	},
+}
 
 const AccordionDetails = withStyles((theme) => ({
 	root: {
@@ -142,7 +107,6 @@ const ColAccordion = withStyles({
 		},
 		'&$expanded': {
 			margin: 'auto',
-			boxShadow: 'inset 0px 0px 5px black',
 		},
 	},
 	expanded: {},
@@ -154,7 +118,6 @@ const ColAccordionSummary = withStyles({
 		borderBottom: '0px solid rgba(0, 0, 0, .125)',
 		marginBottom: 0,
 		minHeight: 56,
-		borderRadius: '15px',
 		'&$expanded': {
 			minHeight: 56,
 		},
@@ -179,16 +142,15 @@ class About extends React.Component {
 		const { classes } = this.props;
 		return (
 			<div className={classes.cardBackground}>
-				<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-				<div > {/*className={classes.cardGreenBackground}*/}
+				<div > 
 
-					<Typography variant="h2" component="h2" className={classes.title}>
+					<Typography key='h2' variant="h2" component="h2" className={classes.title}>
 						ABOUT DELINEO
 					</Typography>
 					<div className={classes.border}></div>
-					<Typography variant="subtitle" component="h2" className={classes.subtitle}>
+					<Typography variant="h2" component="h2" className={classes.subtitle}>
 						Disease Modeling Simulation at Johns Hopkins University
-					</Typography>
+						</Typography>
 					<img src={bgImg} alt="background" width='100%' height="700vh" />
 
 					<InfoBlock background={'white'} subject={'visualization'} />
@@ -202,20 +164,20 @@ class About extends React.Component {
 					<div className={classes.underline}></div>
 					<div className={classes.faqSlots}>
 
-						{faqData.map((faq) => {
+						{faqData.map((faq, i) => {
 							return (
-								<div style={{ padding: '10px' }}>
+								<div style={{ padding: '10px' }} key={i+'faq'}> 
 									<ColAccordion>
 										<ColAccordionSummary
 											expandIcon={<ExpandMoreIcon />}
 											aria-controls="Model Param-content"
 											id="Model Param-header"
-											style={{ padding: '0 50px' }}
+											style={{ padding: '0 50px', fontWeight: '600' }}
 										>
 											{faq.question}
 										</ColAccordionSummary>
 										<AccordionDetails style={{ padding: '0 50px' }}>
-											<Typography style={{ color: 'black', paddingBottom: '50px' }}>
+											<Typography className={classes.description}>
 												{faq.answer}
 											</Typography>
 										</AccordionDetails>
@@ -229,24 +191,27 @@ class About extends React.Component {
 
 
 
-				<div className="w3-container w3-padding-32" id="contact" >
-					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', color: 'black' }}>
+				<div id="contact" >
+					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', color: 'black', marginTop: '50px'}}>
 						Contact Us!
 					</Typography>
 					<div className={classes.underline}></div>
 					<Typography varient='h3' component="h2" style={{ color: 'black' }}>
 						Let's get in touch!
 					</Typography>
-					<form style={{ padding: '0 50px' }}>
-						<input className="w3-input w3-border" type="text" placeholder="Name" required name="Name" />
-						<input className="w3-input w3-section w3-border" type="text" placeholder="Email" required name="Email" />
-						<input className="w3-input w3-section w3-border" type="text" placeholder="Subject" required name="Subject" />
-						<input className="w3-input w3-section w3-border" type="text" placeholder="Comment" required name="Comment" />
-						<Button type="submit" size="large" varient='contained'>
-							< i className="fa fa-paper-plane"></i>
+					<Typography varient='h1' component="h2" style={{ color: 'black' }}>
+
+						<form style={{ padding: '0 50px' }} className={classes.form} noValidate autoComplete="off">
+							<input className={classes.input} type="text" placeholder="Name" required name="Name" />
+							<input className={classes.input} type="text" placeholder="Email" required name="Email" />
+							<input className={classes.input} type="text" placeholder="Subject" required name="Subject" />
+							<input className={classes.input} type="text" placeholder="Comment" required name="Comment" />
+
+							<Button endIcon={<SendIcon />} className={classes.button} type="submit" size="large" varient='contained'>
 								SEND MESSAGE
-						</Button>
-					</form>
+								</Button>
+						</form>
+					</Typography>
 				</div>
 			</div >
 		);

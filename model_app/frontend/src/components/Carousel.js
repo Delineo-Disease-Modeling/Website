@@ -2,8 +2,8 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Carousel from 'react-bootstrap/Carousel'
 import { makeStyles } from '@material-ui/core/styles';
-import homepagecode from '../images/homepagecode.jpg'
-import homepageml from '../images/homepageml.webp'
+import homepagecode from '../images/simulator_img.png'
+import homepageml from '../images/blogpostPic1.png'
 
 const useStyles = makeStyles({
     button: {
