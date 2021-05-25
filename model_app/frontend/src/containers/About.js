@@ -199,15 +199,14 @@ class About extends React.Component {
 					<Typography varient='h3' component="h2" style={{ color: 'black' }}>
 						Let's get in touch!
 					</Typography>
-					<Typography varient='h1' component="h2" style={{ color: 'black' }}>
 
-						<form style={{ padding: '0 50px' }} className={classes.form} noValidate autoComplete="off">
-							<input className={classes.input} type="text" placeholder="Name" required name="Name" />
-							<input className={classes.input} type="text" placeholder="Email" required name="Email" />
-							<input className={classes.input} type="text" placeholder="Subject" required name="Subject" />
-							<input className={classes.input} type="text" placeholder="Comment" required name="Comment" />
-
-							<Button endIcon={<SendIcon />} className={classes.button} type="submit" size="large" varient='contained'>
+					<form action="mailto:delineodiseasemodeling@gmail.com" method="post" enctype="text/plain" style={{ padding: '0 50px' }}>
+						<input className="w3-input w3-border" type="text" placeholder="Name" required name="Name" />
+						<input className="w3-input w3-section w3-border" type="text" placeholder="Email" required name="Email" />
+						<input className="w3-input w3-section w3-border" type="text" placeholder="Subject" required name="Subject" />
+						<input className="w3-input w3-section w3-border" type="text" placeholder="Comment" required name="Comment" />
+						<Button type="submit" size="large" varient='contained'>
+							< i className="fa fa-paper-plane" type='submit'></i>
 								SEND MESSAGE
 								</Button>
 						</form>
