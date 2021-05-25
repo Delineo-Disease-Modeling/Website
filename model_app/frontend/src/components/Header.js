@@ -55,11 +55,7 @@ class Header extends Component{
                     <Nav navbar className="ml-auto">
 
                         <NavItem>
-                            <NavLink className="Nav-link" to='/Anytown' activeClassName='active' activeStyle={active} style={styleSheet}> Anytown</NavLink>
-                        </NavItem>
-
-                        <NavItem>
-                            <NavLink className="Nav-link"  to='/simulator' activeClassName='active' activeStyle={active} style={styleSheet}> Simulator</NavLink>
+                        <NavLink className="Nav-link" to='/simulator' activeClassName='active' activeStyle={active} style={styleSheet}> Simulator</NavLink>
                         </NavItem>
 
                         <NavItem>
