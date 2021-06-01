@@ -25,7 +25,7 @@ const styles = {
   CardBackground: {
     backgroundColor: '#222629',
     height: '100%',
-    width: '100vh',
+    width: 'fit-content',
     minHeight: '100%',
     minWidth: '100%',
     margin: 0,
@@ -62,7 +62,7 @@ class Team extends Component {
   render() {
     const { classes } = this.props;
   return(
-    <div >
+    <div className = {classes.CardBackground}>
       <div className = {classes.MainHeader} align ='center' >
         <Typography varient='h3' className={classes.h3} align="center" >Meet the Team</Typography>
       </div>

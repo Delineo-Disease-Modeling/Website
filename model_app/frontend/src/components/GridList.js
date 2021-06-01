@@ -114,7 +114,7 @@ export default function TitlebarGridList(tileData) {
 
       {tileData.map((tile) => (
 
-        <Grid key={tile.name} xs={12} sm={6} md={3}>
+        <Grid key={tile.name}>
           <GridListTile component='div' className={classes.gridListTile} key={tile.img}>
 
 
