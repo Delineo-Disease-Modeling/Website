@@ -63,7 +63,6 @@ function DevelopmentBlogContainer(props){
     const handleExpandClick = () => {
       setExpanded(!expanded);
     };
-
   
     return(
         <Container maxWidth="lg" className={classes.blogsContainer} >

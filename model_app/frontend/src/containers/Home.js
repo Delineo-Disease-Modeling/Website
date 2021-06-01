@@ -23,48 +23,54 @@ const styles = {
         },
     },
 
-    bigButton: {
-        borderColor: '#66FCF1',
-        backgroundColor: '#66FCF1',
-        border: '1px solid',
-        color: '#444f56',
-        "&:hover": {
-            backgroundColor: '#222629',
-            color: '#66FCF1',
-            borderColor: '#66FCF1',
-        },
-        fontSize: '20px'
-    },
+    fontSize: "20px",
+  },
 
-    buttonContainer: {
-        width: '100%'
-    },
+  imageBox: {
+    background: "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))",
+    backgroundSize: "cover",
 
+    color: "white",
+    height: "100vh",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    opacity: "0.9",
+    boxShadow: "inset 0 0 0 100vw rgba(0,0,0,0.5)",
+  },
 
-    imageBox: {
-        background: "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))",
-        backgroundImage: "url('https://9to5mac.com/wp-content/uploads/sites/6/2020/01/Coronavirus.jpg?quality=82&strip=all')",
-        backgroundSize: "cover",
+  teamPage: {
+    background: "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))",
+    backgroundSize: "cover",
+    color: "white",
+    height: "130vh",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    opacity: "0.7",
+    boxShadow: "inset 0 0 0 100vw rgba(0,0,0,0.5)",
+  },
 
-        color: "white",
-        height: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        opacity: "0.9",
-        boxShadow: "inset 0 0 0 100vw rgba(0,0,0,0.5)",
-    },
+  blogSection: {
+    height: "80vh",
+    padding: "20px 200px 60px 200px",
+    overflow: "hidden",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    boxShadow: "inset 0 0 0 100vw rgba(0,0,0,0.5)",
+  },
 
-    teamPage: {
-        background: "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))",
-        backgroundSize: "cover",
-        color: "white",
-        height: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        opacity: "0.9",
-        boxShadow: "inset 0 0 0 100vw rgba(0,0,0,0.5)",
+  recent: {
+    color: "black",
+    //fontStyle: 'strong',
+    fontSize: "40px",
+    marginTop: "10px",
+    marginBottom: "10px",
+  },
+
+  link: {
+    "&:hover": {
+      color: "white",
     },
 
     aboutSection: {

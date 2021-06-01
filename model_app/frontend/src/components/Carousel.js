@@ -58,8 +58,8 @@ const HomeCarousel = function HomeCarousel() {
                     style = {{opacity: 0.5}}
                 />
                 <Carousel.Caption>
-                    <h1 style = {{marginBottom: 20}}>Machine Learning</h1>
-                    <h5 style = {{marginBottom: 30}}>The problem of how disease moves is fundamentally a question of how people move. Leveraging mobility data provided by SafeGraph and XMode, our team is able to create realistic population movements informed by real world data. Our approach to the problem of movement utilizes statistical and machine learning methods from prior literature to form movement patterns that capture the broad range of ways that people move.</h5>
+                    <h1 style = {{ marginBottom: 20}}>Machine Learning</h1>
+                    <h6 style = {{marginBottom: 30}}>The problem of how disease moves is fundamentally a question of how people move. Leveraging mobility data provided by SafeGraph and XMode, our team is able to create realistic population movements informed by real world data. Our approach to the problem of movement utilizes statistical and machine learning methods from prior literature to form movement patterns that capture the broad range of ways that people move.</h6>
                     <div className={classes.buttonContainer}>
                                 <Button className={classes.button} variant="contained" color="inherit" href="/about">
                                     Learn More
