@@ -24,7 +24,7 @@ const styles = {
     },
 
     fontSize: "20px",
-  },
+
 
   imageBox: {
     background: "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))",
@@ -143,9 +143,8 @@ const styles = {
     imgContainer: {
         padding: '0px 20px 20px 20px'
     },
-
-
-};
+  }
+}
 
 class Home extends Component {
 
