@@ -13,10 +13,10 @@ import Typography from '@material-ui/core/Typography';
 
 
 const unityContext = new UnityContext({
-  loaderUrl: "./Build/May21.loader.js",
-  dataUrl: "./Build/May21.data",
-  frameworkUrl: "./Build/May21.framework.js",
-  codeUrl: "./Build/May21.wasm",
+  loaderUrl: "./Build/JuneBuild.loader.js",
+  dataUrl: "./Build/JuneBuild.data",
+  frameworkUrl: "./Build/JuneBuild.framework.js",
+  codeUrl: "./Build/JuneBuild.wasm",
 });
 
 /*
