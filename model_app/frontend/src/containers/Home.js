@@ -82,8 +82,7 @@ const styles = {
       color: "white",
     },
   },
-};
-
+}
 
 class Home extends Component {
   render() {
