@@ -30,7 +30,7 @@ const styles = {
   bigButton: {
     borderColor: "#66FCF1",
     fontSize: "20px",
-
+  },
 
   imageBox: {
     background: "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))",
