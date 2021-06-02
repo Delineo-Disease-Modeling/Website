@@ -3,6 +3,7 @@ import './App.css';
 import { Header, Footer } from './components';
 import { Home, About, Simulator, DevelopmentBlog, Team, Post1, Post2} from './containers';
 import { Provider } from 'react-redux';
+import TeamApplication from "./containers/TeamApplication"
 import store from './store';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './const/theme';
@@ -28,6 +29,7 @@ function App() {
                       <Route exact path="/developmentblog" component={DevelopmentBlog} />
                       <Route exact path="/developmentblog/post1" component={Post1} />
                       <Route exact path="/developmentblog/post2" component={Post2} />
+                      <Route exact path="/teamapplication" component={TeamApplication}/>
                   </Switch>
                   <Footer />
               </Router>
