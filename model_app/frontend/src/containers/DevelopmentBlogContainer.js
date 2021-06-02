@@ -1,18 +1,20 @@
 import React, {useState} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
 import IconButton from '@material-ui/core/IconButton';
 import clsx from 'clsx';
 import DevelopmentBlogCards from './DevelopmentBlogCards'
 
 
   const useStyles = makeStyles((theme) => ({
-   
+
     expand: {
       art: {
         transform: 'rotate(0deg)',
@@ -36,7 +38,7 @@ import DevelopmentBlogCards from './DevelopmentBlogCards'
         }),
       },
     },
-  
+
     expandOpen: {
       art: { transform: 'rotate(180deg)' },
       ann: { transform: 'rotate(180deg)' },
@@ -53,8 +55,8 @@ import DevelopmentBlogCards from './DevelopmentBlogCards'
       paddingBottom: theme.spacing(3)
     },
   }));
-  
-  
+
+
 
 function DevelopmentBlogContainer(props){
     const classes = useStyles();
@@ -63,7 +65,8 @@ function DevelopmentBlogContainer(props){
     const handleExpandClick = () => {
       setExpanded(!expanded);
     };
-  
+
+
     return(
         <Container maxWidth="lg" className={classes.blogsContainer} >
         <Card maxWidth="lg" style={{ background: '#222629', boxShadow: "none" }} >
