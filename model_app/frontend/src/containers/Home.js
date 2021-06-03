@@ -12,6 +12,7 @@ import anytownScreenshot from "../images/anytownScreenshot.png";
 import HomeBlog from "./HomeBlog.js";
 
 const styles = {
+  
   bigButton: {
     borderColor: "#66FCF1",
     backgroundColor: "#66FCF1",
