@@ -1,5 +1,4 @@
 import React from "react";
-//import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
 import './BlogPost.css'
 import Toolbar from '@material-ui/core/Toolbar';
@@ -17,6 +16,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles((theme) => ({
+  
   center: {
     //display: "flex",
     justifyContent: "center",
@@ -24,10 +24,12 @@ const useStyles = makeStyles((theme) => ({
     //width: "70%",
     marginBottom: "-45px"
   },
+
   top: {
     display: "inline-block",
     marginTop: "-45px"
   },
+
   text: {
     justifyContent: "center",
     alignItems: "center",

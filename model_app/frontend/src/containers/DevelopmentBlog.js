@@ -65,13 +65,16 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: "#222629",
   },
+
   table: {
     fontSize: 14,
     color: theme.palette.common.white,
   },
+
   hidden: {
     padding: "0 !important",
   },
+
   hero: {
     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5)), url('/blog.jpg')`,
     height: "520px",
@@ -89,9 +92,11 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "3em",
     },
   },
+
   horiz: {
     display: "inline-block",
   },
+
   expand: {
     art: {
       transform: "rotate(0deg)",
@@ -121,9 +126,11 @@ const useStyles = makeStyles((theme) => ({
     ann: { transform: "rotate(180deg)" },
     news: { transform: "rotate(180deg)" },
   },
+
   blogsContainer: {
     paddingTop: theme.spacing(3),
   },
+
   blogTitle: {
     fontWeight: 800,
     alignItems: "center",
@@ -131,11 +138,13 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     paddingBottom: theme.spacing(3),
   },
+
   title: {
     marginBottom: "0 0px",
     marginTop: "0 0px",
     color: "black",
   },
+
   authorDate: {
     width: "300px",
     marginLeft: "0 0px",
@@ -144,19 +153,27 @@ const useStyles = makeStyles((theme) => ({
     margin: "0 0px",
     textAlign: "left",
   },
+
   card: {
     maxWidth: "100%",
     position: "relative",
-    backgroundColor: "white",
+    backgroundColor: "white", //#010d0d
     "&:hover": {
       backgroundColor: "#66FCF1",
       textDecoration: "none",
     },
   },
+
   subtextalign: {
     textAlign: "justify",
     alignItems: "justifyContent",
+    color: "black",
   },
+
+  creditRow: {
+    color: "black",
+  },
+
   overlay: {
     position: "absolute",
     top: "20px",
@@ -164,30 +181,37 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     maxWidth: "100%",
   },
-  subtitle: {
-    fontSize: 18,
-    marginLeft: "0 0px",
-    marginTop: "0 0px",
-    padding: "0 0px",
-  },
+
+  // subtitle: {
+  //   fontSize: 18,
+  //   marginLeft: "0 0px",
+  //   marginTop: "0 0px",
+  //   padding: "0 0px",
+  // },
+
   root: {
     maxWidth: 345,
     backgroundColor: "#222629",
   },
+  
   media: {
     height: 240,
   },
+
   align: {
     textAlign: "justifyContent",
   },
+
   cardActions: {
     display: "flex",
     margin: "0 10px",
     justifyContent: "space-between",
   },
+
   author: {
     display: "flex",
   },
+
   paginationContainer: {
     display: "flex",
     justifyContent: "center",
@@ -232,6 +256,7 @@ function DevelopmentBlog(props) {
       >
         <Toolbar></Toolbar>
       </AppBar>
+      
       <Grid container spacing={3}>
         <Grid item xs>
           <Box className={classes.hero}>
@@ -274,7 +299,7 @@ function DevelopmentBlog(props) {
                           </Typography>
                           <Typography className={classes.subtitle}>
                             {row.subtext}
-                          </Typography> 
+                          </Typography>
                         </StyledTableCell>
                       </StyledTableRow>
                     );
@@ -353,7 +378,6 @@ function DevelopmentBlog(props) {
                               <Typography
                                 className={classes.subtextalign}
                                 variant="body2"
-                                color="white"
                                 component="p"
                               >
                                 {row.subtext}
@@ -367,7 +391,7 @@ function DevelopmentBlog(props) {
                                 m={1}
                                 className={classes.authorDate}
                               >
-                                <Typography variant="subtitle2" component="p">
+                                <Typography className={classes.creditRow} variant="subtitle2" component="p">
                                   <span style={{ fontWeight: "bold" }}>
                                     {row.author}{" "}
                                   </span>
@@ -435,12 +459,10 @@ function DevelopmentBlog(props) {
                           </CardActions>
                         </Card>
                       </Grid>
-                    ); 
-                  }
-                  else {
+                    );
+                  } else {
                     return null;
                   }
-                    
                 })}
               </Grid>
               <Box my={4} className={classes.paginationContainer}></Box>

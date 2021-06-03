@@ -10,34 +10,61 @@ import blogbackground from '../images/blogbackgroud.PNG'
 
   const useStyles = makeStyles((theme) => ({
 
+    expand: {
+      art: {
+        transform: 'rotate(0deg)',
+        marginLeft: 'auto',
+        transition: theme.transitions.create('transform', {
+          duration: theme.transitions.duration.shortest,
+        }),
+      },
+      ann: {
+        transform: 'rotate(0deg)',
+        marginLeft: 'auto',
+        transition: theme.transitions.create('transform', {
+          duration: theme.transitions.duration.shortest,
+        }),
+      },
+      news: {
+        transform: 'rotate(0deg)',
+        marginLeft: 'auto',
+        transition: theme.transitions.create('transform', {
+          duration: theme.transitions.duration.shortest,
+        }),
+      },
+    },
+
+    expandOpen: {
+      art: { transform: 'rotate(180deg)' },
+      ann: { transform: 'rotate(180deg)' },
+      news: { transform: 'rotate(180deg)' },
+    },
     blogsContainer: {
       paddingTop: theme.spacing(3)
     },
     blogTitle: {
-      marginTop: "10px",
-      fontSize: "38px",
+      fontWeight: 800,
       alignItems: "center",
       textAlign: "center",
-      color: "white",
+      color: "black",
       paddingBottom: theme.spacing(3)
     },
   }));
-  
-  
+
+
 
 function HomeBlog(props){
     const classes = useStyles();
-  
+
     return(
 
-        <div style = {{ 
-          boxShadow: "inset 0 0 0 100vw rgba(0,0,0,0.5)",
+        <div style = {{
             backgroundImage: `url(${blogbackground})` , backgroundSize: "cover",}}>
         <Container maxWidth="lg" className={classes.blogsContainer} >
         <Card maxWidth="lg" style={{ background: 'transparent', boxShadow: "none" }} >
 
           <CardActions style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
-            <Typography variant="h1" className={classes.blogTitle}>
+            <Typography variant="h4" className={classes.blogTitle}>
             Check Out Our Blog
             </Typography>
 
@@ -49,4 +76,4 @@ function HomeBlog(props){
     )
 }
 
-export default HomeBlog
+export default HomeBlog 
