@@ -17,6 +17,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles((theme) => ({
+  
   center: {
     //display: "flex",
     justifyContent: "center",
@@ -24,10 +25,12 @@ const useStyles = makeStyles((theme) => ({
     //width: "70%",
     marginBottom: "-45px"
   },
+
   top: {
     display: "inline-block",
     marginTop: "-45px"
   },
+
   text: {
     justifyContent: "center",
     alignItems: "center",

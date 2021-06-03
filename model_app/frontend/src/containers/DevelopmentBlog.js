@@ -167,6 +167,11 @@ const useStyles = makeStyles((theme) => ({
   subtextalign: {
     textAlign: "justify",
     alignItems: "justifyContent",
+    color: "black",
+  },
+
+  creditRow: {
+    color: "black",
   },
 
   overlay: {
@@ -188,20 +193,25 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 345,
     backgroundColor: "#222629",
   },
+  
   media: {
     height: 240,
   },
+
   align: {
     textAlign: "justifyContent",
   },
+
   cardActions: {
     display: "flex",
     margin: "0 10px",
     justifyContent: "space-between",
   },
+
   author: {
     display: "flex",
   },
+
   paginationContainer: {
     display: "flex",
     justifyContent: "center",
@@ -368,7 +378,6 @@ function DevelopmentBlog(props) {
                               <Typography
                                 className={classes.subtextalign}
                                 variant="body2"
-                                color="white"
                                 component="p"
                               >
                                 {row.subtext}
@@ -382,7 +391,7 @@ function DevelopmentBlog(props) {
                                 m={1}
                                 className={classes.authorDate}
                               >
-                                <Typography variant="subtitle2" component="p">
+                                <Typography className={classes.creditRow} variant="subtitle2" component="p">
                                   <span style={{ fontWeight: "bold" }}>
                                     {row.author}{" "}
                                   </span>
