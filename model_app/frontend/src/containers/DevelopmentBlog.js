@@ -164,12 +164,14 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     maxWidth: "100%",
   },
-  subtitle: {
-    fontSize: 18,
-    marginLeft: "0 0px",
-    marginTop: "0 0px",
-    padding: "0 0px",
-  },
+
+  // subtitle: {
+  //   fontSize: 18,
+  //   marginLeft: "0 0px",
+  //   marginTop: "0 0px",
+  //   padding: "0 0px",
+  // },
+
   root: {
     maxWidth: 345,
     backgroundColor: "#222629",
@@ -274,7 +276,7 @@ function DevelopmentBlog(props) {
                           </Typography>
                           <Typography className={classes.subtitle}>
                             {row.subtext}
-                          </Typography> 
+                          </Typography>
                         </StyledTableCell>
                       </StyledTableRow>
                     );
@@ -435,12 +437,10 @@ function DevelopmentBlog(props) {
                           </CardActions>
                         </Card>
                       </Grid>
-                    ); 
-                  }
-                  else {
+                    );
+                  } else {
                     return null;
                   }
-                    
                 })}
               </Grid>
               <Box my={4} className={classes.paginationContainer}></Box>
