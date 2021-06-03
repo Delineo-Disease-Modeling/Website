@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { withStyles, Typography } from "@material-ui/core";
+import { withStyles} from "@material-ui/core";
 import HomeCarousel from "../components/Carousel";
 import TeamMemberJoin from "../images/teammemberjoin.jpg";
 
-import blogbackground from "../images/blogbackgroud.PNG";
+//import blogbackground from "../images/blogbackgroud.PNG";
 import Link from "@material-ui/core/Link";
-import DevelopmentBlogCards from "./DevelopmentBlogCards.js";
+//import DevelopmentBlogCards from "./DevelopmentBlogCards.js";
 import anytownScreenshot from "../images/anytownScreenshot.png";
 import HomeBlog from "./HomeBlog.js";
 
@@ -106,7 +106,7 @@ class Home extends Component {
         <HomeCarousel />
 
         <HomeBlog />
-        
+
         <div
           className={classes.teamPage}
           style={{ backgroundImage: `url(${TeamMemberJoin})` }}

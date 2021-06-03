@@ -45,6 +45,7 @@ import articles from '../const/devblogposts';
         textDecoration: 'none'
       }
     },
+
     subtextalign: {
       textAlign: "justify",
       alignItems: "justifyContent"
@@ -53,17 +54,21 @@ import articles from '../const/devblogposts';
     media: {
       height: 240,
     },
+
     align: {
       textAlign: 'justifyContent'
     },
+
     cardActions: {
       display: "flex",
       margin: "0 10px",
       justifyContent: "space-between"
     },
+
     author: {
-      display: "flex"
+      display: "flex",
     },
+
     paginationContainer: {
       display: "flex",
       justifyContent: "center"
@@ -99,7 +104,7 @@ function DevelopmentBlogCards(props){
                       <Typography className={classes.title} style={{ fontWeight: 'bold', marginTop: '0 0px' }} gutterBottom variant="h5" component="h2">
                         {row.title}
                       </Typography>
-                      <Typography className={classes.subtextalign} variant="body2" color="white" component="p">
+                      <Typography className={classes.subtextalign} variant="body2" component="p">
                         {row.subtext}
 
                       </Typography>

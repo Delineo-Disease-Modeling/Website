@@ -1,171 +1,128 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 //These imports are for the default team page view
-import TeamGridList from '../components/TeamGridList.js'
-import SupGridList from '../components/SupGridList.js'
-import LeadGridList from '../components/LeaderGridList.js'
-import PastTeamGridList from '../components/PastTeamGridList.js'
-//import Button from "@material-ui/core/Button";
-import { withStyles } from '@material-ui/core';
+import TeamGridList from "../components/TeamGridList.js";
+import SupGridList from "../components/SupGridList.js";
+import LeadGridList from "../components/LeaderGridList.js";
+import PastTeamGridList from "../components/PastTeamGridList.js";
+import { withStyles } from "@material-ui/core";
 
 //These imports are for when someone actually wants to filter
-import FullStackGridList from '../components/FullStackGridList.js';
+import FullStackGridList from "../components/FullStackGridList.js";
 import SimGridList from "../components/SimGridList.js";
-import MLGridList from '../components/MLGridList.js';
-import InfoTeamGridList from '../components/InfoTeamGridList.js';
+import MLGridList from "../components/MLGridList.js";
+import InfoTeamGridList from "../components/InfoTeamGridList.js";
 
-
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-//import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Typography from '@material-ui/core/Typography';
-
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Typography from "@material-ui/core/Typography";
 
 const styles = {
+  
   root: {
-    borderColor: '#66FCF1',
-    backgroundColor: '#222629',
-    border: '2px solid',
-    color: '#66FCF1',
-    fontWeight: 'bold',
-    width: '200px',
-    textAlign: 'center',
-
-
-
-  },
-
-  selectedColor: {
-
-
+    borderColor: "#66FCF1",
+    backgroundColor: "#222629",
+    border: "2px solid",
+    color: "#66FCF1",
+    fontWeight: "bold",
+    width: "200px",
+    textAlign: "center",
   },
 
   CardGreenBackground1: {
-    marginTop: '0%',
-    backgroundColor: '#4A4E51',
+    marginTop: "0%",
+    backgroundColor: "#4A4E51",
   },
+
   h2: {
-    color: 'white',
-    marginRight: 'auto',
-    marginLeft: 'auto',
+    color: "white",
+    marginRight: "auto",
+    marginLeft: "auto",
     marginTop: 0,
-    borderBottom: '3px solid #66FCF1',
-    width: 'fit-content',
+    borderBottom: "3px solid #66FCF1",
+    width: "fit-content",
     paddingBottom: 0,
-    paddingTop: '20px',
+    paddingTop: "20px",
     fontSize: 40,
-
-
   },
+
   h3: {
-    color: 'white',
+    color: "white",
     marginRight: 100,
     marginLeft: 100,
     marginTop: 40,
 
-    width: 'fit-content',
+    width: "fit-content",
 
     fontSize: 20,
-    textAlign: 'center',
-    alignSelf: 'center',
-    alignItems: 'center',
-    borderRadius: '25px',
-    border: '2px solid #2f3538',
-    padding: '20px 20px 20px 20px',
-    backgroundColor: '#2f3538',
-    maxWidth:'1000px'
-
-
+    textAlign: "center",
+    alignSelf: "center",
+    alignItems: "center",
+    borderRadius: "25px",
+    border: "2px solid #2f3538",
+    padding: "20px 20px 20px 20px",
+    backgroundColor: "#2f3538",
+    maxWidth: "1000px",
   },
+
   focus: {
-    backgroundColor: '#222629',
-    color: '#66FCF1',
-    borderColor: '#66FCF1',
-    border: '1px solid',
+    backgroundColor: "#222629",
+    color: "#66FCF1",
+    borderColor: "#66FCF1",
+    border: "1px solid",
   },
+
   notfocus: {
-    borderColor: '#66FCF1',
-    backgroundColor: '#66FCF1',
-    border: '1px solid',
-    color: '#444f56',
+    borderColor: "#66FCF1",
+    backgroundColor: "#66FCF1",
+    border: "1px solid",
+    color: "#444f56",
   },
+
   flexContainer: {
-    display: 'flex',
-    flexDirection: 'row',
+    display: "flex",
+    flexDirection: "row",
     padding: 0,
 
-    backgroundColor: '#66FCF1',
-    color: '#66FCF1',
+    backgroundColor: "#66FCF1",
+    color: "#66FCF1",
 
-    margin: '0 auto',
-    width: 'fit-content'
+    margin: "0 auto",
+    width: "fit-content",
   },
+
   clickedOn: {
-
-    color: '#222629',
-
-  }
-
-
-};
-/*
-const ColorButton = withStyles((theme) => ({
-  root: {
-    borderColor: '#66FCF1',
-    backgroundColor: '#66FCF1',
-    border: '1px solid',
-    color: '#444f56',
-    fontWeight: 'bold',
-    "&:hover": {
-      backgroundColor: '#222629',
-      color: '#66FCF1',
-      borderColor: '#66FCF1',
-    },
+    color: "#222629",
   },
-  "&:active": {
-    backgroundColor: '#222629',
-    color: '#66FCF1',
-    borderColor: '#66FCF1',
-    border: '1px solid',
-  }
-
-}))(Button);
-*/
+};
 
 const ColorListItem = withStyles((theme) => ({
   root: {
-    borderColor: '#66FCF1',
-    backgroundColor: '#222629',
-    border: '2px solid',
-    color: '#66FCF1',
-    fontWeight: 'bold',
+    borderColor: "#66FCF1",
+    backgroundColor: "#222629",
+    border: "2px solid",
+    color: "#66FCF1",
+    fontWeight: "bold",
 
-    width: '200px',
-    textAlign: 'center',
+    width: "200px",
+    textAlign: "center",
 
-
-    '&.Mui-selected, &$.Mui-selected:hover': {
-      backgroundColor: '#66FCF1',
-      color: '#222629',
-      borderColor: '#66FCF1',
+    "&.Mui-selected, &$.Mui-selected:hover": {
+      backgroundColor: "#66FCF1",
+      color: "#222629",
+      borderColor: "#66FCF1",
     },
     "&:hover": {
-      backgroundColor: '#66FCF1',
-      color: '#222629',
-      borderColor: '#66FCF1',
+      backgroundColor: "#66FCF1",
+      color: "#222629",
+      borderColor: "#66FCF1",
     },
-    '&:hover $selectedColor': {
-
-      color: '#222629',
-
-    }
-  }
-
+    "&:hover $selectedColor": {
+      color: "#222629",
+    },
+  },
 }))(ListItem);
-
-
-
 
 class TeamFilter extends Component {
   // This syntax ensures `this` is bound within handleClick.
@@ -179,10 +136,10 @@ class TeamFilter extends Component {
       sim: false,
       ml: false,
       info: false,
-      backgroundColor: '#222629',
-      color: '#66FCF1',
-      borderColor: '#66FCF1',
-    }
+      backgroundColor: "#222629",
+      color: "#66FCF1",
+      borderColor: "#66FCF1",
+    };
     this.changeDiv = this.changeDiv.bind(this);
   }
   changeDiv() {
@@ -191,84 +148,169 @@ class TeamFilter extends Component {
       fs: false,
       sim: false,
       ml: false,
-      info: false
-    })
+      info: false,
+    });
   }
 
-
-
   render() {
+    const { classes } = this.props;
 
-    /*
-    let inputStyle = {
-      borderColor: '#66FCF1',
-      backgroundColor: '#66FCF1',
-      border: '1px solid',
-      color: '#444f56',
-    };
-    */
-
-    const { classes } = this.props
-
-
-    const { all } = this.state
-    const { fs } = this.state
-    const { sim } = this.state
-    const { ml } = this.state
-    const { info } = this.state
+    const { all } = this.state;
+    const { fs } = this.state;
+    const { sim } = this.state;
+    const { ml } = this.state;
+    const { info } = this.state;
 
     //const { showing } = this.state
 
     //const highlightedAll = this.state.all ? "classes.focus" : "classes.notfocus";
 
-
     return (
-      <div  >
+      <div>
         <br />
         <div className={classes.flexContainer}>
-          <List className={classes.flexContainer} component="nav" aria-label="all fs sim ml info">
-            <ColorListItem className={classes.root}
+          <List
+            className={classes.flexContainer}
+            component="nav"
+            aria-label="all fs sim ml info"
+          >
+            <ColorListItem
+              className={classes.root}
               button
-              onClick={() => this.setState({ all: true, fs: false, sim: false, ml: false, info: false })}
+              onClick={() =>
+                this.setState({
+                  all: true,
+                  fs: false,
+                  sim: false,
+                  ml: false,
+                  info: false,
+                })
+              }
               selected={all}
-
             >
-
-              <ListItemText className={this.state.all ? classes.clickedOn : classes.selectedColor} primary={<Typography type="body2" style={{ fontWeight: 'bold', fontSize: '16px' }}>All</Typography>} />
+              <ListItemText
+                className={
+                  this.state.all ? classes.clickedOn : classes.selectedColor
+                }
+                primary={
+                  <Typography
+                    type="body2"
+                    style={{ fontWeight: "bold", fontSize: "16px" }}
+                  >
+                    All
+                  </Typography>
+                }
+              />
             </ColorListItem>
 
             <ColorListItem
               button
               selected={fs}
-              onClick={() => this.setState({ all: false, fs: true, sim: false, ml: false, info: false })}
+              onClick={() =>
+                this.setState({
+                  all: false,
+                  fs: true,
+                  sim: false,
+                  ml: false,
+                  info: false,
+                })
+              }
             >
-              <ListItemText className={this.state.fs ? classes.clickedOn : classes.selectedColor} primary={<Typography type="body2" style={{ fontWeight: 'bold', fontSize: '16px' }}>Fullstack</Typography>} />
+              <ListItemText
+                className={
+                  this.state.fs ? classes.clickedOn : classes.selectedColor
+                }
+                primary={
+                  <Typography
+                    type="body2"
+                    style={{ fontWeight: "bold", fontSize: "16px" }}
+                  >
+                    Fullstack
+                  </Typography>
+                }
+              />
             </ColorListItem>
             <ColorListItem
               button
               selected={sim}
-              onClick={() => this.setState({ all: false, fs: false, sim: true, ml: false, info: false })}
+              onClick={() =>
+                this.setState({
+                  all: false,
+                  fs: false,
+                  sim: true,
+                  ml: false,
+                  info: false,
+                })
+              }
             >
-
-              <ListItemText className={this.state.sim ? classes.clickedOn : classes.selectedColor} primary={<Typography type="body2" style={{ fontWeight: 'bold', fontSize: '16px' }}>Simulation</Typography>} />
+              <ListItemText
+                className={
+                  this.state.sim ? classes.clickedOn : classes.selectedColor
+                }
+                primary={
+                  <Typography
+                    type="body2"
+                    style={{ fontWeight: "bold", fontSize: "16px" }}
+                  >
+                    Simulation
+                  </Typography>
+                }
+              />
             </ColorListItem>
             <ColorListItem
               button
               selected={ml}
-              onClick={() => this.setState({ all: false, fs: false, sim: false, ml: true, info: false })}
+              onClick={() =>
+                this.setState({
+                  all: false,
+                  fs: false,
+                  sim: false,
+                  ml: true,
+                  info: false,
+                })
+              }
             >
-              <ListItemText className={this.state.ml ? classes.clickedOn : classes.selectedColor} primary={<Typography type="body2" style={{ fontWeight: 'bold', fontSize: '16px' }}>Machine Learning</Typography>} />
+              <ListItemText
+                className={
+                  this.state.ml ? classes.clickedOn : classes.selectedColor
+                }
+                primary={
+                  <Typography
+                    type="body2"
+                    style={{ fontWeight: "bold", fontSize: "16px" }}
+                  >
+                    Machine Learning
+                  </Typography>
+                }
+              />
             </ColorListItem>
             <ColorListItem
               button
               selected={info}
-              onClick={() => this.setState({ all: false, fs: false, sim: false, ml: false, info: true })}
+              onClick={() =>
+                this.setState({
+                  all: false,
+                  fs: false,
+                  sim: false,
+                  ml: false,
+                  info: true,
+                })
+              }
             >
-              <ListItemText className={this.state.info ? classes.clickedOn : classes.selectedColor} primary={<Typography type="body2" style={{ fontWeight: 'bold', fontSize: '16px' }}>Information Support</Typography>} />
+              <ListItemText
+                className={
+                  this.state.info ? classes.clickedOn : classes.selectedColor
+                }
+                primary={
+                  <Typography
+                    type="body2"
+                    style={{ fontWeight: "bold", fontSize: "16px" }}
+                  >
+                    Information Support
+                  </Typography>
+                }
+              />
             </ColorListItem>
-
-
-
           </List>
         </div>
         {/*
@@ -283,81 +325,110 @@ class TeamFilter extends Component {
           <ColorButton mt={2} variant="contained" color="#66FCF1"  onClick={() => this.setState({ all: false, fs: false, sim: false, ml: false, info: true })}>infop</ColorButton>
         */}
 
-        { all
-          ? <div>
+        {all ? (
+          <div>
             <br></br>
             <div>
-              <Typography varient='h2' className={classes.h2} align='center'>Principal Investigator</Typography>
+              <Typography varient="h2" className={classes.h2} align="center">
+                Principal Investigator
+              </Typography>
               <br />
               <SupGridList />
-              <Typography varient='h2' className={classes.h2} align="center">Team Leaders</Typography>
+              <Typography varient="h2" className={classes.h2} align="center">
+                Team Leaders
+              </Typography>
               <br />
               <LeadGridList></LeadGridList>
-              <Typography varient='h2' className={classes.h2} align="center">Team Members</Typography>
+              <Typography varient="h2" className={classes.h2} align="center">
+                Team Members
+              </Typography>
               <br />
               <TeamGridList></TeamGridList>
-              <Typography varient='h2' className={classes.h2} align="center">Past Members</Typography>
+              <Typography varient="h2" className={classes.h2} align="center">
+                Past Members
+              </Typography>
               <br />
               <PastTeamGridList></PastTeamGridList>
-
             </div>
           </div>
-
-          : null
-        }
-        { fs
-          ? <div>
-            <div align='center' >
-
-              <Typography varient='h3' className={classes.h3} align='center'>Members of the fullstack team work throughout the stack. Our web application is built using the MERN stack (MongoDB, Express, ReactJS, NodeJS) and Unity Webgl. Members of this team also manage and access our geolocation data.</Typography>
+        ) : null}
+        {fs ? (
+          <div>
+            <div align="center">
+              <Typography varient="h3" className={classes.h3} align="center">
+                Members of the fullstack team work throughout the stack. Our web
+                application is built using the MERN stack (MongoDB, Express,
+                ReactJS, NodeJS) and Unity Webgl. Members of this team also
+                manage and access our geolocation data.
+              </Typography>
             </div>
             <div>
-            <Typography varient='h2' className={classes.h2} align="left">Team Members</Typography>
+              <Typography varient="h2" className={classes.h2} align="left">
+                Team Members
+              </Typography>
               <br />
               <FullStackGridList></FullStackGridList>
             </div>
           </div>
-          : null
-        }
-        { sim
-          ? <div>
-            <div align='center' >
-              <Typography varient='h3' className={classes.h3} align='center'>The simulation team is responsible for the implementation of the simulation that lies at the heart of the Delineo project. Team members focus on programming the various modules, algorithms, and statistical drivers that are utilized in our models.</Typography>
+        ) : null}
+        {sim ? (
+          <div>
+            <div align="center">
+              <Typography varient="h3" className={classes.h3} align="center">
+                The simulation team is responsible for the implementation of the
+                simulation that lies at the heart of the Delineo project. Team
+                members focus on programming the various modules, algorithms,
+                and statistical drivers that are utilized in our models.
+              </Typography>
             </div>
-            <div >
-            <Typography varient='h2' className={classes.h2} align="left">Team Members</Typography>
+            <div>
+              <Typography varient="h2" className={classes.h2} align="left">
+                Team Members
+              </Typography>
               <br />
               <SimGridList></SimGridList>
             </div>
           </div>
-          : null
-        }
-        { ml
-          ? <div>
-            <div align='center' >
-              <Typography varient='h3' className={classes.h3}>The machine learning group is tackling the challenge of learning from the massive amounts of geolocation data the Delineo project has access to. One of the main focuses is on developing machine learning models that are capable of discerning and generating population movement patterns within communities ranging from rural towns to urban cities.</Typography>
+        ) : null}
+        {ml ? (
+          <div>
+            <div align="center">
+              <Typography varient="h3" className={classes.h3}>
+                The machine learning group is tackling the challenge of learning
+                from the massive amounts of geolocation data the Delineo project
+                has access to. One of the main focuses is on developing machine
+                learning models that are capable of discerning and generating
+                population movement patterns within communities ranging from
+                rural towns to urban cities.
+              </Typography>
             </div>
-            <div >
-              <Typography varient='h2' className={classes.h2} align="left">Team Members</Typography>
+            <div>
+              <Typography varient="h2" className={classes.h2} align="left">
+                Team Members
+              </Typography>
               <br />
               <MLGridList></MLGridList>
             </div>
           </div>
-          : null
-        }
-        { info
-          ? <div>
-            <div align='center' >
-              <Typography varient='h2' className={classes.h3}>The information support team is responsible for gathering, summarizing, and disseminating research articles/papers that prove helpful for informing the development of Delineo's model.</Typography>
+        ) : null}
+        {info ? (
+          <div>
+            <div align="center">
+              <Typography varient="h2" className={classes.h3}>
+                The information support team is responsible for gathering,
+                summarizing, and disseminating research articles/papers that
+                prove helpful for informing the development of Delineo's model.
+              </Typography>
             </div>
             <div>
-              <Typography varient='h2' className={classes.h2} align="left">Team Members</Typography>
+              <Typography varient="h2" className={classes.h2} align="left">
+                Team Members
+              </Typography>
               <br />
               <InfoTeamGridList></InfoTeamGridList>
             </div>
           </div>
-          : null
-        }
+        ) : null}
       </div>
     );
   }
