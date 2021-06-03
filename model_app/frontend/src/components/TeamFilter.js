@@ -161,10 +161,6 @@ class TeamFilter extends Component {
     const { ml } = this.state;
     const { info } = this.state;
 
-    //const { showing } = this.state
-
-    //const highlightedAll = this.state.all ? "classes.focus" : "classes.notfocus";
-
     return (
       <div>
         <br />

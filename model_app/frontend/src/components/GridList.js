@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   displayUnder: {
-    fontSize: 25,
+    fontSize: 20,
     border: 0,
 
     color: 'white',
@@ -34,16 +34,14 @@ const useStyles = makeStyles((theme) => ({
   },
 
   displayUnderTitle: {
-    fontSize: 16,
+    fontSize: 15,
     border: 0,
     color: 'white',
     height: 10,
     paddingTop: 30,
     textAlign: 'center',
     fontStyle: 'italic',
-
-
-
+    fontWeight: 'lighter',
   },
 
 
