@@ -2,10 +2,10 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
-//import { Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import TeamMemberJoin from '../images/teammemberjoin.jpg'
 import Container from '@material-ui/core/Container';
+
 const useStyles = makeStyles((theme) => ({
   title: {
 		fontWeight: 'normal',

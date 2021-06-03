@@ -5,7 +5,7 @@ import { withStyles, Typography } from "@material-ui/core";
 import HomeCarousel from "../components/Carousel";
 import TeamMemberJoin from "../images/teammemberjoin.jpg";
 
-//import blogbackground from "../images/blogbackgroud.PNG";
+import blogbackground from "../images/blogbackgroud.PNG";
 import Link from "@material-ui/core/Link";
 import DevelopmentBlogCards from "./DevelopmentBlogCards.js";
 import anytownScreenshot from "../images/anytownScreenshot.png";
@@ -14,8 +14,17 @@ import HomeBlog from "./HomeBlog.js";
 const styles = {
   bigButton: {
     borderColor: "#66FCF1",
-    fontSize: "20px",
+    backgroundColor: "#66FCF1",
+    border: "1px solid",
+    color: "#444f56",
+      "&:hover": {
+        backgroundColor: "#222629",
+        color: "#66FCF1",
+        borderColor: "#66FCF1",
+      }
   },
+
+  //fontSize: "20px",
 
   imageBox: {
     background: "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))",
@@ -26,39 +35,34 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    opacity: "0.7",
+    opacity: "0.9",
     boxShadow: "inset 0 0 0 100vw rgba(0,0,0,0.5)",
   },
 
-  /*
-    teamPage: {
-        background: "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))",
-        backgroundSize: "cover",
-        color: "white",
-        height: "130vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        opacity: "0.7",
-        boxShadow: "inset 0 0 0 100vw rgba(0,0,0,0.5)",
-    },
-*/
+  teamPage: {
+    background: "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))",
+    backgroundSize: "cover",
+    color: "white",
+    height: "130vh",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    opacity: "0.7",
+    boxShadow: "inset 0 0 0 100vw rgba(0,0,0,0.5)",
+  },
 
   blogSection: {
     height: "80vh",
     padding: "20px 200px 60px 200px",
     overflow: "hidden",
     backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    //boxShadow: "inset 0 0 0 100vw rgba(0,0,0,0.5)",
+    backgroundSize: "cover",  
   },
 
   recent: {
     color: "black",
-    //fontStyle: 'strong',
     fontSize: "40px",
     marginTop: "30px",
-    //marginBottom: "10px",
     marginBottom: "50px",
   },
 
@@ -102,6 +106,7 @@ class Home extends Component {
         <HomeCarousel />
 
         <HomeBlog />
+        
         <div
           className={classes.teamPage}
           style={{ backgroundImage: `url(${TeamMemberJoin})` }}
