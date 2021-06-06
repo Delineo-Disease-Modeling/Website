@@ -224,18 +224,14 @@ class Simulator extends Component {
             <div className={classes.bubble} align="center">
               <Typography className={classes.bold}>About </Typography>
               
-              Anytown, USA is meant as an illustrative tool to depict the spread
-              of COVID-19 in a representative town that could hypothetically be
-              located anywhere in the United States. The simulation runs for a
-              time period of 2 months, assuming a town population of 6000
-              people. Movement between facilities is modeled off of actual data
-              from Oklahoma City, Oklahoma. More information regarding how
-              movement is simulated can be found on our development blog.
-              Infection within facilities is predicted using the Wells-Riley
-              formula, and more information can also be found on our development
-              blog. Results of the simulation should not be used to inform
-              public health decisions, and is meant only as a tool to show how
-              COVID-19 might spread.
+              Anytown, USA is a tool to simulate the spread of COVID-19 in a representative town 
+              in the United States. The simulation runs for a time period of two months, assuming 
+              a town population of 6,000 people. Movement between facilities is modeled off of actual 
+              data from Oklahoma City, Oklahoma. More information regarding how movement is simulated 
+              can be found on our development blog. Infection within facilities is predicted using 
+              the Wells-Riley formula, and more information can also be found on our development blog. 
+              Results of the simulation should not be used to inform public health decisions, and is 
+              meant only as a tool to show how COVID-19 might spread.
               <br />
               <br />
               <Typography className={classes.bold}>
@@ -243,29 +239,41 @@ class Simulator extends Component {
               </Typography>
               
               1. Adjust the sliders on the left pane to modify
-              non-pharmaceutical interventions (NPI's) <br />
+              non-pharmaceutical interventions (NPI's) including:
+              <br />
+              <br />
+              <ul>
+                <li>The percentage of the population that wears masks in stores, restaurants, bars, etc.</li>
+                <li>Capacity restrictions on stores and restaurants</li>
+                <li>The percentage of the population that is tested for COVID on a daily basis</li>
+                <li>The percentage of the population who stay home after coming in contact with an infected person</li>
+                <li>The percentage of the population that is fully vaccinated</li>
+                <li>Whether stay-at-home orders are in place</li>
+              </ul>
               2. Click confirm (once) to lock-in interventions <br />
               3. Press play (this step may take a few minutes as results are
               sent to the simulation server) <br />
               4. Move around the map and click on different buildings to look at
-              infection statistics within different facilities
+              infection statistics within different facilities <br />
+              5. Watch the graph on the main screen to see how the number of 
+              infected persons in Anytown grows over time
               <br />
               <br />
               <Typography className={classes.bold}>
                 Basic Controls
-              </Typography>{" "}
+              </Typography>
               
-              Move around the map using WASD controls
+              Move around the map using WASD or arrow controls
               <br />
-              Mouse wheel to zoom in/out
+              Use the mouse wheel to zoom in/out
               <br />
               Click on buildings to see information on the number of people who
-              visited/ got infected on both a daily and overall timescale
+              visited/became infected on both a daily and overall timescale
               <br />
               <br />
               <Typography className={classes.bold}>
                 Troubleshooting
-              </Typography>{" "}
+              </Typography>
               
               Please make sure webgl is enabled in your browser by visiting{" "}
               <a href="https://get.webgl.org/">https://get.webgl.org/</a>
