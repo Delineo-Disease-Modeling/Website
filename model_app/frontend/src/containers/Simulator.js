@@ -256,7 +256,7 @@ class Simulator extends Component {
               4. Move around the map and click on different buildings to look at
               infection statistics within different facilities <br />
               5. Watch the graph on the main screen to see how the number of 
-              infected persons in Anytown grows over time.
+              infected persons in Anytown grows over time
               <br />
               <br />
               <Typography className={classes.bold}>
