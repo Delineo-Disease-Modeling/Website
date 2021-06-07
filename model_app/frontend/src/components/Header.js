@@ -57,6 +57,10 @@ class Header extends Component{
                         <NavItem>
                         <NavLink className="Nav-link" to='/simulator' activeClassName='active' activeStyle={active} style={styleSheet}> Simulator</NavLink>
                         </NavItem>
+                        
+                        <NavItem>
+                        <NavLink className="Nav-link" to='/simulatortemp' activeClassName='active' activeStyle={active} style={styleSheet}> SimulatorTemp</NavLink>
+                        </NavItem>
 
                         <NavItem>
                             <NavLink className="Nav-link" to='/about' activeClassName='active' activeStyle={active} style={styleSheet}>About</NavLink>
