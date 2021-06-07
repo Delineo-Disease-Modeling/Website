@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./SimulatorTemp.css";
+import "./GeneralSimulator.css";
 import { withStyles } from "@material-ui/core/styles";
 
 //import Accordion from "@material-ui/core/Accordion";
