@@ -6,7 +6,8 @@ import Team from './Team';
 import Post1, {Post2} from './BlogPost';
 import Simulator from './Simulator';
 //import RealSimulator from './RealSimulator';
+import Mappage from './Mappage';
 
 
 
-export { About, DevelopmentBlog, Home, Simulator, Team, Post1, Post2}
+export { About, DevelopmentBlog, Home, Simulator, Team, Post1, Post2, Mappage}
