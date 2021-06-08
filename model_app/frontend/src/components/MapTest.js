@@ -8,8 +8,13 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
 
-import emeSulImg from '../images/Emerson_Sullivan.jpg';
-import aboutImg from '../images/about.jpg';
+import austinImg from '../images/austin.png';
+import chicagoImg from '../images/chicago.png';
+import denverImg from '../images/denver.png';
+import LosAImg from '../images/losangeles.png';
+import miamiImg from '../images/miami.png';
+import NYCImg from '../images/newyorkcity.png';
+
 
 const styles = {
   
@@ -174,7 +179,7 @@ class MapTest extends Component {
                     type="body2"
                     style={{ fontWeight: "bold", fontSize: "16px" }}
                   >
-                    Test1
+                    Austin
                   </Typography>
                 }
               />
@@ -203,7 +208,7 @@ class MapTest extends Component {
                     type="body2"
                     style={{ fontWeight: "bold", fontSize: "16px" }}
                   >
-                    Test2
+                    Chicago
                   </Typography>
                 }
               />
@@ -231,7 +236,7 @@ class MapTest extends Component {
                     type="body2"
                     style={{ fontWeight: "bold", fontSize: "16px" }}
                   >
-                    Test3
+                    Denver
                   </Typography>
                 }
               />
@@ -259,7 +264,7 @@ class MapTest extends Component {
                     type="body2"
                     style={{ fontWeight: "bold", fontSize: "16px" }}
                   >
-                    Test 4
+                    Los Angeles
                   </Typography>
                 }
               />
@@ -287,7 +292,7 @@ class MapTest extends Component {
                     type="body2"
                     style={{ fontWeight: "bold", fontSize: "16px" }}
                   >
-                    Test 5
+                    Miami
                   </Typography>
                 }
               />
@@ -315,7 +320,7 @@ class MapTest extends Component {
                     type="body2"
                     style={{ fontWeight: "bold", fontSize: "16px" }}
                   >
-                    Test 6
+                    New York City
                   </Typography>
                 }
               />
@@ -328,32 +333,33 @@ class MapTest extends Component {
           <div>
             <br></br>
             <div>
-              <img src = {emeSulImg} width ="1000px" height ="500px"/>
+              <img src = {austinImg} width ="1000px" height ="500px"/>
             </div>
           </div>
         ) : null}
         {fs ? (
           <div>
-           <img src = {aboutImg} width ="1000px" height ="500px"/>
+           <img src = {chicagoImg} width ="1000px" height ="500px"/>
           </div>
         ) : null}
         {sim ? (
           <div>
-            
+             <img src = {denverImg} width ="1000px" height ="500px"/>
           </div>
         ) : null}
         {ml ? (
           <div>
+             <img src = {LosAImg} width ="1000px" height ="500px"/>
           </div>
         ) : null}
         {info ? (
           <div>
-    
+             <img src = {miamiImg} width ="1000px" height ="500px"/>
           </div>
         ) : null}
         {test6 ? (
           <div>
-    
+            <img src = {NYCImg} width ="1000px" height ="500px"/>
           </div>
         ) : null}
       </div>
