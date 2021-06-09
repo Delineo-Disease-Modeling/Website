@@ -11,9 +11,12 @@ import ArrowRight from '@material-ui/icons/ArrowRight';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import Grid from '@material-ui/core/Grid';
+import Slider from '@material-ui/core/Slider';
+import Input from '@material-ui/core/Input';
 
 
-const drawerWidth = 300;
+const drawerWidth = 500;
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -85,20 +88,20 @@ const useStyles = makeStyles((theme) => ({
 function DiseaseSelects() {
     const classes = useStyles();
     const [state, setState] = React.useState({
-      DiseaseVariants: "",
+        DiseaseVariants: "",
     })
     const handleChange = (event) => {
         const DiseaseVariants = event.target.DiseaseVariants;
         setState({
-          ...state,
-          DiseaseVariants: event.target.DiseaseVariants,
+            ...state,
+            DiseaseVariants: event.target.DiseaseVariants,
         });
     };
     return (
         <div>
             <FormControl className={classes.formControl}></FormControl>
-                <InputLabel htmlFor="" color = "white">Select Disease Variant</InputLabel>
-                <Select onChange={handleChange}>
+            <InputLabel htmlFor="" color="white">Select Disease Variant</InputLabel>
+            <Select onChange={handleChange}>
                 <option aria-label="None" value="" />
                 <option value={"B.1.351"}>B.1.351</option></Select>
         </div>
@@ -106,6 +109,24 @@ function DiseaseSelects() {
 }
 
 export default function PersistentDrawerLeft() {
+    const classes1 = useStyles();
+    const [value, setValue] = React.useState(30);
+
+    const handleSliderChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
+    const handleInputChange = (event) => {
+        setValue(event.target.value === '' ? '' : Number(event.target.value));
+    };
+
+    const handleBlur = () => {
+        if (value < 0) {
+            setValue(0);
+        } else if (value > 100) {
+            setValue(100);
+        }
+    };
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -123,7 +144,7 @@ export default function PersistentDrawerLeft() {
             <CssBaseline />
 
             <IconButton
-                
+
                 color="inherit"
                 aria-label="open drawer"
                 onClick={handleDrawerOpen}
@@ -153,16 +174,48 @@ export default function PersistentDrawerLeft() {
                 <Divider classes={{ root: classes.divider }} />
                 <Typography paragraph>
                     Disease Variants
-                    <DiseaseSelects/>
-        </Typography>
+                    <DiseaseSelects />
+                </Typography>
                 <Divider classes={{ root: classes.divider }} />
                 <Typography paragraph>
                     Non-Pharmaceutical Interventions (NPIS)
-        </Typography>
+                 </Typography>
+                <div className={classes1.root}>
+                    <Typography id="input-slider" gutterBottom>
+                        Mask-Wearing (% of Population)
+                    </Typography>
+                    <Grid container spacing={3} alignItems="left">
+                        <Grid item xs>
+                            <Slider
+                                value={typeof value === 'number' ? value : 0}
+                                onChange={handleSliderChange}
+                                aria-labelledby="input-slider"
+                            />
+                        </Grid>
+                        <Grid item>
+                            <Input
+                                className={classes1.input}
+                                value={value}
+                                margin="dense"
+                                onChange={handleInputChange}
+                                onBlur={handleBlur}
+                                inputProps={{
+                                    step: 1,
+                                    min: 0,
+                                    max: 100,
+                                    type: 'number',
+                                    'aria-labelledby': 'input-slider',
+                                }}
+                            />
+                        </Grid>
+                    </Grid>
+                </div>
+                
                 <Divider classes={{ root: classes.divider }} />
                 <Typography paragraph>
                     Cities
         </Typography>
+
                 <Divider classes={{ root: classes.divider }} />
                 <Typography paragraph>
                     Simulator
