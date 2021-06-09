@@ -14,6 +14,9 @@ import Select from '@material-ui/core/Select';
 import Grid from '@material-ui/core/Grid';
 import Slider from '@material-ui/core/Slider';
 import Input from '@material-ui/core/Input';
+import { FormGroup } from '@material-ui/core';
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 
 const drawerWidth = 500;
@@ -105,6 +108,46 @@ function DiseaseSelects() {
                 <option aria-label="None" value="" />
                 <option value={"B.1.351"}>B.1.351</option></Select>
         </div>
+    );
+}
+
+function TargetedShutdown() {
+    const [state, setState] = React.useState({
+        Schools: false,
+        Restaurants: false,
+        Gyms: false,
+        Bars: false,
+    });
+    const handleChange = (event) => {
+        setState({ ...state, [event.target.name]: event.target.checked });
+    };
+    return (
+        <FormGroup>
+            <Grid container justify = "space-around">
+                <Grid item>
+                <FormControlLabel
+                    control={<Switch checked={state.Schools} onChange={handleChange} name="Schools" />}
+                    label="Schools"/>
+                </Grid>
+                <Grid item>
+                <FormControlLabel
+                    control={<Switch checked={state.Restaurants} onChange={handleChange} name="Restaurants" />}
+                    label="Restaurant"/>
+                </Grid>
+            </Grid>
+            <Grid container justify = "space-around">
+                <Grid item>
+                <FormControlLabel
+                    control={<Switch checked={state.Gyms} onChange={handleChange} name="Gyms" />}
+                    label="Gyms"/>
+                </Grid>
+                <Grid item>
+                <FormControlLabel
+                    control={<Switch checked={state.Bars} onChange={handleChange} name="Bars" />}
+                    label="Bars"/>
+                </Grid>
+            </Grid>
+        </FormGroup>
     );
 }
 
@@ -222,7 +265,8 @@ export default function PersistentDrawerLeft() {
         </Typography>
                 <Divider classes={{ root: classes.divider }} />
                 <Typography paragraph>
-                    Temp
+                    Targeted Shutdowns
+                    <TargetedShutdown />
         </Typography>
             </Drawer>
 
