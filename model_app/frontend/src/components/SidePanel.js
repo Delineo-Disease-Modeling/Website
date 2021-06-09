@@ -17,6 +17,10 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+
 
 const drawerWidth = 300;
 
@@ -87,6 +91,29 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+function DiseaseSelects() {
+    const classes = useStyles();
+    const [state, setState] = React.useState({
+      DiseaseVariants: "",
+    })
+    const handleChange = (event) => {
+        const DiseaseVariants = event.target.DiseaseVariants;
+        setState({
+          ...state,
+          DiseaseVariants: event.target.DiseaseVariants,
+        });
+    };
+    return (
+        <div>
+            <FormControl className={classes.formControl}></FormControl>
+                <InputLabel htmlFor="" color = "white">Select Disease Variant</InputLabel>
+                <Select onChange={handleChange}>
+                <option aria-label="None" value="" />
+                <option value={"B.1.351"}>B.1.351</option></Select>
+        </div>
+    );
+}
+
 export default function PersistentDrawerLeft() {
     const classes = useStyles();
     const theme = useTheme();
@@ -134,19 +161,20 @@ export default function PersistentDrawerLeft() {
                 </div>
                 <Divider classes={{ root: classes.divider }} />
                 <Typography paragraph>
-                    Temp
+                    Disease Variants
+                    <DiseaseSelects/>
         </Typography>
                 <Divider classes={{ root: classes.divider }} />
                 <Typography paragraph>
-                    Temp
+                    Non-Pharmaceutical Interventions (NPIS)
         </Typography>
                 <Divider classes={{ root: classes.divider }} />
                 <Typography paragraph>
-                    Temp
+                    Cities
         </Typography>
                 <Divider classes={{ root: classes.divider }} />
                 <Typography paragraph>
-                    Temp
+                    Simulator
         </Typography>
                 <Divider classes={{ root: classes.divider }} />
                 <Typography paragraph>
