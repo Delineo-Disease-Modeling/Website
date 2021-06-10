@@ -8,6 +8,8 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowLeft from '@material-ui/icons/ArrowLeft';
 import ArrowRight from '@material-ui/icons/ArrowRight';
+import PlayArrow from '@material-ui/icons/PlayArrow';
+import PauseOutlinedIcon from '@material-ui/icons/PauseOutlined'
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
@@ -16,6 +18,7 @@ import Slider from '@material-ui/core/Slider';
 import Input from '@material-ui/core/Input';
 import { FormGroup } from '@material-ui/core';
 import Switch from '@material-ui/core/Switch';
+import Button from '@material-ui/core/Button';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 
@@ -67,6 +70,13 @@ const useStyles = makeStyles((theme) => ({
         color: 'black',
         alignItems: 'left',
     },
+    controlButtons: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: theme.spacing(2, 3),
+        backgroundColor: '#ffffff',
+        justifyContent: 'space-evenly',
+    },
     divider: {
         background: '#ffffff',
     },
@@ -111,6 +121,62 @@ function DiseaseSelects() {
     );
 }
 
+function RunButton() {
+    const classes = useStyles();
+    const [state, setState] = React.useState({
+        paused: true,
+    });
+    const handleClick = (event) => {
+        
+        setState({
+            ...state,
+            paused: false,
+        });
+    };
+    return (
+        <div>
+            <FormControl className={classes.formControl}></FormControl>
+            <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                endIcon={<PlayArrow/>}
+                onClick={handleClick}
+            >
+                Run
+      </Button>
+        </div>
+    );
+}
+
+function PauseButton() {
+    const classes = useStyles();
+    const [state, setState] = React.useState({
+        paused: true,
+    });
+
+    const handleClick = (event) => {
+        setState({
+            ...state,
+            paused: true,
+        });
+    };
+    return (
+        <div>
+            <FormControl className={classes.formControl}></FormControl>
+            <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                endIcon={<PauseOutlinedIcon/>}
+                onClick={handleClick}
+            >
+                Pause
+      </Button>
+        </div>
+    );
+}
+
 function TargetedShutdown() {
     const [state, setState] = React.useState({
         Schools: false,
@@ -123,28 +189,28 @@ function TargetedShutdown() {
     };
     return (
         <FormGroup>
-            <Grid container justify = "space-around">
+            <Grid container justify="space-around">
                 <Grid item>
-                <FormControlLabel
-                    control={<Switch checked={state.Schools} onChange={handleChange} name="Schools" />}
-                    label="Schools"/>
+                    <FormControlLabel
+                        control={<Switch checked={state.Schools} onChange={handleChange} name="Schools" />}
+                        label="Schools" />
                 </Grid>
                 <Grid item>
-                <FormControlLabel
-                    control={<Switch checked={state.Restaurants} onChange={handleChange} name="Restaurants" />}
-                    label="Restaurant"/>
+                    <FormControlLabel
+                        control={<Switch checked={state.Restaurants} onChange={handleChange} name="Restaurants" />}
+                        label="Restaurant" />
                 </Grid>
             </Grid>
-            <Grid container justify = "space-around">
+            <Grid container justify="space-around">
                 <Grid item>
-                <FormControlLabel
-                    control={<Switch checked={state.Gyms} onChange={handleChange} name="Gyms" />}
-                    label="Gyms"/>
+                    <FormControlLabel
+                        control={<Switch checked={state.Gyms} onChange={handleChange} name="Gyms" />}
+                        label="Gyms" />
                 </Grid>
                 <Grid item>
-                <FormControlLabel
-                    control={<Switch checked={state.Bars} onChange={handleChange} name="Bars" />}
-                    label="Bars"/>
+                    <FormControlLabel
+                        control={<Switch checked={state.Bars} onChange={handleChange} name="Bars" />}
+                        label="Bars" />
                 </Grid>
             </Grid>
         </FormGroup>
@@ -163,6 +229,10 @@ export default function PersistentDrawerLeft() {
         setValue(event.target.value === '' ? '' : Number(event.target.value));
     };
 
+    const handleClick = (event, newValue) => {
+        setValue(newValue);
+    }
+
     const handleBlur = () => {
         if (value < 0) {
             setValue(0);
@@ -173,7 +243,7 @@ export default function PersistentDrawerLeft() {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
-
+    
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -253,21 +323,29 @@ export default function PersistentDrawerLeft() {
                         </Grid>
                     </Grid>
                 </div>
-                
+
                 <Divider classes={{ root: classes.divider }} />
                 <Typography paragraph>
                     Cities
-        </Typography>
+                </Typography>
 
                 <Divider classes={{ root: classes.divider }} />
                 <Typography paragraph>
                     Simulator
-        </Typography>
+                </Typography>
                 <Divider classes={{ root: classes.divider }} />
                 <Typography paragraph>
                     Targeted Shutdowns
                     <TargetedShutdown />
-        </Typography>
+                </Typography>
+                <div className={classes.controlButtons} >
+                    <PauseButton 
+                        onClick={handleClick}
+                    />
+                    <RunButton 
+                        onClick={handleClick}
+                    />
+                </div>
             </Drawer>
 
             <main
