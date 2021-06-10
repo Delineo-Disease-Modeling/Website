@@ -100,23 +100,16 @@ const useStyles = makeStyles((theme) => ({
 
 function DiseaseSelects() {
     const classes = useStyles();
-    const [state, setState] = React.useState({
-        DiseaseVariants: "",
-    })
+    const [DiseaseVariants, setDiseaseVariants] = React.useState("");
     const handleChange = (event) => {
-        const DiseaseVariants = event.target.DiseaseVariants;
-        setState({
-            ...state,
-            DiseaseVariants: event.target.DiseaseVariants,
-        });
+        setDiseaseVariants(event.target.value);
     };
     return (
         <div>
             <FormControl className={classes.formControl}></FormControl>
             <InputLabel htmlFor="" color="white">Select Disease Variant</InputLabel>
-            <Select onChange={handleChange}>
-                <option aria-label="None" value="" />
-                <option value={"B.1.351"}>B.1.351</option></Select>
+            <Select value={DiseaseVariants} onChange={handleChange}>
+                <option value="B.1.351">B.1.351</option></Select>
         </div>
     );
 }
