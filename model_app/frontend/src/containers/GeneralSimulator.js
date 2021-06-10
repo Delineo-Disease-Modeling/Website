@@ -65,7 +65,7 @@ class SimulatorTemp extends Component {
   render() {
 
     return(
-      <div className="GreenBackground">
+      <div >
         <SidePanel />
       </div>
     );
