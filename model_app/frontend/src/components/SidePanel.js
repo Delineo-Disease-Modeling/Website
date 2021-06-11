@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { withStyles, makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'left',
         '&:hover': {
             backgroundColor: 'rgb(255 255 255 / 10%)'
-          }
+        }
     },
     hide: {
         display: 'none',
@@ -97,7 +97,7 @@ const useStyles = makeStyles((theme) => ({
         position: 'relative',
     },
     simulation: {
-        
+
     },
     contentShift: {
         transition: theme.transitions.create('margin', {
@@ -105,6 +105,39 @@ const useStyles = makeStyles((theme) => ({
             duration: theme.transitions.duration.enteringScreen,
         }),
         marginLeft: 0,
+    },
+    inputLabel: {
+        color: 'white'
+    },
+    button: {
+        color: 'black',
+        backgroundColor: 'rgba(102,252,241,255)'
+    },
+    switchBase: {
+        color: "white",
+        "&.Mui-disabled": {
+            color: "grey"
+        },
+        "&.Mui-checked": {
+            color: "white"
+        },
+        "&.Mui-checked + .MuiSwitch-track": {
+            backgroundColor: "rgba(102,252,241,255)"
+        }
+    },
+    parameterHeader: {
+        textAlign: 'left',
+        paddingTop: '2%',
+        paddingLeft: '2%!important',
+        color: 'rgba(168,169,170,255)'
+    },
+    parameterContent: {
+        textAlign: 'left',
+        paddingLeft: '10%!important',
+        paddingBottom: '2%'
+    },
+    optionSelect: {
+        color: 'white'
     },
 }));
 
@@ -117,8 +150,8 @@ function DiseaseSelects() {
     return (
         <div>
             <FormControl className={classes.formControl}></FormControl>
-            <InputLabel htmlFor="" color='white' >Select Disease Variant</InputLabel>
-            <Select value={DiseaseVariants} onChange={handleChange}>
+            <InputLabel htmlFor="" className={classes.inputLabel} >Select Disease Variant</InputLabel>
+            <Select value={DiseaseVariants} className={classes.optionSelect} onChange={handleChange}>
                 <option value=""> </option>
                 <option value="B.1.351">B.1.351</option></Select>
         </div>
@@ -142,7 +175,6 @@ function RunButton() {
             <FormControl className={classes.formControl}></FormControl>
             <Button
                 variant="contained"
-                color="primary"
                 className={classes.button}
                 endIcon={<PlayArrow />}
                 onClick={handleClick}
@@ -170,7 +202,6 @@ function PauseButton() {
             <FormControl className={classes.formControl}></FormControl>
             <Button
                 variant="contained"
-                color="primary"
                 className={classes.button}
                 endIcon={<PauseOutlinedIcon />}
                 onClick={handleClick}
@@ -182,6 +213,7 @@ function PauseButton() {
 }
 
 function TargetedShutdown() {
+    const classes = useStyles();
     const [state, setState] = React.useState({
         Schools: false,
         Restaurants: false,
@@ -191,29 +223,34 @@ function TargetedShutdown() {
     const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
     };
+
     return (
         <FormGroup>
             <Grid container justify="space-around">
                 <Grid item>
                     <FormControlLabel
-                        control={<Switch checked={state.Schools} onChange={handleChange} name="Schools" />}
-                        label="Schools" />
+                        control={
+                            <Switch checked={state.Schools} classes={{ switchBase: classes.switchBase, }} onChange={handleChange} name="Schools" />}
+                        label="Schools"
+                    />
                 </Grid>
                 <Grid item>
                     <FormControlLabel
-                        control={<Switch checked={state.Restaurants} onChange={handleChange} name="Restaurants" />}
-                        label="Restaurant" />
+                        control={
+                            <Switch checked={state.Restaurants} classes={{ switchBase: classes.switchBase, }} onChange={handleChange} name="Restaurants" />}
+                        label="Restaurant"
+                    />
                 </Grid>
             </Grid>
             <Grid container justify="space-around">
                 <Grid item>
                     <FormControlLabel
-                        control={<Switch checked={state.Gyms} onChange={handleChange} name="Gyms" />}
+                        control={<Switch checked={state.Gyms} classes={{ switchBase: classes.switchBase, }} onChange={handleChange} name="Gyms" />}
                         label="Gyms" />
                 </Grid>
                 <Grid item>
                     <FormControlLabel
-                        control={<Switch checked={state.Bars} onChange={handleChange} name="Bars" />}
+                        control={<Switch checked={state.Bars} classes={{ switchBase: classes.switchBase, }} onChange={handleChange} name="Bars" />}
                         label="Bars" />
                 </Grid>
             </Grid>
@@ -264,12 +301,10 @@ export default function PersistentDrawerLeft() {
         setCities(event.target.value);
         console.log("OK CITY");
     };
-    
+
     return (
         <div className={classes.root}>
             <CssBaseline />
-
-
 
             <Drawer
                 className={classes.drawer}
@@ -289,15 +324,17 @@ export default function PersistentDrawerLeft() {
                     </IconButton>
                 </div>
                 <Divider classes={{ root: classes.divider }} />
-                <Typography paragraph>
+                <Typography className={classes.parameterHeader}>
                     Disease Variants
-                    <DiseaseSelects />
                 </Typography>
+                <div className={classes.parameterContent}>
+                    <DiseaseSelects />
+                </div>
                 <Divider classes={{ root: classes.divider }} />
-                <Typography paragraph>
+                <Typography className={classes.parameterHeader}>
                     Non-Pharmaceutical Interventions (NPIS)
                  </Typography>
-                <div className={classes1.root}>
+                <div className={classes1.parameterContent}>
                     <Typography id="input-slider" gutterBottom>
                         Mask-Wearing (% of Population)
                     </Typography>
@@ -329,26 +366,24 @@ export default function PersistentDrawerLeft() {
                 </div>
 
                 <Divider classes={{ root: classes.divider }} />
-                <Typography paragraph>
+                <Typography className={classes.parameterHeader}>
                     Cities
-                    <div>
-                        <FormControl className={classes.formControl}></FormControl>
-                        <InputLabel htmlFor="" color='white' >Select Cities</InputLabel>
-                        <Select value={cities} onChange={handleCitiesChange}>
-                            <option value=""> </option>
-                            <option value="Oklahoma City">Oklahoma City</option></Select>
-                    </div>
                 </Typography>
+                <div className={classes.parameterContent}>
+                    <FormControl className={classes.formControl}></FormControl>
+                    <InputLabel htmlFor="" className={classes.inputLabel} >Select City</InputLabel>
+                    <Select value={cities} className={classes.optionSelect} onChange={handleCitiesChange}>
+                        <option value=""> </option>
+                        <option value="Oklahoma City">Oklahoma City</option></Select>
+                </div>
+                <Divider classes={{ root: classes.divider }} />
 
-                <Divider classes={{ root: classes.divider }} />
-                <Typography paragraph>
-                    Simulator
-                </Typography>
-                <Divider classes={{ root: classes.divider }} />
-                <Typography paragraph>
+                <Typography className={classes.parameterHeader}>
                     Targeted Shutdowns
-                    <TargetedShutdown />
                 </Typography>
+                <div className={classes.parameterContent}>
+                    <TargetedShutdown />
+                </div>
                 <div className={classes.controlButtons} >
                     <PauseButton
                         onClick={handleClick}
