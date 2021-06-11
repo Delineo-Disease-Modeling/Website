@@ -211,7 +211,31 @@ function PauseButton() {
         </div>
     );
 }
+function StayAtHome() {
+    const classes = useStyles();
+    const [state, setState] = React.useState({
+        Home: false,
+    });
+    const handleChange = (event) => {
+        setState({ ...state, [event.target.name]: event.target.checked });
+    };
 
+    return (
+        <FormGroup>
+            <Grid container justify="space-around">
+                <Grid item>
+                    <FormControlLabel
+                        control={
+                            <Switch checked={state.Home} classes={{ switchBase: classes.switchBase, }} onChange={handleChange} name="Home" />}
+                        label="Stay-at-Home Order"
+                    />
+                </Grid>
+            </Grid>
+            <Grid container justify="space-around">
+            </Grid>
+        </FormGroup>
+    );
+}
 function TargetedShutdown() {
     const classes = useStyles();
     const [state, setState] = React.useState({
@@ -488,6 +512,7 @@ export default function PersistentDrawerLeft() {
                 <MaskSlider />
                 <CapacitySlider />
                 <MassSlider />
+                <StayAtHome />
                 <Divider classes={{ root: classes.divider }} />
                 <Typography className={classes.parameterHeader}>
                     Cities
