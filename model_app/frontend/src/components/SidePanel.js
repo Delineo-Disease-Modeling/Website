@@ -258,24 +258,18 @@ function TargetedShutdown() {
     );
 }
 
-export default function PersistentDrawerLeft() {
-    const classes1 = useStyles();
+
+function MaskSlider() {
+    const classes = useStyles();
     const [value, setValue] = React.useState(30);
 
     const handleSliderChange = (event, newValue) => {
-        console.log("Slider")
         setValue(newValue);
     };
 
     const handleInputChange = (event) => {
-        console.log("input")
         setValue(event.target.value === '' ? '' : Number(event.target.value));
     };
-
-    const handleClick = (event, newValue) => {
-        console.log("click")
-        setValue(newValue);
-    }
 
     const handleBlur = () => {
         if (value < 0) {
@@ -284,6 +278,163 @@ export default function PersistentDrawerLeft() {
             setValue(100);
         }
     };
+
+    return (
+        <div className={classes.root}>
+            <Typography id="input-slider" gutterBottom>
+                Mask-Wearing (% of Population)
+        </Typography>
+            <Grid container spacing={2} alignItems="center">
+                <Grid item>
+                </Grid>
+                <Grid item xs>
+                    <Slider
+                        value={typeof value === 'number' ? value : 0}
+                        onChange={handleSliderChange}
+                        aria-labelledby="input-slider"
+                    />
+                </Grid>
+                <Grid item>
+                    <Input
+                        className={classes.input}
+                        value={value}
+                        margin="dense"
+                        onChange={handleInputChange}
+                        onBlur={handleBlur}
+                        inputProps={{
+                            step: 1,
+                            min: 0,
+                            max: 100,
+                            type: 'number',
+                            'aria-labelledby': 'input-slider',
+                        }}
+                    />
+                </Grid>
+            </Grid>
+        </div>
+    );
+}
+function CapacitySlider() {
+    const classes = useStyles();
+    const [value, setValue] = React.useState(30);
+
+    const handleSliderChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
+    const handleInputChange = (event) => {
+        setValue(event.target.value === '' ? '' : Number(event.target.value));
+    };
+
+    const handleBlur = () => {
+        if (value < 0) {
+            setValue(0);
+        } else if (value > 100) {
+            setValue(100);
+        }
+    };
+
+    return (
+        <div className={classes.root}>
+            <Typography id="input-slider" gutterBottom>
+                Capacity Restrictions (% of People Entering Facilities)
+        </Typography>
+            <Grid container spacing={2} alignItems="center">
+                <Grid item>
+                </Grid>
+                <Grid item xs>
+                    <Slider
+                        value={typeof value === 'number' ? value : 0}
+                        onChange={handleSliderChange}
+                        aria-labelledby="input-slider"
+                    />
+                </Grid>
+                <Grid item>
+                    <Input
+                        className={classes.input}
+                        value={value}
+                        margin="dense"
+                        onChange={handleInputChange}
+                        onBlur={handleBlur}
+                        inputProps={{
+                            step: 1,
+                            min: 0,
+                            max: 100,
+                            type: 'number',
+                            'aria-labelledby': 'input-slider',
+                        }}
+                    />
+                </Grid>
+            </Grid>
+        </div>
+    );
+}
+function MassSlider() {
+    const classes = useStyles();
+    const [value, setValue] = React.useState(30);
+
+    const handleSliderChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
+    const handleInputChange = (event) => {
+        setValue(event.target.value === '' ? '' : Number(event.target.value));
+    };
+
+    const handleBlur = () => {
+        if (value < 0) {
+            setValue(0);
+        } else if (value > 100) {
+            setValue(100);
+        }
+    };
+
+    return (
+        <div className={classes.root}>
+            <Typography id="input-slider" gutterBottom>
+                Mass Testing (% of Population That Gets Tested)
+        </Typography>
+            <Grid container spacing={2} alignItems="center">
+                <Grid item>
+                </Grid>
+                <Grid item xs>
+                    <Slider
+                        value={typeof value === 'number' ? value : 0}
+                        onChange={handleSliderChange}
+                        aria-labelledby="input-slider"
+                    />
+                </Grid>
+                <Grid item>
+                    <Input
+                        className={classes.input}
+                        value={value}
+                        margin="dense"
+                        onChange={handleInputChange}
+                        onBlur={handleBlur}
+                        inputProps={{
+                            step: 1,
+                            min: 0,
+                            max: 100,
+                            type: 'number',
+                            'aria-labelledby': 'input-slider',
+                        }}
+                    />
+                </Grid>
+            </Grid>
+        </div>
+    );
+}
+export default function PersistentDrawerLeft() {
+    const classes1 = useStyles();
+    const [value, setValue] = React.useState(30);
+
+
+    const handleClick = (event, newValue) => {
+        console.log("click")
+        setValue(newValue);
+    }
+
+
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -334,37 +485,9 @@ export default function PersistentDrawerLeft() {
                 <Typography className={classes.parameterHeader}>
                     Non-Pharmaceutical Interventions (NPIS)
                  </Typography>
-                <div className={classes1.parameterContent}>
-                    <Typography id="input-slider" gutterBottom>
-                        Mask-Wearing (% of Population)
-                    </Typography>
-                    <Grid container spacing={3} alignItems="left">
-                        <Grid item xs>
-                            <Slider
-                                value={typeof value === 'number' ? value : 0}
-                                onChange={handleSliderChange}
-                                aria-labelledby="input-slider"
-                            />
-                        </Grid>
-                        <Grid item>
-                            <Input
-                                className={classes1.input}
-                                value={value}
-                                margin="dense"
-                                onChange={handleInputChange}
-                                onBlur={handleBlur}
-                                inputProps={{
-                                    step: 1,
-                                    min: 0,
-                                    max: 100,
-                                    type: 'number',
-                                    'aria-labelledby': 'input-slider',
-                                }}
-                            />
-                        </Grid>
-                    </Grid>
-                </div>
-
+                <MaskSlider />
+                <CapacitySlider />
+                <MassSlider />
                 <Divider classes={{ root: classes.divider }} />
                 <Typography className={classes.parameterHeader}>
                     Cities
