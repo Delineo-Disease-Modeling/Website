@@ -20,6 +20,7 @@ import { FormGroup } from '@material-ui/core';
 import Switch from '@material-ui/core/Switch';
 import Button from '@material-ui/core/Button';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { withTheme } from '@material-ui/styles';
 
 
 const drawerWidth = 500;
@@ -116,8 +117,9 @@ function DiseaseSelects() {
     return (
         <div>
             <FormControl className={classes.formControl}></FormControl>
-            <InputLabel htmlFor="" color="white">Select Disease Variant</InputLabel>
+            <InputLabel htmlFor="" color='white' >Select Disease Variant</InputLabel>
             <Select value={DiseaseVariants} onChange={handleChange}>
+                <option value=""> </option>
                 <option value="B.1.351">B.1.351</option></Select>
         </div>
     );
@@ -257,6 +259,12 @@ export default function PersistentDrawerLeft() {
         setOpen(false);
     };
 
+    const [cities, setCities] = React.useState("");
+    const handleCitiesChange = (event) => {
+        setCities(event.target.value);
+        console.log("OK CITY");
+    };
+    
     return (
         <div className={classes.root}>
             <CssBaseline />
@@ -323,6 +331,13 @@ export default function PersistentDrawerLeft() {
                 <Divider classes={{ root: classes.divider }} />
                 <Typography paragraph>
                     Cities
+                    <div>
+                        <FormControl className={classes.formControl}></FormControl>
+                        <InputLabel htmlFor="" color='white' >Select Cities</InputLabel>
+                        <Select value={cities} onChange={handleCitiesChange}>
+                            <option value=""> </option>
+                            <option value="Oklahoma City">Oklahoma City</option></Select>
+                    </div>
                 </Typography>
 
                 <Divider classes={{ root: classes.divider }} />
