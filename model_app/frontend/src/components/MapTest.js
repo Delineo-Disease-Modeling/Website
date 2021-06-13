@@ -1,17 +1,68 @@
 import React, { Component } from "react";
 
-import { withStyles } from "@material-ui/core";
-
+import { withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import Typography from "@material-ui/core/Typography";
-
-import emeSulImg from '../images/Emerson_Sullivan.jpg';
-import aboutImg from '../images/about.jpg';
+import TopRight from "../images/temp/TopRightGraph.PNG";
+import TopLeft from "../images/temp/TopGraph.PNG";
+import BottomSection from "../images/temp/BottomSection.PNG";
+import BottomGraph from "../images/temp/BottomGraph.PNG";
+import BottomRight from "../images/temp/BottomRightImage.PNG";
+import MiddleImage from "../images/temp/MiddleImage.PNG";
+import { styled } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+/*import Image from "@material-ui/core/Image";
+import Graph from "@material-ui/core/Graph";
+import Slider from "@material-ui/core/Slider";
+import LineChart from "@material-ui/core/LineChart";
+import SliderText from "@material-ui/core/SliderText";
+import GraphText from "@material-ui/core/GraphText";
+import Title from "@material-ui/core/Title";
+import CircleGraph from "@material-ui/core/CircleGraph";
+import SubTitle from "@material-ui/core/SubTitle";
+import Button from "@material-ui/core/Button";
+import Shape from "@material-ui/core/Shape"; */
 
 const styles = {
+  bubble: {
+    color: "white",
+
+    width: 950,
+    position: "auto",
+    fontSize: 15,
+    textAlign: "center",
+    alignSelf: "center",
+    alignItems: "center",
+    borderRadius: "25px",
+    border: "2px solid #2f3538",
+    padding: "15px 15px 20px 20px",
+    backgroundColor: "#c4c4c4",
+    whiteSpace: "pre-wrap",
+    fontFamily: "Montserrat",
+  },
+  bold: {
+    color: "white",
+    fontWeight: "bold",
+
+    fontSize: 18,
+    textAlign: "left",
+    alignSelf: "center",
+    alignItems: "center",
+    whiteSpace: "pre-wrap",
+  },
+  boldTitle: {
+    color: "white",
+    fontWeight: "bold",
+
+    fontSize: 50,
+    textAlign: "center",
+    alignSelf: "center",
+    alignItems: "center",
+    whiteSpace: "pre-wrap",
+  },
   
   root: {
     borderColor: "#66FCF1",
@@ -58,6 +109,25 @@ const styles = {
     backgroundColor: "#2f3538",
     maxWidth: "1000px",
   },
+  h4: {
+    color: "black",
+    marginRight: "auto",
+    marginLeft: "auto",
+    marginTop: 0,
+    borderBottom: "3px solid #66FCF1",
+    width: "fit-content",
+    paddingBottom: 0,
+    paddingTop: "20px",
+    fontSize: 40,
+  },
+
+  bottomdata: {
+    width:"300px",
+    height:"200px",
+    //position: "absolute",
+    left: "0",
+
+  },
 
   focus: {
     backgroundColor: "#222629",
@@ -78,8 +148,8 @@ const styles = {
     flexDirection: "row",
     padding: 0,
 
-    backgroundColor: "#66FCF1",
-    color: "#66FCF1",
+    backgroundColor: "#2f3538",
+    color: "#2f3538",
 
     margin: "0 auto",
     width: "fit-content",
@@ -87,8 +157,24 @@ const styles = {
 
   clickedOn: {
     color: "#222629",
-  },
+  }
 };
+
+const StyledButton = styled(Button)({
+  height: 48,
+  padding: '0 30px',
+  borderRadius: 3,
+  borderColor: '#2f3538',
+  backgroundColor: '#2f3538',
+  border: '1px solid',
+  color: '#ffffff',
+  "&:hover": {
+      backgroundColor: '#2f3538',
+      color: '#ffffff',
+      borderColor: '#2f3538',
+      boxShadow: '0px 0px 10px #222629',
+  },
+});
 
 const ColorListItem = withStyles((theme) => ({
   root: {
@@ -139,223 +225,41 @@ class MapTest extends Component {
   render() {
     const { classes } = this.props;
 
-    const { all, fs, sim, ml, info, test6} = this.state;
-
     return (
+      <div className="GreenBackground">
       <div>
-        <br />
-        <div className={classes.flexContainer}>
-          <List
-            className={classes.flexContainer}
-            component="nav"
-            aria-label="all fs sim ml info test6"
-          >
-            <ColorListItem
-              className={classes.root}
-              button
-              onClick={() =>
-                this.setState({
-                  all: true,
-                  fs: false,
-                  sim: false,
-                  ml: false,
-                  info: false,
-                  test6: false,
-                })
-              }
-              selected={all}
-            >
-              <ListItemText
-                className={
-                  this.state.all ? classes.clickedOn : classes.selectedColor
-                }
-                primary={
-                  <Typography
-                    type="body2"
-                    style={{ fontWeight: "bold", fontSize: "16px" }}
-                  >
-                    Test1
-                  </Typography>
-                }
-              />
-            </ColorListItem>
-
-            <ColorListItem
-              button
-              selected={fs}
-              onClick={() =>
-                this.setState({
-                  all: false,
-                  fs: true,
-                  sim: false,
-                  ml: false,
-                  info: false,
-                  test6: false,
-                })
-              }
-            >
-              <ListItemText
-                className={
-                  this.state.fs ? classes.clickedOn : classes.selectedColor
-                }
-                primary={
-                  <Typography
-                    type="body2"
-                    style={{ fontWeight: "bold", fontSize: "16px" }}
-                  >
-                    Test2
-                  </Typography>
-                }
-              />
-            </ColorListItem>
-            <ColorListItem
-              button
-              selected={sim}
-              onClick={() =>
-                this.setState({
-                  all: false,
-                  fs: false,
-                  sim: true,
-                  ml: false,
-                  info: false,
-                  test6: false,
-                })
-              }
-            >
-              <ListItemText
-                className={
-                  this.state.sim ? classes.clickedOn : classes.selectedColor
-                }
-                primary={
-                  <Typography
-                    type="body2"
-                    style={{ fontWeight: "bold", fontSize: "16px" }}
-                  >
-                    Test3
-                  </Typography>
-                }
-              />
-            </ColorListItem>
-            <ColorListItem
-              button
-              selected={ml}
-              onClick={() =>
-                this.setState({
-                  all: false,
-                  fs: false,
-                  sim: false,
-                  ml: true,
-                  info: false,
-                  test6: false,
-                })
-              }
-            >
-              <ListItemText
-                className={
-                  this.state.ml ? classes.clickedOn : classes.selectedColor
-                }
-                primary={
-                  <Typography
-                    type="body2"
-                    style={{ fontWeight: "bold", fontSize: "16px" }}
-                  >
-                    Test 4
-                  </Typography>
-                }
-              />
-            </ColorListItem>
-            <ColorListItem
-              button
-              selected={info}
-              onClick={() =>
-                this.setState({
-                  all: false,
-                  fs: false,
-                  sim: false,
-                  ml: false,
-                  info: true,
-                  test6: false,
-                })
-              }
-            >
-              <ListItemText
-                className={
-                  this.state.info ? classes.clickedOn : classes.selectedColor
-                }
-                primary={
-                  <Typography
-                    type="body2"
-                    style={{ fontWeight: "bold", fontSize: "16px" }}
-                  >
-                    Test 5
-                  </Typography>
-                }
-              />
-            </ColorListItem>
-            <ColorListItem
-              button
-              selected={info}
-              onClick={() =>
-                this.setState({
-                  all: false,
-                  fs: false,
-                  sim: false,
-                  ml: false,
-                  info: false,
-                  test6: true,
-                })
-              }
-            >
-              <ListItemText
-                className={
-                  this.state.info ? classes.clickedOn : classes.selectedColor
-                }
-                primary={
-                  <Typography
-                    type="body2"
-                    style={{ fontWeight: "bold", fontSize: "16px" }}
-                  >
-                    Test 6
-                  </Typography>
-                }
-              />
-            </ColorListItem>
-          </List>
+        <div className={classes.flexContainer} align = "left">
+          <img src={TopLeft} style = {styles.bottomdata}/>
+          <div align = "center">
+          <Typography varient='h4' component='h4' style={{color: 'white', fontSize: '36px'}}>Oklahoma City</Typography>
+          <Typography varient='h4' component='h4' style={{color: 'white', fontSize: '24px'}}>Oklahoma</Typography>
+          <br></br>
+          <Typography varient='h4' component='h4' style={{color: 'white', fontSize: '12px'}}>628664 Residents</Typography>
+          <Typography varient='h4' component='h4' style={{color: 'white', fontSize: '12px'}}>8231 Facilities</Typography>
+          <br></br>
+          </div>
+          <div className={classes.flexContainer} align = "right">
+          <img src={TopRight} style = {styles.bottomdata}/>
+          </div>
         </div>
-        {}
-
-        {all ? (
-          <div>
-            <br></br>
-            <div>
-              <img src = {emeSulImg} width ="1000px" height ="500px"/>
-            </div>
-          </div>
-        ) : null}
-        {fs ? (
-          <div>
-           <img src = {aboutImg} width ="1000px" height ="500px"/>
-          </div>
-        ) : null}
-        {sim ? (
-          <div>
-            
-          </div>
-        ) : null}
-        {ml ? (
-          <div>
-          </div>
-        ) : null}
-        {info ? (
-          <div>
-    
-          </div>
-        ) : null}
-        {test6 ? (
-          <div>
-    
-          </div>
-        ) : null}
+        <div className={classes.flexContainer} align = "left">
+          <img src={BottomGraph} style = {styles.bottomdata}/>
+        <div className={classes.flexContainer} align = "center">
+          <img src={MiddleImage} style = {styles.bottomdata}/>
+          <div className={classes.flexContainer} align = "right">
+          <img src={BottomRight} style = {styles.bottomdata}/>
+          <br></br>
+        </div>
+        </div>
+        </div>
+        <div>
+    </div>
+    <div className={classes.bubble} align="center">
+      <img src={BottomSection} width="`250px`" height="250px" />
+      <StyledButton> Test.</StyledButton>
+      <br></br>
+      </div>
+      </div>
       </div>
     );
   }
