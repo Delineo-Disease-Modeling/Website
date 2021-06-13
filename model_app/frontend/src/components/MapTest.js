@@ -29,9 +29,6 @@ import Shape from "@material-ui/core/Shape"; */
 const styles = {
   bubble: {
     color: "white",
-
-    width: 950,
-    position: "auto",
     fontSize: 15,
     textAlign: "center",
     alignSelf: "center",
@@ -43,6 +40,19 @@ const styles = {
     whiteSpace: "pre-wrap",
     fontFamily: "Montserrat",
   },
+
+  flexContainer: {
+    display: "flex",
+    flexDirection: "row",
+    padding: 0,
+
+    backgroundColor: "#2f3538",
+    color: "#2f3538",
+
+    margin: "0 auto",
+    width: "fit-content",
+  },
+
   bold: {
     color: "white",
     fontWeight: "bold",
@@ -109,6 +119,7 @@ const styles = {
     backgroundColor: "#2f3538",
     maxWidth: "1000px",
   },
+
   h4: {
     color: "black",
     marginRight: "auto",
@@ -141,18 +152,6 @@ const styles = {
     backgroundColor: "#66FCF1",
     border: "1px solid",
     color: "#444f56",
-  },
-
-  flexContainer: {
-    display: "flex",
-    flexDirection: "row",
-    padding: 0,
-
-    backgroundColor: "#2f3538",
-    color: "#2f3538",
-
-    margin: "0 auto",
-    width: "fit-content",
   },
 
   clickedOn: {
@@ -255,9 +254,10 @@ class MapTest extends Component {
         <div>
     </div>
     <div className={classes.bubble} align="center">
+      <div>
       <img src={BottomSection} width="`250px`" height="250px" />
-      <StyledButton> Test.</StyledButton>
-      <br></br>
+      </div>
+      <StyledButton> Confirm</StyledButton>
       </div>
       </div>
       </div>
