@@ -10,10 +10,10 @@ import Unity, { UnityContext } from "react-unity-webgl";
 import Typography from "@material-ui/core/Typography";
 
 const unityContext = new UnityContext({
-  loaderUrl: "./Build/June10th.loader.js",
-  dataUrl: "./Build/June10th.data",
-  frameworkUrl: "./Build/June10th.framework.js",
-  codeUrl: "./Build/June10th.wasm",
+  loaderUrl: "./Build/June15.loader.js",
+  dataUrl: "./Build/June15.data",
+  frameworkUrl: "./Build/June15.framework.js",
+  codeUrl: "./Build/June15.wasm",
 });
 
 /*
