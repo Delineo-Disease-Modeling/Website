@@ -7,47 +7,60 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import ShareIcon from "@material-ui/icons/Share";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import {Grid } from "@material-ui/core";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import { FacebookButton, TwitterButton, EmailButton } from "react-social";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import EmailIcon from "@material-ui/icons/Email";
 import { makeStyles } from "@material-ui/core/styles";
+import ameya from "../images/Ameya Dehade.jpg";
 
 const useStyles = makeStyles((theme) => ({
   center: {
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: "-45px",
+    //marginBottom: "-50%",
+    //maxWidth: "50%",
   },
 
   top: {
     display: "inline-block",
     marginTop: "-45px",
   },
-
+  credit: {
+    color: 'black',
+    marginTop: '-2%',
+    marginBottom: '4%',
+  },
+  avatar: {
+    display: 'inline',
+    marginRight: '0.7%',
+    height: '30px',
+    width: '30px',
+    borderRadius: '50%',
+    
+  },
   text: {
     justifyContent: "center",
     alignItems: "center",
-    textAlign: "center",
+    textAlign: "left",
     lineHeight: "1.5",
-    padding: "20px 50px",
-    fontSize: "20px",
+    //padding: "20px 50px",
+    //fontSize: "14pt",
     color: "black",
   },
 }));
 
 const url = "google.com";
 function Post1(props) {
-  let history = useHistory();
+  //let history = useHistory();
   const classes = useStyles();
   return (
     <div className="App">
-      <Toolbar></Toolbar>
-
       <div className="center">
         <h2
-          style={{ color: "black", fontWeight: "bold", marginBottom: "-30px" }}
+          style={{ color: "black", fontWeight: "bold", marginTop: "2%" }}
         >
           Machine Learning Website Development
         </h2>
@@ -62,12 +75,8 @@ function Post1(props) {
             }}
           />
 
-          <small>
-            <img
-              alt="Ameya Dehade, Author Icon"
-              class="photo"
-              src="/iconPerson.png"
-            />
+          <h6>
+          <img alt="Ameya Dehade" src={ameya} className={classes.avatar} variant='circle'/>
             Ameya Dehade &#8226; March 2021
             <PopupState variant="popover" popupId="demo-popup-menu">
               {(popupState) => (
@@ -109,10 +118,11 @@ function Post1(props) {
                 </React.Fragment>
               )}
             </PopupState>
-          </small>
+          </h6>
           <br />
-        </div>
-        <span>
+        
+        
+        {/* <span>
           <aside>
             <p class="black">
               <IconButton
@@ -130,8 +140,15 @@ function Post1(props) {
                at Johns Hopkins University
             </p>
           </aside>
-        </span>
-        <span>
+        </span> */} 
+        
+            <h6 className={classes.credit}>
+            <strong>Collaborators:</strong> Dr. Kimia Ghobadi, John C. Malone Assistant Professor in Civil Systems and Engineering
+               at Johns Hopkins University
+            </h6>
+        </div>
+
+        <Grid>
           <p className={classes.text}>
             Our model uses the Iterative Proportional Fitting Procedure (IPFP),
             a classical algorithm in computer science that performs data scaling
@@ -143,13 +160,14 @@ function Post1(props) {
             3000 people. We define a POI as any location that an agent can visit
             such as a coffee shop, school, workplace, etc.
           </p>
+          
           <figure>
             
               <img
-                width="60%"
-                height="40%"
+                width="50%"
+                height="50%"
                 src="/blogpostPic1.png"
-                alt=" "
+                alt="POI"
                 title="POI Visual"
               />
               <figcaption>Figure 1 - Person of Interest Visual</figcaption>
@@ -174,18 +192,18 @@ function Post1(props) {
             the general mobility network.
           </p>
           <figure>
-            <div>
               <img
+                width="60%"
+                height="40%"
                 src="/blogpostPic2.png"
-                alt=" "
+                alt="Visit Matrix"
                 title="Visit Matrix Visual"
               />
               <figcaption>Figure 2 - Visit Matrix Visual</figcaption>
-            </div>
           </figure>
           <p className={classes.text}>
             Through our past work, we modeled trajectories for individual
-            agents. After extrapolating that data to represent 20 % of the US
+            agents. After extrapolating that data to represent 20% of the US
             population, we scaled it up by a predetermined factor in the IPFP
             process to accurately delineate the complete picture. Our method
             also tries to reduce information entropy and limits the amount of
@@ -205,10 +223,10 @@ function Post1(props) {
             populations not included in the dataset such as prisoners, homeless
             individuals, children under 13, or adults without cell phones.
           </p>
-        </span>
-      </div>
+          <Toolbar></Toolbar>
 
-      <Toolbar></Toolbar>
+        </Grid>
+      </div>
     </div>
   );
 }
@@ -318,7 +336,7 @@ function Post2(props) {
               width="60%"
               height="40%"
               src="/blogpostPic3.png"
-              alt=" "
+              alt="Severity Risk Matrix Determination"
               title="Severity Risk Matrix Determination"
             />
             <figcaption>
@@ -335,7 +353,7 @@ function Post2(props) {
               src="/blogpostPic4.png"
               width="60%"
               height="40%"
-              alt=" "
+              alt="Severity Risk Matrix"
               title="Severity Risk Matrix"
             />
             <figcaption>Figure 2 - Severity Risk Matrix</figcaption>
@@ -371,7 +389,6 @@ function Post2(props) {
           semester.
         </p>
       </div>
-      <Toolbar></Toolbar>
     </div>
   );
 }
