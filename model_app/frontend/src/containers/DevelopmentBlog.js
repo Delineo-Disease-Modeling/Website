@@ -182,13 +182,6 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "100%",
   },
 
-  // subtitle: {
-  //   fontSize: 18,
-  //   marginLeft: "0 0px",
-  //   marginTop: "0 0px",
-  //   padding: "0 0px",
-  // },
-
   root: {
     maxWidth: 345,
     backgroundColor: "#222629",
@@ -221,25 +214,12 @@ const useStyles = makeStyles((theme) => ({
 function DevelopmentBlog(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(true);
-  //const [expandedAnn, setExpandedAnn] = React.useState(true);
-  //const [expandedNews, setExpandedNews] = React.useState(true);
 
   let url = process.env.PUBLIC_URL + "developmentblog/date-2";
-  //developmentblog/date-2
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
-  //currently not being used but may be in the future
-  /*
-  const handleExpandClickAnn = () => {
-    setExpandedAnn(!expandedAnn);
-  };
-  const handleExpandClickNews = () => {
-    setExpandedNews(!expandedNews);
-  };
-  */
 
   const handleClick = (id, title) => {
     return (event) => {

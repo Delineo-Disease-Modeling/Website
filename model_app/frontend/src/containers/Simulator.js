@@ -2,11 +2,9 @@ import React, { Component } from "react";
 import { SimulationTimeseries } from "../components";
 import "./Simulator.css";
 import axios from "axios";
-//import Accordion from "@material-ui/core/Accordion";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Unity, { UnityContext } from "react-unity-webgl";
-//import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 const unityContext = new UnityContext({
@@ -17,16 +15,6 @@ const unityContext = new UnityContext({
   codeUrl: "./Build/Test2.wasm",
 
 });
-
-/*
-const ColoredAccordion = withStyles({
-  root: {
-    backgroundColor: "#1b4441c2",
-    fontSize: "20px",
-    color: "#66FCF1",
-  },
-})(Accordion);
-*/
 
 const styles = (theme) => ({
   bubble: {
@@ -68,7 +56,6 @@ const styles = (theme) => ({
 });
 
 class Simulator extends Component {
-  // classes = useStyles();
 
   constructor() {
     super();
@@ -90,6 +77,7 @@ class Simulator extends Component {
   }
 
   handleOnClick = () => {
+    
     // if user had an existing job request, delete that
     if (this.state.jobId) {
       axios
