@@ -50,15 +50,26 @@ const useStyles = makeStyles((theme) => ({
             opacity: '1'
         }
     },
+    switchTrack: {
+        backgroundColor: "rgba(224,224,224,255)",
+        opacity: "1"
+    },
     sliderText: {
         color: "black",
-        fontSize: "0.8rem"
+        fontSize: "0.8rem",
+        paddingLeft: "0",
+        alignItems: "bottom"
     },
-    numSelectGrid: {
+    switchText: {
+        color: "black",
+        paddingLeft: "0",
+    },
+    gridItemRight: {
         textAlign: "right"
     },
     numSelect: {
         textAlign: "center",
+        padding: "0px"
     },
 }));
 
@@ -87,11 +98,11 @@ function MaskSlider() {
         <div >
             <Grid container direction="row" alignItems="center">
                 <Grid item xs={6}>
-                    <Typography className={classes.sliderText} gutterBottom>
+                    <Typography className={classes.sliderText}>
                         Mask-Wearing
                     </Typography>
                 </Grid>
-                <Grid item xs={6} className={classes.numSelectGrid}>
+                <Grid item xs={6} className={classes.gridItemRight}>
                     <Input
                         className={classes.numSelect}
                         value={value}
@@ -142,11 +153,11 @@ function CapacitySlider() {
         <div>
             <Grid container direction="row" alignItems="center">
                 <Grid item xs={6}>
-                    <Typography className={classes.sliderText} gutterBottom>
+                    <Typography className={classes.sliderText}>
                         Capacity Restrictions
                     </Typography>
                 </Grid>
-                <Grid item xs={6} className={classes.numSelectGrid}>
+                <Grid item xs={6} className={classes.gridItemRight}>
                     <Input
                         className={classes.numSelect}
                         value={value}
@@ -198,11 +209,11 @@ function MassSlider() {
         <div>
             <Grid container direction="row" alignItems="center">
                 <Grid item xs={6}>
-                    <Typography className={classes.sliderText} gutterBottom>
+                    <Typography className={classes.sliderText} >
                         Mass Testing
                     </Typography>
                 </Grid>
-                <Grid item xs={6} className={classes.numSelectGrid}>
+                <Grid item xs={6} className={classes.gridItemRight}>
                     <Input
                         className={classes.numSelect}
                         value={value}
@@ -242,7 +253,7 @@ function StayAtHome() {
     return (
         <FormControlLabel
             control={
-                <Switch checked={state.Home} classes={{ switchBase: classes.switchBase, }} onChange={handleChange} name="Home" />}
+                <Switch checked={state.Home} classes={{ track: classes.switchTrack, switchBase: classes.switchBase }} onChange={handleChange} name="Home" />}
             label="Stay-at-Home Order"
             labelPlacement="start"
         />
@@ -263,30 +274,38 @@ function TargetedShutdown() {
 
     return (
         <FormGroup>
-            <Grid container direction="column" justify="space-around">
-                <Grid item>
-                    <FormControlLabel
-                        control={
-                            <Switch checked={state.Schools} classes={{ switchBase: classes.switchBase, }} onChange={handleChange} name="Schools" />}
-                        label="Schools"
-                    />
+            <Grid container direction="row" justify="space-between" alignItems="center">
+                <Grid item xs={6}>
+                    <Typography className={classes.switchText}>
+                        Schools
+                    </Typography>
                 </Grid>
-                <Grid item>
-                    <FormControlLabel
-                        control={
-                            <Switch checked={state.Restaurants} classes={{ switchBase: classes.switchBase, }} onChange={handleChange} name="Restaurants" />}
-                        label="Restaurant"
-                    />
+                <Grid item xs={6} className={classes.gridItemRight}>
+                    <Switch checked={state.Schools} classes={{ track: classes.switchTrack, switchBase: classes.switchBase }} onChange={handleChange} name="Schools" />   
                 </Grid>
-                <Grid item>
-                    <FormControlLabel
-                        control={<Switch checked={state.Gyms} classes={{ switchBase: classes.switchBase, }} onChange={handleChange} name="Gyms" />}
-                        label="Gyms" />
+                <Grid item xs={6}>
+                    <Typography className={classes.switchText}>
+                        Restaurants
+                    </Typography>
                 </Grid>
-                <Grid item>
-                    <FormControlLabel
-                        control={<Switch checked={state.Bars} classes={{ switchBase: classes.switchBase, }} onChange={handleChange} name="Bars" />}
-                        label="Bars" />
+                <Grid item xs={6} className={classes.gridItemRight}>
+                    <Switch checked={state.Restaurants} classes={{ track: classes.switchTrack, switchBase: classes.switchBase }} onChange={handleChange} name="Restaurants" />   
+                </Grid>
+                <Grid item xs={6}>
+                    <Typography className={classes.switchText}>
+                        Gyms
+                    </Typography>
+                </Grid>
+                <Grid item xs={6} className={classes.gridItemRight}>
+                    <Switch checked={state.Gyms} classes={{ track: classes.switchTrack, switchBase: classes.switchBase }} onChange={handleChange} name="Gyms" />   
+                </Grid>
+                <Grid item xs={6}>
+                    <Typography className={classes.switchText}>
+                        Bars
+                    </Typography>
+                </Grid>
+                <Grid item xs={6} className={classes.gridItemRight}>
+                    <Switch checked={state.Bars} classes={{ track: classes.switchTrack, switchBase: classes.switchBase }} onChange={handleChange} name="Bars" />
                 </Grid>
             </Grid>
         </FormGroup>
@@ -317,11 +336,11 @@ function VaccinationSlider() {
         <div>
             <Grid container direction="row" justify="space-between" alignItems="center">
                 <Grid item xs={6}>
-                    <Typography className={classes.sliderText} gutterBottom>
+                    <Typography className={classes.sliderText}>
                         Vaccinated Population
-          </Typography>
+                    </Typography>
                 </Grid>
-                <Grid item xs={6} className={classes.numSelectGrid}>
+                <Grid item xs={6} className={classes.gridItemRight}>
                     <Input
                         className={classes.numSelect}
                         value={value}
