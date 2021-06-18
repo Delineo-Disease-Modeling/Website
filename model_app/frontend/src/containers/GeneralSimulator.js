@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./GeneralSimulator.css";
 import { withStyles } from "@material-ui/core/styles";
 import SidePanel from "../components/SidePanel";
+import ConfigurationsPanel from "../components/ConfigurationsPanel";
 
 //import Accordion from "@material-ui/core/Accordion";
 
@@ -65,9 +66,10 @@ class SimulatorTemp extends Component {
   render() {
 
     return(
-      <div >
-        <SidePanel />
+      <div>
+        <ConfigurationsPanel />
       </div>
+      
     );
   }
 }
