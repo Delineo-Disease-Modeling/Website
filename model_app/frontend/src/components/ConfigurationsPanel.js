@@ -1,18 +1,7 @@
 import React from 'react';
-import clsx from 'clsx';
-import { withStyles, makeStyles, useTheme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { makeStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import ArrowLeft from '@material-ui/icons/ArrowLeft';
-import ArrowRight from '@material-ui/icons/ArrowRight';
-import PlayArrow from '@material-ui/icons/PlayArrow';
-import PauseOutlinedIcon from '@material-ui/icons/PauseOutlined'
-import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
 import Grid from '@material-ui/core/Grid';
 import Slider from '@material-ui/core/Slider';
 import Input from '@material-ui/core/Input';
@@ -74,16 +63,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function MaskSlider() {
+function MaskSlider(props) {
     const classes = useStyles();
     const [value, setValue] = React.useState(30);
 
     const handleSliderChange = (event, newValue) => {
         setValue(newValue);
+        props.configs.maskPercent = newValue;
     };
 
     const handleInputChange = (event) => {
         setValue(event.target.value === '' ? '' : Number(event.target.value));
+        props.configs.maskPercent = event.target.value === '' ? '' : Number(event.target.value);
     };
 
     const handleBlur = () => {
@@ -129,16 +120,18 @@ function MaskSlider() {
         </div>
     );
 }
-function CapacitySlider() {
+function CapacitySlider(props) {
     const classes = useStyles();
     const [value, setValue] = React.useState(30);
 
     const handleSliderChange = (event, newValue) => {
         setValue(newValue);
+        props.configs.capacityPercent = newValue;
     };
 
     const handleInputChange = (event) => {
         setValue(event.target.value === '' ? '' : Number(event.target.value));
+        props.configs.capacityPercent = event.target.value === '' ? '' : Number(event.target.value);
     };
 
     const handleBlur = () => {
@@ -185,16 +178,18 @@ function CapacitySlider() {
     );
 }
 
-function MassSlider() {
+function MassSlider(props) {
     const classes = useStyles();
     const [value, setValue] = React.useState(30);
 
     const handleSliderChange = (event, newValue) => {
         setValue(newValue);
+        props.configs.massPercent = newValue;
     };
 
     const handleInputChange = (event) => {
         setValue(event.target.value === '' ? '' : Number(event.target.value));
+        props.configs.massPercent = event.target.value === '' ? '' : Number(event.target.value);
     };
 
     const handleBlur = () => {
@@ -241,35 +236,37 @@ function MassSlider() {
     );
 }
 
-function StayAtHome() {
+function StayAtHome(props) {
     const classes = useStyles();
-    const [state, setState] = React.useState({
-        Home: false,
+    const [state, setState] = React.useState({    
+        stayAtHome: false,
     });
     const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
+        props.configs[event.target.name] = event.target.checked;
     };
 
     return (
         <FormControlLabel
             control={
-                <Switch checked={state.Home} classes={{ track: classes.switchTrack, switchBase: classes.switchBase }} onChange={handleChange} name="Home" />}
+                <Switch checked={state.Home} classes={{ track: classes.switchTrack, switchBase: classes.switchBase }} onChange={handleChange} name="stayAtHome" />}
             label="Stay-at-Home Order"
             labelPlacement="start"
         />
     );
 }
 
-function TargetedShutdown() {
+function TargetedShutdown(props) {
     const classes = useStyles();
     const [state, setState] = React.useState({
-        Schools: false,
-        Restaurants: false,
-        Gyms: false,
-        Bars: false,
+        schoolsShutdown: false,
+        restaurantsShutdown: false,
+        gymsShutdown: false,
+        barsShutdown: false,
     });
     const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
+        props.configs[event.target.name] = event.target.checked;
     };
 
     return (
@@ -281,7 +278,7 @@ function TargetedShutdown() {
                     </Typography>
                 </Grid>
                 <Grid item xs={6} className={classes.gridItemRight}>
-                    <Switch checked={state.Schools} classes={{ track: classes.switchTrack, switchBase: classes.switchBase }} onChange={handleChange} name="Schools" />   
+                    <Switch checked={state.Schools} classes={{ track: classes.switchTrack, switchBase: classes.switchBase }} onChange={handleChange} name="schoolsShutdown" />   
                 </Grid>
                 <Grid item xs={6}>
                     <Typography className={classes.switchText}>
@@ -289,7 +286,7 @@ function TargetedShutdown() {
                     </Typography>
                 </Grid>
                 <Grid item xs={6} className={classes.gridItemRight}>
-                    <Switch checked={state.Restaurants} classes={{ track: classes.switchTrack, switchBase: classes.switchBase }} onChange={handleChange} name="Restaurants" />   
+                    <Switch checked={state.Restaurants} classes={{ track: classes.switchTrack, switchBase: classes.switchBase }} onChange={handleChange} name="restaurantsShutdown" />   
                 </Grid>
                 <Grid item xs={6}>
                     <Typography className={classes.switchText}>
@@ -297,7 +294,7 @@ function TargetedShutdown() {
                     </Typography>
                 </Grid>
                 <Grid item xs={6} className={classes.gridItemRight}>
-                    <Switch checked={state.Gyms} classes={{ track: classes.switchTrack, switchBase: classes.switchBase }} onChange={handleChange} name="Gyms" />   
+                    <Switch checked={state.Gyms} classes={{ track: classes.switchTrack, switchBase: classes.switchBase }} onChange={handleChange} name="gymsShutdown" />   
                 </Grid>
                 <Grid item xs={6}>
                     <Typography className={classes.switchText}>
@@ -305,23 +302,25 @@ function TargetedShutdown() {
                     </Typography>
                 </Grid>
                 <Grid item xs={6} className={classes.gridItemRight}>
-                    <Switch checked={state.Bars} classes={{ track: classes.switchTrack, switchBase: classes.switchBase }} onChange={handleChange} name="Bars" />
+                    <Switch checked={state.Bars} classes={{ track: classes.switchTrack, switchBase: classes.switchBase }} onChange={handleChange} name="barsShutdown" />
                 </Grid>
             </Grid>
         </FormGroup>
     );
 }
 
-function VaccinationSlider() {
+function VaccinationSlider(props) {
     const classes = useStyles();
     const [value, setValue] = React.useState(30);
-
+    
     const handleSliderChange = (event, newValue) => {
         setValue(newValue);
+        props.configs.vaccinePercent = newValue;
     };
 
     const handleInputChange = (event) => {
         setValue(event.target.value === '' ? '' : Number(event.target.value));
+        props.configs.vaccinePercent = Number(event.target.value);
     };
 
     const handleBlur = () => {
@@ -368,17 +367,11 @@ function VaccinationSlider() {
     );
 }
 
-function ConfirmButton() {
+function ConfirmButton(props) {
     const classes = useStyles();
-    const [state, setState] = React.useState({
-        paused: true,
-    });
+    
     const handleClick = (event) => {
-
-        setState({
-            ...state,
-            paused: false,
-        });
+        props.updateConfigs(props.configs);
     };
     return (
         <div>
@@ -394,31 +387,33 @@ function ConfirmButton() {
     );
 }
 
-export default function ConfigurationsPanel() {
+export default function ConfigurationsPanel(props) {
     const classes = useStyles();
+    let configs = JSON.parse(JSON.stringify(props.configs)); //Create a deep copy of parent configurations
+
     return (
         <div className={classes.root}>
             <div className={classes.panelSection}>
                 <Typography className={classes.configurationsHeader}>
                     NPI's
                 </Typography>
-                <MaskSlider />
-                <CapacitySlider />
-                <MassSlider />
-                <StayAtHome />
+                <MaskSlider configs={configs}/>
+                <CapacitySlider configs={configs}/>
+                <MassSlider configs={configs}/>
+                <StayAtHome configs={configs}/>
             </div>
             <div className={classes.panelSection}>
                 <Typography className={classes.configurationsHeader}>
                     Targeted Shutdowns
                 </Typography>
-                <TargetedShutdown />
+                <TargetedShutdown configs={configs}/>
             </div>
             <div className={classes.panelSection}>
                 <Typography className={classes.configurationsHeader}>
                     Vaccinations
                 </Typography>
-                <VaccinationSlider />
-                <ConfirmButton />
+                <VaccinationSlider configs={configs}/>
+                <ConfirmButton updateConfigs={props.updateConfigs} configs={configs}/>
             </div>
         </div>
     );
