@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles} from '@material-ui/core/styles';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         backgroundColor: 'rgba(196,196,196,255)',
         margin: '2%',
+        paddingBottom: '1%',
         borderRadius: '20px',
         justifyContent: 'space-around'
     },
@@ -58,10 +59,112 @@ const useStyles = makeStyles((theme) => ({
     },
     numSelect: {
         textAlign: "center",
-        padding: "0px"
     },
+    button: {
+        backgroundColor: "rgba(49,53,56,255)",
+        color: "white",
+        paddingLeft: "65px",
+        paddingRight: "65px",
+        boxShadow: 'none',
+        '&:hover': {
+            backgroundColor: 'rgba(93, 96, 99)',
+        },
+    },
+    button2: {
+        backgroundColor: "#66FCF1",
+        color: "#444f56",
+        border: "1px solid",
+        paddingLeft: "65px",
+        paddingRight: "65px",
+        borderColor: '#66FCF1',
+        boxShadow: 'none',
+        '&:hover': {
+            color: "#66FCF1",
+            backgroundColor: '#222629',
+            borderColor: '#66FCF1',
+            boxShadow: '0px 0px 10px #222629'
+        },
+    }
 }));
 
+const StyledSlider1 = withStyles({
+    root: {
+        color: '#23beb5',
+        height: 8,
+    },
+    thumb: {
+        height: 24,
+        width: 24,
+        backgroundColor: '#fff',
+        border: '2px solid currentColor',
+        marginTop: -8,
+        marginLeft: -12,
+        '&:focus, &:hover, &$active': {
+            boxShadow: 'inherit',
+        },
+    },
+    track: {
+        height: 8,
+        borderRadius: 4,
+    },
+    rail: {
+        height: 8,
+        borderRadius: 4,
+    },
+})(Slider);
+
+const StyledSlider2 = withStyles({
+    root: {
+        color: 'rgba(49,53,56,255)',
+        height: 8,
+    },
+    thumb: {
+        height: 24,
+        width: 24,
+        backgroundColor: 'rgb(102, 252, 241)',
+        border: '2px solid currentColor',
+        marginTop: -8,
+        marginLeft: -12,
+        '&:focus, &:hover, &$active': {
+            boxShadow: 'inherit',
+        },
+    },
+    track: {
+        height: 8,
+        borderRadius: 4,
+    },
+    rail: {
+        height: 8,
+        borderRadius: 4,
+    },
+})(Slider);
+
+
+const StyledSlider = withStyles({
+    root: {
+        color: 'rgba(49,53,56,255)',
+        height: 8,
+    },
+    thumb: {
+        height: 18,
+        width: 18,
+        backgroundColor: 'rgb(102, 252, 241)',
+        border: '2px solid currentColor',
+        marginTop: -5,
+        marginLeft: -9,
+        '&:focus, &:hover, &$active': {
+            boxShadow: 'inherit',
+        },
+    },
+    track: {
+        height: 8,
+        borderRadius: 4,
+    },
+    rail: {
+        height: 8,
+        borderRadius: 4,
+    },
+})(Slider);
 
 function MaskSlider(props) {
     const classes = useStyles();
@@ -69,12 +172,12 @@ function MaskSlider(props) {
 
     const handleSliderChange = (event, newValue) => {
         setValue(newValue);
-        props.configs.maskPercent = newValue;
+        props.configs.maskPercent = sanitizePercentInput(newValue);
     };
 
     const handleInputChange = (event) => {
         setValue(event.target.value === '' ? '' : Number(event.target.value));
-        props.configs.maskPercent = event.target.value === '' ? '' : Number(event.target.value);
+        props.configs.maskPercent = sanitizePercentInput(event.target.value === '' ? '' : Number(event.target.value));
     };
 
     const handleBlur = () => {
@@ -110,7 +213,7 @@ function MaskSlider(props) {
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <Slider
+                    <StyledSlider1
                         value={typeof value === 'number' ? value : 0}
                         onChange={handleSliderChange}
                         aria-labelledby="input-slider"
@@ -126,12 +229,12 @@ function CapacitySlider(props) {
 
     const handleSliderChange = (event, newValue) => {
         setValue(newValue);
-        props.configs.capacityPercent = newValue;
+        props.configs.capacityPercent = sanitizePercentInput(newValue);
     };
 
     const handleInputChange = (event) => {
         setValue(event.target.value === '' ? '' : Number(event.target.value));
-        props.configs.capacityPercent = event.target.value === '' ? '' : Number(event.target.value);
+        props.configs.capacityPercent = sanitizePercentInput(event.target.value === '' ? '' : Number(event.target.value));
     };
 
     const handleBlur = () => {
@@ -167,7 +270,7 @@ function CapacitySlider(props) {
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <Slider
+                    <StyledSlider
                         value={typeof value === 'number' ? value : 0}
                         onChange={handleSliderChange}
                         aria-labelledby="input-slider"
@@ -184,12 +287,12 @@ function MassSlider(props) {
 
     const handleSliderChange = (event, newValue) => {
         setValue(newValue);
-        props.configs.massPercent = newValue;
+        sanitizePercentInput(props.configs.massPercent = newValue);
     };
 
     const handleInputChange = (event) => {
         setValue(event.target.value === '' ? '' : Number(event.target.value));
-        props.configs.massPercent = event.target.value === '' ? '' : Number(event.target.value);
+        props.configs.massPercent = sanitizePercentInput(event.target.value === '' ? '' : Number(event.target.value));
     };
 
     const handleBlur = () => {
@@ -225,7 +328,7 @@ function MassSlider(props) {
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <Slider
+                    <StyledSlider2
                         value={typeof value === 'number' ? value : 0}
                         onChange={handleSliderChange}
                         aria-labelledby="input-slider"
@@ -238,7 +341,7 @@ function MassSlider(props) {
 
 function StayAtHome(props) {
     const classes = useStyles();
-    const [state, setState] = React.useState({    
+    const [state, setState] = React.useState({
         stayAtHome: false,
     });
     const handleChange = (event) => {
@@ -247,12 +350,16 @@ function StayAtHome(props) {
     };
 
     return (
-        <FormControlLabel
-            control={
-                <Switch checked={state.Home} classes={{ track: classes.switchTrack, switchBase: classes.switchBase }} onChange={handleChange} name="stayAtHome" />}
-            label="Stay-at-Home Order"
-            labelPlacement="start"
-        />
+        <Grid container direction="row" justify="space-between" alignItems="center">
+            <Grid item xs={8}>
+                <Typography className={classes.switchText}>
+                    Stay-at-Home Order
+                </Typography>
+            </Grid>
+            <Grid item xs={4} className={classes.gridItemRight}>
+                <Switch checked={state.Home} classes={{ track: classes.switchTrack, switchBase: classes.switchBase }} onChange={handleChange} name="stayAtHome" />
+            </Grid>
+        </Grid>
     );
 }
 
@@ -278,7 +385,7 @@ function TargetedShutdown(props) {
                     </Typography>
                 </Grid>
                 <Grid item xs={6} className={classes.gridItemRight}>
-                    <Switch checked={state.Schools} classes={{ track: classes.switchTrack, switchBase: classes.switchBase }} onChange={handleChange} name="schoolsShutdown" />   
+                    <Switch checked={state.Schools} classes={{ track: classes.switchTrack, switchBase: classes.switchBase }} onChange={handleChange} name="schoolsShutdown" />
                 </Grid>
                 <Grid item xs={6}>
                     <Typography className={classes.switchText}>
@@ -286,7 +393,7 @@ function TargetedShutdown(props) {
                     </Typography>
                 </Grid>
                 <Grid item xs={6} className={classes.gridItemRight}>
-                    <Switch checked={state.Restaurants} classes={{ track: classes.switchTrack, switchBase: classes.switchBase }} onChange={handleChange} name="restaurantsShutdown" />   
+                    <Switch checked={state.Restaurants} classes={{ track: classes.switchTrack, switchBase: classes.switchBase }} onChange={handleChange} name="restaurantsShutdown" />
                 </Grid>
                 <Grid item xs={6}>
                     <Typography className={classes.switchText}>
@@ -294,7 +401,7 @@ function TargetedShutdown(props) {
                     </Typography>
                 </Grid>
                 <Grid item xs={6} className={classes.gridItemRight}>
-                    <Switch checked={state.Gyms} classes={{ track: classes.switchTrack, switchBase: classes.switchBase }} onChange={handleChange} name="gymsShutdown" />   
+                    <Switch checked={state.Gyms} classes={{ track: classes.switchTrack, switchBase: classes.switchBase }} onChange={handleChange} name="gymsShutdown" />
                 </Grid>
                 <Grid item xs={6}>
                     <Typography className={classes.switchText}>
@@ -312,15 +419,15 @@ function TargetedShutdown(props) {
 function VaccinationSlider(props) {
     const classes = useStyles();
     const [value, setValue] = React.useState(30);
-    
+
     const handleSliderChange = (event, newValue) => {
         setValue(newValue);
-        props.configs.vaccinePercent = newValue;
+        props.configs.vaccinePercent = sanitizePercentInput(newValue);
     };
 
     const handleInputChange = (event) => {
         setValue(event.target.value === '' ? '' : Number(event.target.value));
-        props.configs.vaccinePercent = Number(event.target.value);
+        props.configs.vaccinePercent = sanitizePercentInput(event.target.value === '' ? '' : Number(event.target.value));
     };
 
     const handleBlur = () => {
@@ -356,7 +463,7 @@ function VaccinationSlider(props) {
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <Slider
+                    <StyledSlider
                         value={typeof value === "number" ? value : 0}
                         onChange={handleSliderChange}
                         aria-labelledby="input-slider"
@@ -369,9 +476,9 @@ function VaccinationSlider(props) {
 
 function ConfirmButton(props) {
     const classes = useStyles();
-    
+
     const handleClick = (event) => {
-        props.updateConfigs(props.configs);
+        props.updateConfigs(props.configs); //configs get updated in parent component
     };
     return (
         <div>
@@ -382,9 +489,24 @@ function ConfirmButton(props) {
                 onClick={handleClick}
             >
                 Confirm
-      </Button>
+            </Button>
         </div>
     );
+}
+
+//Helper function to convert user inputs to be restricted between 0 and 100
+//Returns -1 if input is not a number
+function sanitizePercentInput(input) {
+    if (isNaN(input) || typeof input !== "number") { //TODO: Test this logic
+        return -1;
+    }
+    if (input > 100) {
+        return 100;
+    } else if (input < 0) {
+        return 0;
+    } else {
+        return input;
+    }
 }
 
 export default function ConfigurationsPanel(props) {
@@ -397,23 +519,25 @@ export default function ConfigurationsPanel(props) {
                 <Typography className={classes.configurationsHeader}>
                     NPI's
                 </Typography>
-                <MaskSlider configs={configs}/>
-                <CapacitySlider configs={configs}/>
-                <MassSlider configs={configs}/>
-                <StayAtHome configs={configs}/>
+                <MaskSlider configs={configs} />
+                <CapacitySlider configs={configs} />
+                <MassSlider configs={configs} />
+                <StayAtHome configs={configs} />
             </div>
             <div className={classes.panelSection}>
                 <Typography className={classes.configurationsHeader}>
                     Targeted Shutdowns
                 </Typography>
-                <TargetedShutdown configs={configs}/>
+                <TargetedShutdown configs={configs} />
             </div>
             <div className={classes.panelSection}>
                 <Typography className={classes.configurationsHeader}>
                     Vaccinations
                 </Typography>
-                <VaccinationSlider configs={configs}/>
-                <ConfirmButton updateConfigs={props.updateConfigs} configs={configs}/>
+                <VaccinationSlider configs={configs} />
+                <div>
+                    <ConfirmButton updateConfigs={props.updateConfigs} configs={configs} />
+                </div>
             </div>
         </div>
     );
