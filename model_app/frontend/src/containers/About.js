@@ -151,10 +151,9 @@ class About extends React.Component {
 					<Typography variant="h2" component="h2" className={classes.subtitle}>
 						Disease Modeling Simulation at Johns Hopkins University
 						</Typography>
-					<img src={bgImg} alt="background" width='100%' height="700vh" />
+					<img src={bgImg} alt="background" width='100%' height="400vh" />
 
-					<InfoBlock background={'white'} subject={'visualization'} />
-					<InfoBlock background={'#d5d7db'} subject={'stimulation'} />
+					<InfoBlock background={'#d5d7db'} subject={'simulation'} />
 
 				</div>
 				<div className={classes.faq} id="contact">

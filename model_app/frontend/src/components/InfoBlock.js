@@ -50,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
 function setParams(subject) {
     var title = '';
     var description = '';
+    var link = '';
     var buttontxt = '';
     var images = [];
     var captions = [];
@@ -57,6 +58,7 @@ function setParams(subject) {
         title = 'MAP VISUALIZATION';
         description = "The Johns Hopkins Coronavirus Resource Center (CRC) is a continuously updated source of COVID-19 data and expert guidance. We aggregate and analyze the best data available on COVID-19—including cases, as well as testing, contact tracing and vaccine efforts—to help the public, policymakers and healthcare professionals worldwide respond to the pandemic.";
         buttontxt = 'VIEW MAP';
+        link = '';
         images[0] = "https://foxbaltimore.com/resources/media/61c51eec-222d-4918-88c3-0b23fbe9da54-large16x9_mdcases.PNG?1584798406087";
         images[1] = "https://mma.prnewswire.com/media/1154534/Perception_Health_COVID_Map_2020.jpg?p=publish&w=950";
         images[2] = "https://www.amcharts.com/wp-content/uploads/2014/02/motion-chart-shot.png";
@@ -65,10 +67,11 @@ function setParams(subject) {
         captions[1] = 'State Level';
         captions[2] = 'Motion Chart';
         captions[3] = 'Daily Summary';
-    } else if (subject === 'stimulation') {
+    } else if (subject === 'simulation') {
         title = 'SIMULATION';
         description = "Viruses, such as the one that causes COVID-19, spread quickly through large cities because of a complex web of interactions between people taking place in a densely populated area. But how viruses move from person to person in smaller, rural communities is less well understood, resulting in public health and economic decisions that are made on the basis of scant information and overgeneralized modeling. The Delineo project is developing a distributed programming environment to run the model over large numbers of computers to scale up the areas that can be accurately modeled.";
         buttontxt = 'VIEW SIMULATION';
+        link = '/simulator';
         images[0] = "https://www.washingtonpost.com/rf/image_982w/2010-2019/WashingtonPost/2020/03/14/Health-Environment-Science/Graphics/promo2-coronavirus-simulator-0313.jpg";
         images[1] = "https://images.firstpost.com/fpimages/1200x800/fixed/jpg/2020/06/Covid-19-coronavirus-sneeze-simulation_Dassualt-Systemes-1.jpg";
         images[2] = "https://images.theconversation.com/files/342926/original/file-20200619-70415-35zyha.jpg?ixlib=rb-1.1.0&rect=2057%2C0%2C5656%2C2822&q=45&auto=format&w=1356&h=668&fit=crop";
@@ -78,12 +81,12 @@ function setParams(subject) {
         captions[2] = 'Simulation 3';
         captions[3] = 'Simulation 4';
     }
-    return { title, description, buttontxt, images, captions };
+    return { title, description, buttontxt, link, images, captions };
 }
 
 export default function InfoBlock(props) {
     const classes = useStyles();
-    const { title, description, buttontxt, images, captions } = setParams(props.subject);
+    const { title, description, buttontxt, link, images, captions } = setParams(props.subject);
 
     return (
         <div className={classes.base}  style={{ backgroundColor: props.background }}>
@@ -96,7 +99,7 @@ export default function InfoBlock(props) {
                     {description}
                 </Typography>
 
-                <Button href='#top' size='large' color='inherit' >
+                <Button href= {link} size='large' color='inherit' >
                     {buttontxt}
                 </Button>
 
