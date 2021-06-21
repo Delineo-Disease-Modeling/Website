@@ -87,71 +87,18 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const StyledSlider1 = withStyles({
-    root: {
-        color: '#23beb5',
-        height: 8,
-    },
-    thumb: {
-        height: 24,
-        width: 24,
-        backgroundColor: '#fff',
-        border: '2px solid currentColor',
-        marginTop: -8,
-        marginLeft: -12,
-        '&:focus, &:hover, &$active': {
-            boxShadow: 'inherit',
-        },
-    },
-    track: {
-        height: 8,
-        borderRadius: 4,
-    },
-    rail: {
-        height: 8,
-        borderRadius: 4,
-    },
-})(Slider);
-
-const StyledSlider2 = withStyles({
-    root: {
-        color: 'rgba(49,53,56,255)',
-        height: 8,
-    },
-    thumb: {
-        height: 24,
-        width: 24,
-        backgroundColor: 'rgb(102, 252, 241)',
-        border: '2px solid currentColor',
-        marginTop: -8,
-        marginLeft: -12,
-        '&:focus, &:hover, &$active': {
-            boxShadow: 'inherit',
-        },
-    },
-    track: {
-        height: 8,
-        borderRadius: 4,
-    },
-    rail: {
-        height: 8,
-        borderRadius: 4,
-    },
-})(Slider);
-
-
 const StyledSlider = withStyles({
     root: {
         color: 'rgba(49,53,56,255)',
         height: 8,
     },
     thumb: {
-        height: 18,
-        width: 18,
+        height: 24,
+        width: 24,
         backgroundColor: 'rgb(102, 252, 241)',
         border: '2px solid currentColor',
-        marginTop: -5,
-        marginLeft: -9,
+        marginTop: -8,
+        marginLeft: -12,
         '&:focus, &:hover, &$active': {
             boxShadow: 'inherit',
         },
@@ -165,6 +112,7 @@ const StyledSlider = withStyles({
         borderRadius: 4,
     },
 })(Slider);
+
 
 function MaskSlider(props) {
     const classes = useStyles();
@@ -213,7 +161,7 @@ function MaskSlider(props) {
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <StyledSlider1
+                    <StyledSlider
                         value={typeof value === 'number' ? value : 0}
                         onChange={handleSliderChange}
                         aria-labelledby="input-slider"
@@ -328,7 +276,7 @@ function MassSlider(props) {
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <StyledSlider2
+                    <StyledSlider
                         value={typeof value === 'number' ? value : 0}
                         onChange={handleSliderChange}
                         aria-labelledby="input-slider"
