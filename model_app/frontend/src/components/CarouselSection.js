@@ -20,9 +20,15 @@ export default function CarouselSection(captions, images) {
 
 function Item(props) {
     return (
+<<<<<<< HEAD
+        <div style={{backgroundColor: 'transparent'}}>
+            <Typography varient='h2' component='h2' style={{ color: 'white', fontSize: '36px' }}>{props.caption}</Typography>
+            <img alt="" style={{ width: 'auto', height: '70vh' }} src={props.image} />
+=======
         <div style={{ backgroundColor: 'transparent' }}>
             <img alt="" style={{ width: '100%', height: 'auto' }} src={props.image} />
             <Typography varient='h4' component='h4' style={{ marginTop: '10px', color: 'white'}}>{props.caption}</Typography>
+>>>>>>> 69c3fab5b4f20198d390c611b3601642ef711fa5
         </div>
     )
 }

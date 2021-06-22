@@ -21,6 +21,10 @@ const styles = {
 		minWidth: '100%',
 		margin: '0',
 		alignContent: 'center',
+<<<<<<< HEAD
+		borderBottom: '3px solid #66FCF1'
+=======
+>>>>>>> 69c3fab5b4f20198d390c611b3601642ef711fa5
 	},
 	underline: {
 		width: '200px',
@@ -55,12 +59,17 @@ const styles = {
 		marginBottom: '50px'
 	},
 	faq: {
+<<<<<<< HEAD
+		background: '#ffffff',
+		padding: '5px 50px',
+		paddingBottom: '40px'
+=======
 		background: '#222629',
 		padding: '50px 0 100px 0',
+>>>>>>> 69c3fab5b4f20198d390c611b3601642ef711fa5
 	},
 	faqSlots: {
 		textAlign: 'left',
-		padding: '0 50px'
 	},
 	input: {
 		padding: '10px',
@@ -152,11 +161,16 @@ class About extends React.Component {
 						</Typography>
 					<img src={bgImg} alt="background" width='100%' height="400vh" />
 
-					<InfoBlock background={'#d5d7db'} subject={'simulation'} />
+					<InfoBlock subject={'simulation'} />
 
 				</div>
+<<<<<<< HEAD
+				<div className={classes.faq} id="contact">
+					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', marginTop: '50px', color: 'black' }}>
+=======
 				<div className={classes.faq}>
 					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', marginTop: '50px' }}>
+>>>>>>> 69c3fab5b4f20198d390c611b3601642ef711fa5
 						FAQ
 					</Typography>
 					<div className={classes.underline}></div>
@@ -174,8 +188,8 @@ class About extends React.Component {
 										>
 											{faq.question}
 										</ColAccordionSummary>
-										<AccordionDetails style={{ padding: '0 50px' }}>
-											<Typography className={classes.description}>
+										<AccordionDetails style={{ padding: '0 50px', backgroundColor: '#222629' }}>
+											<Typography className={classes.description} style={{color: '#ffffff'}}>
 												{faq.answer}
 											</Typography>
 										</AccordionDetails>
@@ -189,12 +203,17 @@ class About extends React.Component {
 
 
 
+<<<<<<< HEAD
+				<div id="contact" style={{ backgroundColor:'#222629'}}>
+					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', marginTop: '20px', paddingTop: '30px'}}>
+=======
 				<div id="contact" style={{backgroundColor:'#d5d7db', padding:'50px 0'}}>
 					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', color: 'black', paddingTop: '50px'}}>
+>>>>>>> 69c3fab5b4f20198d390c611b3601642ef711fa5
 						Contact Us!
 					</Typography>
 					<div className={classes.underline}></div>
-					<Typography varient='h3' component="h2" style={{ color: 'black' }}>
+					<Typography varient='h3' component="h2">
 						Let's get in touch!
 					</Typography>
 					<Typography varient='h1' component="h2" style={{ color: 'black' }}>

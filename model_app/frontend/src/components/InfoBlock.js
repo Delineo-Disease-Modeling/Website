@@ -10,16 +10,16 @@ const useStyles = makeStyles((theme) => ({
     carousel: {
         padding: '100px',
         marginTop: '50px',
-        color: 'black'
+        color: 'white',
     },
     base: {
-        padding: '10px 50px 10px 50px',
+        borderTop: '3px solid #66FCF1'
     },
     description: {
         fontSize: '20px',
         letterSpacing: '2px',
-        padding: '30px 50px',
-        color: 'black'
+        padding: '20px 50px',
+        color: 'white'
     },
     img: {
         width: '70%',
@@ -29,9 +29,8 @@ const useStyles = makeStyles((theme) => ({
     },
 
     gallery: {
-        margin: '50px 0',
+        backgroundColor: '#222629',
         padding: '50px 50px',
-        borderRadius: '15px',
     },
 
     grid: {
@@ -45,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: '10px'
     },
     paper: {
-        color: 'black'
+        color: 'white'
     }
 }));
 
@@ -76,7 +75,11 @@ export default function InfoBlock(props) {
     return (
         <div className={classes.base} style={{ backgroundColor: props.background }}>
             <div className={classes.gallery}>
+<<<<<<< HEAD
+                <Typography variant="h3" component="h2" style={{color: 'white'}}>
+=======
                 <Typography variant="h3" component="h2" style={{ color: 'black' }}>
+>>>>>>> 69c3fab5b4f20198d390c611b3601642ef711fa5
                     {title}
                 </Typography>
                 <div className={classes.border}></div>
@@ -88,7 +91,7 @@ export default function InfoBlock(props) {
                     {buttontxt}
                 </Button>
 
-                <div style={{ marginTop: '30px' }}>
+                <div style={{ marginTop: '30px'}}>
                     {Carousel(captions, images)}
                 </div>
             </div>
