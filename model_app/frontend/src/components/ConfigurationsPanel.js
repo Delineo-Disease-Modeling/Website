@@ -8,7 +8,7 @@ import Input from '@material-ui/core/Input';
 import { FormGroup } from '@material-ui/core';
 import Switch from '@material-ui/core/Switch';
 import Button from '@material-ui/core/Button';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Snackbar from '@material-ui/core/Snackbar';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -421,10 +421,25 @@ function VaccinationSlider(props) {
 
 function ConfirmButton(props) {
     const classes = useStyles();
+    const [showError, setShowError] = React.useState(false);
 
     const handleClick = (event) => {
-        props.updateConfigs(props.configs); //configs get updated in parent component
+        let configs = props.configs;
+        if (configs.maskPercent < 0 || configs.capacityPercent < 0 || configs.massPercent < 0 || configs.vaccinePercent < 0) {
+            setShowError(true);
+        } else {
+            props.updateConfigs(configs); //configs get updated in parent component
+        }
     };
+
+    //Closes invalid input toast
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setShowError(false);
+    };
+
     return (
         <div>
             <FormControl className={classes.formControl}></FormControl>
@@ -435,6 +450,7 @@ function ConfirmButton(props) {
             >
                 Confirm
             </Button>
+            <Snackbar open={showError} autoHideDuration={3000} message="Invalid input value" onClose={handleClose} />
         </div>
     );
 }
@@ -456,6 +472,7 @@ function sanitizePercentInput(input) {
 
 export default function ConfigurationsPanel(props) {
     const classes = useStyles();
+
     let configs = JSON.parse(JSON.stringify(props.configs)); //Create a deep copy of parent configurations
 
     return (
