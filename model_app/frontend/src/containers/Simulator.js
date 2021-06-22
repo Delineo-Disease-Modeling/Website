@@ -1,11 +1,15 @@
 import React, { Component } from "react";
-import { SimulationTimeseries } from "../components";
+//import { SimulationTimeseries } from "../components";
 import "./Simulator.css";
 import axios from "axios";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Unity, { UnityContext } from "react-unity-webgl";
 import Typography from "@material-ui/core/Typography";
+
+//import { Alert } from '@material-ui/lab/Alert';
+import SimulatorPopup from "../components/SimulatorPopup";
+
 
 const unityContext = new UnityContext({
 
@@ -171,28 +175,19 @@ class Simulator extends Component {
     console.log("request sent");
   };
 
+  
   render() {
     const { data, jobId, loading } = this.state;
     const { classes } = this.props;
 
     // no timeseries: replace with simulation timeseries
+
+    
     return (
+      
       <div className="GreenBackground">
+       <SimulatorPopup></SimulatorPopup>
         <Grid container spacing={3}>
-          <Grid item xs={6}>
-            <div>
-              {jobId ? (
-                loading ? (
-                  <p>loading...</p>
-                ) : (
-                  <div className="GreenBackground">
-                    <h3>Analysis YEE</h3>
-                    <SimulationTimeseries infected={data[1]} deaths={data[2]} />
-                  </div>
-                )
-              ) : null}
-            </div>
-          </Grid>
 
           <div className="GreenBackground" align="center">
             <Typography variant="h3" className={classes.boldTitle}>
