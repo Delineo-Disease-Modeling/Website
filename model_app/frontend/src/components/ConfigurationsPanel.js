@@ -9,6 +9,7 @@ import { FormGroup } from '@material-ui/core';
 import Switch from '@material-ui/core/Switch';
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -78,6 +79,16 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: 'rgba(93, 96, 99)',
         },
     },
+    inputPercent: {
+        backgroundColor: "#606060",
+        color: "black",
+        borderRadius: "50px",
+        width: "70px",
+        height: "35px",
+    },
+    unitText: {
+        color: "black"
+    },
     buttonSection: {
         textAlign: "center",
         paddingBottom: "25%"
@@ -143,12 +154,15 @@ function MaskSlider(props) {
                 </Grid>
                 <Grid item xs={6} className={classes.gridItemRight}>
                     <Input
-                        className={classes.centerText}
+                        className={classes.inputPercent}
                         value={value}
-                        margin="dense"
                         onChange={handleInputChange}
                         onBlur={handleBlur}
+                        disableUnderline={true}
+                        fullWidth={true}
+                        endAdornment={<InputAdornment position="end"><div className={classes.unitText}>%</div></InputAdornment>}
                         inputProps={{
+                            style: {textAlign: 'right'}, 
                             step: 1,
                             min: 0,
                             max: 100,
@@ -200,12 +214,15 @@ function CapacitySlider(props) {
                 </Grid>
                 <Grid item xs={6} className={classes.gridItemRight}>
                     <Input
-                        className={classes.centerText}
+                        className={classes.inputPercent}
                         value={value}
-                        margin="dense"
                         onChange={handleInputChange}
                         onBlur={handleBlur}
+                        disableUnderline={true}
+                        fullWidth={true}
+                        endAdornment={<InputAdornment position="end"><div className={classes.unitText}>%</div></InputAdornment>}
                         inputProps={{
+                            style:{textAlign:"right"},
                             step: 1,
                             min: 0,
                             max: 100,
@@ -258,12 +275,15 @@ function MassSlider(props) {
                 </Grid>
                 <Grid item xs={6} className={classes.gridItemRight}>
                     <Input
-                        className={classes.centerText}
+                        className={classes.inputPercent}
                         value={value}
-                        margin="dense"
                         onChange={handleInputChange}
                         onBlur={handleBlur}
+                        disableUnderline={true}
+                        fullWidth={true}
+                        endAdornment={<InputAdornment position="end"><div className={classes.unitText}>%</div></InputAdornment>}
                         inputProps={{
+                            style:{textAlign:"right"},
                             step: 1,
                             min: 0,
                             max: 100,
@@ -393,12 +413,15 @@ function VaccinationSlider(props) {
                 </Grid>
                 <Grid item xs={6} className={classes.gridItemRight}>
                     <Input
-                        className={classes.centerText}
+                        className={classes.inputPercent}
                         value={value}
-                        margin="dense"
                         onChange={handleInputChange}
                         onBlur={handleBlur}
+                        disableUnderline={true}
+                        fullWidth={true}
+                        endAdornment={<InputAdornment position="end"><div className={classes.unitText}>%</div></InputAdornment>}
                         inputProps={{
+                            style:{textAlign:"right"},
                             step: 1,
                             min: 0,
                             max: 100,
