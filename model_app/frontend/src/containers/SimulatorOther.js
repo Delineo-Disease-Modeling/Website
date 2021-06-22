@@ -3,7 +3,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from "@material-ui/core/Typography";
 import TopRight from "../images/temp/TopRightGraph.PNG";
 import TopLeft from "../images/temp/TopGraph.PNG";
-import BottomSection from "../images/temp/BottomSection.PNG";
 import BottomGraph from "../images/temp/BottomGraph.PNG";
 import BottomRight from "../images/temp/BottomRightImage.PNG";
 import MiddleImage from "../images/temp/MiddleImage.PNG";
@@ -14,28 +13,30 @@ import Switch from '@material-ui/core/Switch';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
+import Box from '@material-ui/core/Box';
 
 const styles = {
-	cardBackground: {
+	BlackBackground: {
 		backgroundColor: '#2f3538',
 		alignContent: 'center',
 		paddingBottom: '1%',
 	},
 	
-	
-	
-	button: {
-		marginTop: '30px'
-	},
-	description: {
-		fontSize: '16px',
-		letterSpacing: '1.2px',
-		color: 'black',
-		paddingBottom: '50px',
-		paddingTop: '50px'
-	},
-	bubble: {
+
+	simControls: {
+		color: "black",
+		fontWeight: "bold",
+		fontSize: 12,
+		textAlign: "left",
+		whiteSpace: "pre-wrap",
+	  },
+	  simControlsHeader: {
 		color: "white",
+		fontSize: 18,
+		textAlign: "left",
+	  },
+
+	bubble: {
 		textAlign: "center",
 		alignSelf: "center",
 		alignItems: "center",
@@ -44,9 +45,15 @@ const styles = {
 		border: "2px solid #2f3538",
 		backgroundColor: "#c4c4c4",
 	  },
+
+	  textbubble: {
+		alignSelf: "right",
+		borderRadius: "25px",
+		border: "5px solid #2f3538",
+		backgroundColor: "#2f3538",
+	  },
 	
-	  
-  
+	
 	
 	  boldTitle: {
 		top: "300px",
@@ -57,7 +64,7 @@ const styles = {
 	
 	
 	
-	  topdataleft: {
+	/*  topdataleft: {
 		width:"300x",
 		height:"200px",
 		position: "absolute",
@@ -100,88 +107,59 @@ const styles = {
 		right: "195px",
 		top: "345px", 
 	
-	  },
-	  sliderMask_Wearing: {
-		width: '210px',
-		height:"20px",
-		position: "absolute",
-		top: 585,
-		left: 370,
+	  }, */
 
-	  },
-	  sliderCap_Restrictions: {
-		width: '210px',
-		height:"20px",
-		position: "absolute",
-		top: 627.5,
-		left: 370,
 
-	  },
-	  sliderMass_Testing: {
+	  sliderTemp: {
 		width: '210px',
-		height:"20px",
-		position: "absolute",
-		top: 670,
-		left: 370,
-
-	  },
-	  sliderVacc_Pop: {
-		width: '210px',
-		height:"20px",
-		position: "absolute",
-		top: 585,
-		right:450,
-
 	  },
 
-	  StayAtHome: {
-		width: '300px',
-		height:"10px",
-		position: "absolute",
-		top: 200,
-		right: 270,
-	  },
-	  Schools: {
-		width: '210px',
-		height:"10px",
-		position: "absolute",
-		top: 80,
-		right: -50,
-	  },
-	  Restaurants: {
-		width: '210px',
-		height:"10px",
-		position: "absolute",
-		top: 120,
-		right: -50,
-	  },
-	  Gyms: {
-		width: '210px',
-		height:"10px",
-		position: "absolute",
-		top: 160,
-		right: -50,
-	  },
-	  Bars: {
-		width: '210px',
-		height:"10px",
-		position: "absolute",
-		top: 200,
-		right: -50,
-	  },
 	  blueSwitch: {
-		color: "#primary",
+		color: "#222629",
 	  }
 	};
 	
+	const StyledSwitch = styled(Switch)({
+		root: {
+			width: 22,
+			height: 16,
+			padding: 0,
+			display: 'flex',
+		  },
+		  switchBase: {
+			padding: 2,
+			color: "#2f3538",
+			'&$checked': {
+			  transform: 'translateX(12px)',
+			  color: "",
+			  '& + $track': {
+				opacity: 1,
+				backgroundColor: "#2f3538",
+				borderColor: "#2f3538",
+			  },
+			},
+		  },
+		  thumb: {
+			width: 12,
+			height: 12,
+			boxShadow: 'none',
+		  },
+		  track: {
+			border: `1px solid ${"#2f3538"}`,
+			borderRadius: 16 / 2,
+			opacity: 1,
+			backgroundColor: "#2f3538",
+		  },
+		  checked: {},
+	});
+
 	const StyledButton = styled(Button)({
 	  height: 48,
-	  padding: '0 30px',
-	  borderRadius: 3,
-	  borderColor: '#2f3538',
-	  backgroundColor: '#2f3538',
+	  padding: '6px 12px',
 	  border: '1px solid',
+	  backgroundColor: '#2f3538',
 	  color: '#ffffff',
+	  borderRadius: "1em",
 	  "&:hover": {
 		  backgroundColor: '#2f3538',
 		  color: '#ffffff',
@@ -189,40 +167,22 @@ const styles = {
 		  boxShadow: '0px 0px 10px #222629',
 	  },
 	});
-	const NewButton = styled(Button)({
-		position: "absolute",
-		right: '465px',
-		top: '700px',
-		bottom: '25px',
-		height: 45,
-		padding: '5px 60px 5px',
-		borderRadius: 3,
-		borderColor: '#2f3538',
-		backgroundColor: '#2f3538',
-		border: '1px solid',
-		color: '#ffffff',
-		"&:hover": {
-			backgroundColor: '#2f3538',
-			color: '#ffffff',
-			borderColor: '#2f3538',
-			boxShadow: '0px 0px 10px #222629',
-		},
-	  });
 
 	  const SliderTemplate = withStyles({
 		root: {
-			color: '#62666e',
+			color: '#2f3538',
 			height: 8,
 		  },
 		  thumb: {
 			height: 18,
 			width: 18,
-			backgroundColor: '#b8fbfc',
+			backgroundColor: '#66fcf1',
 			border: '2px solid currentColor',
 			marginTop: -6,
 			marginLeft: -8,
+			boxShadow: '#ebebeb 0 2px 2px',
 			'&:focus, &:hover, &$active': {
-			  boxShadow: 'inherit',
+			  boxShadow: '#ccc 0 2px 3px 1px',
 			},
 		  },
 		  active: {},
@@ -234,6 +194,8 @@ const styles = {
 			borderRadius: 4,
 		  },
 		  rail: {
+			color: '#2f3538',
+			opacity: 1,
 			height: 6,
 			borderRadius: 4,
 		  },
@@ -241,94 +203,135 @@ const styles = {
 	  
 
 
-
-
 class SimulatorOther extends React.Component {
 
 	render() {
+		function Col1() {
+		return (
+				<FormControl component="fieldset" >
+		<FormGroup aria-label="position" column>
+		  <br></br>
+		  <div className={classes.textbubble} align="center">
+		  <Typography style={styles.simControlsHeader}>NPI's</Typography> 
+		  </div>
+		  <br></br>
+			  <Typography style={styles.simControls}>Mask-Wearing</Typography>
+				<SliderTemplate style = {styles.sliderTemp} valueLabelDisplay = "auto" defaultValue ={0}/>
+			  <Typography style={styles.simControls} >Capacity Restrictions</Typography>
+				<SliderTemplate style = {styles.sliderTemp} valueLabelDisplay = "auto" defaultValue ={0} />
+			  <Typography style={styles.simControls} >Mass Testing</Typography>
+			  <SliderTemplate style = {styles.sliderTemp} valueLabelDisplay = "auto" defaultValue ={0} />
+		</FormGroup>
+		<FormGroup aria-label="position">
+		<FormControlLabel 
+						control={<StyledSwitch StyledSwitch size="small" StyledSwitch name = "Stay-at-Home Order"/>}
+						label={
+							<Box component="div" fontSize={10} fontWeight = "bold" textAlign = "left">
+							   Stay-at-Home Order
+							 </Box>
+					   }
+						labelPlacement="Start"
+						/>
+		</FormGroup>
+	  </FormControl>);
+		}
+		function Col2() {
+			return (  
+			<FormControl component="fieldset" >
+				<FormGroup aria-label="position" column>
+					<br></br>
+					<div className={classes.textbubble} align="center">
+					<Typography style={styles.simControlsHeader}>Targeted Shutdowns</Typography> 
+					</div>
+					<br></br>
+					<FormControlLabel 
+						control={<StyledSwitch />}
+						label={
+							<Box component="div" fontSize={15} fontWeight = "bold" textAlign = "left">
+							   Schools
+							 </Box>
+					   }
+						labelPlacement="Start"/>
+					<FormControlLabel 
+						control={<StyledSwitch/>}
+						label={
+							<Box component="div" fontSize={15} fontWeight = "bold" textAlign = "left">
+							   Restaurants
+							 </Box>
+					   }
+						labelPlacement="Start"/>
+					<FormControlLabel 
+						control={<StyledSwitch />}
+						label={
+							<Box component="div" fontSize={15} fontWeight = "bold" textAlign = "left">
+							   Gyms
+							 </Box>
+					   }
+						labelPlacement="Start"/>
+					<FormControlLabel 
+						control={<StyledSwitch />}
+						label={
+							<Box component="div" fontSize={15} fontWeight = "bold" textAlign = "left">
+							   Bars
+							 </Box>
+					   }
+						labelPlacement="Start"/>
+				</FormGroup>
+		  </FormControl>);
+		}
+		function Col3() {
+			return (  
+				<FormControl component="fieldset" >
+				<FormGroup aria-label="position" column>
+					<br></br>
+					<div className={classes.textbubble} align="center">
+					<Typography style={styles.simControlsHeader}>Vaccinations</Typography>
+					</div>
+					<br></br>
+					<Typography style={styles.simControls} >Vaccinated Population</Typography>
+			<SliderTemplate style = {styles.sliderTemp} valueLabelDisplay = "auto" defaultValue ={0}/>
+			<br></br>
+			<br></br>
+			<br></br>
+			<br></br>
+			<StyledButton>Confirm</StyledButton>
+			</FormGroup>
+			</FormControl>);
+		}
+
+		function Text() {
+			return (	
+				<div>					
+			<Typography style={styles.boldTitle}>Oklahoma City</Typography>
+				<Typography style={styles.h2}>Oklahoma</Typography>
+				<Typography style={styles.h3}>628664 Residents</Typography>
+				<Typography style={styles.h3}>8231 Facilities</Typography>
+				<br></br>
+				</div>	);
+		}
+
+		function Images() {
+			return (
+			<div> 							
+				<img src={TopLeft} style = {styles.topdataleft} alt = "Count Graph"/>
+			<img src={TopRight} style = {styles.topdataright} alt = "Daily Count Graph" />
+	<img src={BottomGraph} style = {styles.bottomdataleft} alt = "Circle Graph"/>
+	<img src={MiddleImage} style = {styles.middleimage} alt = "City"/>
+	<img src={BottomRight} style = {styles.bottomdataright} alt = "Bottom Random Info"/></div>);
+		}
+
 		const { classes } = this.props;
 		return (
-			<div className={classes.cardBackground}>
-				<div className={classes.backgroundColor}>
-					<div>
-						<div className={classes.flexContainer} align = "left">
-							<img src={TopLeft} style = {styles.topdataleft} alt = "Count Graph"/>
-							<div align = "center">
-								<Typography style={styles.boldTitle}>Oklahoma City</Typography>
-								<Typography style={styles.h2}>Oklahoma</Typography>
-								<Typography style={styles.h3}>628664 Residents</Typography>
-								<Typography style={styles.h3}>8231 Facilities</Typography>
-								<br></br>
-							</div>
-							<div className={classes.flexContainer} align = "right" >
-								<img src={TopRight} style = {styles.topdataright} alt = "Daily Count Graph" />
-							</div>
-						</div>
-						<div className={classes.flexContainer} align = "left">
-						<img src={BottomGraph} style = {styles.bottomdataleft} alt = "Circle Graph"/>
-						<div className={classes.flexContainer} align = "center">
-						<img src={MiddleImage} style = {styles.middleimage} alt = "City"/>
-						<div className={classes.flexContainer} align = "right">
-						<img src={BottomRight} style = {styles.bottomdataright} alt = "Bottom Random Info"/>
+			<div className={classes.BlackBackground}>
+				<Text />
 						<br></br>
-						</div>
-						</div>
-						</div>
-        <div>
-    </div>
-    <div className={classes.bubble} align="center">
-      <div>
-	  <SliderTemplate style = {styles.sliderMask_Wearing} valueLabelDisplay = "auto" defaultValue ={0} width = '50px'/>
-	  <SliderTemplate style = {styles.sliderCap_Restrictions} valueLabelDisplay = "auto" defaultValue ={0} width = '50px'/>
-	  <SliderTemplate style = {styles.sliderMass_Testing} valueLabelDisplay = "auto" defaultValue ={0} width = '50px'/>
-	  <NewButton>Confirm</NewButton>
-      
-	  <FormControl component="fieldset" >
-      <FormGroup aria-label="position" row>
-        <FormControlLabel 
-		  style = {styles.StayAtHome}
-          value="left"
-          control={<Switch style = {styles.blueSwitch} />}
-          label="Stay-At-Home Order"
-          labelPlacement="Start"
-        />
-		<FormControlLabel 
-		  style = {styles.Schools}
-          value="left"
-          control={<Switch style = {styles.blueSwitch} />}
-          label="Schools"
-          labelPlacement="Start"
-        />
-		<FormControlLabel 
-		  style = {styles.Restaurants}
-          value="left"
-          control={<Switch style = {styles.blueSwitch} />}
-          label="Restaurants"
-          labelPlacement="Start"
-        />
-		<FormControlLabel 
-		  style = {styles.Gyms}
-          value="left"
-          control={<Switch style = {styles.blueSwitch}/>}
-          label="Gyms"
-          labelPlacement="Start"
-        />
-		<FormControlLabel 
-		  style = {styles.Bars}
-          value="left"
-          control={<Switch style = {styles.blueSwitch} />}
-          label="Bars"
-          labelPlacement="Start"
-        />
-		</FormGroup>
-	</FormControl>
-	<SliderTemplate style = {styles.sliderVacc_Pop} valueLabelDisplay = "auto" defaultValue ={0} width = '50px'/>
+						<Images />
+	<div className={classes.bubble} align="center">
+          <Col1 />
+          <Col2 />
+          <Col3 />
 	
-
-      </div>
-      </div>
-      </div>
-      </div>
+			</div>
 	</div >
 		);
 	}
