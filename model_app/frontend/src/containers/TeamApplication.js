@@ -68,7 +68,7 @@ const TeamApplication = function TeamApplication() {
             align="center"
           >
             <Typography variant="h3" component="h3" className={classes.title}>
-              JOIN TEAM
+              JOIN OUR TEAM
             </Typography>
             <div className={classes.border}></div>
 

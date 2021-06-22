@@ -1,11 +1,18 @@
 import React, { Component } from "react";
-import { SimulationTimeseries } from "../components";
+//import { SimulationTimeseries } from "../components";
 import "./Simulator.css";
 import axios from "axios";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Unity, { UnityContext } from "react-unity-webgl";
 import Typography from "@material-ui/core/Typography";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import {Button} from "@material-ui/core"
+
 
 const unityContext = new UnityContext({
 
@@ -53,6 +60,26 @@ const styles = (theme) => ({
     alignItems: "center",
     whiteSpace: "pre-wrap",
   },
+
+  dialogTitle: {
+    //textAlign: "center",
+  },
+
+  dialogText: {
+    color: "white",
+    //textAlign: "center",
+  },
+  
+  dialogButton: {
+    color: "#66FCF1",
+    border: "2px solid #66FCF1",
+    alignSelf: "center",
+    "&:hover": {
+      color: "black",
+      backgroundColor: "#66FCF1",
+    },
+  },
+
 });
 
 class Simulator extends Component {
@@ -65,6 +92,7 @@ class Simulator extends Component {
       data: [],
       loading: false,
       jobId: null,
+      modalOpen: true,
     };
     this._isMounted = false;
 
@@ -171,28 +199,46 @@ class Simulator extends Component {
     console.log("request sent");
   };
 
+  
   render() {
     const { data, jobId, loading } = this.state;
     const { classes } = this.props;
 
     // no timeseries: replace with simulation timeseries
+
+    
     return (
+      
       <div className="GreenBackground">
+       
+       <Dialog
+       
+       open={this.state.modalOpen}
+       onClose={() => this.setState({
+        modalOpen: false
+      })}>
+         <DialogTitle className={classes.dialogTitle}>
+         Simulation Loading
+         </DialogTitle>
+         <DialogContent>
+           <DialogContentText className={classes.dialogText}>
+           Please wait while the simulation renders. Loading times may vary,
+              but can be as long as 3 minutes.
+           </DialogContentText>
+         </DialogContent>
+         <DialogActions>
+            <Button
+              onClick={() => {this.setState({ modalOpen: false })}}
+              
+              //autoFocus
+              className={classes.dialogButton}
+            >
+              Continue
+            </Button>
+          </DialogActions>
+       </Dialog>
+        
         <Grid container spacing={3}>
-          <Grid item xs={6}>
-            <div>
-              {jobId ? (
-                loading ? (
-                  <p>loading...</p>
-                ) : (
-                  <div className="GreenBackground">
-                    <h3>Analysis YEE</h3>
-                    <SimulationTimeseries infected={data[1]} deaths={data[2]} />
-                  </div>
-                )
-              ) : null}
-            </div>
-          </Grid>
 
           <div className="GreenBackground" align="center">
             <Typography variant="h3" className={classes.boldTitle}>
