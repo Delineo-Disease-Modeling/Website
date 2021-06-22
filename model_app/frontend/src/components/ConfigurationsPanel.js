@@ -30,6 +30,14 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: "2%",
         width: "30%"
     },
+    confirmButtonPanel: {
+        textAlign: 'left',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        paddingTop: "2%",
+        width: "30%"
+    },
     switchBase: {
         color: "rgba(49,53,56,255)",
         "&.Mui-checked": {
@@ -57,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
     gridItemRight: {
         textAlign: "right"
     },
-    numSelect: {
+    centerText: {
         textAlign: "center",
     },
     button: {
@@ -70,20 +78,9 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: 'rgba(93, 96, 99)',
         },
     },
-    button2: {
-        backgroundColor: "#66FCF1",
-        color: "#444f56",
-        border: "1px solid",
-        paddingLeft: "65px",
-        paddingRight: "65px",
-        borderColor: '#66FCF1',
-        boxShadow: 'none',
-        '&:hover': {
-            color: "#66FCF1",
-            backgroundColor: '#222629',
-            borderColor: '#66FCF1',
-            boxShadow: '0px 0px 10px #222629'
-        },
+    buttonSection: {
+        textAlign: "center",
+        paddingBottom: "25%"
     }
 }));
 
@@ -146,7 +143,7 @@ function MaskSlider(props) {
                 </Grid>
                 <Grid item xs={6} className={classes.gridItemRight}>
                     <Input
-                        className={classes.numSelect}
+                        className={classes.centerText}
                         value={value}
                         margin="dense"
                         onChange={handleInputChange}
@@ -203,7 +200,7 @@ function CapacitySlider(props) {
                 </Grid>
                 <Grid item xs={6} className={classes.gridItemRight}>
                     <Input
-                        className={classes.numSelect}
+                        className={classes.centerText}
                         value={value}
                         margin="dense"
                         onChange={handleInputChange}
@@ -261,7 +258,7 @@ function MassSlider(props) {
                 </Grid>
                 <Grid item xs={6} className={classes.gridItemRight}>
                     <Input
-                        className={classes.numSelect}
+                        className={classes.centerText}
                         value={value}
                         margin="dense"
                         onChange={handleInputChange}
@@ -396,7 +393,7 @@ function VaccinationSlider(props) {
                 </Grid>
                 <Grid item xs={6} className={classes.gridItemRight}>
                     <Input
-                        className={classes.numSelect}
+                        className={classes.centerText}
                         value={value}
                         margin="dense"
                         onChange={handleInputChange}
@@ -478,12 +475,14 @@ export default function ConfigurationsPanel(props) {
                 </Typography>
                 <TargetedShutdown configs={configs} />
             </div>
-            <div className={classes.panelSection}>
-                <Typography className={classes.configurationsHeader}>
-                    Vaccinations
-                </Typography>
-                <VaccinationSlider configs={configs} />
+            <div className={classes.confirmButtonPanel}>
                 <div>
+                    <Typography className={classes.configurationsHeader}>
+                        Vaccinations
+                    </Typography>
+                    <VaccinationSlider configs={configs} />
+                </div>
+                <div className={classes.buttonSection}>
                     <ConfirmButton updateConfigs={props.updateConfigs} configs={configs} />
                 </div>
             </div>
