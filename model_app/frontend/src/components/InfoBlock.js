@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     },
     description: {
         fontSize: '20px',
-        letterSpacing: '2px',
+        letterSpacing: '0.75px',
         padding: '20px 50px',
         color: 'white'
     },
@@ -29,8 +29,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     gallery: {
-        backgroundColor: '#222629',
-        padding: '50px 50px',
+        padding: '150px 50px 100px 50px',
     },
 
     grid: {
@@ -75,11 +74,7 @@ export default function InfoBlock(props) {
     return (
         <div className={classes.base} style={{ backgroundColor: props.background }}>
             <div className={classes.gallery}>
-<<<<<<< HEAD
-                <Typography variant="h3" component="h2" style={{color: 'white'}}>
-=======
-                <Typography variant="h3" component="h2" style={{ color: 'black' }}>
->>>>>>> 69c3fab5b4f20198d390c611b3601642ef711fa5
+                <Typography variant="h3" component="h2" style={{ color: 'white'}}>
                     {title}
                 </Typography>
                 <div className={classes.border}></div>

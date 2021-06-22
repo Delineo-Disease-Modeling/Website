@@ -6,6 +6,7 @@ import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper'
 import Button from '../components/StyledButton';
 import faqData from '../const/faqData';
 import bgImg from '../images/Delineo-About.gif';
@@ -14,17 +15,14 @@ import './About.css'
 
 const styles = {
 	cardBackground: {
-		backgroundColor: 'white',
+		backgroundColor: '#222629',
 		height: '100%',
 		width: '100vh',
 		minHeight: '100%',
 		minWidth: '100%',
 		margin: '0',
 		alignContent: 'center',
-<<<<<<< HEAD
-		borderBottom: '3px solid #66FCF1'
-=======
->>>>>>> 69c3fab5b4f20198d390c611b3601642ef711fa5
+		paddingBottom: '100px'
 	},
 	underline: {
 		width: '200px',
@@ -32,22 +30,23 @@ const styles = {
 		borderTop: '3px solid #66FCF1',
 		marginBottom: '30px'
 	},
+	heading: {
+		background: `no-repeat center/100% url(${bgImg})` ,
+		backgroundColor: '#222629',
+		padding: '70px 25% 70px 70px',
+	},
 	title: {
-		position: 'absolute',
-		top: '190px',
-		left: '20%',
-		letterSpacing: '1.5px',
-		lineHeight: '50px',
-		textShadow: '2px 2px 15px black',
-		textAlign: 'left'
+		fontSize: '1rem',
+		fontWeight: '700',
+		lineHeight: '2',
+		paddingBottom: '10px',
+		textAlign: 'left',
 	},
 	subtitle: {
-		position: 'absolute',
-		top: '320px',
-		left: '20%',
-		fontSize: '18px',
-		textShadow: '2px 2px 10px black',
-		textAlign: 'left'
+		textAlign: 'left',
+		fontWeight: '400',
+		fontSize: '50px',
+		lineHeight: '1.25'
 	},
 	border: {
 		position: 'absolute',
@@ -59,14 +58,8 @@ const styles = {
 		marginBottom: '50px'
 	},
 	faq: {
-<<<<<<< HEAD
-		background: '#ffffff',
-		padding: '5px 50px',
-		paddingBottom: '40px'
-=======
 		background: '#222629',
-		padding: '50px 0 100px 0',
->>>>>>> 69c3fab5b4f20198d390c611b3601642ef711fa5
+		padding: '50px 50px 100px 50px',
 	},
 	faqSlots: {
 		textAlign: 'left',
@@ -86,7 +79,7 @@ const styles = {
 	},
 	description: {
 		fontSize: '16px',
-		letterSpacing: '1.2px',
+		letterSpacing: '0.75px',
 		color: 'black',
 		paddingBottom: '50px',
 		paddingTop: '50px'
@@ -105,7 +98,7 @@ const ColAccordion = withStyles({
 		fontSize: '20px',
 		color: 'black',
 		border: '0px solid rgba(0, 0, 0, .125)',
-		boxShadow: '5px 5px 5px black',
+		boxShadow: '0px 5px 5px black',
 		borderRadius: '20px',
 		'&:not(:last-child)': {
 			borderBottom: 0,
@@ -150,27 +143,20 @@ class About extends React.Component {
 		const { classes } = this.props;
 		return (
 			<div className={classes.cardBackground}>
-				<div > 
+				<div className={classes.heading}>
 
-					<Typography key='h2' variant="h2" component="h2" className={classes.title}>
-						ABOUT DELINEO
+					<Typography className={classes.title}>
+						About Delineo
 					</Typography>
-					<div className={classes.border}></div>
-					<Typography variant="h2" component="h2" className={classes.subtitle}>
+					<Typography className={classes.subtitle}>
 						Disease Modeling Simulation at Johns Hopkins University
-						</Typography>
-					<img src={bgImg} alt="background" width='100%' height="400vh" />
+					</Typography>
 
-					<InfoBlock subject={'simulation'} />
+					</div>
+				<InfoBlock subject={'simulation'} background='#222629'/>
 
-				</div>
-<<<<<<< HEAD
-				<div className={classes.faq} id="contact">
-					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', marginTop: '50px', color: 'black' }}>
-=======
 				<div className={classes.faq}>
 					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', marginTop: '50px' }}>
->>>>>>> 69c3fab5b4f20198d390c611b3601642ef711fa5
 						FAQ
 					</Typography>
 					<div className={classes.underline}></div>
@@ -178,7 +164,7 @@ class About extends React.Component {
 
 						{faqData.map((faq, i) => {
 							return (
-								<div style={{ padding: '10px' }} key={i+'faq'}> 
+								<div style={{ padding: '10px' }} key={i + 'faq'}>
 									<ColAccordion>
 										<ColAccordionSummary
 											expandIcon={<ExpandMoreIcon />}
@@ -189,7 +175,7 @@ class About extends React.Component {
 											{faq.question}
 										</ColAccordionSummary>
 										<AccordionDetails style={{ padding: '0 50px', backgroundColor: '#222629' }}>
-											<Typography className={classes.description} style={{color: '#ffffff'}}>
+											<Typography className={classes.description} style={{ color: '#ffffff' }}>
 												{faq.answer}
 											</Typography>
 										</AccordionDetails>
@@ -199,24 +185,16 @@ class About extends React.Component {
 						})}
 					</div>
 				</div>
-
-
-
-
-<<<<<<< HEAD
-				<div id="contact" style={{ backgroundColor:'#222629'}}>
-					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', marginTop: '20px', paddingTop: '30px'}}>
-=======
-				<div id="contact" style={{backgroundColor:'#d5d7db', padding:'50px 0'}}>
-					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', color: 'black', paddingTop: '50px'}}>
->>>>>>> 69c3fab5b4f20198d390c611b3601642ef711fa5
+				<div id="contact" style={{ backgroundColor: '#222629', padding: '50px 0' }}>
+				<Paper style={{ paddingBottom: '30px', backgroundColor: 'rgba(125, 125, 125, 0.50)', width: '40%', margin:'auto' }}>
+					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', color: 'white', paddingTop: '50px' }}>
 						Contact Us!
 					</Typography>
 					<div className={classes.underline}></div>
-					<Typography varient='h3' component="h2">
+					<Typography varient='h3' component="h2" style={{color: 'white'}}>
 						Let's get in touch!
 					</Typography>
-					<Typography varient='h1' component="h2" style={{ color: 'black' }}>
+					<Typography varient='h1' component="h2" style={{ color: '#222629' }}>
 
 						<form style={{ padding: '0 50px' }} className={classes.form} noValidate autoComplete="off">
 							<input className={classes.input} type="text" placeholder="Name" required name="Name" />
@@ -226,9 +204,10 @@ class About extends React.Component {
 
 							<Button endIcon={<SendIcon />} className={classes.button} type="submit" size="large" varient='contained'>
 								SEND MESSAGE
-								</Button>
+							</Button>
 						</form>
 					</Typography>
+					</Paper>
 				</div>
 			</div >
 		);
