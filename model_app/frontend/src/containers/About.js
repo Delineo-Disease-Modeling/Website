@@ -21,7 +21,6 @@ const styles = {
 		minWidth: '100%',
 		margin: '0',
 		alignContent: 'center',
-		paddingBottom: '5%',
 	},
 	underline: {
 		width: '200px',
@@ -57,7 +56,7 @@ const styles = {
 	},
 	faq: {
 		background: '#222629',
-		padding: '100px 0',
+		padding: '50px 0 100px 0',
 	},
 	faqSlots: {
 		textAlign: 'left',
@@ -156,7 +155,7 @@ class About extends React.Component {
 					<InfoBlock background={'#d5d7db'} subject={'simulation'} />
 
 				</div>
-				<div className={classes.faq} id="contact">
+				<div className={classes.faq}>
 					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', marginTop: '50px' }}>
 						FAQ
 					</Typography>
@@ -190,8 +189,8 @@ class About extends React.Component {
 
 
 
-				<div id="contact" >
-					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', color: 'black', marginTop: '50px'}}>
+				<div id="contact" style={{backgroundColor:'#d5d7db', padding:'50px 0'}}>
+					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', color: 'black', paddingTop: '50px'}}>
 						Contact Us!
 					</Typography>
 					<div className={classes.underline}></div>

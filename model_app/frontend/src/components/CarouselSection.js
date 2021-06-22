@@ -5,10 +5,11 @@ import Typography from '@material-ui/core/Typography'
 
 export default function CarouselSection(captions, images) {
     return (
-        <Paper style={{ padding: '30px', borderRadius: '15px', backgroundColor: 'transparent', border: '2px solid black', width: '100%' }}>
+        <Paper style={{ padding: '0px', backgroundColor: '#222629', border: '2px solid black', width: '90%', margin:'auto' }}>
+            {/* <Typography varient='h2' component='h2' style={{color: 'black', fontSize:'30px'}}>Unity Anytown</Typography> */}
             <Carousel>
                 {
-                    [0, 1, 2, 3].map(element => {
+                    [0, 1].map(element => {
                         return (<Item key={element} caption={captions[element]} image={images[element]} />)
                     })
                 }
@@ -19,9 +20,9 @@ export default function CarouselSection(captions, images) {
 
 function Item(props) {
     return (
-        <div style={{backgroundColor: 'transparent'}}>
-            <Typography varient='h2' component='h2' style={{ color: 'black', fontSize: '36px' }}>{props.caption}</Typography>
-            <img alt="" style={{ width: 'auto', height: '70vh' }} src={props.image} />
+        <div style={{ backgroundColor: 'transparent' }}>
+            <img alt="" style={{ width: '100%', height: 'auto' }} src={props.image} />
+            <Typography varient='h4' component='h4' style={{ marginTop: '10px', color: 'white'}}>{props.caption}</Typography>
         </div>
     )
 }
