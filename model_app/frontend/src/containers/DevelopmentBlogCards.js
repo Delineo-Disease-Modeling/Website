@@ -85,9 +85,14 @@ const useStyles = makeStyles((theme) => ({
 function DevelopmentBlogCards(props) {
   const classes = useStyles();
 
-  let url = process.env.PUBLIC_URL + "developmentblog/date-2";
+  //let url = process.env.PUBLIC_URL + "developmentblog/date-2";
   //let url = https://covidweb.isi.jhu.edu/developmentblog/Post1
   //developmentblog/date-2
+
+  
+  const url = "https://covidweb.isi.jhu.edu";
+  const message =
+    "Check out this article from the Delineo Disease Modeling Project";
 
   return (
     <CardContent>
@@ -163,24 +168,33 @@ function DevelopmentBlogCards(props) {
                                 style={{ color: "white" }}
                                 onClick={popupState.close}
                               >
-                                <TwitterButton url={url}>
+                                <TwitterButton message={message}
+                                          url={url + row.href}>
                                   <TwitterIcon fontSize="small" />
                                 </TwitterButton>
                               </MenuItem>
-                              <MenuItem
+
+                              {/* IN ORDER TO HAVE A FACEBOOK SHARE, WE NEED A VALID FB APP ID 
+                                  see: https://webkul.com/blog/how-to-generate-facebook-app-id/
+                              */}
+
+
+                              {/* <MenuItem
                                 style={{ color: "white" }}
                                 onClick={popupState.close}
                               >
-                                <FacebookButton url={url} appId={"appId"}>
+                                <FacebookButton message={message}
+                                          url={url + row.href} appId={"appId"}>
                                   <FacebookIcon fontSize="small" />
                                 </FacebookButton>
-                              </MenuItem>
+                              </MenuItem> */}
 
                               <MenuItem
                                 style={{ color: "white" }}
                                 onClick={popupState.close}
                               >
-                                <EmailButton url={url}>
+                                <EmailButton message={message}
+                                          url={url + row.href}>
                                   <EmailIcon fontSize="small" />
                                 </EmailButton>
                               </MenuItem>

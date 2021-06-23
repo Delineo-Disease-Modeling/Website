@@ -104,7 +104,13 @@ function Post1(props) {
                         <TwitterIcon fontSize="small" />
                       </TwitterButton>
                     </MenuItem>
-                    <MenuItem
+
+                    {/* IN ORDER TO HAVE A FACEBOOK SHARE, WE NEED A VALID FB APP ID 
+                                  see: https://webkul.com/blog/how-to-generate-facebook-app-id/
+                              */}
+
+
+                    {/* <MenuItem
                       style={{ color: "black" }}
                       onClick={popupState.close}
                     >
@@ -116,7 +122,7 @@ function Post1(props) {
                       >
                         <FacebookIcon fontSize="small" />{" "}
                       </FacebookButton>
-                    </MenuItem>
+                    </MenuItem> */}
                     <MenuItem
                       style={{ color: "white" }}
                       onClick={popupState.close}
@@ -224,7 +230,14 @@ function Post2(props) {
   return (
     <div className="App">
       <div className="center">
-        <h2 style={{ color: "black", fontWeight: "bold", marginTop: "2%", marginBottom: "-1%",}}>
+        <h2
+          style={{
+            color: "black",
+            fontWeight: "bold",
+            marginTop: "2%",
+            marginBottom: "-1%",
+          }}
+        >
           Simulation Development
         </h2>
         <h5 style={{ color: "grey", fontWeight: "bold", marginBottom: "1%" }}>
@@ -268,7 +281,7 @@ function Post2(props) {
                         <TwitterIcon fontSize="small" />
                       </TwitterButton>
                     </MenuItem>
-                    <MenuItem
+                    {/* <MenuItem
                       style={{ color: "black" }}
                       onClick={popupState.close}
                     >
@@ -280,7 +293,7 @@ function Post2(props) {
                       >
                         <FacebookIcon fontSize="small" />{" "}
                       </FacebookButton>
-                    </MenuItem>
+                    </MenuItem> */}
                     <MenuItem
                       style={{ color: "white" }}
                       onClick={popupState.close}
