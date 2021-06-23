@@ -215,7 +215,8 @@ function DevelopmentBlog(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(true);
 
-  let url = process.env.PUBLIC_URL + "developmentblog/date-2";
+  //let url = process.env.PUBLIC_URL + "developmentblog/date-2";
+  //let url = row.href;
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -234,19 +235,25 @@ function DevelopmentBlog(props) {
         style={{ background: "#222629", boxShadow: "none" }}
         position="static"
       >
-        <Toolbar></Toolbar>
+        
       </AppBar>
       
       <Grid container spacing={3}>
         <Grid item xs>
           <Box className={classes.hero}>
             <Box>
-              <Typography>Articles & Announcements</Typography>
+              <Typography variant="h6">Articles & Announcements</Typography>
               <Typography variant="h1">Delineo Blog</Typography>
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={3}>
+
+
+        {/* DO NOT DELETE --- MAY BE ADDED BACK IN LATER !!! */}
+
+
+
+        {/* <Grid item xs={3}>
           <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="customized table">
               <TableHead>
@@ -290,7 +297,7 @@ function DevelopmentBlog(props) {
               </TableBody>
             </Table>
           </TableContainer>
-        </Grid>
+        </Grid> */}
       </Grid>
       <Container maxWidth="lg" className={classes.blogsContainer}>
         <Card
@@ -307,7 +314,7 @@ function DevelopmentBlog(props) {
             }}
           >
             <Typography variant="h4" className={classes.blogTitle}>
-              Articles
+              Recent Posts
             </Typography>
 
             <IconButton
@@ -407,7 +414,7 @@ function DevelopmentBlog(props) {
                                         style={{ color: "white" }}
                                         onClick={popupState.close}
                                       >
-                                        <TwitterButton url={url}>
+                                        <TwitterButton url={row.href}>
                                           <TwitterIcon fontSize="small" />
                                         </TwitterButton>
                                       </MenuItem>
@@ -416,7 +423,7 @@ function DevelopmentBlog(props) {
                                         onClick={popupState.close}
                                       >
                                         <FacebookButton
-                                          url={url}
+                                          url={row.href}
                                           appId={"appId"}
                                         >
                                           <FacebookIcon fontSize="small" />
@@ -427,7 +434,7 @@ function DevelopmentBlog(props) {
                                         style={{ color: "white" }}
                                         onClick={popupState.close}
                                       >
-                                        <EmailButton url={url}>
+                                        <EmailButton url={row.href}>
                                           <EmailIcon fontSize="small" />
                                         </EmailButton>
                                       </MenuItem>
