@@ -46,9 +46,9 @@ const styles = (theme) => ({
 
     fontSize: 18,
     textAlign: "left",
-    alignSelf: "center",
-    alignItems: "center",
-    whiteSpace: "pre-wrap",
+    //alignSelf: "center",
+    //alignItems: "center",
+    //whiteSpace: "pre-wrap",
   },
   boldTitle: {
     color: "white",
@@ -258,7 +258,7 @@ class Simulator extends Component {
             <br></br>
 
             <div className={classes.bubble} align="center">
-              <Typography className={classes.bold}>About </Typography>
+              <h3 className={classes.bold}>About </h3>
               
               Anytown, USA is a tool to simulate the spread of COVID-19 in a representative town 
               in the United States. The simulation runs for a time period of two months, assuming 

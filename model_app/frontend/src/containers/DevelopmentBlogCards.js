@@ -86,6 +86,7 @@ function DevelopmentBlogCards(props) {
   const classes = useStyles();
 
   let url = process.env.PUBLIC_URL + "developmentblog/date-2";
+  //let url = https://covidweb.isi.jhu.edu/developmentblog/Post1
   //developmentblog/date-2
 
   return (
