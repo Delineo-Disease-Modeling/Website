@@ -46,9 +46,10 @@ const styles = (theme) => ({
 
     fontSize: 18,
     textAlign: "left",
-    alignSelf: "center",
-    alignItems: "center",
-    whiteSpace: "pre-wrap",
+    marginBottom: "0.5%",
+    //alignSelf: "center",
+    //alignItems: "center",
+    //whiteSpace: "pre-wrap",
   },
   boldTitle: {
     color: "white",
@@ -258,7 +259,7 @@ class Simulator extends Component {
             <br></br>
 
             <div className={classes.bubble} align="center">
-              <Typography className={classes.bold}>About </Typography>
+              <Typography variant="h4" className={classes.bold}>About </Typography>
               
               Anytown, USA is a tool to simulate the spread of COVID-19 in a representative town 
               in the United States. The simulation runs for a time period of two months, assuming 
@@ -270,7 +271,7 @@ class Simulator extends Component {
               meant only as a tool to show how COVID-19 might spread.
               <br />
               <br />
-              <Typography className={classes.bold}>
+              <Typography variant="h4" className={classes.bold}>
                 How to use the simulator{" "}
               </Typography>
               
@@ -295,7 +296,7 @@ class Simulator extends Component {
               infected persons in Anytown grows over time
               <br />
               <br />
-              <Typography className={classes.bold}>
+              <Typography variant="h4" className={classes.bold}>
                 Basic Controls
               </Typography>
               
@@ -307,7 +308,7 @@ class Simulator extends Component {
               visited/became infected on both a daily and overall timescale
               <br />
               <br />
-              <Typography className={classes.bold}>
+              <Typography variant="h4" className={classes.bold}>
                 Troubleshooting
               </Typography>
               

@@ -7,7 +7,7 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import ShareIcon from "@material-ui/icons/Share";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import {Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import { FacebookButton, TwitterButton, EmailButton } from "react-social";
 import TwitterIcon from "@material-ui/icons/Twitter";
@@ -29,17 +29,16 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "-45px",
   },
   credit: {
-    color: 'black',
-    marginTop: '-2%',
-    marginBottom: '4%',
+    color: "black",
+    marginTop: "-2%",
+    marginBottom: "4%",
   },
   avatar: {
-    display: 'inline',
-    marginRight: '0.7%',
-    height: '30px',
-    width: '30px',
-    borderRadius: '50%',
-    
+    display: "inline",
+    marginRight: "0.7%",
+    height: "30px",
+    width: "30px",
+    borderRadius: "50%",
   },
   text: {
     justifyContent: "center",
@@ -52,16 +51,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const url = "google.com";
+const post1url = "https://covidweb.isi.jhu.edu/developmentblog/Post1";
+const post2url = "https://covidweb.isi.jhu.edu/developmentblog/Post2";
+
+const message =
+  "Check out this article from the Delineo Disease Modeling Project";
+
 function Post1(props) {
   //let history = useHistory();
   const classes = useStyles();
   return (
     <div className="App">
       <div className="center">
-        <h2
-          style={{ color: "black", fontWeight: "bold", marginTop: "2%" }}
-        >
+        <h2 style={{ color: "black", fontWeight: "bold", marginTop: "2%" }}>
           Machine Learning Website Development
         </h2>
         <div>
@@ -76,7 +78,12 @@ function Post1(props) {
           />
 
           <h6>
-          <img alt="Ameya Dehade" src={ameya} className={classes.avatar} variant='circle'/>
+            <img
+              alt="Ameya Dehade"
+              src={ameya}
+              className={classes.avatar}
+              variant="circle"
+            />
             Ameya Dehade &#8226; March 2021
             <PopupState variant="popover" popupId="demo-popup-menu">
               {(popupState) => (
@@ -93,24 +100,34 @@ function Post1(props) {
                       style={{ color: "black" }}
                       onClick={popupState.close}
                     >
-                      <TwitterButton url={url}>
+                      <TwitterButton message={message} url={post1url}>
                         <TwitterIcon fontSize="small" />
                       </TwitterButton>
                     </MenuItem>
-                    <MenuItem
+
+                    {/* IN ORDER TO HAVE A FACEBOOK SHARE, WE NEED A VALID FB APP ID 
+                                  see: https://webkul.com/blog/how-to-generate-facebook-app-id/
+                              */}
+
+
+                    {/* <MenuItem
                       style={{ color: "black" }}
                       onClick={popupState.close}
                     >
                       {" "}
-                      <FacebookButton url={url} appId={"appId"}>
+                      <FacebookButton
+                        message={message}
+                        url={post1url}
+                        appId={"appId"}
+                      >
                         <FacebookIcon fontSize="small" />{" "}
                       </FacebookButton>
-                    </MenuItem>
+                    </MenuItem> */}
                     <MenuItem
                       style={{ color: "white" }}
                       onClick={popupState.close}
                     >
-                      <EmailButton url={url}>
+                      <EmailButton message={message} url={post1url}>
                         <EmailIcon fontSize="small" />
                       </EmailButton>
                     </MenuItem>
@@ -120,32 +137,11 @@ function Post1(props) {
             </PopupState>
           </h6>
           <br />
-        
-        
-        {/* <span>
-          <aside>
-            <p class="black">
-              <IconButton
-                aria-label="ArrowBackIos"
-                onClick={() => history.goBack()}
-              >
-                <ArrowBackIosIcon fontSize="small" />{" "}
-                <span style={{ fontSize: "18px" }}> Back </span>
-              </IconButton>
-              <br />
-              <span style={{ fontWeight: "bold" }}>
-                {" "}
-                Collaborators:
-              </span> <br /> Dr. Kimia Ghobadi, John C. Malone Assistant Professor in Civil Systems and Engineering
-               at Johns Hopkins University
-            </p>
-          </aside>
-        </span> */} 
-        
-            <h6 className={classes.credit}>
-            <strong>Collaborators:</strong> Dr. Kimia Ghobadi, John C. Malone Assistant Professor in Civil Systems and Engineering
-               at Johns Hopkins University
-            </h6>
+          <h6 className={classes.credit}>
+            <strong>Collaborators:</strong> Dr. Kimia Ghobadi, John C. Malone
+            Assistant Professor in Civil Systems and Engineering at Johns
+            Hopkins University
+          </h6>
         </div>
 
         <Grid>
@@ -160,18 +156,16 @@ function Post1(props) {
             3000 people. We define a POI as any location that an agent can visit
             such as a coffee shop, school, workplace, etc.
           </p>
-          
+
           <figure>
-            
-              <img
-                width="50%"
-                height="50%"
-                src="/blogpostPic1.png"
-                alt="POI"
-                title="POI Visual"
-              />
-              <figcaption>Figure 1 - Person of Interest Visual</figcaption>
-            
+            <img
+              width="50%"
+              height="50%"
+              src="/blogpostPic1.png"
+              alt="POI"
+              title="POI Visual"
+            />
+            <figcaption>Figure 1 - Person of Interest Visual</figcaption>
           </figure>
           <p className={classes.text}>
             The data company Safegraph provides our model with accurate datasets
@@ -192,14 +186,14 @@ function Post1(props) {
             the general mobility network.
           </p>
           <figure>
-              <img
-                width="60%"
-                height="40%"
-                src="/blogpostPic2.png"
-                alt="Visit Matrix"
-                title="Visit Matrix Visual"
-              />
-              <figcaption>Figure 2 - Visit Matrix Visual</figcaption>
+            <img
+              width="60%"
+              height="40%"
+              src="/blogpostPic2.png"
+              alt="Visit Matrix"
+              title="Visit Matrix Visual"
+            />
+            <figcaption>Figure 2 - Visit Matrix Visual</figcaption>
           </figure>
           <p className={classes.text}>
             Through our past work, we modeled trajectories for individual
@@ -224,7 +218,6 @@ function Post1(props) {
             individuals, children under 13, or adults without cell phones.
           </p>
           <Toolbar></Toolbar>
-
         </Grid>
       </div>
     </div>
@@ -236,17 +229,20 @@ function Post2(props) {
   const classes = useStyles();
   return (
     <div className="App">
-      <Toolbar></Toolbar>
-
       <div className="center">
         <h2
-          style={{ color: "black", fontWeight: "bold", marginBottom: "-30px" }}
+          style={{
+            color: "black",
+            fontWeight: "bold",
+            marginTop: "2%",
+            marginBottom: "-1%",
+          }}
         >
           Simulation Development
         </h2>
-        <h4 style={{ color: "grey", fontWeight: "bold", marginBottom: "-2px" }}>
-          Learn more on the simulation process!
-        </h4>
+        <h5 style={{ color: "grey", fontWeight: "bold", marginBottom: "1%" }}>
+          Learn more about the simulation process!
+        </h5>
         <div>
           <div
             className="relative m-r-10 w-50 h-50 b-r-full"
@@ -258,11 +254,12 @@ function Post2(props) {
             }}
           />
 
-          <small>
+          <h6>
             <img
-              alt="Ameya Dehade, Author Icon"
-              class="photo"
-              src="/iconPerson.png"
+              alt="Ameya Dehade"
+              src={ameya}
+              className={classes.avatar}
+              variant="circle"
             />
             Ameya Dehade &#8226; March 2021
             <PopupState variant="popover" popupId="demo-popup-menu">
@@ -280,24 +277,28 @@ function Post2(props) {
                       style={{ color: "black" }}
                       onClick={popupState.close}
                     >
-                      <TwitterButton url={url}>
+                      <TwitterButton message={message} url={post2url}>
                         <TwitterIcon fontSize="small" />
                       </TwitterButton>
                     </MenuItem>
-                    <MenuItem
+                    {/* <MenuItem
                       style={{ color: "black" }}
                       onClick={popupState.close}
                     >
                       {" "}
-                      <FacebookButton url={url} appId={"appId"}>
+                      <FacebookButton
+                        message={message}
+                        url={post2url}
+                        appId={"appId"}
+                      >
                         <FacebookIcon fontSize="small" />{" "}
                       </FacebookButton>
-                    </MenuItem>
+                    </MenuItem> */}
                     <MenuItem
                       style={{ color: "white" }}
                       onClick={popupState.close}
                     >
-                      <EmailButton url={url}>
+                      <EmailButton message={message} url={post2url}>
                         <EmailIcon fontSize="small" />
                       </EmailButton>
                     </MenuItem>
@@ -305,89 +306,83 @@ function Post2(props) {
                 </React.Fragment>
               )}
             </PopupState>
-          </small>
+          </h6>
           <br />
+          <h6 className={classes.credit}>
+            <strong>Collaborators:</strong> Dr. Kimia Ghobadi, John C. Malone
+            Assistant Professor in Civil Systems and Engineering at Johns
+            Hopkins University
+          </h6>
         </div>
-
-        <aside>
-          <p class="black">
-            <IconButton
-              aria-label="ArrowBackIos"
-              onClick={() => history.goBack()}
-            >
-              <ArrowBackIosIcon fontSize="small" />{" "}
-              <span style={{ fontSize: "18px" }}> Back </span>
-            </IconButton>
-            <br />
-            <span style={{ fontWeight: "bold" }}> About the Author:</span>{" "}
-            <br /> Background on the author.
+        <Grid>
+          <p className={classes.text}>
+            Currently, the simulation team is working on the severity risk
+            matrix, which is how they decide whether an agent is asymptomatic,
+            mild, severe, or critical after their incubation period is over
+            after exposure. The figure below illustrates the different stages
+            before reaching the severity risk matrix determination.
           </p>
-        </aside>
-        <p className={classes.text}>
-          Currently, the simulation team is working on the severity risk matrix,
-          which is how they decide whether an agent is asymptomatic, mild,
-          severe, or critical after their incubation period is over after
-          exposure. The figure below illustrates the different stages before
-          reaching the severity risk matrix determination.
-        </p>
-        <figure>
-          <div>
-            <img
-              width="60%"
-              height="40%"
-              src="/blogpostPic3.png"
-              alt="Severity Risk Matrix Determination"
-              title="Severity Risk Matrix Determination"
-            />
-            <figcaption>
-              Figure 1 - Severity Risk Matrix Determination
-            </figcaption>
-          </div>
-        </figure>
-        <p className={classes.text}>
-          Currently, this is the proposed structure of the severity risk matrix.
-        </p>
-        <figure>
-          <div>
-            <img
-              src="/blogpostPic4.png"
-              width="60%"
-              height="40%"
-              alt="Severity Risk Matrix"
-              title="Severity Risk Matrix"
-            />
-            <figcaption>Figure 2 - Severity Risk Matrix</figcaption>
-          </div>
-        </figure>
-        <p className={classes.text}>
-          For the remainder of the semester, the simulation team will work on
-          tasks related to the population and submodule representation. The
-          population group will take the underlying health conditions and find
-          distributions for population based on age and sex in order to
-          distribute their findings to the synthetic population. The submodule
-          representation group will instantiate a module with submodules
-          corresponding the facilities list used in the prototype. Using a
-          24-hour period, 3 trajectories will be created, where one trajectory
-          has 24 nodes, representing a facility type: one for each of child,
-          young adult, adult. Each person will be assigned a workplace and/or
-          school corresponding to an appropriate submodule. A trajectory may
-          look something like this: Home (12am - 8am) → Work (8am - 4pm) →
-          Retail (4pm - 6pm) → Home (6pm onwards) A person assigned ‘retail’ on
-          their trajectory for the specific hour will be randomly assigned to a
-          specific facility/submodule of that type. Each submodule should have a
-          subgraph that connects people to each other. For the upcoming
-          semester, the team would like to focus on assigning the probability of
-          infection in its simulations. To start out, the group will analyze the
-          simulation with a constant probability of infection. The steps are as
-          follows: Before the simulation starts, infect a few random people in
-          the population. Initially, all edge weights for each submodule graph
-          can be set so that there’s a 30% chance someone gets infected if they
-          are connected to an infected person. The output will be plotted to
-          show the infected vs. time graph using matplotlib, which is similar to
-          the initial prototype simulation. The Delineo team and simulation
-          group also plan on implementing intervention for the upcoming
-          semester.
-        </p>
+          <figure>
+            <div>
+              <img
+                width="60%"
+                height="40%"
+                src="/blogpostPic3.png"
+                alt="Severity Risk Matrix Determination"
+                title="Severity Risk Matrix Determination"
+              />
+              <figcaption>
+                Figure 1 - Severity Risk Matrix Determination
+              </figcaption>
+            </div>
+          </figure>
+          <p className={classes.text}>
+            Currently, this is the proposed structure of the severity risk
+            matrix.
+          </p>
+          <figure>
+            <div>
+              <img
+                src="/blogpostPic4.png"
+                width="60%"
+                height="40%"
+                alt="Severity Risk Matrix"
+                title="Severity Risk Matrix"
+              />
+              <figcaption>Figure 2 - Severity Risk Matrix</figcaption>
+            </div>
+          </figure>
+          <p className={classes.text}>
+            For the remainder of the semester, the simulation team will work on
+            tasks related to the population and submodule representation. The
+            population group will take the underlying health conditions and find
+            distributions for population based on age and sex in order to
+            distribute their findings to the synthetic population. The submodule
+            representation group will instantiate a module with submodules
+            corresponding the facilities list used in the prototype. Using a
+            24-hour period, 3 trajectories will be created, where one trajectory
+            has 24 nodes, representing a facility type: one for each of child,
+            young adult, adult. Each person will be assigned a workplace and/or
+            school corresponding to an appropriate submodule. A trajectory may
+            look something like this: Home (12am - 8am) → Work (8am - 4pm) →
+            Retail (4pm - 6pm) → Home (6pm onwards) A person assigned ‘retail’
+            on their trajectory for the specific hour will be randomly assigned
+            to a specific facility/submodule of that type. Each submodule should
+            have a subgraph that connects people to each other. For the upcoming
+            semester, the team would like to focus on assigning the probability
+            of infection in its simulations. To start out, the group will
+            analyze the simulation with a constant probability of infection. The
+            steps are as follows: Before the simulation starts, infect a few
+            random people in the population. Initially, all edge weights for
+            each submodule graph can be set so that there’s a 30% chance someone
+            gets infected if they are connected to an infected person. The
+            output will be plotted to show the infected vs. time graph using
+            matplotlib, which is similar to the initial prototype simulation.
+            The Delineo team and simulation group also plan on implementing
+            intervention for the upcoming semester.
+          </p>
+          <Toolbar></Toolbar>
+        </Grid>
       </div>
     </div>
   );
