@@ -1,30 +1,27 @@
 import React, { Component } from "react";
-import { SimulationTimeseries } from "../components";
+//import { SimulationTimeseries } from "../components";
 import "./Simulator.css";
 import axios from "axios";
-//import Accordion from "@material-ui/core/Accordion";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Unity, { UnityContext } from "react-unity-webgl";
-//import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import {Button} from "@material-ui/core"
+
 
 const unityContext = new UnityContext({
-  loaderUrl: "./Build/JuneBuild.loader.js",
-  dataUrl: "./Build/JuneBuild.data",
-  frameworkUrl: "./Build/JuneBuild.framework.js",
-  codeUrl: "./Build/JuneBuild.wasm",
-});
 
-/*
-const ColoredAccordion = withStyles({
-  root: {
-    backgroundColor: "#1b4441c2",
-    fontSize: "20px",
-    color: "#66FCF1",
-  },
-})(Accordion);
-*/
+  loaderUrl: "./Build/Test2.loader.js",
+  dataUrl: "./Build/Test2.data",
+  frameworkUrl: "./Build/Test2.framework.js",
+  codeUrl: "./Build/Test2.wasm",
+
+});
 
 const styles = (theme) => ({
   bubble: {
@@ -49,9 +46,10 @@ const styles = (theme) => ({
 
     fontSize: 18,
     textAlign: "left",
-    alignSelf: "center",
-    alignItems: "center",
-    whiteSpace: "pre-wrap",
+    marginBottom: "0.5%",
+    //alignSelf: "center",
+    //alignItems: "center",
+    //whiteSpace: "pre-wrap",
   },
   boldTitle: {
     color: "white",
@@ -63,10 +61,29 @@ const styles = (theme) => ({
     alignItems: "center",
     whiteSpace: "pre-wrap",
   },
+
+  dialogTitle: {
+    //textAlign: "center",
+  },
+
+  dialogText: {
+    color: "white",
+    //textAlign: "center",
+  },
+  
+  dialogButton: {
+    color: "#66FCF1",
+    border: "2px solid #66FCF1",
+    alignSelf: "center",
+    "&:hover": {
+      color: "black",
+      backgroundColor: "#66FCF1",
+    },
+  },
+
 });
 
 class Simulator extends Component {
-  // classes = useStyles();
 
   constructor() {
     super();
@@ -76,6 +93,7 @@ class Simulator extends Component {
       data: [],
       loading: false,
       jobId: null,
+      modalOpen: true,
     };
     this._isMounted = false;
 
@@ -88,6 +106,7 @@ class Simulator extends Component {
   }
 
   handleOnClick = () => {
+    
     // if user had an existing job request, delete that
     if (this.state.jobId) {
       axios
@@ -181,28 +200,46 @@ class Simulator extends Component {
     console.log("request sent");
   };
 
+  
   render() {
     const { data, jobId, loading } = this.state;
     const { classes } = this.props;
 
     // no timeseries: replace with simulation timeseries
+
+    
     return (
+      
       <div className="GreenBackground">
+       
+       <Dialog
+       
+       open={this.state.modalOpen}
+       onClose={() => this.setState({
+        modalOpen: false
+      })}>
+         <DialogTitle className={classes.dialogTitle}>
+         Simulation Loading
+         </DialogTitle>
+         <DialogContent>
+           <DialogContentText className={classes.dialogText}>
+           Please wait while the simulation renders. Loading times may vary,
+              but can be as long as 3 minutes.
+           </DialogContentText>
+         </DialogContent>
+         <DialogActions>
+            <Button
+              onClick={() => {this.setState({ modalOpen: false })}}
+              
+              //autoFocus
+              className={classes.dialogButton}
+            >
+              Continue
+            </Button>
+          </DialogActions>
+       </Dialog>
+        
         <Grid container spacing={3}>
-          <Grid item xs={6}>
-            <div>
-              {jobId ? (
-                loading ? (
-                  <p>loading...</p>
-                ) : (
-                  <div className="GreenBackground">
-                    <h3>Analysis YEE</h3>
-                    <SimulationTimeseries infected={data[1]} deaths={data[2]} />
-                  </div>
-                )
-              ) : null}
-            </div>
-          </Grid>
 
           <div className="GreenBackground" align="center">
             <Typography variant="h3" className={classes.boldTitle}>
@@ -222,7 +259,7 @@ class Simulator extends Component {
             <br></br>
 
             <div className={classes.bubble} align="center">
-              <Typography className={classes.bold}>About </Typography>
+              <Typography variant="h4" className={classes.bold}>About </Typography>
               
               Anytown, USA is a tool to simulate the spread of COVID-19 in a representative town 
               in the United States. The simulation runs for a time period of two months, assuming 
@@ -234,7 +271,7 @@ class Simulator extends Component {
               meant only as a tool to show how COVID-19 might spread.
               <br />
               <br />
-              <Typography className={classes.bold}>
+              <Typography variant="h4" className={classes.bold}>
                 How to use the simulator{" "}
               </Typography>
               
@@ -259,7 +296,7 @@ class Simulator extends Component {
               infected persons in Anytown grows over time
               <br />
               <br />
-              <Typography className={classes.bold}>
+              <Typography variant="h4" className={classes.bold}>
                 Basic Controls
               </Typography>
               
@@ -271,7 +308,7 @@ class Simulator extends Component {
               visited/became infected on both a daily and overall timescale
               <br />
               <br />
-              <Typography className={classes.bold}>
+              <Typography variant="h4" className={classes.bold}>
                 Troubleshooting
               </Typography>
               

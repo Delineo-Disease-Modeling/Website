@@ -1,7 +1,6 @@
 import React from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
@@ -182,18 +181,11 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "100%",
   },
 
-  // subtitle: {
-  //   fontSize: 18,
-  //   marginLeft: "0 0px",
-  //   marginTop: "0 0px",
-  //   padding: "0 0px",
-  // },
-
   root: {
     maxWidth: 345,
     backgroundColor: "#222629",
   },
-  
+
   media: {
     height: 240,
   },
@@ -221,25 +213,16 @@ const useStyles = makeStyles((theme) => ({
 function DevelopmentBlog(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(true);
-  //const [expandedAnn, setExpandedAnn] = React.useState(true);
-  //const [expandedNews, setExpandedNews] = React.useState(true);
 
-  let url = process.env.PUBLIC_URL + "developmentblog/date-2";
-  //developmentblog/date-2
+  //let url = process.env.PUBLIC_URL + "developmentblog/date-2";
+  //let url = row.href;
+  const url = "https://covidweb.isi.jhu.edu";
+  const message =
+    "Check out this article from the Delineo Disease Modeling Project";
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
-  //currently not being used but may be in the future
-  /*
-  const handleExpandClickAnn = () => {
-    setExpandedAnn(!expandedAnn);
-  };
-  const handleExpandClickNews = () => {
-    setExpandedNews(!expandedNews);
-  };
-  */
 
   const handleClick = (id, title) => {
     return (event) => {
@@ -253,20 +236,21 @@ function DevelopmentBlog(props) {
         className={classes.appBar}
         style={{ background: "#222629", boxShadow: "none" }}
         position="static"
-      >
-        <Toolbar></Toolbar>
-      </AppBar>
-      
+      ></AppBar>
+
       <Grid container spacing={3}>
         <Grid item xs>
           <Box className={classes.hero}>
             <Box>
-              <Typography>Articles & Announcements</Typography>
+              <Typography variant="h6">Articles & Announcements</Typography>
               <Typography variant="h1">Delineo Blog</Typography>
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={3}>
+
+        {/* DO NOT DELETE --- MAY BE ADDED BACK IN LATER !!! */}
+
+        {/* <Grid item xs={3}>
           <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="customized table">
               <TableHead>
@@ -310,7 +294,7 @@ function DevelopmentBlog(props) {
               </TableBody>
             </Table>
           </TableContainer>
-        </Grid>
+        </Grid> */}
       </Grid>
       <Container maxWidth="lg" className={classes.blogsContainer}>
         <Card
@@ -327,7 +311,7 @@ function DevelopmentBlog(props) {
             }}
           >
             <Typography variant="h4" className={classes.blogTitle}>
-              Articles
+              Recent Posts
             </Typography>
 
             <IconButton
@@ -391,7 +375,11 @@ function DevelopmentBlog(props) {
                                 m={1}
                                 className={classes.authorDate}
                               >
-                                <Typography className={classes.creditRow} variant="subtitle2" component="p">
+                                <Typography
+                                  className={classes.creditRow}
+                                  variant="subtitle2"
+                                  component="p"
+                                >
                                   <span style={{ fontWeight: "bold" }}>
                                     {row.author}{" "}
                                   </span>
@@ -427,27 +415,39 @@ function DevelopmentBlog(props) {
                                         style={{ color: "white" }}
                                         onClick={popupState.close}
                                       >
-                                        <TwitterButton url={url}>
+                                        <TwitterButton
+                                          message={message}
+                                          url={url + row.href}
+                                        >
                                           <TwitterIcon fontSize="small" />
                                         </TwitterButton>
                                       </MenuItem>
-                                      <MenuItem
+                              
+                              {/* IN ORDER TO HAVE A FACEBOOK SHARE, WE NEED A VALID FB APP ID 
+                                  see: https://webkul.com/blog/how-to-generate-facebook-app-id/
+                              */}     
+
+                                      {/* <MenuItem
                                         style={{ color: "white" }}
                                         onClick={popupState.close}
                                       >
                                         <FacebookButton
-                                          url={url}
+                                          message={message}
+                                          url={url + row.href}
                                           appId={"appId"}
                                         >
                                           <FacebookIcon fontSize="small" />
                                         </FacebookButton>
-                                      </MenuItem>
+                                      </MenuItem> */}
 
                                       <MenuItem
                                         style={{ color: "white" }}
                                         onClick={popupState.close}
                                       >
-                                        <EmailButton url={url}>
+                                        <EmailButton
+                                          message={message}
+                                          url={url + row.href}
+                                        >
                                           <EmailIcon fontSize="small" />
                                         </EmailButton>
                                       </MenuItem>
