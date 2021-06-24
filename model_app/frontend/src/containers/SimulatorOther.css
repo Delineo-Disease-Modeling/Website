@@ -6,6 +6,8 @@
     max-height: 50vw;
 }
 
+
+
 .w3-display-container {
     height:250px;
     width:100%;
@@ -16,12 +18,15 @@
     width:100%;
 }
 
+
 .button-container {
   width: 100vh;
+
   align-content: center;
   padding-top: 0%;
   padding-bottom: 5%;
 }
+
 
 .CardBackground{
     background-color: #222629;
@@ -39,23 +44,25 @@
     margin-top: 0%;
     margin-left: auto;
     margin-right: auto;
-    background-color: #326663c2;
+    background-color: #1b4441c2;
     width: 85%;
     align-self: center;
     align-items: center;
+
+}
+
+.MuiSwitch-colorPrimary {
+    color: '#66fcf1';
 }
 
 h2{
     color: white;
-    padding-top: 0%;
-    padding-bottom: 0%;
+    padding-top: 2%;
+    padding-bottom: 3%;
 }
-
 p{
     color:white;
     padding-left: 5%;
     padding-right: 5%;
 }
-
-
 body{margin:0}

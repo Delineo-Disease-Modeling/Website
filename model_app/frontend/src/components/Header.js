@@ -70,7 +70,6 @@ class Header extends Component{
                             <NavLink className="Nav-link"  to='/developmentblog' activeClassName='active' activeStyle={active} style={styleSheet}> Development Blog</NavLink>
                         </NavItem>
 
-
                     </Nav>
                 </Collapse>
                 </div>
