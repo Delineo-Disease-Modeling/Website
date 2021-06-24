@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./GeneralSimulator.css";
 import ConfigurationsPanel from "../components/ConfigurationsPanel";
 import { Typography } from "@material-ui/core";
+import okc_city from "../images/OKC_CITY.jpg";
 
 class GeneralSimulator extends Component {
   constructor() {
@@ -35,6 +36,15 @@ class GeneralSimulator extends Component {
         <h1>
         Oklahoma City
         </h1>
+        <div>
+          <img
+            img src={okc_city} alt="okc"
+            height={100}
+            width={375}
+            style={{ alignSelf: 'center'}}
+          />
+        </div>
+
         <div>
           <Typography>
             mask wearing percent: {this.state.configurations.maskPercent}
