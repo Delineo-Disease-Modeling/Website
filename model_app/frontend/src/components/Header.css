@@ -20,4 +20,29 @@
     font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
 
   }
+
+  #dropdown-toggle {
+    background-color: #222629;
+    font-size: 20px;
+    border: none;
+    padding: 0;
+    margin-right: 15px;
+    font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
+}
+
+#dropdown-menu{
+    background-color: #222629;
+}
+
+#dropdown-link{
+    color: #ffffff;
+}
+
+#dropdown-item:hover{
+    background-color: #000000;
+}
+
+#dropdown-item:hover > #dropdown-link{
+    color: #66FCF1;
+}
   
