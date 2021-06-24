@@ -151,7 +151,6 @@ class About extends React.Component {
 					<Typography className={classes.subtitle}>
 						Disease Modeling Simulation at Johns Hopkins University
 					</Typography>
-
 					</div>
 				<InfoBlock subject={'simulation'} background='#222629'/>
 
