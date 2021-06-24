@@ -185,7 +185,7 @@ class About extends React.Component {
 					</div>
 				</div>
 				<div id="contact" style={{ backgroundColor: '#222629', padding: '50px 0' }}>
-				<Paper style={{ paddingBottom: '30px', backgroundColor: 'rgba(125, 125, 125, 0.50)', width: '40%', margin:'auto' }}>
+				<Paper style={{ paddingBottom: '30px', backgroundColor: 'rgba(125, 125, 125, 0.50)', width: '500px', margin:'auto' }}>
 					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', color: 'white', paddingTop: '50px' }}>
 						Contact Us!
 					</Typography>
