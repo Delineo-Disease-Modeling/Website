@@ -59,7 +59,9 @@ const styles = {
 	},
 	faq: {
 		background: '#222629',
-		padding: '50px 50px 100px 50px',
+		padding: '50px 10% 100px 10%',
+		maxWidth: '2000px',
+		margin: 'auto'
 	},
 	faqSlots: {
 		textAlign: 'left',
@@ -82,7 +84,7 @@ const styles = {
 		letterSpacing: '0.75px',
 		color: 'black',
 		paddingBottom: '50px',
-		paddingTop: '50px'
+		paddingTop: '50px',
 	},
 }
 

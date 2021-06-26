@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography'
 
 export default function CarouselSection(captions, alts, images) {
     return (
-        <Paper style={{ padding: '15px', backgroundColor: 'transparent', border: '2px solid black', width: '90%', margin:'auto' }}>
+        <Paper style={{ padding: '1rem', backgroundColor: 'transparent', border: '2px solid black', width: '1000px', maxWidth: '90%',  margin:'auto' }}>
             <Carousel>
                 {
                     [0, 1].map(element => {
@@ -20,7 +20,7 @@ export default function CarouselSection(captions, alts, images) {
 function Item(props) {
     return (
         <div style={{ backgroundColor: 'transparent' }}>
-            <img alt={props.alt} style={{ width: '1000px', maxWidth: '100%', height: 'auto'}} src={props.image} />
+            <img alt={props.alt} style={{ width: '100%'}} src={props.image} />
             <Typography varient='h4' component='h4' style={{ marginTop: '10px', color: 'white', fontSize: '1.25rem'}}>{props.caption}</Typography>
         </div>
     )

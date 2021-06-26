@@ -19,7 +19,9 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '20px',
         letterSpacing: '0.75px',
         padding: '20px 50px',
-        color: 'white'
+        color: 'white',
+        maxWidth: '1500px',
+        margin: 'auto'
     },
     img: {
         width: '70%',
@@ -61,8 +63,8 @@ function setParams(subject) {
         images[1] = anytownScreenshot;
         alts[0] = 'Screenshot of Anytown, USA with configurations.';
         alts[1] = 'Screenshot of zoomed-in buildings in Anytown, USA.';
-        captions[0] = 'Anytown, USA is an invented, illustrative educational tool to demonstrate the future launch of the disease spread simulation. '
-        captions[1] = 'The population, facilities, and layout of Anytown, USA are fabricated to imitate a real-life town population.'
+        captions[0] = 'Anytown, USA is an illustrative tool designed to demonstrate the capabilities of the Delineo simulation. '
+        captions[1] = 'The population, facilities, and layout of Anytown, USA imitate a real-life small town within the US.'
     }
     return { title, description, buttontxt, link, images, captions, alts };
 }
