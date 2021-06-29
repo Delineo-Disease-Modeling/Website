@@ -51,7 +51,7 @@ const tileData = [
   {
     img: rohAbiImg,
     name: 'Rohan Abichandani',
-    role: 'Fullstack',
+    role: 'Simulation',
     description: 'Computer Science, Applied Math and Statistics',
   },
   {
