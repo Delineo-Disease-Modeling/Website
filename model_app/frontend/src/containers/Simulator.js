@@ -11,7 +11,9 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import {MobileView} from 'react-device-detect';
 import {Button} from "@material-ui/core"
+
 
 
 const unityContext = new UnityContext({
@@ -85,6 +87,9 @@ const styles = (theme) => ({
 
 class Simulator extends Component {
 
+
+  
+
   constructor() {
     super();
     this.state = {
@@ -93,8 +98,8 @@ class Simulator extends Component {
       data: [],
       loading: false,
       jobId: null,
-      mobileOpen: true,
-      modalOpen: false,
+      modalOpen: true,
+      isMobile: true,
     };
     this._isMounted = false;
 
@@ -212,36 +217,6 @@ class Simulator extends Component {
     return (
       
       <div className="GreenBackground">
-       
-    
-       <Dialog
-       
-       open={this.state.mobileOpen}
-       onClose={() => this.setState({
-        mobileOpen: false
-
-      })}>
-         <DialogTitle className={classes.dialogTitle}>
-         Mobile Device
-         </DialogTitle>
-         <DialogContent>
-           <DialogContentText className={classes.dialogText}>
-           You are on a mobile device. This simulation is best run on a computer.
-           </DialogContentText>
-         </DialogContent>
-         <DialogActions>
-            <Button
-              onClick={() => {this.setState({ mobileOpen: false })
-                              this.setState({ modalOpen: true})}}
-              
-              //autoFocus
-              className={classes.dialogButton}
-            >
-              Continue
-            </Button>
-          </DialogActions>
-       </Dialog>
-
        <Dialog
        
        open={this.state.modalOpen}
@@ -268,6 +243,34 @@ class Simulator extends Component {
             </Button>
           </DialogActions>
        </Dialog>
+       if(isMobile) {
+       <Dialog
+       
+       open={this.state.isMobile}
+       onClose={() => this.setState({
+        isMobile: false
+
+      })}>
+         <DialogTitle className={classes.dialogTitle}>
+         Mobile Device
+         </DialogTitle>
+         <DialogContent>
+           <DialogContentText className={classes.dialogText}>
+           You are on a mobile device. This simulation is best run on a computer.
+           </DialogContentText>
+         </DialogContent>
+         <DialogActions>
+            <Button
+              onClick={() => {this.setState({ isMobile: false })}}
+              
+              //autoFocus
+              className={classes.dialogButton}
+            >
+              Continue
+            </Button>
+          </DialogActions>
+       </Dialog>
+  }
         
         <Grid container spacing={3}>
 
