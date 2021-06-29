@@ -28,11 +28,13 @@
     padding: 0;
     margin-right: 15px;
     font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
+    margin-top: -2px;
 }
 
-    #dropdown-toggle::after{
-        vertical-align: 3px;
-    }
+#dropdown-toggle::after{
+    vertical-align: 5px;
+    margin-left: 10px;
+}
 
 #dropdown-menu{
     background-color: #222629;
