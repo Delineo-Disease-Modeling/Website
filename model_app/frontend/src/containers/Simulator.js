@@ -93,7 +93,8 @@ class Simulator extends Component {
       data: [],
       loading: false,
       jobId: null,
-      modalOpen: true,
+      mobileOpen: true,
+      modalOpen: false,
     };
     this._isMounted = false;
 
@@ -212,6 +213,35 @@ class Simulator extends Component {
       
       <div className="GreenBackground">
        
+    
+       <Dialog
+       
+       open={this.state.mobileOpen}
+       onClose={() => this.setState({
+        mobileOpen: false
+
+      })}>
+         <DialogTitle className={classes.dialogTitle}>
+         Mobile Device
+         </DialogTitle>
+         <DialogContent>
+           <DialogContentText className={classes.dialogText}>
+           You are on a mobile device. This simulation is best run on a computer.
+           </DialogContentText>
+         </DialogContent>
+         <DialogActions>
+            <Button
+              onClick={() => {this.setState({ mobileOpen: false })
+                              this.setState({ modalOpen: true})}}
+              
+              //autoFocus
+              className={classes.dialogButton}
+            >
+              Continue
+            </Button>
+          </DialogActions>
+       </Dialog>
+
        <Dialog
        
        open={this.state.modalOpen}
