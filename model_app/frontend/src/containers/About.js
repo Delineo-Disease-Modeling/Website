@@ -59,7 +59,9 @@ const styles = {
 	},
 	faq: {
 		background: '#222629',
-		padding: '50px 50px 100px 50px',
+		padding: '50px 10% 100px 10%',
+		maxWidth: '2000px',
+		margin: 'auto'
 	},
 	faqSlots: {
 		textAlign: 'left',
@@ -82,7 +84,7 @@ const styles = {
 		letterSpacing: '0.75px',
 		color: 'black',
 		paddingBottom: '50px',
-		paddingTop: '50px'
+		paddingTop: '50px',
 	},
 }
 
@@ -185,7 +187,7 @@ class About extends React.Component {
 					</div>
 				</div>
 				<div id="contact" style={{ backgroundColor: '#222629', padding: '50px 0' }}>
-				<Paper style={{ paddingBottom: '30px', backgroundColor: 'rgba(125, 125, 125, 0.50)', width: '40%', margin:'auto' }}>
+				<Paper style={{ paddingBottom: '30px', backgroundColor: 'rgba(125, 125, 125, 0.50)', width: '500px', margin:'auto' }}>
 					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', color: 'white', paddingTop: '50px' }}>
 						Contact Us!
 					</Typography>

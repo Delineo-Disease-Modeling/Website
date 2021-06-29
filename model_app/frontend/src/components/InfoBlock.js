@@ -19,7 +19,9 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '20px',
         letterSpacing: '0.75px',
         padding: '20px 50px',
-        color: 'white'
+        color: 'white',
+        maxWidth: '1500px',
+        margin: 'auto'
     },
     img: {
         width: '70%',
@@ -42,9 +44,6 @@ const useStyles = makeStyles((theme) => ({
         borderTop: '3px solid #66FCF1',
         marginBottom: '10px'
     },
-    paper: {
-        color: 'white'
-    }
 }));
 
 function setParams(subject) {
@@ -54,6 +53,7 @@ function setParams(subject) {
     var buttontxt = '';
     var images = [];
     var captions = [];
+    var alts = [];
     if (subject === 'simulation') {
         title = 'SIMULATION';
         description = "Viruses, such as the one that causes COVID-19, spread quickly through large cities because of a complex web of interactions between people taking place in a densely populated area. But how viruses move from person to person in smaller, rural communities is less well understood, resulting in public health and economic decisions that are made on the basis of scant information and overgeneralized modeling. The Delineo project is developing a distributed programming environment to run the model over large numbers of computers to scale up the areas that can be accurately modeled.";
@@ -61,20 +61,22 @@ function setParams(subject) {
         link = '/simulator';
         images[0] = homepagecode;
         images[1] = anytownScreenshot;
-        captions[0] = 'Screenshot of Unity Anytown with configurations.';
-        captions[1] = 'Zoomed-in view of buildings in Unity Anytown.';
+        alts[0] = 'Screenshot of Anytown, USA with configurations.';
+        alts[1] = 'Screenshot of zoomed-in buildings in Anytown, USA.';
+        captions[0] = 'Anytown, USA is an illustrative tool designed to demonstrate the capabilities of the Delineo simulation. '
+        captions[1] = 'The population, facilities, and layout of Anytown, USA imitate a real-life small town within the US.'
     }
-    return { title, description, buttontxt, link, images, captions };
+    return { title, description, buttontxt, link, images, captions, alts };
 }
 
 export default function InfoBlock(props) {
     const classes = useStyles();
-    const { title, description, buttontxt, link, images, captions } = setParams(props.subject);
+    const { title, description, buttontxt, link, images, captions, alts} = setParams(props.subject);
 
     return (
         <div className={classes.base} style={{ backgroundColor: props.background }}>
             <div className={classes.gallery}>
-                <Typography variant="h3" component="h2" style={{ color: 'white'}}>
+                <Typography variant="h3" component="h2" style={{ color: 'white' }}>
                     {title}
                 </Typography>
                 <div className={classes.border}></div>
@@ -86,8 +88,8 @@ export default function InfoBlock(props) {
                     {buttontxt}
                 </Button>
 
-                <div style={{ marginTop: '30px'}}>
-                    {Carousel(captions, images)}
+                <div style={{ marginTop: '30px' }}>
+                    {Carousel(captions, alts, images)}
                 </div>
             </div>
         </div>
