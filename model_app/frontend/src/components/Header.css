@@ -30,6 +30,10 @@
     font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
 }
 
+    #dropdown-toggle::after{
+        vertical-align: 3px;
+    }
+
 #dropdown-menu{
     background-color: #222629;
 }
