@@ -11,10 +11,16 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import {MobileView} from 'react-device-detect';
+import {isMobile} from 'react-device-detect';
 import {Button} from "@material-ui/core"
 
 
+const mobileCheck = () => {
+  if(isMobile) {
+    return true;
+  }
+  return false;
+}
 
 const unityContext = new UnityContext({
 
@@ -99,7 +105,7 @@ class Simulator extends Component {
       loading: false,
       jobId: null,
       modalOpen: true,
-      isMobile: true,
+      isMobile: mobileCheck(),
     };
     this._isMounted = false;
 
@@ -243,7 +249,7 @@ class Simulator extends Component {
             </Button>
           </DialogActions>
        </Dialog>
-       if(isMobile) {
+
        <Dialog
        
        open={this.state.isMobile}
@@ -270,7 +276,6 @@ class Simulator extends Component {
             </Button>
           </DialogActions>
        </Dialog>
-  }
         
         <Grid container spacing={3}>
 
