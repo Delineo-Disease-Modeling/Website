@@ -32,7 +32,8 @@
 }
 
 #dropdown-toggle::after{
-    vertical-align: 5px;
+    font-size: 24px;
+    vertical-align: 1px;
     margin-left: 10px;
 }
 
