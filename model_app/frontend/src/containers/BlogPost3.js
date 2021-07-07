@@ -58,6 +58,14 @@ const useStyles = makeStyles((theme) => ({
     //fontSize: "14pt",
     color: "black",
   },
+  hyperlink: {
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "left",
+    lineHeight: "1.5",
+    color: "black",
+    textIndent: "40px",
+  },
 }));
 
 const post3url = "https://covidweb.isi.jhu.edu/developmentblog/Post3";
@@ -224,6 +232,28 @@ function Post3(props) {
             </p>
             <p className={classes.quote}><b>--Serena Chan, Simulation Team Lead</b></p>
           </blockquote>
+          <p className={classes.text}>Additional Readings: </p>
+          <p className={classes.hyperlink}>
+          <a href="https://www.ncbi.nlm.nih.gov/pmc/articles
+          /PMC7202094/#:~:text=The%20Wells%E2%8 0%93Riley%20equation%20provides,risk%20in%
+          20a%20large%20community">
+              Review and comparison between the Wells–Riley and dose‐response 
+          approaches to risk assessment of infectious respiratory diseases 
+          </a>
+          </p>
+          <p className={classes.hyperlink}>
+          <a href="https://www.kw-engineering.com/
+          reduce-risk-covid-19-indoor-air-conditioning-hvac-ventilation-buildings-wells-riley-equation/">
+              REDUCING THE RISK OF COVID-19 IN INDOOR ENVIRONMENTS USING THE 
+              WELLS-RILEY EQUATION: WHITEPAPER 
+          </a>
+          </p>
+          <p className={classes.hyperlink}>
+          <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2843948/">
+              Mathematical models for assessing the role of airflow on the risk of airborne infection in hospital wards 
+          </a>
+          </p>
+
           <Toolbar></Toolbar>
         </Grid>
       </div>
