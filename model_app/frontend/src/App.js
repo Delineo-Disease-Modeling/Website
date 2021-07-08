@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Header, Footer } from './components';
-import { Home, About, Simulator, DevelopmentBlog, Team, Post1, Post2, Post3} from './containers';
+import { Home, About, Simulator, DevelopmentBlog, Team, Post1, Post2, Post3, Post4} from './containers';
 import { Provider } from 'react-redux';
 import TeamApplication from "./containers/TeamApplication"
 import store from './store';
@@ -30,6 +30,7 @@ function App() {
                       <Route exact path="/developmentblog/post1" component={Post1} />
                       <Route exact path="/developmentblog/post2" component={Post2} />
                       <Route exact path="/developmentblog/post3" component={Post3} />
+                      <Route exact path="/developmentblog/post4" component={Post4} />
                       <Route exact path="/teamapplication" component={TeamApplication}/>
                   </Switch>
                   <Footer />

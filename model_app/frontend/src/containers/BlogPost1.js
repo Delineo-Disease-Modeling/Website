@@ -15,7 +15,6 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import EmailIcon from "@material-ui/icons/Email";
 import { makeStyles } from "@material-ui/core/styles";
 import ameya from "../images/Ameya Dehade.jpg";
-import serena from "../images/Serena Chan.jpg";
 
 const useStyles = makeStyles((theme) => ({
   center: {
