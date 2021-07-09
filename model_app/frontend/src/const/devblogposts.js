@@ -28,7 +28,7 @@ const articles = [
     type: "Article",
     date: "March 2021",
     author: "Shaopeng Zeng",
-    title: "Simuation Website",
+    title: "Simulation Website",
     subtext: "Imagine a water balloon is dropped in a crowd. You look around and see those who are near the dropping point got wet, while those who stood far away may have a drop or two, but most are totally dry. Imagine the water is an airborne disease - the dileno simulation helps us visualize who is in this imaginary...",
     href: "/developmentblog/Post3",
     img: "https://i.postimg.cc/JnF5Zr1q/2.jpg",
