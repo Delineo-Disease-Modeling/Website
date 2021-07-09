@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
         //Styling for screen size less than 550px
         [theme.breakpoints.down('550')]: {
             padding: '5px 5px 20px 5px',
+            fontSize: '15px'
         },
     },
     img: {
@@ -38,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     gallery: {
         padding: '150px 50px 100px 50px',
 
-        [theme.breakpoints.down('450')]: {
+        [theme.breakpoints.down('550')]: {
             padding: '50px 20px 0px 20px',
         },
     },
@@ -46,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     title: {
         color: 'white',
 
-        [theme.breakpoints.down('450')]: {
+        [theme.breakpoints.down('550')]: {
             fontSize: '2rem',
         },
     },

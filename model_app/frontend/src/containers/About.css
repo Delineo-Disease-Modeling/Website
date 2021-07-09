@@ -57,20 +57,32 @@ p{
     padding-right: 5%;
 }
 
-.contactCard {
-    padding-bottom: 30px;
-    background-color: rgba(125, 125, 125, 0.50)!important;
-    width: 500px;
-    margin: auto;
+body{margin:0}
+
+/* Responsive styling for page resizing */
+
+@media screen and (max-width: 500px) {
+    #contact-card-id {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 500px) {
-    .contactCard {
-        padding-bottom: 30px;
-        background-color: rgba(125, 125, 125, 0.50)!important;
-        width: 100%;
-        margin: auto;
+    #subtitle-id {
+		font-size: 40px;
     }
-  }
+}
 
-body{margin:0}
+@media screen and (max-width: 350px) {
+    #heading-id {
+        padding-left: 25px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    #input-id {
+        min-width: 0px;
+    }
+}
+
+

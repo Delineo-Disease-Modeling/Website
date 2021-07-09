@@ -151,12 +151,12 @@ class About extends React.Component {
 		const { classes } = this.props;
 		return (
 			<div className={classes.cardBackground}>
-				<div className={classes.heading}>
+				<div className={classes.heading} id="heading-id">
 
 					<Typography className={classes.title}>
 						About Delineo
 					</Typography>
-					<Typography className={classes.subtitle}>
+					<Typography className={classes.subtitle} id="subtitle-id">
 						Disease Modeling Simulation at Johns Hopkins University
 					</Typography>
 					</div>
@@ -193,7 +193,7 @@ class About extends React.Component {
 					</div>
 				</div>
 				<div id="contact" style={{ backgroundColor: '#222629', padding: '50px 0' }}>
-				<Paper className="contactCard">
+				<Paper className={classes.contactCard} id="contact-card-id">
 					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', color: 'white', paddingTop: '50px' }}>
 						Contact Us!
 					</Typography>
@@ -204,10 +204,10 @@ class About extends React.Component {
 					<Typography varient='h1' component="h2" style={{ color: '#222629' }}>
 
 						<form style={{ padding: '0 50px' }} className={classes.form} noValidate autoComplete="off">
-							<input className={classes.input} type="text" placeholder="Name" required name="Name" />
-							<input className={classes.input} type="text" placeholder="Email" required name="Email" />
-							<input className={classes.input} type="text" placeholder="Subject" required name="Subject" />
-							<input className={classes.input} type="text" placeholder="Comment" required name="Comment" />
+							<input className={classes.input} id="input-id" type="text" placeholder="Name" required name="Name" />
+							<input className={classes.input} id="input-id" type="text" placeholder="Email" required name="Email" />
+							<input className={classes.input} id="input-id" type="text" placeholder="Subject" required name="Subject" />
+							<input className={classes.input} id="input-id" type="text" placeholder="Comment" required name="Comment" />
 
 							<Button endIcon={<SendIcon />} className={classes.button} type="submit" size="large" varient='contained'>
 								SEND MESSAGE
