@@ -1,20 +1,19 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import "./BlogPost.css";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import FacebookIcon from "@material-ui/icons/Facebook";
+// import FacebookIcon from "@material-ui/icons/Facebook";
 import ShareIcon from "@material-ui/icons/Share";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { Grid } from "@material-ui/core";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
-import { FacebookButton, TwitterButton, EmailButton } from "react-social";
+import { TwitterButton, EmailButton } from "react-social";
 import TwitterIcon from "@material-ui/icons/Twitter";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+// import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import EmailIcon from "@material-ui/icons/Email";
 import { makeStyles } from "@material-ui/core/styles";
-import serena from "../images/Serena Chan.jpg";
 
 const useStyles = makeStyles((theme) => ({
   center: {
@@ -74,7 +73,7 @@ const message =
   "Check out this article from the Delineo Disease Modeling Project";
 
 function Post4(props) {
-  let history = useHistory();
+  // let history = useHistory();
   const classes = useStyles();
   return (
     <div className="App">
@@ -102,12 +101,12 @@ function Post4(props) {
 
           <h6>
             <img
-              alt="Serena Chan"
-              src={serena}
+              alt="Ian Zheng"
+              src={'/iconPerson.png'}
               className={classes.avatar}
               variant="circle"
             />
-            Serena Chan &#8226; July 2021
+            Ian Zheng &#8226; July 2021
             <PopupState variant="popover" popupId="demo-popup-menu">
               {(popupState) => (
                 <React.Fragment>

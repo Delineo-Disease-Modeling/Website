@@ -37,7 +37,7 @@ const articles = [
     id: 4,
     type: "Article",
     date: "July 2021",
-    author: "Serena Chan",
+    author: "Ian Zheng",
     title: "Wells-Riley Equation",
     subtext: "The Delineo simulation uses the Wells-Riley Equation to simulate how a disease will spread in any given city. The equation and the simulation focus on places of interest (POI) that include grocery stores, places of worship, and other types of gathering areas where a person might get infected. We apply...",
     href: "/developmentblog/Post4",
