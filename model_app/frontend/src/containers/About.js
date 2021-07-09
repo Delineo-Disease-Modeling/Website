@@ -17,7 +17,7 @@ const styles = {
 	cardBackground: {
 		backgroundColor: '#222629',
 		height: '100%',
-		width: '100vh',
+		
 		minHeight: '100%',
 		minWidth: '100%',
 		margin: '0',
@@ -86,6 +86,12 @@ const styles = {
 		paddingBottom: '50px',
 		paddingTop: '50px',
 	},
+	contactCard: {
+		paddingBottom: '30px',
+		backgroundColor: 'rgba(125, 125, 125, 0.50)',
+		width: '500px',
+		margin:'auto',
+	}
 }
 
 const AccordionDetails = withStyles((theme) => ({
@@ -187,7 +193,7 @@ class About extends React.Component {
 					</div>
 				</div>
 				<div id="contact" style={{ backgroundColor: '#222629', padding: '50px 0' }}>
-				<Paper style={{ paddingBottom: '30px', backgroundColor: 'rgba(125, 125, 125, 0.50)', width: '500px', margin:'auto' }}>
+				<Paper className="contactCard">
 					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', color: 'white', paddingTop: '50px' }}>
 						Contact Us!
 					</Typography>
