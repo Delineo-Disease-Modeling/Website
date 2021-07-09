@@ -233,9 +233,7 @@ function Post4(props) {
           </blockquote>
           <p className={classes.text}>Additional Readings: </p>
           <p className={classes.hyperlink}>
-          <a href="https://www.ncbi.nlm.nih.gov/pmc/articles
-          /PMC7202094/#:~:text=The%20Wells%E2%8 0%93Riley%20equation%20provides,risk%20in%
-          20a%20large%20community">
+          <a href="https://pubmed.ncbi.nlm.nih.gov/19874402/">
               Review and comparison between the Wells–Riley and dose‐response 
           approaches to risk assessment of infectious respiratory diseases 
           </a>
