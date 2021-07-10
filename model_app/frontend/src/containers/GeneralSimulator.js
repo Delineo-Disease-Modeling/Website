@@ -36,6 +36,12 @@ class GeneralSimulator extends Component {
         <h1 style = {{color:'red'}}>
         Welcome to the Oklahoma City Simulator
         </h1>
+        <p>This simulator extends upon the Unity anytown simulation to the real Oklahoma City to model 
+          disease spread at the community level. This simulator has adjustable toggles for different 
+          factors such as mask wearing, capacity restrictions at businesses, the implementation of the stay
+          at home orders, and the closure of schools, restaurants, and gyms. We will study how these control 
+          measures affect disease spread at the community level, while also generalizing to the national level.
+        </p>
         <div>
           <img
             img src={okc_city} alt="okc"
