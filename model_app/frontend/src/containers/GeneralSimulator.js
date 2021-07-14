@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./GeneralSimulator.css";
 import ConfigurationsPanel from "../components/ConfigurationsPanel";
 import { Typography } from "@material-ui/core";
-import okc_city from "../images/Oklahoma_City.png";
+import okc_city from "../images/OKC_CITY.jpg";
 
 class GeneralSimulator extends Component {
   constructor() {
@@ -39,8 +39,8 @@ class GeneralSimulator extends Component {
         <div>
           <img
             img src={okc_city} alt="okc"
-            height={400}
-            width={500}
+            height={100}
+            width={375}
             style={{ alignSelf: 'center'}}
           />
         </div>
