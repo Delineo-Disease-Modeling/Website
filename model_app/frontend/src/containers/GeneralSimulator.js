@@ -33,8 +33,8 @@ class GeneralSimulator extends Component {
     return (
       
       <div className="content">
-        <h1 style = {{color:'red'}}>
-        Welcome to the Oklahoma City Simulator
+        <h1>
+        Oklahoma City
         </h1>
         <div>
           <img
