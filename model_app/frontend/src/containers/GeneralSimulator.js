@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withStyles } from "@material-ui/core/styles";
 import "./GeneralSimulator.css";
 import ConfigurationsPanel from "../components/ConfigurationsPanel";
 import { Typography, Grid } from "@material-ui/core";
@@ -7,6 +8,14 @@ import DailyChart from "../components/Graphs/DailyChart"
 import CumulativeChart from "../components/Graphs/CumulativeChart"
 import PieChart from "../components/Graphs/PieChart"
 import Graph4 from "../components/Graphs/Graph4"
+
+const styles = (theme) => ({
+  graph: {
+    backgroundColor: "rgba(196,196,196,255)",
+    margin: '20px',
+    borderRadius: '15px'
+  }
+});
 
 var getData = () => {
   var data = [];
@@ -61,7 +70,14 @@ var getData = () => {
             'month': '04',
             'day': '02'
           },
-          'newcases': '24'
+          'newcases': '24',
+          'breakdown': {
+            'normal': 10,
+            'asym': 0,
+            'mild': 0,
+            'critical': 0,
+            'recovered': 0
+          }
         },
 
         {
@@ -70,7 +86,14 @@ var getData = () => {
             'month': '04',
             'day': '03'
           },
-          'newcases': '21'
+          'newcases': '21',
+          'breakdown': {
+            'normal': 9,
+            'asym': 1,
+            'mild': 0,
+            'critical': 0,
+            'recovered': 0
+          }
         },
 
         {
@@ -79,7 +102,14 @@ var getData = () => {
             'month': '04',
             'day': '04'
           },
-          'newcases': '19'
+          'newcases': '19',
+          'breakdown': {
+            'normal': 7,
+            'asym': 2,
+            'mild': 1,
+            'critical': 0,
+            'recovered': 0
+          }
         },
 
         {
@@ -88,7 +118,14 @@ var getData = () => {
             'month': '04',
             'day': '05'
           },
-          'newcases': '9'
+          'newcases': '9',
+          'breakdown': {
+            'normal': 5,
+            'asym': 1,
+            'mild': 2,
+            'critical': 2,
+            'recovered': 0
+          }
         },
 
         {
@@ -97,7 +134,14 @@ var getData = () => {
             'month': '04',
             'day': '06'
           },
-          'newcases': '14'
+          'newcases': '14',
+          'breakdown': {
+            'normal': 1,
+            'asym': 1,
+            'mild': 3,
+            'critical': 4,
+            'recovered': 1
+          }
         },
 
         {
@@ -106,7 +150,14 @@ var getData = () => {
             'month': '04',
             'day': '07'
           },
-          'newcases': '24'
+          'newcases': '24',
+          'breakdown': {
+            'normal': 0,
+            'asym': 2,
+            'mild': 2,
+            'critical': 3,
+            'recovered': 3
+          }
         },
 
         {
@@ -115,7 +166,14 @@ var getData = () => {
             'month': '04',
             'day': '08'
           },
-          'newcases': '14'
+          'newcases': '14',
+          'breakdown': {
+            'normal': 0,
+            'asym': 0,
+            'mild': 2,
+            'critical': 4,
+            'recovered': 4
+          }
         },
 
         {
@@ -124,7 +182,14 @@ var getData = () => {
             'month': '04',
             'day': '09'
           },
-          'newcases': '68'
+          'newcases': '68',
+          'breakdown': {
+            'normal': 0,
+            'asym': 0,
+            'mild': 0,
+            'critical': 3,
+            'recovered': 7
+          }
         },
 
         {
@@ -133,7 +198,14 @@ var getData = () => {
             'month': '04',
             'day': '10'
           },
-          'newcases': '28'
+          'newcases': '28',
+          'breakdown': {
+            'normal': 0,
+            'asym': 0,
+            'mild': 0,
+            'critical': 0,
+            'recovered': 10
+          }
         }
       ]
     }
@@ -185,12 +257,15 @@ class GeneralSimulator extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
 
       <div className="content">
         <Grid container spacing={3}>
-          <Grid item xs={4}>
-            <CumulativeChart data={this.state.data} height={300} width={600}/>
+          <Grid item xs={4} >
+            <div className={classes.graph}>
+              <CumulativeChart data={this.state.data} height={300} width={600} />
+            </div>
           </Grid>
           <Grid item xs={4}>
             <h1
@@ -205,7 +280,7 @@ class GeneralSimulator extends Component {
               <img
                 img src={okc_city} alt="okc"
                 height={100}
-                width={375}
+                width={"100%"}
                 style={{
                   alignSelf: 'center',
                   marginBottom: "1%",
@@ -214,10 +289,14 @@ class GeneralSimulator extends Component {
             </div>
           </Grid>
           <Grid item xs={4}>
-            <DailyChart data={this.state.data} height={300} width={600} />
+            <div className={classes.graph}>
+              <DailyChart data={this.state.data} height={300} width={600} />
+            </div>
           </Grid>
           <Grid item xs={4}>
-            <PieChart data={this.state.data[0].case_distribution} innerRadius={50} outerRadius={150} />
+            <div className={classes.graph}>
+              <PieChart data={this.state.data[0].case_distribution} innerRadius={50} outerRadius={150} />
+            </div>
           </Grid>
           <Grid item xs={4}>
 
@@ -262,7 +341,9 @@ class GeneralSimulator extends Component {
             </div>
           </Grid>
           <Grid item xs={4}>
-            <Graph4 data={this.state.data} height={300} width={600}></Graph4>
+            <div className={classes.graph}>
+              <Graph4 data={this.state.data} height={300} width={600}></Graph4>
+            </div>
           </Grid>
         </Grid>
         <ConfigurationsPanel updateConfigs={this.updateConfigurations} configs={this.state.configurations} />
@@ -271,4 +352,4 @@ class GeneralSimulator extends Component {
   }
 }
 
-export default GeneralSimulator;
+export default withStyles(styles)(GeneralSimulator);

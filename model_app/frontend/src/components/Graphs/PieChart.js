@@ -15,6 +15,7 @@ function PieChart(props) {
 
   const width = 2 * outerRadius + margin.left + margin.right;
   const height = 2 * outerRadius + margin.top + margin.bottom;
+  const textColor = "#222629"
 
   const colorScale = d3     
     .scaleSequential()      
@@ -42,7 +43,7 @@ function PieChart(props) {
     
     svg.append("text")
     .attr("x", 0)
-    .attr("y", 0 - height/2 +margin.top -20).style('fill', 'white').style("text-anchor", "middle")
+    .attr("y", 0 - height/2 +margin.top -20).style('fill', textColor).style("text-anchor", "middle")
     .style("font-family", "Montserrat").text("Infection breakdown by facility");
 
 
