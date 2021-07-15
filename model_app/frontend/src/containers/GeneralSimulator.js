@@ -33,7 +33,12 @@ class GeneralSimulator extends Component {
     return (
       
       <div className="content">
-        <h1>
+        <h1
+        style={{
+          color: "white",
+          marginTop: "2%",
+          marginBottom: "1%"
+        }}>
         Oklahoma City
         </h1>
         <div>
@@ -41,7 +46,10 @@ class GeneralSimulator extends Component {
             img src={okc_city} alt="okc"
             height={100}
             width={375}
-            style={{ alignSelf: 'center'}}
+            style={{
+              alignSelf: 'center',
+              marginBottom: "1%",
+            }}
           />
         </div>
 
