@@ -13,7 +13,8 @@ const styles = (theme) => ({
   graph: {
     backgroundColor: "rgba(196,196,196,255)",
     margin: '20px',
-    borderRadius: '15px'
+    borderRadius: '15px',
+    padding: '10px',
   }
 });
 

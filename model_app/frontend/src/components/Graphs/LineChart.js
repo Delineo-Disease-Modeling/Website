@@ -32,6 +32,11 @@ function LineChart(props, labels, titles, colors) {
                     .attr("transform", `translate(0,${height - margin.bottom})`)
                     .style("color", textColor)
                     .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0))
+                    .selectAll("text")
+                    .style("text-anchor", "end")
+                    .attr("dx", "-.8em")
+                    .attr("dy", ".15em")
+                    .attr("transform", "rotate(-65)")
                     .call((g) =>
                         g
                             .append("text")
@@ -69,21 +74,21 @@ function LineChart(props, labels, titles, colors) {
 
             labels.map((l, i) => {
                 svg
-                .append("path")
-                .datum(casedata)
-                .attr("fill", "none")
-                .attr("stroke", colors[i])
-                .attr("stroke-width", 1.5)
-                .attr("d", d3.line()
-                    .x(function (d) {
-                        return x(d.date.month + "/" + d.date.day + "/" + d.date.year)
-                    })
-                    .y(function (d) {
-                        if(labels.length > 1)
-                            return y(d.breakdown[l])
-                        return y(d[l])
-                    })
-                );
+                    .append("path")
+                    .datum(casedata)
+                    .attr("fill", "none")
+                    .attr("stroke", colors[i])
+                    .attr("stroke-width", 1.5)
+                    .attr("d", d3.line()
+                        .x(function (d) {
+                            return x(d.date.month + "/" + d.date.day + "/" + d.date.year)
+                        })
+                        .y(function (d) {
+                            if (labels.length > 1)
+                                return y(d.breakdown[l])
+                            return y(d[l])
+                        })
+                    );
             })
         },
         [data.length]
@@ -93,7 +98,7 @@ function LineChart(props, labels, titles, colors) {
         <svg
             ref={ref}
             style={{
-                height: 350,
+                height: 400,
                 width: "100%",
                 marginRight: "0px",
                 marginLeft: "0px",
