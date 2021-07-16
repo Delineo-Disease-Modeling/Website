@@ -22,12 +22,10 @@ const styles = (theme) => ({
 var getData = () => {
   var data = [];
 
-  // axios
-  //     .get("https://covidmod.isi.jhu.edu", {
-  //         params: {
-  //             year: '2020'
-  //         }
-  //     })
+  // Uncomment get request later when deploying simulation page
+  // Hard-coded simulation data used for now 
+  //  axios
+  //     .get("https://covidmod.isi.jhu.edu")
   //     .then((res) => {
   //         data = res.data;
   //         console.log("data retrieved");
