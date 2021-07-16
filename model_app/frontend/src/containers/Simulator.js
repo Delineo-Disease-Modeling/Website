@@ -11,12 +11,12 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import {isMobile} from 'react-device-detect';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import {Button} from "@material-ui/core"
 
 
 const mobileCheck = () => {
-  if(isMobile) {
+  if(this.state.isMobile) {
     return true;
   }
   return false;
@@ -252,7 +252,7 @@ class Simulator extends Component {
 
        <Dialog
        
-       open={this.state.isMobile}
+       open={mobileCheck()}
        onClose={() => this.setState({
         isMobile: false
 
