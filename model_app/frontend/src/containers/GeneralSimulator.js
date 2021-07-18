@@ -287,6 +287,15 @@ class GeneralSimulator extends Component {
                   marginBottom: "1%",
                 }}
               />
+
+              <p align = "justify">
+                <p></p>This simulator models disease spread in the small
+                town of Oklahoma city. Here, we have four graphs reflecting disease progression
+                in Oklahoma city over a period of 10 days from April 1 2020 to April 10 2020. 
+                The graphs include total infection over time and the number of new cases over time
+                (i.e. daily infection count). Even more, this Oklahoma city simulator has more detailed
+                breakdown reflecting which facilities contributes the most infection overall and each day. 
+              </p>
             </div>
           </Grid>
           <Grid item xs={4}>
