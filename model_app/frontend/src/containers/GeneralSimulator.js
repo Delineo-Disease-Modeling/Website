@@ -3,7 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 import "./GeneralSimulator.css";
 import ConfigurationsPanel from "../components/ConfigurationsPanel";
 import { Typography, Grid } from "@material-ui/core";
-import okc_city from "../images/OKC_CITY.jpg";
+import okc_city from "../images/OKC_updated.png";
 import DailyChart from "../components/Graphs/DailyChart"
 import CumulativeChart from "../components/Graphs/CumulativeChart"
 import PieChart from "../components/Graphs/PieChart"
