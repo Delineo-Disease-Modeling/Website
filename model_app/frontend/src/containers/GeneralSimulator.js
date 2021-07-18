@@ -295,6 +295,10 @@ class GeneralSimulator extends Component {
                 The graphs include total infection over time and the number of new cases over time
                 (i.e. daily infection count). Even more, this Oklahoma city simulator has more detailed
                 breakdown reflecting which facilities contributes the most infection overall and each day. 
+                Even more, we have the several configurations such as vaccination percent, mask wearing percent,
+                and whether or not facilities are shut down. We will use the simulator of study the effect of
+                these interventions on the disease progression on the OKC level and then generalize it to the
+                national and global level.
               </p>
             </div>
           </Grid>
