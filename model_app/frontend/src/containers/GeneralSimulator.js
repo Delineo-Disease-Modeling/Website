@@ -3,7 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 import "./GeneralSimulator.css";
 import ConfigurationsPanel from "../components/ConfigurationsPanel";
 import { Typography, Grid } from "@material-ui/core";
-import okc_city from "../images/OKC_updated.png";
+import okc_city from "../images/updated_OKC_logo.jpg";
 import DailyChart from "../components/Graphs/DailyChart"
 import CumulativeChart from "../components/Graphs/CumulativeChart"
 import PieChart from "../components/Graphs/PieChart"
@@ -280,7 +280,7 @@ class GeneralSimulator extends Component {
             <div>
               <img
                 img src={okc_city} alt="okc"
-                height={100}
+                height={300}
                 width={"100%"}
                 style={{
                   alignSelf: 'center',
@@ -288,18 +288,7 @@ class GeneralSimulator extends Component {
                 }}
               />
 
-              <p align = "justify">
-                <p></p>This simulator models disease spread in the small
-                town of Oklahoma city. Here, we have four graphs reflecting disease progression
-                in Oklahoma city over a period of 10 days from April 1 2020 to April 10 2020. 
-                The graphs include total infection over time and the number of new cases over time
-                (i.e. daily infection count). Even more, this Oklahoma city simulator has more detailed
-                breakdown reflecting which facilities contributes the most infection overall and each day. 
-                Even more, we have the several configurations such as vaccination percent, mask wearing percent,
-                and whether or not facilities are shut down. We will use the simulator of study the effect of
-                these interventions on the disease progression on the OKC level and then generalize it to the
-                national and global level.
-              </p>
+              
             </div>
           </Grid>
           <Grid item xs={4}>
