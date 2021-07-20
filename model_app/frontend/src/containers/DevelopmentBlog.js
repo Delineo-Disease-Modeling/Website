@@ -271,12 +271,15 @@ function DevelopmentBlog(props) {
     const newIndex = (index + increment + numSlides) % numSlides;
 
     const oppDirection = direction === 'left' ? 'right' : 'left';
+    if(direction === 'left'){
+      direction = oppDirection
+    }
     setSlideDirection(direction);
     setSlideIn(false);
 
     setTimeout(() => {
       setIndex(newIndex);
-      setSlideDirection(oppDirection);
+      setSlideDirection(direction);
       setSlideIn(true);
     }, 200);
   };
