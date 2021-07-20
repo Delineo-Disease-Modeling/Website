@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect} from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
@@ -30,6 +30,9 @@ import clsx from "clsx";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import EmailIcon from "@material-ui/icons/Email";
 import articles from "../const/devblogposts";
+import { ArrowBack, ArrowForward } from "@material-ui/icons"
+import CarouselSlide from "../components/CarouselSlide"
+import Slide from "@material-ui/core/Slide"
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -208,7 +211,33 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
   },
+
+  dim: {
+    opacity: 0.25
+  },
+
+  svg: {
+    height: "30px",
+    cursor: "pointer",
+  },
+
+  carousel: {
+    display: "flex",
+    minHeight: "70vh",
+  },
+
+  fadeOut: {
+    opacity: "0",
+    transition: "none",
+  }
 }));
+
+function Arrow(props) {
+  const { direction, clickFunction } = props;
+  const icon = direction === 'left' ? <ArrowBack /> : <ArrowForward />;
+
+  return <IconButton onClick={clickFunction} style={{ color: "white" }}>{icon}</IconButton>;
+}
 
 function DevelopmentBlog(props) {
   const classes = useStyles();
@@ -230,8 +259,174 @@ function DevelopmentBlog(props) {
     };
   };
 
+  const [index, setIndex] = useState(0);
+  const content = articles[index];
+  const numSlides = articles.length;
+
+  const [slideIn, setSlideIn] = useState(true);
+  const [slideDirection, setSlideDirection] = useState('down');
+
+  const onArrowClick = (direction) => {
+    const increment = direction === 'left' ? -1 : 1;
+    const newIndex = (index + increment + numSlides) % numSlides;
+
+    const oppDirection = direction === 'left' ? 'right' : 'left';
+    setSlideDirection(direction);
+    setSlideIn(false);
+
+    setTimeout(() => {
+      setIndex(newIndex);
+      setSlideDirection(oppDirection);
+      setSlideIn(true);
+    }, 200);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+        if (e.keyCode === 39) {
+            onArrowClick('right');
+        }
+        if (e.keyCode === 37) {
+            onArrowClick('left');
+        }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+        window.removeEventListener('keydown', handleKeyDown);
+    };
+});
+
+  const addCard = (classes, row, key, current = false) => {
+    const currentStyle = current ? null : classes.dim;
+    return (
+      <div className={currentStyle}>
+        <Card key={key} className={classes.card}>
+          <CardActionArea href={row.href}>
+            <CardMedia
+              className={classes.media}
+              image={row.img}
+              title="Development Blog Img"
+            />
+            <CardContent className={classes.align}>
+              <Typography
+                className={classes.title}
+                style={{
+                  fontWeight: "bold",
+                  marginTop: "0 0px",
+                }}
+                gutterBottom
+                variant="h5"
+                component="h2"
+              >
+                {row.title}
+              </Typography>
+              <Typography
+                className={classes.subtextalign}
+                variant="body2"
+                component="p"
+              >
+                {row.subtext}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <CardActions className={classes.cardActions}>
+            <Box className={classes.author}>
+              <Box
+                component="span"
+                m={1}
+                className={classes.authorDate}
+              >
+                <Typography
+                  className={classes.creditRow}
+                  variant="subtitle2"
+                  component="p"
+                >
+                  <span style={{ fontWeight: "bold" }}>
+                    {row.author}{" "}
+                  </span>
+                  - {row.date}
+                </Typography>
+              </Box>
+            </Box>
+            <Box>
+              <PopupState
+                variant="popover"
+                popupId="demo-popup-menu"
+              >
+                {(popupState) => (
+                  <React.Fragment>
+                    <IconButton
+                      aria-label="share"
+                      {...bindTrigger(popupState)}
+                    >
+                      <ShareIcon style={{ color: "black" }} />
+                    </IconButton>
+                    <Menu
+                      anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "center",
+                      }}
+                      transformOrigin={{
+                        vertical: "top",
+                        horizontal: "center",
+                      }}
+                      {...bindMenu(popupState)}
+                    >
+                      <MenuItem
+                        style={{ color: "white" }}
+                        onClick={popupState.close}
+                      >
+                        <TwitterButton
+                          message={message}
+                          url={url + row.href}
+                        >
+                          <TwitterIcon fontSize="small" />
+                        </TwitterButton>
+                      </MenuItem>
+
+                      {/* IN ORDER TO HAVE A FACEBOOK SHARE, WE NEED A VALID FB APP ID 
+                                  see: https://webkul.com/blog/how-to-generate-facebook-app-id/
+                              */}
+
+                      {/* <MenuItem
+                                        style={{ color: "white" }}
+                                        onClick={popupState.close}
+                                      >
+                                        <FacebookButton
+                                          message={message}
+                                          url={url + row.href}
+                                          appId={"appId"}
+                                        >
+                                          <FacebookIcon fontSize="small" />
+                                        </FacebookButton>
+                                      </MenuItem> */}
+
+                      <MenuItem
+                        style={{ color: "white" }}
+                        onClick={popupState.close}
+                      >
+                        <EmailButton
+                          message={message}
+                          url={url + row.href}
+                        >
+                          <EmailIcon fontSize="small" />
+                        </EmailButton>
+                      </MenuItem>
+                    </Menu>
+                  </React.Fragment>
+                )}
+              </PopupState>
+            </Box>
+          </CardActions>
+        </Card>
+      </div>
+    )
+  }
+
   return (
-    <div className="App" style={{ backgroundColor: "#222629" }}>
+    <div className="App" style={{ backgroundColor: "#222629", overflowX: 'hidden'}}>
       <AppBar
         className={classes.appBar}
         style={{ background: "#222629", boxShadow: "none" }}
@@ -333,138 +528,26 @@ function DevelopmentBlog(props) {
             </IconButton>
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <CardContent>
-              <Grid container spacing={3} alignItems="center" justify="center">
-                {articles.map((row) => {
-                  if (row.type === "Article") {
-                    return (
-                      <Grid item xs={12} sm={6} md={4}>
-                        <Card className={classes.card}>
-                          <CardActionArea href={row.href}>
-                            <CardMedia
-                              className={classes.media}
-                              image={row.img}
-                              title="Development Blog Img"
-                            />
-                            <CardContent className={classes.align}>
-                              <Typography
-                                className={classes.title}
-                                style={{
-                                  fontWeight: "bold",
-                                  marginTop: "0 0px",
-                                }}
-                                gutterBottom
-                                variant="h5"
-                                component="h2"
-                              >
-                                {row.title}
-                              </Typography>
-                              <Typography
-                                className={classes.subtextalign}
-                                variant="body2"
-                                component="p"
-                              >
-                                {row.subtext}
-                              </Typography>
-                            </CardContent>
-                          </CardActionArea>
-                          <CardActions className={classes.cardActions}>
-                            <Box className={classes.author}>
-                              <Box
-                                component="span"
-                                m={1}
-                                className={classes.authorDate}
-                              >
-                                <Typography
-                                  className={classes.creditRow}
-                                  variant="subtitle2"
-                                  component="p"
-                                >
-                                  <span style={{ fontWeight: "bold" }}>
-                                    {row.author}{" "}
-                                  </span>
-                                  - {row.date}
-                                </Typography>
-                              </Box>
-                            </Box>
-                            <Box>
-                              <PopupState
-                                variant="popover"
-                                popupId="demo-popup-menu"
-                              >
-                                {(popupState) => (
-                                  <React.Fragment>
-                                    <IconButton
-                                      aria-label="share"
-                                      {...bindTrigger(popupState)}
-                                    >
-                                      <ShareIcon style={{ color: "black" }} />
-                                    </IconButton>
-                                    <Menu
-                                      anchorOrigin={{
-                                        vertical: "bottom",
-                                        horizontal: "center",
-                                      }}
-                                      transformOrigin={{
-                                        vertical: "top",
-                                        horizontal: "center",
-                                      }}
-                                      {...bindMenu(popupState)}
-                                    >
-                                      <MenuItem
-                                        style={{ color: "white" }}
-                                        onClick={popupState.close}
-                                      >
-                                        <TwitterButton
-                                          message={message}
-                                          url={url + row.href}
-                                        >
-                                          <TwitterIcon fontSize="small" />
-                                        </TwitterButton>
-                                      </MenuItem>
-                              
-                              {/* IN ORDER TO HAVE A FACEBOOK SHARE, WE NEED A VALID FB APP ID 
-                                  see: https://webkul.com/blog/how-to-generate-facebook-app-id/
-                              */}     
-
-                                      {/* <MenuItem
-                                        style={{ color: "white" }}
-                                        onClick={popupState.close}
-                                      >
-                                        <FacebookButton
-                                          message={message}
-                                          url={url + row.href}
-                                          appId={"appId"}
-                                        >
-                                          <FacebookIcon fontSize="small" />
-                                        </FacebookButton>
-                                      </MenuItem> */}
-
-                                      <MenuItem
-                                        style={{ color: "white" }}
-                                        onClick={popupState.close}
-                                      >
-                                        <EmailButton
-                                          message={message}
-                                          url={url + row.href}
-                                        >
-                                          <EmailIcon fontSize="small" />
-                                        </EmailButton>
-                                      </MenuItem>
-                                    </Menu>
-                                  </React.Fragment>
-                                )}
-                              </PopupState>
-                            </Box>
-                          </CardActions>
-                        </Card>
-                      </Grid>
-                    );
-                  } else {
-                    return null;
-                  }
-                })}
-              </Grid>
+            <CardContent className={classes.carousel}>
+              <Arrow
+                className={classes.svg}
+                direction='left'
+                clickFunction={() => onArrowClick('left')}
+              />
+              {/* <Slide in={slideIn} direction={slideDirection}> */}
+                <div style={{minWidth: "90%"}}>
+                  <CarouselSlide 
+                  articles={articles} 
+                  num={index} addCard={addCard} classes={classes}
+                  slideDirection={slideDirection}
+                  slideIn={slideIn}></CarouselSlide>
+                </div>
+              {/* </Slide> */}
+              <Arrow
+                className={classes.svg}
+                direction='right'
+                clickFunction={() => onArrowClick('right')}
+              />
               <Box my={4} className={classes.paginationContainer}></Box>
             </CardContent>
           </Collapse>
