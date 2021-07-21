@@ -216,8 +216,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function DevelopmentBlog(props) {
-
-
   function resize() {
     let isDesktop = (window.innerWidth >= 760);
     if (isDesktop) {

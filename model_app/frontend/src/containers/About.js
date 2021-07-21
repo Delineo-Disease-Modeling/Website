@@ -48,6 +48,13 @@ const styles = {
 		fontSize: '50px',
 		lineHeight: '1.25'
 	},
+
+	subtitleMobile: {
+		textAlign: 'left',
+		fontWeight: '400',
+		fontSize: '20px',
+	},
+
 	border: {
 		position: 'absolute',
 		top: '300px',
@@ -86,11 +93,13 @@ const styles = {
 	},
 }
 
+
 const AccordionDetails = withStyles((theme) => ({
 	root: {
 		padding: theme.spacing(2),
 	},
 }))(MuiAccordionDetails);
+
 
 const ColAccordion = withStyles({
 	root: {
@@ -141,6 +150,15 @@ class About extends React.Component {
 
 	render() {
 		const { classes } = this.props;
+		function resize() {
+			let isDesktop = (window.innerWidth >= 760);
+			if (isDesktop) {
+				return classes.subtitle;
+			  }
+				return classes.subtitleMobile;
+			
+		  };
+	
 		return (
 			<div className={classes.cardBackground}>
 				<div className={classes.heading}>
@@ -148,7 +166,7 @@ class About extends React.Component {
 					<Typography className={classes.title}>
 						About Delineo
 					</Typography>
-					<Typography className={classes.subtitle}>
+					<Typography className={resize()}>
 						Disease Modeling Simulation at Johns Hopkins University
 					</Typography>
 					</div>
@@ -185,7 +203,7 @@ class About extends React.Component {
 					</div>
 				</div>
 				<div id="contact" style={{ backgroundColor: '#222629', padding: '50px 0' }}>
-				<Paper style={{ paddingBottom: '30px', backgroundColor: 'rgba(125, 125, 125, 0.50)', width: '40%', margin:'auto' }}>
+				<Paper style={{ paddingBottom: '50px', backgroundColor: 'rgba(125, 125, 125, 0.50)', width: '60%', margin:'auto' }}>
 					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', color: 'white', paddingTop: '50px' }}>
 						Contact Us!
 					</Typography>
