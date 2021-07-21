@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
@@ -14,10 +14,10 @@ import Collapse from "@material-ui/core/Collapse";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 // import Table from "@material-ui/core/Table";
 // import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
+// import TableCell from "@material-ui/core/TableCell";
 // import TableContainer from "@material-ui/core/TableContainer";
 // import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
+// import TableRow from "@material-ui/core/TableRow";
 // import Paper from "@material-ui/core/Paper";
 import IconButton from "@material-ui/core/IconButton";
 // import FacebookIcon from "@material-ui/icons/Facebook";
@@ -32,36 +32,35 @@ import EmailIcon from "@material-ui/icons/Email";
 import articles from "../const/devblogposts";
 import { ArrowBack, ArrowForward } from "@material-ui/icons"
 import CarouselSlide from "../components/CarouselSlide"
-import Slide from "@material-ui/core/Slide"
 
-const StyledTableCell = withStyles((theme) => ({
-  head: {
-    backgroundColor: theme.palette.common.white,
-    color: theme.palette.common.black,
-  },
-  body: {
-    color: theme.palette.common.white,
-    fontSize: 14,
-  },
-}))(TableCell);
+// const StyledTableCell = withStyles((theme) => ({
+//   head: {
+//     backgroundColor: theme.palette.common.white,
+//     color: theme.palette.common.black,
+//   },
+//   body: {
+//     color: theme.palette.common.white,
+//     fontSize: 14,
+//   },
+// }))(TableCell);
 
-const StyledTableRow = withStyles((theme) => ({
-  color: theme.palette.common.white,
+// const StyledTableRow = withStyles((theme) => ({
+//   color: theme.palette.common.white,
 
-  root: {
-    backgroundColor: "#383838",
-    "&:nth-of-type(odd)": {
-      color: theme.palette.common.white,
-    },
-    "&:hover": {
-      backgroundColor: "#505050",
-      cursor: "pointer",
-    },
-    "&:onCellClick": {
-      backgroundColor: "grey !important",
-    },
-  },
-}))(TableRow);
+//   root: {
+//     backgroundColor: "#383838",
+//     "&:nth-of-type(odd)": {
+//       color: theme.palette.common.white,
+//     },
+//     "&:hover": {
+//       backgroundColor: "#505050",
+//       cursor: "pointer",
+//     },
+//     "&:onCellClick": {
+//       backgroundColor: "grey !important",
+//     },
+//   },
+// }))(TableRow);
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -224,6 +223,8 @@ const useStyles = makeStyles((theme) => ({
   carousel: {
     display: "flex",
     minHeight: "70vh",
+    maxWidth: '100%',
+    justifyContent: 'center'
   },
 
   fadeOut: {
@@ -253,14 +254,13 @@ function DevelopmentBlog(props) {
     setExpanded(!expanded);
   };
 
-  const handleClick = (id, title) => {
-    return (event) => {
-      window.location.assign("/developmentblog/Post" + id);
-    };
-  };
+  // const handleClick = (id, title) => {
+  //   return (event) => {
+  //     window.location.assign("/developmentblog/Post" + id);
+  //   };
+  // };
 
   const [index, setIndex] = useState(0);
-  const content = articles[index];
   const numSlides = articles.length;
 
   const [slideIn, setSlideIn] = useState(true);
@@ -271,17 +271,17 @@ function DevelopmentBlog(props) {
     const newIndex = (index + increment + numSlides) % numSlides;
 
     const oppDirection = direction === 'left' ? 'right' : 'left';
-    if(direction === 'left'){
-      direction = oppDirection
-    }
+    // if(direction === 'left'){
+    //   direction = oppDirection
+    // }
     setSlideDirection(direction);
     setSlideIn(false);
 
     setTimeout(() => {
       setIndex(newIndex);
-      setSlideDirection(direction);
+      setSlideDirection(oppDirection);
       setSlideIn(true);
-    }, 200);
+    }, -500);
   };
 
   useEffect(() => {
@@ -496,7 +496,6 @@ function DevelopmentBlog(props) {
       </Grid>
       <Container maxWidth="lg" className={classes.blogsContainer}>
         <Card
-          maxWidth="lg"
           style={{ background: "#222629", boxShadow: "none" }}
         >
           <CardActions
@@ -537,15 +536,13 @@ function DevelopmentBlog(props) {
                 direction='left'
                 clickFunction={() => onArrowClick('left')}
               />
-              {/* <Slide in={slideIn} direction={slideDirection}> */}
-                <div style={{minWidth: "90%"}}>
+                <div style={{minWidth: "80%"}}>
                   <CarouselSlide 
                   articles={articles} 
                   num={index} addCard={addCard} classes={classes}
                   slideDirection={slideDirection}
                   slideIn={slideIn}></CarouselSlide>
                 </div>
-              {/* </Slide> */}
               <Arrow
                 className={classes.svg}
                 direction='right'
