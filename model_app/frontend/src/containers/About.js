@@ -158,6 +158,16 @@ class About extends React.Component {
 				return classes.subtitleMobile;
 			
 		  };
+
+
+		  function resizeForm() {
+			let isDesktop = (window.innerWidth >= 760);
+			if (isDesktop) {
+				return '40%';
+			  }
+				return '60%';
+			
+		  };
 	
 		return (
 			<div className={classes.cardBackground}>
@@ -203,7 +213,7 @@ class About extends React.Component {
 					</div>
 				</div>
 				<div id="contact" style={{ backgroundColor: '#222629', padding: '50px 0' }}>
-				<Paper style={{ paddingBottom: '50px', backgroundColor: 'rgba(125, 125, 125, 0.50)', width: '60%', margin:'auto' }}>
+				<Paper style={{ paddingBottom: '50px', backgroundColor: 'rgba(125, 125, 125, 0.50)', width: resizeForm() , margin:'auto' }}>
 					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', color: 'white', paddingTop: '50px' }}>
 						Contact Us!
 					</Typography>
