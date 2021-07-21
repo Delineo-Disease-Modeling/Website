@@ -1,5 +1,5 @@
-import React from "react";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
+import React, { useState, useEffect} from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
@@ -14,10 +14,10 @@ import Collapse from "@material-ui/core/Collapse";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 // import Table from "@material-ui/core/Table";
 // import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
+// import TableCell from "@material-ui/core/TableCell";
 // import TableContainer from "@material-ui/core/TableContainer";
 // import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
+// import TableRow from "@material-ui/core/TableRow";
 // import Paper from "@material-ui/core/Paper";
 import IconButton from "@material-ui/core/IconButton";
 // import FacebookIcon from "@material-ui/icons/Facebook";
@@ -30,35 +30,37 @@ import clsx from "clsx";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import EmailIcon from "@material-ui/icons/Email";
 import articles from "../const/devblogposts";
+import { ArrowBack, ArrowForward } from "@material-ui/icons"
+import CarouselSlide from "../components/CarouselSlide"
 
-const StyledTableCell = withStyles((theme) => ({
-  head: {
-    backgroundColor: theme.palette.common.white,
-    color: theme.palette.common.black,
-  },
-  body: {
-    color: theme.palette.common.white,
-    fontSize: 14,
-  },
-}))(TableCell);
+// const StyledTableCell = withStyles((theme) => ({
+//   head: {
+//     backgroundColor: theme.palette.common.white,
+//     color: theme.palette.common.black,
+//   },
+//   body: {
+//     color: theme.palette.common.white,
+//     fontSize: 14,
+//   },
+// }))(TableCell);
 
-const StyledTableRow = withStyles((theme) => ({
-  color: theme.palette.common.white,
+// const StyledTableRow = withStyles((theme) => ({
+//   color: theme.palette.common.white,
 
-  root: {
-    backgroundColor: "#383838",
-    "&:nth-of-type(odd)": {
-      color: theme.palette.common.white,
-    },
-    "&:hover": {
-      backgroundColor: "#505050",
-      cursor: "pointer",
-    },
-    "&:onCellClick": {
-      backgroundColor: "grey !important",
-    },
-  },
-}))(TableRow);
+//   root: {
+//     backgroundColor: "#383838",
+//     "&:nth-of-type(odd)": {
+//       color: theme.palette.common.white,
+//     },
+//     "&:hover": {
+//       backgroundColor: "#505050",
+//       cursor: "pointer",
+//     },
+//     "&:onCellClick": {
+//       backgroundColor: "grey !important",
+//     },
+//   },
+// }))(TableRow);
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -208,7 +210,35 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
   },
+
+  dim: {
+    opacity: 0.25
+  },
+
+  svg: {
+    height: "30px",
+    cursor: "pointer",
+  },
+
+  carousel: {
+    display: "flex",
+    minHeight: "70vh",
+    maxWidth: '100%',
+    justifyContent: 'center'
+  },
+
+  fadeOut: {
+    opacity: "0",
+    transition: "none",
+  }
 }));
+
+function Arrow(props) {
+  const { direction, clickFunction } = props;
+  const icon = direction === 'left' ? <ArrowBack /> : <ArrowForward />;
+
+  return <IconButton onClick={clickFunction} style={{ color: "white" }}>{icon}</IconButton>;
+}
 
 function DevelopmentBlog(props) {
   const classes = useStyles();
@@ -224,14 +254,182 @@ function DevelopmentBlog(props) {
     setExpanded(!expanded);
   };
 
-  const handleClick = (id, title) => {
-    return (event) => {
-      window.location.assign("/developmentblog/Post" + id);
-    };
+  // const handleClick = (id, title) => {
+  //   return (event) => {
+  //     window.location.assign("/developmentblog/Post" + id);
+  //   };
+  // };
+
+  const [index, setIndex] = useState(0);
+  const numSlides = articles.length;
+
+  const [slideIn, setSlideIn] = useState(true);
+  const [slideDirection, setSlideDirection] = useState('down');
+
+  const onArrowClick = (direction) => {
+    const increment = direction === 'left' ? -1 : 1;
+    const newIndex = (index + increment + numSlides) % numSlides;
+
+    const oppDirection = direction === 'left' ? 'right' : 'left';
+    // if(direction === 'left'){
+    //   direction = oppDirection
+    // }
+    setSlideDirection(direction);
+    setSlideIn(false);
+
+    setTimeout(() => {
+      setIndex(newIndex);
+      setSlideDirection(oppDirection);
+      setSlideIn(true);
+    }, -500);
   };
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+        if (e.keyCode === 39) {
+            onArrowClick('right');
+        }
+        if (e.keyCode === 37) {
+            onArrowClick('left');
+        }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+        window.removeEventListener('keydown', handleKeyDown);
+    };
+});
+
+  const addCard = (classes, row, key, current = false) => {
+    const currentStyle = current ? null : classes.dim;
+    return (
+      <div className={currentStyle}>
+        <Card key={key} className={classes.card}>
+          <CardActionArea href={row.href}>
+            <CardMedia
+              className={classes.media}
+              image={row.img}
+              title="Development Blog Img"
+            />
+            <CardContent className={classes.align}>
+              <Typography
+                className={classes.title}
+                style={{
+                  fontWeight: "bold",
+                  marginTop: "0 0px",
+                }}
+                gutterBottom
+                variant="h5"
+                component="h2"
+              >
+                {row.title}
+              </Typography>
+              <Typography
+                className={classes.subtextalign}
+                variant="body2"
+                component="p"
+              >
+                {row.subtext}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <CardActions className={classes.cardActions}>
+            <Box className={classes.author}>
+              <Box
+                component="span"
+                m={1}
+                className={classes.authorDate}
+              >
+                <Typography
+                  className={classes.creditRow}
+                  variant="subtitle2"
+                  component="p"
+                >
+                  <span style={{ fontWeight: "bold" }}>
+                    {row.author}{" "}
+                  </span>
+                  - {row.date}
+                </Typography>
+              </Box>
+            </Box>
+            <Box>
+              <PopupState
+                variant="popover"
+                popupId="demo-popup-menu"
+              >
+                {(popupState) => (
+                  <React.Fragment>
+                    <IconButton
+                      aria-label="share"
+                      {...bindTrigger(popupState)}
+                    >
+                      <ShareIcon style={{ color: "black" }} />
+                    </IconButton>
+                    <Menu
+                      anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "center",
+                      }}
+                      transformOrigin={{
+                        vertical: "top",
+                        horizontal: "center",
+                      }}
+                      {...bindMenu(popupState)}
+                    >
+                      <MenuItem
+                        style={{ color: "white" }}
+                        onClick={popupState.close}
+                      >
+                        <TwitterButton
+                          message={message}
+                          url={url + row.href}
+                        >
+                          <TwitterIcon fontSize="small" />
+                        </TwitterButton>
+                      </MenuItem>
+
+                      {/* IN ORDER TO HAVE A FACEBOOK SHARE, WE NEED A VALID FB APP ID 
+                                  see: https://webkul.com/blog/how-to-generate-facebook-app-id/
+                              */}
+
+                      {/* <MenuItem
+                                        style={{ color: "white" }}
+                                        onClick={popupState.close}
+                                      >
+                                        <FacebookButton
+                                          message={message}
+                                          url={url + row.href}
+                                          appId={"appId"}
+                                        >
+                                          <FacebookIcon fontSize="small" />
+                                        </FacebookButton>
+                                      </MenuItem> */}
+
+                      <MenuItem
+                        style={{ color: "white" }}
+                        onClick={popupState.close}
+                      >
+                        <EmailButton
+                          message={message}
+                          url={url + row.href}
+                        >
+                          <EmailIcon fontSize="small" />
+                        </EmailButton>
+                      </MenuItem>
+                    </Menu>
+                  </React.Fragment>
+                )}
+              </PopupState>
+            </Box>
+          </CardActions>
+        </Card>
+      </div>
+    )
+  }
+
   return (
-    <div className="App" style={{ backgroundColor: "#222629" }}>
+    <div className="App" style={{ backgroundColor: "#222629", overflowX: 'hidden'}}>
       <AppBar
         className={classes.appBar}
         style={{ background: "#222629", boxShadow: "none" }}
@@ -298,7 +496,6 @@ function DevelopmentBlog(props) {
       </Grid>
       <Container maxWidth="lg" className={classes.blogsContainer}>
         <Card
-          maxWidth="lg"
           style={{ background: "#222629", boxShadow: "none" }}
         >
           <CardActions
@@ -333,138 +530,24 @@ function DevelopmentBlog(props) {
             </IconButton>
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <CardContent>
-              <Grid container spacing={3} alignItems="center" justify="center">
-                {articles.map((row) => {
-                  if (row.type === "Article") {
-                    return (
-                      <Grid item xs={12} sm={6} md={4}>
-                        <Card className={classes.card}>
-                          <CardActionArea href={row.href}>
-                            <CardMedia
-                              className={classes.media}
-                              image={row.img}
-                              title="Development Blog Img"
-                            />
-                            <CardContent className={classes.align}>
-                              <Typography
-                                className={classes.title}
-                                style={{
-                                  fontWeight: "bold",
-                                  marginTop: "0 0px",
-                                }}
-                                gutterBottom
-                                variant="h5"
-                                component="h2"
-                              >
-                                {row.title}
-                              </Typography>
-                              <Typography
-                                className={classes.subtextalign}
-                                variant="body2"
-                                component="p"
-                              >
-                                {row.subtext}
-                              </Typography>
-                            </CardContent>
-                          </CardActionArea>
-                          <CardActions className={classes.cardActions}>
-                            <Box className={classes.author}>
-                              <Box
-                                component="span"
-                                m={1}
-                                className={classes.authorDate}
-                              >
-                                <Typography
-                                  className={classes.creditRow}
-                                  variant="subtitle2"
-                                  component="p"
-                                >
-                                  <span style={{ fontWeight: "bold" }}>
-                                    {row.author}{" "}
-                                  </span>
-                                  - {row.date}
-                                </Typography>
-                              </Box>
-                            </Box>
-                            <Box>
-                              <PopupState
-                                variant="popover"
-                                popupId="demo-popup-menu"
-                              >
-                                {(popupState) => (
-                                  <React.Fragment>
-                                    <IconButton
-                                      aria-label="share"
-                                      {...bindTrigger(popupState)}
-                                    >
-                                      <ShareIcon style={{ color: "black" }} />
-                                    </IconButton>
-                                    <Menu
-                                      anchorOrigin={{
-                                        vertical: "bottom",
-                                        horizontal: "center",
-                                      }}
-                                      transformOrigin={{
-                                        vertical: "top",
-                                        horizontal: "center",
-                                      }}
-                                      {...bindMenu(popupState)}
-                                    >
-                                      <MenuItem
-                                        style={{ color: "white" }}
-                                        onClick={popupState.close}
-                                      >
-                                        <TwitterButton
-                                          message={message}
-                                          url={url + row.href}
-                                        >
-                                          <TwitterIcon fontSize="small" />
-                                        </TwitterButton>
-                                      </MenuItem>
-                              
-                              {/* IN ORDER TO HAVE A FACEBOOK SHARE, WE NEED A VALID FB APP ID 
-                                  see: https://webkul.com/blog/how-to-generate-facebook-app-id/
-                              */}     
-
-                                      {/* <MenuItem
-                                        style={{ color: "white" }}
-                                        onClick={popupState.close}
-                                      >
-                                        <FacebookButton
-                                          message={message}
-                                          url={url + row.href}
-                                          appId={"appId"}
-                                        >
-                                          <FacebookIcon fontSize="small" />
-                                        </FacebookButton>
-                                      </MenuItem> */}
-
-                                      <MenuItem
-                                        style={{ color: "white" }}
-                                        onClick={popupState.close}
-                                      >
-                                        <EmailButton
-                                          message={message}
-                                          url={url + row.href}
-                                        >
-                                          <EmailIcon fontSize="small" />
-                                        </EmailButton>
-                                      </MenuItem>
-                                    </Menu>
-                                  </React.Fragment>
-                                )}
-                              </PopupState>
-                            </Box>
-                          </CardActions>
-                        </Card>
-                      </Grid>
-                    );
-                  } else {
-                    return null;
-                  }
-                })}
-              </Grid>
+            <CardContent className={classes.carousel}>
+              <Arrow
+                className={classes.svg}
+                direction='left'
+                clickFunction={() => onArrowClick('left')}
+              />
+                <div style={{minWidth: "80%"}}>
+                  <CarouselSlide 
+                  articles={articles} 
+                  num={index} addCard={addCard} classes={classes}
+                  slideDirection={slideDirection}
+                  slideIn={slideIn}></CarouselSlide>
+                </div>
+              <Arrow
+                className={classes.svg}
+                direction='right'
+                clickFunction={() => onArrowClick('right')}
+              />
               <Box my={4} className={classes.paginationContainer}></Box>
             </CardContent>
           </Collapse>
