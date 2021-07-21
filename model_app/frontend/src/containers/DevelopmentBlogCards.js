@@ -67,8 +67,14 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
   },
 
-  author: {
+
+  cardActionsMobile: {
     display: "flex",
+    justifyContent: "space-between",
+    
+  },
+
+  author: {
     color: "black",
   },
 
@@ -82,8 +88,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 function DevelopmentBlogCards(props) {
   const classes = useStyles();
+  
+  function resize() {
+    let isDesktop = (window.innerWidth >= 760);
+    if (isDesktop) {
+        return classes.cardActions;
+      }
+        return classes.cardActionsMobile;
+    
+  };
 
   //let url = process.env.PUBLIC_URL + "developmentblog/date-2";
   //let url = https://covidweb.isi.jhu.edu/developmentblog/Post1
@@ -128,7 +144,7 @@ function DevelopmentBlogCards(props) {
                       </Typography>
                     </CardContent>
                   </CardActionArea>
-                  <CardActions className={classes.cardActions}>
+                  <CardActions className={resize()} >
                     <Box className={classes.author}>
                       <Box
                         component="span"

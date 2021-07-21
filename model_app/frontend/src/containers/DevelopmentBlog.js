@@ -200,8 +200,13 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
   },
 
-  author: {
+  cardActionsMobile: {
     display: "flex",
+    justifyContent: "space-between",
+    
+  },
+
+  author: {
   },
 
   paginationContainer: {
@@ -211,6 +216,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function DevelopmentBlog(props) {
+
+
+  function resize() {
+    let isDesktop = (window.innerWidth >= 760);
+    if (isDesktop) {
+        return classes.cardActions;
+      }
+        return classes.cardActionsMobile;
+    
+  };
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(true);
 
@@ -368,7 +383,7 @@ function DevelopmentBlog(props) {
                               </Typography>
                             </CardContent>
                           </CardActionArea>
-                          <CardActions className={classes.cardActions}>
+                          <CardActions className={resize()} >
                             <Box className={classes.author}>
                               <Box
                                 component="span"
