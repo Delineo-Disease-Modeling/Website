@@ -74,6 +74,7 @@ function PieChart(props) {
     arc
       .append('text')
       .attr('text-anchor', 'middle')
+      .style("font-family", "Montserrat")
       .attr('alignment-baseline', 'middle')
       .text((d) => `${d.data.label}: ${d.data.value}%`)
       .style('fill', '#fff')

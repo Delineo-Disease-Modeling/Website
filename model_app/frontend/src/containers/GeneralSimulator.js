@@ -138,32 +138,32 @@ class GeneralSimulator extends Component {
           Please remove and replace with the Population and POI info (see figma) when ready.
            */}
               <Typography>
-                mask wearing percent: {this.state.configurations.maskPercent}
+                Mask wearing percentage: {this.state.configurations.maskPercent}
               </Typography>
               <Typography>
-                capacity restrictions: {this.state.configurations.capacityPercent}
+                Capacity restrictions: {this.state.configurations.capacityPercent}
               </Typography>
               <Typography>
-                mass testing: {this.state.configurations.massPercent}
+                Mass testing: {this.state.configurations.massPercent}
               </Typography>
               <Typography>
-                stay at home order: {this.state.configurations.stayAtHome.toString()}
+                Stay at home order: {this.state.configurations.stayAtHome.toString()}
               </Typography>
               <Typography>
-                schools: {this.state.configurations.schoolsShutdown.toString()}
+                Schools: {this.state.configurations.schoolsShutdown.toString()}
               </Typography>
 
               <Typography>
-                restaurants: {this.state.configurations.restaurantsShutdown.toString()}
+                Restaurants: {this.state.configurations.restaurantsShutdown.toString()}
               </Typography>
               <Typography>
-                gyms: {this.state.configurations.gymsShutdown.toString()}
+                Gyms: {this.state.configurations.gymsShutdown.toString()}
               </Typography>
               <Typography>
-                bars: {this.state.configurations.barsShutdown.toString()}
+                Bars: {this.state.configurations.barsShutdown.toString()}
               </Typography>
               <Typography>
-                vaccination percent: {this.state.configurations.vaccinePercent}
+                Vaccination percentage: {this.state.configurations.vaccinePercent}
               </Typography>
 
             </div>

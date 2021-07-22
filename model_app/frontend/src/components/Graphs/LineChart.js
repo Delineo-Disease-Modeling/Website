@@ -21,6 +21,9 @@ function LineChart(props, labels, titles, colors) {
                 .padding(0.1);
 
             const max = d3.max(casedata, (d) => labels.length > 1 ? d.breakdown[labels[0]] : d[labels[0]])
+            var colorSet = d3.scaleOrdinal()
+              .domain(labels)
+              .range(colors);
 
             const y = d3
                 .scaleLinear()
@@ -84,8 +87,31 @@ function LineChart(props, labels, titles, colors) {
                             return x(d.date.month + "/" + d.date.day + "/" + d.date.year)
                         })
                         .y(function (d) {
-                            if (labels.length > 1)
+                            if (labels.length > 1){
+                                // Add one dot in the legend for each label.
+                                svg.selectAll("mydots")
+                                .data(labels)
+                                .enter()
+                                .append("circle")
+                                .attr("cx", 340)
+                                .attr("cy", function(d,i){ return 50 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+                                .attr("r", 7)
+                                .style("fill", function(d){ return colorSet(d)})
+
+                                // Add corresponding label to dot.
+                                svg.selectAll("mylabels")
+                                  .data(labels)
+                                  .enter()
+                                  .append("text")
+                                    .attr("x", 350)
+                                    .attr("y", function(d,i){ return 50 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+                                    //.style("fill", function(d){ return colorSet(d)})
+                                    .text(function(d){ return d})
+                                    .attr("text-anchor", "left")
+                                    .style("alignment-baseline", "middle")
+
                                 return y(d.breakdown[l])
+                            }
                             return y(d[l])
                         })
                     );
