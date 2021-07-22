@@ -126,19 +126,6 @@ function Post4(props) {
                         <TwitterIcon fontSize="small" />
                       </TwitterButton>
                     </MenuItem>
-                    {/* <MenuItem
-                      style={{ color: "black" }}
-                      onClick={popupState.close}
-                    >
-                      {" "}
-                      <FacebookButton
-                        message={message}
-                        url={post2url}
-                        appId={"appId"}
-                      >
-                        <FacebookIcon fontSize="small" />{" "}
-                      </FacebookButton>
-                    </MenuItem> */}
                     <MenuItem
                       style={{ color: "white" }}
                       onClick={popupState.close}
@@ -161,13 +148,20 @@ function Post4(props) {
         </div>
         <Grid>
           <p className={classes.text}>
+          TLDR: The Delineo simulation uses the Wells-Riley Equation to simulate how a disease will
+          spread in any given facility. The equation and the simulation focus on points of interest (POI's),
+          which include facilities such as grocery stores, places of worship, and other types of gathering areas where a
+          person might get infected. We apply the equation to calculate the probability of an individual
+          getting infected in these spaces and scale that up to any type of city we need.
+          </p>
+          <p className={classes.text}>
           The beauty of the Delineo simulation is that it uses a modular 
           approach to simulate the infectiousness of COVID-19 by building 
-          on different places of interest (POI). In a real-world scenario, 
+          on different points of interest. In a real-world scenario, 
           the infectiousness of COVID-19 will vary city by city based on the 
-          number of grocery stores, gyms, places of worship and other POI. 
+          number of grocery stores, gyms, places of worship and other POI's. 
           These all contribute to the spread of disease differently given the 
-          variation of density of infectors, different air flow rates, 
+          variation in density of infectors, different air flow rates, 
           ventilation, as well as a number of other factors. 
           </p>
           <p className={classes.text}>

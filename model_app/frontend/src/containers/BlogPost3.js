@@ -108,19 +108,6 @@ function Post3(props) {
                           <TwitterIcon fontSize="small" />
                         </TwitterButton>
                       </MenuItem>
-                      {/* <MenuItem
-                        style={{ color: "black" }}
-                        onClick={popupState.close}
-                      >
-                        {" "}
-                        <FacebookButton
-                          message={message}
-                          url={post2url}
-                          appId={"appId"}
-                        >
-                          <FacebookIcon fontSize="small" />{" "}
-                        </FacebookButton>
-                      </MenuItem> */}
                       <MenuItem
                         style={{ color: "white" }}
                         onClick={popupState.close}
@@ -143,9 +130,21 @@ function Post3(props) {
           </div>
           <Grid>
             <p className={classes.text}>
+            TLDR: Imagine a water balloon is dropped in a crowd. You look around and see those who are near the 
+            dropping point got wet, while those who stood far away may have a drop or two, but most are totally dry.
+            Imagine the water is an airborne disease - the Delineo simulation helps us understand and visualize who is in this 
+            invisible ‘splash zone’. To do so, the simulation uses a severity risk matrix to predict whether a person 
+            will be asymptomatic, mild, severe, or critical after their initial exposure to disease. The matrix is developed using three 
+            factors: an individual’s basic demographic, health, and infection information. The individual’s basic 
+            demographic background includes age, sex, race, and socioeconomic status. One's disease risk is proportional to age 
+            and socioeconomic status. In addition, the risk will also increase commensurate with pre-existing health 
+            conditions, such as diabetes, heart disease, obesity, and chronic obstructive pulmonary disease. As the
+            infection time increases, the risk will also become higher.
+            </p>
+            <p className={classes.text}>
             The Delineo simulator incorporates the relevant physical features of a particular 
-            community of interest. Specifically, the number of households, and individual Facilities, 
-            defined as points of interest such as retail outlets, restaurants, educational institutions, 
+            community of interest. Specifically, the number of households, and individual facilities, 
+            defined as points of interest, such as retail outlets, restaurants, educational institutions, 
             offices, gyms, bars, healthcare facilities, places of worship, long-term care facilities, 
             jails/prisons, etc. Delineo uses this representation of the physical layer of a community as 
             the underlying model in which the members of a community, as well as visitors to it, move around and, 
