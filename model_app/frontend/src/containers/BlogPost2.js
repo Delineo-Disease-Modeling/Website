@@ -112,19 +112,6 @@ function Post2(props) {
                           <TwitterIcon fontSize="small" />
                         </TwitterButton>
                       </MenuItem>
-                      {/* <MenuItem
-                        style={{ color: "black" }}
-                        onClick={popupState.close}
-                      >
-                        {" "}
-                        <FacebookButton
-                          message={message}
-                          url={post2url}
-                          appId={"appId"}
-                        >
-                          <FacebookIcon fontSize="small" />{" "}
-                        </FacebookButton>
-                      </MenuItem> */}
                       <MenuItem
                         style={{ color: "white" }}
                         onClick={popupState.close}
