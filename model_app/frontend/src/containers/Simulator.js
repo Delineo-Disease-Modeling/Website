@@ -11,7 +11,8 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { Button } from "@material-ui/core"
+import { Button } from "@material-ui/core";
+import {MobileView} from "react-device-detect"
 
 
 
@@ -250,6 +251,8 @@ class Simulator extends Component {
             </Button>
           </DialogActions>
         </Dialog>
+
+        <MobileView>
         <Dialog
           open={this.state.isMobile && !this.state.isDesktop}
           onClose={() => this.setState({
@@ -274,7 +277,7 @@ class Simulator extends Component {
             </Button>
           </DialogActions>
         </Dialog>
-
+        </MobileView>
 
         <Grid container spacing={3}>
           <div className="GreenBackground" align="center">
