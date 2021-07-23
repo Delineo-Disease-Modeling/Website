@@ -38,11 +38,20 @@ import munJiaImg from '../images/MungYao Jia.jpg';
 import louDiBImg from '../images/Louie DiBernardo.jpg';
 import yinZhaImg from '../images/Ying Zhang.JPG';
 import yiCheImg from '../images/Yilin Chen.jpg';
-
-
-
-
-
+import kimZoeImg from '../images/Zoe Kim.jpg';
+import zhaYinImg from '../images/Ying Zhang.JPG';
+import siLiImg from '../images/Siyu Li.jpeg';
+import shaZenImg from '../images/Shaopeng Zeng.jpg';
+import serChaImg from '../images/Serena Chan.jpg';
+import rohHerImg from '../images/Rohan Herur.jpg';
+import lauSiuImg from '../images/Lauren Siu.jpg';
+import laiWanImg from '../images/Laine Wang.jpeg';
+import ianZheImg from '../images/Ian Zheng.JPG';
+import halMorImg from '../images/Haley_Morgan.jpg';
+import evaLeuImg from '../images/Evan Leung.jpg';
+import cinZhaImg from '../images/Cindy Zhang.JPG';
+import briRuiImg from '../images/Brian Rui.jpg';
+import alePalImg from '../images/Alex Palacios.jpg';
 
 
 
@@ -291,7 +300,103 @@ const tileData = [
     description: 'Applied Mathematics and Statistics, Computer Science',
   },
 
+  {
+    img: shaZenImg,
+    name: 'Shaopeng Zeng',
+    role: 'Fullstack',
+    description: 'Molecular and Cellular Biology, Computer Science',
+  },
 
+  {
+    img: halMorImg,
+    name: 'Haley Morgan',
+    role: 'Fullstack',
+    description: 'Chemical and Biomolecular Engineering',
+  },
+
+  {
+    img: alePalImg,
+    name: 'Alex Palacios',
+    role: 'Fullstack',
+    description: 'Applied Mathematics and Statistics, Computer Science',
+  },
+
+  {
+    img: briRuiImg,
+    name: 'Brian Rui',
+    role: 'Simulation',
+    description: 'Computer Science',
+  },
+
+  {
+    img: rohHerImg,
+    name: 'Rohan Herur',
+    role: 'Simulation',
+    description: 'Molecular and Cellular Biology, Computer Science',
+  },
+
+  {
+    img: laiWanImg,
+    name: 'Laine Wang',
+    role: 'Simulation',
+    description: 'Chemical and Biomolecular Engineering, Applied Mathematics and Statistics',
+  },
+
+  {
+    img: cinZhaImg,
+    name: 'Cindy Zhang',
+    role: 'Simulation',
+    description: 'Biomedical Engineering, Computer Science',
+  },
+
+  {
+    img: yinZhaImg,
+    name: 'Ying Zhang',
+    role: 'ML',
+    description: 'Applied Mathematics and Statistics, Computer Science',
+  },
+
+  {
+    img: kimZoeImg,
+    name: 'Zoe Kim',
+    role: 'ML',
+    description: 'Biology, Computer Science',
+  },
+
+  {
+    img: evaLeuImg,
+    name: 'Evan Leung',
+    role: 'ML',
+    description: 'Computer Science',
+  },
+
+  {
+    img: lauSiuImg,
+    name: 'Lauren Siu',
+    role: 'ML',
+    description: 'Electrical and Computer Engineering ',
+  },
+
+  {
+    img: siLiImg,
+    name: 'Siyu Li',
+    role: 'ML',
+    description: 'Applied Mathematics and Statistics, Computer Science',
+  },
+
+  {
+    img: serChaImg,
+    name: 'Serena Chan',
+    role: 'Information Support',
+    description: 'Molecular and Cellular Biology,  Women, Gender and Sexuality Studies',
+  },
+
+  {
+    img: ianZheImg,
+    name: 'Ian Zheng',
+    role: 'Information Support',
+    description: 'Computer Science, Economics',
+  },
 
 ];
 
