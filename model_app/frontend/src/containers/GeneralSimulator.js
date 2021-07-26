@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./GeneralSimulator.css";
 import ConfigurationsPanel from "../components/ConfigurationsPanel";
 import { Typography } from "@material-ui/core";
-import okc_city from "../images/OKC_CITY.jpg";
+import okc_city from "../images/okc_skyline.png";
 
 class GeneralSimulator extends Component {
   constructor() {
