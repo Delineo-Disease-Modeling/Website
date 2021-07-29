@@ -3,12 +3,13 @@ import { withStyles } from "@material-ui/core/styles";
 import "./GeneralSimulator.css";
 import ConfigurationsPanel from "../components/ConfigurationsPanel";
 import { Typography, Grid } from "@material-ui/core";
-import okc_city from "../images/OKC_CITY.jpg";
+//import okc_city from "../images/OKC_CITY.jpg";
 import DailyChart from "../components/Graphs/DailyChart"
 import CumulativeChart from "../components/Graphs/CumulativeChart"
 import PieChart from "../components/Graphs/PieChart"
 import Graph4 from "../components/Graphs/Graph4"
 import dummy_data from "../const/dummyGraphData"
+import okc_city from "../images/okc_skyline.png";
 
 const styles = (theme) => ({
   graph: {
