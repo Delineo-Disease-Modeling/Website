@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
-import "./GeneralSimulator.css";
 import ConfigurationsPanel from "../components/ConfigurationsPanel";
 import { Typography, Grid } from "@material-ui/core";
 //import okc_city from "../images/OKC_CITY.jpg";
@@ -17,7 +16,11 @@ const styles = (theme) => ({
     margin: '20px',
     borderRadius: '15px',
     padding: '10px',
-  }
+  },
+  content: {
+    backgroundColor: "rgba(49,53,56,255)",
+    overflow: 'auto',
+  },
 });
 
 var getData = () => {
@@ -89,7 +92,7 @@ class GeneralSimulator extends Component {
     const { classes } = this.props;
     return (
 
-      <div className="content">
+      <div className= {classes.content}>
         <Grid container spacing={3}>
           <Grid item xs={4} >
             <div className={classes.graph}>
