@@ -22,8 +22,8 @@ export default function CarouselSlide(props) {
                     </div >
                 </Slide>
                 :
-                <Grid container spacing={1} alignItems='baseline' >
-                    <Grid item xs={12} sm={6} md={4} style={{ overflow: 'hidden' }}>
+                <Grid container spacing={1} alignItems='stretch'>
+                    <Grid item xs={12} sm={4} style={{ overflow: 'hidden'}}>
                         <Slide in={props.slideIn} direction={props.slideDirection}>
                             <div key={"thisGrid" + index}>
                                 {props.addCard(classes, prev, "prev" + index)}
@@ -31,14 +31,14 @@ export default function CarouselSlide(props) {
                         </Slide>
                     </Grid>
 
-                    <Grid item xs={12} sm={6} md={4} style={{ overflow: 'hidden' }}>
+                    <Grid item xs={12} sm={4} style={{ overflow: 'hidden' }}>
                         <Slide in={props.slideIn} direction={props.slideDirection}>
                             <div key={"thisGrid" + index}>
                                 {props.addCard(classes, current, index, "this" + index)}
                             </div >
                         </Slide>
                     </Grid>
-                    <Grid item xs={12} sm={6} md={4} style={{ overflow: 'hidden' }}>
+                    <Grid item xs={12} sm={4} style={{ overflow: 'hidden'}}>
                         <Slide in={props.slideIn} direction={props.slideDirection}>
                             <div key={"thisGrid" + index}>
                                 {props.addCard(classes, next, "next" + index)}

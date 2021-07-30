@@ -211,8 +211,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
 
-  dim: {
-    // opacity: 0.25
+  cardStyle: {
+    maxHeight: '700px',
   },
 
   svg: {
@@ -221,10 +221,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   carousel: {
-    display: "flex",
-    minHeight: "70vh",
-    maxWidth: '100%',
-    justifyContent: 'center'
+    width: '100%',
   },
 
   fadeOut: {
@@ -302,9 +299,8 @@ function DevelopmentBlog(props) {
   });
 
   const addCard = (classes, row, key, current = false) => {
-    const currentStyle = current ? null : classes.dim;
     return (
-      <div className={currentStyle}>
+      <div className={classes.cardStyle}>
         <Card key={key} className={classes.card}>
           <CardActionArea href={row.href}>
             <CardMedia
@@ -530,31 +526,29 @@ function DevelopmentBlog(props) {
             </IconButton>
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <Grid container alignItems='center' alignContents='space-between' className={classes.carousel}>
-              <Grid item xs={12} sm={6} md={1}>
+            <Grid container alignItems='center' spacing={3} className={classes.carousel}>
+              <Grid item xs={1}>
                 <Arrow
                   className={classes.svg}
                   direction='left'
                   clickFunction={() => onArrowClick('left')}
                 />
               </Grid>
-              <Grid item xs={12} sm={6} md={10}>
-                <div style={{ minWidth: "80%" }}>
+              <Grid item xs={10} >
                   <CarouselSlide
                     articles={articles}
                     num={index} addCard={addCard} classes={classes}
                     slideDirection={slideDirection}
                     slideIn={slideIn}></CarouselSlide>
-                </div>
               </Grid>
-              <Grid item xs={12} sm={6} md={1}>
+              <Grid item xs={1} >
                 <Arrow
                   className={classes.svg}
                   direction='right'
                   clickFunction={() => onArrowClick('right')}
                 />
               </Grid>
-              <Grid item xs={12} sm={6} md={12}>
+              <Grid item xs={12}>
                 <Box my={4} className={classes.paginationContainer}></Box>
               </Grid>
             </Grid>
