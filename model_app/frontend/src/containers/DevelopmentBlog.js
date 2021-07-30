@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
@@ -212,7 +212,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   dim: {
-    opacity: 0.25
+    // opacity: 0.25
   },
 
   svg: {
@@ -281,25 +281,25 @@ function DevelopmentBlog(props) {
       setIndex(newIndex);
       setSlideDirection(oppDirection);
       setSlideIn(true);
-    }, -500);
+    }, 100);
   };
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-        if (e.keyCode === 39) {
-            onArrowClick('right');
-        }
-        if (e.keyCode === 37) {
-            onArrowClick('left');
-        }
+      if (e.keyCode === 39) {
+        onArrowClick('right');
+      }
+      if (e.keyCode === 37) {
+        onArrowClick('left');
+      }
     };
 
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-        window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keydown', handleKeyDown);
     };
-});
+  });
 
   const addCard = (classes, row, key, current = false) => {
     const currentStyle = current ? null : classes.dim;
@@ -429,7 +429,7 @@ function DevelopmentBlog(props) {
   }
 
   return (
-    <div className="App" style={{ backgroundColor: "#222629", overflowX: 'hidden'}}>
+    <div className="App" style={{ backgroundColor: "#222629", overflowX: 'hidden' }}>
       <AppBar
         className={classes.appBar}
         style={{ background: "#222629", boxShadow: "none" }}
@@ -530,26 +530,34 @@ function DevelopmentBlog(props) {
             </IconButton>
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <CardContent className={classes.carousel}>
-              <Arrow
-                className={classes.svg}
-                direction='left'
-                clickFunction={() => onArrowClick('left')}
-              />
-                <div style={{minWidth: "80%"}}>
-                  <CarouselSlide 
-                  articles={articles} 
-                  num={index} addCard={addCard} classes={classes}
-                  slideDirection={slideDirection}
-                  slideIn={slideIn}></CarouselSlide>
+            <Grid container alignItems='center' alignContents='space-between' className={classes.carousel}>
+              <Grid item xs={12} sm={6} md={1}>
+                <Arrow
+                  className={classes.svg}
+                  direction='left'
+                  clickFunction={() => onArrowClick('left')}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6} md={10}>
+                <div style={{ minWidth: "80%" }}>
+                  <CarouselSlide
+                    articles={articles}
+                    num={index} addCard={addCard} classes={classes}
+                    slideDirection={slideDirection}
+                    slideIn={slideIn}></CarouselSlide>
                 </div>
-              <Arrow
-                className={classes.svg}
-                direction='right'
-                clickFunction={() => onArrowClick('right')}
-              />
-              <Box my={4} className={classes.paginationContainer}></Box>
-            </CardContent>
+              </Grid>
+              <Grid item xs={12} sm={6} md={1}>
+                <Arrow
+                  className={classes.svg}
+                  direction='right'
+                  clickFunction={() => onArrowClick('right')}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6} md={12}>
+                <Box my={4} className={classes.paginationContainer}></Box>
+              </Grid>
+            </Grid>
           </Collapse>
         </Card>
       </Container>

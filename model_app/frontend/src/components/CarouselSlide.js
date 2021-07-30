@@ -22,7 +22,7 @@ export default function CarouselSlide(props) {
                     </div >
                 </Slide>
                 :
-                <Grid container spacing={1} alignItems="center" justify="center" >
+                <Grid container spacing={1} alignItems='baseline' >
                     <Grid item xs={12} sm={6} md={4} style={{ overflow: 'hidden' }}>
                         <Slide in={props.slideIn} direction={props.slideDirection}>
                             <div key={"thisGrid" + index}>
