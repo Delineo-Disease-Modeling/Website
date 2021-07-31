@@ -147,7 +147,6 @@ const useStyles = makeStyles((theme) => ({
   },
 
   authorDate: {
-    width: "300px",
     marginLeft: "0 0px",
     marginTop: "0 0px",
     padding: "0 0px",
@@ -163,6 +162,8 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "#66FCF1",
       textDecoration: "none",
     },
+    height: '35rem',
+    overflowY: 'scroll'
   },
 
   subtextalign: {
@@ -198,12 +199,10 @@ const useStyles = makeStyles((theme) => ({
 
   cardActions: {
     display: "flex",
-    margin: "0 10px",
-    justifyContent: "space-between",
-  },
-
-  author: {
-    display: "flex",
+    justifyContent: "space-around",
+    justifyItems: 'center',
+    margin: '10px auto',
+    padding: '0 5px'
   },
 
   paginationContainer: {
@@ -300,7 +299,6 @@ function DevelopmentBlog(props) {
 
   const addCard = (classes, row, key, current = false) => {
     return (
-      <div className={classes.cardStyle}>
         <Card key={key} className={classes.card}>
           <CardActionArea href={row.href}>
             <CardMedia
@@ -342,7 +340,7 @@ function DevelopmentBlog(props) {
                   variant="subtitle2"
                   component="p"
                 >
-                  <span style={{ fontWeight: "bold" }}>
+                  <span style={{ fontWeight: "bold"}}>
                     {row.author}{" "}
                   </span>
                   - {row.date}
@@ -420,7 +418,6 @@ function DevelopmentBlog(props) {
             </Box>
           </CardActions>
         </Card>
-      </div>
     )
   }
 
