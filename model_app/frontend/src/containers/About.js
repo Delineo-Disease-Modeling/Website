@@ -48,6 +48,13 @@ const styles = {
 		fontSize: '50px',
 		lineHeight: '1.25'
 	},
+
+	subtitleMobile: {
+		textAlign: 'left',
+		fontWeight: '400',
+		fontSize: '20px',
+	},
+
 	border: {
 		position: 'absolute',
 		top: '300px',
@@ -94,11 +101,13 @@ const styles = {
 	}
 }
 
+
 const AccordionDetails = withStyles((theme) => ({
 	root: {
 		padding: theme.spacing(2),
 	},
 }))(MuiAccordionDetails);
+
 
 const ColAccordion = withStyles({
 	root: {
@@ -149,6 +158,25 @@ class About extends React.Component {
 
 	render() {
 		const { classes } = this.props;
+		function resize() {
+			let isDesktop = (window.innerWidth >= 760);
+			if (isDesktop) {
+				return classes.subtitle;
+			  }
+				return classes.subtitleMobile;
+			
+		  };
+
+
+		  function resizeForm() {
+			let isDesktop = (window.innerWidth >= 760);
+			if (isDesktop) {
+				return '40%';
+			  }
+				return '60%';
+			
+		  };
+	
 		return (
 			<div className={classes.cardBackground}>
 				<div className={classes.heading} id="heading-id">

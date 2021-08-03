@@ -67,6 +67,26 @@ const styles = {
     maxWidth: "1000px",
   },
 
+
+  h4: {
+    color: "white",
+    marginRight: 100,
+    marginLeft: 100,
+    marginTop: 40,
+
+    width: "fit-content",
+
+    fontSize: 15,
+    textAlign: "center",
+    alignSelf: "center",
+    alignItems: "center",
+    borderRadius: "25px",
+    border: "2px solid #2f3538",
+    padding: "20px 20px 20px 20px",
+    backgroundColor: "#2f3538",
+    maxWidth: "1000px",
+  },
+
   focus: {
     backgroundColor: "#222629",
     color: "#66FCF1",
@@ -135,6 +155,8 @@ class TeamFilter extends Component {
   // This syntax ensures `this` is bound within handleClick.
   // Warning: this is *experimental* syntax.
 
+  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -159,6 +181,7 @@ class TeamFilter extends Component {
     });
   }
 
+
   render() {
     const { classes } = this.props;
 
@@ -167,6 +190,16 @@ class TeamFilter extends Component {
     const { sim } = this.state;
     const { ml } = this.state;
     const { info } = this.state;
+
+    function resize() {
+      let isDesktop = (window.innerWidth);
+      if (isDesktop !== 1000) {
+          return classes.h3;
+        }
+          return classes.h4;
+    };
+
+
 
     return (
       <div>
@@ -373,7 +406,9 @@ class TeamFilter extends Component {
         {fs ? (
           <div>
             <div align="center">
-              <Typography varient="h3" className={classes.h3} align="center">
+              <Typography className={resize()} align="center">
+
+              
                 Members of the fullstack team work throughout the stack. Our web
                 application is built using the MERN stack (MongoDB, Express,
                 ReactJS, NodeJS) and Unity Webgl. Members of this team also
@@ -392,7 +427,7 @@ class TeamFilter extends Component {
         {sim ? (
           <div>
             <div align="center">
-              <Typography varient="h3" className={classes.h3} align="center">
+              <Typography  className={resize()} align="center">
                 The simulation team is responsible for the implementation of the
                 simulation that lies at the heart of the Delineo project. Team
                 members focus on programming the various modules, algorithms,
@@ -411,7 +446,7 @@ class TeamFilter extends Component {
         {ml ? (
           <div>
             <div align="center">
-              <Typography varient="h3" className={classes.h3}>
+              <Typography  className={resize()}>
                 The machine learning group is tackling the challenge of learning
                 from the massive amounts of geolocation data the Delineo project
                 has access to. One of the main focuses is on developing machine
@@ -432,7 +467,7 @@ class TeamFilter extends Component {
         {info ? (
           <div>
             <div align="center">
-              <Typography varient="h2" className={classes.h3}>
+              <Typography varient="h2"className={resize()}>
                 The information support team is responsible for gathering,
                 summarizing, and disseminating research articles/papers that
                 prove helpful for informing the development of Delineo's model.
