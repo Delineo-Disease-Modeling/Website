@@ -10,6 +10,7 @@ import Link from "@material-ui/core/Link";
 //import DevelopmentBlogCards from "./DevelopmentBlogCards.js";
 import anytownScreenshot from "../images/anytownScreenshot.png";
 import HomeBlog from "./HomeBlog.js";
+import DevelopmentBlog from "./DevelopmentBlog.js"
 
 const styles = {
   
@@ -104,9 +105,10 @@ class Home extends Component {
           </div>
         </div>
 
-        <HomeCarousel />
+        <DevelopmentBlog />
+         <HomeCarousel /> 
 
-        <HomeBlog />
+        
 
         <div
           className={classes.teamPage}
