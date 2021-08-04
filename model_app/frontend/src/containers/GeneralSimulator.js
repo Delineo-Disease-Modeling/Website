@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
 import ConfigurationsPanel from "../components/ConfigurationsPanel";
 import { Typography, Grid } from "@material-ui/core";
 //import okc_city from "../images/OKC_CITY.jpg";
@@ -22,6 +22,19 @@ const styles = (theme) => ({
     overflow: 'auto',
   },
 });
+
+const useStyles = makeStyles((theme) => ({
+  graph: {
+    backgroundColor: "rgba(196,196,196,255)",
+    margin: '20px',
+    borderRadius: '15px',
+    padding: '10px',
+  },
+  content: {
+    backgroundColor: "rgba(49,53,56,255)",
+    overflow: 'auto',
+  },
+}));
 
 var getData = () => {
   var data = [];
@@ -62,126 +75,118 @@ function getTotalCases(data) {
   })
 }
 
-class GeneralSimulator extends Component {
-  constructor() {
-    super();
-    this.state = {
-      configurations: {
-        maskPercent: 30,
-        capacityPercent: 30,
-        massPercent: 30,
-        stayAtHome: false,
-        schoolsShutdown: false,
-        restaurantsShutdown: false,
-        gymsShutdown: false,
-        barsShutdown: false,
-        vaccinePercent: 30,
-      },
-      data: getData()
-    }
-  }
+function GeneralSimulator(props) {
+  const [state, setState] = React.useState({
+    configurations: {
+      maskPercent: 30,
+      capacityPercent: 30,
+      massPercent: 30,
+      stayAtHome: false,
+      schoolsShutdown: false,
+      restaurantsShutdown: false,
+      gymsShutdown: false,
+      barsShutdown: false,
+      vaccinePercent: 30,
+    },
+    data: getData()
+  });
 
   //Update configurations once user presses confirm
-  updateConfigurations = (configs) => {
-    this.setState({
-      configurations: configs
-    })
+  const updateConfigurations = (configs) => {
+    setState({ ...state, configurations: configs });
   }
 
-  render() {
-    const { classes } = this.props;
-    return (
+  const classes = useStyles();
 
-      <div className= {classes.content}>
-        <Grid container spacing={3}>
-          <Grid item xs={4} >
-            <div className={classes.graph}>
-              <CumulativeChart data={this.state.data} height={300} width={600} />
-            </div>
-          </Grid>
-          <Grid item xs={4}>
-            <h1
+  return (
+    <div className={classes.content}>
+      <Grid container spacing={3}>
+        <Grid item xs={4} >
+          <div className={classes.graph}>
+            <CumulativeChart data={state.data} height={300} width={600} />
+          </div>
+        </Grid>
+        <Grid item xs={4}>
+          <h1
+            style={{
+              color: "white",
+              marginTop: "2%",
+              marginBottom: "1%"
+            }}>
+            Oklahoma City
+          </h1>
+          <div>
+            <img
+              img src={okc_city} alt="okc"
+              height={100}
+              width={"100%"}
               style={{
-                color: "white",
-                marginTop: "2%",
-                marginBottom: "1%"
-              }}>
-              Oklahoma City
-            </h1>
-            <div>
-              <img
-                img src={okc_city} alt="okc"
-                height={100}
-                width={"100%"}
-                style={{
-                  alignSelf: 'center',
-                  marginBottom: "1%",
-                }}
-              />
-            </div>
-          </Grid>
-          <Grid item xs={4}>
-            <div className={classes.graph}>
-              <DailyChart data={this.state.data} height={300} width={600} />
-            </div>
-          </Grid>
-          <Grid item xs={4}>
-            <div className={classes.graph}>
-              <PieChart data={this.state.data[0].case_distribution} innerRadius={50} outerRadius={150} />
-            </div>
-          </Grid>
-          <Grid item xs={4}>
+                alignSelf: 'center',
+                marginBottom: "1%",
+              }}
+            />
+          </div>
+        </Grid>
+        <Grid item xs={4}>
+          <div className={classes.graph}>
+            <DailyChart data={state.data} height={300} width={600} />
+          </div>
+        </Grid>
+        <Grid item xs={4}>
+          <div className={classes.graph}>
+            <PieChart data={state.data[0].case_distribution} innerRadius={50} outerRadius={150} />
+          </div>
+        </Grid>
+        <Grid item xs={4}>
 
 
 
-            <div>
-              {/*PLEASE READ:
+          <div>
+            {/*PLEASE READ:
           ======================================================================================
           All the stuff below in this div are not needed, someone on Haley/Ryan's scrum team
           was kind enough to leave this here to show how to access the various state variables.
           Please remove and replace with the Population and POI info (see figma) when ready.
            */}
-              <Typography>
-                Mask wearing percentage: {this.state.configurations.maskPercent}
-              </Typography>
-              <Typography>
-                Capacity restrictions: {this.state.configurations.capacityPercent}
-              </Typography>
-              <Typography>
-                Mass testing: {this.state.configurations.massPercent}
-              </Typography>
-              <Typography>
-                Stay at home order: {this.state.configurations.stayAtHome.toString()}
-              </Typography>
-              <Typography>
-                Schools: {this.state.configurations.schoolsShutdown.toString()}
-              </Typography>
+            <Typography>
+              Mask wearing percentage: {state.configurations.maskPercent}
+            </Typography>
+            <Typography>
+              Capacity restrictions: {state.configurations.capacityPercent}
+            </Typography>
+            <Typography>
+              Mass testing: {state.configurations.massPercent}
+            </Typography>
+            <Typography>
+              Stay at home order: {state.configurations.stayAtHome.toString()}
+            </Typography>
+            <Typography>
+              Schools: {state.configurations.schoolsShutdown.toString()}
+            </Typography>
+            <Typography>
+              Restaurants: {state.configurations.restaurantsShutdown.toString()}
+            </Typography>
+            <Typography>
+              Gyms: {state.configurations.gymsShutdown.toString()}
+            </Typography>
+            <Typography>
+              Bars: {state.configurations.barsShutdown.toString()}
+            </Typography>
+            <Typography>
+              Vaccination percentage: {state.configurations.vaccinePercent}
+            </Typography>
 
-              <Typography>
-                Restaurants: {this.state.configurations.restaurantsShutdown.toString()}
-              </Typography>
-              <Typography>
-                Gyms: {this.state.configurations.gymsShutdown.toString()}
-              </Typography>
-              <Typography>
-                Bars: {this.state.configurations.barsShutdown.toString()}
-              </Typography>
-              <Typography>
-                Vaccination percentage: {this.state.configurations.vaccinePercent}
-              </Typography>
-
-            </div>
-          </Grid>
-          <Grid item xs={4}>
-            <div className={classes.graph}>
-              <Graph4 data={this.state.data} height={300} width={600}></Graph4>
-            </div>
-          </Grid>
+          </div>
         </Grid>
-        <ConfigurationsPanel updateConfigs={this.updateConfigurations} configs={this.state.configurations} />
-      </div >
-    );
-  }
+        <Grid item xs={4}>
+          <div className={classes.graph}>
+            <Graph4 data={state.data} height={300} width={600}></Graph4>
+          </div>
+        </Grid>
+      </Grid>
+      <ConfigurationsPanel updateConfigs={updateConfigurations} configs={state.configurations} />
+    </div >
+  )
 }
 
 export default withStyles(styles)(GeneralSimulator);
