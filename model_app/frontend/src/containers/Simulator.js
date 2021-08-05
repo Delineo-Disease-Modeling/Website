@@ -18,10 +18,10 @@ import {MobileView} from "react-device-detect"
 
 const unityContext = new UnityContext({
 
-  loaderUrl: "./Build/July28.loader.js",
-  dataUrl: "./Build/July28.data",
-  frameworkUrl: "./Build/July28.framework.js",
-  codeUrl: "./Build/July28.wasm",
+  loaderUrl: "./Build/Aug5.loader.js",
+  dataUrl: "./Build/Aug5.data",
+  frameworkUrl: "./Build/Aug5.framework.js",
+  codeUrl: "./Build/Aug5.wasm",
 
 });
 
