@@ -146,9 +146,7 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
   },
 
-  authorDate: {
-    marginLeft: "0 0px",
-    marginTop: "0 0px",
+  author: {
     padding: "0 0px",
     margin: "0 0px",
     textAlign: "left",
@@ -333,12 +331,7 @@ function DevelopmentBlog(props) {
           </CardContent>
         </CardActionArea>
         <CardActions className={classes.cardActions}>
-          <Box className={classes.author}>
-            <Box
-              component="span"
-              m={1}
-              className={classes.authorDate}
-            >
+          <Box className={classes.author} flexWrap="wrap" style={{width: '230px'}}>
               <Typography
                 className={classes.creditRow}
                 variant="subtitle2"
@@ -349,7 +342,6 @@ function DevelopmentBlog(props) {
                 </span>
                 - {row.date}
               </Typography>
-            </Box>
           </Box>
           <Box>
             <PopupState
