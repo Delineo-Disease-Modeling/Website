@@ -162,14 +162,17 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "#66FCF1",
       textDecoration: "none",
     },
-    height: '35rem',
-    overflowY: 'scroll'
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    height: '42rem'
   },
 
   subtextalign: {
     textAlign: "justify",
     alignItems: "justifyContent",
     color: "black",
+    height: '10rem'
   },
 
   creditRow: {
@@ -191,6 +194,7 @@ const useStyles = makeStyles((theme) => ({
 
   media: {
     height: 240,
+    marginBottom: '1rem'
   },
 
   align: {
@@ -299,95 +303,95 @@ function DevelopmentBlog(props) {
 
   const addCard = (classes, row, key, current = false) => {
     return (
-        <Card key={key} className={classes.card}>
-          <CardActionArea href={row.href}>
-            <CardMedia
-              className={classes.media}
-              image={row.img}
-              title="Development Blog Img"
-            />
-            <CardContent className={classes.align}>
+      <Card key={key} className={classes.card}>
+        <CardActionArea href={row.href}>
+          <CardMedia
+            className={classes.media}
+            image={row.img}
+            title="Development Blog Img"
+          />
+          <CardContent className={classes.align}>
+            <Typography
+              className={classes.title}
+              style={{
+                fontWeight: "bold",
+                marginTop: "0 0px",
+              }}
+              gutterBottom
+              variant="h5"
+              component="h2"
+            >
+              {row.title}
+            </Typography>
+            <Typography
+              className={classes.subtextalign}
+              variant="body2"
+              component="p"
+            >
+              {row.subtext}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions className={classes.cardActions}>
+          <Box className={classes.author}>
+            <Box
+              component="span"
+              m={1}
+              className={classes.authorDate}
+            >
               <Typography
-                className={classes.title}
-                style={{
-                  fontWeight: "bold",
-                  marginTop: "0 0px",
-                }}
-                gutterBottom
-                variant="h5"
-                component="h2"
-              >
-                {row.title}
-              </Typography>
-              <Typography
-                className={classes.subtextalign}
-                variant="body2"
+                className={classes.creditRow}
+                variant="subtitle2"
                 component="p"
               >
-                {row.subtext}
+                <span style={{ fontWeight: "bold" }}>
+                  {row.author}{" "}
+                </span>
+                - {row.date}
               </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions className={classes.cardActions}>
-            <Box className={classes.author}>
-              <Box
-                component="span"
-                m={1}
-                className={classes.authorDate}
-              >
-                <Typography
-                  className={classes.creditRow}
-                  variant="subtitle2"
-                  component="p"
-                >
-                  <span style={{ fontWeight: "bold"}}>
-                    {row.author}{" "}
-                  </span>
-                  - {row.date}
-                </Typography>
-              </Box>
             </Box>
-            <Box>
-              <PopupState
-                variant="popover"
-                popupId="demo-popup-menu"
-              >
-                {(popupState) => (
-                  <React.Fragment>
-                    <IconButton
-                      aria-label="share"
-                      {...bindTrigger(popupState)}
+          </Box>
+          <Box>
+            <PopupState
+              variant="popover"
+              popupId="demo-popup-menu"
+            >
+              {(popupState) => (
+                <React.Fragment>
+                  <IconButton
+                    aria-label="share"
+                    {...bindTrigger(popupState)}
+                  >
+                    <ShareIcon style={{ color: "black" }} />
+                  </IconButton>
+                  <Menu
+                    anchorOrigin={{
+                      vertical: "bottom",
+                      horizontal: "center",
+                    }}
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "center",
+                    }}
+                    {...bindMenu(popupState)}
+                  >
+                    <MenuItem
+                      style={{ color: "white" }}
+                      onClick={popupState.close}
                     >
-                      <ShareIcon style={{ color: "black" }} />
-                    </IconButton>
-                    <Menu
-                      anchorOrigin={{
-                        vertical: "bottom",
-                        horizontal: "center",
-                      }}
-                      transformOrigin={{
-                        vertical: "top",
-                        horizontal: "center",
-                      }}
-                      {...bindMenu(popupState)}
-                    >
-                      <MenuItem
-                        style={{ color: "white" }}
-                        onClick={popupState.close}
+                      <TwitterButton
+                        message={message}
+                        url={url + row.href}
                       >
-                        <TwitterButton
-                          message={message}
-                          url={url + row.href}
-                        >
-                          <TwitterIcon fontSize="small" />
-                        </TwitterButton>
-                      </MenuItem>
+                        <TwitterIcon fontSize="small" />
+                      </TwitterButton>
+                    </MenuItem>
 
-                      {/* IN ORDER TO HAVE A FACEBOOK SHARE, WE NEED A VALID FB APP ID 
+                    {/* IN ORDER TO HAVE A FACEBOOK SHARE, WE NEED A VALID FB APP ID 
                                   see: https://webkul.com/blog/how-to-generate-facebook-app-id/
                               */}
 
-                      {/* <MenuItem
+                    {/* <MenuItem
                                         style={{ color: "white" }}
                                         onClick={popupState.close}
                                       >
@@ -400,24 +404,24 @@ function DevelopmentBlog(props) {
                                         </FacebookButton>
                                       </MenuItem> */}
 
-                      <MenuItem
-                        style={{ color: "white" }}
-                        onClick={popupState.close}
+                    <MenuItem
+                      style={{ color: "white" }}
+                      onClick={popupState.close}
+                    >
+                      <EmailButton
+                        message={message}
+                        url={url + row.href}
                       >
-                        <EmailButton
-                          message={message}
-                          url={url + row.href}
-                        >
-                          <EmailIcon fontSize="small" />
-                        </EmailButton>
-                      </MenuItem>
-                    </Menu>
-                  </React.Fragment>
-                )}
-              </PopupState>
-            </Box>
-          </CardActions>
-        </Card>
+                        <EmailIcon fontSize="small" />
+                      </EmailButton>
+                    </MenuItem>
+                  </Menu>
+                </React.Fragment>
+              )}
+            </PopupState>
+          </Box>
+        </CardActions>
+      </Card>
     )
   }
 
@@ -523,36 +527,28 @@ function DevelopmentBlog(props) {
             </IconButton>
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <Grid container alignItems='center' spacing={3} className={classes.carousel}>
-              <Grid item xs={1}>
-                <Arrow
-                  className={classes.svg}
-                  direction='left'
-                  clickFunction={() => onArrowClick('left')}
-                />
-              </Grid>
-              <Grid item xs={10} >
-                  <CarouselSlide
-                    articles={articles}
-                    num={index} addCard={addCard} classes={classes}
-                    slideDirection={slideDirection}
-                    slideIn={slideIn}></CarouselSlide>
-              </Grid>
-              <Grid item xs={1} >
-                <Arrow
-                  className={classes.svg}
-                  direction='right'
-                  clickFunction={() => onArrowClick('right')}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <Box my={4} className={classes.paginationContainer}></Box>
-              </Grid>
-            </Grid>
+            <Box display='flex' flexWrap="nowrap" justifyContent="center" className={classes.carousel}>
+              <Arrow
+                className={classes.svg}
+                direction='left'
+                clickFunction={() => onArrowClick('left')}
+              />
+              <CarouselSlide
+                articles={articles}
+                num={index} addCard={addCard} classes={classes}
+                slideDirection={slideDirection}
+                slideIn={slideIn}></CarouselSlide>
+              <Arrow
+                className={classes.svg}
+                direction='right'
+                clickFunction={() => onArrowClick('right')}
+              />
+            </Box>
+            <Box my={4} className={classes.paginationContainer}></Box>
           </Collapse>
         </Card>
       </Container>
-    </div>
+    </div >
   );
 }
 

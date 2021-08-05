@@ -11,7 +11,7 @@ export default function CarouselSlide(props) {
     const current = props.articles[index];
     const prev = index > 0 ? props.articles[index - 1] : props.articles[props.articles.length - 1]
     const next = index < props.articles.length - 1 ? props.articles[index + 1] : props.articles[0]
-    const matches = useMediaQuery('(min-width:800px)');
+    const matches = useMediaQuery('(min-width:980px)');
 
     const getContent = () => {
         return (
