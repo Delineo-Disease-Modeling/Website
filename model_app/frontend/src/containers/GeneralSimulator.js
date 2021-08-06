@@ -93,7 +93,7 @@ class GeneralSimulator extends Component {
         <Grid container spacing={3}>
           <Grid item xs={4} >
             <div className={classes.graph}>
-              <CumulativeChart data={this.state.data} height={300} width={600} />
+              <CumulativeChart data={this.state.data} height={370} width={700} />
             </div>
           </Grid>
           <Grid item xs={4}>
@@ -119,7 +119,7 @@ class GeneralSimulator extends Component {
           </Grid>
           <Grid item xs={4}>
             <div className={classes.graph}>
-              <DailyChart data={this.state.data} height={300} width={600} />
+              <DailyChart data={this.state.data} height={370} width={700} />
             </div>
           </Grid>
           <Grid item xs={4}>
@@ -171,7 +171,7 @@ class GeneralSimulator extends Component {
           </Grid>
           <Grid item xs={4}>
             <div className={classes.graph}>
-              <Graph4 data={this.state.data} height={300} width={600}></Graph4>
+              <Graph4 data={this.state.data} height={370} width={700}></Graph4>
             </div>
           </Grid>
         </Grid>
