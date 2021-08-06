@@ -90,8 +90,7 @@ class Home extends Component {
               Interactive Disease Simulation
             </h1>
             <h5 style={{ marginBottom: "30px" }}>
-              Bring a fresh approach to the challenge of modeling the spread of
-              pandemics
+              Bringing a fresh approach to the challenge of modeling disease spread
             </h5>{" "}
             <Button
               className={classes.bigButton}
@@ -117,8 +116,7 @@ class Home extends Component {
               We Are Delineo
             </h1>
             <h5 style={{ marginBottom: "30px" }}>
-              Bring a fresh approach to the challenge of modeling the spread of
-              pandemics
+              Bringing a fresh approach to the challenge of modeling disease spread
             </h5>
             <Button
               className={classes.bigButton}

@@ -100,20 +100,29 @@ function DevelopmentBlogCards(props) {
         return classes.cardActionsMobile;
     
   };
-
-  //let url = process.env.PUBLIC_URL + "developmentblog/date-2";
-  //let url = https://covidweb.isi.jhu.edu/developmentblog/Post1
-  //developmentblog/date-2
-
   
   const url = "https://covidweb.isi.jhu.edu";
   const message =
     "Check out this article from the Delineo Disease Modeling Project";
 
+  {/* 
+    'articles' is an array imported from the const folder, and contains data on the blog posts.
+    The DevelopmentBlogCards functional component accepts props that indicate whether this component
+    is being rendered on the home page or not. If it is, then we limit the amount of cards rendered
+    to the three most recent posts by slicing 'articles' into 'articleArray'. Otherwise 'articleArray'
+    is just a copy of 'articles'
+  */}
+  var articleArray = articles
+
+  if (props.HomePage) {
+    articleArray = articles.slice(1).slice(-3)
+  }
+
+
   return (
     <CardContent>
       <Grid container spacing={3} alignItems="center" justify="center">
-        {articles.map((row) => {
+        {articleArray.map((row) => {
           if (row.type === "Article")
             return (
               <Grid item xs={12} sm={6} md={4}>
