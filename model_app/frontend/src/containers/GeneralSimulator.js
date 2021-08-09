@@ -13,7 +13,7 @@ import okc_city from "../images/okc_skyline.png";
 
 const styles = (theme) => ({
   graph: {
-    backgroundColor: "rgba(196,196,196,255)",
+    backgroundColor: "	#C8C8C8",
     margin: '20px',
     borderRadius: '15px',
     padding: '10px',
