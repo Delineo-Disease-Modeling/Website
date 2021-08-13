@@ -12,17 +12,13 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { Button } from "@material-ui/core";
-import {MobileView} from "react-device-detect"
-
-
+import { MobileView } from "react-device-detect";
 
 const unityContext = new UnityContext({
-
   loaderUrl: "./Build/Aug5.loader.js",
   dataUrl: "./Build/Aug5.data",
   frameworkUrl: "./Build/Aug5.framework.js",
   codeUrl: "./Build/Aug5.wasm",
-
 });
 
 const styles = (theme) => ({
@@ -82,13 +78,9 @@ const styles = (theme) => ({
       backgroundColor: "#66FCF1",
     },
   },
-
 });
 
 class Simulator extends Component {
-
-
-
   constructor() {
     super();
     this.state = {
@@ -99,7 +91,7 @@ class Simulator extends Component {
       jobId: null,
       modalOpen: true,
       isMobile: true,
-      isDesktop: false
+      isDesktop: false,
     };
     this._isMounted = false;
     this.handleClick = this.handleClick.bind(this);
@@ -113,14 +105,13 @@ class Simulator extends Component {
   }
 
   resize() {
-    let isDesktop = (window.innerWidth >= 760);
+    let isDesktop = window.innerWidth >= 760;
     if (isDesktop !== this.state.isDesktop) {
       this.setState({ isDesktop: isDesktop });
     }
   }
 
   handleOnClick = () => {
-
     // if user had an existing job request, delete that
     if (this.state.jobId) {
       axios
@@ -194,7 +185,6 @@ class Simulator extends Component {
 
   //<p style={{ textAlign: 'left', fontSize: '20px', color: '#66FCF1' }}>Model Parameters</p>
 
-
   handleClick = () => {
     console.log("button clicked");
     axios
@@ -217,20 +207,21 @@ class Simulator extends Component {
     console.log("request sent");
   };
 
-
   render() {
     const { data, jobId, loading } = this.state;
     const { classes } = this.props;
 
     // no timeseries: replace with simulation timeseries
     return (
-
       <div className="GreenBackground">
         <Dialog
           open={this.state.modalOpen}
-          onClose={() => this.setState({
-            modalOpen: false
-          })}>
+          onClose={() =>
+            this.setState({
+              modalOpen: false,
+            })
+          }
+        >
           <DialogTitle className={classes.dialogTitle}>
             Simulation Loading
           </DialogTitle>
@@ -242,8 +233,9 @@ class Simulator extends Component {
           </DialogContent>
           <DialogActions>
             <Button
-              onClick={() => { this.setState({ modalOpen: false }) }}
-
+              onClick={() => {
+                this.setState({ modalOpen: false });
+              }}
               //autoFocus
               className={classes.dialogButton}
             >
@@ -253,30 +245,35 @@ class Simulator extends Component {
         </Dialog>
 
         <MobileView>
-        <Dialog
-          open={this.state.isMobile && !this.state.isDesktop}
-          onClose={() => this.setState({
-            isMobile: false
-          })}>
-          <DialogTitle className={classes.dialogTitle}>
-            Mobile Device
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText className={classes.dialogText}>
-              You are on a mobile device. This simulation is best run on a computer.
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button
-              onClick={() => { this.setState({ isMobile: false }) }}
-
-              //autoFocus
-              className={classes.dialogButton}
-            >
-              Continue
-            </Button>
-          </DialogActions>
-        </Dialog>
+          <Dialog
+            open={this.state.isMobile && !this.state.isDesktop}
+            onClose={() =>
+              this.setState({
+                isMobile: false,
+              })
+            }
+          >
+            <DialogTitle className={classes.dialogTitle}>
+              Mobile Device
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText className={classes.dialogText}>
+                You are on a mobile device. This simulation is best run on a
+                computer.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button
+                onClick={() => {
+                  this.setState({ isMobile: false });
+                }}
+                //autoFocus
+                className={classes.dialogButton}
+              >
+                Continue
+              </Button>
+            </DialogActions>
+          </Dialog>
         </MobileView>
 
         <Grid container spacing={3}>
@@ -298,32 +295,46 @@ class Simulator extends Component {
             <br></br>
 
             <div className={classes.bubble} align="center">
-              <Typography variant="h4" className={classes.bold}>About </Typography>
-
-              Anytown, USA is a tool to simulate the spread of COVID-19 in a representative town
-              in the United States. The simulation runs for a time period of two months, assuming
-              a town population of 6,000 people. Movement between facilities is modeled off of actual
-              data from Oklahoma City, Oklahoma. More information regarding how movement is simulated
-              can be found on our development blog. Infection within facilities is predicted using
-              the Wells-Riley formula, and more information can also be found on our development blog.
-              Results of the simulation should not be used to inform public health decisions, and is
-              meant only as a tool to show how COVID-19 might spread.
+              <Typography variant="h4" className={classes.bold}>
+                About{" "}
+              </Typography>
+              Anytown, USA is a tool to simulate the spread of COVID-19 in a
+              representative town in the United States. The simulation runs for
+              a time period of two months, assuming a town population of 6,000
+              people. Movement between facilities is modeled off of actual data
+              from Oklahoma City, Oklahoma. More information regarding how
+              movement is simulated can be found on our development blog.
+              Infection within facilities is predicted using the Wells-Riley
+              formula, and more information can also be found on our development
+              blog. Results of the simulation should not be used to inform
+              public health decisions, and is meant only as a tool to show how
+              COVID-19 might spread.
               <br />
               <br />
               <Typography variant="h4" className={classes.bold}>
                 How to use the simulator{" "}
               </Typography>
-
               1. Adjust the sliders on the left pane to modify
               non-pharmaceutical interventions (NPI's) including:
               <br />
               <br />
               <ul>
-                <li>The percentage of the population that wears masks in stores, restaurants, bars, etc.</li>
+                <li>
+                  The percentage of the population that wears masks in stores,
+                  restaurants, bars, etc.
+                </li>
                 <li>Capacity restrictions on stores and restaurants</li>
-                <li>The percentage of the population that is tested for COVID on a daily basis</li>
-                <li>The percentage of the population who stay home after coming in contact with an infected person</li>
-                <li>The percentage of the population that is fully vaccinated</li>
+                <li>
+                  The percentage of the population that is tested for COVID on a
+                  daily basis
+                </li>
+                <li>
+                  The percentage of the population who stay home after coming in
+                  contact with an infected person
+                </li>
+                <li>
+                  The percentage of the population that is fully vaccinated
+                </li>
                 <li>Whether stay-at-home orders are in place</li>
               </ul>
               2. Click confirm (once) to lock-in interventions <br />
@@ -338,7 +349,6 @@ class Simulator extends Component {
               <Typography variant="h4" className={classes.bold}>
                 Basic Controls
               </Typography>
-
               Move around the map using WASD or arrow controls
               <br />
               Use the mouse wheel to zoom in/out
@@ -350,7 +360,6 @@ class Simulator extends Component {
               <Typography variant="h4" className={classes.bold}>
                 Troubleshooting
               </Typography>
-
               Please make sure webgl is enabled in your browser by visiting{" "}
               <a href="https://get.webgl.org/">https://get.webgl.org/</a>
               <br />
@@ -358,6 +367,23 @@ class Simulator extends Component {
               running. This is normal and happens because there is a lot of data
               that needs to be processed and sent back to your browser.
               <br />
+              <br />
+              <Typography variant="h4" className={classes.bold}>
+                Educational Resources
+              </Typography>
+              <ul>
+                <li>
+                  <a target="_blank" href="https://drive.google.com/file/d/1kNyUd4YSmahDOib99TjfQsh_qoTiFRZ2/view?usp=sharing" download>
+                    High School Delineo Lab
+                  </a>
+                </li>
+                <li>
+                  <a target="_blank" href="https://drive.google.com/file/d/1JojKSrQhDsOTeSe7g2_QkN7XersQ0sh9/view?usp=sharing" >
+                    Middle School Delineo Lab
+                    
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </Grid>
