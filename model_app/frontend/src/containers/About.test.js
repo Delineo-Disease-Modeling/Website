@@ -5,8 +5,7 @@ import faqData from '../const/faqData';
 import About from "./About"
 
 test("FAQ section works", () => {
-    
-    const { getByText, getAllByRole, queryByText } = render(<About />);
+    const { getByText, queryByText } = render(<About />);
 
     // Loop over all FAQs
     for (const i of faqData) {
