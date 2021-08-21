@@ -9,6 +9,7 @@ import PieChart from "../components/Graphs/PieChart"
 import Graph4 from "../components/Graphs/Graph4"
 import dummy_data from "../const/dummyGraphData"
 import okc_city from "../images/okc_skyline.png";
+import okc_map from "../images/okc_map.png"
 
 const styles = (theme) => ({
   graph: {
@@ -116,9 +117,18 @@ function GeneralSimulator(props) {
             Oklahoma City
           </h1>
           <div>
-            <img
+            {/* <img
               img src={okc_city} alt="okc"
               height={100}
+              width={"100%"}
+              style={{
+                alignSelf: 'center',
+                marginBottom: "1%",
+              }}
+            /> */}
+            <img
+              img src={okc_map} alt="okc map"
+              height={300}
               width={"100%"}
               style={{
                 alignSelf: 'center',
