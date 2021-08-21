@@ -45,6 +45,14 @@ var getData = () => {
   return data;
 }
 
+function getWindowDimensions() {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height
+  };
+}
+
 function getTotalCases(data) {
   var totalCount = data.initial_cases
   Object.keys(data.case_distribution).forEach(function (key, i) {
@@ -86,13 +94,16 @@ class GeneralSimulator extends Component {
 
   render() {
     const { classes } = this.props;
-    return (
+    const width = getWindowDimensions().width;
+    const height = getWindowDimensions().height;
 
+    if ( width > 1099){
+    return (
       <div className="content">
         <Grid container spacing={3}>
           <Grid item xs={4} >
             <div className={classes.graph}>
-              <CumulativeChart data={this.state.data} height={300} width={600} />
+              <CumulativeChart data={this.state.data} height={height - 350} width={width * 0.45} />
             </div>
           </Grid>
           <Grid item xs={4}>
@@ -118,7 +129,7 @@ class GeneralSimulator extends Component {
           </Grid>
           <Grid item xs={4}>
             <div className={classes.graph}>
-              <DailyChart data={this.state.data} height={300} width={600} />
+              <DailyChart data={this.state.data} height={height - 350} width={width * 0.45} />
             </div>
           </Grid>
           <Grid item xs={4}>
@@ -170,13 +181,67 @@ class GeneralSimulator extends Component {
           </Grid>
           <Grid item xs={4}>
             <div className={classes.graph}>
-              <Graph4 data={this.state.data} height={300} width={600}></Graph4>
+              <Graph4 data={this.state.data} height={height - 350} width={width * 0.45}></Graph4>
             </div>
           </Grid>
         </Grid>
         <ConfigurationsPanel updateConfigs={this.updateConfigurations} configs={this.state.configurations} />
       </div >
     );
+  } else {
+    return (
+      <div className="content">
+        <Grid container spacing={0} direction="column" justifyContent="center" alignItems="center" >
+        <Grid item xs={12}>
+            <h1
+              style={{
+                color: "white",
+                marginTop: "2%",
+                marginBottom: "1%"
+              }}>
+              Oklahoma City
+            </h1>
+            <div>
+              <img
+                img src={okc_city} alt="okc"
+                height={100}
+                width={"100%"}
+                style={{
+                  alignSelf: 'center',
+                  marginLeft: "5%",
+                }}
+              />
+            </div>
+          </Grid>
+
+          <Grid item xs={12} >
+            <div className={classes.graph}>
+              <CumulativeChart data={this.state.data} height={height - 500} width={width * 1.25} />
+            </div>
+          </Grid>
+
+          <Grid item xs={12}>
+            <div className={classes.graph}>
+              <DailyChart data={this.state.data} height={height - 500} width={width * 1.25} />
+            </div>
+          </Grid>
+
+          <Grid item xs={12}>
+            <div className={classes.graph}>
+              <PieChart data={this.state.data[0].case_distribution} innerRadius={50} outerRadius={150} />
+            </div>
+          </Grid>
+
+          <Grid item xs={12}>
+            <div className={classes.graph}>
+              <Graph4 data={this.state.data} height={height - 500} width={width * 1.25}></Graph4>
+            </div>
+          </Grid>
+        </Grid>
+        <ConfigurationsPanel updateConfigs={this.updateConfigurations} configs={this.state.configurations} />
+      </div >
+    );
+  }
   }
 }
 

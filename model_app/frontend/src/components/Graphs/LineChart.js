@@ -9,7 +9,7 @@ function LineChart(props, labels, titles, colors) {
 
     const ref = useD3(
         (svg) => {
-            const margin = { top: 30, right: 250, bottom: 30, left: 80 };
+            const margin = { top: 30, right: 250, bottom: 30, left: 65 };
             var casedata = data.data;
             const textColor = "#222629"
             svg.append("text").attr("x", margin.left + (width - margin.left - margin.right) / 2).attr("y", 20).style('fill', textColor).style("text-anchor", "middle").style("font-family", "Montserrat").text(titles[0]);
