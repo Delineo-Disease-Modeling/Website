@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
@@ -146,10 +146,7 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
   },
 
-  authorDate: {
-    width: "300px",
-    marginLeft: "0 0px",
-    marginTop: "0 0px",
+  author: {
     padding: "0 0px",
     margin: "0 0px",
     textAlign: "left",
@@ -163,12 +160,17 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "#66FCF1",
       textDecoration: "none",
     },
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    height: '42rem'
   },
 
   subtextalign: {
     textAlign: "justify",
     alignItems: "justifyContent",
     color: "black",
+    height: '10rem'
   },
 
   creditRow: {
@@ -190,6 +192,7 @@ const useStyles = makeStyles((theme) => ({
 
   media: {
     height: 240,
+    marginBottom: '1rem'
   },
 
   align: {
@@ -198,17 +201,10 @@ const useStyles = makeStyles((theme) => ({
 
   cardActions: {
     display: "flex",
-    margin: "0 10px",
-    justifyContent: "space-between",
-  },
-
-  cardActionsMobile: {
-    display: "flex",
-    justifyContent: "space-between",
-    
-  },
-
-  author: {
+    justifyContent: "space-around",
+    justifyItems: 'center',
+    margin: '10px auto',
+    padding: '0 5px'
   },
 
   paginationContainer: {
@@ -216,8 +212,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
 
-  dim: {
-    opacity: 0.25
+  cardStyle: {
+    maxHeight: '700px',
   },
 
   svg: {
@@ -226,10 +222,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   carousel: {
-    display: "flex",
-    minHeight: "70vh",
-    maxWidth: '100%',
-    justifyContent: 'center'
+    width: '100%',
   },
 
   fadeOut: {
@@ -294,119 +287,111 @@ function DevelopmentBlog(props) {
       setIndex(newIndex);
       setSlideDirection(oppDirection);
       setSlideIn(true);
-    }, -500);
+    }, 100);
   };
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-        if (e.keyCode === 39) {
-            onArrowClick('right');
-        }
-        if (e.keyCode === 37) {
-            onArrowClick('left');
-        }
+      if (e.keyCode === 39) {
+        onArrowClick('right');
+      }
+      if (e.keyCode === 37) {
+        onArrowClick('left');
+      }
     };
 
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-        window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keydown', handleKeyDown);
     };
-});
+  });
 
   const addCard = (classes, row, key, current = false) => {
-    const currentStyle = current ? null : classes.dim;
     return (
-      <div className={currentStyle}>
-        <Card key={key} className={classes.card}>
-          <CardActionArea href={row.href}>
-            <CardMedia
-              className={classes.media}
-              image={row.img}
-              title="Development Blog Img"
-            />
-            <CardContent className={classes.align}>
+      <Card key={key} className={classes.card}>
+        <CardActionArea href={row.href}>
+          <CardMedia
+            className={classes.media}
+            image={row.img}
+            title="Development Blog Img"
+          />
+          <CardContent className={classes.align}>
+            <Typography
+              className={classes.title}
+              style={{
+                fontWeight: "bold",
+                marginTop: "0 0px",
+              }}
+              gutterBottom
+              variant="h5"
+              component="h2"
+            >
+              {row.title}
+            </Typography>
+            <Typography
+              className={classes.subtextalign}
+              variant="body2"
+              component="p"
+            >
+              {row.subtext}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions className={classes.cardActions}>
+          <Box className={classes.author} flexWrap="wrap" style={{width: '230px'}}>
               <Typography
-                className={classes.title}
-                style={{
-                  fontWeight: "bold",
-                  marginTop: "0 0px",
-                }}
-                gutterBottom
-                variant="h5"
-                component="h2"
-              >
-                {row.title}
-              </Typography>
-              <Typography
-                className={classes.subtextalign}
-                variant="body2"
+                className={classes.creditRow}
+                variant="subtitle2"
                 component="p"
               >
-                {row.subtext}
+                <span style={{ fontWeight: "bold" }}>
+                  {row.author}{" "}
+                </span>
+                - {row.date}
               </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions className={classes.cardActions}>
-            <Box className={classes.author}>
-              <Box
-                component="span"
-                m={1}
-                className={classes.authorDate}
-              >
-                <Typography
-                  className={classes.creditRow}
-                  variant="subtitle2"
-                  component="p"
-                >
-                  <span style={{ fontWeight: "bold" }}>
-                    {row.author}{" "}
-                  </span>
-                  - {row.date}
-                </Typography>
-              </Box>
-            </Box>
-            <Box>
-              <PopupState
-                variant="popover"
-                popupId="demo-popup-menu"
-              >
-                {(popupState) => (
-                  <React.Fragment>
-                    <IconButton
-                      aria-label="share"
-                      {...bindTrigger(popupState)}
+          </Box>
+          <Box>
+            <PopupState
+              variant="popover"
+              popupId="demo-popup-menu"
+            >
+              {(popupState) => (
+                <React.Fragment>
+                  <IconButton
+                    aria-label="share"
+                    {...bindTrigger(popupState)}
+                  >
+                    <ShareIcon style={{ color: "black" }} />
+                  </IconButton>
+                  <Menu
+                    anchorOrigin={{
+                      vertical: "bottom",
+                      horizontal: "center",
+                    }}
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "center",
+                    }}
+                    {...bindMenu(popupState)}
+                  >
+                    <MenuItem
+                      style={{ color: "white" }}
+                      onClick={popupState.close}
                     >
-                      <ShareIcon style={{ color: "black" }} />
-                    </IconButton>
-                    <Menu
-                      anchorOrigin={{
-                        vertical: "bottom",
-                        horizontal: "center",
-                      }}
-                      transformOrigin={{
-                        vertical: "top",
-                        horizontal: "center",
-                      }}
-                      {...bindMenu(popupState)}
-                    >
-                      <MenuItem
-                        style={{ color: "white" }}
-                        onClick={popupState.close}
+                      <TwitterButton
+                        message={message}
+                        url={url + row.href}
                       >
-                        <TwitterButton
-                          message={message}
-                          url={url + row.href}
-                        >
-                          <TwitterIcon fontSize="small" />
-                        </TwitterButton>
-                      </MenuItem>
+                        <TwitterIcon fontSize="small" />
+                      </TwitterButton>
+                    </MenuItem>
 
-                      {/* IN ORDER TO HAVE A FACEBOOK SHARE, WE NEED A VALID FB APP ID 
+                    {/* IN ORDER TO HAVE A FACEBOOK SHARE, WE NEED A VALID FB APP ID 
                                   see: https://webkul.com/blog/how-to-generate-facebook-app-id/
                               */}
 
-                      {/* <MenuItem
+                    {/* <MenuItem
                                         style={{ color: "white" }}
                                         onClick={popupState.close}
                                       >
@@ -419,30 +404,29 @@ function DevelopmentBlog(props) {
                                         </FacebookButton>
                                       </MenuItem> */}
 
-                      <MenuItem
-                        style={{ color: "white" }}
-                        onClick={popupState.close}
+                    <MenuItem
+                      style={{ color: "white" }}
+                      onClick={popupState.close}
+                    >
+                      <EmailButton
+                        message={message}
+                        url={url + row.href}
                       >
-                        <EmailButton
-                          message={message}
-                          url={url + row.href}
-                        >
-                          <EmailIcon fontSize="small" />
-                        </EmailButton>
-                      </MenuItem>
-                    </Menu>
-                  </React.Fragment>
-                )}
-              </PopupState>
-            </Box>
-          </CardActions>
-        </Card>
-      </div>
+                        <EmailIcon fontSize="small" />
+                      </EmailButton>
+                    </MenuItem>
+                  </Menu>
+                </React.Fragment>
+              )}
+            </PopupState>
+          </Box>
+        </CardActions>
+      </Card>
     )
   }
 
   return (
-    <div className="App" style={{ backgroundColor: "#222629", overflowX: 'hidden'}}>
+    <div className="App" style={{ backgroundColor: "#222629", overflowX: 'hidden' }}>
       <AppBar
         className={classes.appBar}
         style={{ background: "#222629", boxShadow: "none" }}
@@ -543,30 +527,28 @@ function DevelopmentBlog(props) {
             </IconButton>
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <CardContent className={classes.carousel}>
+            <Box display='flex' flexWrap="nowrap" justifyContent="center" className={classes.carousel}>
               <Arrow
                 className={classes.svg}
                 direction='left'
                 clickFunction={() => onArrowClick('left')}
               />
-                <div style={{minWidth: "80%"}}>
-                  <CarouselSlide 
-                  articles={articles} 
-                  num={index} addCard={addCard} classes={classes}
-                  slideDirection={slideDirection}
-                  slideIn={slideIn}></CarouselSlide>
-                </div>
+              <CarouselSlide
+                articles={articles}
+                num={index} addCard={addCard} classes={classes}
+                slideDirection={slideDirection}
+                slideIn={slideIn}></CarouselSlide>
               <Arrow
                 className={classes.svg}
                 direction='right'
                 clickFunction={() => onArrowClick('right')}
               />
-              <Box my={4} className={classes.paginationContainer}></Box>
-            </CardContent>
+            </Box>
+            <Box my={4} className={classes.paginationContainer}></Box>
           </Collapse>
         </Card>
       </Container>
-    </div>
+    </div >
   );
 }
 

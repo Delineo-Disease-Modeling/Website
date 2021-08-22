@@ -11,7 +11,7 @@ export default function CarouselSlide(props) {
     const current = props.articles[index];
     const prev = index > 0 ? props.articles[index - 1] : props.articles[props.articles.length - 1]
     const next = index < props.articles.length - 1 ? props.articles[index + 1] : props.articles[0]
-    const matches = useMediaQuery('(min-width:800px)');
+    const matches = useMediaQuery('(min-width:980px)');
 
     const getContent = () => {
         return (
@@ -22,8 +22,8 @@ export default function CarouselSlide(props) {
                     </div >
                 </Slide>
                 :
-                <Grid container spacing={1} alignItems="center" justify="center" >
-                    <Grid item xs={12} sm={6} md={4} style={{ overflow: 'hidden' }}>
+                <Grid container spacing={1} alignItems='stretch'>
+                    <Grid item xs={12} sm={4} style={{ overflow: 'hidden'}}>
                         <Slide in={props.slideIn} direction={props.slideDirection}>
                             <div key={"thisGrid" + index}>
                                 {props.addCard(classes, prev, "prev" + index)}
@@ -31,14 +31,14 @@ export default function CarouselSlide(props) {
                         </Slide>
                     </Grid>
 
-                    <Grid item xs={12} sm={6} md={4} style={{ overflow: 'hidden' }}>
+                    <Grid item xs={12} sm={4} style={{ overflow: 'hidden' }}>
                         <Slide in={props.slideIn} direction={props.slideDirection}>
                             <div key={"thisGrid" + index}>
                                 {props.addCard(classes, current, index, "this" + index)}
                             </div >
                         </Slide>
                     </Grid>
-                    <Grid item xs={12} sm={6} md={4} style={{ overflow: 'hidden' }}>
+                    <Grid item xs={12} sm={4} style={{ overflow: 'hidden'}}>
                         <Slide in={props.slideIn} direction={props.slideDirection}>
                             <div key={"thisGrid" + index}>
                                 {props.addCard(classes, next, "next" + index)}
