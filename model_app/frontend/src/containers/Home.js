@@ -4,6 +4,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { withStyles} from "@material-ui/core";
 import HomeCarousel from "../components/Carousel";
 import TeamMemberJoin from "../images/teammemberjoin.jpg";
+import Box from "@material-ui/core/Box"
 
 //import blogbackground from "../images/blogbackgroud.PNG";
 import Link from "@material-ui/core/Link";
@@ -11,6 +12,7 @@ import Link from "@material-ui/core/Link";
 import anytownScreenshot from "../images/anytownScreenshot.png";
 import HomeBlog from "./HomeBlog.js";
 import DevelopmentBlog from "./DevelopmentBlog.js"
+import BlogCarousel from "./BlogCarousel";
 
 const styles = {
   
@@ -104,8 +106,14 @@ class Home extends Component {
           </div>
         </div>
 
-        <DevelopmentBlog />
-         <HomeCarousel /> 
+        
+        <HomeCarousel /> 
+        <h1 style={{marginTop: '3%', marginBottom: '3%', color: 'white'}}>
+          Recent Updates from Our Blog
+        </h1>
+        <Box marginBottom="4%">
+        <BlogCarousel />
+        </Box>
 
         
 
