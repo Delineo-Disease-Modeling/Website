@@ -11,6 +11,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import GoogleMapReact from 'google-map-react';
 import { Button } from "@material-ui/core";
 import { MobileView } from "react-device-detect";
 
@@ -294,6 +295,19 @@ class Simulator extends Component {
             </div>
             <br></br>
 
+            <div style={{width: '950px', height: '400px'}}>
+              <GoogleMapReact
+                defaultCenter={{
+                  lat: 35.481918,
+                  lng: -97.508469,
+                }}
+                defaultZoom={10}
+              >
+              </GoogleMapReact>
+            </div>
+
+            <br></br>
+
             <div className={classes.bubble} align="center">
               <Typography variant="h4" className={classes.bold}>
                 About{" "}
@@ -380,7 +394,6 @@ class Simulator extends Component {
                 <li>
                   <a target="_blank" href="https://drive.google.com/file/d/1JojKSrQhDsOTeSe7g2_QkN7XersQ0sh9/view?usp=sharing" >
                     Middle School Delineo Lab
-                    
                   </a>
                 </li>
               </ul>
@@ -393,3 +406,4 @@ class Simulator extends Component {
 }
 
 export default withStyles(styles)(Simulator);
+
