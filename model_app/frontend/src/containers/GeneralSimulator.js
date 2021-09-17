@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import ConfigurationsPanel from "../components/ConfigurationsPanel";
 import { Typography, Grid } from "@material-ui/core";
+import GoogleMapReact from 'google-map-react';
 //import okc_city from "../images/OKC_CITY.jpg";
 import DailyChart from "../components/Graphs/DailyChart"
 import CumulativeChart from "../components/Graphs/CumulativeChart"
@@ -125,6 +126,16 @@ function GeneralSimulator(props) {
                 marginBottom: "1%",
               }}
             />
+          </div>
+          <div style={{ width: '100%', height: '260px' }}>
+            <GoogleMapReact
+              defaultCenter={{
+                lat: 35.481918,
+                lng: -97.508469,
+              }}
+              defaultZoom={10}
+            >
+            </GoogleMapReact>
           </div>
         </Grid>
         <Grid item xs={4}>
