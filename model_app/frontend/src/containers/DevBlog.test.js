@@ -23,17 +23,13 @@ describe("Development Blog", () => {
                if (i.id === 1) {
                const title = getByText(i.title);
                const subtext = getByText(i.subtext);
-               const author = getByText(i.author);
-               const date = getByText(i.date);
                expect(title).toBeInTheDocument();
                expect(subtext).toBeInTheDocument();
-               expect(author).toBeInTheDocument();
-               expect(date).toBeInTheDocument();
+
                } else {
                expect(() => getByText(i.title)).toThrow();
                expect(() => getByText(i.subtext)).toThrow();
-               expect(() => getByText(i.author)).toThrow();
-               expect(() => getByText(i.date)).toThrow();
+               
                }     
           }
      });
