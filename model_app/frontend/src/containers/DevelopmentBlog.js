@@ -239,14 +239,6 @@ function Arrow(props) {
 }
 
 function DevelopmentBlog(props) {
-  function resize() {
-    let isDesktop = (window.innerWidth >= 760);
-    if (isDesktop) {
-        return classes.cardActions;
-      }
-        return classes.cardActionsMobile;
-    
-  };
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(true);
 
