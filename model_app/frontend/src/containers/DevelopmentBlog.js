@@ -346,7 +346,7 @@ function DevelopmentBlog(props) {
                 component="p"
               >
                 <img width="40px" height="40px" src={row.author_img}
-                  style={{marginRight: "10px" }}
+                  style={{borderRadius: '50%', marginRight: '10px'}}
                 ></img>
                 <span style={{ fontWeight: "bold" }}>
                   {row.author}{" "}
