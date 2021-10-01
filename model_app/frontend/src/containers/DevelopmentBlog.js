@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
@@ -345,10 +345,19 @@ function DevelopmentBlog(props) {
                 variant="subtitle2"
                 component="p"
               >
+                <img width="40px" height="40px" src={row.author_img}
+                  style={{marginRight: "10px" }}
+                ></img>
                 <span style={{ fontWeight: "bold" }}>
                   {row.author}{" "}
                 </span>
-                - {row.date}
+              </Typography>
+              <Typography
+                className={classes.creditRow}
+                variant="subtitle2"
+                component="p"
+                style={{marginTop: '10px'}}>
+                {row.date}
               </Typography>
           </Box>
           <Box>
@@ -444,8 +453,8 @@ function DevelopmentBlog(props) {
         </Grid>
 
         {/* DO NOT DELETE --- MAY BE ADDED BACK IN LATER !!! */}
-
-        {/* <Grid item xs={3}>
+          {/*
+          <Grid item xs={3}>
           <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="customized table">
               <TableHead>
@@ -491,10 +500,12 @@ function DevelopmentBlog(props) {
           </TableContainer>
         </Grid> */}
       </Grid>
+      
       <Container maxWidth="lg" className={classes.blogsContainer}>
         <Card
           style={{ background: "#222629", boxShadow: "none" }}
         >
+          
           <CardActions
             style={{
               flex: 1,
@@ -507,7 +518,6 @@ function DevelopmentBlog(props) {
             <Typography variant="h4" className={classes.blogTitle}>
               Recent Posts
             </Typography>
-
             <IconButton
               className={clsx(classes.expand.art, {
                 [classes.expandOpen.art]: expanded,
@@ -526,6 +536,7 @@ function DevelopmentBlog(props) {
               <ExpandMoreIcon />
             </IconButton>
           </CardActions>
+          
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <Box display='flex' flexWrap="nowrap" justifyContent="center" className={classes.carousel}>
               <Arrow

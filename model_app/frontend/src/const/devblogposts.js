@@ -4,6 +4,7 @@ const articles = [
     type: "Article",
     date: "March 2021",
     author: "Ameya Dehade",
+    author_img: "https://www.portent.com/images/2012/02/avatar-jack-small-94x94.jpg",
     title: "Machine Learning Explainer",
     subtext:
       "Our model uses the Iterative Proportional Fitting Procedure (IPFP), a classical algorithm in computer science that performs data scaling based on current datasets, to create a mobility network containing information about the number of individuals (agents) traveling from each Census Block Group (CBG) to...",
@@ -15,6 +16,7 @@ const articles = [
     type: "Article",
     date: "March 2021",
     author: "Ameya Dehade",
+    author_img: "https://www.portent.com/images/2012/02/avatar-jack-small-94x94.jpg",
     title: "Simulation Development",
     subtext:
       "Currently, the simulation team is working on the severity risk matrix, which is how they decide whether an agent is asymptomatic, mild, severe, or critical after their incubation period is over after exposure. The figure below illustrates the different stages before reaching the severity risk matrix determination...",
@@ -26,6 +28,7 @@ const articles = [
     type: "Article",
     date: "March 2021",
     author: "Shaopeng Zeng",
+    author_img: "https://www.portent.com/images/2012/02/avatar-jack-small-94x94.jpg",
     title: "Simulation Explainer",
     subtext: "Imagine a water balloon is dropped in a crowd. You look around and see those who are near the dropping point got wet, while those who stood far away may have a drop or two, but most are totally dry. Imagine the water is an airborne disease - the Delineo simulation helps us visualize who is in this imaginary...",
     href: "/developmentblog/Simulation-Website",
@@ -36,6 +39,7 @@ const articles = [
     type: "Article",
     date: "July 2021",
     author: "Ian Zheng",
+    author_img: "https://www.portent.com/images/2012/02/avatar-jack-small-94x94.jpg",
     title: "The Wells-Riley Equation",
     subtext: "The Delineo simulation uses the Wells-Riley Equation to simulate how a disease will spread in any given city. The equation and the simulation focus on points of interest (POI's) that include grocery stores, places of worship, and other types of gathering areas where a person might get infected. We apply...",
     href: "/developmentblog/Wells-Riley-Equation",

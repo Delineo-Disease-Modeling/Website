@@ -1,7 +1,7 @@
 import React from 'react';
 import '../containers/Simulator.css'
 import Slider from '@material-ui/core/Slider'
-//import { withStyles } from '@material-ui/core/styles';
+//import { withStyles } from '@material-ui/styles';
 //import Select from "react-dropdown-select";
 
 import Radio from '@material-ui/core/Radio';

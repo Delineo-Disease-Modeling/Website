@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import TeamFilter from "../components/TeamFilter";
-import { withStyles } from "@material-ui/core";
+import { withStyles } from "@material-ui/styles";
 import Typography from "@material-ui/core/Typography";
 import "./Team.css";
 
