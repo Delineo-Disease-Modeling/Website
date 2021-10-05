@@ -4,15 +4,15 @@ google maps 		https://developers.google.com/places/web-service/supported_types
 osm overpass		https://wiki.openstreetmap.org/wiki/Key:amenity
 */
 
-export const options = ['food', 'transportation'];
+const options = ['food', 'transportation'];
 
-export const markerIcons = {};
+const markerIcons = {};
 let baseUrl = 'http://maps.google.com/mapfiles/ms/micons/';
 let ext = '.png';
 markerIcons['food'] = baseUrl + 'restaurant' + ext;
 markerIcons['transportation'] = baseUrl + 'rail' + ext;
 
-export const queries = {};
+const queries = {};
 queries['food'] = (areaId) => {
 	return `[out:json];
 	(
@@ -41,4 +41,4 @@ queries['transportation'] = (areaId) => {
 	out;`
 }
 
-export default {options, markerIcons, queries};
+export {options, markerIcons, queries};

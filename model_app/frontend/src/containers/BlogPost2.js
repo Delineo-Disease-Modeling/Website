@@ -13,8 +13,8 @@ import {TwitterButton, EmailButton } from "react-social";
 import TwitterIcon from "@material-ui/icons/Twitter";
 // import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import EmailIcon from "@material-ui/icons/Email";
-import { makeStyles } from "@material-ui/styles";
-import ameya from "../images/Ameya Dehade.jpg";
+import { makeStyles } from "@material-ui/core/styles";
+import xi from "../images/Xi He.jpeg";
 
 const useStyles = makeStyles((theme) => ({
     center: {
@@ -87,12 +87,12 @@ function Post2(props) {
   
             <h6>
               <img
-                alt="Ameya Dehade"
-                src={ameya}
+                alt="Xi He"
+                src={xi}
                 className={classes.avatar}
                 variant="circle"
               />
-              Ameya Dehade &#8226; March 2021
+              Xi He &#8226; March 2021
               <PopupState variant="popover" popupId="demo-popup-menu">
                 {(popupState) => (
                   <React.Fragment>

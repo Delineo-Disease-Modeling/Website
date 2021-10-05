@@ -1,6 +1,7 @@
 import Ameya from "../images/Ameya Dehade.jpg"
 import Shaopeng from "../images/Shaopeng Zeng.jpg"
 import Ian from "../images/Ian Zheng.JPG"
+import Xi from "../images/Xi He.JPG"
 
 // link to default avatar
 // "https://www.portent.com/images/2012/02/avatar-jack-small-94x94.jpg"
@@ -22,8 +23,8 @@ const articles = [
     id: 2,
     type: "Article",
     date: "March 2021",
-    author: "Ameya Dehade",
-    author_img: Ameya,
+    author: "Xi He",
+    author_img: Xi,
     title: "Simulation Development",
     subtext:
       "Currently, the simulation team is working on the severity risk matrix, which is how they decide whether an agent is asymptomatic, mild, severe, or critical after their incubation period is over after exposure. The figure below illustrates the different stages before reaching the severity risk matrix determination...",

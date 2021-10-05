@@ -105,13 +105,13 @@ function DevelopmentBlogCards(props) {
   const message =
     "Check out this article from the Delineo Disease Modeling Project";
 
-  {/* 
+  /* 
     'articles' is an array imported from the const folder, and contains data on the blog posts.
     The DevelopmentBlogCards functional component accepts props that indicate whether this component
     is being rendered on the home page or not. If it is, then we limit the amount of cards rendered
     to the three most recent posts by slicing 'articles' into 'articleArray'. Otherwise 'articleArray'
     is just a copy of 'articles'
-  */}
+  */
   var articleArray = articles
 
   if (props.HomePage) {
@@ -123,7 +123,7 @@ function DevelopmentBlogCards(props) {
     <CardContent>
       <Grid container spacing={3} alignItems="center" justify="center">
         {articleArray.map((row) => {
-          if (row.type === "Article")
+          if (!(row.type === "Article")) return null; 
             return (
               <Grid item xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
