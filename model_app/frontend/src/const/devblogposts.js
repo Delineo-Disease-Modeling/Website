@@ -1,7 +1,7 @@
 import Ameya from "../images/Ameya Dehade.jpg"
 import Shaopeng from "../images/Shaopeng Zeng.jpg"
 import Ian from "../images/Ian Zheng.JPG"
-import Xi from "../images/Xi He.JPG"
+import Xi from "../images/Xi He.jpeg"
 
 // link to default avatar
 // "https://www.portent.com/images/2012/02/avatar-jack-small-94x94.jpg"

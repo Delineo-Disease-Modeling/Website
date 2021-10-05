@@ -5,8 +5,13 @@ import { withStyles} from "@material-ui/styles";
 import HomeCarousel from "../components/Carousel";
 import TeamMemberJoin from "../images/teammemberjoin.jpg";
 import Box from "@material-ui/core/Box"
+
+//import blogbackground from "../images/blogbackgroud.PNG";
 import Link from "@material-ui/core/Link";
+//import DevelopmentBlogCards from "./DevelopmentBlogCards.js";
 import anytownScreenshot from "../images/anytownScreenshot.png";
+import HomeBlog from "./HomeBlog.js";
+import DevelopmentBlog from "./DevelopmentBlog.js"
 import BlogCarousel from "./BlogCarousel";
 
 const styles = {
