@@ -158,24 +158,6 @@ class About extends React.Component {
 
 	render() {
 		const { classes } = this.props;
-		function resize() {
-			let isDesktop = (window.innerWidth >= 760);
-			if (isDesktop) {
-				return classes.subtitle;
-			  }
-				return classes.subtitleMobile;
-			
-		  };
-
-
-		  function resizeForm() {
-			let isDesktop = (window.innerWidth >= 760);
-			if (isDesktop) {
-				return '40%';
-			  }
-				return '60%';
-			
-		  };
 	
 		return (
 			<div className={classes.cardBackground}>
