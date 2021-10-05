@@ -14,7 +14,7 @@ const articles = [
     id: 2,
     type: "Article",
     date: "March 2021",
-    author: "Ameya Dehade",
+    author: "Xi He",
     title: "Simulation Development",
     subtext:
       "Currently, the simulation team is working on the severity risk matrix, which is how they decide whether an agent is asymptomatic, mild, severe, or critical after their incubation period is over after exposure. The figure below illustrates the different stages before reaching the severity risk matrix determination...",
