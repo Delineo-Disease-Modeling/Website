@@ -2,7 +2,7 @@ import React, { Component } from "react";
 //import { SimulationTimeseries } from "../components";
 import "./Simulator.css";
 import axios from "axios";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/styles";
 import Grid from "@material-ui/core/Grid";
 import Unity, { UnityContext } from "react-unity-webgl";
 import Typography from "@material-ui/core/Typography";

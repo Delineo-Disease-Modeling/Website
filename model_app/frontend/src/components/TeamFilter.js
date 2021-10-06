@@ -5,7 +5,7 @@ import TeamGridList from "../components/TeamGridList.js";
 import SupGridList from "../components/SupGridList.js";
 import LeadGridList from "../components/LeaderGridList.js";
 import PastTeamGridList from "../components/PastTeamGridList.js";
-import { withStyles } from "@material-ui/core";
+import { withStyles } from "@material-ui/styles";
 
 //These imports are for when someone actually wants to filter
 import FullStackGridList from "../components/FullStackGridList.js";

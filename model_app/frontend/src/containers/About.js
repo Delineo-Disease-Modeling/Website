@@ -1,7 +1,7 @@
 import React from "react";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import SendIcon from '@material-ui/icons/Send';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/styles';
 import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';

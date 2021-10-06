@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Card from "@material-ui/core/Card";
@@ -20,82 +20,6 @@ import { ArrowBack, ArrowForward } from "@material-ui/icons"
 import CarouselSlide from "../components/CarouselSlide"
 
 const useStyles = makeStyles((theme) => ({
-  appBar: {
-    backgroundColor: "#222629",
-  },
-
-  table: {
-    fontSize: 14,
-    color: theme.palette.common.white,
-  },
-
-  hidden: {
-    padding: "0 !important",
-  },
-
-  hero: {
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5)), url('/blog.jpg')`,
-    height: "520px",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    position: "relative",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    color: "#fff",
-    fontSize: "4rem",
-    [theme.breakpoints.down("sm")]: {
-      height: 300,
-      fontSize: "3em",
-    },
-  },
-
-  horiz: {
-    display: "inline-block",
-  },
-
-  expand: {
-    art: {
-      transform: "rotate(0deg)",
-      marginLeft: "auto",
-      transition: theme.transitions.create("transform", {
-        duration: theme.transitions.duration.shortest,
-      }),
-    },
-    ann: {
-      transform: "rotate(0deg)",
-      marginLeft: "auto",
-      transition: theme.transitions.create("transform", {
-        duration: theme.transitions.duration.shortest,
-      }),
-    },
-    news: {
-      transform: "rotate(0deg)",
-      marginLeft: "auto",
-      transition: theme.transitions.create("transform", {
-        duration: theme.transitions.duration.shortest,
-      }),
-    },
-  },
-
-  expandOpen: {
-    art: { transform: "rotate(180deg)" },
-    ann: { transform: "rotate(180deg)" },
-    news: { transform: "rotate(180deg)" },
-  },
-
-  blogsContainer: {
-    paddingTop: theme.spacing(3),
-  },
-
-  blogTitle: {
-    fontWeight: 800,
-    alignItems: "center",
-    textAlign: "center",
-    color: "white",
-    paddingBottom: theme.spacing(3),
-  },
 
   title: {
     marginBottom: "0 0px",
@@ -142,11 +66,6 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "100%",
   },
 
-  root: {
-    maxWidth: 345,
-    backgroundColor: "#222629",
-  },
-
   media: {
     height: 240,
     marginBottom: '1rem'
@@ -164,15 +83,6 @@ const useStyles = makeStyles((theme) => ({
     padding: '0 5px'
   },
 
-  paginationContainer: {
-    display: "flex",
-    justifyContent: "center",
-  },
-
-  cardStyle: {
-    maxHeight: '700px',
-  },
-
   svg: {
     height: "30px",
     cursor: "pointer",
@@ -181,11 +91,6 @@ const useStyles = makeStyles((theme) => ({
   carousel: {
     width: '100%',
   },
-
-  fadeOut: {
-    opacity: "0",
-    transition: "none",
-  }
 }));
 
 function Arrow(props) {
@@ -198,11 +103,11 @@ function Arrow(props) {
 
 function BlogCarousel() {
 
-    const classes = useStyles();
-    const url = "https://covidweb.isi.jhu.edu";
-    const message =
-      "Check out this article from the Delineo Disease Modeling Project";
-      const [index, setIndex] = useState(0);
+  const classes = useStyles();
+  const url = "https://covidweb.isi.jhu.edu";
+  const message =
+    "Check out this article from the Delineo Disease Modeling Project";
+  const [index, setIndex] = useState(0);
   const numSlides = articles.length;
 
   const [slideIn, setSlideIn] = useState(true);
@@ -274,17 +179,26 @@ function BlogCarousel() {
           </CardContent>
         </CardActionArea>
         <CardActions className={classes.cardActions}>
-          <Box className={classes.author} flexWrap="wrap" style={{width: '230px'}}>
-              <Typography
-                className={classes.creditRow}
-                variant="subtitle2"
-                component="p"
-              >
-                <span style={{ fontWeight: "bold" }}>
-                  {row.author}{" "}
-                </span>
-                - {row.date}
-              </Typography>
+          <Box className={classes.author} flexWrap="wrap" style={{ width: '230px' }}>
+            <Typography
+              className={classes.creditRow}
+              variant="subtitle2"
+              component="p"
+            >
+              <img width="40px" height="40px" src={row.author_img} alt={row.author}
+                style={{ borderRadius: '50%', marginRight: '10px' }}
+              ></img>
+              <span style={{ fontWeight: "bold" }}>
+                {row.author}{" "}
+              </span>
+            </Typography>
+            <Typography
+              className={classes.creditRow}
+              variant="subtitle2"
+              component="p"
+              style={{ marginTop: '10px' }}>
+              {row.date}
+            </Typography>
           </Box>
           <Box>
             <PopupState
@@ -360,26 +274,26 @@ function BlogCarousel() {
     )
   }
 
-    return(
-        <Box>
-            <Box display='flex' flexWrap="nowrap" justifyContent="center" className={classes.carousel}>
-              <Arrow
-                className={classes.svg}
-                direction='left'
-                clickFunction={() => onArrowClick('left')}
-              />
-              <CarouselSlide
-                articles={articles}
-                num={index} addCard={addCard} classes={classes}
-                slideDirection={slideDirection}
-                slideIn={slideIn}></CarouselSlide>
-              <Arrow
-                className={classes.svg}
-                direction='right'
-                clickFunction={() => onArrowClick('right')}
-              />
-            </Box>            
-        </Box>
-    )
+  return (
+    <Box>
+      <Box display='flex' flexWrap="nowrap" justifyContent="center" className={classes.carousel}>
+        <Arrow
+          className={classes.svg}
+          direction='left'
+          clickFunction={() => onArrowClick('left')}
+        />
+        <CarouselSlide
+          articles={articles}
+          num={index} addCard={addCard} classes={classes}
+          slideDirection={slideDirection}
+          slideIn={slideIn}></CarouselSlide>
+        <Arrow
+          className={classes.svg}
+          direction='right'
+          clickFunction={() => onArrowClick('right')}
+        />
+      </Box>
+    </Box>
+  )
 }
 export default BlogCarousel
