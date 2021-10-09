@@ -2,7 +2,7 @@ import React from "react";
 
 const Checkbox = ({ label, isSelected, onCheckboxChange }) => (
   <div className="form-check">
-    <label style={{color:'white'}}>
+    <label style={{ color: 'white' }}>
       <input
         type="checkbox"
         name={label}
