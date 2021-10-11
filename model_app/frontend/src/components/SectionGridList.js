@@ -39,40 +39,29 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '20px',
     boxShadow: '0 0 14px 7px black',
   },
-
 }));
 
-export default function TitlebarGridList(tileData) {
+const TitlebarGridList = (tileData) => {
   const classes = useStyles();
-
 
   return (
     <Container className={classes.root} maxWidth='lg'>
-
       {tileData.map((tile) => (
-
         <Grid key={tile.name} >
           <GridListTile component='div' className={classes.gridListTile} key={tile.img}>
-
-
             <center>
               <Avatar src={tile.img} className={classes.large} />
-
               <div className={classes.displayUnder}>
                 <Typography className={classes.displayUnder}>{tile.name}</Typography>
                 <Typography className={classes.displayUnderTitle}>{tile.description}</Typography>
 
               </div>
-
-
             </center>
-
-
           </GridListTile>
-
         </Grid>
       ))}
-
     </Container>
   );
-}
+};
+
+export default TitlebarGridList;
