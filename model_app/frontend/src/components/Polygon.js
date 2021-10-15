@@ -4,12 +4,11 @@ import { addPolygon, deletePolygon, resetPolygon } from '../actions/polygonActio
 import axios from 'axios';
 
 class Polygon extends Component {
-
   componentDidMount() {
     this.drawPolygon();
   }
 
-  drawPolygon({map,mapApi} = this.props) {
+  drawPolygon({ map, mapApi } = this.props) {
     this.drawingManager = new mapApi.drawing.DrawingManager({
       drawingMode: mapApi.drawing.OverlayType.POLYGON,
       drawingControl: true,
@@ -33,30 +32,30 @@ class Polygon extends Component {
         editable: true,
         //draggable: true
       },
-      rectangleOptions : {
+      rectangleOptions: {
         clickable: true,
         editable: true,
         //draggable: true
       }
     });
 
-    mapApi.event.addListener(this.drawingManager, 'circlecomplete', function(circle) {
+    mapApi.event.addListener(this.drawingManager, 'circlecomplete', function (circle) {
       console.log("drawing circle");
       var radius = circle.getRadius();
       console.log(radius.toString());
-      mapApi.event.addListener(circle,'radius_changed', function() {
+      mapApi.event.addListener(circle, 'radius_changed', function () {
         console.log("editing");
         radius = circle.getRadius();
         console.log(radius.toString());
       });
     });
 
-    mapApi.event.addListener(this.drawingManager, 'rectanglecomplete', function(rectangle) {
+    mapApi.event.addListener(this.drawingManager, 'rectanglecomplete', function (rectangle) {
       console.log("drawing rectangle");
       var bounds = rectangle.getBounds();
       console.log(bounds.toString());
       //this.polygonInfo(bounds.toString());
-      mapApi.event.addListener(rectangle,'bounds_changed', function() {
+      mapApi.event.addListener(rectangle, 'bounds_changed', function () {
         console.log("editing");
         bounds = rectangle.getBounds();
         console.log(bounds.toString());
@@ -64,18 +63,18 @@ class Polygon extends Component {
       });
     });
 
-    mapApi.event.addListener(this.drawingManager, 'polygoncomplete', function(polygon) {
+    mapApi.event.addListener(this.drawingManager, 'polygoncomplete', function (polygon) {
       console.log("drawing polygon");
       var path = polygon.getPath();
       console.log(path.getArray().toString());
       //this.polygonInfo(path.getArray().toString());
-      mapApi.event.addListener(path,'insert_at', function() {
+      mapApi.event.addListener(path, 'insert_at', function () {
         console.log("editing");
         path = polygon.getPath();
         console.log(path.getArray().toString());
         //this.polygonInfo(path.getArray().toString());
       });
-      mapApi.event.addListener(path,'set_at', function() {
+      mapApi.event.addListener(path, 'set_at', function () {
         console.log("editing");
         path = polygon.getPath();
         console.log(path.getArray().toString());
@@ -92,7 +91,7 @@ class Polygon extends Component {
     this.props.editable ? this.drawingManager.setMap(this.props.map) : this.drawingManager.setMap(null);
 
     if (this.props.place !== prevProps.place) {
-      const {map, place} = this.props;
+      const { map, place } = this.props;
 
       // if we already searched for a place, clear that polygon overlay
       // clear redux store completely
@@ -128,7 +127,7 @@ class Polygon extends Component {
 
   polygonOverlay(geojson) {
     let formattedGeojson = geojson;
-    if (geojson['type'] !== "Feature" && geojson['type']!== "FeatureCollection") {
+    if (geojson['type'] !== "Feature" && geojson['type'] !== "FeatureCollection") {
       formattedGeojson = { "type": "Feature", "geometry": geojson, "properties": {} };
     }
     this.feature = this.props.map.data.addGeoJson(formattedGeojson);
@@ -138,13 +137,11 @@ class Polygon extends Component {
     // Same deal with Marker: No rendering necessary
     return null;
   }
-
-
 }
 
 const mapStateToProps = (state) => ({
-    place: state.place,
-    polygons: state.polygons // unsure if we need this, currently unused
+  place: state.place,
+  polygons: state.polygons // unsure if we need this, currently unused
 });
 
-export default connect(mapStateToProps, { addPolygon, deletePolygon, resetPolygon } )(Polygon);
+export default connect(mapStateToProps, { addPolygon, deletePolygon, resetPolygon })(Polygon);

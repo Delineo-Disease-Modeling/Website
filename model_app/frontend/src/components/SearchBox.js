@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 // SearchBox is a stateless component that handles search box operations like
 // clicking on the box, typing/autocomplete, and most importantly saving the
@@ -21,12 +21,12 @@ class SearchBox extends Component {
 
   // change map view and save the place in redux store (this is addplace method passed from props)
   onPlacesChanged = ({ map, addplace } = this.props) => {
-  	// if we already searched for a place, clear that polygon overlay
-  	if (this.feature) {
-  		map.data.remove(this.feature[0]);
-  	}
+    // if we already searched for a place, clear that polygon overlay
+    if (this.feature) {
+      map.data.remove(this.feature[0]);
+    }
 
-  	// update with new searched place
+    // update with new searched place
     const selected = this.searchBox.getPlaces();
     const { 0: place } = selected;
 
@@ -45,11 +45,11 @@ class SearchBox extends Component {
   };
 
   polygonOverlay(geojson) {
-  	let formattedGeojson = geojson;
-  	if (geojson['type'] !== "Feature" && geojson['type']!== "FeatureCollection") {
-  		formattedGeojson = { "type": "Feature", "geometry": geojson, "properties": {} };
-  	}
-  	this.feature = this.props.map.data.addGeoJson(formattedGeojson);
+    let formattedGeojson = geojson;
+    if (geojson['type'] !== "Feature" && geojson['type'] !== "FeatureCollection") {
+      formattedGeojson = { "type": "Feature", "geometry": geojson, "properties": {} };
+    }
+    this.feature = this.props.map.data.addGeoJson(formattedGeojson);
   }
 
   clearSearchBox() {
@@ -58,7 +58,7 @@ class SearchBox extends Component {
 
   render() {
     return (
-      <div style={{marginTop:'30px', marginBottom:'15px'}}>
+      <div style={{ marginTop: '30px', marginBottom: '15px' }}>
         <input
           ref={(ref) => {
             this.searchInput = ref;
