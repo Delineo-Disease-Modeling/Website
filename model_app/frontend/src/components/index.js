@@ -9,5 +9,7 @@ import Parameters from './ConfigurationParameters';
 import OptionMenu from './OptionMenu';
 import PersistentDrawerLeft from './ConfigDrawer';
 
-export { Place, Header, Timeseries, SimulationTimeseries, LineChart, GoogleMap, Footer,
-Parameters, OptionMenu, PersistentDrawerLeft };
+export {
+  Place, Header, Timeseries, SimulationTimeseries, LineChart, GoogleMap, Footer,
+  Parameters, OptionMenu, PersistentDrawerLeft
+};
