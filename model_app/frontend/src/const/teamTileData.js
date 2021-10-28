@@ -87,7 +87,7 @@ const tileData = [
   {
     img: ameDehImg,
     name: 'Ameya Dehade',
-    role: 'Information Support',
+    role: 'Fullstack',
     description: 'Computer Science, Public Health',
   },
   {
