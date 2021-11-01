@@ -131,14 +131,14 @@ const tileData = [
   {
     img:zihWang,
     name: 'Zihan Wang',
-    role: '',
+    role: 'Simulation',
     description: 'n/a',
 
   },
   {
     img:ashTsang,
     name: 'Ashley Tsang',
-    role: '',
+    role: 'Software Team Manager',
     description: 'n/a',
   },
 ];
