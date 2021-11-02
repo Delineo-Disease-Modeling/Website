@@ -16,6 +16,8 @@ import cheTian from '../images/Tom_Tang.JPG';
 import shrWadhwa from '../images/Shreya_Wadhwa.jpg';
 import yucYang from '../images/Jason_Yang.jpeg';
 import sheZhang from '../images/Shengwei_Zhang.jpg';
+import zihWang from '../images/Zihan_Wang.jpg';
+import ashTsang from '../images/Ashley_Tsang.jpg';
 
 const tileData = [
   {
@@ -125,7 +127,20 @@ const tileData = [
     name: 'Shengwei Zhang',
     role: 'Simulation',
     desciption: 'n/a',
-  }
+  },
+  {
+    img:zihWang,
+    name: 'Zihan Wang',
+    role: 'Simulation',
+    description: 'n/a',
+
+  },
+  {
+    img:ashTsang,
+    name: 'Ashley Tsang',
+    role: 'Software Team Manager',
+    description: 'n/a',
+  },
 ];
 
 export default tileData;
