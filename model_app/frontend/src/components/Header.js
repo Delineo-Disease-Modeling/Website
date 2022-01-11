@@ -42,7 +42,6 @@ class Header extends Component{
             color:'#66FCF1',
             borderBottom: '1px solid #66FCF1',
             paddingBottom: '4px',
-
         }
 
         return (
@@ -53,7 +52,7 @@ class Header extends Component{
                     <img src={Logo} alt="Logo" width="200" height="65"></img>
                 </NavbarBrand>
                 <Collapse isOpen={this.state.isNavOpen} navbar>
-                    <Nav navbar className="ml-auto">
+                    <Nav navbar className="ms-auto">
                         <NavItem>
                             <UncontrolledDropdown>
                                   <DropdownToggle caret id="dropdown-toggle">

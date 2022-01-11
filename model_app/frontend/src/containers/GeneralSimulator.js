@@ -145,7 +145,7 @@ function GeneralSimulator(props) {
         </Grid>
         <Grid item xs={4}>
           <div className={classes.graph}>
-            <PieChart data={state.data[0].case_distribution} innerRadius={50} outerRadius={150} />
+            <PieChart data={state.data[0].case_distribution} innerRadius={50} outerRadius={100} />
           </div>
         </Grid>
         <Grid item xs={4}>
