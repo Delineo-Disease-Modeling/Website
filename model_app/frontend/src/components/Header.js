@@ -44,7 +44,7 @@ const Header = () => {
         </NavbarBrand>
         <NavbarToggler onClick={toggleNav} />
         <Collapse isOpen={navState.isNavOpen} navbar>
-          <Nav navbar className="ml-auto">
+          <Nav navbar className="ms-auto">
             <NavItem>
               <NavLink className="Nav-link" to='/simulator' activeClassName='active' activeStyle={active} style={styleSheet}>Simulator</NavLink>
             </NavItem>
