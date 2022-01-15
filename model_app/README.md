@@ -8,7 +8,6 @@ The fullstack group is responsible for deploying the web application that will m
 1. Install all dependencies: Navigate to **model_app**. In Terminal or CMD, enter
 	```
 	npm install
-	npm run server-install
 	npm run client-install
 	```
 
