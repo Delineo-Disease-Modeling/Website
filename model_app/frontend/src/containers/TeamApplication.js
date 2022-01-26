@@ -1,10 +1,10 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-//import Card from "@material-ui/core/Card";
-import { makeStyles } from "@material-ui/styles";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+//import Card from "@mui/material/Card";
+import { makeStyles } from "@mui/styles";
 import TeamMemberJoin from "../images/teammemberjoin.jpg";
-import Container from "@material-ui/core/Container";
+import Container from "@mui/material/Container";
 
 const useStyles = makeStyles((theme) => ({
   title: {

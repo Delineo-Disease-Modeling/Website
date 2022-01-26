@@ -1,19 +1,19 @@
 import React from "react";
 // import { useHistory } from "react-router-dom";
 import "./BlogPost.css";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-// import FacebookIcon from "@material-ui/icons/Facebook";
-import ShareIcon from "@material-ui/icons/Share";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import { Grid } from "@material-ui/core";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+// import FacebookIcon from "@mui/icons-material/Facebook";
+import ShareIcon from "@mui/icons-material/Share";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { Grid } from "@mui/material";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import {TwitterButton, EmailButton } from "react-social";
-import TwitterIcon from "@material-ui/icons/Twitter";
-// import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import EmailIcon from "@material-ui/icons/Email";
-import { makeStyles } from "@material-ui/styles";
+import TwitterIcon from "@mui/icons-material/Twitter";
+// import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import EmailIcon from "@mui/icons-material/Email";
+import { makeStyles } from "@mui/styles";
 import ameya from "../images/Ameya Dehade.jpg";
 
 const useStyles = makeStyles((theme) => ({

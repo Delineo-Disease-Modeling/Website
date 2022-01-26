@@ -1,34 +1,15 @@
 import React, { Component } from "react";
-import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { withStyles} from "@material-ui/styles";
-import HomeCarousel from "../components/Carousel";
+import CssBaseline from "@mui/material/CssBaseline";
+import { withStyles} from "@mui/styles";
+import HomeCarousel from "../components/HomeCarousel";
 import TeamMemberJoin from "../images/teammemberjoin.jpg";
-import Box from "@material-ui/core/Box"
-
-//import blogbackground from "../images/blogbackgroud.PNG";
-import Link from "@material-ui/core/Link";
-//import DevelopmentBlogCards from "./DevelopmentBlogCards.js";
+import Box from "@mui/material/Box"
+import StyledButton from "../components/StyledButton";
+import Link from "@mui/material/Link";
 import anytownScreenshot from "../images/anytownScreenshot.png";
-import HomeBlog from "./HomeBlog.js";
-import DevelopmentBlog from "./DevelopmentBlog.js"
 import BlogCarousel from "./BlogCarousel";
 
 const styles = {
-  
-  bigButton: {
-    borderColor: "#66FCF1",
-    backgroundColor: "#66FCF1",
-    border: "1px solid",
-    color: "#444f56",
-      "&:hover": {
-        backgroundColor: "#222629",
-        color: "#66FCF1",
-        borderColor: "#66FCF1",
-      }
-  },
-
-  //fontSize: "20px",
 
   imageBox: {
     background: "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))",
@@ -95,14 +76,11 @@ class Home extends Component {
             <h5 style={{ marginBottom: "30px" }}>
               Bringing a fresh approach to the challenge of modeling disease spread
             </h5>{" "}
-            <Button
-              className={classes.bigButton}
-              variant="contained"
-              color="inherit"
+            <StyledButton
               href="/simulator"
             >
               Visit Anytown, USA
-            </Button>
+            </StyledButton>
           </div>
         </div>
 
@@ -128,14 +106,11 @@ class Home extends Component {
             <h5 style={{ marginBottom: "30px" }}>
               Bringing a fresh approach to the challenge of modeling disease spread
             </h5>
-            <Button
-              className={classes.bigButton}
-              variant="contained"
-              color="inherit"
+            <StyledButton
               href="/team"
             >
               Meet the Team
-            </Button>
+            </StyledButton>
 
             <h5 style={{ marginTop: "30px" }}>
               <Link

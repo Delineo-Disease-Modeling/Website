@@ -1,13 +1,13 @@
 import React from 'react';
 import '../containers/Simulator.css'
-import Slider from '@material-ui/core/Slider'
-//import { withStyles } from '@material-ui/styles';
+import Slider from '@mui/material/Slider'
+//import { withStyles } from '@mui/styles';
 //import Select from "react-dropdown-select";
 
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
 import { Dropdown } from 'reactstrap';
 // import {MuiPickersUtilsProvider, KeyboardDatePicker} from '@material-ui/core/pickers';
 

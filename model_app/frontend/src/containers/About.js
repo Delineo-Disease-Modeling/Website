@@ -1,23 +1,23 @@
 import React from "react";
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import SendIcon from '@material-ui/icons/Send';
-import { withStyles } from '@material-ui/styles';
-import MuiAccordion from '@material-ui/core/Accordion';
-import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
-import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper'
-import Button from '../components/StyledButton';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import SendIcon from '@mui/icons-material/Send';
+import { withStyles } from '@mui/styles';
+import MuiAccordion from '@mui/material/Accordion';
+import MuiAccordionSummary from '@mui/material/AccordionSummary';
+import MuiAccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper'
 import faqData from '../const/faqData';
 import bgImg from '../images/Delineo-About.gif';
 import InfoBlock from '../components/InfoBlock';
-import './About.css'
+import StyledButton from "../components/StyledButton";
+// import './About.css'
 
 const styles = {
 	cardBackground: {
 		backgroundColor: '#222629',
 		height: '100%',
-		
+
 		minHeight: '100%',
 		minWidth: '100%',
 		margin: '0',
@@ -31,28 +31,9 @@ const styles = {
 		marginBottom: '30px'
 	},
 	heading: {
-		background: `no-repeat center/100% url(${bgImg})` ,
+		background: `no-repeat center/100% url(${bgImg})`,
 		backgroundColor: '#222629',
-		padding: '70px 25% 70px 70px',
-	},
-	title: {
-		fontSize: '1rem',
-		fontWeight: '700',
-		lineHeight: '2',
-		paddingBottom: '10px',
-		textAlign: 'left',
-	},
-	subtitle: {
-		textAlign: 'left',
-		fontWeight: '400',
-		fontSize: '50px',
-		lineHeight: '1.25'
-	},
-
-	subtitleMobile: {
-		textAlign: 'left',
-		fontWeight: '400',
-		fontSize: '20px',
+		padding: '50px 25% 50px 70px',
 	},
 
 	border: {
@@ -97,7 +78,7 @@ const styles = {
 		paddingBottom: '30px',
 		backgroundColor: 'rgba(125, 125, 125, 0.50)',
 		width: '500px',
-		margin:'auto',
+		margin: 'auto',
 	}
 }
 
@@ -158,22 +139,22 @@ class About extends React.Component {
 
 	render() {
 		const { classes } = this.props;
-	
+
 		return (
 			<div className={classes.cardBackground}>
 				<div className={classes.heading} id="heading-id">
-
-					<Typography className={classes.title}>
+					<Typography variant='h6' align="left" color='white'>
 						About Delineo
 					</Typography>
-					<Typography className={classes.subtitle} id="subtitle-id">
+					<Typography variant='h2' id="subtitle-id">
 						Disease Modeling Simulation at Johns Hopkins University
 					</Typography>
-					</div>
-				<InfoBlock subject={'simulation'} background='#222629'/>
+				</div>
+
+				<InfoBlock subject={'simulation'} background='#222629' />
 
 				<div className={classes.faq}>
-					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', marginTop: '50px' }}>
+					<Typography variant="h3" component="h3" style={{ marginBottom: '-10px', marginTop: '50px' }}>
 						FAQ
 					</Typography>
 					<div className={classes.underline}></div>
@@ -203,27 +184,26 @@ class About extends React.Component {
 					</div>
 				</div>
 				<div id="contact" style={{ backgroundColor: '#222629', padding: '50px 0' }}>
-				<Paper className={classes.contactCard} id="contact-card-id">
-					<Typography variant="h3" component="h2" style={{ marginBottom: '-10px', color: 'white', paddingTop: '50px' }}>
-						Contact Us!
-					</Typography>
-					<div className={classes.underline}></div>
-					<Typography varient='h3' component="h2" style={{color: 'white'}}>
-						Let's get in touch!
-					</Typography>
-					<Typography varient='h1' component="h2" style={{ color: '#222629' }}>
+					<Paper className={classes.contactCard} id="contact-card-id">
+						<Typography variant="h4" component="h4" >
+							Contact Us!
+						</Typography>
+						<Typography variant='subtitle1' color='white' style={{paddingTop: '5px'}}>
+							Let's get in touch!
+						</Typography>
+						<Typography varient='h1' component="h2" style={{ color: '#222629' }}>
 
-						<form style={{ padding: '0 50px' }} className={classes.form} noValidate autoComplete="off">
-							<input className={classes.input} id="input-id" type="text" placeholder="Name" required name="Name" />
-							<input className={classes.input} id="input-id" type="text" placeholder="Email" required name="Email" />
-							<input className={classes.input} id="input-id" type="text" placeholder="Subject" required name="Subject" />
-							<input className={classes.input} id="input-id" type="text" placeholder="Comment" required name="Comment" />
+							<form style={{ padding: '0 50px' }} className={classes.form} noValidate autoComplete="off">
+								<input className={classes.input} id="input-id" type="text" placeholder="Name" required name="Name" />
+								<input className={classes.input} id="input-id" type="text" placeholder="Email" required name="Email" />
+								<input className={classes.input} id="input-id" type="text" placeholder="Subject" required name="Subject" />
+								<input className={classes.input} id="input-id" type="text" placeholder="Comment" required name="Comment" />
 
-							<Button endIcon={<SendIcon />} className={classes.button} type="submit" size="large" varient='contained'>
-								SEND MESSAGE
-							</Button>
-						</form>
-					</Typography>
+								<StyledButton endIcon={<SendIcon />} type="submit" >
+									SEND MESSAGE
+								</StyledButton>
+							</form>
+						</Typography>
 					</Paper>
 				</div>
 			</div >

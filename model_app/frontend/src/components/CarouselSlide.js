@@ -1,7 +1,7 @@
 import React from 'react';
-import { Slide } from '@material-ui/core';
-import Grid from "@material-ui/core/Grid";
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { Slide } from '@mui/material';
+import Grid from "@mui/material/Grid";
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const CarouselSlide = (props) => {
 

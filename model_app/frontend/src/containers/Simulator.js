@@ -2,16 +2,16 @@ import React, { Component } from "react";
 //import { SimulationTimeseries } from "../components";
 import "./Simulator.css";
 import axios from "axios";
-import { withStyles } from "@material-ui/styles";
-import Grid from "@material-ui/core/Grid";
+import { withStyles } from "@mui/styles";
+import Grid from "@mui/material/Grid";
 import Unity, { UnityContext } from "react-unity-webgl";
-import Typography from "@material-ui/core/Typography";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import { Button } from "@material-ui/core";
+import Typography from "@mui/material/Typography";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import { Button } from "@mui/material";
 import { MobileView } from "react-device-detect";
 
 const unityContext = new UnityContext({
@@ -24,7 +24,6 @@ const unityContext = new UnityContext({
 const styles = (theme) => ({
   bubble: {
     color: "white",
-
     width: 950,
     position: "relative",
     fontSize: 15,
@@ -61,12 +60,11 @@ const styles = (theme) => ({
   },
 
   dialogTitle: {
-    //textAlign: "center",
+    color: 'white'
   },
 
   dialogText: {
     color: "white",
-    //textAlign: "center",
   },
 
   dialogButton: {
@@ -213,7 +211,7 @@ class Simulator extends Component {
 
     // no timeseries: replace with simulation timeseries
     return (
-      <div className="GreenBackground">
+      <div>
         <Dialog
           open={this.state.modalOpen}
           onClose={() =>
@@ -222,26 +220,28 @@ class Simulator extends Component {
             })
           }
         >
-          <DialogTitle className={classes.dialogTitle}>
-            Simulation Loading
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText className={classes.dialogText}>
-              Please wait while the simulation renders. Loading times may vary,
-              but can be as long as 3 minutes.
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button
-              onClick={() => {
-                this.setState({ modalOpen: false });
-              }}
-              //autoFocus
-              className={classes.dialogButton}
-            >
-              Continue
-            </Button>
-          </DialogActions>
+          <div style={{ backgroundColor: "#222629" }}>
+            <DialogTitle className={classes.dialogTitle}>
+              Simulation Loading
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText className={classes.dialogText}>
+                Please wait while the simulation renders. Loading times may vary,
+                but can be as long as 3 minutes.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button
+                onClick={() => {
+                  this.setState({ modalOpen: false });
+                }}
+                //autoFocus
+                className={classes.dialogButton}
+              >
+                Continue
+              </Button>
+            </DialogActions>
+          </div>
         </Dialog>
 
         <MobileView>
@@ -373,14 +373,14 @@ class Simulator extends Component {
               </Typography>
               <ul>
                 <li>
-                  <a target="_blank" href="https://drive.google.com/file/d/1kNyUd4YSmahDOib99TjfQsh_qoTiFRZ2/view?usp=sharing" download>
+                  <a target="_blank" rel="noreferrer" href="https://drive.google.com/file/d/1kNyUd4YSmahDOib99TjfQsh_qoTiFRZ2/view?usp=sharing" download>
                     High School Delineo Lab
                   </a>
                 </li>
                 <li>
-                  <a target="_blank" href="https://drive.google.com/file/d/1JojKSrQhDsOTeSe7g2_QkN7XersQ0sh9/view?usp=sharing" >
+                  <a target="_blank" rel="noreferrer" href="https://drive.google.com/file/d/1JojKSrQhDsOTeSe7g2_QkN7XersQ0sh9/view?usp=sharing" >
                     Middle School Delineo Lab
-                    
+
                   </a>
                 </li>
               </ul>

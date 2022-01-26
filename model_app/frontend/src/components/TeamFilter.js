@@ -1,11 +1,11 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 
 //These imports are for the default team page view
 import TeamGridList from "../components/TeamGridList.js";
 import SupGridList from "../components/SupGridList.js";
 import LeadGridList from "../components/LeaderGridList.js";
 import PastTeamGridList from "../components/PastTeamGridList.js";
-import { withStyles } from "@material-ui/styles";
+import { withStyles } from "@mui/styles";
 
 //These imports are for when someone actually wants to filter
 import FullStackGridList from "../components/FullStackGridList.js";
@@ -13,11 +13,11 @@ import SimGridList from "../components/SimGridList.js";
 import MLGridList from "../components/MLGridList.js";
 import InfoTeamGridList from "../components/InfoTeamGridList.js";
 
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
 
 const styles = {
   root: {
@@ -33,57 +33,6 @@ const styles = {
   CardGreenBackground1: {
     marginTop: "0%",
     backgroundColor: "#4A4E51",
-  },
-
-  h2: {
-    color: "white",
-    marginRight: "auto",
-    marginLeft: "auto",
-    marginTop: 0,
-    borderBottom: "3px solid #66FCF1",
-    width: "fit-content",
-    paddingBottom: 0,
-    paddingTop: "20px",
-    fontSize: 40,
-  },
-
-  h3: {
-    color: "white",
-    marginRight: 100,
-    marginLeft: 100,
-    marginTop: 40,
-
-    width: "fit-content",
-
-    fontSize: 20,
-    textAlign: "center",
-    alignSelf: "center",
-    alignItems: "center",
-    borderRadius: "25px",
-    border: "2px solid #2f3538",
-    padding: "20px 20px 20px 20px",
-    backgroundColor: "#2f3538",
-    maxWidth: "1000px",
-  },
-
-
-  h4: {
-    color: "white",
-    marginRight: 100,
-    marginLeft: 100,
-    marginTop: 40,
-
-    width: "fit-content",
-
-    fontSize: 15,
-    textAlign: "center",
-    alignSelf: "center",
-    alignItems: "center",
-    borderRadius: "25px",
-    border: "2px solid #2f3538",
-    padding: "20px 20px 20px 20px",
-    backgroundColor: "#2f3538",
-    maxWidth: "1000px",
   },
 
   focus: {
@@ -104,11 +53,8 @@ const styles = {
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
-
     padding: 0,
-
     color: "#66FCF1",
-
     margin: "0 auto",
     width: "fit-content",
   },
@@ -179,13 +125,15 @@ const TeamFilter = (props) => {
   const { ml } = filterState;
   const { info } = filterState;
 
-  const resize = () => {
-    let isDesktop = (window.innerWidth);
-    if (isDesktop !== 1000) {
-      return classes.h3;
-    }
-    return classes.h4;
-  };
+  // const resize = () => {
+  //   let isDesktop = (window.innerWidth);
+  //   if (isDesktop !== 1000) {
+  //     return classes.desktop;
+  //   }
+  //   console.log("phone");
+  //   return classes.phone;
+
+  // };
 
   return (
     <div>
@@ -218,7 +166,7 @@ const TeamFilter = (props) => {
                   }
                   primary={
                     <Typography
-                      type="body2"
+                      type="descriptio"
                       style={{ fontWeight: "bold", fontSize: "16px" }}
                     >
                       All
@@ -360,23 +308,23 @@ const TeamFilter = (props) => {
       {all ? (
         <div>
           <br></br>
-          <div>
-            <Typography varient="h2" className={classes.h2} align="center">
+          <div >
+            <Typography variant="h7" component='h2' align="center" style={{paddingTop: '20px'}}>
               Principal Investigator
             </Typography>
             <br />
             <SupGridList />
-            <Typography varient="h2" className={classes.h2} align="center">
+            <Typography variant="h7" component='h2' align="center">
               Team Leaders
             </Typography>
             <br />
             <LeadGridList></LeadGridList>
-            <Typography varient="h2" className={classes.h2} align="center">
+            <Typography variant="h7" component='h2' align="center">
               Team Members
             </Typography>
             <br />
             <TeamGridList></TeamGridList>
-            <Typography varient="h2" className={classes.h2} align="center">
+            <Typography variant="h7" component='h2' align="center">
               Past Members
             </Typography>
             <br />
@@ -387,7 +335,7 @@ const TeamFilter = (props) => {
       {fs ? (
         <div>
           <div align="center">
-            <Typography className={resize()} align="center">
+            <Typography variant='body2' align="center">
               Members of the fullstack team work throughout the stack. Our web
               application is built using the MERN stack (MongoDB, Express,
               ReactJS, NodeJS) and Unity Webgl. Members of this team also
@@ -395,7 +343,7 @@ const TeamFilter = (props) => {
             </Typography>
           </div>
           <div>
-            <Typography varient="h2" className={classes.h2} align="left">
+            <Typography variant="h7" component='h2' align="left">
               Team Members
             </Typography>
             <br />
@@ -406,7 +354,7 @@ const TeamFilter = (props) => {
       {sim ? (
         <div>
           <div align="center">
-            <Typography className={resize()} align="center">
+            <Typography variant='body2' align="center">
               The simulation team is responsible for the implementation of the
               simulation that lies at the heart of the Delineo project. Team
               members focus on programming the various modules, algorithms,
@@ -414,7 +362,7 @@ const TeamFilter = (props) => {
             </Typography>
           </div>
           <div>
-            <Typography varient="h2" className={classes.h2} align="left">
+            <Typography variant="h7" component='h2' align="left">
               Team Members
             </Typography>
             <br />
@@ -425,7 +373,7 @@ const TeamFilter = (props) => {
       {ml ? (
         <div>
           <div align="center">
-            <Typography className={resize()}>
+            <Typography variant='body2'>
               The machine learning group is tackling the challenge of learning
               from the massive amounts of geolocation data the Delineo project
               has access to. One of the main focuses is on developing machine
@@ -435,7 +383,7 @@ const TeamFilter = (props) => {
             </Typography>
           </div>
           <div>
-            <Typography varient="h2" className={classes.h2} align="left">
+            <Typography variant="h7" component='h2' align="left">
               Team Members
             </Typography>
             <br />
@@ -446,14 +394,14 @@ const TeamFilter = (props) => {
       {info ? (
         <div>
           <div align="center">
-            <Typography varient="h2" className={resize()}>
+            <Typography variant="body2" >
               The information support team is responsible for gathering,
               summarizing, and disseminating research articles/papers that
               prove helpful for informing the development of Delineo's model.
             </Typography>
           </div>
           <div>
-            <Typography varient="h2" className={classes.h2} align="left">
+            <Typography variant="h7" component='h2' align="left">
               Team Members
             </Typography>
             <br />

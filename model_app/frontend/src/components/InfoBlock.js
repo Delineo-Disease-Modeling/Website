@@ -1,6 +1,6 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/styles';
-import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@mui/styles';
+import Typography from '@mui/material/Typography';
 import Button from './StyledButton';
 import Carousel from './CarouselSection';
 import anytownScreenshot from "../images/anytownScreenshot.png";
@@ -46,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
 
   title: {
     color: 'white',
+    paddingBottom: '10px',
 
     [theme.breakpoints.down('550')]: {
       fontSize: '2rem',

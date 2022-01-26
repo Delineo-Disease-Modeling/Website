@@ -1,22 +1,22 @@
 import React from "react";
-import { makeStyles } from "@material-ui/styles";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-import Grid from "@material-ui/core/Grid";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import IconButton from "@material-ui/core/IconButton";
-// import FacebookIcon from "@material-ui/icons/Facebook";
-import ShareIcon from "@material-ui/icons/Share";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
+import { makeStyles } from "@mui/styles";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
+import CardActionArea from "@mui/material/CardActionArea";
+import CardActions from "@mui/material/CardActions";
+import CardMedia from "@mui/material/CardMedia";
+import CardContent from "@mui/material/CardContent";
+import IconButton from "@mui/material/IconButton";
+// import FacebookIcon from "@mui/icons-material/Facebook";
+import ShareIcon from "@mui/icons-material/Share";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import { TwitterButton, EmailButton } from "react-social";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import EmailIcon from "@material-ui/icons/Email";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import EmailIcon from "@mui/icons-material/Email";
 import articles from "../const/devblogposts";
 
 const useStyles = makeStyles((theme) => ({
@@ -146,7 +146,7 @@ function DevelopmentBlogCards(props) {
                       <Typography
                         //style={{}}
                         className={classes.subtextalign}
-                        variant="body2"
+                        variant="body1"
                         component="p"
                       >
                         {row.subtext}

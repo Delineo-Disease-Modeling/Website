@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/styles";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import IconButton from "@material-ui/core/IconButton";
-import ShareIcon from "@material-ui/icons/Share";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
+import { makeStyles } from "@mui/styles";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardActionArea from "@mui/material/CardActionArea";
+import CardActions from "@mui/material/CardActions";
+import CardMedia from "@mui/material/CardMedia";
+import CardContent from "@mui/material/CardContent";
+import IconButton from "@mui/material/IconButton";
+import ShareIcon from "@mui/icons-material/Share";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import { TwitterButton, EmailButton } from "react-social";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import EmailIcon from "@material-ui/icons/Email";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import EmailIcon from "@mui/icons-material/Email";
 import articles from "../const/devblogposts";
-import { ArrowBack, ArrowForward } from "@material-ui/icons"
+import { ArrowBack, ArrowForward } from "@mui/icons-material"
 import CarouselSlide from "../components/CarouselSlide"
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
 
   title: {
     marginBottom: "0 0px",
@@ -44,14 +44,15 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    height: '42rem'
+    height: '42rem',
   },
 
   subtextalign: {
     textAlign: "justify",
     alignItems: "justifyContent",
     color: "black",
-    height: '10rem'
+    height: '10rem',
+    padding: '0 5%'
   },
 
   creditRow: {
@@ -80,7 +81,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-around",
     justifyItems: 'center',
     margin: '10px auto',
-    padding: '0 5px'
   },
 
   svg: {
@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
   carousel: {
     width: '100%',
   },
-}));
+});
 
 function Arrow(props) {
   const { direction, clickFunction } = props;
@@ -162,6 +162,7 @@ function BlogCarousel() {
               style={{
                 fontWeight: "bold",
                 marginTop: "0 0px",
+                paddingBottom: '2%'
               }}
               gutterBottom
               variant="h5"
@@ -170,9 +171,10 @@ function BlogCarousel() {
               {row.title}
             </Typography>
             <Typography
+              variant="body1"
               className={classes.subtextalign}
-              variant="body2"
               component="p"
+              style={{fontSize: '0.875rem'}}
             >
               {row.subtext}
             </Typography>

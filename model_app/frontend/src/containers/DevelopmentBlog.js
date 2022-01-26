@@ -1,23 +1,23 @@
 import React from "react";
-import { makeStyles } from "@material-ui/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-// import Table from "@material-ui/core/Table";
-// import TableBody from "@material-ui/core/TableBody";
-// import TableCell from "@material-ui/core/TableCell";
-// import TableContainer from "@material-ui/core/TableContainer";
-// import TableHead from "@material-ui/core/TableHead";
-// import TableRow from "@material-ui/core/TableRow";
-// import Paper from "@material-ui/core/Paper";
-import IconButton from "@material-ui/core/IconButton";
-// import FacebookIcon from "@material-ui/icons/Facebook";
+import { makeStyles } from "@mui/styles";
+import AppBar from "@mui/material/AppBar";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import Collapse from "@mui/material/Collapse";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+// import Table from "@mui/material/Table";
+// import TableBody from "@mui/material/TableBody";
+// import TableCell from "@mui/material/TableCell";
+// import TableContainer from "@mui/material/TableContainer";
+// import TableHead from "@mui/material/TableHead";
+// import TableRow from "@mui/material/TableRow";
+// import Paper from "@mui/material/Paper";
+import IconButton from "@mui/material/IconButton";
+// import FacebookIcon from "@mui/icons-material/Facebook";
 import clsx from "clsx";
 import BlogCarousel from "./BlogCarousel"
 
@@ -186,7 +186,7 @@ function DevelopmentBlog(props) {
               textAlign: "center",
             }}
           >
-            <Typography variant="h4" className={classes.blogTitle}>
+            <Typography variant='h4' className={classes.blogTitle}>
               Recent Posts
             </Typography>
             <IconButton

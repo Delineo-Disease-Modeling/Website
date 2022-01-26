@@ -5,7 +5,7 @@ import { Home, About, Simulator, DevelopmentBlog, Team, Post1, Post2, Post3, Pos
 import { Provider } from 'react-redux';
 import TeamApplication from "./containers/TeamApplication"
 import store from './store';
-import { ThemeProvider } from '@material-ui/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import theme from './const/theme';
 // routers
 import {
