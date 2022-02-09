@@ -24,11 +24,4 @@ Development server is running on port: 5000
 - If you ever see a babel-jest error after pulling, go into your package.json and remove the react-scripts from your dependencies, and run `npm install` again
 - If you're getting a strange error related to Carousel.js, do `npm install react-material-ui-carousel`
 
-## `Structure`
-**model_app/backend/models**: contains all database schemas   
-**model_app/backend/routes**: contains all routing information for server  
-**model_app/backend/synthpops**: contains all Python scripts needed for simulations  
-**model_app/backend/server.js**: connects to the MongoDB database and links all routes to corresponding URI's
-**model_app/backend/frontend/src**: All the folders for implementing the Redux architecture are here.
-
 
