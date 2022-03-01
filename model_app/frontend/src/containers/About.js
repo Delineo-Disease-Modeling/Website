@@ -146,7 +146,7 @@ class About extends React.Component {
 					<Typography variant='h6' align="left" color='white'>
 						About Delineo
 					</Typography>
-					<Typography variant='h2' id="subtitle-id">
+					<Typography variant='h2' align="left" id="subtitle-id" color='white'>
 						Disease Modeling Simulation at Johns Hopkins University
 					</Typography>
 				</div>
