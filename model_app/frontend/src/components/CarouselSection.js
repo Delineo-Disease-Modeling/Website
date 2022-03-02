@@ -1,18 +1,22 @@
 import React from 'react';
-import Carousel from 'react-material-ui-carousel'
+import CarouselSlide from "../components/CarouselSlide"
+// import Carousel from 'react-material-ui-carousel'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 
 const CarouselSection = (captions, alts, images) => {
   return (
     <Paper style={{ padding: '1rem', backgroundColor: 'transparent', border: '2px solid black', width: '1000px', maxWidth: '90%', margin: 'auto' }}>
-      <Carousel>
+      <CarouselSlide>
+      {/* <Carousel> */}
+
         {
           [0, 1].map(element => {
             return (<Item key={element} caption={captions[element]} image={images[element]} alt={alts[element]} />)
           })
         }
-      </Carousel>
+      </CarouselSlide>
+      {/* </Carousel> */}
     </Paper>
   )
 };
