@@ -151,8 +151,8 @@ const ColAccordionSummary = withStyles({
 })(MuiAccordionSummary);
 
 class About extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.MapDescription = "The Johns Hopkins Coronavirus Resource Center (CRC) is a continuously updated source of COVID-19 data and expert guidance. We aggregate and analyze the best data available on COVID-19 - including cases, as well as testing, contact tracing and vaccine efforts - to help the public, policymakers and healthcare professionals worldwide respond to the pandemic.";
 		this.SimulationDescription = "Viruses, such as the one that causes COVID-19, spread quickly through large cities because of a complex web of interactions between people taking place in a densely populated area. But how viruses move from person to person in smaller, rural communities is less well understood, resulting in public health and economic decisions that are made on the basis of scant information and overgeneralized modeling. The Delineo project is developing a distributed programming environment to run the model over large numbers of computers to scale up the areas that can be accurately modeled.";
 		this.handleSubmit= this.handleSubmit.bind(this);
@@ -245,24 +245,21 @@ class About extends React.Component {
 			comment: comment.value
 		};
 
-
-
-		console.log(data);
-
-		// let response = await fetch("http://localhost:3000/contact", {
-		// 	method: "POST",
-		// 	headers: {
-		// 		"Content-Type": "application/json;charset=utf-8",
-		// 	},
-		// 	body: JSON.stringify(data),
-		// });
-
-		// let result = await response.json();
-
-
+		axios({
+			method: "POST", 
+			url:"/about", 
+			baseURL: 'http://localhost:3000',
+			data: data
+		}).then((response)=>{
+			if(response.request.status===200){
+				window.alert("Message sent!")
+			} else {
+				alert("Failed to send message.")
+			}
+		});
 	}
-
-	
 	
 }
+
 export default withStyles(styles)(About);
+
