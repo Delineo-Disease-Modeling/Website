@@ -12,7 +12,6 @@ import faqData from '../const/faqData';
 import bgImg from '../images/Delineo-About.gif';
 import InfoBlock from '../components/InfoBlock';
 import './About.css'
-import axios from "axios";
 
 const styles = {
   cardBackground: {
@@ -251,16 +250,19 @@ class About extends React.Component {
     // formData.append("subject", subject.value);
     // formData.append("comment", comment.value);
 
-    let response = await fetch("http://localhost:3000/about", {
-      method: "PUT",
+    await fetch("http://localhost:3000/about", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
       },
       body: JSON.stringify(data),
-			credentials: 'include'
-    });
-		let result = await response.json();
-		alert(result.status);
+			credentials: "include",
+			mode: "cors",
+			referrerPolicy: "no-referrer-when-downgrade"
+    }).then(async (response)=>{
+			let result = await response.json();
+			alert(result.status);
+		});
   }
   
 }
