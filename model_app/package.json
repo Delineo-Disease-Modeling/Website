@@ -26,6 +26,7 @@
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "multiparty": "^4.2.3",
+    "net": "^1.0.2",
     "nodemailer": "^6.7.2",
     "react-bootstrap": "^1.6.4",
     "react-day-picker": "^7.4.10",
