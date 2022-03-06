@@ -65,4 +65,10 @@ describe("Home page", () => {
     }
   });
 
+  it("check whether button opens the button opens the simulations page", () => {
+    const { getByText } = render(<HomeCarousel />);
+    const title = getByText('Bringing a fresh approach to the challenge of modeling disease spread');
+    expect(title).toBeInTheDocument();
+  });
+
 });
