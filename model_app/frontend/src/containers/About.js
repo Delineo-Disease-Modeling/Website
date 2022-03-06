@@ -11,7 +11,8 @@ import Button from '../components/StyledButton';
 import faqData from '../const/faqData';
 import bgImg from '../images/Delineo-About.gif';
 import InfoBlock from '../components/InfoBlock';
-import './About.css'
+import axios from 'axios';
+import './About.css';
 
 const styles = {
   cardBackground: {
@@ -234,49 +235,19 @@ class About extends React.Component {
 
 
   async handleSubmit(event) {
+	
     event.preventDefault();
     const { firstName, lastName, email, subject, comment } = event.target.elements;
 
-		const net = require('net');
-		const nodemailer = require("nodemailer");
-		const contactEmail = nodemailer.createTransport({
-  		port: 587,
-			secure: false,
-			auth: {
-				user: "delineodiseasemodeling@gmail.com",
-				pass: "Bluejay123"
-			},
-		});
+		
 
-		contactEmail.verify((error) => {
-			if (error) {
-				console.log(error);
-			} else {
-				console.log("Ready to Send");
-			}
-		});
-
-		const mail = {
-			from: `${email.value}`,
-			to: "delineodiseasemodeling@gmail.com",
-			subject: "Contact Us Form",
-			html: `<p>FirstName: ${firstName.value}</p>
-						 <p>LastName: ${lastName.value}</p>
-						 <p>Email: ${email.value}</p>
-						 <p>Subject: ${subject.value}</p>
-						 <p>Comment: ${comment.value}</p>`,
-		};
-	
-		contactEmail.sendMail(mail, (error) => {
-			if (error) {
-				alert("failed to send email")
-			} else {
-				alert("email sent");
-			}
-		});
-
-
-
+	const data = {
+		firstName: firstName.value,
+		lastName: lastName.value,
+		email: email.value,
+		subject: subject.value,
+		comment: comment.value
+	};
 
     // const formData = new FormData();
     // formData.append("firstName", firstName.value);
@@ -284,20 +255,35 @@ class About extends React.Component {
     // formData.append("email", email.value);
     // formData.append("subject", subject.value);
     // formData.append("comment", comment.value);
-
-    // await fetch("http://localhost:3000/about", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json;charset=utf-8",
-    //   },
-    //   body: JSON.stringify(data),
-		// 	credentials: "include",
-		// 	mode: "cors",
-		// 	referrerPolicy: "no-referrer-when-downgrade"
-    // }).then(async (response)=>{
-		// 	let result = await response.json();
-		// 	alert(result.status);
-		// });
+//referrerPolicy: "no-referrer-when-downgrade"
+	axios({
+		method: "POST", 
+		url:"http://localhost:3000/about", 
+		data: data
+	}).then((response)=>{
+	if(response.request.status===200){
+		window.alert("Message sent!")
+	} else {
+		alert("Failed to send message.")
+	}
+});
+   /*let myQuery = await fetch("http://localhost:3000/about", {
+       method: "POST",
+	   mode: "cors",
+	   credentials: "include",
+	   referrerPolicy: "no-referrer",
+       headers: {
+         "Content-Type": "application/json",
+       },
+       body: JSON.stringify(data),
+		 	
+	
+     }).then(response=>{
+		 	let result = response.json();
+			console.log("In then");
+			console.log(response);
+		 	alert(result.status);
+		 });*/
   }
   
 }
