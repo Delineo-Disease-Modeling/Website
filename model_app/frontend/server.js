@@ -32,7 +32,8 @@ contactEmail.verify((error) => {
   }
 });
 
-router.post("/about", (req, res) => {
+router.post("/about", async (req, res) => {
+  console.log("in server.js, succesfully routed")
   console.log(req);
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;

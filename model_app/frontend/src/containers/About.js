@@ -11,7 +11,8 @@ import Button from '../components/StyledButton';
 import faqData from '../const/faqData';
 import bgImg from '../images/Delineo-About.gif';
 import InfoBlock from '../components/InfoBlock';
-import './About.css'
+import axios from 'axios';
+import './About.css';
 
 const net = require('net');
 
@@ -236,8 +237,10 @@ class About extends React.Component {
 
 
   async handleSubmit(event) {
+	
     event.preventDefault();
     const { firstName, lastName, email, subject, comment } = event.target.elements;
+    
     const data = {
       firstName: firstName.value,
       lastName: lastName.value,
@@ -245,7 +248,6 @@ class About extends React.Component {
       subject: subject.value,
       comment: comment.value
     };
-
 
 		// const nodemailer = require("nodemailer");
 		// const contactEmail = nodemailer.createTransport({
@@ -284,9 +286,6 @@ class About extends React.Component {
 		// 	}
 		// });
 
-
-
-
     // const formData = new FormData();
     // formData.append("firstName", firstName.value);
     // formData.append("lastName", lastName.value);
@@ -294,7 +293,7 @@ class About extends React.Component {
     // formData.append("subject", subject.value);
     // formData.append("comment", comment.value);
 
-    await fetch("http://localhost:5000/", {
+    fetch("http://localhost:5000/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
@@ -307,8 +306,8 @@ class About extends React.Component {
 			let result = response.json();
 			alert(result.status);
 		});
-  }
   
+  }
 }
 
 export default withStyles(styles)(About);
