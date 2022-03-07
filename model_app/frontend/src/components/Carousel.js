@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import { makeStyles } from "@material-ui/styles";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
+import Card from "@material-ui/core/Card";
+import CardMedia from "@material-ui/core/CardMedia";
+import IconButton from "@material-ui/core/IconButton";
+import articles from "../const/homeSlides";
+import { ArrowBack, ArrowForward } from "@material-ui/icons"
+import HomeCarouselSlide from "../components/HomeCarouselSlide"
 import Button from '@material-ui/core/Button';
-import Carousel from 'react-bootstrap/Carousel'
-import { makeStyles } from '@material-ui/styles';
-import homepagecode from '../images/simulator_background.jpg'
-import homepageml from '../images/ML_background.jpg'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
+
   button: {
     borderColor: '#66FCF1',
     backgroundColor: '#66FCF1',
@@ -21,53 +27,134 @@ const useStyles = makeStyles({
   buttonContainer: {
     width: '100%'
   },
-})
 
+  card: {
+    maxWidth: '100%',
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    height: "48rem",
+    width: "100vw"
+  },
 
-const HomeCarousel =  () => {
+  media: {
+    maxWidth: "100%",
+    minHeight: "50rem",
+    width: "100vw",
+    opacity: "0.5",
+  },
+
+  overlay: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 0,
+    "text-align": "center"
+  },
+
+  svg: {
+    height: "30px",
+    cursor: "pointer",
+  },
+
+  carousel: {
+    width: '100%',
+  },
+}));
+
+function Arrow(props) {
+  const { direction, clickFunction } = props;
+  const icon = direction === 'left' ? <ArrowBack /> : <ArrowForward />;
+
+  return <IconButton onClick={clickFunction} style={{ color: "white" }}>{icon}</IconButton>;
+}
+
+function HomeCarousel() {
+
   const classes = useStyles();
+  const [index, setIndex] = useState(0);
+  const numSlides = articles.length;
+
+  const [slideIn, setSlideIn] = useState(true);
+  const [slideDirection, setSlideDirection] = useState('down');
+
+  const onArrowClick = (direction) => {
+    const increment = direction === 'left' ? -1 : 1;
+    const newIndex = (index + increment + numSlides) % numSlides;
+
+
+    const oppDirection = direction === 'left' ? 'right' : 'left';
+    // if(direction === 'left'){
+    //   direction = oppDirection
+    // }
+    setSlideDirection(direction);
+    setSlideIn(false);
+
+    setTimeout(() => {
+      setIndex(newIndex);
+      setSlideDirection(oppDirection);
+      setSlideIn(true);
+    }, 100);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.keyCode === 39) {
+        onArrowClick('right');
+      }
+      if (e.keyCode === 37) {
+        onArrowClick('left');
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  });
+  
+  const addCard = (classes, row, key, current = false) => {
+    return (
+      <Card key={key} className={classes.card}>
+        <CardMedia
+          className={classes.media}
+          image={row.img}
+          title="Home Carousel Img"
+        />
+        <Typography className={classes.overlay}>
+          <h1 style={{ marginBottom: 20 }}>{row.title}</h1>
+          <h5 style={{ marginBottom: 30, marginLeft: "5vw", marginRight: "5vw"}}>{row.subtext}</h5>
+          <Button className={classes.button} style={{ marginBottom: 30 }} variant="contained" color="inherit" href="/about">
+            Learn More
+          </Button>
+        </Typography>
+      </Card>
+    )
+  }
 
   return (
-    <Carousel>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          height="700"
-          src={homepagecode}
-          alt="First slide"
-          style={{ opacity: 0.5 }}
-
+    <Box>
+      <Box display='flex' flexWrap="nowrap" justifyContent="center" className={classes.carousel}>
+        <Arrow
+          className={classes.svg}
+          direction='left'
+          clickFunction={() => onArrowClick('left')}
         />
-        <Carousel.Caption>
-          <h1 style={{ marginBottom: 20 }}>Simulator</h1>
-          <h5 style={{ marginBottom: 30 }}>The Delineo Disease Modeling Project is working to bring a fresh approach to the challenge of modeling the spread of pandemics. The project draws from a diverse set of academic fields, using knowledge and principles from computer science, applied mathematics, and public health to create a much more realistic model of disease spread. </h5>
-          <div className={classes.buttonContainer}>
-            <Button className={classes.button} variant="contained" color="inherit" href="/about">
-              Learn More
-            </Button>
-          </div>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          height="700"
-          src={homepageml}
-          alt="Second slide"
-          style={{ opacity: 0.5 }}
+        <HomeCarouselSlide
+          articles={articles}
+          num={index} addCard={addCard} classes={classes}
+          slideDirection={slideDirection}
+          slideIn={slideIn}></HomeCarouselSlide>
+        <Arrow
+          className={classes.svg}
+          direction='right'
+          clickFunction={() => onArrowClick('right')}
         />
-        <Carousel.Caption>
-          <h1 style={{ marginBottom: 20 }}>Machine Learning</h1>
-          <h6 style={{ marginBottom: 30 }}>The problem of how disease moves is fundamentally a question of how people move. Leveraging mobility data provided by SafeGraph and XMode, our team is able to create realistic population movements informed by real world data. Our approach to the problem of movement utilizes statistical and machine learning methods from prior literature to form movement patterns that capture the broad range of ways that people move.</h6>
-          <div className={classes.buttonContainer}>
-            <Button className={classes.button} variant="contained" color="inherit" href="/about">
-              Learn More
-            </Button>
-          </div>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
+      </Box>
+    </Box>
   )
-};
+}
 
 export default HomeCarousel;
