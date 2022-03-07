@@ -267,6 +267,8 @@ class About extends React.Component {
 		// 	}
 		// });
 
+
+    
 		// const mail = {
 		// 	from: `${email.value}`,
 		// 	to: "delineodiseasemodeling@gmail.com",
