@@ -19,12 +19,12 @@ const transporter = nodemailer.createTransport({
   port: 587,
   auth: {
     user: "delineodiseasemodeling@gmail.com",
-    pass: "bluejay123"
+    pass: "Bluejay123"
   },
 });
 
 
-transporter.verify(function (error, success) {
+transporter.verify(function (error) {
   if (error) {
     console.log(error);
   } else {
@@ -33,7 +33,6 @@ transporter.verify(function (error, success) {
 });
 
 app.post("/about", async (req, res) => {
-  console.log(req);
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
   const email = req.body.email;
@@ -52,7 +51,6 @@ app.post("/about", async (req, res) => {
 
   transporter.sendMail(mail, (err) => {
     if (err) {
-      console.log(err);
       res.status(500).send("Error.");
     } else {
       res.status(200).send("Email successfully sent.");
