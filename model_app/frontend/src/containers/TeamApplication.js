@@ -67,7 +67,7 @@ const TeamApplication = function TeamApplication() {
             style={{ color: "#222629", marginTop: "10%"}}
             align="center"
           >
-            <Typography variant="h3" component="h3" className={classes.title}>
+            <Typography variant="h3" component="h3" /*className={classes.title}*/>
               JOIN OUR TEAM
             </Typography>
             <div className={classes.border}></div>

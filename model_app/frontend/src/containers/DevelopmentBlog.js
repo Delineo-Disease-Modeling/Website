@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 
   hero: {
     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5)), url('/blog.jpg')`,
-    height: "520px",
+    height: "300px",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
