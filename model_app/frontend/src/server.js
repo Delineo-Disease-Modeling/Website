@@ -40,7 +40,7 @@ app.post("/about", async (req, res) => {
   const comment = req.body.comment; 
   const mail = {
     from: `${firstName}${' '}${lastName}`,
-    to: "cyneuberger@gmail.com",
+    to: "delineodiseasemodeling@gmail.com",
     subject: "Contact Us Submission",
     html: `<p>FirstName: ${firstName}</p>
            <p>LastName: ${lastName}</p>
