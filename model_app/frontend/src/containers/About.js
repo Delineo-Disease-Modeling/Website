@@ -253,9 +253,9 @@ class About extends React.Component {
         "Content-Type": "application/json; charset=utf-8",
       },
       body: JSON.stringify(data),
-	  credentials: "include",
-	  mode: "cors",
-	  referrerPolicy: "no-referrer-when-downgrade"
+	    credentials: "include",
+	    mode: "cors",
+	    referrerPolicy: "no-referrer-when-downgrade"
     });
   
   }
