@@ -16,7 +16,7 @@ app.listen(PORT, () => {
 });
 
 
-const contactEmail = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: "delineodiseasemodeling@gmail.com",
@@ -24,7 +24,7 @@ const contactEmail = nodemailer.createTransport({
   },
 });
 
-contactEmail.verify((error) => {
+transporter.verify((error) => {
   if (error) {
     console.log(error);
   } else {
@@ -50,7 +50,7 @@ app.post("/about", async (req, res) => {
            <p>Comment: ${comment}</p>`,
   };
 
-  contactEmail.sendMail(mail, (error) => {
+  transporter.sendMail(mail, (error) => {
     if (error) {
       res.json({ status: "ERROR" });
     } else {
