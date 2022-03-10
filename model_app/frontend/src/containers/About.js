@@ -218,11 +218,11 @@ class About extends React.Component {
           <Typography varient='h1' component="h2" style={{ color: '#222629' }}>
 
             <form onSubmit={this.handleSubmit} id='contact-form' style={{ padding: '0 50px' }} className={classes.form} noValidate autoComplete="off">
-              <input className={classes.input} id="firstName" type="text" placeholder="First Name" required name="FirstName" />
-              <input className={classes.input} id="lastName" type="text" placeholder="Last Name" required name="LastName" />
-              <input className={classes.input} id="email" type="email" placeholder="Email" required name="Email" />
-              <input className={classes.input} id="subject" type="text" placeholder="Subject" required name="Subject" />
-              <textarea className={classes.input} id="comment" placeholder="Comment" required name="Comment" />
+              <input className={classes.input} id="firstName" type="text" placeholder="First Name" required name="FirstName" maxLength ="30"/>
+              <input className={classes.input} id="lastName" type="text" placeholder="Last Name" required name="LastName" maxLength = "25"/>
+              <input className={classes.input} id="email" type="email" placeholder="Email" required name="Email" maxLength= "35"/>
+              <input className={classes.input} id="subject" type="text" placeholder="Subject" required name="Subject" maxLength="175"/>
+              <textarea className={classes.input} id="comment" placeholder="Comment" required name="Comment" maxLength="4000"/>
 
               <Button endIcon={<SendIcon />} className={classes.button} type="submit" size="large" varient='contained'>
                 SEND MESSAGE
