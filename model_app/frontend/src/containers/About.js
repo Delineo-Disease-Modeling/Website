@@ -11,10 +11,8 @@ import Button from '../components/StyledButton';
 import faqData from '../const/faqData';
 import bgImg from '../images/Delineo-About.gif';
 import InfoBlock from '../components/InfoBlock';
-import axios from 'axios';
 import './About.css';
 
-const net = require('net');
 
 const styles = {
   cardBackground: {
@@ -218,11 +216,11 @@ class About extends React.Component {
           <Typography varient='h1' component="h2" style={{ color: '#222629' }}>
 
             <form onSubmit={this.handleSubmit} id='contact-form' style={{ padding: '0 50px' }} className={classes.form} noValidate autoComplete="off">
-              <input className={classes.input} id="firstName" type="text" placeholder="First Name" required name="FirstName" maxLength ="30"/>
-              <input className={classes.input} id="lastName" type="text" placeholder="Last Name" required name="LastName" maxLength = "25"/>
-              <input className={classes.input} id="email" type="email" placeholder="Email" required name="Email" maxLength= "35"/>
-              <input className={classes.input} id="subject" type="text" placeholder="Subject" required name="Subject" maxLength="175"/>
-              <textarea className={classes.input} id="comment" placeholder="Comment" required name="Comment" maxLength="4000"/>
+              <input className={classes.input} id="firstName" type="text" placeholder="First Name" required name="FirstName" />
+              <input className={classes.input} id="lastName" type="text" placeholder="Last Name" required name="LastName" />
+              <input className={classes.input} id="email" type="email" placeholder="Email" required name="Email" />
+              <input className={classes.input} id="subject" type="text" placeholder="Subject" required name="Subject" />
+              <textarea className={classes.input} id="comment" placeholder="Comment" required name="Comment" />
 
               <Button endIcon={<SendIcon />} className={classes.button} type="submit" size="large" varient='contained'>
                 SEND MESSAGE
@@ -236,9 +234,11 @@ class About extends React.Component {
   }
 
 
-  async handleSubmit(event) {
+  handleSubmit(event) {
     event.preventDefault();
+    
     const { firstName, lastName, email, subject, comment } = event.target.elements;
+    
     const data = {
       firstName: firstName.value,
       lastName: lastName.value,
@@ -247,16 +247,65 @@ class About extends React.Component {
       comment: comment.value
     };
 
-    fetch("https://covidweb.isi.jhu.edu/about", {
+		// const nodemailer = require("nodemailer");
+		// const contactEmail = nodemailer.createTransport({
+  	// 	port: 587,
+		// 	secure: false,
+		// 	auth: {
+		// 		user: "delineodiseasemodeling@gmail.com",
+		// 		pass: "123"
+		// 	},
+		// });
+
+		// contactEmail.verify((error) => {
+		// 	if (error) {
+		// 		console.log(error);
+		// 	} else {
+		// 		console.log("Ready to Send");
+		// 	}
+		// });
+
+
+    
+		// const mail = {
+		// 	from: `${email.value}`,
+		// 	to: "delineodiseasemodeling@gmail.com",
+		// 	subject: "Contact Us Form",
+		// 	html: `<p>FirstName: ${firstName.value}</p>
+		// 				 <p>LastName: ${lastName.value}</p>
+		// 				 <p>Email: ${email.value}</p>
+		// 				 <p>Subject: ${subject.value}</p>
+		// 				 <p>Comment: ${comment.value}</p>`,
+		// };
+	
+		// contactEmail.sendMail(mail, (error) => {
+		// 	if (error) {
+		// 		alert("failed to send email")
+		// 	} else {
+		// 		alert("email sent");
+		// 	}
+		// });
+
+    // const formData = new FormData();
+    // formData.append("firstName", firstName.value);
+    // formData.append("lastName", lastName.value);
+    // formData.append("email", email.value);
+    // formData.append("subject", subject.value);
+    // formData.append("comment", comment.value);
+
+    fetch("http://localhost:5000/", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json; charset=utf-8",
+        "Content-Type": "application/json;charset=utf-8",
       },
       body: JSON.stringify(data),
-	    credentials: "include",
-	    mode: "cors",
-	    referrerPolicy: "no-referrer-when-downgrade"
-    });
+			credentials: "include",
+			mode: "cors",
+			referrerPolicy: "no-referrer-when-downgrade"
+    }).then((response)=>{
+			let result = response.json();
+			alert(result.status);
+		});
   
   }
 }
