@@ -1,8 +1,8 @@
 //import image from '../images/person-icon.png';
-import simBliImg from '../images/members/Simone Bliss.JPG';
 import serChanImg from '../images/members/Serena Chan.jpg';
 import matInsImg from '../images/members/mathias_insley.png';
 import oreWeiImg from '../images/members/Oren Wei.jpg';
+import melLeeImg from '../images/members/Melody Lee.jpg';
 
 const tileData = [
   {
@@ -12,10 +12,10 @@ const tileData = [
     description: 'Materials Science, Computer Science',
   },
   {
-    img: simBliImg,
-    name: 'Simone Bliss',
+    img: melLeeImg,
+    name: 'Melody Lee',
     role: 'Fullstack Lead',
-    description: 'Mathematics',
+    description: 'Computer Science, Neuroscience',
   },
   {
     img: serChanImg,

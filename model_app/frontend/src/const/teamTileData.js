@@ -9,7 +9,6 @@ import saiEarImg from '../images/members/Saidaman Earla.JPG';
 import aayGanImg from '../images/members/Aayush Gandhi.jpeg';
 import kaiKoImg from '../images/members/Kai Ko.jpg';
 import breLeeImg from '../images/members/Brendan_Lee.png';
-import melLeeImg from '../images/members/Melody Lee.jpg';
 import ireLiaImg from '../images/members/Irena Lian.jpeg';
 import alaLiImg from '../images/members/Alan Li.jpg';
 import davLuImg from '../images/members/David_Lu.PNG';
@@ -137,12 +136,6 @@ const tileData = [
     name: 'Brendan Lee',
     role: 'Simulation',
     description: 'Computer Science, Material Science and Engineering',
-  },
-  {
-    img: melLeeImg,
-    name: 'Melody Lee',
-    role: 'Fullstack',
-    description: 'Computer Science, Neuroscience',
   },
   {
     img: rebMurImg,
