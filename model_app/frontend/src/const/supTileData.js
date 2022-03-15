@@ -1,5 +1,5 @@
 //import image from '../images/person-icon.png';
-import antDahImg from '../images/anton.jpg';
+import antDahImg from '../images/members/anton.jpg';
 
 const tileData = [
   {

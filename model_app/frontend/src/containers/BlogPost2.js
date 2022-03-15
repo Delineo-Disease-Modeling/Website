@@ -14,7 +14,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 // import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import EmailIcon from "@mui/icons-material/Email";
 import { makeStyles } from "@mui/styles";
-import xi from "../images/Xi He.jpeg";
+import xi from "../images/members/Xi He.jpeg";
 
 const useStyles = makeStyles((theme) => ({
     center: {

@@ -1,8 +1,8 @@
 //import image from '../images/person-icon.png';
-import simBliImg from '../images/Simone Bliss.JPG';
-import serChanImg from '../images/Serena Chan.jpg';
-import matInsImg from '../images/mathias_insley.png';
-import oreWeiImg from '../images/Oren Wei.jpg';
+import simBliImg from '../images/members/Simone Bliss.JPG';
+import serChanImg from '../images/members/Serena Chan.jpg';
+import matInsImg from '../images/members/mathias_insley.png';
+import oreWeiImg from '../images/members/Oren Wei.jpg';
 
 const tileData = [
   {

@@ -1,5 +1,5 @@
-import cynLo from '../images/Cynthia_Lo.jpg';
-import munaIg from '../images/Muna_Igboko.jpg';
+import cynLo from '../images/members/Cynthia_Lo.jpg';
+import munaIg from '../images/members/Muna_Igboko.jpg';
 
 const tileData = [
   {

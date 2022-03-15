@@ -1,23 +1,23 @@
-import cynLo from '../images/Cynthia_Lo.jpg';
-import munaIg from '../images/Muna_Igboko.jpg';
-import steLiImg from '../images/Stephen Li.jpg';
-import henNorImg from '../images/Henry Noren.JPG';
-import ZoeKimImg from '../images/Zoe Kim.jpg';
-import emeSulImg from '../images/Emerson_Sullivan.jpg';
-import yinZhaImg from '../images/Ying Zhang.JPG';
-import chiNwoImg from '../images/Chioma Nwosu.JPG';
-import nadNajImg from '../images/Nader Najjar.jpg';
-import sebCabImg from '../images/Sebastian Cabrejos.jpg';
-import eugAsaImg from '../images/person-icon.png';
-import jamHuaImg from '../images/Jamie Huang.jpg';
-import kaiHua from '../images/William_Hou.jpeg';
-import vivLooi from '../images/Vivian_Looi.jpeg';
-import cheTian from '../images/Tom_Tang.JPG';
-import shrWadhwa from '../images/Shreya_Wadhwa.jpg';
-import yucYang from '../images/Jason_Yang.jpeg';
-import sheZhang from '../images/Shengwei_Zhang.jpg';
-import zihWang from '../images/Zihan_Wang.jpg';
-import ashTsang from '../images/Ashley_Tsang.jpg';
+import cynLo from '../images/members/Cynthia_Lo.jpg';
+import munaIg from '../images/members/Muna_Igboko.jpg';
+import steLiImg from '../images/members/Stephen Li.jpg';
+import henNorImg from '../images/members/Henry Noren.JPG';
+import ZoeKimImg from '../images/members/Zoe Kim.jpg';
+import emeSulImg from '../images/members/Emerson_Sullivan.jpg';
+import yinZhaImg from '../images/members/Ying Zhang.JPG';
+import chiNwoImg from '../images/members/Chioma Nwosu.JPG';
+import nadNajImg from '../images/members/Nader Najjar.jpg';
+import sebCabImg from '../images/members/Sebastian Cabrejos.jpg';
+import eugAsaImg from '../images/members/person-icon.png';
+import jamHuaImg from '../images/members/Jamie Huang.jpg';
+import kaiHua from '../images/members/William_Hou.jpeg';
+import vivLooi from '../images/members/Vivian_Looi.jpeg';
+import cheTian from '../images/members/Tom_Tang.JPG';
+import shrWadhwa from '../images/members/Shreya_Wadhwa.jpg';
+import yucYang from '../images/members/Jason_Yang.jpeg';
+import sheZhang from '../images/members/Shengwei_Zhang.jpg';
+import zihWang from '../images/members/Zihan_Wang.jpg';
+import ashTsang from '../images/members/Ashley_Tsang.jpg';
 
 const tileData = [
   {

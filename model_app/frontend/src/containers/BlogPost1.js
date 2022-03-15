@@ -14,7 +14,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 // import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import EmailIcon from "@mui/icons-material/Email";
 import { makeStyles } from "@mui/styles";
-import ameya from "../images/Ameya Dehade.jpg";
+import ameya from "../images/members/Ameya Dehade.jpg";
 
 const useStyles = makeStyles((theme) => ({
   center: {
