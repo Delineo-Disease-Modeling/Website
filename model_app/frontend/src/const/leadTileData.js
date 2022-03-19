@@ -3,6 +3,7 @@ import serChanImg from '../images/members/Serena Chan.jpg';
 import matInsImg from '../images/members/mathias_insley.png';
 import oreWeiImg from '../images/members/Oren Wei.jpg';
 import melLeeImg from '../images/members/Melody Lee.jpg';
+import aleNoeImg from '../images/members/Alex Noel.jpg';
 
 const tileData = [
   {
@@ -26,9 +27,15 @@ const tileData = [
   {
     img: oreWeiImg,
     name: 'Oren Wei',
-    role: 'ML',
+    role: 'ML Lead',
     description: 'Molecular and Cellular Biology, Spanish',
   },
+  {
+    img: aleNoeImg,
+    name: 'Alex Noel',
+    role: 'Information Support Lead',
+    description: 'N/A', // TODO
+  }
 ];
 
 export default tileData;
