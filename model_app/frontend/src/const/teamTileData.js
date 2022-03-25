@@ -43,6 +43,27 @@ import cinZhaImg from '../images/Cindy Zhang.JPG';
 import briRuiImg from '../images/Brian Rui.jpg';
 import alePalImg from '../images/Alex Palacios.jpg';
 import josKimImg from '../images/Josh_Kim.jpg';
+import abeHouImg from '../images/Abe Hou.JPG';
+import weiHuImg from '../images/Weicheng_Hu.jpg';
+import shayHossImg from '../images/Shayan Hossain.jpg';
+import ujvaPraImg from '../images/Ujvala Pradeep.jpg';
+import edWangImg from '../images/edwardwang.jpg';
+import cindyDongImg from '../images/Cindy Dong.JPG';
+import taimingShiImg from '../images/Taiming Shi.jpg';
+import simengZhangImg from '../images/Simeng Zhang.JPG';
+import billNjoImg from '../images/Bill Njoroge.jpg';
+import maurCervImg from '../images/Mauricio Cervantes.jpg';
+import samKoyfImg from '../images/Samuel Koyfman.png';
+import talMagImg from '../images/Tal Magdish.jpeg';
+import jenYeImg from '../images/Jennifer Ye.jpg';
+import mereGaoImg from '../images/Meredith Gao.png';
+import saidamanImg from '../images/Saidaman Earla.JPG';
+import juliaBianImg from '../images/Julia Bian.png';
+import eBorodaImg from '../images/EBoroda.png';
+
+
+
+
 
 
 
@@ -81,7 +102,7 @@ const tileData = [
   {
     img: shaCaoImg,
     name: 'Shanelle Cao',
-    role: 'Simulation',
+    role: 'ML',
     description: 'Chemical and Biomolecular Engineering, Computer Science',
   },
   {
@@ -195,7 +216,7 @@ const tileData = [
   {
     img: peiXuImg,
     name: 'Peiyuan Xu',
-    role: 'Fullstack',
+    role: 'Simulation',
     description: 'Computer Science, Applied Math and Statistics',
   },
   {
@@ -330,6 +351,147 @@ const tileData = [
     name: 'Ian Zheng',
     role: 'Information Support',
     description: 'Computer Science, Economics',
+  },
+
+  {
+    img: abeHouImg,
+    name: 'Abe Hou',
+    role: 'ML',
+  },
+
+  {
+    img: weiHuImg,
+    name: 'Weicheng Hu',
+    role: 'ML',
+  },
+
+  {
+    name: 'TJ Bai',
+    role: 'ML',
+  },
+  
+  {
+    name: 'Anusha Rao',
+    role: 'ML',
+  },
+
+  {
+    name: 'Rena Bi',
+    role: 'ML',
+  },
+
+  {
+    img: shayHossImg,
+    name: 'Shayan Hossain',
+    role: 'ML',
+  },
+
+  {
+    img: ujvaPraImg,
+    name: 'Ujvala Pradeep',
+    role: 'ML',
+  },
+
+  {
+    img: edWangImg,
+    name: 'Edward Wang',
+    role: 'ML',
+  },
+
+
+  {
+    img: cindyDongImg,
+    name: 'Cindy Dong',
+    role: 'ML',
+  },
+  
+  {
+    img: taimingShiImg,
+    name: 'Taiming Shi',
+    role: 'ML',
+  },
+  
+  {
+    name: 'Sofia Xu',
+    role: 'ML',
+  },
+
+  {
+    img: simengZhangImg,
+    name: 'Simeng Zhang',
+    role: 'ML',
+  },
+  
+  {
+    img: billNjoImg,
+    name: 'Bill Njoroge',
+    role: 'ML',
+  },
+
+
+  {
+    img: maurCervImg,
+    name: 'Mauricio Cervantes',
+    role: 'Simulation',
+  },
+
+  {
+    
+    name: 'Elizabeth Heise',
+    role: 'Simulation',
+  },
+
+  {
+    img: samKoyfImg,
+    name: 'Samuel Koyfman',
+    role: 'Simulation',
+  },
+
+  {
+    img: talMagImg,
+    name: 'Tal Magdish',
+    role: 'Simulation',
+  },
+
+  {
+    img: jenYeImg,
+    name: 'Jennifer Ye',
+    role: 'Simulation',
+  },
+
+  {
+    img: mereGaoImg,
+    name: 'Meredith Gao',
+    role: 'Simulation',
+  },
+
+  {
+    
+    name: 'Xinyue Gu',
+    role: 'Simulation',
+  },
+
+  {
+    img: saidamanImg,
+    name: 'Saidaman Earla',
+    role: 'Simulation',
+  },
+
+  {
+    name: 'Oriel Savir',
+    role: 'Simulation',
+  },
+
+  {
+    img: juliaBianImg,
+    name: 'Julia Bian',
+    role: 'Simulation',
+  },
+
+  {
+    img: eBorodaImg,
+    name: 'Elizabeth Boroda',
+    role: 'Simulation',
   },
 
 ];

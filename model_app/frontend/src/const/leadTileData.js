@@ -1,8 +1,8 @@
 //import image from '../images/person-icon.png';
 import simBliImg from '../images/Simone Bliss.JPG';
-import serChanImg from '../images/Serena Chan.jpg';
+import rohHerImg from '../images/Rohan Herur.jpg';
 import matInsImg from '../images/mathias_insley.png';
-import oreWeiImg from '../images/Oren Wei.jpg';
+import steLiImg from  '../images/Stella Li.png';
 
 const tileData = [
   {
@@ -18,16 +18,16 @@ const tileData = [
     description: 'Mathematics',
   },
   {
-    img: serChanImg,
-    name: 'Serena Chan',
+    img: rohHerImg,
+    name: 'Rohan Herur',
     role: 'Simulation Lead',
-    description: 'Molecular and Cellular Biology, Women, Gender, and Sexuality'
+    description: 'Molecular and Cellular Biology, Computer Science',
   },
   {
-    img: oreWeiImg,
-    name: 'Oren Wei',
-    role: 'ML',
-    description: 'Molecular and Cellular Biology, Spanish',
+    img: steLiImg,
+    name: 'Stella Li',
+    role: 'ML Lead',
+    description: 'Computer Science, Cognitive Science',
   },
 ];
 
