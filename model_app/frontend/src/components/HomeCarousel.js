@@ -7,7 +7,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import IconButton from "@material-ui/core/IconButton";
 import articles from "../const/homeSlides";
 import { ArrowBack, ArrowForward } from "@material-ui/icons"
-import HomeCarouselSlide from "../components/HomeCarouselSlide"
+import HomeCarouselSlide from "./HomeCarouselSlide"
 import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
