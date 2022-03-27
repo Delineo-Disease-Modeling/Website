@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { withStyles} from "@material-ui/styles";
-import HomeCarousel from "../components/Carousel";
+import HomeCarousel from "../components/HomeCarousel";
 import TeamMemberJoin from "../images/teammemberjoin.jpg";
 import Box from "@material-ui/core/Box"
 
