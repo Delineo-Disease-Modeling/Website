@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { withStyles} from "@material-ui/styles";
-//import HomeCarousel from "../components/Carousel";
+import HomeCarousel from "../components/HomeCarousel";
 import TeamMemberJoin from "../images/teammemberjoin.jpg";
 import Box from "@material-ui/core/Box"
 
@@ -107,7 +107,7 @@ class Home extends Component {
         </div>
 
         
-        {/* <HomeCarousel />  */}
+        <HomeCarousel /> 
         <h1 style={{marginTop: '3%', marginBottom: '3%', color: 'white'}}>
           Recent Updates from Our Blog
         </h1>
