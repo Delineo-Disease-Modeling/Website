@@ -335,7 +335,7 @@ const tileData = [
   {
     img: ianZheImg,
     name: 'Ian Zheng',
-    role: 'Information Support',
+    role: 'Fullstack',
     description: 'Computer Science, Economics',
   },
 
