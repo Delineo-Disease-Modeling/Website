@@ -3,6 +3,7 @@ import melLeeImg from '../images/Melody Lee.jpg';
 import rohHerImg from '../images/Rohan Herur.jpg';
 import matInsImg from '../images/mathias_insley.png';
 import steLiImg from  '../images/Stella Li.png';
+import aleNoeImg from '../images/Alex Noel.jpg';
 
 const tileData = [
   {
@@ -29,6 +30,12 @@ const tileData = [
     role: 'ML Lead',
     description: 'Computer Science, Cognitive Science',
   },
+  {
+    img: aleNoeImg,
+    name: 'Alex Noel',
+    role: 'Information Support Lead',
+    description: 'N/A', // TODO
+  }
 ];
 
 export default tileData;

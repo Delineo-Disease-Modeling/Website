@@ -68,6 +68,9 @@ import rosGaoImg from '../images/Rosa Gao.jpg';
 import jesLupImg from '../images/Jessie Luo.jpg';
 import chiAnaImg from '../images/Chiamaka Anaemeribe.jpg'
 import davHlaImg from '../images/David Hla.jpg';
+import katDurImg from '../images/Katherine Durbin.jpg';
+import tifFenImg from '../images/Tiffany Feng.JPG';
+import jasmWuImg from '../images/Jasmine Wu.JPG';
 
 const tileData = [
   {
@@ -302,7 +305,7 @@ const tileData = [
   {
     img: laiWanImg,
     name: 'Laine Wang',
-    role: 'Simulation',
+    role: 'Information Support',
     description: 'Chemical and Biomolecular Engineering, Applied Mathematics and Statistics',
   },
 
@@ -542,7 +545,24 @@ const tileData = [
     role: 'Fullstack',
     description: 'N/A',
   },
-  
+  {
+    img: katDurImg,
+    name: 'Katherine Durbin',
+    role: 'Information Support',
+    description: 'N/A',
+  },
+  {
+    img: tifFenImg,
+    name: 'Tiffany Feng',
+    role: 'Information Support',
+    description: 'N/A',
+  },
+  {
+    img: jasmWuImg,
+    name: 'Jasmine Wu',
+    role: 'Information Support',
+    description: 'N/A',
+  },
 ];
 
 export default tileData;
