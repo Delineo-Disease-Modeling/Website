@@ -71,6 +71,7 @@ import davHlaImg from '../images/David Hla.jpg';
 import katDurImg from '../images/Katherine Durbin.jpg';
 import tifFenImg from '../images/Tiffany Feng.JPG';
 import jasmWuImg from '../images/Jasmine Wu.JPG';
+import masAlbImg from '../images/Mason Albert.png';
 
 const tileData = [
   {
@@ -542,6 +543,12 @@ const tileData = [
   {
     img: davHlaImg,
     name: 'David Hla',
+    role: 'Fullstack',
+    description: 'N/A',
+  },
+  {
+    img: masAlbImg,
+    name: 'Mason Albert',
     role: 'Fullstack',
     description: 'N/A',
   },
