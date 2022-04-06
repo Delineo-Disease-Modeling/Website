@@ -8,7 +8,7 @@ import yinZhaImg from '../images/members/Ying Zhang.JPG';
 import chiNwoImg from '../images/members/Chioma Nwosu.JPG';
 import nadNajImg from '../images/members/Nader Najjar.jpg';
 import sebCabImg from '../images/members/Sebastian Cabrejos.jpg';
-import eugAsaImg from '../images/members/person-icon.png';
+import eugAsaImg from '../images/person-icon.png';
 import jamHuaImg from '../images/members/Jamie Huang.jpg';
 import kaiHua from '../images/members/William_Hou.jpeg';
 import vivLooi from '../images/members/Vivian_Looi.jpeg';

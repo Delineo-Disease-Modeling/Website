@@ -1,7 +1,7 @@
 import rohAbiImg from '../images/members/Rohan Abichandani.JPG';
 import mehAgaImg from '../images/members/Mehul Agarwal.jpg';
 import chrBakImg from '../images/members/Christian Bakhit.jpg';
-import jonBakImg from '../images/members/members/Jonathan Bakhit.jpg';
+import jonBakImg from '../images/members/Jonathan Bakhit.jpg';
 import ariBaoImg from '../images/members/Ariel Bao.jpg';
 import shaCaoImg from '../images/members/Shanelle Cao.jpg';
 import ameDehImg from '../images/members/Ameya Dehade.jpg';
@@ -26,7 +26,7 @@ import davYanImg from '../images/members/David Yang.jpg';
 import jesYuImg from '../images/members/Jessica Yu.jpg';
 import ryaYuImg from '../images/members/Ryan Yu.jpg';
 import jacZhaImg from '../images/members/Jack Zhang.jpg';
-import tadBerImg from '../images/members/person-icon.png';
+import tadBerImg from '../images/person-icon.png';
 import munJiaImg from '../images/members/MungYao Jia.jpg';
 import louDiBImg from '../images/members/Louie DiBernardo.jpg';
 import yiCheImg from '../images/members/Yilin Chen.jpg';

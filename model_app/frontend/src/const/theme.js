@@ -1,10 +1,23 @@
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
+
 let theme = createTheme({
   palette: {
     background: {
-      paper: 'white',
+      //paper: 'rgba(125, 125, 125, 0.50)',
       default: '#222629',
+    },
+  },
+  components: {
+    // Name of the component
+    MuiAccordionSummary: {
+      styleOverrides: {
+        root: {
+
+          // Some CSS
+          backgroundColor: '#66FCF1',
+        },
+      },
     },
   },
   typography: {

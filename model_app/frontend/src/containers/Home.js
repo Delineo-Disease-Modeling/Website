@@ -84,16 +84,13 @@ class Home extends Component {
           </div>
         </div>
 
-        
         {/* <HomeCarousel />  */}
         <h1 style={{marginTop: '3%', marginBottom: '3%', color: 'white'}}>
           Recent Updates from Our Blog
         </h1>
         <Box marginBottom="4%">
         <BlogCarousel />
-        </Box>
-
-        
+        </Box>        
 
         <div
           className={classes.teamPage}

@@ -184,7 +184,7 @@ class About extends React.Component {
 					</div>
 				</div>
 				<div id="contact" style={{ backgroundColor: '#222629', padding: '50px 0' }}>
-					<Paper className={classes.contactCard} id="contact-card-id">
+					<Paper style = {{backgroundColor: 'rgba(125, 125, 125, 0.50)'}} className={classes.contactCard} id="contact-card-id">
 						<Typography variant="h4" component="h4" >
 							Contact Us!
 						</Typography>
