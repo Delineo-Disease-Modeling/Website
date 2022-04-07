@@ -36,6 +36,7 @@ const BlogCard = ({ imgURL, title, brief }) => {
           <Typography style={{ fontSize: '20px', marginBottom: '10px' }} variant="body1" color="black" component="p">
             {title}
           </Typography>
+
           <Typography style={{ fontSize: '15px' }} variant="body1" color="black" component="p">
             {brief}
           </Typography>

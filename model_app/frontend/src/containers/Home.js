@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
-import { withStyles} from "@mui/styles";
+import { withStyles } from "@mui/styles";
 import HomeCarousel from "../components/HomeCarousel";
 import TeamMemberJoin from "../images/teammemberjoin.jpg";
 import Box from "@mui/material/Box"
@@ -41,7 +41,7 @@ const styles = {
     padding: "20px 200px 60px 200px",
     overflow: "hidden",
     backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",  
+    backgroundSize: "cover",
   },
 
   recent: {
@@ -84,13 +84,13 @@ class Home extends Component {
           </div>
         </div>
 
-        {/* <HomeCarousel />  */}
-        <h1 style={{marginTop: '3%', marginBottom: '3%', color: 'white'}}>
+        <HomeCarousel />
+        <h1 style={{ marginTop: '3%', marginBottom: '3%', color: 'white' }}>
           Recent Updates from Our Blog
         </h1>
         <Box marginBottom="4%">
-        <BlogCarousel />
-        </Box>        
+          <BlogCarousel />
+        </Box>
 
         <div
           className={classes.teamPage}
