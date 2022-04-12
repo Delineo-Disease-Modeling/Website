@@ -4,7 +4,6 @@ import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 let theme = createTheme({
   palette: {
     background: {
-      //paper: 'rgba(125, 125, 125, 0.50)',
       default: '#222629',
     },
   },
@@ -13,12 +12,86 @@ let theme = createTheme({
     MuiAccordionSummary: {
       styleOverrides: {
         root: {
-
-          // Some CSS
           backgroundColor: '#66FCF1',
+          borderBottom: '0px solid rgba(0, 0, 0, .125)',
+          marginBottom: 0,
+          minHeight: 56,
+          '&$expanded': {
+            minHeight: 56,
+          },
+        },
+        content: {
+          '&$expanded': {
+            margin: '12px 0',
+          },
+        },
+        expanded: {
         },
       },
     },
+    MuiAccordion: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'white',
+          fontSize: '20px',
+          color: 'black',
+          border: '0px solid rgba(0, 0, 0, .125)',
+          boxShadow: '0px 5px 5px black',
+          borderRadius: '20px',
+          '&:not(:last-child)': {
+            borderBottom: 0,
+          },
+          '&:before': {
+            display: 'none',
+          },
+          '&$expanded': {
+            margin: 'auto',
+          },
+        },
+        expanded: {},
+      }
+    },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          borderColor: "#66FCF1",
+          backgroundColor: "#222629",
+          border: "2px solid",
+          color: "#66FCF1",
+          fontWeight: "bold",
+          width: "200px",
+          height: "76px",
+          textAlign: "center",
+
+          "&.Mui-selected, &:hover": {
+            backgroundColor: "#66FCF1",
+            color: "#222629",
+            borderColor: "#66FCF1",
+          },
+
+        },
+      }
+    },
+    MuiTabs: {
+      styleOverrides: {
+        root: {
+          "& .MuiTabs-indicator": {
+            backgroundColor: "#222629",
+            height: "4px"
+          },
+        }
+      }
+    },
+    MuiAvatar: {
+      styleOverrides: {
+        root: {
+          width: '230px',
+          height: '230px',
+          marginTop: '20px',
+          boxShadow: '0 0 14px 7px black',
+        }
+      }
+    }
   },
   typography: {
     htmlFontSize: 16,
@@ -54,6 +127,9 @@ let theme = createTheme({
       lineHeight: '1.33',
       padding: "50px 30px 0 30px"
     },
+    body1: {
+      fontSize: '1.1rem',
+    },
     body2: {
       color: "white",
       marginRight: 100,
@@ -66,6 +142,12 @@ let theme = createTheme({
       padding: "20px 20px 20px 20px",
       backgroundColor: "#2f3538",
       maxWidth: "1000px",
+    },
+    description: {
+      fontFamily: `"Montserrat", "Helvetica", "Arial", sans-serif`,
+      fontSize: '0.9rem',
+      fontStyle: 'italic',
+      lineHeight: '1'
     }
   },
 });
