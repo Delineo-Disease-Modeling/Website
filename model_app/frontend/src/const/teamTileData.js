@@ -72,6 +72,7 @@ import katDurImg from '../images/Katherine Durbin.jpg';
 import tifFenImg from '../images/Tiffany Feng.JPG';
 import jasmWuImg from '../images/Jasmine Wu.JPG';
 import masAlbImg from '../images/Mason Albert.png';
+import ilChalImg from '../images/Ilana Chalom.jpeg';
 
 const tileData = [
   {
@@ -517,6 +518,12 @@ const tileData = [
     description: 'N/A',
   },
   {
+    img: ilChalImg,
+    name: 'Ilana Chalom',
+    role: 'Fullstack',
+    description: 'N/A',
+  },
+  {
     img: joyNeuImg,
     name: 'Joy Neuberger',
     role: 'Fullstack',
@@ -570,6 +577,7 @@ const tileData = [
     role: 'Information Support',
     description: 'N/A',
   },
+  
 ];
 
 export default tileData;
