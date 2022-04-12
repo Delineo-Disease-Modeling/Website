@@ -9,7 +9,6 @@ import saiEarImg from '../images/Saidaman Earla.JPG';
 import aayGanImg from '../images/Aayush Gandhi.jpeg';
 import kaiKoImg from '../images/Kai Ko.jpg';
 import breLeeImg from '../images/Brendan_Lee.png';
-import melLeeImg from '../images/Melody Lee.jpg';
 import ireLiaImg from '../images/Irena Lian.jpeg';
 import alaLiImg from '../images/Alan Li.jpg';
 import davLuImg from '../images/David_Lu.PNG';
@@ -60,13 +59,19 @@ import mereGaoImg from '../images/Meredith Gao.png';
 import saidamanImg from '../images/Saidaman Earla.JPG';
 import juliaBianImg from '../images/Julia Bian.png';
 import eBorodaImg from '../images/EBoroda.png';
-
-
-
-
-
-
-
+import yewShiImg from '../images/Yewon Shin.jpg';
+import steHuoImg from '../images/Stella Huo.jpg';
+import samChoImg from '../images/Sambhav Chordia.jpeg';
+import simNarImg from '../images/Simon Narang.JPG';
+import joyNeuImg from '../images/Joy Neuberger.jpg';
+import rosGaoImg from '../images/Rosa Gao.jpg';
+import jesLupImg from '../images/Jessie Luo.jpg';
+import chiAnaImg from '../images/Chiamaka Anaemeribe.jpg'
+import davHlaImg from '../images/David Hla.jpg';
+import katDurImg from '../images/Katherine Durbin.jpg';
+import tifFenImg from '../images/Tiffany Feng.JPG';
+import jasmWuImg from '../images/Jasmine Wu.JPG';
+import masAlbImg from '../images/Mason Albert.png';
 
 const tileData = [
   {
@@ -158,12 +163,6 @@ const tileData = [
     name: 'Brendan Lee',
     role: 'Simulation',
     description: 'Computer Science, Material Science and Engineering',
-  },
-  {
-    img: melLeeImg,
-    name: 'Melody Lee',
-    role: 'Fullstack',
-    description: 'Computer Science, Neuroscience',
   },
   {
     img: rebMurImg,
@@ -307,7 +306,7 @@ const tileData = [
   {
     img: laiWanImg,
     name: 'Laine Wang',
-    role: 'Simulation',
+    role: 'Information Support',
     description: 'Chemical and Biomolecular Engineering, Applied Mathematics and Statistics',
   },
 
@@ -349,7 +348,7 @@ const tileData = [
   {
     img: ianZheImg,
     name: 'Ian Zheng',
-    role: 'Information Support',
+    role: 'Fullstack',
     description: 'Computer Science, Economics',
   },
 
@@ -493,7 +492,84 @@ const tileData = [
     name: 'Elizabeth Boroda',
     role: 'Simulation',
   },
-
+  {
+    img: yewShiImg,
+    name: 'Yewon Shin',
+    role: 'Fullstack',
+    description: 'N/A',
+  },
+  {
+    img: steHuoImg,
+    name: 'Stella Huo',
+    role: 'Fullstack',
+    description: 'N/A',
+  },
+  {
+    img: samChoImg,
+    name: 'Sambhav Chordia',
+    role: 'Fullstack',
+    description: 'N/A',
+  },
+  {
+    img: simNarImg,
+    name: 'Simon Narang',
+    role: 'Fullstack',
+    description: 'N/A',
+  },
+  {
+    img: joyNeuImg,
+    name: 'Joy Neuberger',
+    role: 'Fullstack',
+    description: 'N/A',
+  },
+  {
+    img: rosGaoImg,
+    name: 'Rosa Gao',
+    role: 'Fullstack',
+    description: 'N/A',
+  },
+  {
+    img: jesLupImg,
+    name: 'Jessie Luo',
+    role: 'Fullstack',
+    description: 'N/A',
+  },
+  {
+    img: chiAnaImg,
+    name: 'Chiamaka Anaemeribe',
+    role: 'Fullstack',
+    description: 'Computer Science',
+  },
+  {
+    img: davHlaImg,
+    name: 'David Hla',
+    role: 'Fullstack',
+    description: 'N/A',
+  },
+  {
+    img: masAlbImg,
+    name: 'Mason Albert',
+    role: 'Fullstack',
+    description: 'N/A',
+  },
+  {
+    img: katDurImg,
+    name: 'Katherine Durbin',
+    role: 'Information Support',
+    description: 'N/A',
+  },
+  {
+    img: tifFenImg,
+    name: 'Tiffany Feng',
+    role: 'Information Support',
+    description: 'N/A',
+  },
+  {
+    img: jasmWuImg,
+    name: 'Jasmine Wu',
+    role: 'Information Support',
+    description: 'N/A',
+  },
 ];
 
 export default tileData;

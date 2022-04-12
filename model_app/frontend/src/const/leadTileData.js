@@ -1,8 +1,9 @@
 //import image from '../images/person-icon.png';
-import simBliImg from '../images/Simone Bliss.JPG';
+import melLeeImg from '../images/Melody Lee.jpg';
 import rohHerImg from '../images/Rohan Herur.jpg';
 import matInsImg from '../images/mathias_insley.png';
 import steLiImg from  '../images/Stella Li.png';
+import aleNoeImg from '../images/Alex Noel.jpg';
 
 const tileData = [
   {
@@ -12,10 +13,10 @@ const tileData = [
     description: 'Materials Science, Computer Science',
   },
   {
-    img: simBliImg,
-    name: 'Simone Bliss',
-    role: 'Fullstack Lead',
-    description: 'Mathematics',
+    img: melLeeImg,
+    name: 'Melody Lee',
+    role: 'Fullstack',
+    description: 'Computer Science, Neuroscience',
   },
   {
     img: rohHerImg,
@@ -29,6 +30,12 @@ const tileData = [
     role: 'ML Lead',
     description: 'Computer Science, Cognitive Science',
   },
+  {
+    img: aleNoeImg,
+    name: 'Alex Noel',
+    role: 'Information Support Lead',
+    description: 'N/A', // TODO
+  }
 ];
 
 export default tileData;
