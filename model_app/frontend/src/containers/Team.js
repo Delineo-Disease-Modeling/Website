@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TeamFilter from "../components/TeamFilter";
+import TeamFilter from "../components/TeamFilterNew";
 import Typography from "@mui/material/Typography";
 
 class Team extends Component {

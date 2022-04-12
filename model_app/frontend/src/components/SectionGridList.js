@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@mui/styles';
-import GridListTile from '@mui/material/ImageListItem';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -24,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold'
   },
   displayUnderTitle: {
-    fontSize: 16,
     border: 0,
     color: 'white',
     textAlign: 'center',
@@ -45,21 +43,24 @@ const TitlebarGridList = (tileData) => {
   const classes = useStyles();
 
   return (
-    <Container className={classes.root} maxWidth='lg'>
-      {tileData.map((tile) => (
-        <Grid key={tile.name} >
-          <GridListTile component='div' className={classes.gridListTile} key={tile.img}>
+    <Container
+      maxWidth='lg'
+      sx={{ bgcolor: '#222629' }}
+    >
+      <Grid container columns={4} justifyContent='center'>
+        {tileData.map((tile) => (
+          <Grid item className={classes.gridListTile} key={tile.img} xs={1} sx={{paddingBottom: '20px'}}>
             <center>
-              <Avatar src={tile.img} className={classes.large} />
+              <Avatar src={tile.img} />
               <div className={classes.displayUnder}>
-                <Typography className={classes.displayUnder}>{tile.name}</Typography>
-                <Typography className={classes.displayUnderTitle}>{tile.description}</Typography>
+                <Typography variant='h6' component='h2' className={classes.displayUnder}>{tile.name}</Typography>
+                <Typography variant='description' component='h2' className={classes.displayUnderTitle}>{tile.description}</Typography>
 
               </div>
             </center>
-          </GridListTile>
-        </Grid>
-      ))}
+          </Grid>
+        ))}
+      </Grid>
     </Container>
   );
 };
