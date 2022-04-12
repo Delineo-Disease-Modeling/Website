@@ -11,7 +11,6 @@ import faqData from '../const/faqData';
 import bgImg from '../images/Delineo-About.gif';
 import InfoBlock from '../components/InfoBlock';
 import StyledButton from "../components/StyledButton";
-// import './About.css'
 
 const styles = {
 	cardBackground: {
@@ -82,54 +81,6 @@ const styles = {
 	}
 }
 
-
-const AccordionDetails = withStyles((theme) => ({
-	root: {
-		padding: theme.spacing(2),
-	},
-}))(MuiAccordionDetails);
-
-
-const ColAccordion = withStyles({
-	root: {
-		backgroundColor: 'white',
-		fontSize: '20px',
-		color: 'black',
-		border: '0px solid rgba(0, 0, 0, .125)',
-		boxShadow: '0px 5px 5px black',
-		borderRadius: '20px',
-		'&:not(:last-child)': {
-			borderBottom: 0,
-		},
-		'&:before': {
-			display: 'none',
-		},
-		'&$expanded': {
-			margin: 'auto',
-		},
-	},
-	expanded: {},
-})(MuiAccordion);
-
-const ColAccordionSummary = withStyles({
-	root: {
-		backgroundColor: '#66FCF1',
-		borderBottom: '0px solid rgba(0, 0, 0, .125)',
-		marginBottom: 0,
-		minHeight: 56,
-		'&$expanded': {
-			minHeight: 56,
-		},
-	},
-	content: {
-		'&$expanded': {
-			margin: '12px 0',
-		},
-	},
-	expanded: {
-	},
-})(MuiAccordionSummary);
-
 class About extends React.Component {
 	constructor() {
 		super();
@@ -163,29 +114,29 @@ class About extends React.Component {
 						{faqData.map((faq, i) => {
 							return (
 								<div style={{ padding: '10px' }} key={i + 'faq'}>
-									<ColAccordion>
-										<ColAccordionSummary
+									<MuiAccordion>
+										<MuiAccordionSummary
 											expandIcon={<ExpandMoreIcon />}
 											aria-controls="Model Param-content"
 											id="Model Param-header"
 											style={{ padding: '0 50px', fontWeight: '600' }}
 										>
 											{faq.question}
-										</ColAccordionSummary>
-										<AccordionDetails style={{ padding: '0 50px', backgroundColor: '#222629' }}>
+										</MuiAccordionSummary>
+										<MuiAccordionDetails style={{ padding: '0 50px', backgroundColor: '#222629' }}>
 											<Typography className={classes.description} style={{ color: '#ffffff' }}>
 												{faq.answer}
 											</Typography>
-										</AccordionDetails>
+										</MuiAccordionDetails>
 
-									</ColAccordion>
+									</MuiAccordion>
 								</div>)
 						})}
 					</div>
 				</div>
 				<div id="contact" style={{ backgroundColor: '#222629', padding: '50px 0' }}>
 					<Paper style = {{backgroundColor: 'rgba(125, 125, 125, 0.50)'}} className={classes.contactCard} id="contact-card-id">
-						<Typography variant="h4" component="h4" >
+						<Typography variant="h7" component="h2" align="center">
 							Contact Us!
 						</Typography>
 						<Typography variant='subtitle1' color='white' style={{paddingTop: '5px'}}>
