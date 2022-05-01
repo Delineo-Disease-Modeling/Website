@@ -1,6 +1,7 @@
 import { useD3 } from './useD3';
 import React from 'react';
 import * as d3 from 'd3';
+import "../graphs.css";
 
 function LineChart(props, labels, titles, colors) {
     var data = props.data[0]
@@ -122,6 +123,7 @@ function LineChart(props, labels, titles, colors) {
     );
 
     return (
+        <div className="resizable_graph">
         <svg
             ref={ref}
             style={{
@@ -134,6 +136,7 @@ function LineChart(props, labels, titles, colors) {
             <g className="x-axis" />
             <g className="y-axis" />
         </svg>
+        </div>
     );
 }
 
