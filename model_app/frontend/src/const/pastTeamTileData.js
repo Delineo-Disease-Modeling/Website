@@ -18,8 +18,16 @@ import yucYang from '../images/Jason_Yang.jpeg';
 import sheZhang from '../images/Shengwei_Zhang.jpg';
 import zihWang from '../images/Zihan_Wang.jpg';
 import ashTsang from '../images/Ashley_Tsang.jpg';
+import matInsImg from '../images/mathias_insley.png';
 
 const tileData = [
+  {
+    img: matInsImg,
+    name: 'Mathias Insley',
+    img: matInsImg,
+    role: 'Project Manager',
+    description: 'Materials Science, Computer Science',
+  },
   {
     img: cynLo,
     name: 'Cynthia Lo',

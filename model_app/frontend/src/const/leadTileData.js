@@ -1,21 +1,21 @@
 //import image from '../images/person-icon.png';
 import melLeeImg from '../images/Melody Lee.jpg';
 import rohHerImg from '../images/Rohan Herur.jpg';
-import matInsImg from '../images/mathias_insley.png';
+import chrBakImg from '../images/Christian Bakhit.jpg';
 import steLiImg from  '../images/Stella Li.png';
 import aleNoeImg from '../images/Alex Noel.jpg';
 
 const tileData = [
   {
-    img: matInsImg,
-    name: 'Mathias Insley',
+    img: chrBakImg,
+    name: 'Christian Bakhit',
     role: 'Project Manager',
-    description: 'Materials Science, Computer Science',
+    description: 'Computer Science, Applied Mathematics and Statistics',
   },
   {
     img: melLeeImg,
     name: 'Melody Lee',
-    role: 'Fullstack',
+    role: 'Fullstack Lead',
     description: 'Computer Science, Neuroscience',
   },
   {
@@ -27,7 +27,7 @@ const tileData = [
   {
     img: steLiImg,
     name: 'Stella Li',
-    role: 'ML Lead',
+    role: 'Machine Learning Lead',
     description: 'Computer Science, Cognitive Science',
   },
   {

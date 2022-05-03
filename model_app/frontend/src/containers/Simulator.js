@@ -15,10 +15,10 @@ import { Button } from "@material-ui/core";
 import { MobileView } from "react-device-detect";
 
 const unityContext = new UnityContext({
-  loaderUrl: "./Build/Aug5.loader.js",
-  dataUrl: "./Build/Aug5.data",
-  frameworkUrl: "./Build/Aug5.framework.js",
-  codeUrl: "./Build/Aug5.wasm",
+  loaderUrl: "./Build/UnityBuild.loader.js",
+  dataUrl: "./Build/UnityBuild.data",
+  frameworkUrl: "./Build/UnityBuild.framework.js",
+  codeUrl: "./Build/UnityBuild.wasm",
 });
 
 const styles = (theme) => ({

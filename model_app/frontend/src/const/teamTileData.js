@@ -1,6 +1,5 @@
 import rohAbiImg from '../images/Rohan Abichandani.JPG';
 import mehAgaImg from '../images/Mehul Agarwal.jpg';
-import chrBakImg from '../images/Christian Bakhit.jpg';
 import jonBakImg from '../images/Jonathan Bakhit.jpg';
 import ariBaoImg from '../images/Ariel Bao.jpg';
 import shaCaoImg from '../images/Shanelle Cao.jpg';
@@ -88,16 +87,10 @@ const tileData = [
     description: 'Computer Science',
   },
   {
-    img: chrBakImg,
-    name: 'Christian Bakhit',
-    role: 'Fullstack',
-    description: 'Computer Science',
-  },
-  {
     img: jonBakImg,
     name: 'Jonathan Bakhit',
     role: 'Fullstack',
-    description: 'Computer Science',
+    description: 'Computer Science, Applied Math and Statistics',
   },
   {
     img: ariBaoImg,
@@ -182,12 +175,6 @@ const tileData = [
     name: 'Joshua Park',
     role: 'ML',
     description: 'Biomedical Engineering, Applied Math and Statistics',
-  },
-  {
-    img: steLiImg,
-    name: 'Stella Li',
-    role: 'ML',
-    description: 'Computer Science, Cognitive Science',
   },
   {
     img: shaRakImg,
@@ -297,12 +284,6 @@ const tileData = [
     description: 'Computer Science',
   },
 
-  {
-    img: rohHerImg,
-    name: 'Rohan Herur',
-    role: 'Simulation',
-    description: 'Molecular and Cellular Biology, Computer Science',
-  },
 
   {
     img: laiWanImg,
@@ -471,11 +452,6 @@ const tileData = [
     role: 'Simulation',
   },
 
-  {
-    img: saidamanImg,
-    name: 'Saidaman Earla',
-    role: 'Simulation',
-  },
 
   {
     name: 'Oriel Savir',
