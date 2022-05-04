@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
+import "./graphs.css";
+
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 
 const SimpleLineChart = () => {
