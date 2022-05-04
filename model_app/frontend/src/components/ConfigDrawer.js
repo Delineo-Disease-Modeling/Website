@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import { Fab } from '@material-ui/core';
 import TuneIcon from '@material-ui/icons/Tune';
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function ConfigDrawer(props) {
+const ConfigDrawer = (props) => {
   const classes = useStyles();
 
   const [state, setState] = React.useState({
@@ -47,33 +47,34 @@ export default function ConfigDrawer(props) {
 
     setState({ ...state, [anchor]: open });
   };
-  
+
   return (
     <div>
       <React.Fragment key='left'>
-          <Fab variant="extended" className={classes.fab} style={{'bottom': '40px'}} onClick={props.runOnClick}>
-            <PlayArrowIcon /> Run Simulation 
-          </Fab>
-          <Fab variant="extended" className={classes.fab} onClick={toggleDrawer('left', true)} style={{'bottom': '100px'}}>
-            <TuneIcon /> Configurations 
-          </Fab>
-          <SwipeableDrawer
-            anchor='left'
-            open={state['left']}
-            onClose={toggleDrawer('left', false)}
-            onOpen={toggleDrawer('left', true)}
-            className={classes.drawer}
-          >
-            {props.children[1].props.children}
-          </SwipeableDrawer>
-          <div>
-            {props.children[0].props.children}
-          </div>
-          <div>
-            {props.children[2].props.children}
-          </div>
-        </React.Fragment>
-      ))
+        <Fab variant="extended" className={classes.fab} style={{ 'bottom': '40px' }} onClick={props.runOnClick}>
+          <PlayArrowIcon /> Run Simulation
+        </Fab>
+        <Fab variant="extended" className={classes.fab} onClick={toggleDrawer('left', true)} style={{ 'bottom': '100px' }}>
+          <TuneIcon /> Configurations
+        </Fab>
+        <SwipeableDrawer
+          anchor='left'
+          open={state['left']}
+          onClose={toggleDrawer('left', false)}
+          onOpen={toggleDrawer('left', true)}
+          className={classes.drawer}
+        >
+          {props.children[1].props.children}
+        </SwipeableDrawer>
+        <div>
+          {props.children[0].props.children}
+        </div>
+        <div>
+          {props.children[2].props.children}
+        </div>
+      </React.Fragment>
     </div>
   );
-}
+};
+
+export default ConfigDrawer;

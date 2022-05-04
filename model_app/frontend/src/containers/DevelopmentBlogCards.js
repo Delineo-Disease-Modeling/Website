@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
@@ -9,12 +9,12 @@ import CardActions from "@material-ui/core/CardActions";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import IconButton from "@material-ui/core/IconButton";
-import FacebookIcon from "@material-ui/icons/Facebook";
+// import FacebookIcon from "@material-ui/icons/Facebook";
 import ShareIcon from "@material-ui/icons/Share";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
-import { FacebookButton, TwitterButton, EmailButton } from "react-social";
+import { TwitterButton, EmailButton } from "react-social";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import EmailIcon from "@material-ui/icons/Email";
 import articles from "../const/devblogposts";
@@ -67,8 +67,14 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
   },
 
-  author: {
+
+  cardActionsMobile: {
     display: "flex",
+    justifyContent: "space-between",
+    
+  },
+
+  author: {
     color: "black",
   },
 
@@ -82,17 +88,42 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 function DevelopmentBlogCards(props) {
   const classes = useStyles();
+  
+  function resize() {
+    let isDesktop = (window.innerWidth >= 760);
+    if (isDesktop) {
+        return classes.cardActions;
+      }
+        return classes.cardActionsMobile;
+    
+  };
+  
+  const url = "https://covidweb.isi.jhu.edu";
+  const message =
+    "Check out this article from the Delineo Disease Modeling Project";
 
-  let url = process.env.PUBLIC_URL + "developmentblog/date-2";
-  //developmentblog/date-2
+  /* 
+    'articles' is an array imported from the const folder, and contains data on the blog posts.
+    The DevelopmentBlogCards functional component accepts props that indicate whether this component
+    is being rendered on the home page or not. If it is, then we limit the amount of cards rendered
+    to the three most recent posts by slicing 'articles' into 'articleArray'. Otherwise 'articleArray'
+    is just a copy of 'articles'
+  */
+  var articleArray = articles
+
+  if (props.HomePage) {
+    articleArray = articles.slice(1).slice(-3)
+  }
+
 
   return (
     <CardContent>
       <Grid container spacing={3} alignItems="center" justify="center">
-        {articles.map((row) => {
-          if (row.type === "Article")
+        {articleArray.map((row) => {
+          if (!(row.type === "Article")) return null; 
             return (
               <Grid item xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
@@ -122,7 +153,7 @@ function DevelopmentBlogCards(props) {
                       </Typography>
                     </CardContent>
                   </CardActionArea>
-                  <CardActions className={classes.cardActions}>
+                  <CardActions className={resize()} >
                     <Box className={classes.author}>
                       <Box
                         component="span"
@@ -162,24 +193,33 @@ function DevelopmentBlogCards(props) {
                                 style={{ color: "white" }}
                                 onClick={popupState.close}
                               >
-                                <TwitterButton url={url}>
+                                <TwitterButton message={message}
+                                          url={url + row.href}>
                                   <TwitterIcon fontSize="small" />
                                 </TwitterButton>
                               </MenuItem>
-                              <MenuItem
+
+                              {/* IN ORDER TO HAVE A FACEBOOK SHARE, WE NEED A VALID FB APP ID 
+                                  see: https://webkul.com/blog/how-to-generate-facebook-app-id/
+                              */}
+
+
+                              {/* <MenuItem
                                 style={{ color: "white" }}
                                 onClick={popupState.close}
                               >
-                                <FacebookButton url={url} appId={"appId"}>
+                                <FacebookButton message={message}
+                                          url={url + row.href} appId={"appId"}>
                                   <FacebookIcon fontSize="small" />
                                 </FacebookButton>
-                              </MenuItem>
+                              </MenuItem> */}
 
                               <MenuItem
                                 style={{ color: "white" }}
                                 onClick={popupState.close}
                               >
-                                <EmailButton url={url}>
+                                <EmailButton message={message}
+                                          url={url + row.href}>
                                   <EmailIcon fontSize="small" />
                                 </EmailButton>
                               </MenuItem>
