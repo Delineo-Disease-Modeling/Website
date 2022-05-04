@@ -1,6 +1,8 @@
 import GridList from './GridList';
 import tileData from '../const/leadTileData';
 
-export default function TeamGridList() {
+const TeamGridList = () => {
   return GridList(tileData);
-}
+};
+
+export default TeamGridList;

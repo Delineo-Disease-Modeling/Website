@@ -8,7 +8,6 @@ The fullstack group is responsible for deploying the web application that will m
 1. Install all dependencies: Navigate to **model_app**. In Terminal or CMD, enter
 	```
 	npm install
-	npm run server-install
 	npm run client-install
 	```
 
@@ -23,12 +22,6 @@ Development server is running on port: 5000
 - If step #2 stalls, send an interrupt signal (ctrl-c on mac) and do `npm install react-scripts`
 - If you see an error like `Error: listen EADDRINUSE: address already in use :::5000` find the pid for the process running on this port and kill it
 - If you ever see a babel-jest error after pulling, go into your package.json and remove the react-scripts from your dependencies, and run `npm install` again
-
-## `Structure`
-**model_app/backend/models**: contains all database schemas   
-**model_app/backend/routes**: contains all routing information for server  
-**model_app/backend/synthpops**: contains all Python scripts needed for simulations  
-**model_app/backend/server.js**: connects to the MongoDB database and links all routes to corresponding URI's
-**model_app/backend/frontend/src**: All the folders for implementing the Redux architecture are here.
+- If you're getting a strange error related to Carousel.js, do `npm install react-material-ui-carousel`
 
 

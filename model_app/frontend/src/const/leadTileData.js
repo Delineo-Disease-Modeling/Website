@@ -1,54 +1,40 @@
 //import image from '../images/person-icon.png';
-import simBliImg from '../images/Simone Bliss.JPG';
-import serChanImg from '../images/Serena Chan.jpg';
-import matInsImg from '../images/mathias_insley.png';
-import steLiImg from '../images/Stephen Li.jpg';
-import henNorImg from '../images/Henry Noren.JPG';
-import ZoeKimImg from '../images/Zoe Kim.jpg';
-import emeSulImg from '../images/Emerson_Sullivan.jpg';
+import melLeeImg from '../images/Melody Lee.jpg';
+import rohHerImg from '../images/Rohan Herur.jpg';
+import chrBakImg from '../images/Christian Bakhit.jpg';
+import steLiImg from  '../images/Stella Li.png';
+import aleNoeImg from '../images/Alex Noel.jpg';
 
 const tileData = [
   {
-    img: matInsImg,
-    name: 'Mathias Insley',
+    img: chrBakImg,
+    name: 'Christian Bakhit',
     role: 'Project Manager',
-    description: 'Materials Science, Computer Science',
+    description: 'Computer Science, Applied Mathematics and Statistics',
   },
   {
-    img: simBliImg,
-    name: 'Simone Bliss',
+    img: melLeeImg,
+    name: 'Melody Lee',
     role: 'Fullstack Lead',
-    description: 'Mathematics',
+    description: 'Computer Science, Neuroscience',
   },
   {
-    img: serChanImg,
-    name: 'Serena Chan',
+    img: rohHerImg,
+    name: 'Rohan Herur',
     role: 'Simulation Lead',
-    description: 'Molecular and Cellular Biology, Women, Gender, and Sexuality'
-  },
-  {
-    img: ZoeKimImg,
-    name: 'Zoe Kim',
-    role: 'Information Support',
-    description: 'Major',
+    description: 'Molecular and Cellular Biology, Computer Science',
   },
   {
     img: steLiImg,
-    name: 'Stephen Li',
-    role: 'ML Lead',
-    description: 'Biomedical Engineering',
+    name: 'Stella Li',
+    role: 'Machine Learning Lead',
+    description: 'Computer Science, Cognitive Science',
   },
   {
-    img: henNorImg,
-    name: 'Henry Noren',
-    role: 'Simulation Lead',
-    description: 'Biomedical Engineering',
-  },
-  {
-    img: emeSulImg,
-    name: 'Emerson Sullivan',
-    role: 'Simulation Lead',
-    description: 'Computer Science'
+    img: aleNoeImg,
+    name: 'Alex Noel',
+    role: 'Information Support Lead',
+    description: 'N/A', // TODO
   }
 ];
 
