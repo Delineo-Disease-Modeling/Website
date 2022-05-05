@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -16,13 +16,17 @@ const useStyles = makeStyles({
   media: {
     height: 140,
   },
-  textbox: {
+  textbox:{
     height: 200,
   }
 
 });
 
-const BlogCard = ({ imgURL, title, brief }) => {
+export default function BlogCard({
+    imgURL,
+    title,
+    brief,
+}) {
   const classes = useStyles();
 
   return (
@@ -33,10 +37,10 @@ const BlogCard = ({ imgURL, title, brief }) => {
           image={imgURL}
         />
         <CardContent className={classes.textbox}>
-          <Typography style={{ fontSize: '20px', marginBottom: '10px' }} variant="body2" color="black" component="p">
+        <Typography style={{ fontSize: '20px', marginBottom: '10px'}} variant="body2" color="black" component="p">
             {title}
           </Typography>
-          <Typography style={{ fontSize: '15px' }} variant="body2" color="black" component="p">
+          <Typography style={{ fontSize: '15px'}} variant="body2" color="black" component="p">
             {brief}
           </Typography>
         </CardContent>
@@ -51,6 +55,4 @@ const BlogCard = ({ imgURL, title, brief }) => {
       </CardActions>
     </Card>
   );
-};
-
-export default BlogCard;
+}

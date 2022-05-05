@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Card from '@material-ui/core/Card';
@@ -69,7 +69,7 @@ function HomeBlog(props){
             </Typography>
 
           </CardActions>
-              <DevelopmentBlogCards HomePage = {true}/>
+              <DevelopmentBlogCards/>
         </Card>
       </Container>
       </div>
