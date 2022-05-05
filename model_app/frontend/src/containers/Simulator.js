@@ -1,25 +1,30 @@
 import React, { Component } from "react";
-//import { SimulationTimeseries } from "../components";
+import { SimulationTimeseries } from "../components";
 import "./Simulator.css";
 import axios from "axios";
-import { withStyles } from "@material-ui/styles";
+//import Accordion from "@material-ui/core/Accordion";
+import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Unity, { UnityContext } from "react-unity-webgl";
+//import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import { Button } from "@material-ui/core";
-import { MobileView } from "react-device-detect";
 
 const unityContext = new UnityContext({
-  loaderUrl: "./Build/UnityBuild.loader.js",
-  dataUrl: "./Build/UnityBuild.data",
-  frameworkUrl: "./Build/UnityBuild.framework.js",
-  codeUrl: "./Build/UnityBuild.wasm",
+  loaderUrl: "./Build/JuneBuild.loader.js",
+  dataUrl: "./Build/JuneBuild.data",
+  frameworkUrl: "./Build/JuneBuild.framework.js",
+  codeUrl: "./Build/JuneBuild.wasm",
 });
+
+/*
+const ColoredAccordion = withStyles({
+  root: {
+    backgroundColor: "#1b4441c2",
+    fontSize: "20px",
+    color: "#66FCF1",
+  },
+})(Accordion);
+*/
 
 const styles = (theme) => ({
   bubble: {
@@ -44,10 +49,9 @@ const styles = (theme) => ({
 
     fontSize: 18,
     textAlign: "left",
-    marginBottom: "0.5%",
-    //alignSelf: "center",
-    //alignItems: "center",
-    //whiteSpace: "pre-wrap",
+    alignSelf: "center",
+    alignItems: "center",
+    whiteSpace: "pre-wrap",
   },
   boldTitle: {
     color: "white",
@@ -59,28 +63,11 @@ const styles = (theme) => ({
     alignItems: "center",
     whiteSpace: "pre-wrap",
   },
-
-  dialogTitle: {
-    //textAlign: "center",
-  },
-
-  dialogText: {
-    color: "white",
-    //textAlign: "center",
-  },
-
-  dialogButton: {
-    color: "#66FCF1",
-    border: "2px solid #66FCF1",
-    alignSelf: "center",
-    "&:hover": {
-      color: "black",
-      backgroundColor: "#66FCF1",
-    },
-  },
 });
 
 class Simulator extends Component {
+  // classes = useStyles();
+
   constructor() {
     super();
     this.state = {
@@ -89,26 +76,15 @@ class Simulator extends Component {
       data: [],
       loading: false,
       jobId: null,
-      modalOpen: true,
-      isMobile: true,
-      isDesktop: false,
     };
     this._isMounted = false;
+
     this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
     this._isMounted = true;
     this.source = axios.CancelToken.source();
-    window.addEventListener("resize", this.resize.bind(this));
-    this.resize();
-  }
-
-  resize() {
-    let isDesktop = window.innerWidth >= 760;
-    if (isDesktop !== this.state.isDesktop) {
-      this.setState({ isDesktop: isDesktop });
-    }
   }
 
   handleOnClick = () => {
@@ -180,9 +156,7 @@ class Simulator extends Component {
         .delete(`./simulations/${this.state.jobId}`)
         .catch((err) => console.log(err));
     }
-    window.removeEventListener("resize", this.resize.bind(this));
   }
-
   //<p style={{ textAlign: 'left', fontSize: '20px', color: '#66FCF1' }}>Model Parameters</p>
 
   handleClick = () => {
@@ -214,69 +188,22 @@ class Simulator extends Component {
     // no timeseries: replace with simulation timeseries
     return (
       <div className="GreenBackground">
-        <Dialog
-          open={this.state.modalOpen}
-          onClose={() =>
-            this.setState({
-              modalOpen: false,
-            })
-          }
-        >
-          <DialogTitle className={classes.dialogTitle}>
-            Simulation Loading
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText className={classes.dialogText}>
-              Please wait while the simulation renders. Loading times may vary,
-              but can be as long as 3 minutes.
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button
-              onClick={() => {
-                this.setState({ modalOpen: false });
-              }}
-              //autoFocus
-              className={classes.dialogButton}
-            >
-              Continue
-            </Button>
-          </DialogActions>
-        </Dialog>
-
-        <MobileView>
-          <Dialog
-            open={this.state.isMobile && !this.state.isDesktop}
-            onClose={() =>
-              this.setState({
-                isMobile: false,
-              })
-            }
-          >
-            <DialogTitle className={classes.dialogTitle}>
-              Mobile Device
-            </DialogTitle>
-            <DialogContent>
-              <DialogContentText className={classes.dialogText}>
-                You are on a mobile device. This simulation is best run on a
-                computer.
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button
-                onClick={() => {
-                  this.setState({ isMobile: false });
-                }}
-                //autoFocus
-                className={classes.dialogButton}
-              >
-                Continue
-              </Button>
-            </DialogActions>
-          </Dialog>
-        </MobileView>
-
         <Grid container spacing={3}>
+          <Grid item xs={6}>
+            <div>
+              {jobId ? (
+                loading ? (
+                  <p>loading...</p>
+                ) : (
+                  <div className="GreenBackground">
+                    <h3>Analysis YEE</h3>
+                    <SimulationTimeseries infected={data[1]} deaths={data[2]} />
+                  </div>
+                )
+              ) : null}
+            </div>
+          </Grid>
+
           <div className="GreenBackground" align="center">
             <Typography variant="h3" className={classes.boldTitle}>
               Welcome to Anytown, USA
@@ -295,46 +222,32 @@ class Simulator extends Component {
             <br></br>
 
             <div className={classes.bubble} align="center">
-              <Typography variant="h4" className={classes.bold}>
-                About{" "}
-              </Typography>
-              Anytown, USA is a tool to simulate the spread of COVID-19 in a
-              representative town in the United States. The simulation runs for
-              a time period of two months, assuming a town population of 6,000
-              people. Movement between facilities is modeled off of actual data
-              from Oklahoma City, Oklahoma. More information regarding how
-              movement is simulated can be found on our development blog.
-              Infection within facilities is predicted using the Wells-Riley
-              formula, and more information can also be found on our development
-              blog. Results of the simulation should not be used to inform
-              public health decisions, and is meant only as a tool to show how
-              COVID-19 might spread.
+              <Typography className={classes.bold}>About </Typography>
+              
+              Anytown, USA is a tool to simulate the spread of COVID-19 in a representative town 
+              in the United States. The simulation runs for a time period of two months, assuming 
+              a town population of 6,000 people. Movement between facilities is modeled off of actual 
+              data from Oklahoma City, Oklahoma. More information regarding how movement is simulated 
+              can be found on our development blog. Infection within facilities is predicted using 
+              the Wells-Riley formula, and more information can also be found on our development blog. 
+              Results of the simulation should not be used to inform public health decisions, and is 
+              meant only as a tool to show how COVID-19 might spread.
               <br />
               <br />
-              <Typography variant="h4" className={classes.bold}>
+              <Typography className={classes.bold}>
                 How to use the simulator{" "}
               </Typography>
+              
               1. Adjust the sliders on the left pane to modify
               non-pharmaceutical interventions (NPI's) including:
               <br />
               <br />
               <ul>
-                <li>
-                  The percentage of the population that wears masks in stores,
-                  restaurants, bars, etc.
-                </li>
+                <li>The percentage of the population that wears masks in stores, restaurants, bars, etc.</li>
                 <li>Capacity restrictions on stores and restaurants</li>
-                <li>
-                  The percentage of the population that is tested for COVID on a
-                  daily basis
-                </li>
-                <li>
-                  The percentage of the population who stay home after coming in
-                  contact with an infected person
-                </li>
-                <li>
-                  The percentage of the population that is fully vaccinated
-                </li>
+                <li>The percentage of the population that is tested for COVID on a daily basis</li>
+                <li>The percentage of the population who stay home after coming in contact with an infected person</li>
+                <li>The percentage of the population that is fully vaccinated</li>
                 <li>Whether stay-at-home orders are in place</li>
               </ul>
               2. Click confirm (once) to lock-in interventions <br />
@@ -342,13 +255,14 @@ class Simulator extends Component {
               sent to the simulation server) <br />
               4. Move around the map and click on different buildings to look at
               infection statistics within different facilities <br />
-              5. Watch the graph on the main screen to see how the number of
+              5. Watch the graph on the main screen to see how the number of 
               infected persons in Anytown grows over time
               <br />
               <br />
-              <Typography variant="h4" className={classes.bold}>
+              <Typography className={classes.bold}>
                 Basic Controls
               </Typography>
+              
               Move around the map using WASD or arrow controls
               <br />
               Use the mouse wheel to zoom in/out
@@ -357,9 +271,10 @@ class Simulator extends Component {
               visited/became infected on both a daily and overall timescale
               <br />
               <br />
-              <Typography variant="h4" className={classes.bold}>
+              <Typography className={classes.bold}>
                 Troubleshooting
               </Typography>
+              
               Please make sure webgl is enabled in your browser by visiting{" "}
               <a href="https://get.webgl.org/">https://get.webgl.org/</a>
               <br />
@@ -367,23 +282,6 @@ class Simulator extends Component {
               running. This is normal and happens because there is a lot of data
               that needs to be processed and sent back to your browser.
               <br />
-              <br />
-              <Typography variant="h4" className={classes.bold}>
-                Educational Resources
-              </Typography>
-              <ul>
-                <li>
-                  <a target="_blank" href="https://drive.google.com/file/d/1kNyUd4YSmahDOib99TjfQsh_qoTiFRZ2/view?usp=sharing" download>
-                    High School Delineo Lab
-                  </a>
-                </li>
-                <li>
-                  <a target="_blank" href="https://drive.google.com/file/d/1JojKSrQhDsOTeSe7g2_QkN7XersQ0sh9/view?usp=sharing" >
-                    Middle School Delineo Lab
-                    
-                  </a>
-                </li>
-              </ul>
             </div>
           </div>
         </Grid>

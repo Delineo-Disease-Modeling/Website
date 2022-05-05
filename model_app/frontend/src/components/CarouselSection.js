@@ -3,27 +3,23 @@ import Carousel from 'react-material-ui-carousel'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 
-const CarouselSection = (captions, alts, images) => {
-  return (
-    <Paper style={{ padding: '1rem', backgroundColor: 'transparent', border: '2px solid black', width: '1000px', maxWidth: '90%', margin: 'auto' }}>
-      <Carousel>
-        {
-          [0, 1].map(element => {
-            return (<Item key={element} caption={captions[element]} image={images[element]} alt={alts[element]} />)
-          })
-        }
-      </Carousel>
-    </Paper>
-  )
-};
+export default function CarouselSection(captions, images) {
+    return (
+        <Carousel>
+            {
+                [0, 1, 2, 3].map(element => {
+                    return(<Item key={element} caption={captions[element]} image={images[element]} />)
+                })
+            }
+        </Carousel>
+    )
+}
 
-const Item = (props) => {
-  return (
-    <div style={{ backgroundColor: 'transparent' }}>
-      <img alt={props.alt} style={{ width: '100%' }} src={props.image} />
-      <Typography varient='h4' component='h4' style={{ marginTop: '10px', color: 'white', fontSize: '1.25rem' }}>{props.caption}</Typography>
-    </div>
-  )
-};
-
-export default CarouselSection;
+function Item(props) {
+    return (
+        <Paper style={{padding: '30px', borderRadius: '15px', backgroundColor: 'transparent', border: '2px solid black'}} >
+            <Typography varient='h2' component='h2' style={{color: 'black', fontSize: '36px'}}>{props.caption}</Typography>
+            <img alt="" style={{width: '100%', height: '400px'}} src={props.image} />
+        </Paper>
+    )
+}

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import TeamFilter from "../components/TeamFilter";
-import { withStyles } from "@material-ui/styles";
+import { withStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import "./Team.css";
 
@@ -23,6 +23,7 @@ const styles = {
   CardBackground: {
     backgroundColor: '#222629',
     height: '100%',
+    width: '100vh',
     minHeight: '100%',
     minWidth: '100%',
     margin: 0,
@@ -32,12 +33,14 @@ const styles = {
 
   MainHeader: {
     backgroundColor: "#222629",
+    height: "100px",
+    width: "100vh",
 
     minWidth: "100%",
     margin: 0,
     alignContent: "center",
 
-    paddingBottom: "5px",
+    paddingBottom: "20px",
   },
 
   h3: {
