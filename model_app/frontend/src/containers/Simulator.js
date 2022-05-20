@@ -286,7 +286,7 @@ class Simulator extends Component {
                 unityContext={unityContext}
                 style={{
                   height: "100%",
-                  width: '1000px',
+                  width: '950px',
                   border: "2px solid black",
                   background: "grey",
                 }}
