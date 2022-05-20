@@ -1,17 +1,8 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 
 //These imports are for the default team page view
-import TeamGridList from "../components/TeamGridList.js";
-import SupGridList from "../components/SupGridList.js";
-import LeadGridList from "../components/LeaderGridList.js";
-import PastTeamGridList from "../components/PastTeamGridList.js";
+import TeamsList from "./TeamGrid";
 import { withStyles } from "@material-ui/styles";
-
-//These imports are for when someone actually wants to filter
-import FullStackGridList from "../components/FullStackGridList.js";
-import SimGridList from "../components/SimGridList.js";
-import MLGridList from "../components/MLGridList.js";
-import InfoTeamGridList from "../components/InfoTeamGridList.js";
 
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -157,27 +148,16 @@ const TeamFilter = (props) => {
     sim: false,
     ml: false,
     info: false,
+    past : false,
     backgroundColor: "#222629",
     color: "#66FCF1",
     borderColor: "#66FCF1",
   });
 
-  const changeDiv = () => {
-    setFilterState({
-      all: false,
-      fs: false,
-      sim: false,
-      ml: false,
-      info: false,
-    });
-  }
 
   const { classes } = props;
-  const { all } = filterState;
-  const { fs } = filterState;
-  const { sim } = filterState;
-  const { ml } = filterState;
-  const { info } = filterState;
+  const { all, fs, sim, ml, info, past } = filterState;
+
 
   const resize = () => {
     let isDesktop = (window.innerWidth);
@@ -208,6 +188,7 @@ const TeamFilter = (props) => {
                     sim: false,
                     ml: false,
                     info: false,
+                    past: false,
                   })
                 }
                 selected={all}
@@ -238,6 +219,7 @@ const TeamFilter = (props) => {
                     sim: false,
                     ml: false,
                     info: false,
+                    past: false,
                   })
                 }
               >
@@ -296,6 +278,7 @@ const TeamFilter = (props) => {
                     sim: false,
                     ml: true,
                     info: false,
+                    past: false,
                   })
                 }
               >
@@ -325,6 +308,7 @@ const TeamFilter = (props) => {
                     sim: false,
                     ml: false,
                     info: true,
+                    past: false,
                   })
                 }
               >
@@ -338,6 +322,36 @@ const TeamFilter = (props) => {
                       style={{ fontWeight: "bold", fontSize: "16px" }}
                     >
                       Information Support
+                    </Typography>
+                  }
+                />
+              </ColorListItem>
+            </Grid>
+            <Grid item className={classes.gridItem}>
+              <ColorListItem
+                button
+                selected={past}
+                onClick={() =>
+                  setFilterState({
+                    all: false,
+                    fs: false,
+                    sim: false,
+                    ml: false,
+                    info: false,
+                    past: true,
+                  })
+                }
+              >
+                <ListItemText
+                  className={
+                    filterState.info ? classes.clickedOn : classes.selectedColor
+                  }
+                  primary={
+                    <Typography
+                      type="body2"
+                      style={{ fontWeight: "bold", fontSize: "16px" }}
+                    >
+                      Past Members
                     </Typography>
                   }
                 />
@@ -365,22 +379,17 @@ const TeamFilter = (props) => {
               Principal Investigator
             </Typography>
             <br />
-            <SupGridList />
+            <TeamsList type = "pi"/>
             <Typography varient="h2" className={classes.h2} align="center">
               Team Leaders
             </Typography>
             <br />
-            <LeadGridList></LeadGridList>
+            <TeamsList type = "leader"/>
             <Typography varient="h2" className={classes.h2} align="center">
               Team Members
             </Typography>
             <br />
-            <TeamGridList></TeamGridList>
-            <Typography varient="h2" className={classes.h2} align="center">
-              Past Members
-            </Typography>
-            <br />
-            <PastTeamGridList></PastTeamGridList>
+            <TeamsList type = 'all'/>
           </div>
         </div>
       ) : null}
@@ -399,7 +408,7 @@ const TeamFilter = (props) => {
               Team Members
             </Typography>
             <br />
-            <FullStackGridList></FullStackGridList>
+            <TeamsList type = "full"/>
           </div>
         </div>
       ) : null}
@@ -418,7 +427,7 @@ const TeamFilter = (props) => {
               Team Members
             </Typography>
             <br />
-            <SimGridList></SimGridList>
+            <TeamsList type = "sim"/>
           </div>
         </div>
       ) : null}
@@ -439,7 +448,7 @@ const TeamFilter = (props) => {
               Team Members
             </Typography>
             <br />
-            <MLGridList></MLGridList>
+            <TeamsList type = "ml"/>
           </div>
         </div>
       ) : null}
@@ -457,7 +466,23 @@ const TeamFilter = (props) => {
               Team Members
             </Typography>
             <br />
-            <InfoTeamGridList></InfoTeamGridList>
+            <TeamsList type = "info"/>
+          </div>
+        </div>
+      ) : null}
+            {past ? (
+        <div>
+          <div align="center">
+            <Typography varient="h2" className={resize()}>
+              The past members of the Delineo team are a group of individuals who have devoted time to this project.
+            </Typography>
+          </div>
+          <div>
+            <Typography varient="h2" className={classes.h2} align="left">
+              Team Members
+            </Typography>
+            <br />
+            <TeamsList type = "past"/>
           </div>
         </div>
       ) : null}
