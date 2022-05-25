@@ -1,0 +1,6 @@
+.resizable_graph {
+    resize: both;
+    overflow: auto;
+    height: 400
+  }
+

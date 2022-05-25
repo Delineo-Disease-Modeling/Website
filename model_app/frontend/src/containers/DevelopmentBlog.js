@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
@@ -12,55 +13,53 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Collapse from "@material-ui/core/Collapse";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-// import Table from "@material-ui/core/Table";
-// import TableBody from "@material-ui/core/TableBody";
-// import TableCell from "@material-ui/core/TableCell";
-// import TableContainer from "@material-ui/core/TableContainer";
-// import TableHead from "@material-ui/core/TableHead";
-// import TableRow from "@material-ui/core/TableRow";
-// import Paper from "@material-ui/core/Paper";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
 import IconButton from "@material-ui/core/IconButton";
-// import FacebookIcon from "@material-ui/icons/Facebook";
+import FacebookIcon from "@material-ui/icons/Facebook";
 import ShareIcon from "@material-ui/icons/Share";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
-import { TwitterButton, EmailButton } from "react-social";
+import { FacebookButton, TwitterButton, EmailButton } from "react-social";
 import clsx from "clsx";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import EmailIcon from "@material-ui/icons/Email";
 import articles from "../const/devblogposts";
-import { ArrowBack, ArrowForward } from "@material-ui/icons"
-import CarouselSlide from "../components/CarouselSlide"
 
-// const StyledTableCell = withStyles((theme) => ({
-//   head: {
-//     backgroundColor: theme.palette.common.white,
-//     color: theme.palette.common.black,
-//   },
-//   body: {
-//     color: theme.palette.common.white,
-//     fontSize: 14,
-//   },
-// }))(TableCell);
+const StyledTableCell = withStyles((theme) => ({
+  head: {
+    backgroundColor: theme.palette.common.white,
+    color: theme.palette.common.black,
+  },
+  body: {
+    color: theme.palette.common.white,
+    fontSize: 14,
+  },
+}))(TableCell);
 
-// const StyledTableRow = withStyles((theme) => ({
-//   color: theme.palette.common.white,
+const StyledTableRow = withStyles((theme) => ({
+  color: theme.palette.common.white,
 
-//   root: {
-//     backgroundColor: "#383838",
-//     "&:nth-of-type(odd)": {
-//       color: theme.palette.common.white,
-//     },
-//     "&:hover": {
-//       backgroundColor: "#505050",
-//       cursor: "pointer",
-//     },
-//     "&:onCellClick": {
-//       backgroundColor: "grey !important",
-//     },
-//   },
-// }))(TableRow);
+  root: {
+    backgroundColor: "#383838",
+    "&:nth-of-type(odd)": {
+      color: theme.palette.common.white,
+    },
+    "&:hover": {
+      backgroundColor: "#505050",
+      cursor: "pointer",
+    },
+    "&:onCellClick": {
+      backgroundColor: "grey !important",
+    },
+  },
+}))(TableRow);
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -146,7 +145,10 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
   },
 
-  author: {
+  authorDate: {
+    width: "300px",
+    marginLeft: "0 0px",
+    marginTop: "0 0px",
     padding: "0 0px",
     margin: "0 0px",
     textAlign: "left",
@@ -160,17 +162,12 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "#66FCF1",
       textDecoration: "none",
     },
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    height: '42rem'
   },
 
   subtextalign: {
     textAlign: "justify",
     alignItems: "justifyContent",
     color: "black",
-    height: '10rem'
   },
 
   creditRow: {
@@ -185,14 +182,20 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "100%",
   },
 
+  // subtitle: {
+  //   fontSize: 18,
+  //   marginLeft: "0 0px",
+  //   marginTop: "0 0px",
+  //   padding: "0 0px",
+  // },
+
   root: {
     maxWidth: 345,
     backgroundColor: "#222629",
   },
-
+  
   media: {
     height: 240,
-    marginBottom: '1rem'
   },
 
   align: {
@@ -201,251 +204,69 @@ const useStyles = makeStyles((theme) => ({
 
   cardActions: {
     display: "flex",
-    justifyContent: "space-around",
-    justifyItems: 'center',
-    margin: '10px auto',
-    padding: '0 5px'
+    margin: "0 10px",
+    justifyContent: "space-between",
+  },
+
+  author: {
+    display: "flex",
   },
 
   paginationContainer: {
     display: "flex",
     justifyContent: "center",
   },
-
-  cardStyle: {
-    maxHeight: '700px',
-  },
-
-  svg: {
-    height: "30px",
-    cursor: "pointer",
-  },
-
-  carousel: {
-    width: '100%',
-  },
-
-  fadeOut: {
-    opacity: "0",
-    transition: "none",
-  }
 }));
 
-function Arrow(props) {
-  const { direction, clickFunction } = props;
-  const icon = direction === 'left' ? <ArrowBack /> : <ArrowForward />;
-
-  return <IconButton onClick={clickFunction} style={{ color: "white" }}>{icon}</IconButton>;
-}
-
 function DevelopmentBlog(props) {
-  function resize() {
-    let isDesktop = (window.innerWidth >= 760);
-    if (isDesktop) {
-        return classes.cardActions;
-      }
-        return classes.cardActionsMobile;
-    
-  };
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(true);
+  //const [expandedAnn, setExpandedAnn] = React.useState(true);
+  //const [expandedNews, setExpandedNews] = React.useState(true);
 
-  //let url = process.env.PUBLIC_URL + "developmentblog/date-2";
-  //let url = row.href;
-  const url = "https://covidweb.isi.jhu.edu";
-  const message =
-    "Check out this article from the Delineo Disease Modeling Project";
+  let url = process.env.PUBLIC_URL + "developmentblog/date-2";
+  //developmentblog/date-2
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  // const handleClick = (id, title) => {
-  //   return (event) => {
-  //     window.location.assign("/developmentblog/Post" + id);
-  //   };
-  // };
+  //currently not being used but may be in the future
+  /*
+  const handleExpandClickAnn = () => {
+    setExpandedAnn(!expandedAnn);
+  };
+  const handleExpandClickNews = () => {
+    setExpandedNews(!expandedNews);
+  };
+  */
 
-  const [index, setIndex] = useState(0);
-  const numSlides = articles.length;
-
-  const [slideIn, setSlideIn] = useState(true);
-  const [slideDirection, setSlideDirection] = useState('down');
-
-  const onArrowClick = (direction) => {
-    const increment = direction === 'left' ? -1 : 1;
-    const newIndex = (index + increment + numSlides) % numSlides;
-
-    const oppDirection = direction === 'left' ? 'right' : 'left';
-    // if(direction === 'left'){
-    //   direction = oppDirection
-    // }
-    setSlideDirection(direction);
-    setSlideIn(false);
-
-    setTimeout(() => {
-      setIndex(newIndex);
-      setSlideDirection(oppDirection);
-      setSlideIn(true);
-    }, 100);
+  const handleClick = (id, title) => {
+    return (event) => {
+      window.location.assign("/developmentblog/Post" + id);
+    };
   };
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.keyCode === 39) {
-        onArrowClick('right');
-      }
-      if (e.keyCode === 37) {
-        onArrowClick('left');
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  });
-
-  const addCard = (classes, row, key, current = false) => {
-    return (
-      <Card key={key} className={classes.card}>
-        <CardActionArea href={row.href}>
-          <CardMedia
-            className={classes.media}
-            image={row.img}
-            title="Development Blog Img"
-          />
-          <CardContent className={classes.align}>
-            <Typography
-              className={classes.title}
-              style={{
-                fontWeight: "bold",
-                marginTop: "0 0px",
-              }}
-              gutterBottom
-              variant="h5"
-              component="h2"
-            >
-              {row.title}
-            </Typography>
-            <Typography
-              className={classes.subtextalign}
-              variant="body2"
-              component="p"
-            >
-              {row.subtext}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions className={classes.cardActions}>
-          <Box className={classes.author} flexWrap="wrap" style={{width: '230px'}}>
-              <Typography
-                className={classes.creditRow}
-                variant="subtitle2"
-                component="p"
-              >
-                <span style={{ fontWeight: "bold" }}>
-                  {row.author}{" "}
-                </span>
-                - {row.date}
-              </Typography>
-          </Box>
-          <Box>
-            <PopupState
-              variant="popover"
-              popupId="demo-popup-menu"
-            >
-              {(popupState) => (
-                <React.Fragment>
-                  <IconButton
-                    aria-label="share"
-                    {...bindTrigger(popupState)}
-                  >
-                    <ShareIcon style={{ color: "black" }} />
-                  </IconButton>
-                  <Menu
-                    anchorOrigin={{
-                      vertical: "bottom",
-                      horizontal: "center",
-                    }}
-                    transformOrigin={{
-                      vertical: "top",
-                      horizontal: "center",
-                    }}
-                    {...bindMenu(popupState)}
-                  >
-                    <MenuItem
-                      style={{ color: "white" }}
-                      onClick={popupState.close}
-                    >
-                      <TwitterButton
-                        message={message}
-                        url={url + row.href}
-                      >
-                        <TwitterIcon fontSize="small" />
-                      </TwitterButton>
-                    </MenuItem>
-
-                    {/* IN ORDER TO HAVE A FACEBOOK SHARE, WE NEED A VALID FB APP ID 
-                                  see: https://webkul.com/blog/how-to-generate-facebook-app-id/
-                              */}
-
-                    {/* <MenuItem
-                                        style={{ color: "white" }}
-                                        onClick={popupState.close}
-                                      >
-                                        <FacebookButton
-                                          message={message}
-                                          url={url + row.href}
-                                          appId={"appId"}
-                                        >
-                                          <FacebookIcon fontSize="small" />
-                                        </FacebookButton>
-                                      </MenuItem> */}
-
-                    <MenuItem
-                      style={{ color: "white" }}
-                      onClick={popupState.close}
-                    >
-                      <EmailButton
-                        message={message}
-                        url={url + row.href}
-                      >
-                        <EmailIcon fontSize="small" />
-                      </EmailButton>
-                    </MenuItem>
-                  </Menu>
-                </React.Fragment>
-              )}
-            </PopupState>
-          </Box>
-        </CardActions>
-      </Card>
-    )
-  }
-
   return (
-    <div className="App" style={{ backgroundColor: "#222629", overflowX: 'hidden' }}>
+    <div className="App" style={{ backgroundColor: "#222629" }}>
       <AppBar
         className={classes.appBar}
         style={{ background: "#222629", boxShadow: "none" }}
         position="static"
-      ></AppBar>
-
+      >
+        <Toolbar></Toolbar>
+      </AppBar>
+      
       <Grid container spacing={3}>
         <Grid item xs>
           <Box className={classes.hero}>
             <Box>
-              <Typography variant="h6">Articles & Announcements</Typography>
+              <Typography>Articles & Announcements</Typography>
               <Typography variant="h1">Delineo Blog</Typography>
             </Box>
           </Box>
         </Grid>
-
-        {/* DO NOT DELETE --- MAY BE ADDED BACK IN LATER !!! */}
-
-        {/* <Grid item xs={3}>
+        <Grid item xs={3}>
           <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="customized table">
               <TableHead>
@@ -489,10 +310,11 @@ function DevelopmentBlog(props) {
               </TableBody>
             </Table>
           </TableContainer>
-        </Grid> */}
+        </Grid>
       </Grid>
       <Container maxWidth="lg" className={classes.blogsContainer}>
         <Card
+          maxWidth="lg"
           style={{ background: "#222629", boxShadow: "none" }}
         >
           <CardActions
@@ -505,7 +327,7 @@ function DevelopmentBlog(props) {
             }}
           >
             <Typography variant="h4" className={classes.blogTitle}>
-              Recent Posts
+              Articles
             </Typography>
 
             <IconButton
@@ -527,28 +349,128 @@ function DevelopmentBlog(props) {
             </IconButton>
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <Box display='flex' flexWrap="nowrap" justifyContent="center" className={classes.carousel}>
-              <Arrow
-                className={classes.svg}
-                direction='left'
-                clickFunction={() => onArrowClick('left')}
-              />
-              <CarouselSlide
-                articles={articles}
-                num={index} addCard={addCard} classes={classes}
-                slideDirection={slideDirection}
-                slideIn={slideIn}></CarouselSlide>
-              <Arrow
-                className={classes.svg}
-                direction='right'
-                clickFunction={() => onArrowClick('right')}
-              />
-            </Box>
-            <Box my={4} className={classes.paginationContainer}></Box>
+            <CardContent>
+              <Grid container spacing={3} alignItems="center" justify="center">
+                {articles.map((row) => {
+                  if (row.type === "Article") {
+                    return (
+                      <Grid item xs={12} sm={6} md={4}>
+                        <Card className={classes.card}>
+                          <CardActionArea href={row.href}>
+                            <CardMedia
+                              className={classes.media}
+                              image={row.img}
+                              title="Development Blog Img"
+                            />
+                            <CardContent className={classes.align}>
+                              <Typography
+                                className={classes.title}
+                                style={{
+                                  fontWeight: "bold",
+                                  marginTop: "0 0px",
+                                }}
+                                gutterBottom
+                                variant="h5"
+                                component="h2"
+                              >
+                                {row.title}
+                              </Typography>
+                              <Typography
+                                className={classes.subtextalign}
+                                variant="body2"
+                                component="p"
+                              >
+                                {row.subtext}
+                              </Typography>
+                            </CardContent>
+                          </CardActionArea>
+                          <CardActions className={classes.cardActions}>
+                            <Box className={classes.author}>
+                              <Box
+                                component="span"
+                                m={1}
+                                className={classes.authorDate}
+                              >
+                                <Typography className={classes.creditRow} variant="subtitle2" component="p">
+                                  <span style={{ fontWeight: "bold" }}>
+                                    {row.author}{" "}
+                                  </span>
+                                  - {row.date}
+                                </Typography>
+                              </Box>
+                            </Box>
+                            <Box>
+                              <PopupState
+                                variant="popover"
+                                popupId="demo-popup-menu"
+                              >
+                                {(popupState) => (
+                                  <React.Fragment>
+                                    <IconButton
+                                      aria-label="share"
+                                      {...bindTrigger(popupState)}
+                                    >
+                                      <ShareIcon style={{ color: "black" }} />
+                                    </IconButton>
+                                    <Menu
+                                      anchorOrigin={{
+                                        vertical: "bottom",
+                                        horizontal: "center",
+                                      }}
+                                      transformOrigin={{
+                                        vertical: "top",
+                                        horizontal: "center",
+                                      }}
+                                      {...bindMenu(popupState)}
+                                    >
+                                      <MenuItem
+                                        style={{ color: "white" }}
+                                        onClick={popupState.close}
+                                      >
+                                        <TwitterButton url={url}>
+                                          <TwitterIcon fontSize="small" />
+                                        </TwitterButton>
+                                      </MenuItem>
+                                      <MenuItem
+                                        style={{ color: "white" }}
+                                        onClick={popupState.close}
+                                      >
+                                        <FacebookButton
+                                          url={url}
+                                          appId={"appId"}
+                                        >
+                                          <FacebookIcon fontSize="small" />
+                                        </FacebookButton>
+                                      </MenuItem>
+
+                                      <MenuItem
+                                        style={{ color: "white" }}
+                                        onClick={popupState.close}
+                                      >
+                                        <EmailButton url={url}>
+                                          <EmailIcon fontSize="small" />
+                                        </EmailButton>
+                                      </MenuItem>
+                                    </Menu>
+                                  </React.Fragment>
+                                )}
+                              </PopupState>
+                            </Box>
+                          </CardActions>
+                        </Card>
+                      </Grid>
+                    );
+                  } else {
+                    return null;
+                  }
+                })}
+              </Grid>
+              <Box my={4} className={classes.paginationContainer}></Box>
+            </CardContent>
           </Collapse>
         </Card>
       </Container>
-    </div >
+    </div>
   );
 }
 

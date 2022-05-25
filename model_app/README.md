@@ -23,7 +23,6 @@ Development server is running on port: 5000
 - If step #2 stalls, send an interrupt signal (ctrl-c on mac) and do `npm install react-scripts`
 - If you see an error like `Error: listen EADDRINUSE: address already in use :::5000` find the pid for the process running on this port and kill it
 - If you ever see a babel-jest error after pulling, go into your package.json and remove the react-scripts from your dependencies, and run `npm install` again
-- If you're getting a strange error related to Carousel.js, do `npm install react-material-ui-carousel`
 
 ## `Structure`
 **model_app/backend/models**: contains all database schemas   

@@ -9,12 +9,12 @@ import CardActions from "@material-ui/core/CardActions";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import IconButton from "@material-ui/core/IconButton";
-// import FacebookIcon from "@material-ui/icons/Facebook";
+import FacebookIcon from "@material-ui/icons/Facebook";
 import ShareIcon from "@material-ui/icons/Share";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
-import { TwitterButton, EmailButton } from "react-social";
+import { FacebookButton, TwitterButton, EmailButton } from "react-social";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import EmailIcon from "@material-ui/icons/Email";
 import articles from "../const/devblogposts";
@@ -67,14 +67,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
   },
 
-
-  cardActionsMobile: {
-    display: "flex",
-    justifyContent: "space-between",
-    
-  },
-
   author: {
+    display: "flex",
     color: "black",
   },
 
@@ -88,41 +82,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 function DevelopmentBlogCards(props) {
   const classes = useStyles();
-  
-  function resize() {
-    let isDesktop = (window.innerWidth >= 760);
-    if (isDesktop) {
-        return classes.cardActions;
-      }
-        return classes.cardActionsMobile;
-    
-  };
-  
-  const url = "https://covidweb.isi.jhu.edu";
-  const message =
-    "Check out this article from the Delineo Disease Modeling Project";
 
-  {/* 
-    'articles' is an array imported from the const folder, and contains data on the blog posts.
-    The DevelopmentBlogCards functional component accepts props that indicate whether this component
-    is being rendered on the home page or not. If it is, then we limit the amount of cards rendered
-    to the three most recent posts by slicing 'articles' into 'articleArray'. Otherwise 'articleArray'
-    is just a copy of 'articles'
-  */}
-  var articleArray = articles
-
-  if (props.HomePage) {
-    articleArray = articles.slice(1).slice(-3)
-  }
-
+  let url = process.env.PUBLIC_URL + "developmentblog/date-2";
+  //developmentblog/date-2
 
   return (
     <CardContent>
       <Grid container spacing={3} alignItems="center" justify="center">
-        {articleArray.map((row) => {
+        {articles.map((row) => {
           if (row.type === "Article")
             return (
               <Grid item xs={12} sm={6} md={4}>
@@ -153,7 +122,7 @@ function DevelopmentBlogCards(props) {
                       </Typography>
                     </CardContent>
                   </CardActionArea>
-                  <CardActions className={resize()} >
+                  <CardActions className={classes.cardActions}>
                     <Box className={classes.author}>
                       <Box
                         component="span"
@@ -193,33 +162,24 @@ function DevelopmentBlogCards(props) {
                                 style={{ color: "white" }}
                                 onClick={popupState.close}
                               >
-                                <TwitterButton message={message}
-                                          url={url + row.href}>
+                                <TwitterButton url={url}>
                                   <TwitterIcon fontSize="small" />
                                 </TwitterButton>
                               </MenuItem>
-
-                              {/* IN ORDER TO HAVE A FACEBOOK SHARE, WE NEED A VALID FB APP ID 
-                                  see: https://webkul.com/blog/how-to-generate-facebook-app-id/
-                              */}
-
-
-                              {/* <MenuItem
+                              <MenuItem
                                 style={{ color: "white" }}
                                 onClick={popupState.close}
                               >
-                                <FacebookButton message={message}
-                                          url={url + row.href} appId={"appId"}>
+                                <FacebookButton url={url} appId={"appId"}>
                                   <FacebookIcon fontSize="small" />
                                 </FacebookButton>
-                              </MenuItem> */}
+                              </MenuItem>
 
                               <MenuItem
                                 style={{ color: "white" }}
                                 onClick={popupState.close}
                               >
-                                <EmailButton message={message}
-                                          url={url + row.href}>
+                                <EmailButton url={url}>
                                   <EmailIcon fontSize="small" />
                                 </EmailButton>
                               </MenuItem>

@@ -4,15 +4,12 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { withStyles} from "@material-ui/core";
 import HomeCarousel from "../components/Carousel";
 import TeamMemberJoin from "../images/teammemberjoin.jpg";
-import Box from "@material-ui/core/Box"
 
 //import blogbackground from "../images/blogbackgroud.PNG";
 import Link from "@material-ui/core/Link";
 //import DevelopmentBlogCards from "./DevelopmentBlogCards.js";
 import anytownScreenshot from "../images/anytownScreenshot.png";
 import HomeBlog from "./HomeBlog.js";
-import DevelopmentBlog from "./DevelopmentBlog.js"
-import BlogCarousel from "./BlogCarousel";
 
 const styles = {
   
@@ -93,7 +90,8 @@ class Home extends Component {
               Interactive Disease Simulation
             </h1>
             <h5 style={{ marginBottom: "30px" }}>
-              Bringing a fresh approach to the challenge of modeling disease spread
+              Bring a fresh approach to the challenge of modeling the spread of
+              pandemics
             </h5>{" "}
             <Button
               className={classes.bigButton}
@@ -106,16 +104,9 @@ class Home extends Component {
           </div>
         </div>
 
-        
-        <HomeCarousel /> 
-        <h1 style={{marginTop: '3%', marginBottom: '3%', color: 'white'}}>
-          Recent Updates from Our Blog
-        </h1>
-        <Box marginBottom="4%">
-        <BlogCarousel />
-        </Box>
+        <HomeCarousel />
 
-        
+        <HomeBlog />
 
         <div
           className={classes.teamPage}
@@ -126,7 +117,8 @@ class Home extends Component {
               We Are Delineo
             </h1>
             <h5 style={{ marginBottom: "30px" }}>
-              Bringing a fresh approach to the challenge of modeling disease spread
+              Bring a fresh approach to the challenge of modeling the spread of
+              pandemics
             </h5>
             <Button
               className={classes.bigButton}

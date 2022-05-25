@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem } from 'reactstrap';
+import {UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 import {NavLink} from 'react-router-dom';
 import './Header.css';
 import Logo from "./../images/delineo_vector_2.0.1.png"
@@ -41,22 +42,31 @@ class Header extends Component{
             color:'#66FCF1',
             borderBottom: '1px solid #66FCF1',
             paddingBottom: '4px',
-
         }
 
         return (
-            <Navbar expand="md" className="color navbar-dark">
+            <Navbar expand="md" className="color">
                 <div className="container">
+                <NavbarToggler onClick={this.toggleNav} />
                 <NavbarBrand className="mr-auto" href="/">
                     <img src={Logo} alt="Logo" width="200" height="65"></img>
                 </NavbarBrand>
-
-                <NavbarToggler onClick={this.toggleNav} />
                 <Collapse isOpen={this.state.isNavOpen} navbar>
-                    <Nav navbar className="ml-auto">
-
+                    <Nav navbar className="ms-auto">
                         <NavItem>
-                        <NavLink className="Nav-link" to='/simulator' activeClassName='active' activeStyle={active} style={styleSheet}> Simulator</NavLink>
+                            <UncontrolledDropdown>
+                                  <DropdownToggle caret id="dropdown-toggle">
+                                    Simulators
+                                  </DropdownToggle>
+                                  <DropdownMenu id="dropdown-menu">
+                                    <DropdownItem id="dropdown-item" href='/simulator'>
+                                    <NavLink className="Nav-link" id="dropdown-link" to='/simulator' activeClassName='active' activeStyle={active}>Anytown</NavLink>
+                                    </DropdownItem>
+                                    <DropdownItem id="dropdown-item" href='/simulator'>
+                                    <NavLink className="Nav-link" id="dropdown-link" to='/GeneralSimulator' activeClassName='active' activeStyle={active}>Oklahoma City</NavLink>
+                                    </DropdownItem>
+                                  </DropdownMenu>
+                            </UncontrolledDropdown>
                         </NavItem>
 
                         <NavItem>

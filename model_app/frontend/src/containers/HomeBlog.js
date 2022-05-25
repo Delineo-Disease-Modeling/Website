@@ -69,7 +69,7 @@ function HomeBlog(props){
             </Typography>
 
           </CardActions>
-              <DevelopmentBlogCards HomePage = {true}/>
+              <DevelopmentBlogCards/>
         </Card>
       </Container>
       </div>

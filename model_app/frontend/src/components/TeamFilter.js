@@ -17,7 +17,6 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
 
 const styles = {
   
@@ -67,26 +66,6 @@ const styles = {
     maxWidth: "1000px",
   },
 
-
-  h4: {
-    color: "white",
-    marginRight: 100,
-    marginLeft: 100,
-    marginTop: 40,
-
-    width: "fit-content",
-
-    fontSize: 15,
-    textAlign: "center",
-    alignSelf: "center",
-    alignItems: "center",
-    borderRadius: "25px",
-    border: "2px solid #2f3538",
-    padding: "20px 20px 20px 20px",
-    backgroundColor: "#2f3538",
-    maxWidth: "1000px",
-  },
-
   focus: {
     backgroundColor: "#222629",
     color: "#66FCF1",
@@ -104,10 +83,9 @@ const styles = {
   flexContainer: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "center",
-    
     padding: 0,
 
+    backgroundColor: "#66FCF1",
     color: "#66FCF1",
 
     margin: "0 auto",
@@ -117,10 +95,6 @@ const styles = {
   clickedOn: {
     color: "#222629",
   },
-
-  gridItem: {
-    backgroundColor: "#66FCF1"
-  }
 };
 
 const ColorListItem = withStyles((theme) => ({
@@ -132,7 +106,6 @@ const ColorListItem = withStyles((theme) => ({
     fontWeight: "bold",
 
     width: "200px",
-    height: "76px",
     textAlign: "center",
 
     "&.Mui-selected, &$.Mui-selected:hover": {
@@ -154,8 +127,6 @@ const ColorListItem = withStyles((theme) => ({
 class TeamFilter extends Component {
   // This syntax ensures `this` is bound within handleClick.
   // Warning: this is *experimental* syntax.
-
-  
 
   constructor(props) {
     super(props);
@@ -181,7 +152,6 @@ class TeamFilter extends Component {
     });
   }
 
-
   render() {
     const { classes } = this.props;
 
@@ -191,177 +161,152 @@ class TeamFilter extends Component {
     const { ml } = this.state;
     const { info } = this.state;
 
-    function resize() {
-      let isDesktop = (window.innerWidth);
-      if (isDesktop !== 1000) {
-          return classes.h3;
-        }
-          return classes.h4;
-    };
-
-
-
     return (
       <div>
         <br />
-        <div>
+        <div className={classes.flexContainer}>
           <List
             className={classes.flexContainer}
             component="nav"
             aria-label="all fs sim ml info"
           >
-            <Grid container spacing={0} className={classes.flexContainer}>
-              <Grid item className={classes.gridItem}>
-                <ColorListItem
-                  className={classes.root}
-                  button
-                  onClick={() =>
-                    this.setState({
-                      all: true,
-                      fs: false,
-                      sim: false,
-                      ml: false,
-                      info: false,
-                    })
-                  }
-                  selected={all}
-                >
-                  <ListItemText
-                    className={
-                      this.state.all ? classes.clickedOn : classes.selectedColor
-                    }
-                    primary={
-                      <Typography
-                        type="body2"
-                        style={{ fontWeight: "bold", fontSize: "16px" }}
-                      >
-                        All
-                      </Typography>
-                    }
-                  />
-                </ColorListItem>
-              </Grid>
+            <ColorListItem
+              className={classes.root}
+              button
+              onClick={() =>
+                this.setState({
+                  all: true,
+                  fs: false,
+                  sim: false,
+                  ml: false,
+                  info: false,
+                })
+              }
+              selected={all}
+            >
+              <ListItemText
+                className={
+                  this.state.all ? classes.clickedOn : classes.selectedColor
+                }
+                primary={
+                  <Typography
+                    type="body2"
+                    style={{ fontWeight: "bold", fontSize: "16px" }}
+                  >
+                    All
+                  </Typography>
+                }
+              />
+            </ColorListItem>
 
-              <Grid item className={classes.gridItem}>
-                <ColorListItem
-                  button
-                  selected={fs}
-                  onClick={() =>
-                    this.setState({
-                      all: false,
-                      fs: true,
-                      sim: false,
-                      ml: false,
-                      info: false,
-                    })
-                  }
-                >
-                  <ListItemText
-                    className={
-                      this.state.fs ? classes.clickedOn : classes.selectedColor
-                    }
-                    primary={
-                      <Typography
-                        type="body2"
-                        style={{ fontWeight: "bold", fontSize: "16px" }}
-                      >
-                        Fullstack
-                      </Typography>
-                    }
-                  />
-                </ColorListItem>
-              </Grid>
-
-              <Grid item className={classes.gridItem}>
-                <ColorListItem
-                  button
-                  selected={sim}
-                  onClick={() =>
-                    this.setState({
-                      all: false,
-                      fs: false,
-                      sim: true,
-                      ml: false,
-                      info: false,
-                    })
-                  }
-                >
-                  <ListItemText
-                    className={
-                      this.state.sim ? classes.clickedOn : classes.selectedColor
-                    }
-                    primary={
-                      <Typography
-                        type="body2"
-                        style={{ fontWeight: "bold", fontSize: "16px" }}
-                      >
-                        Simulation
-                      </Typography>
-                    }
-                  />
-                </ColorListItem>
-              </Grid>
-
-              <Grid item className={classes.gridItem}>
-                <ColorListItem
-                  button
-                  selected={ml}
-                  onClick={() =>
-                    this.setState({
-                      all: false,
-                      fs: false,
-                      sim: false,
-                      ml: true,
-                      info: false,
-                    })
-                  }
-                >
-                  <ListItemText
-                    className={
-                      this.state.ml ? classes.clickedOn : classes.selectedColor
-                    }
-                    primary={
-                      <Typography
-                        type="body2"
-                        style={{ fontWeight: "bold", fontSize: "16px" }}
-                      >
-                        Machine Learning
-                      </Typography>
-                    }
-                  />
-                </ColorListItem>
-              </Grid>
-
-              <Grid item className={classes.gridItem}>
-                <ColorListItem
-                  button
-                  selected={info}
-                  onClick={() =>
-                    this.setState({
-                      all: false,
-                      fs: false,
-                      sim: false,
-                      ml: false,
-                      info: true,
-                    })
-                  }
-                >
-                  <ListItemText
-                    className={
-                      this.state.info ? classes.clickedOn : classes.selectedColor
-                    }
-                    primary={
-                      <Typography
-                        type="body2"
-                        style={{ fontWeight: "bold", fontSize: "16px" }}
-                      >
-                        Information Support
-                      </Typography>
-                    }
-                  />
-                </ColorListItem>
-              </Grid>
-            </Grid>
+            <ColorListItem
+              button
+              selected={fs}
+              onClick={() =>
+                this.setState({
+                  all: false,
+                  fs: true,
+                  sim: false,
+                  ml: false,
+                  info: false,
+                })
+              }
+            >
+              <ListItemText
+                className={
+                  this.state.fs ? classes.clickedOn : classes.selectedColor
+                }
+                primary={
+                  <Typography
+                    type="body2"
+                    style={{ fontWeight: "bold", fontSize: "16px" }}
+                  >
+                    Fullstack
+                  </Typography>
+                }
+              />
+            </ColorListItem>
+            <ColorListItem
+              button
+              selected={sim}
+              onClick={() =>
+                this.setState({
+                  all: false,
+                  fs: false,
+                  sim: true,
+                  ml: false,
+                  info: false,
+                })
+              }
+            >
+              <ListItemText
+                className={
+                  this.state.sim ? classes.clickedOn : classes.selectedColor
+                }
+                primary={
+                  <Typography
+                    type="body2"
+                    style={{ fontWeight: "bold", fontSize: "16px" }}
+                  >
+                    Simulation
+                  </Typography>
+                }
+              />
+            </ColorListItem>
+            <ColorListItem
+              button
+              selected={ml}
+              onClick={() =>
+                this.setState({
+                  all: false,
+                  fs: false,
+                  sim: false,
+                  ml: true,
+                  info: false,
+                })
+              }
+            >
+              <ListItemText
+                className={
+                  this.state.ml ? classes.clickedOn : classes.selectedColor
+                }
+                primary={
+                  <Typography
+                    type="body2"
+                    style={{ fontWeight: "bold", fontSize: "16px" }}
+                  >
+                    Machine Learning
+                  </Typography>
+                }
+              />
+            </ColorListItem>
+            <ColorListItem
+              button
+              selected={info}
+              onClick={() =>
+                this.setState({
+                  all: false,
+                  fs: false,
+                  sim: false,
+                  ml: false,
+                  info: true,
+                })
+              }
+            >
+              <ListItemText
+                className={
+                  this.state.info ? classes.clickedOn : classes.selectedColor
+                }
+                primary={
+                  <Typography
+                    type="body2"
+                    style={{ fontWeight: "bold", fontSize: "16px" }}
+                  >
+                    Information Support
+                  </Typography>
+                }
+              />
+            </ColorListItem>
           </List>
         </div>
         {/*
@@ -406,9 +351,7 @@ class TeamFilter extends Component {
         {fs ? (
           <div>
             <div align="center">
-              <Typography className={resize()} align="center">
-
-              
+              <Typography varient="h3" className={classes.h3} align="center">
                 Members of the fullstack team work throughout the stack. Our web
                 application is built using the MERN stack (MongoDB, Express,
                 ReactJS, NodeJS) and Unity Webgl. Members of this team also
@@ -427,7 +370,7 @@ class TeamFilter extends Component {
         {sim ? (
           <div>
             <div align="center">
-              <Typography  className={resize()} align="center">
+              <Typography varient="h3" className={classes.h3} align="center">
                 The simulation team is responsible for the implementation of the
                 simulation that lies at the heart of the Delineo project. Team
                 members focus on programming the various modules, algorithms,
@@ -446,7 +389,7 @@ class TeamFilter extends Component {
         {ml ? (
           <div>
             <div align="center">
-              <Typography  className={resize()}>
+              <Typography varient="h3" className={classes.h3}>
                 The machine learning group is tackling the challenge of learning
                 from the massive amounts of geolocation data the Delineo project
                 has access to. One of the main focuses is on developing machine
@@ -467,7 +410,7 @@ class TeamFilter extends Component {
         {info ? (
           <div>
             <div align="center">
-              <Typography varient="h2"className={resize()}>
+              <Typography varient="h2" className={classes.h3}>
                 The information support team is responsible for gathering,
                 summarizing, and disseminating research articles/papers that
                 prove helpful for informing the development of Delineo's model.

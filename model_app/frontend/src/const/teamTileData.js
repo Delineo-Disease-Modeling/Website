@@ -1,19 +1,24 @@
 import rohAbiImg from '../images/Rohan Abichandani.JPG';
 import mehAgaImg from '../images/Mehul Agarwal.jpg';
+import eugAsaImg from '../images/person-icon.png';
 import chrBakImg from '../images/Christian Bakhit.jpg';
 import jonBakImg from '../images/Jonathan Bakhit.jpg';
 import ariBaoImg from '../images/Ariel Bao.jpg';
+import sebCabImg from '../images/Sebastian Cabrejos.jpg';
 import shaCaoImg from '../images/Shanelle Cao.jpg';
 import ameDehImg from '../images/Ameya Dehade.jpg';
 import saiEarImg from '../images/Saidaman Earla.JPG';
 import aayGanImg from '../images/Aayush Gandhi.jpeg';
 import kaiKoImg from '../images/Kai Ko.jpg';
+import jamHuaImg from '../images/Jamie Huang.jpg';
 import breLeeImg from '../images/Brendan_Lee.png';
 import melLeeImg from '../images/Melody Lee.jpg';
 import ireLiaImg from '../images/Irena Lian.jpeg';
 import alaLiImg from '../images/Alan Li.jpg';
 import davLuImg from '../images/David_Lu.PNG';
 import rebMurImg from '../images/Rebecca Muratore.png';
+import nadNajImg from '../images/Nader Najjar.jpg';
+import chiNwoImg from '../images/Chioma Nwosu.JPG';
 import yixPanImg from '../images/Yixin Pan.jpg';
 import josParImg from '../images/Joshua Park.JPG';
 import steLiImg from  '../images/Stella Li.png';
@@ -21,6 +26,7 @@ import shaRakImg from '../images/Shardul Rakshit.jpg';
 import eugSonImg from '../images/Eugene Song.jpg';
 import oliWanImg from '../images/Olivia Wang.jpg';
 import aleWeiImg from '../images/Alex Wei.JPG';
+import oreWeiImg from '../images/Oren Wei.jpg';
 import peiXuImg from '../images/Peiyuan Xu.JPG';
 import daveYangImg from '../images/Dave Yang.jpg';
 import davYanImg from '../images/David Yang.jpg';
@@ -30,19 +36,13 @@ import jacZhaImg from '../images/Jack Zhang.jpg';
 import tadBerImg from '../images/person-icon.png';
 import munJiaImg from '../images/MungYao Jia.jpg';
 import louDiBImg from '../images/Louie DiBernardo.jpg';
+import yinZhaImg from '../images/Ying Zhang.JPG';
 import yiCheImg from '../images/Yilin Chen.jpg';
-import siLiImg from '../images/Siyu Li.jpeg';
-import shaZenImg from '../images/Shaopeng Zeng.jpg';
-import rohHerImg from '../images/Rohan Herur.jpg';
-import lauSiuImg from '../images/Lauren Siu.jpg';
-import laiWanImg from '../images/Laine Wang.jpeg';
-import ianZheImg from '../images/Ian Zheng.JPG';
-import halMorImg from '../images/Haley_Morgan.jpg';
-import evaLeuImg from '../images/Evan Leung.jpg';
-import cinZhaImg from '../images/Cindy Zhang.JPG';
-import briRuiImg from '../images/Brian Rui.jpg';
-import alePalImg from '../images/Alex Palacios.jpg';
-import josKimImg from '../images/Josh_Kim.jpg';
+
+
+
+
+
 
 
 
@@ -51,13 +51,19 @@ const tileData = [
   {
     img: rohAbiImg,
     name: 'Rohan Abichandani',
-    role: 'Simulation',
+    role: 'Fullstack',
     description: 'Computer Science, Applied Math and Statistics',
   },
   {
     img: mehAgaImg,
     name: 'Mehul Agarwal',
     role: 'Fullstack',
+    description: 'Computer Science',
+  },
+  {
+    img: eugAsaImg,
+    name: 'Eugene Asare',
+    role: 'Simulation',
     description: 'Computer Science',
   },
   {
@@ -77,6 +83,12 @@ const tileData = [
     name: 'Ariel Bao',
     role: 'ML',
     description: 'Computer Science, Applied Math and Statistics',
+  },
+  {
+    img: sebCabImg,
+    name: 'Sebastian Cabrejos',
+    role: 'Fullstack',
+    description: 'Computer Science',
   },
   {
     img: shaCaoImg,
@@ -101,6 +113,12 @@ const tileData = [
     name: 'Aayush Gandhi',
     role: 'Fullstack',
     description: 'Chemical and Biomolecular Engineering, Computer Science',
+  },
+  {
+    img: jamHuaImg,
+    name: 'Jamie Huang',
+    role: 'Simulation',
+    description: 'Computer Science, Biophysics',
   },
   {
     img: munJiaImg,
@@ -151,6 +169,18 @@ const tileData = [
     description: 'Computer Science',
   },
   {
+    img: nadNajImg,
+    name: 'Nader Najjar',
+    role: 'Fullstack',
+    description: 'Computer Science, Applied Math and Statistics',
+  },
+  {
+    img: chiNwoImg,
+    name: 'Chioma Nwosu',
+    role: 'Fullstack',
+    description: 'Computer Science',
+  },
+  {
     img: yixPanImg,
     name: 'Yixin Pan',
     role: 'ML',
@@ -191,6 +221,12 @@ const tileData = [
     name: 'Alex Wei',
     role: 'Simulation',
     description: 'Computer Science',
+  },
+  {
+    img: oreWeiImg,
+    name: 'Oren Wei',
+    role: 'ML',
+    description: 'Molecular and Cellular Biology, Spanish',
   },
   {
     img: peiXuImg,
@@ -249,88 +285,13 @@ const tileData = [
   },
 
   {
-    img: shaZenImg,
-    name: 'Shaopeng Zeng',
-    role: 'Fullstack',
-    description: 'Molecular and Cellular Biology, Computer Science',
-  },
-
-  {
-    img: halMorImg,
-    name: 'Haley Morgan',
-    role: 'Fullstack',
-    description: 'Chemical and Biomolecular Engineering',
-  },
-
-  {
-    img: alePalImg,
-    name: 'Alex Palacios',
-    role: 'Fullstack',
-    description: 'Applied Mathematics and Statistics, Computer Science',
-  },
-
-  {
-    img: briRuiImg,
-    name: 'Brian Rui',
-    role: 'Simulation',
-    description: 'Computer Science',
-  },
-
-  {
-    img: rohHerImg,
-    name: 'Rohan Herur',
-    role: 'Simulation',
-    description: 'Molecular and Cellular Biology, Computer Science',
-  },
-
-  {
-    img: laiWanImg,
-    name: 'Laine Wang',
-    role: 'Simulation',
-    description: 'Chemical and Biomolecular Engineering, Applied Mathematics and Statistics',
-  },
-
-  {
-    img: cinZhaImg,
-    name: 'Cindy Zhang',
-    role: 'Simulation',
-    description: 'Biomedical Engineering, Computer Science',
-  },
-
-  {
-    img: josKimImg,
-    name: 'Josh Kim',
-    role: 'Simulation',
-    description: 'Computer Science',
-  },
-
-  {
-    img: evaLeuImg,
-    name: 'Evan Leung',
-    role: 'ML',
-    description: 'Computer Science',
-  },
-
-  {
-    img: lauSiuImg,
-    name: 'Lauren Siu',
-    role: 'ML',
-    description: 'Electrical and Computer Engineering ',
-  },
-
-  {
-    img: siLiImg,
-    name: 'Siyu Li',
+    img: yinZhaImg,
+    name: 'Ying Zhang',
     role: 'ML',
     description: 'Applied Mathematics and Statistics, Computer Science',
   },
 
-  {
-    img: ianZheImg,
-    name: 'Ian Zheng',
-    role: 'Information Support',
-    description: 'Computer Science, Economics',
-  },
+
 
 ];
 
