@@ -26,7 +26,7 @@ import jesYuImg from '../images/Jessica Yu.jpg';
 import ryaYuImg from '../images/Ryan Yu.jpg';
 import jacZhaImg from '../images/Jack Zhang.jpg';
 import tadBerImg from '../images/person-icon.png';
-import munJiaImg from '../images/MungYao Jia.jpg';
+import munJiaImg from '../images/MungYao Jia.png';
 import louDiBImg from '../images/Louie DiBernardo.jpg';
 import yiCheImg from '../images/Yilin Chen.jpg';
 import siLiImg from '../images/Siyu Li.jpeg';
@@ -97,6 +97,8 @@ import zihWang from '../images/Zihan_Wang.jpg';
 import ashTsang from '../images/Ashley_Tsang.jpg';
 import matInsImg from '../images/mathias_insley.png';
 import shiKeImg from '../images/Shichang Ke.jpeg';
+import xinyueGu from '../images/Xinyue Gu.JPG';
+import jakeRamImg from '../images/Jake Rasmussen.PNG';
 import invalid from '../images/person-icon.png';
 
 const teamList = [
@@ -444,6 +446,13 @@ const teamList = [
       inDelineo: true
     },
     {
+      img: jakeRamImg,
+      name: "Jake Rasmussen",
+      role: "Fullstack",
+      description: "Computer Science",
+      inDelineo: true
+    },
+    {
       img: daveYangImg,
       name: "Dave Yang",
       role: "Simulation",
@@ -713,7 +722,7 @@ const teamList = [
       name: "Xinyue Gu",
       role: "Simulation",
       description: "N/A",
-      img: invalid,
+      img: xinyueGu,
       inDelineo: true
     },
      {
@@ -839,7 +848,7 @@ const teamList = [
       img: invalid,
       name: "Daniel Drozdov",
       role: "Simulation",
-      description: "Computer Science, AMS Minor",
+      description: "Computer Science",
       inDelineo: true
     },
     {
