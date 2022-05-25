@@ -96,6 +96,7 @@ import sheZhang from '../images/Shengwei_Zhang.jpg';
 import zihWang from '../images/Zihan_Wang.jpg';
 import ashTsang from '../images/Ashley_Tsang.jpg';
 import matInsImg from '../images/mathias_insley.png';
+import shiKeImg from '../images/Shichang Ke.jpeg';
 import invalid from '../images/person-icon.png';
 
 const teamList = [
@@ -110,7 +111,7 @@ const teamList = [
       img: chrBakImg,
       name: "Christian Bakhit",
       role: "Project Manager",
-      description: "Computer Science, Applied Mathematics and Statistics",
+      description: "Computer Science, Applied Math and Statistics",
       inDelineo: true
     },
    {
@@ -530,7 +531,7 @@ const teamList = [
       img: laiWanImg,
       name: "Laine Wang",
       role: "Information Support",
-      description: "Chemical and Biomolecular Engineering, Applied Mathematics and Statistics",
+      description: "Chemical and Biomolecular Engineering, Applied Math and Statistics",
       inDelineo: false
     },
      {
@@ -833,7 +834,22 @@ const teamList = [
       role: "Simulation",
       description: "N/A",
       inDelineo: true
-    }
+    },
+    {
+      img: invalid,
+      name: "Daniel Drozdov",
+      role: "Simulation",
+      description: "Computer Science, AMS Minor",
+      inDelineo: true
+    },
+    {
+      img: shiKeImg,
+      name: "Shichang Ke",
+      role: "Fullstack",
+      description: "Computer Science, Neuroscience",
+      inDelineo: true
+    },
+
 ];
 
 export default teamList;
