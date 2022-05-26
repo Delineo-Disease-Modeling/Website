@@ -99,6 +99,8 @@ import matInsImg from '../images/mathias_insley.png';
 import shiKeImg from '../images/Shichang Ke.jpeg';
 import xinyueGu from '../images/Xinyue Gu.JPG';
 import jakeRamImg from '../images/Jake Rasmussen.PNG';
+import JiwoNohImg from '../images/Jiwoo Noh.JPG';
+
 import invalid from '../images/person-icon.png';
 
 const teamList = [
@@ -856,6 +858,14 @@ const teamList = [
       name: "Shichang Ke",
       role: "Fullstack",
       description: "Computer Science, Neuroscience",
+      inDelineo: true
+    },
+
+    {
+      img: JiwoNohImg,
+      name: "Jiwoo Noh",
+      role: "Machine Learning",
+      description: "Biomedical Engineering, Computer Science",
       inDelineo: true
     },
 
