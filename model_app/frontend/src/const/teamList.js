@@ -723,7 +723,7 @@ const teamList = [
      {
       name: "Xinyue Gu",
       role: "Simulation",
-      description: "N/A",
+      description: "Applied Math and Statistics",
       img: xinyueGu,
       inDelineo: true
     },
