@@ -2,7 +2,12 @@ import GridList from './GridList';
 import SectionGridList from './SectionGridList';
 import teamList from '../const/teamList';
 
-
+/**
+ * TeamGrid component that sorts the team List and returns the list of students.
+ * @param {object} props
+ * @returns {React.Component}
+ * 
+ */
 const teamsList = (searchTerm => {
     let type = searchTerm.type;
     const teamFullList = [];
