@@ -648,7 +648,7 @@ const teamList = [
       name: "Cindy Dong",
       role: "Machine Learning",
       inDelineo: true,
-      description: "N/A"
+      description: "Computer Science, Mathematics"
     },
     {
       img: taimingShiImg,
