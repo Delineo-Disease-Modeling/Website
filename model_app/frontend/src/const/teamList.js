@@ -655,7 +655,7 @@ const teamList = [
       name: "Taiming Shi",
       role: "Machine Learning",
       inDelineo: true,
-      description: "N/A"
+      description: "Computer Science, Applied Math and Statistics"
     },
     {
       name: "Sofia Xu",
