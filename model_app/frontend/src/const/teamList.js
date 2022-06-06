@@ -773,7 +773,7 @@ const teamList = [
       img: simNarImg,
       name: "Simon Narang",
       role: "Fullstack",
-      description: "N/A",
+      description: "Computer Science, Economics",
       inDelineo: true
     },
      {
