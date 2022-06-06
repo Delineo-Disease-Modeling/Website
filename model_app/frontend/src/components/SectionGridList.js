@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
-import GridListTile from '@material-ui/core/GridListTile';
+import ImageListItem from '@material-ui/core/ImageListItem'
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
@@ -48,7 +48,7 @@ const TitlebarGridList = (tileData) => {
     <Container className={classes.root} maxWidth='lg'>
       {tileData.map((tile) => (
         <Grid key={tile.name} >
-          <GridListTile component='div' className={classes.gridListTile} key={tile.img}>
+          <ImageListItem component='div' className={classes.gridListTile} key={tile.img}>
             <center>
               <Avatar src={tile.img} className={classes.large} />
               <div className={classes.displayUnder}>
@@ -57,7 +57,7 @@ const TitlebarGridList = (tileData) => {
 
               </div>
             </center>
-          </GridListTile>
+          </ImageListItem>
         </Grid>
       ))}
     </Container>
