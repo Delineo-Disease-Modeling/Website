@@ -213,11 +213,14 @@ class About extends React.Component {
 					</Typography>
 					<Typography varient='h1' component="h2" style={{ color: '#222629' }}>
 
-						<form style={{ padding: '0 50px' }} className={classes.form} noValidate autoComplete="off">
+						<form style={{ padding: '0 50px' }} className={classes.form} noValidate autoComplete="off" action="https://formsubmit.co/gilliankscjd@gmail.com" method="POST">
 							<input className={classes.input} id="input-id" type="text" placeholder="Name" required name="Name" />
 							<input className={classes.input} id="input-id" type="text" placeholder="Email" required name="Email" />
 							<input className={classes.input} id="input-id" type="text" placeholder="Subject" required name="Subject" />
 							<input className={classes.input} id="input-id" type="text" placeholder="Comment" required name="Comment" />
+							<input type="hidden" name="_next" value="https://covidweb.isi.jhu.edu/about"></input>
+							<input type="hidden" name="_template" value="table" />
+							<input type="hidden" name="_captcha" value="false" />
 
 							<Button endIcon={<SendIcon />} className={classes.button} type="submit" size="large" varient='contained'>
 								SEND MESSAGE
