@@ -213,7 +213,7 @@ class About extends React.Component {
 					</Typography>
 					<Typography varient='h1' component="h2" style={{ color: '#222629' }}>
 
-						<form style={{ padding: '0 50px' }} className={classes.form} noValidate autoComplete="off" action="https://formsubmit.co/gilliankscjd@gmail.com" method="POST">
+						<form style={{ padding: '0 50px' }} className={classes.form} noValidate autoComplete="off" action="https://formsubmit.co/delineodiseasemodeling@gmail.com" method="POST">
 							<input className={classes.input} id="input-id" type="text" placeholder="Name" required name="Name" />
 							<input className={classes.input} id="input-id" type="text" placeholder="Email" required name="Email" />
 							<input className={classes.input} id="input-id" type="text" placeholder="Subject" required name="Subject" />
