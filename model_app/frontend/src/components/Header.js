@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import {UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink} from 'reactstrap';
 import './Header.css';
 import Logo from "./../images/delineo_vector_2.0.1.png"
 
@@ -45,9 +44,19 @@ const Header = () => {
         <NavbarToggler onClick={toggleNav} />
         <Collapse isOpen={navState.isNavOpen} navbar>
           <Nav navbar className="ms-auto">
-            <NavItem>
-              <NavLink className="Nav-link" to='/simulator' activeClassName='active' activeStyle={active} style={styleSheet}>Simulator</NavLink>
-            </NavItem>
+          <UncontrolledDropdown>
+              <DropdownToggle caret id="dropdown-toggle">
+                Simulators
+              </DropdownToggle>
+              <DropdownMenu id="dropdown-menu">
+                <DropdownItem id="dropdown-item" href='/simulator'>
+                <NavLink className="Nav-link" id="dropdown-link" to='/simulator' activeClassName='active' activeStyle={active}>Anytown</NavLink>
+                </DropdownItem>
+                <DropdownItem id="dropdown-item" href='/generalsimulator'>
+                <NavLink className="Nav-link" id="dropdown-link" to='/generalsimulator' activeClassName='active' activeStyle={active}>Oklahoma City</NavLink>
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
             <NavItem>
               <NavLink className="Nav-link" to='/about' activeClassName='active' activeStyle={active} style={styleSheet}>About</NavLink>
             </NavItem>
