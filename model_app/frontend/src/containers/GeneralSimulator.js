@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./GeneralSimulator.css";
 import ConfigurationsPanel from "../components/ConfigurationsPanel";
 import { Typography } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
 
 class GeneralSimulator extends Component {
   constructor() {
@@ -72,4 +73,4 @@ class GeneralSimulator extends Component {
   }
 }
 
-export default GeneralSimulator;
+export default withStyles(styles)(GeneralSimulator);
