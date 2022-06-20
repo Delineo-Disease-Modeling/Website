@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import {UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink} from 'reactstrap';
+import {UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem} from 'reactstrap';
+import { NavLink } from 'react-router-dom';
 import './Header.css';
 import Logo from "./../images/delineo_vector_2.0.1.png"
 
