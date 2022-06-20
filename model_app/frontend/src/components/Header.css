@@ -21,10 +21,14 @@
 
 #dropdown-toggle {
     background-color: #222629;
-    font-size: 20px;
+    color: #ffffff;
+    font-size: 100%;
+    line-height: 1.6rem;
+    margin-right: 10px;
+    text-decoration: none;
+    padding-right: 0;
     border: none;
-    padding: 0;
-    margin-right: 15px;
+    padding-left: 0;
     font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
 }
 
@@ -43,3 +47,6 @@
 #dropdown-item:hover > #dropdown-link{
     color: #66FCF1;
 }
+
+
+
