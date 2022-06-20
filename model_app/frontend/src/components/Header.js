@@ -46,7 +46,7 @@ const Header = () => {
         <Collapse isOpen={navState.isNavOpen} navbar>
           <Nav navbar className="ms-auto">
             <UncontrolledDropdown>
-              <DropdownToggle caret id="dropdown-toggle">
+              <DropdownToggle caret id="dropdown-toggle" style = {{padding: '0px'}}>
                 Simulators
               </DropdownToggle>
               <DropdownMenu id="dropdown-menu">
