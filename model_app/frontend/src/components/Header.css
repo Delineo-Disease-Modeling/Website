@@ -11,24 +11,17 @@
 .Nav-link:link {
     color: #ffffff;
     font-size: 20px;
-    line-height: 1.6rem;
     margin-right: 15px;
     text-decoration: none;
-    padding-right: 0;
-    padding-left: 0;
     font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
 }
 
 #dropdown-toggle {
     background-color: #222629;
-    color: #ffffff;
-    font-size: 100%;
-    line-height: 1.6rem;
+    font-size: 20px;
     margin-right: 10px;
     text-decoration: none;
-    padding-right: 0;
     border: none;
-    padding-left: 0;
     font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
 }
 
@@ -37,7 +30,7 @@
 }
 
 #dropdown-link{
-    color: #ffffff;
+    color: #ffffff; 
 }
 
 #dropdown-item:hover{

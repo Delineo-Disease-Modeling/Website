@@ -30,7 +30,6 @@ class GeneralSimulator extends Component {
 
   render() {
     return (
-
       <div className="content">
         <h1>
         Oklahoma City
