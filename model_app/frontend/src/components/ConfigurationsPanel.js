@@ -133,7 +133,7 @@ export default function ConfigurationsPanel(props) {
     return (
         <div>
             <div className={classes.root}>
-                <TabPanel configs={configs}/>
+                <TabPanel conf={configs}/>
                 {/*<div className={classes.panelSection}>*/}
                 {/*    <Typography className={classes.configurationsHeader}>*/}
                 {/*        NPI's*/}
