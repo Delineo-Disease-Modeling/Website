@@ -134,32 +134,6 @@ export default function ConfigurationsPanel(props) {
         <div>
             <div className={classes.root}>
                 <TabPanel conf={configs}/>
-                {/*<div className={classes.panelSection}>*/}
-                {/*    <Typography className={classes.configurationsHeader}>*/}
-                {/*        NPI's*/}
-                {/*    </Typography>*/}
-                {/*    <MaskSlider configs={configs} />*/}
-                {/*    <CapacitySlider configs={configs} />*/}
-                {/*    <MassSlider configs={configs} />*/}
-                {/*    <StayAtHome configs={configs} />*/}
-                {/*</div>*/}
-                {/*<div className={classes.panelSection}>*/}
-                {/*    <Typography className={classes.configurationsHeader}>*/}
-                {/*        Targeted Shutdowns*/}
-                {/*    </Typography>*/}
-                {/*    <TargetedShutdown configs={configs} />*/}
-                {/*</div>*/}
-                {/*<div className={classes.confirmButtonPanel}>*/}
-                {/*    <div>*/}
-                {/*        <Typography className={classes.configurationsHeader}>*/}
-                {/*            Vaccinations*/}
-                {/*        </Typography>*/}
-                {/*        <VaccinationSlider configs={configs} />*/}
-                {/*    </div>*/}
-                {/*    <div className={classes.buttonSection}>*/}
-                {/*        <ConfirmButton updateConfigs={props.updateConfigs} configs={configs} />*/}
-                {/*    </div>*/}
-                {/*</div>*/}
             </div>
             <div className={classes.buttonSection}>
                 <ConfirmButton className={classes.confBtn} updateConfigs={props.updateConfigs} configs={configs} />
