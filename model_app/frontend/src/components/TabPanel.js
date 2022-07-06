@@ -491,8 +491,10 @@ function a11yProps(index) {
     };
 }
 
-export default function BasicTabs(configs) {
+export default function BasicTabs(conf) {
     const [value, setValue] = React.useState(0);
+
+    let configs = JSON.parse(JSON.stringify(conf));
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
