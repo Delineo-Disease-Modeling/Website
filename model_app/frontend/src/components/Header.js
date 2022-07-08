@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem} from 'reactstrap';
+import {UncontrolledDropdown, DropdownToggle, DropdownMenu, Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem} from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import './Header.css';
 import Logo from "./../images/delineo_vector_2.0.1.png"
@@ -46,16 +46,16 @@ const Header = () => {
         <Collapse isOpen={navState.isNavOpen} navbar>
           <Nav navbar className="ms-auto">
             <UncontrolledDropdown>
-              <DropdownToggle caret id="dropdown-toggle" style = {{padding: '0px'}}>
+              <DropdownToggle caret id="dropdown-toggle" style ={{padding: '0px'}}>
                 Simulators
               </DropdownToggle>
-              <DropdownMenu id="dropdown-menu">
-                <DropdownItem id="dropdown-item" href='/simulator'>
-                <NavLink className="Nav-link" id="dropdown-link" to='/simulator' activeClassName='active' activeStyle={active}>Anytown</NavLink>
-                </DropdownItem>
-                <DropdownItem id="dropdown-item" href='/generalsimulator'>
-                <NavLink className="Nav-link" id="dropdown-link" to='/generalsimulator' activeClassName='active' activeStyle={active}>Oklahoma City</NavLink>
-                </DropdownItem>
+              <DropdownMenu id="dropdown-menu" style ={{paddingRight: '8%'}}>
+                <div style = {{marginBottom: '5%', marginLeft: '8%'}}>
+                  <NavLink className="Nav-link" id="dropdown-link" to='/simulator' activeClassName='active' activeStyle={active}>Anytown</NavLink>
+                </div>
+                <div style = {{marginBottom: '5%', marginLeft: '8%', whiteSpace: 'nowrap'}}>
+                  <NavLink className="Nav-link" id="dropdown-link" to='/generalsimulator' activeClassName='active' activeStyle={active}>Oklahoma City</NavLink>
+                </div>
               </DropdownMenu>
             </UncontrolledDropdown>
             <NavItem>

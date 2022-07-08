@@ -122,7 +122,7 @@ function HomeCarousel() {
           image={row.img}
           title="Home Carousel Img"
         />
-        <Typography className={classes.overlay}>
+        <Typography className={classes.overlay} component = {'span'} style ={{color: 'white'}}>
           <h1 style={{ marginBottom: 20 }}>{row.title}</h1>
           <h5 style={{ marginBottom: 30, marginLeft: "5vw", marginRight: "5vw"}}>{row.subtext}</h5>
           <Button className={classes.button} style={{ marginBottom: 30 }} variant="contained" color="inherit" href="/about">
