@@ -316,7 +316,7 @@ function StayAtHome(props) {
     };
 
     return (
-        <Grid container direction="row" justify="space-between" alignItems="center">
+        <Grid container direction="row" justifyContent="space-between" alignItems="center">
             <Grid item xs={8}>
                 <Typography className={classes.switchText}>
                     Stay-at-Home Order
@@ -344,7 +344,7 @@ function TargetedShutdown(props) {
 
     return (
         <FormGroup>
-            <Grid container direction="row" justify="space-between" alignItems="center">
+            <Grid container direction="row" justifyContent="space-between" alignItems="center">
                 <Grid item xs={6}>
                     <Typography className={classes.switchText}>
                         Schools
@@ -406,7 +406,7 @@ function VaccinationSlider(props) {
 
     return (
         <div>
-            <Grid container direction="row" justify="space-between" alignItems="center">
+            <Grid container direction="row" justifyContent="space-between" alignItems="center">
                 <Grid item xs={6}>
                     <Typography className={classes.sliderText}>
                         Vaccinated Population
@@ -471,7 +471,7 @@ function TabPanel(props) {
         >
             {value === index && (
                 <Box sx={{ p: 3 }}>
-                    <Typography>{children}</Typography>
+                    {children}
                 </Box>
             )}
         </div>
