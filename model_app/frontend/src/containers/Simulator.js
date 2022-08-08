@@ -81,8 +81,8 @@ const styles = (theme) => ({
 });
 
 class Simulator extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       hidden: false,
       policy: "",
