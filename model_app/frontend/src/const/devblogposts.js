@@ -1,7 +1,7 @@
-import Ameya from "../images/Ameya Dehade.jpg"
-import Shaopeng from "../images/Shaopeng Zeng.jpg"
-import Ian from "../images/Ian Zheng.JPG"
-import Xi from "../images/Xi He.jpeg"
+import Ameya from "../images/Ameya Dehade.jpg";
+import Shaopeng from "../images/Shaopeng Zeng.jpg";
+import Ian from "../images/Ian Zheng.JPG";
+import Xi from "../images/Xi He.jpeg";
 
 // link to default avatar
 // "https://www.portent.com/images/2012/02/avatar-jack-small-94x94.jpg"
@@ -38,7 +38,8 @@ const articles = [
     author: "Shaopeng Zeng",
     author_img: Shaopeng,
     title: "Simulation Explainer",
-    subtext: "Imagine a water balloon is dropped in a crowd. You look around and see those who are near the dropping point got wet, while those who stood far away may have a drop or two, but most are totally dry. Imagine the water is an airborne disease - the Delineo simulation helps us visualize who is in this imaginary...",
+    subtext:
+      "Imagine a water balloon is dropped in a crowd. You look around and see those who are near the dropping point got wet, while those who stood far away may have a drop or two, but most are totally dry. Imagine the water is an airborne disease - the Delineo simulation helps us visualize who is in this imaginary...",
     href: "/developmentblog/Simulation-Website",
     img: "https://i.postimg.cc/JnF5Zr1q/2.jpg",
   },
@@ -49,7 +50,8 @@ const articles = [
     author: "Ian Zheng",
     author_img: Ian,
     title: "The Wells-Riley Equation",
-    subtext: "The Delineo simulation uses the Wells-Riley Equation to simulate how a disease will spread in any given city. The equation and the simulation focus on points of interest (POI's) that include grocery stores, places of worship, and other types of gathering areas where a person might get infected. We apply...",
+    subtext:
+      "The Delineo simulation uses the Wells-Riley Equation to simulate how a disease will spread in any given city. The equation and the simulation focus on points of interest (POI's) that include grocery stores, places of worship, and other types of gathering areas where a person might get infected. We apply...",
     href: "/developmentblog/Wells-Riley-Equation",
     img: "https://i.postimg.cc/Y97qZcxc/1.jpg",
   },

@@ -9,7 +9,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { Grid } from "@material-ui/core";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
-import {TwitterButton, EmailButton } from "react-social";
+import { TwitterButton, EmailButton } from "react-social";
 import TwitterIcon from "@material-ui/icons/Twitter";
 // import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import EmailIcon from "@material-ui/icons/Email";
@@ -51,7 +51,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const post1url = "https://covidweb.isi.jhu.edu/developmentblog/Machine-Learning-Website";
+const post1url =
+  "https://covidweb.isi.jhu.edu/developmentblog/Machine-Learning-Website";
 
 const message =
   "Check out this article from the Delineo Disease Modeling Project";
@@ -107,7 +108,6 @@ function Post1(props) {
                     {/* IN ORDER TO HAVE A FACEBOOK SHARE, WE NEED A VALID FB APP ID 
                                   see: https://webkul.com/blog/how-to-generate-facebook-app-id/
                               */}
-
 
                     {/* <MenuItem
                       style={{ color: "black" }}
@@ -223,4 +223,4 @@ function Post1(props) {
   );
 }
 
-export default Post1
+export default Post1;

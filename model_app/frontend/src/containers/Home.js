@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { withStyles} from "@material-ui/styles";
+import { withStyles } from "@material-ui/styles";
 import HomeCarousel from "../components/HomeCarousel";
 import TeamMemberJoin from "../images/teammemberjoin.jpg";
-import Box from "@material-ui/core/Box"
+import Box from "@material-ui/core/Box";
 
 //import blogbackground from "../images/blogbackgroud.PNG";
 import Link from "@material-ui/core/Link";
@@ -13,17 +13,16 @@ import anytownScreenshot from "../images/anytownScreenshot.png";
 import BlogCarousel from "./BlogCarousel";
 
 const styles = {
-  
   bigButton: {
     borderColor: "#66FCF1",
     backgroundColor: "#66FCF1",
     border: "1px solid",
     color: "#444f56",
-      "&:hover": {
-        backgroundColor: "#222629",
-        color: "#66FCF1",
-        borderColor: "#66FCF1",
-      }
+    "&:hover": {
+      backgroundColor: "#222629",
+      color: "#66FCF1",
+      borderColor: "#66FCF1",
+    },
   },
 
   //fontSize: "20px",
@@ -58,7 +57,7 @@ const styles = {
     padding: "20px 200px 60px 200px",
     overflow: "hidden",
     backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",  
+    backgroundSize: "cover",
   },
 
   recent: {
@@ -91,7 +90,8 @@ class Home extends Component {
               Interactive Disease Simulation
             </h1>
             <h5 style={{ marginBottom: "30px" }}>
-              Bringing a fresh approach to the challenge of modeling disease spread
+              Bringing a fresh approach to the challenge of modeling disease
+              spread
             </h5>{" "}
             <Button
               className={classes.bigButton}
@@ -104,16 +104,13 @@ class Home extends Component {
           </div>
         </div>
 
-        
-        <HomeCarousel /> 
-        <h1 style={{marginTop: '3%', marginBottom: '3%', color: 'white'}}>
+        <HomeCarousel />
+        <h1 style={{ marginTop: "3%", marginBottom: "3%", color: "white" }}>
           Recent Updates from Our Blog
         </h1>
         <Box marginBottom="4%">
-        <BlogCarousel />
+          <BlogCarousel />
         </Box>
-
-        
 
         <div
           className={classes.teamPage}
@@ -124,7 +121,8 @@ class Home extends Component {
               We Are Delineo
             </h1>
             <h5 style={{ marginBottom: "30px" }}>
-              Bringing a fresh approach to the challenge of modeling disease spread
+              Bringing a fresh approach to the challenge of modeling disease
+              spread
             </h5>
             <Button
               className={classes.bigButton}

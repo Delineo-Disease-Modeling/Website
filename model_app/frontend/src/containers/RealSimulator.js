@@ -1,25 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { withStyles } from '@material-ui/styles';
+import { withStyles } from "@material-ui/styles";
 
-
-const styles = {
-
-
-};
-
+const styles = {};
 
 class RealSimulator extends Component {
-
-
-
-    render() {
-
-        return (
-          <div> filler </div>
-
-        );
-    }
+  render() {
+    return <div> filler </div>;
+  }
 }
 
 export default withStyles(styles)(RealSimulator);

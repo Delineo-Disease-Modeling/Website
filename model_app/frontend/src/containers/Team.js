@@ -21,13 +21,13 @@ const styles = {
   },
 
   CardBackground: {
-    backgroundColor: '#222629',
-    height: '100%',
-    minHeight: '100%',
-    minWidth: '100%',
+    backgroundColor: "#222629",
+    height: "100%",
+    minHeight: "100%",
+    minWidth: "100%",
     margin: 0,
-    alignContent: 'center',
-    paddingBottom: '5%',
+    alignContent: "center",
+    paddingBottom: "5%",
   },
 
   MainHeader: {

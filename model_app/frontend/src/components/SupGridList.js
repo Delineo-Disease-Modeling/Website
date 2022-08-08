@@ -1,5 +1,5 @@
-import GridList from './GridList';
-import tileData from '../const/supTileData.js';
+import GridList from "./GridList";
+import tileData from "../const/supTileData.js";
 
 const TeamGridList = () => {
   return GridList(tileData);

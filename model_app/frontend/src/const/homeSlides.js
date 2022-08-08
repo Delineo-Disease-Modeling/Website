@@ -1,5 +1,5 @@
-import Simulator from "../images/simulator_background.jpg"
-import ML from "../images/ML_background.jpg"
+import Simulator from "../images/simulator_background.jpg";
+import ML from "../images/ML_background.jpg";
 
 const articles = [
   {

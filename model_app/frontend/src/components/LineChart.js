@@ -1,5 +1,5 @@
-import React from 'react';
-import { LineChart, Line, XAxis, YAxis, Tooltip, Legend } from 'recharts';
+import React from "react";
+import { LineChart, Line, XAxis, YAxis, Tooltip, Legend } from "recharts";
 
 const SimpleLineChart = () => {
   const renderColorfulLegendText = (value, entry) => {
@@ -9,8 +9,12 @@ const SimpleLineChart = () => {
 
   const { width, height, data } = this.props;
   return (
-    <LineChart width={width} height={height} data={data}
-      margin={{ top: 5, right: 30, left: 20, bottom: 5, }} >
+    <LineChart
+      width={width}
+      height={height}
+      data={data}
+      margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+    >
       <XAxis dataKey="name" interval="preserveStartEnd" />
       <YAxis interval="preserveStartEnd" />
       <Tooltip />

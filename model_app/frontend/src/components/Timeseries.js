@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { getTimeseries } from '../actions/timeseriesActions.js';
-import PropTypes from 'prop-types';
-import SimpleLineChart from './LineChart.js';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { getTimeseries } from "../actions/timeseriesActions.js";
+import PropTypes from "prop-types";
+import SimpleLineChart from "./LineChart.js";
 
 class Timeseries extends Component {
   constructor(props) {
     super(props);
-    this.state = { start: "02-25-20", end: "05-03-20" }
+    this.state = { start: "02-25-20", end: "05-03-20" };
     this.fips = this.props.demographics ? this.props.demographics.FIPS : 1001;
   }
 
@@ -28,25 +28,24 @@ class Timeseries extends Component {
 
     const data = timeseries.map((item) => {
       return {
-        name: `${item.date}`.substring(5, 10), infected: Number(`${item[this.fips].infected}`),
-        deaths: Number(`${item[this.fips].death}`)
+        name: `${item.date}`.substring(5, 10),
+        infected: Number(`${item[this.fips].infected}`),
+        deaths: Number(`${item[this.fips].death}`),
       };
     });
 
-    return (
-      <SimpleLineChart data={data} width={800} height={500} />
-    );
+    return <SimpleLineChart data={data} width={800} height={500} />;
   }
 }
 
 Timeseries.propTypes = {
   getTimeseries: PropTypes.func.isRequired,
   timeseries: PropTypes.array.isRequired,
-}
+};
 
 const mapStateToProps = (state) => ({
   timeseries: state.timeseries,
-  demographics: state.demographics
+  demographics: state.demographics,
 });
 
 // first param of connect: mapStateToProp since state is immutable in Redux Architecture

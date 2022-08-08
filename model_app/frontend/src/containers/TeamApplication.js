@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
 
   teamContainer: {
     height: "100vh",
-    
   },
 
   text: {
@@ -35,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
   link: {
     overflowWrap: "break-word",
   },
-
 }));
 
 const TeamApplication = function TeamApplication() {
@@ -64,7 +62,7 @@ const TeamApplication = function TeamApplication() {
           <Box
             py={2}
             bgcolor="rgba(255, 255, 255, 0.0)"
-            style={{ color: "#222629", marginTop: "10%"}}
+            style={{ color: "#222629", marginTop: "10%" }}
             align="center"
           >
             <Typography variant="h3" component="h3" className={classes.title}>
@@ -80,8 +78,10 @@ const TeamApplication = function TeamApplication() {
             >
               If you are a current student at Johns Hopkins University and are
               interested in joining our team, send us an email at
-              <a href="mailto:delineodiseasemodeling@gmail.com?subject=Intrested Student" 
-                  className={classes.link}>
+              <a
+                href="mailto:delineodiseasemodeling@gmail.com?subject=Intrested Student"
+                className={classes.link}
+              >
                 {" "}
                 delineodiseasemodeling@gmail.com{" "}
               </a>

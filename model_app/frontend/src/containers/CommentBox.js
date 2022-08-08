@@ -10,29 +10,33 @@ class CommentBox extends React.Component {
     this.state = {
       showComments: false,
       comments: [
-        {id: 1, author: "Delineo", body: "Interesting matrix."},
-        {id: 2, author: "Jane Doe", body: "Great article! I found this really interesting!"}
-      ]
+        { id: 1, author: "Delineo", body: "Interesting matrix." },
+        {
+          id: 2,
+          author: "Jane Doe",
+          body: "Great article! I found this really interesting!",
+        },
+      ],
     };
   }
 
-  render () {
+  render() {
     const comments = this._getComments();
     let commentNodes;
-    let buttonText = 'Show Comments';
+    let buttonText = "Show Comments";
 
     if (this.state.showComments) {
-      buttonText = 'Hide Comments';
+      buttonText = "Hide Comments";
       commentNodes = <div className="comment-list">{comments}</div>;
     }
 
-    return(
+    return (
       <div className="discussion">
-        <CommentForm addComment={this._addComment.bind(this)}/>
+        <CommentForm addComment={this._addComment.bind(this)} />
         <button id="comment-reveal" onClick={this._handleClick.bind(this)}>
           {buttonText}
         </button>
-        <br/> <br/>
+        <br /> <br />
         <p className="comment-count">
           {this._getCommentsTitle(comments.length)}
         </p>
@@ -45,31 +49,28 @@ class CommentBox extends React.Component {
     const comment = {
       id: this.state.comments.length + 1,
       author,
-      body
+      body,
     };
     this.setState({ comments: this.state.comments.concat([comment]) }); // *new array references help React stay fast, so concat works better than push here.
   }
 
   _handleClick() {
     this.setState({
-      showComments: !this.state.showComments
+      showComments: !this.state.showComments,
     });
   }
 
   _getComments() {
     return this.state.comments.map((comment) => {
       return (
-        <Comment
-          author={comment.author}
-          body={comment.body}
-          key={comment.id} />
+        <Comment author={comment.author} body={comment.body} key={comment.id} />
       );
     });
   }
 
   _getCommentsTitle(commentCount) {
     if (commentCount === 0) {
-      return 'No Comments Yet';
+      return "No Comments Yet";
     } else if (commentCount === 1) {
       return "1 Comment";
     } else {
@@ -83,7 +84,7 @@ class CommentForm extends React.Component {
     super(props);
     this.state = {
       isExpanded: false,
-      commentValue: ""
+      commentValue: "",
     };
     this.outerHeight = React.createRef(INITIAL_HEIGHT);
     this.textRef = React.createRef(null);
@@ -92,8 +93,6 @@ class CommentForm extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.onClose = this.onClose.bind(this);
   }
-
-
 
   onExpand() {
     if (!this.state.isExpanded) {
@@ -107,12 +106,11 @@ class CommentForm extends React.Component {
   };
 
   onClose() {
-    this.setState({ commentValue: "" })
+    this.setState({ commentValue: "" });
     this.setState({ isExpanded: false });
   }
 
-
-  render () {
+  render() {
     return (
       <div className="container">
         <form
@@ -121,10 +119,12 @@ class CommentForm extends React.Component {
           className={cn("comment-box", {
             expanded: this.state.isExpanded,
             collapsed: !this.state.isExpanded,
-            modified: this.state.commentValue.length > 0
+            modified: this.state.commentValue.length > 0,
           })}
           style={{
-            minHeight: this.state.isExpanded ? this.outerHeight.current : INITIAL_HEIGHT
+            minHeight: this.state.isExpanded
+              ? this.outerHeight.current
+              : INITIAL_HEIGHT,
           }}
         >
           <div className="header">
@@ -133,13 +133,20 @@ class CommentForm extends React.Component {
                 src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/df/df7789f313571604c0e4fb82154f7ee93d9989c6.jpg"
                 alt="User avatar"
               />
-              <span className="spanColor">  <input placeholder="Name" required ref={(input) => this._author = input}></input><br />
-                </span>
+              <span className="spanColor">
+                {" "}
+                <input
+                  placeholder="Name"
+                  required
+                  ref={(input) => (this._author = input)}
+                ></input>
+                <br />
+              </span>
             </div>
           </div>
           <label htmlFor="comment">What are your thoughts?</label>
           <textarea
-            ref={(textarea) => this._body = textarea}
+            ref={(textarea) => (this._body = textarea)}
             onClick={this.onExpand}
             onFocus={this.onExpand}
             onChange={this.onChange}
@@ -153,7 +160,12 @@ class CommentForm extends React.Component {
             <button type="button" className="cancel" onClick={this.onClose}>
               Cancel
             </button>
-            <button type="submit" disabled={this.state.commentValue.length < 1 || this._author.length < 1}>
+            <button
+              type="submit"
+              disabled={
+                this.state.commentValue.length < 1 || this._author.length < 1
+              }
+            >
               Respond
             </button>
           </div>
@@ -163,7 +175,7 @@ class CommentForm extends React.Component {
   }
 
   _handleSubmit(event) {
-    event.preventDefault();   // prevents page from reloading on submit
+    event.preventDefault(); // prevents page from reloading on submit
     let author = this._author;
     let body = this._body;
     this.props.addComment(author.value, body.value);
@@ -171,14 +183,16 @@ class CommentForm extends React.Component {
 }
 
 class Comment extends React.Component {
-  render () {
-    return(
+  render() {
+    return (
       <div className="comment">
-        <p className="comment-body"><span className="comment-header">{this.props.author}</span>: {this.props.body}</p>
+        <p className="comment-body">
+          <span className="comment-header">{this.props.author}</span>:{" "}
+          {this.props.body}
+        </p>
       </div>
     );
   }
 }
-
 
 export default CommentBox;

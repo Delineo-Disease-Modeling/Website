@@ -19,7 +19,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import IconButton from "@material-ui/core/IconButton";
 // import FacebookIcon from "@material-ui/icons/Facebook";
 import clsx from "clsx";
-import BlogCarousel from "./BlogCarousel"
+import BlogCarousel from "./BlogCarousel";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -106,7 +106,10 @@ function DevelopmentBlog(props) {
   // */ */ };
 
   return (
-    <div className="App" style={{ backgroundColor: "#222629", overflowX: 'hidden' }}>
+    <div
+      className="App"
+      style={{ backgroundColor: "#222629", overflowX: "hidden" }}
+    >
       <AppBar
         className={classes.appBar}
         style={{ background: "#222629", boxShadow: "none" }}
@@ -173,10 +176,7 @@ function DevelopmentBlog(props) {
       </Grid>
 
       <Container maxWidth="lg" className={classes.blogsContainer}>
-        <Card
-          style={{ background: "#222629", boxShadow: "none" }}
-        >
-
+        <Card style={{ background: "#222629", boxShadow: "none" }}>
           <CardActions
             style={{
               flex: 1,
@@ -213,7 +213,7 @@ function DevelopmentBlog(props) {
           </Collapse>
         </Card>
       </Container>
-    </div >
+    </div>
   );
 }
 

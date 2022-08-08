@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 // SearchBox is a stateless component that handles search box operations like
 // clicking on the box, typing/autocomplete, and most importantly saving the
@@ -11,8 +11,8 @@ class SearchBox extends Component {
 
   componentDidMount({ map, mapApi } = this.props) {
     this.searchBox = new mapApi.places.SearchBox(this.searchInput);
-    this.searchBox.addListener('places_changed', this.onPlacesChanged);
-    this.searchBox.bindTo('bounds', map);
+    this.searchBox.addListener("places_changed", this.onPlacesChanged);
+    this.searchBox.bindTo("bounds", map);
   }
 
   componentWillUnmount({ mapApi } = this.props) {
@@ -46,19 +46,22 @@ class SearchBox extends Component {
 
   polygonOverlay(geojson) {
     let formattedGeojson = geojson;
-    if (geojson['type'] !== "Feature" && geojson['type'] !== "FeatureCollection") {
-      formattedGeojson = { "type": "Feature", "geometry": geojson, "properties": {} };
+    if (
+      geojson["type"] !== "Feature" &&
+      geojson["type"] !== "FeatureCollection"
+    ) {
+      formattedGeojson = { type: "Feature", geometry: geojson, properties: {} };
     }
     this.feature = this.props.map.data.addGeoJson(formattedGeojson);
   }
 
   clearSearchBox() {
-    this.searchInput.value = '';
+    this.searchInput.value = "";
   }
 
   render() {
     return (
-      <div style={{ marginTop: '30px', marginBottom: '15px' }}>
+      <div style={{ marginTop: "30px", marginBottom: "15px" }}>
         <input
           ref={(ref) => {
             this.searchInput = ref;

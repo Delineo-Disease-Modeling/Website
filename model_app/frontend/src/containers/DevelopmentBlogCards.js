@@ -67,11 +67,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
   },
 
-
   cardActionsMobile: {
     display: "flex",
     justifyContent: "space-between",
-    
   },
 
   author: {
@@ -88,19 +86,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 function DevelopmentBlogCards(props) {
   const classes = useStyles();
-  
+
   function resize() {
-    let isDesktop = (window.innerWidth >= 760);
+    let isDesktop = window.innerWidth >= 760;
     if (isDesktop) {
-        return classes.cardActions;
-      }
-        return classes.cardActionsMobile;
-    
-  };
-  
+      return classes.cardActions;
+    }
+    return classes.cardActionsMobile;
+  }
+
   const url = "https://covidweb.isi.jhu.edu";
   const message =
     "Check out this article from the Delineo Disease Modeling Project";
@@ -112,99 +108,99 @@ function DevelopmentBlogCards(props) {
     to the three most recent posts by slicing 'articles' into 'articleArray'. Otherwise 'articleArray'
     is just a copy of 'articles'
   */
-  var articleArray = articles
+  var articleArray = articles;
 
   if (props.HomePage) {
-    articleArray = articles.slice(1).slice(-3)
+    articleArray = articles.slice(1).slice(-3);
   }
-
 
   return (
     <CardContent>
       <Grid container spacing={3} alignItems="center" justifyContent="center">
         {articleArray.map((row) => {
-          if (!(row.type === "Article")) return null; 
-            return (
-              <Grid item xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardActionArea href={row.href}>
-                    <CardMedia
-                      className={classes.media}
-                      image={row.img}
-                      title="Development Blog Img"
-                    />
-                    <CardContent className={classes.align}>
+          if (!(row.type === "Article")) return null;
+          return (
+            <Grid item xs={12} sm={6} md={4}>
+              <Card className={classes.card}>
+                <CardActionArea href={row.href}>
+                  <CardMedia
+                    className={classes.media}
+                    image={row.img}
+                    title="Development Blog Img"
+                  />
+                  <CardContent className={classes.align}>
+                    <Typography
+                      className={classes.title}
+                      style={{ fontWeight: "bold", marginTop: "0 0px" }}
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      {row.title}
+                    </Typography>
+                    <Typography
+                      //style={{}}
+                      className={classes.subtextalign}
+                      variant="body2"
+                      component="p"
+                    >
+                      {row.subtext}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions className={resize()}>
+                  <Box className={classes.author}>
+                    <Box component="span" m={1} className={classes.authorDate}>
                       <Typography
-                        className={classes.title}
-                        style={{ fontWeight: "bold", marginTop: "0 0px" }}
-                        gutterBottom
-                        variant="h5"
-                        component="h2"
-                      >
-                        {row.title}
-                      </Typography>
-                      <Typography
-                        //style={{}}
-                        className={classes.subtextalign}
-                        variant="body2"
+                        className={classes.creditRow}
+                        variant="subtitle2"
                         component="p"
                       >
-                        {row.subtext}
+                        <span style={{ fontWeight: "bold" }}>
+                          {row.author}{" "}
+                        </span>
+                        - {row.date}
                       </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                  <CardActions className={resize()} >
-                    <Box className={classes.author}>
-                      <Box
-                        component="span"
-                        m={1}
-                        className={classes.authorDate}
-                      >
-                        <Typography className={classes.creditRow} variant="subtitle2" component="p">
-                          <span style={{ fontWeight: "bold" }}>
-                            {row.author}{" "}
-                          </span>
-                          - {row.date}
-                        </Typography>
-                      </Box>
                     </Box>
-                    <Box>
-                      <PopupState variant="popover" popupId="demo-popup-menu">
-                        {(popupState) => (
-                          <React.Fragment>
-                            <IconButton
-                              aria-label="share"
-                              {...bindTrigger(popupState)}
+                  </Box>
+                  <Box>
+                    <PopupState variant="popover" popupId="demo-popup-menu">
+                      {(popupState) => (
+                        <React.Fragment>
+                          <IconButton
+                            aria-label="share"
+                            {...bindTrigger(popupState)}
+                          >
+                            <ShareIcon style={{ color: "black" }} />
+                          </IconButton>
+                          <Menu
+                            anchorOrigin={{
+                              vertical: "bottom",
+                              horizontal: "center",
+                            }}
+                            transformOrigin={{
+                              vertical: "top",
+                              horizontal: "center",
+                            }}
+                            {...bindMenu(popupState)}
+                          >
+                            <MenuItem
+                              style={{ color: "white" }}
+                              onClick={popupState.close}
                             >
-                              <ShareIcon style={{ color: "black" }} />
-                            </IconButton>
-                            <Menu
-                              anchorOrigin={{
-                                vertical: "bottom",
-                                horizontal: "center",
-                              }}
-                              transformOrigin={{
-                                vertical: "top",
-                                horizontal: "center",
-                              }}
-                              {...bindMenu(popupState)}
-                            >
-                              <MenuItem
-                                style={{ color: "white" }}
-                                onClick={popupState.close}
+                              <TwitterButton
+                                message={message}
+                                url={url + row.href}
                               >
-                                <TwitterButton message={message}
-                                          url={url + row.href}>
-                                  <TwitterIcon fontSize="small" />
-                                </TwitterButton>
-                              </MenuItem>
+                                <TwitterIcon fontSize="small" />
+                              </TwitterButton>
+                            </MenuItem>
 
-                              {/* IN ORDER TO HAVE A FACEBOOK SHARE, WE NEED A VALID FB APP ID 
+                            {/* IN ORDER TO HAVE A FACEBOOK SHARE, WE NEED A VALID FB APP ID 
                                   see: https://webkul.com/blog/how-to-generate-facebook-app-id/
                               */}
 
-
-                              {/* <MenuItem
+                            {/* <MenuItem
                                 style={{ color: "white" }}
                                 onClick={popupState.close}
                               >
@@ -214,24 +210,26 @@ function DevelopmentBlogCards(props) {
                                 </FacebookButton>
                               </MenuItem> */}
 
-                              <MenuItem
-                                style={{ color: "white" }}
-                                onClick={popupState.close}
+                            <MenuItem
+                              style={{ color: "white" }}
+                              onClick={popupState.close}
+                            >
+                              <EmailButton
+                                message={message}
+                                url={url + row.href}
                               >
-                                <EmailButton message={message}
-                                          url={url + row.href}>
-                                  <EmailIcon fontSize="small" />
-                                </EmailButton>
-                              </MenuItem>
-                            </Menu>
-                          </React.Fragment>
-                        )}
-                      </PopupState>
-                    </Box>
-                  </CardActions>
-                </Card>
-              </Grid>
-            );
+                                <EmailIcon fontSize="small" />
+                              </EmailButton>
+                            </MenuItem>
+                          </Menu>
+                        </React.Fragment>
+                      )}
+                    </PopupState>
+                  </Box>
+                </CardActions>
+              </Card>
+            </Grid>
+          );
         })}
       </Grid>
       <Box my={4} className={classes.paginationContainer}></Box>

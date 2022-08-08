@@ -67,7 +67,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const post4url = "https://covidweb.isi.jhu.edu/developmentblog/Wells-Riley-Equation";
+const post4url =
+  "https://covidweb.isi.jhu.edu/developmentblog/Wells-Riley-Equation";
 
 const message =
   "Check out this article from the Delineo Disease Modeling Project";
@@ -102,7 +103,7 @@ function Post4(props) {
           <h6>
             <img
               alt="Ian Zheng"
-              src={'/iconPerson.png'}
+              src={"/iconPerson.png"}
               className={classes.avatar}
               variant="circle"
             />
@@ -148,34 +149,38 @@ function Post4(props) {
         </div>
         <Grid>
           <p className={classes.text}>
-          TLDR: The Delineo simulation uses the Wells-Riley Equation to simulate how a disease will
-          spread in any given facility. The equation and the simulation focus on points of interest (POI's),
-          which include facilities such as grocery stores, places of worship, and other types of gathering areas where a
-          person might get infected. We apply the equation to calculate the probability of an individual
-          getting infected in these spaces and scale that up to any type of city we need.
+            TLDR: The Delineo simulation uses the Wells-Riley Equation to
+            simulate how a disease will spread in any given facility. The
+            equation and the simulation focus on points of interest (POI's),
+            which include facilities such as grocery stores, places of worship,
+            and other types of gathering areas where a person might get
+            infected. We apply the equation to calculate the probability of an
+            individual getting infected in these spaces and scale that up to any
+            type of city we need.
           </p>
           <p className={classes.text}>
-          The beauty of the Delineo simulation is that it uses a modular 
-          approach to simulate the infectiousness of COVID-19 by building 
-          on different points of interest. In a real-world scenario, 
-          the infectiousness of COVID-19 will vary city by city based on the 
-          number of grocery stores, gyms, places of worship and other POI's. 
-          These all contribute to the spread of disease differently given the 
-          variation in density of infectors, different air flow rates, 
-          ventilation, as well as a number of other factors. 
+            The beauty of the Delineo simulation is that it uses a modular
+            approach to simulate the infectiousness of COVID-19 by building on
+            different points of interest. In a real-world scenario, the
+            infectiousness of COVID-19 will vary city by city based on the
+            number of grocery stores, gyms, places of worship and other POI's.
+            These all contribute to the spread of disease differently given the
+            variation in density of infectors, different air flow rates,
+            ventilation, as well as a number of other factors.
           </p>
           <p className={classes.text}>
-          The Wells-Riley Equation was developed by William F. Wells and his 
-          colleagues during a measles outbreak in 1978 based on ‘quantum of infection’ 
-          as proposed by Richard L. Riley. The equation was created to 
-          determine the probability of susceptible individuals being infected by 
-          an airborne transmissible disease in a room when other infectors are present.
-          To get the probability of infection, we can put in variables including number 
-          of infectors, average breathing rate, quantageneration rate, exposure time, 
-          and air flow rate from HVAC systems. The equation is valuable because of its 
-          ability to evaluate the transmission of airborne diseases, like COVID-19, 
-          between individuals in defined spaces rather than the spread through a 
-          general population. 
+            The Wells-Riley Equation was developed by William F. Wells and his
+            colleagues during a measles outbreak in 1978 based on ‘quantum of
+            infection’ as proposed by Richard L. Riley. The equation was created
+            to determine the probability of susceptible individuals being
+            infected by an airborne transmissible disease in a room when other
+            infectors are present. To get the probability of infection, we can
+            put in variables including number of infectors, average breathing
+            rate, quantageneration rate, exposure time, and air flow rate from
+            HVAC systems. The equation is valuable because of its ability to
+            evaluate the transmission of airborne diseases, like COVID-19,
+            between individuals in defined spaces rather than the spread through
+            a general population.
           </p>
           <figure>
             <div>
@@ -187,62 +192,75 @@ function Post4(props) {
                 title="The Wells-Riley Equation"
               />
               <figcaption>
-                <cite>THE WELLS-RILEY EQUATION AND COVID-19: REDUCING RISK IN INDOOR ENVIRONMENTS</cite>, AJ Lowry, Engineer
+                <cite>
+                  THE WELLS-RILEY EQUATION AND COVID-19: REDUCING RISK IN INDOOR
+                  ENVIRONMENTS
+                </cite>
+                , AJ Lowry, Engineer
               </figcaption>
             </div>
           </figure>
           <p className={classes.text}>
-          The beauty lies in simplicity; only a few variables are needed for 
-          the calculation. The simplistic nature provides us with scalability 
-          and modular growth. Our research allows us to perfect the result of 
-          infectiousness in different POIs using the Wells-Riley equation. 
-          We can then model any town in the US by ‘building out’ the cities - 
-          using our research we can represent all the POIs of the town. 
-          Combining the Wells-Riley equation and cross referencing of census 
-          and geo-location data, Delineo can be used to build an accurate model 
-          of any town in the US and the probability of infection of airborne COVID-19. 
+            The beauty lies in simplicity; only a few variables are needed for
+            the calculation. The simplistic nature provides us with scalability
+            and modular growth. Our research allows us to perfect the result of
+            infectiousness in different POIs using the Wells-Riley equation. We
+            can then model any town in the US by ‘building out’ the cities -
+            using our research we can represent all the POIs of the town.
+            Combining the Wells-Riley equation and cross referencing of census
+            and geo-location data, Delineo can be used to build an accurate
+            model of any town in the US and the probability of infection of
+            airborne COVID-19.
           </p>
           <p className={classes.text}>
-          Moreover, in the simulation users can customize different interventions 
-          and see their effect on the spread of disease. This includes non-pharmaceutical 
-          interventions such as requiring masks and social distancing, as well as 
-          pharmaceutical interventions like vaccines. Each intervention correlates with 
-          variables in Wells-Riley Equation. For example, capacity restrictions could lower 
-          the probability of infection by influencing the number of infector individuals 
-          in the space.
+            Moreover, in the simulation users can customize different
+            interventions and see their effect on the spread of disease. This
+            includes non-pharmaceutical interventions such as requiring masks
+            and social distancing, as well as pharmaceutical interventions like
+            vaccines. Each intervention correlates with variables in Wells-Riley
+            Equation. For example, capacity restrictions could lower the
+            probability of infection by influencing the number of infector
+            individuals in the space.
           </p>
           <p className={classes.text}>
-          Well-Riley Equation enables us to use quantifiable variables to investigate 
-          the transmission of COVID-19 with scalability. We aim to provide a more 
-          accurate picture to the public for understanding how COVID-19 is transmitted 
-          and how interventions will affect the transmission. 
+            Well-Riley Equation enables us to use quantifiable variables to
+            investigate the transmission of COVID-19 with scalability. We aim to
+            provide a more accurate picture to the public for understanding how
+            COVID-19 is transmitted and how interventions will affect the
+            transmission.
           </p>
           <blockquote>
             <p className={classes.text}>
-            "Before, we could only imagine or estimate the infectiousness of COVID-19 
-            in different facilities. With this equation, we are able to shift quantifiable 
-            variables that are distinct to each facility, and this is amazing." 
+              "Before, we could only imagine or estimate the infectiousness of
+              COVID-19 in different facilities. With this equation, we are able
+              to shift quantifiable variables that are distinct to each
+              facility, and this is amazing."
             </p>
-            <p className={classes.quote}><b>--Serena Chan, Simulation Team Lead</b></p>
+            <p className={classes.quote}>
+              <b>--Serena Chan, Simulation Team Lead</b>
+            </p>
           </blockquote>
           <p className={classes.text}>Additional Readings: </p>
           <p className={classes.hyperlink}>
-          <a href="https://pubmed.ncbi.nlm.nih.gov/19874402/">
-              Review and comparison between the Wells–Riley and dose‐response 
-          approaches to risk assessment of infectious respiratory diseases 
-          </a>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/19874402/">
+              Review and comparison between the Wells–Riley and dose‐response
+              approaches to risk assessment of infectious respiratory diseases
+            </a>
           </p>
           <p className={classes.hyperlink}>
-          <a href="https://www.kw-engineering.com/
-          reduce-risk-covid-19-indoor-air-conditioning-hvac-ventilation-buildings-wells-riley-equation/">
-              REDUCING THE RISK OF COVID-19 IN INDOOR ENVIRONMENTS USING THE 
-              WELLS-RILEY EQUATION: WHITEPAPER 
-          </a>
+            <a
+              href="https://www.kw-engineering.com/
+          reduce-risk-covid-19-indoor-air-conditioning-hvac-ventilation-buildings-wells-riley-equation/"
+            >
+              REDUCING THE RISK OF COVID-19 IN INDOOR ENVIRONMENTS USING THE
+              WELLS-RILEY EQUATION: WHITEPAPER
+            </a>
           </p>
           <p className={classes.hyperlink}>
-          <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2843948/">
-              Mathematical models for assessing the role of airflow on the risk of airborne infection in hospital wards 
-          </a>
+            <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2843948/">
+              Mathematical models for assessing the role of airflow on the risk
+              of airborne infection in hospital wards
+            </a>
           </p>
 
           <Toolbar></Toolbar>
@@ -251,4 +269,4 @@ function Post4(props) {
     </div>
   );
 }
-export default Post4
+export default Post4;

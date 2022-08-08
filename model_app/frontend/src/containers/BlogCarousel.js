@@ -16,11 +16,10 @@ import { TwitterButton, EmailButton } from "react-social";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import EmailIcon from "@material-ui/icons/Email";
 import articles from "../const/devblogposts";
-import { ArrowBack, ArrowForward } from "@material-ui/icons"
-import CarouselSlide from "../components/CarouselSlide"
+import { ArrowBack, ArrowForward } from "@material-ui/icons";
+import CarouselSlide from "../components/CarouselSlide";
 
 const useStyles = makeStyles((theme) => ({
-
   title: {
     marginBottom: "0 0px",
     marginTop: "0 0px",
@@ -41,17 +40,17 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "#66FCF1",
       textDecoration: "none",
     },
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    height: '42rem'
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    height: "42rem",
   },
 
   subtextalign: {
     textAlign: "justify",
     alignItems: "justifyContent",
     color: "black",
-    height: '10rem'
+    height: "10rem",
   },
 
   creditRow: {
@@ -68,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
 
   media: {
     height: 240,
-    marginBottom: '1rem'
+    marginBottom: "1rem",
   },
 
   align: {
@@ -78,9 +77,9 @@ const useStyles = makeStyles((theme) => ({
   cardActions: {
     display: "flex",
     justifyContent: "space-around",
-    justifyItems: 'center',
-    margin: '10px auto',
-    padding: '0 5px'
+    justifyItems: "center",
+    margin: "10px auto",
+    padding: "0 5px",
   },
 
   svg: {
@@ -89,20 +88,22 @@ const useStyles = makeStyles((theme) => ({
   },
 
   carousel: {
-    width: '100%',
+    width: "100%",
   },
 }));
 
 function Arrow(props) {
   const { direction, clickFunction } = props;
-  const icon = direction === 'left' ? <ArrowBack /> : <ArrowForward />;
+  const icon = direction === "left" ? <ArrowBack /> : <ArrowForward />;
 
-  return <IconButton onClick={clickFunction} style={{ color: "white" }}>{icon}</IconButton>;
+  return (
+    <IconButton onClick={clickFunction} style={{ color: "white" }}>
+      {icon}
+    </IconButton>
+  );
 }
 
-
 function BlogCarousel() {
-
   const classes = useStyles();
   const url = "https://covidweb.isi.jhu.edu";
   const message =
@@ -111,13 +112,13 @@ function BlogCarousel() {
   const numSlides = articles.length;
 
   const [slideIn, setSlideIn] = useState(true);
-  const [slideDirection, setSlideDirection] = useState('down');
+  const [slideDirection, setSlideDirection] = useState("down");
 
   const onArrowClick = (direction) => {
-    const increment = direction === 'left' ? -1 : 1;
+    const increment = direction === "left" ? -1 : 1;
     const newIndex = (index + increment + numSlides) % numSlides;
 
-    const oppDirection = direction === 'left' ? 'right' : 'left';
+    const oppDirection = direction === "left" ? "right" : "left";
     // if(direction === 'left'){
     //   direction = oppDirection
     // }
@@ -134,17 +135,17 @@ function BlogCarousel() {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.keyCode === 39) {
-        onArrowClick('right');
+        onArrowClick("right");
       }
       if (e.keyCode === 37) {
-        onArrowClick('left');
+        onArrowClick("left");
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener("keydown", handleKeyDown);
     };
   });
   const addCard = (classes, row, key, current = false) => {
@@ -179,38 +180,39 @@ function BlogCarousel() {
           </CardContent>
         </CardActionArea>
         <CardActions className={classes.cardActions}>
-          <Box className={classes.author} flexWrap="wrap" style={{ width: '230px' }}>
+          <Box
+            className={classes.author}
+            flexWrap="wrap"
+            style={{ width: "230px" }}
+          >
             <Typography
               className={classes.creditRow}
               variant="subtitle2"
               component="p"
             >
-              <img width="40px" height="40px" src={row.author_img} alt={row.author}
-                style={{ borderRadius: '50%', marginRight: '10px' }}
+              <img
+                width="40px"
+                height="40px"
+                src={row.author_img}
+                alt={row.author}
+                style={{ borderRadius: "50%", marginRight: "10px" }}
               ></img>
-              <span style={{ fontWeight: "bold" }}>
-                {row.author}{" "}
-              </span>
+              <span style={{ fontWeight: "bold" }}>{row.author} </span>
             </Typography>
             <Typography
               className={classes.creditRow}
               variant="subtitle2"
               component="p"
-              style={{ marginTop: '10px' }}>
+              style={{ marginTop: "10px" }}
+            >
               {row.date}
             </Typography>
           </Box>
           <Box>
-            <PopupState
-              variant="popover"
-              popupId="demo-popup-menu"
-            >
+            <PopupState variant="popover" popupId="demo-popup-menu">
               {(popupState) => (
                 <React.Fragment>
-                  <IconButton
-                    aria-label="share"
-                    {...bindTrigger(popupState)}
-                  >
+                  <IconButton aria-label="share" {...bindTrigger(popupState)}>
                     <ShareIcon style={{ color: "black" }} />
                   </IconButton>
                   <Menu
@@ -228,10 +230,7 @@ function BlogCarousel() {
                       style={{ color: "white" }}
                       onClick={popupState.close}
                     >
-                      <TwitterButton
-                        message={message}
-                        url={url + row.href}
-                      >
+                      <TwitterButton message={message} url={url + row.href}>
                         <TwitterIcon fontSize="small" />
                       </TwitterButton>
                     </MenuItem>
@@ -257,10 +256,7 @@ function BlogCarousel() {
                       style={{ color: "white" }}
                       onClick={popupState.close}
                     >
-                      <EmailButton
-                        message={message}
-                        url={url + row.href}
-                      >
+                      <EmailButton message={message} url={url + row.href}>
                         <EmailIcon fontSize="small" />
                       </EmailButton>
                     </MenuItem>
@@ -271,29 +267,37 @@ function BlogCarousel() {
           </Box>
         </CardActions>
       </Card>
-    )
-  }
+    );
+  };
 
   return (
     <Box>
-      <Box display='flex' flexWrap="nowrap" justifyContent="center" className={classes.carousel}>
+      <Box
+        display="flex"
+        flexWrap="nowrap"
+        justifyContent="center"
+        className={classes.carousel}
+      >
         <Arrow
           className={classes.svg}
-          direction='left'
-          clickFunction={() => onArrowClick('left')}
+          direction="left"
+          clickFunction={() => onArrowClick("left")}
         />
         <CarouselSlide
           articles={articles}
-          num={index} addCard={addCard} classes={classes}
+          num={index}
+          addCard={addCard}
+          classes={classes}
           slideDirection={slideDirection}
-          slideIn={slideIn}></CarouselSlide>
+          slideIn={slideIn}
+        ></CarouselSlide>
         <Arrow
           className={classes.svg}
-          direction='right'
-          clickFunction={() => onArrowClick('right')}
+          direction="right"
+          clickFunction={() => onArrowClick("right")}
         />
       </Box>
     </Box>
-  )
+  );
 }
-export default BlogCarousel
+export default BlogCarousel;

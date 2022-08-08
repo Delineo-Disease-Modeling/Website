@@ -1,5 +1,5 @@
-import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend } from 'recharts';
+import React from "react";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend } from "recharts";
 
 const SimpleBarChart = ({ width, height, data }) => {
   const renderColorfulLegendText = (value, entry) => {
@@ -8,7 +8,12 @@ const SimpleBarChart = ({ width, height, data }) => {
   };
 
   return (
-    <BarChart width={width} height={height} data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5, }}>
+    <BarChart
+      width={width}
+      height={height}
+      data={data}
+      margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+    >
       <XAxis dataKey="name" interval="preserveStartEnd" />
       <YAxis interval="preserveStartEnd" />
       <Tooltip />

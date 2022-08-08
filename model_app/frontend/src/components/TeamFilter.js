@@ -57,7 +57,6 @@ const styles = {
     maxWidth: "1000px",
   },
 
-
   h4: {
     color: "white",
     marginRight: 100,
@@ -109,8 +108,8 @@ const styles = {
   },
 
   gridItem: {
-    backgroundColor: "#66FCF1"
-  }
+    backgroundColor: "#66FCF1",
+  },
 };
 
 const ColorListItem = withStyles((theme) => ({
@@ -148,19 +147,17 @@ const TeamFilter = (props) => {
     sim: false,
     ml: false,
     info: false,
-    past : false,
+    past: false,
     backgroundColor: "#222629",
     color: "#66FCF1",
     borderColor: "#66FCF1",
   });
 
-
   const { classes } = props;
   const { all, fs, sim, ml, info, past } = filterState;
 
-
   const resize = () => {
-    let isDesktop = (window.innerWidth);
+    let isDesktop = window.innerWidth;
     if (isDesktop !== 1000) {
       return classes.h3;
     }
@@ -379,17 +376,17 @@ const TeamFilter = (props) => {
               Principal Investigator
             </Typography>
             <br />
-            <TeamsList type = "pi"/>
+            <TeamsList type="pi" />
             <Typography varient="h2" className={classes.h2} align="center">
               Team Leaders
             </Typography>
             <br />
-            <TeamsList type = "leader"/>
+            <TeamsList type="leader" />
             <Typography varient="h2" className={classes.h2} align="center">
               Team Members
             </Typography>
             <br />
-            <TeamsList type = 'all'/>
+            <TeamsList type="all" />
           </div>
         </div>
       ) : null}
@@ -399,8 +396,8 @@ const TeamFilter = (props) => {
             <Typography className={resize()} align="center">
               Members of the fullstack team work throughout the stack. Our web
               application is built using the MERN stack (MongoDB, Express,
-              ReactJS, NodeJS) and Unity Webgl. Members of this team also
-              manage and access our geolocation data.
+              ReactJS, NodeJS) and Unity Webgl. Members of this team also manage
+              and access our geolocation data.
             </Typography>
           </div>
           <div>
@@ -408,7 +405,7 @@ const TeamFilter = (props) => {
               Team Members
             </Typography>
             <br />
-            <TeamsList type = "full"/>
+            <TeamsList type="full" />
           </div>
         </div>
       ) : null}
@@ -418,8 +415,8 @@ const TeamFilter = (props) => {
             <Typography className={resize()} align="center">
               The simulation team is responsible for the implementation of the
               simulation that lies at the heart of the Delineo project. Team
-              members focus on programming the various modules, algorithms,
-              and statistical drivers that are utilized in our models.
+              members focus on programming the various modules, algorithms, and
+              statistical drivers that are utilized in our models.
             </Typography>
           </div>
           <div>
@@ -427,7 +424,7 @@ const TeamFilter = (props) => {
               Team Members
             </Typography>
             <br />
-            <TeamsList type = "sim"/>
+            <TeamsList type="sim" />
           </div>
         </div>
       ) : null}
@@ -439,8 +436,8 @@ const TeamFilter = (props) => {
               from the massive amounts of geolocation data the Delineo project
               has access to. One of the main focuses is on developing machine
               learning models that are capable of discerning and generating
-              population movement patterns within communities ranging from
-              rural towns to urban cities.
+              population movement patterns within communities ranging from rural
+              towns to urban cities.
             </Typography>
           </div>
           <div>
@@ -448,7 +445,7 @@ const TeamFilter = (props) => {
               Team Members
             </Typography>
             <br />
-            <TeamsList type = "ml"/>
+            <TeamsList type="ml" />
           </div>
         </div>
       ) : null}
@@ -457,8 +454,8 @@ const TeamFilter = (props) => {
           <div align="center">
             <Typography varient="h2" className={resize()}>
               The information support team is responsible for gathering,
-              summarizing, and disseminating research articles/papers that
-              prove helpful for informing the development of Delineo's model.
+              summarizing, and disseminating research articles/papers that prove
+              helpful for informing the development of Delineo's model.
             </Typography>
           </div>
           <div>
@@ -466,15 +463,16 @@ const TeamFilter = (props) => {
               Team Members
             </Typography>
             <br />
-            <TeamsList type = "info"/>
+            <TeamsList type="info" />
           </div>
         </div>
       ) : null}
-            {past ? (
+      {past ? (
         <div>
           <div align="center">
             <Typography varient="h2" className={resize()}>
-              The past members of the Delineo team are a group of individuals who have devoted time to this project.
+              The past members of the Delineo team are a group of individuals
+              who have devoted time to this project.
             </Typography>
           </div>
           <div>
@@ -482,7 +480,7 @@ const TeamFilter = (props) => {
               Team Members
             </Typography>
             <br />
-            <TeamsList type = "past"/>
+            <TeamsList type="past" />
           </div>
         </div>
       ) : null}

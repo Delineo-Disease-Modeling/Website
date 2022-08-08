@@ -11,7 +11,8 @@
     "client-install": "cd frontend && npm i",
     "dev": "cd frontend && npm start",
     "build": "webpack",
-    "start": "cd frontend && npm start"
+    "start": "cd frontend && npm start",
+    "pretty": "prettier --write \"./**/*.{js,jsx,json}\""
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +23,7 @@
     "@material-ui/icons": "^4.11.2",
     "classnames": "^2.3.1",
     "concurrently": "^6.3.0",
+    "prettier": "^2.7.1",
     "react-bootstrap": "^1.6.4",
     "react-day-picker": "^7.4.10",
     "react-dropdown-select": "^4.7.4",
