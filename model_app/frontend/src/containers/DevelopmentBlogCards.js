@@ -121,7 +121,7 @@ function DevelopmentBlogCards(props) {
 
   return (
     <CardContent>
-      <Grid container spacing={3} alignItems="center" justify="center">
+      <Grid container spacing={3} alignItems="center" justifyContent="center">
         {articleArray.map((row) => {
           if (!(row.type === "Article")) return null; 
             return (

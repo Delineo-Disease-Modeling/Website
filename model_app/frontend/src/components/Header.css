@@ -6,18 +6,48 @@
 
 .NavText{
     color: white;
-
 }
 
 .Nav-link:link {
     color: #ffffff;
     font-size: 20px;
-    line-height: 1.6rem;
     margin-right: 15px;
     text-decoration: none;
-    padding-right: 0;
-    padding-left: 0;
     font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
+    text-align: center;
+    padding: 0px,
+}
 
-  }
-  
+#dropdown-toggle {
+    background-color: #222629;
+    font-size: 20px;
+    margin-right: 15px;
+    text-decoration: none;
+    border: none;
+    font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
+    text-align: center;
+    padding: 0px,
+}
+
+#dropdown-toogle.btn {
+    padding: '0px',
+}
+
+#dropdown-menu{
+    background-color: #222629;
+}
+
+#dropdown-link{
+    color: #ffffff; 
+}
+
+#dropdown-item:hover{
+    background-color: #000000;
+}
+
+#dropdown-item:hover > #dropdown-link{
+    color: #66FCF1;
+}
+
+
+
