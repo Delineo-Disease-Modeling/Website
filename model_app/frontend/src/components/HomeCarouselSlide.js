@@ -1,7 +1,7 @@
 import React from 'react';
 import { Slide } from '@material-ui/core';
-import Grid from "@material-ui/core/Grid";
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+// import Grid from "@material-ui/core/Grid";
+// import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const HomeCarouselSlide = (props) => {
 
@@ -9,9 +9,9 @@ const HomeCarouselSlide = (props) => {
 
   const index = props.num;
   const current = props.articles[index];
-  const prev = index > 0 ? props.articles[index - 1] : props.articles[props.articles.length - 1];
-  const next = index < props.articles.length - 1 ? props.articles[index + 1] : props.articles[0];
-  const matches = useMediaQuery('(min-width:980px)');
+  // const prev = index > 0 ? props.articles[index - 1] : props.articles[props.articles.length - 1];
+  //const next = index < props.articles.length - 1 ? props.articles[index + 1] : props.articles[0];
+ // const matches = useMediaQuery('(min-width:980px)');
 
   const getContent = () => {
     return (

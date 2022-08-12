@@ -15,10 +15,10 @@ import { Button } from "@material-ui/core";
 import { MobileView } from "react-device-detect";
 
 const unityContext = new UnityContext({
-  loaderUrl: "./Build/Aug5.loader.js",
-  dataUrl: "./Build/Aug5.data",
-  frameworkUrl: "./Build/Aug5.framework.js",
-  codeUrl: "./Build/Aug5.wasm",
+  loaderUrl: "./Build/UnityBuild.loader.js",
+  dataUrl: "./Build/UnityBuild.data",
+  frameworkUrl: "./Build/UnityBuild.framework.js",
+  codeUrl: "./Build/UnityBuild.wasm",
 });
 
 const styles = (theme) => ({
@@ -208,7 +208,7 @@ class Simulator extends Component {
   };
 
   render() {
-    const { data, jobId, loading } = this.state;
+  //  const { data, jobId, loading } = this.state;
     const { classes } = this.props;
 
     // no timeseries: replace with simulation timeseries
@@ -286,7 +286,7 @@ class Simulator extends Component {
                 unityContext={unityContext}
                 style={{
                   height: "100%",
-                  width: 950,
+                  width: '950px',
                   border: "2px solid black",
                   background: "grey",
                 }}
@@ -373,12 +373,12 @@ class Simulator extends Component {
               </Typography>
               <ul>
                 <li>
-                  <a target="_blank" href="https://drive.google.com/file/d/1kNyUd4YSmahDOib99TjfQsh_qoTiFRZ2/view?usp=sharing" download>
+                  <a target="_blank" href="https://drive.google.com/file/d/1kNyUd4YSmahDOib99TjfQsh_qoTiFRZ2/view?usp=sharing" download rel="noreferrer">
                     High School Delineo Lab
                   </a>
                 </li>
                 <li>
-                  <a target="_blank" href="https://drive.google.com/file/d/1JojKSrQhDsOTeSe7g2_QkN7XersQ0sh9/view?usp=sharing" >
+                  <a target="_blank" href="https://drive.google.com/file/d/1JojKSrQhDsOTeSe7g2_QkN7XersQ0sh9/view?usp=sharing" rel="noreferrer" >
                     Middle School Delineo Lab
                     
                   </a>

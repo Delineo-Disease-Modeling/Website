@@ -11,7 +11,6 @@ import HomeCarouselSlide from "./HomeCarouselSlide"
 import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
-
   button: {
     borderColor: '#66FCF1',
     backgroundColor: '#66FCF1',
