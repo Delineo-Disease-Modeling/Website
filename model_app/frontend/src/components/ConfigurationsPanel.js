@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: 'rgba(196,196,196,255)',
         margin: '2%',
         paddingBottom: '1%',
-        borderRadius: '20px',
+        borderRadius: '10px',
         justifyContent: 'space-around'
     },
     configurationsHeader: {
@@ -135,9 +135,7 @@ export default function ConfigurationsPanel(props) {
             <div className={classes.root}>
                 <TabPanel conf={configs}/>
             </div>
-            <div className={classes.buttonSection}>
-                <ConfirmButton className={classes.confBtn} updateConfigs={props.updateConfigs} configs={configs} />
-            </div>
+            <ConfirmButton className={classes.confBtn} updateConfigs={props.updateConfigs} configs={configs} />
         </div>
     );
 } 

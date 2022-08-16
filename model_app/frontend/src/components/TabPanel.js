@@ -18,14 +18,12 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: 'rgba(196,196,196,255)',
         margin: '2%',
         paddingBottom: '1%',
-        borderRadius: '20px',
         justifyContent: 'space-around'
     },
     configurationsHeader: {
         backgroundColor: 'rgba(49,53,56,255)',
         paddingTop: '1%',
         paddingBottom: '1%',
-        borderRadius: '5px'
     },
     panelSection: {
         textAlign: 'left',
@@ -58,11 +56,13 @@ const useStyles = makeStyles((theme) => ({
         color: "black",
         fontSize: "0.8rem",
         paddingLeft: "0",
-        alignItems: "bottom"
+        alignItems: "bottom",
+        textAlign: "start"
     },
     switchText: {
         color: "black",
         paddingLeft: "0",
+        textAlign: "start"
     },
     gridItemRight: {
         textAlign: "right"
@@ -81,14 +81,9 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     inputPercent: {
-        backgroundColor: "#606060",
         color: "black",
-        borderRadius: "50px",
-        width: "70px",
+        width: "60px",
         height: "35px",
-    },
-    unitText: {
-        color: "black"
     },
     buttonSection: {
         textAlign: "center",
@@ -131,6 +126,10 @@ function MaskSlider(props) {
         props.configs.maskPercent = sanitizePercentInput(newValue);
     };
 
+    function percentFormat(num) {
+        return num + '%';
+    }
+
     const handleInputChange = (event) => {
         setValue(event.target.value === '' ? '' : Number(event.target.value));
         props.configs.maskPercent = sanitizePercentInput(event.target.value === '' ? '' : Number(event.target.value));
@@ -148,7 +147,7 @@ function MaskSlider(props) {
         <div >
             <Grid container direction="row" alignItems="center">
                 <Grid item xs={6}>
-                    <Typography className={classes.sliderText}>
+                    <Typography className={classes.sliderText} >
                         Mask-Wearing
                     </Typography>
                 </Grid>
@@ -160,6 +159,7 @@ function MaskSlider(props) {
                         onBlur={handleBlur}
                         disableUnderline={true}
                         fullWidth={true}
+                        format={percentFormat}
                         endAdornment={<InputAdornment position="end"><div className={classes.unitText}>%</div></InputAdornment>}
                         inputProps={{
                             style: {textAlign: 'right'},
@@ -221,7 +221,7 @@ function CapacitySlider(props) {
                         onBlur={handleBlur}
                         disableUnderline={true}
                         fullWidth={true}
-                        endAdornment={<InputAdornment position="end"><div className={classes.unitText}>%</div></InputAdornment>}
+                        endAdornment="%"
                         inputProps={{
                             style:{textAlign:"right"},
                             step: 1,
