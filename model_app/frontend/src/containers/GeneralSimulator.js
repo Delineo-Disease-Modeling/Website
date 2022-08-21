@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import "./GeneralSimulator.css";
 import ConfigurationsPanel from "../components/ConfigurationsPanel";
-import {ButtonGroup, Tooltip, Typography} from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import InfectionsChart from "../components/InfectionsChart";
-import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import {Cell, Legend, Pie, PieChart} from "recharts";
+import {Tooltip, Cell, Legend, Pie, PieChart} from "recharts";
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis } from 'recharts';
 import testdata from "../data/testdata.json";
 
@@ -18,6 +17,7 @@ const data = [
     "count": 379777
   },
 ];
+
 
 class GeneralSimulator extends Component {
 
@@ -94,6 +94,7 @@ class GeneralSimulator extends Component {
             </Grid>
             <InfectionsChart />
             <PieChart width={730} height={300}>
+              <Tooltip />
               <Pie
                   data={data}
                   color="#000000"
@@ -115,6 +116,7 @@ class GeneralSimulator extends Component {
               <Legend />
             </PieChart>
             <BarChart width={1000} height={250} data={testdata}>
+              <Tooltip />
               <Legend verticalAlign="bottom" height={36}/>
               <Bar dataKey="TotalNotInfected" stackId="a" fill="#8884d8" />
               <Bar dataKey="TotalInfections" stackId="a" fill="#82ca9d" />
