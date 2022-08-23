@@ -4,7 +4,6 @@ import "./Simulator.css";
 import axios from "axios";
 import { withStyles } from "@material-ui/styles";
 import Grid from "@material-ui/core/Grid";
-import Unity, { UnityContext } from "react-unity-webgl";
 import Typography from "@material-ui/core/Typography";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -13,13 +12,8 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { Button } from "@material-ui/core";
 import { MobileView } from "react-device-detect";
+import UnityCreator from "../components/Unity";
 
-const unityContext = new UnityContext({
-  loaderUrl: "./Build/UnityBuild.loader.js",
-  dataUrl: "./Build/UnityBuild.data",
-  frameworkUrl: "./Build/UnityBuild.framework.js",
-  codeUrl: "./Build/UnityBuild.wasm",
-});
 
 const styles = (theme) => ({
   bubble: {
@@ -81,8 +75,8 @@ const styles = (theme) => ({
 });
 
 class Simulator extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       hidden: false,
       policy: "",
@@ -208,7 +202,7 @@ class Simulator extends Component {
   };
 
   render() {
-  //  const { data, jobId, loading } = this.state;
+    //  const { data, jobId, loading } = this.state;
     const { classes } = this.props;
 
     // no timeseries: replace with simulation timeseries
@@ -282,14 +276,7 @@ class Simulator extends Component {
               Welcome to Anytown, USA
             </Typography>
             <div>
-              <Unity
-                unityContext={unityContext}
-                style={{
-                  height: "100%",
-                  width: '950px',
-                  border: "2px solid black",
-                  background: "grey",
-                }}
+              <UnityCreator
               />
             </div>
             <br></br>
@@ -373,14 +360,22 @@ class Simulator extends Component {
               </Typography>
               <ul>
                 <li>
-                  <a target="_blank" href="https://drive.google.com/file/d/1kNyUd4YSmahDOib99TjfQsh_qoTiFRZ2/view?usp=sharing" download rel="noreferrer">
+                  <a
+                    target="_blank"
+                    href="https://drive.google.com/file/d/1kNyUd4YSmahDOib99TjfQsh_qoTiFRZ2/view?usp=sharing"
+                    download
+                    rel="noreferrer"
+                  >
                     High School Delineo Lab
                   </a>
                 </li>
                 <li>
-                  <a target="_blank" href="https://drive.google.com/file/d/1JojKSrQhDsOTeSe7g2_QkN7XersQ0sh9/view?usp=sharing" rel="noreferrer" >
+                  <a
+                    target="_blank"
+                    href="https://drive.google.com/file/d/1JojKSrQhDsOTeSe7g2_QkN7XersQ0sh9/view?usp=sharing"
+                    rel="noreferrer"
+                  >
                     Middle School Delineo Lab
-                    
                   </a>
                 </li>
               </ul>
