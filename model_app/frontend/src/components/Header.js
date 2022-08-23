@@ -53,16 +53,6 @@ const Header = () => {
         <NavbarToggler onClick={toggleNav} />
         <Collapse isOpen={navState.isNavOpen} navbar>
           <Nav navbar className="ms-auto">
-            <UncontrolledDropdown>
-              <DropdownToggle
-                caret
-                id="dropdown-toggle"
-                style={{ padding: "0px" }}
-              >
-                Simulators
-              </DropdownToggle>
-              <DropdownMenu id="dropdown-menu" style={{ paddingRight: "8%" }}>
-                <div style={{ marginBottom: "5%", marginLeft: "8%" }}>
                   <NavLink
                     className="Nav-link"
                     id="dropdown-link"
@@ -70,19 +60,8 @@ const Header = () => {
                     activeClassName="active"
                     activeStyle={active}
                   >
-                    Anytown
+                    Simulator
                   </NavLink>
-                </div>
-                <div
-                  style={{
-                    marginBottom: "5%",
-                    marginLeft: "8%",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                </div>
-              </DropdownMenu>
-            </UncontrolledDropdown>
             <NavItem>
               <NavLink
                 className="Nav-link"
