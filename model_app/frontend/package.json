@@ -27,8 +27,9 @@
     "react-dom": "^17.0.2",
     "react-material-ui-carousel": "^2.3.5",
     "react-redux": "^7.2.6",
-    "react-scripts": "^4.0.3",
+    "react-scripts": "^5.0.1",
     "react-transition-group": "^4.4.2",
+    "react-unity-webgl": "^9.0.4",
     "reactstrap": "^8.10.1",
     "recharts": "^2.1.6",
     "redux": "^4.1.1",
@@ -43,7 +44,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-
   },
   "eslintConfig": {
     "extends": "react-app"

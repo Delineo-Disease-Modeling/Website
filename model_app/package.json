@@ -31,8 +31,8 @@
     "react-bootstrap": "^1.6.4",
     "react-day-picker": "^7.4.10",
     "react-dropdown-select": "^4.7.4",
-    "react-scripts": "^4.0.3",
+    "react-scripts": "^5.0.1",
     "react-social": "^1.10.0",
-    "react-unity-webgl": "^8.5.1"
+    "react-unity-webgl": "^9.0.4"
   }
 }
