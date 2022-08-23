@@ -80,15 +80,6 @@ const Header = () => {
                     whiteSpace: "nowrap",
                   }}
                 >
-                  <NavLink
-                    className="Nav-link"
-                    id="dropdown-link"
-                    to="/generalsimulator"
-                    activeClassName="active"
-                    activeStyle={active}
-                  >
-                    Oklahoma City
-                  </NavLink>
                 </div>
               </DropdownMenu>
             </UncontrolledDropdown>
