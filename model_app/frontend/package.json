@@ -23,7 +23,7 @@
     "react-dom": "^17.0.2",
     "react-material-ui-carousel": "^2.3.5",
     "react-redux": "^7.2.6",
-    "react-scripts": "^4.0.3",
+    "react-scripts": "^5.0.1",
     "react-transition-group": "^4.4.2",
     "reactstrap": "^8.10.1",
     "recharts": "^2.1.12",
