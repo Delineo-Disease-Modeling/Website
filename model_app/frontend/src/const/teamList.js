@@ -100,7 +100,7 @@ import shiKeImg from "../images/Shichang Ke.jpeg";
 import xinyueGu from "../images/Xinyue Gu.JPG";
 import jakeRamImg from "../images/Jake Rasmussen.PNG";
 import JiwoNohImg from "../images/Jiwoo Noh.JPG";
-
+import VictoriaSubImg from  "../images/Victoria-Subritzky.jpeg";
 import invalid from "../images/person-icon.png";
 
 const teamList = [
@@ -869,6 +869,13 @@ const teamList = [
     role: "Machine Learning",
     description: "Biomedical Engineering, Computer Science",
     inDelineo: true,
+  },
+  {
+    img: VictoriaSubImg,
+    name: "Victoria Subritzky Katz",
+    role: "Fullstack",
+    description: "Neuroscience",
+    inDelineo: false,
   },
 ];
 
