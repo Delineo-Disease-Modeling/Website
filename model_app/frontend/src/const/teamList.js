@@ -134,6 +134,13 @@ const teamList = [
     inDelineo: false,
   },
   {
+    img: munJiaImg,
+    name: "Mung Yao Jia",
+    role: "Simulation Lead",
+    description: "Computer Science, Applied Math and Statistics",
+    inDelineo: true,
+  },
+  {
     img: steLiImg,
     name: "Stella Li",
     role: "Machine Learning Lead",
@@ -349,13 +356,6 @@ const teamList = [
     role: "Fullstack",
     description: "Chemical and Biomolecular Engineering, Computer Science",
     inDelineo: false,
-  },
-  {
-    img: munJiaImg,
-    name: "Mung Yao Jia",
-    role: "Simulation Lead",
-    description: "Computer Science, Applied Math and Statistics",
-    inDelineo: true,
   },
   {
     img: kaiKoImg,
