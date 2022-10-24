@@ -6,22 +6,6 @@ import Typography from '@mui/material/Typography';
 import Slider from '@mui/material/Slider';
 import MuiInput from '@mui/material/Input';
 
-//Helper function to convert user inputs to be restricted between 0 and 100
-//Returns -1 if input is not a number
-function sanitizePercentInput(input) {
-    if (isNaN(input) || typeof input !== "number") {
-      //TODO: Test this logic
-      return -1;
-    }
-    if (input > 100) {
-      return 100;
-    } else if (input < 0) {
-      return 0;
-    } else {
-      return input;
-    }
-  }
-
 const Input = styled(MuiInput)`
   width: 42px;
 `;
@@ -35,28 +19,30 @@ const StyledSlider = styled(Slider) (({ theme }) => ({
 }));
 
 export default function InputSlider(props) {
-  const { label, percentConfig, icon } = props;
-  const [value, setValue] = React.useState(30);
+  const { label, icon } = props;
+  const [value, setValue] = React.useState(props.percentConfig);
 
   const handleSliderChange = (event, newValue) => {
     setValue(newValue);
-    percentConfig = sanitizePercentInput(newValue);
+    props.percentConfig = value;
   };
 
   const handleInputChange = (event) => {
     const newValue = event.target.value === '' ? '' : Number(event.target.value);
     setValue(newValue);
-    percentConfig = sanitizePercentInput(newValue);
-  };
+    props.percentConfig = value;
+};
 
   const handleBlur = () => {
     if (value < 0) {
       setValue(0);
+      props.percentConfig = 0;
     } else if (value > 100) {
       setValue(100);
+      props.percentConfig = 100;
     }
   };
-
+  
   return (
     <div>
     <Grid container direction="row" alignItems="center">

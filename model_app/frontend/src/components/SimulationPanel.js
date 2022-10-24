@@ -254,7 +254,7 @@ function VaccinationSlider(props) {
   );
 }
 
-function TabPanel(props) {
+export function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
@@ -283,7 +283,7 @@ function a11yProps(index) {
   };
 }
 
-export default function BasicTabs(conf) {
+export function BasicTabs(conf) {
   const [value, setValue] = React.useState(0);
 
   let configs = JSON.parse(JSON.stringify(conf));
