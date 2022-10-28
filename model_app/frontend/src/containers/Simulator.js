@@ -315,7 +315,8 @@ class Simulator extends Component {
                 How to use the simulator{" "}
               </Typography>
               1. Adjust the sliders on the left pane to modify
-              non-pharmaceutical interventions (NPI's) including:
+              the speed of the simulation and non-pharmaceutical interventions
+              (NPI's) including:
               <br />
               <br />
               <ul>
@@ -337,7 +338,7 @@ class Simulator extends Component {
                 </li>
                 <li>Whether stay-at-home orders are in place</li>
               </ul>
-              2. Click confirm (once) to lock-in interventions <br />
+              2. Click submit (once) to lock-in interventions <br />
               3. Press play (this step may take a few minutes as results are
               sent to the simulation server) <br />
               4. Move around the map and click on different buildings to look at
