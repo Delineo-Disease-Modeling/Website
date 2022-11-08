@@ -7,10 +7,12 @@ import Box from "@mui/material/Box";
 import Grid from "@material-ui/core/Grid";
 import Switch from "@material-ui/core/Switch";
 import Input from "@material-ui/core/Input";
+import Tooltip from "./ToolTip";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 import { FormGroup, TextField } from "@material-ui/core";
+import ToolTip from "./ToolTip";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -149,10 +151,13 @@ function MaskSlider(props) {
   return (
     <div>
       <Grid container direction="row" alignItems="center">
-        <Grid item xs={6}>
-          <Typography className={classes.sliderText}>Mask-Wearing</Typography>
+         <Grid container spacing={1} xs={4}>
+          <ToolTip description={"Mask-Wearing"} />
+            <Grid item xs={4}>
+            <Typography className={classes.sliderText}>Mask-Wearing</Typography>
+          </Grid>
         </Grid>
-        <Grid item xs={6} className={classes.gridItemRight}>
+        <Grid item xs={8} className={classes.gridItemRight}>
           <Input
             className={classes.inputPercent}
             value={value}
