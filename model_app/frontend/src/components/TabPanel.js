@@ -572,11 +572,11 @@ export default function BasicTabs(conf) {
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab label="NPI's" {...a11yProps(0)} />
-          <Tab label="Targeted Shutdowns" {...a11yProps(1)} />
-          <Tab label="Vaccinations" {...a11yProps(2)} />
-          <Tab label="Parameters" {...a11yProps(3)} />
-          <Tab label="Preventions" {...a11yProps(2)} />
+          <Tab label="NPI's" {...a11yProps(0)} style={{color:'black'}}/>
+          <Tab label="Targeted Shutdowns" {...a11yProps(1)} style={{color:'black'}}/>
+          <Tab label="Vaccinations" {...a11yProps(2)} style={{color:'black'}}/>
+          <Tab label="Parameters" {...a11yProps(3)} style={{color:'black'}}/>
+          <Tab label="Preventions" {...a11yProps(2)} style={{color:'black'}}/>
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>

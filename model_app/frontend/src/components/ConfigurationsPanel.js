@@ -9,9 +9,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     backgroundColor: "rgba(196,196,196,255)",
-    margin: "2%",
+    // margin: "2%",
     paddingBottom: "1%",
-    borderRadius: "20px",
+    borderRadius: "0",
     justifyContent: "space-around",
   },
   configurationsHeader: {
@@ -48,13 +48,13 @@ const useStyles = makeStyles((theme) => ({
     opacity: "1",
   },
   sliderText: {
-    color: "black",
+    color: "white",
     fontSize: "0.8rem",
     paddingLeft: "0",
     alignItems: "bottom",
   },
   switchText: {
-    color: "black",
+    color: "white",
     paddingLeft: "0",
   },
   gridItemRight: {
@@ -64,28 +64,28 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
   },
   button: {
-    backgroundColor: "rgba(49,53,56,255)",
-    color: "white",
+    backgroundColor: "#91F9F0",
+    color: "black",
     paddingLeft: "65px",
     paddingRight: "65px",
     boxShadow: "none",
+    fontWeight: "700",
     "&:hover": {
       backgroundColor: "rgba(93, 96, 99)",
     },
   },
   inputPercent: {
     backgroundColor: "#606060",
-    color: "black",
+    color: "white",
     borderRadius: "50px",
     width: "70px",
     height: "35px",
   },
   unitText: {
-    color: "black",
+    color: "white",
   },
   buttonSection: {
     textAlign: "center",
-    paddingBottom: "25%",
   },
 }));
 
@@ -141,16 +141,18 @@ export default function ConfigurationsPanel(props) {
   let configs = JSON.parse(JSON.stringify(props.configs)); //Create a deep copy of parent configurations
 
   return (
-    <div>
+    <div style={{borderBottom: '4px solid white', margin:0}}>
       <div className={classes.root}>
         <TabPanel conf={configs} />
       </div>
-      <div className={classes.buttonSection}>
-        <ConfirmButton
-          className={classes.confBtn}
-          updateConfigs={props.updateConfigs}
-          configs={configs}
-        />
+      <div className={classes.root} >
+        <div className={classes.buttonSection}>
+          <ConfirmButton
+            className={classes.confBtn}
+            updateConfigs={props.updateConfigs}
+            configs={configs}
+          />
+        </div>
       </div>
     </div>
   );
