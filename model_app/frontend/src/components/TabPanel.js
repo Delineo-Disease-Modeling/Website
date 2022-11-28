@@ -152,7 +152,7 @@ function MaskSlider(props) {
     <div>
       <Grid container direction="row" alignItems="center">
          <Grid container spacing={1} xs={4}>
-          <ToolTip description={"Mask-Wearing"} />
+          <ToolTip description={"The percentage of the population that weawrs masks in stores, restaurants, bars, etc."} />
             <Grid item xs={4}>
             <Typography className={classes.sliderText}>Mask-Wearing</Typography>
           </Grid>
