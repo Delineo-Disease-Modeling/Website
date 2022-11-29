@@ -15,7 +15,7 @@ function ToolTip(props) {
   );
 }
 
-Tooltip.propTypes = {
+ToolTip.propTypes = {
     description: PropTypes.string.isRequired,
   };
   
