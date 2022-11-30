@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import "./GeneralSimulator.css";
 import { withStyles } from "@material-ui/styles";
 import ConfigurationsPanel from "../components/ConfigurationsPanel";
-import { Tooltip, Typography, Card } from "@material-ui/core";
+import { Typography, Card } from "@material-ui/core";
+import ToolTip from "../components/ToolTip";
 import InfectionsChart from "../components/InfectionsChart";
 import Grid from "@material-ui/core/Grid";
 import { Cell, Legend, Pie, PieChart } from "recharts";
@@ -171,7 +172,7 @@ class GeneralSimulator extends Component {
                   />
                 ))}
               </Pie>
-              <Tooltip content={<this.CustomTooltip />} />
+              <ToolTip description={"Percentage of infected individuals"} />
               <Legend />
             </PieChart>
           </Grid>
