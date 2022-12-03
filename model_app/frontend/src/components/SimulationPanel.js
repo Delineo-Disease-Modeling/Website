@@ -1,3 +1,9 @@
+/**
+ * SimulationPanel.js
+ * The user input area of General Simulator. 
+ * Allows user to change parameters of the Delineo simulation and produce different results. 
+ */
+
 import * as React from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";

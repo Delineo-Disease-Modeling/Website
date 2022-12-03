@@ -1,3 +1,9 @@
+/**
+ * ToolTip.js
+ * Info icon that displays descriptions about user input when hovered.
+ * Used in ConfigurationsPanel
+ */
+
 import Tooltip from '@mui/material/Tooltip';
 import InfoIcon from '@mui/icons-material/Info';
 import IconButton from '@mui/material/IconButton';
