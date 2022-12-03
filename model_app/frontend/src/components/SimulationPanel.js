@@ -11,6 +11,7 @@ import { FormGroup, TextField } from "@material-ui/core";
 import InputSlider from "./InputSlider";
 import { Masks, ReduceCapacity, Biotech, Vaccines } from '@mui/icons-material';
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -98,30 +99,30 @@ const useStyles = makeStyles((theme) => ({
 
 function MaskSlider(props) {
   return (
-    <InputSlider 
-      label="Mask-Wearing" 
-      percentConfig={props.configs.maskPercent} 
-      icon={Masks} 
+    <InputSlider
+      label="Mask-Wearing"
+      percentConfig={props.configs.maskPercent}
+      icon={Masks}
     />
   );
 }
 
 function CapacitySlider(props) {
   return (
-    <InputSlider 
-      label="Capacity Restrictions" 
-      percentConfig={props.configs.capacityPercent} 
-      icon={ReduceCapacity} 
+    <InputSlider
+      label="Capacity Restrictions"
+      percentConfig={props.configs.capacityPercent}
+      icon={ReduceCapacity}
     />
   );
 }
 
 function MassSlider(props) {
   return (
-    <InputSlider 
-      label="Mass Testing" 
-      percentConfig={props.configs.massPercent} 
-      icon={Biotech} 
+    <InputSlider
+      label="Mass Testing"
+      percentConfig={props.configs.massPercent}
+      icon={Biotech}
     />
   );
 }
@@ -247,10 +248,10 @@ function TargetedShutdown(props) {
 
 function VaccinationSlider(props) {
   return (
-    <InputSlider 
-      label="Vaccinated Population" 
-      percentConfig={props.configs.vaccinePercent} 
-      icon={Vaccines} 
+    <InputSlider
+      label="Vaccinated Population"
+      percentConfig={props.configs.vaccinePercent}
+      icon={Vaccines}
     />
   );
 }

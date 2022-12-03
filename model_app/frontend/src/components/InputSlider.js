@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Slider from '@mui/material/Slider';
 import MuiInput from '@mui/material/Input';
+import ToolTip from "./ToolTip";
 
 const Input = styled(MuiInput)`
   width: 42px;
@@ -47,7 +48,7 @@ export default function InputSlider(props) {
   return (
     <div>
       <Grid container direction="row" alignItems="center">
-        <Grid container spacing={2} alignItems="center">
+        <Grid container spacing={1} alignItems="center">
           <Grid item xs={2}>
             <Typography id="input-slider" style={{ textAlign: 'left', color: 'black' }} gutterBottom>
               {label}
@@ -78,6 +79,9 @@ export default function InputSlider(props) {
           </Grid>
           <Grid item>
             %
+          </Grid>
+          <Grid item xs={1} style={{padding:0}}>
+            <ToolTip description={label} />
           </Grid>
         </Grid>
       </Grid>
