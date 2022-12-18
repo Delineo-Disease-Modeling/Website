@@ -15,10 +15,10 @@ import { Button } from "@material-ui/core";
 import { MobileView } from "react-device-detect";
 
 const unityContext = new UnityContext({
-  loaderUrl: "./Build/UnityBuild.loader.js",
-  dataUrl: "./Build/UnityBuild.data",
-  frameworkUrl: "./Build/UnityBuild.framework.js",
-  codeUrl: "./Build/UnityBuild.wasm",
+  loaderUrl: "./Build/DelineoBuild.loader.js",
+  dataUrl: "./Build/DelineoBuild.data",
+  frameworkUrl: "./Build/DelineoBuild.framework.js",
+  codeUrl: "./Build/DelineoBuild.wasm",
 });
 
 const styles = (theme) => ({
