@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import "./GeneralSimulator.css";
 import { withStyles } from "@material-ui/styles";
 import ConfigurationsPanel from "../components/ConfigurationsPanel";
@@ -68,12 +69,24 @@ class GeneralSimulator extends Component {
     };
   }
 
-  //Update configurations once user presses confirm
+  // Update configurations once user presses confirm
   updateConfigurations = (configs) => {
     this.setState({
       configurations: configs,
     });
   };
+
+  // Update configurations based on API call
+  // TODO: Use this functions once API is implemented
+  fetchConfigurations = async () => {
+    const simulationAPI = "https://covidweb.isi.jhu.edu/api/v1/run_simulation";
+    // TODO: Add body params here if finalized API requires so in request
+    const body = {};
+    
+    await axios.post(simulationAPI, body)
+      .then((response) => this.updateConfigurations(response.data))
+      .catch((error) => console.log(error));
+  }
 
   render() {
     const { classes } = this.props;
@@ -141,6 +154,7 @@ class GeneralSimulator extends Component {
           <Grid item xs={7} style={{ border: '4px solid white', padding: '10px' }}>
             {/* CONFIGURATIONS PANEL */}
             <ConfigurationsPanel
+              // TODO: replace line 162 with updateConfigs={this.fetchConfigurations}
               updateConfigs={this.updateConfigurations}
               configs={this.state.configurations}
             />
