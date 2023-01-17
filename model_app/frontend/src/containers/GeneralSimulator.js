@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import { Cell, Legend, Pie, PieChart } from "recharts";
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis } from "recharts";
 import testdata from "../data/testdata.json";
+import axios from "axios";
 
 const styles = (theme) => ({
   boldTitle: {
@@ -69,10 +70,16 @@ class GeneralSimulator extends Component {
   }
 
   //Update configurations once user presses confirm
-  updateConfigurations = (configs) => {
+  updateConfigurations = async (configs) => {
     this.setState({
       configurations: configs,
     });
+    try {
+      const res = await axios.post("http://localhost:3002/simulator/okc", configs, {
+      })
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   render() {
