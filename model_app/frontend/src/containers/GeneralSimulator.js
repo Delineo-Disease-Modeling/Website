@@ -10,7 +10,9 @@ import Grid from "@material-ui/core/Grid";
 import { Cell, Legend, Pie, PieChart } from "recharts";
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis } from "recharts";
 import testdata from "../data/testdata.json";
-import axios from "axios";
+
+// import leaflet stuff
+import { MapContainer, TileLayer, useMap } from 'react-leaflet'
 
 const styles = (theme) => ({
   boldTitle: {
@@ -90,7 +92,7 @@ class GeneralSimulator extends Component {
     const simulationAPI = "https://covidweb.isi.jhu.edu/api/v1/run_simulation";
     // TODO: Add body params here if finalized API requires so in request
     const body = {};
-    
+
     await axios.post(simulationAPI, body)
       .then((response) => this.updateConfigurations(response.data))
       .catch((error) => console.log(error));
@@ -160,6 +162,16 @@ class GeneralSimulator extends Component {
 
           {/* Middle of screen - top: panel, bottom: chart */}
           <Grid item xs={7} style={{ border: '4px solid white', padding: '10px' }}>
+
+            {/* Most basic map */}
+            <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+            </MapContainer>
+
+
             {/* CONFIGURATIONS PANEL */}
             <ConfigurationsPanel
               // TODO: replace line 162 with updateConfigs={this.fetchConfigurations}
