@@ -33,7 +33,7 @@ const styles = (theme) => ({
     alignItems: "center",
     whiteSpace: "pre-wrap",
   },
-})
+});
 
 const data = [
   {
@@ -46,18 +46,43 @@ const data = [
   },
 ];
 
-// Typography for Parameter Summary 
+// Typography for Parameter Summary
 function SummaryTypography(props) {
-
   return (
     <div>
-      <Typography sytle={{ color: 'white' }}>
-        {props.parameter}:
-      </Typography>
-      <Typography variant='h6' style={{ color: 'red', fontWeight: 900, textAlign: 'center' }}>
+      <Typography sytle={{ color: "white" }}>{props.parameter}:</Typography>
+      <Typography
+        variant="h6"
+        style={{ color: "red", fontWeight: 900, textAlign: "center" }}
+      >
         {props.value}
       </Typography>
     </div>
+  );
+}
+
+
+function LocationMarker() {
+  const [position, setPosition] = useState(null)
+  const map = useMapEvents({
+    async click(e) {
+      setPosition(e.latlng)
+      map.flyTo(e.latlng, map.getZoom())
+
+      const simulationAPI = "https://covidmod.isi.jhu.edu/simulation";
+
+      const body = { "location": { "lat": e.latlng.lat, "long": e.latlng.long } };
+
+      await axios.post(simulationAPI, body)
+
+    },
+
+  })
+
+  return position === null ? null : (
+    <Marker position={position}>
+      <Popup>You are here</Popup>
+    </Marker>
   )
 }
 
@@ -107,15 +132,18 @@ class GeneralSimulator extends Component {
   }
 
   //Update configurations once user presses confirm
-  updateConfigurations = async (configs) => {
+  updateConfigurations = async (configs, useDB) => {
     this.setState({
       configurations: configs,
     });
     try {
-      const res = await axios.post("http://localhost:3002/simulator/okc", configs, {
-      })
+      console.log(configs);
+      console.log("useDB: " + useDB);
+      const res = await axios
+        .post("https://covidmod.isi.jhu.edu/simulation/", configs, useDB, {})
+        .then((response) => console.log(response.data));
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
@@ -136,130 +164,96 @@ class GeneralSimulator extends Component {
 
     return (
       <div className="content" style={{ backgroundColor: "#1F2325" }}>
-        <Typography variant="h3" className={classes.boldTitle}>Oklahoma City</Typography>
-
-        {/* Divide screen into left, middle, right */}
-        <Grid
-          container
-          justifyContent="center"
-          alignItems={"stretch"}
-          direction="row"
-          spacing={0}
+        <Typography variant="h3" className={classes.boldTitle}>
+          <b>COVID-19 Simulator</b>
+        </Typography>
+        <h4
+          style={{
+            color: "white",
+          }}
         >
-          {/* Left panel of screen = Summary */}
-          <Grid item xs={2} style={{ border: '4px solid white' }}>
+          <b>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </b>
+          <div
+            style={{
+              paddingBottom: "20px",
+            }}
+          ></div>
+        </h4>
+        {/* CONFIGURATIONS PANEL */}
+        <ConfigurationsPanel
+          updateConfigs={this.updateConfigurations}
+          configs={this.state.configurations}
+        />
 
-            {/* SUMMARY of parameter settings */}
-            <Card style={{ textAlign: "left", margin: 0, width: "100%", padding: "5px" }}>
-              <Typography variant="h5" style={{ color: 'white' }}>
-                Settings:
-              </Typography>
-              <SummaryTypography
-                parameter='mask wearing percent'
-                value={this.state.configurations.maskPercent}
+        {/* Bar Chart */}
+        <div
+          style={{
+            marginBottom: "20px",
+            marginTop: "20px",
+          }}
+        >
+          <BarChart
+            width={1200}
+            height={250}
+            data={testdata}
+            style={{
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
+            <Legend verticalAlign="bottom" height={36} />
+            <Bar dataKey="TotalNotInfected" stackId="a" fill="#8884d8" />
+            <Bar dataKey="TotalInfections" stackId="a" fill="#82ca9d" />
+            <CartesianGrid stroke="#ccc" />
+            <XAxis dataKey="BuildingName" />
+            <YAxis dataKey="TotalPeople" />
+          </BarChart>
+        </div>
+        <PieChart
+          width={350}
+          height={300}
+          style={{
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        >
+          <Pie
+            data={data}
+            color="#000000"
+            dataKey="count"
+            nameKey="name"
+            cx="50%"
+            cy="50%"
+            outerRadius={120}
+            fill="#8884d8"
+          >
+            {data.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={this.COLORS[index % this.COLORS.length]}
               />
-              <SummaryTypography
-                parameter='capacity restrictions'
-                value={this.state.configurations.capacityPercent}
-              />
-              <SummaryTypography
-                parameter='mass testing'
-                value={this.state.configurations.massPercent}
-              />
-              <SummaryTypography
-                parameter='stay at home order'
-                value={this.state.configurations.stayAtHome.toString()}
-              />
-              <SummaryTypography
-                parameter='schools'
-                value={this.state.configurations.schoolsShutdown.toString()}
-              />
-              <SummaryTypography
-                parameter='restaurants'
-                value={this.state.configurations.restaurantsShutdown.toString()}
-              />
-              <SummaryTypography
-                parameter='gyms'
-                value={this.state.configurations.gymsShutdown.toString()}
-              />
-              <SummaryTypography
-                parameter='bars'
-                value={this.state.configurations.barsShutdown.toString()}
-              />
-              <SummaryTypography
-                parameter='vaccination percent'
-                value={this.state.configurations.vaccinePercent}
-              />
-            </Card>
-          </Grid>
-
-          {/* Middle of screen - top: panel, bottom: chart */}
-          <Grid item xs={7} style={{ border: '4px solid white', padding: '10px' }}>
-
-          
-            {/* Very basic map */}
-            <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
-              <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              />
-              <LocationMarker />
-            </MapContainer>
-
-
-            <ConfigurationsPanel
-              // TODO: replace line 162 with updateConfigs={this.fetchConfigurations}
-              updateConfigs={this.updateConfigurations}
-              configs={this.state.configurations}
-            />
-
-            {/* Infections Chart */}
-            <InfectionsChart />
-          </Grid>
-
-          {/* Right panel - more chart(s) */}
-          <Grid item xs={3} style={{ backgroundColor: "#1F2325", border: '4px solid white' }} >
-
-            {/* PIE CHART */}
-            <PieChart width={350} height={300}>
-              <Pie
-                data={data}
-                color="#000000"
-                dataKey="count"
-                nameKey="name"
-                cx="50%"
-                cy="50%"
-                outerRadius={120}
-                fill="#8884d8"
-              >
-                {data.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={this.COLORS[index % this.COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <ToolTip description={"Percentage of infected individuals"} />
-              <Legend />
-            </PieChart>
-          </Grid>
-
-          {/* Bottom panel - more chart(s) */}
-          <Grid item xs={12} style={{ backgroundColor: "#1F2325", border: '4px solid white', padding: '10px' }}>
-
-            {/* Bar Chart */}
-            <BarChart width={1200} height={250} data={testdata}>
-              <Legend verticalAlign="bottom" height={36} />
-              <Bar dataKey="TotalNotInfected" stackId="a" fill="#8884d8" />
-              <Bar dataKey="TotalInfections" stackId="a" fill="#82ca9d" />
-              <CartesianGrid stroke="#ccc" />
-              <XAxis dataKey="BuildingName" />
-              <YAxis dataKey="TotalPeople" />
-            </BarChart>
-          </Grid>
-        </Grid>
-      </div >
-
+            ))}
+          </Pie>
+          <ToolTip description={"Percentage of infected individuals"} />
+          <Legend />
+        </PieChart>
+        <InfectionsChart
+          style={{
+            marginLeft: "50%",
+            marginRight: "50%",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        />
+      </div>
     );
   }
 }
