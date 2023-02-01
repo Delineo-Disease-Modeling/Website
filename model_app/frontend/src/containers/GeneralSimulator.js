@@ -10,17 +10,22 @@ import Grid from "@material-ui/core/Grid";
 import { Cell, Legend, Pie, PieChart } from "recharts";
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis } from "recharts";
 import testdata from "../data/testdata.json";
-import { MapContainer, TileLayer, useMapEvents, Marker, Popup } from 'react-leaflet';
-import L from 'leaflet';
+import {
+  MapContainer,
+  TileLayer,
+  useMapEvents,
+  Marker,
+  Popup,
+} from "react-leaflet";
+import L from "leaflet";
 
 delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+  iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
+  iconUrl: require("leaflet/dist/images/marker-icon.png"),
+  shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
 });
-
 
 const styles = (theme) => ({
   boldTitle: {
@@ -33,7 +38,7 @@ const styles = (theme) => ({
     alignItems: "center",
     whiteSpace: "pre-wrap",
   },
-})
+});
 
 const data = [
   {
@@ -46,44 +51,43 @@ const data = [
   },
 ];
 
-// Typography for Parameter Summary 
+// Typography for Parameter Summary
 function SummaryTypography(props) {
-
   return (
     <div>
-      <Typography sytle={{ color: 'white' }}>
-        {props.parameter}:
-      </Typography>
-      <Typography variant='h6' style={{ color: 'red', fontWeight: 900, textAlign: 'center' }}>
+      <Typography sytle={{ color: "white" }}>{props.parameter}:</Typography>
+      <Typography
+        variant="h6"
+        style={{ color: "red", fontWeight: 900, textAlign: "center" }}
+      >
         {props.value}
       </Typography>
     </div>
-  )
+  );
 }
 
+let location = {
+  lat: 35.4676,
+  lng: 97.5164,
+  actual: "Oklahoma City",
+};
 
 function LocationMarker() {
-  const [position, setPosition] = useState(null)
+  const [position, setPosition] = useState(null);
   const map = useMapEvents({
     async click(e) {
-      setPosition(e.latlng)
-      map.flyTo(e.latlng, map.getZoom())
+      setPosition(e.latlng);
+      map.flyTo(e.latlng, map.getZoom());
 
-      const simulationAPI = "https://covidmod.isi.jhu.edu/simulation";
-
-      const body = { "location": { "lat": e.latlng.lat, "long": e.latlng.long } };
-
-      await axios.post(simulationAPI, body)
-
+      location = { lat: e.latlng.lat, long: e.latlng.long };
     },
-
-  })
+  });
 
   return position === null ? null : (
     <Marker position={position}>
       <Popup>You are here</Popup>
     </Marker>
-  )
+  );
 }
 
 class GeneralSimulator extends Component {
@@ -107,15 +111,25 @@ class GeneralSimulator extends Component {
   }
 
   //Update configurations once user presses confirm
-  updateConfigurations = async (configs) => {
+  updateConfigurations = async (configs, useDB) => {
     this.setState({
       configurations: configs,
     });
     try {
-      const res = await axios.post("http://localhost:3002/simulator/okc", configs, {
-      })
+      console.log(configs);
+      console.log("useDB: " + useDB);
+      console.log(location.actual);
+      const res = await axios
+        .post(
+          "https://covidmod.isi.jhu.edu/simulation/",
+          configs,
+          useDB,
+          location.actual,
+          {}
+        )
+        .then((response) => console.log(response.data));
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
@@ -126,17 +140,20 @@ class GeneralSimulator extends Component {
     // TODO: Add body params here if finalized API requires so in request
     const body = {};
 
-    await axios.post(simulationAPI, body)
+    await axios
+      .post(simulationAPI, body)
       .then((response) => this.updateConfigurations(response.data))
       .catch((error) => console.log(error));
-  }
+  };
 
   render() {
     const { classes } = this.props;
 
     return (
       <div className="content" style={{ backgroundColor: "#1F2325" }}>
-        <Typography variant="h3" className={classes.boldTitle}>Oklahoma City</Typography>
+        <Typography variant="h3" className={classes.boldTitle}>
+          Oklahoma City
+        </Typography>
 
         {/* Divide screen into left, middle, right */}
         <Grid
@@ -147,65 +164,76 @@ class GeneralSimulator extends Component {
           spacing={0}
         >
           {/* Left panel of screen = Summary */}
-          <Grid item xs={2} style={{ border: '4px solid white' }}>
-
+          <Grid item xs={2} style={{ border: "4px solid white" }}>
             {/* SUMMARY of parameter settings */}
-            <Card style={{ textAlign: "left", margin: 0, width: "100%", padding: "5px" }}>
-              <Typography variant="h5" style={{ color: 'white' }}>
+            <Card
+              style={{
+                textAlign: "left",
+                margin: 0,
+                width: "100%",
+                padding: "5px",
+              }}
+            >
+              <Typography variant="h5" style={{ color: "white" }}>
                 Settings:
               </Typography>
               <SummaryTypography
-                parameter='mask wearing percent'
+                parameter="mask wearing percent"
                 value={this.state.configurations.maskPercent}
               />
               <SummaryTypography
-                parameter='capacity restrictions'
+                parameter="capacity restrictions"
                 value={this.state.configurations.capacityPercent}
               />
               <SummaryTypography
-                parameter='mass testing'
+                parameter="mass testing"
                 value={this.state.configurations.massPercent}
               />
               <SummaryTypography
-                parameter='stay at home order'
+                parameter="stay at home order"
                 value={this.state.configurations.stayAtHome.toString()}
               />
               <SummaryTypography
-                parameter='schools'
+                parameter="schools"
                 value={this.state.configurations.schoolsShutdown.toString()}
               />
               <SummaryTypography
-                parameter='restaurants'
+                parameter="restaurants"
                 value={this.state.configurations.restaurantsShutdown.toString()}
               />
               <SummaryTypography
-                parameter='gyms'
+                parameter="gyms"
                 value={this.state.configurations.gymsShutdown.toString()}
               />
               <SummaryTypography
-                parameter='bars'
+                parameter="bars"
                 value={this.state.configurations.barsShutdown.toString()}
               />
               <SummaryTypography
-                parameter='vaccination percent'
+                parameter="vaccination percent"
                 value={this.state.configurations.vaccinePercent}
               />
             </Card>
           </Grid>
 
           {/* Middle of screen - top: panel, bottom: chart */}
-          <Grid item xs={7} style={{ border: '4px solid white', padding: '10px' }}>
-
-          
+          <Grid
+            item
+            xs={7}
+            style={{ border: "4px solid white", padding: "10px" }}
+          >
             {/* Very basic map */}
-            <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+            <MapContainer
+              center={[51.505, -0.09]}
+              zoom={13}
+              scrollWheelZoom={false}
+            >
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
               <LocationMarker />
             </MapContainer>
-
 
             <ConfigurationsPanel
               // TODO: replace line 162 with updateConfigs={this.fetchConfigurations}
@@ -218,8 +246,11 @@ class GeneralSimulator extends Component {
           </Grid>
 
           {/* Right panel - more chart(s) */}
-          <Grid item xs={3} style={{ backgroundColor: "#1F2325", border: '4px solid white' }} >
-
+          <Grid
+            item
+            xs={3}
+            style={{ backgroundColor: "#1F2325", border: "4px solid white" }}
+          >
             {/* PIE CHART */}
             <PieChart width={350} height={300}>
               <Pie
@@ -245,8 +276,15 @@ class GeneralSimulator extends Component {
           </Grid>
 
           {/* Bottom panel - more chart(s) */}
-          <Grid item xs={12} style={{ backgroundColor: "#1F2325", border: '4px solid white', padding: '10px' }}>
-
+          <Grid
+            item
+            xs={12}
+            style={{
+              backgroundColor: "#1F2325",
+              border: "4px solid white",
+              padding: "10px",
+            }}
+          >
             {/* Bar Chart */}
             <BarChart width={1200} height={250} data={testdata}>
               <Legend verticalAlign="bottom" height={36} />
@@ -258,8 +296,7 @@ class GeneralSimulator extends Component {
             </BarChart>
           </Grid>
         </Grid>
-      </div >
-
+      </div>
     );
   }
 }
