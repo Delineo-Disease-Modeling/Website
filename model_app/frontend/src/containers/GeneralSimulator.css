@@ -2,3 +2,7 @@
     background-color: rgba(49,53,56,255);
     overflow: auto;
 }
+.leaflet-container {
+    
+    height: 50vh;
+  }

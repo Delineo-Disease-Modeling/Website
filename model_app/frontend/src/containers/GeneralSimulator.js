@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import axios from "axios";
 import "./GeneralSimulator.css";
 import { withStyles } from "@material-ui/styles";
@@ -10,7 +10,17 @@ import Grid from "@material-ui/core/Grid";
 import { Cell, Legend, Pie, PieChart } from "recharts";
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis } from "recharts";
 import testdata from "../data/testdata.json";
-import axios from "axios";
+import { MapContainer, TileLayer, useMapEvents, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
+
+delete L.Icon.Default.prototype._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+  iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+});
+
 
 const styles = (theme) => ({
   boldTitle: {
@@ -48,6 +58,31 @@ function SummaryTypography(props) {
         {props.value}
       </Typography>
     </div>
+  )
+}
+
+
+function LocationMarker() {
+  const [position, setPosition] = useState(null)
+  const map = useMapEvents({
+    async click(e) {
+      setPosition(e.latlng)
+      map.flyTo(e.latlng, map.getZoom())
+
+      const simulationAPI = "https://covidmod.isi.jhu.edu/simulation";
+
+      const body = { "location": { "lat": e.latlng.lat, "long": e.latlng.long } };
+
+      await axios.post(simulationAPI, body)
+
+    },
+
+  })
+
+  return position === null ? null : (
+    <Marker position={position}>
+      <Popup>You are here</Popup>
+    </Marker>
   )
 }
 
@@ -90,7 +125,7 @@ class GeneralSimulator extends Component {
     const simulationAPI = "https://covidweb.isi.jhu.edu/api/v1/run_simulation";
     // TODO: Add body params here if finalized API requires so in request
     const body = {};
-    
+
     await axios.post(simulationAPI, body)
       .then((response) => this.updateConfigurations(response.data))
       .catch((error) => console.log(error));
@@ -161,6 +196,16 @@ class GeneralSimulator extends Component {
           {/* Middle of screen - top: panel, bottom: chart */}
           <Grid item xs={7} style={{ border: '4px solid white', padding: '10px' }}>
             {/* CONFIGURATIONS PANEL */}
+
+
+            <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              <LocationMarker />
+
+            </MapContainer>
             <ConfigurationsPanel
               // TODO: replace line 162 with updateConfigs={this.fetchConfigurations}
               updateConfigs={this.updateConfigurations}
