@@ -4,11 +4,6 @@ import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
 import Snackbar from "@material-ui/core/Snackbar";
 import TabPanel from "./SimulationPanel";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -92,31 +87,12 @@ const useStyles = makeStyles((theme) => ({
   buttonSection: {
     textAlign: "center",
   },
-
-  dialogTitle: {
-    //textAlign: "center",
-  },
-
-  dialogText: {
-    color: "white",
-    //textAlign: "center",
-  },
-
-  dialogButton: {
-    color: "#66FCF1",
-    border: "2px solid #66FCF1",
-    alignSelf: "center",
-    "&:hover": {
-      color: "black",
-      backgroundColor: "#66FCF1",
-    },
-  },
 }));
 
 function ConfirmButton(props) {
   const classes = useStyles();
   const [showError, setShowError] = React.useState(false);
-  const [showDBRequest, setShowDBRequest] = React.useState(false);
+
   const handleClick = (event) => {
     let configs = props.configs;
     if (
@@ -127,60 +103,10 @@ function ConfirmButton(props) {
     ) {
       setShowError(true);
     } else {
-      setShowDBRequest((prevState) => {
-        return !prevState;
-      });
+      props.updateConfigs(configs); //configs get updated in parent component
     }
   };
 
-  const handleClickDB = (configs) => {
-    return (
-      <Dialog
-        open={showDBRequest}
-        onClose={() =>
-          setShowDBRequest((prevState) => {
-            return !prevState;
-          })
-        }
-      >
-        <DialogTitle className={classes.dialogTitle}>
-          Pre-Generated Simulation
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText className={classes.dialogText}>
-            Would you like to use a pre-existing simulation from our database?
-            This will greatly decrease runtime.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            onClick={() => {
-              setShowDBRequest((prevState) => {
-                return !prevState;
-              });
-              props.updateConfigs(configs, false); //configs get updated in parent component
-            }}
-            //autoFocus
-            className={classes.dialogButton}
-          >
-            No
-          </Button>
-          <Button
-            onClick={() => {
-              setShowDBRequest((prevState) => {
-                return !prevState;
-              });
-              props.updateConfigs(configs, true); //configs get updated in parent component
-            }}
-            //autoFocus
-            className={classes.dialogButton}
-          >
-            Yes
-          </Button>
-        </DialogActions>
-      </Dialog>
-    );
-  };
   //Closes invalid input toast
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -188,7 +114,6 @@ function ConfirmButton(props) {
     }
     setShowError(false);
   };
-  if (showDBRequest) return handleClickDB(props.configs);
 
   return (
     <div>
@@ -216,19 +141,11 @@ export default function ConfigurationsPanel(props) {
   let configs = JSON.parse(JSON.stringify(props.configs)); //Create a deep copy of parent configurations
 
   return (
-    <div
-      style={{
-        borderBottom: "4px solid white",
-        margin: 0,
-        width: "1000px",
-        marginLeft: "auto",
-        marginRight: "auto",
-      }}
-    >
+    <div style={{borderBottom: '4px solid white', margin:0}}>
       <div className={classes.root}>
         <TabPanel conf={configs} />
       </div>
-      <div className={classes.root}>
+      <div className={classes.root} >
         <div className={classes.buttonSection}>
           <ConfirmButton
             className={classes.confBtn}
