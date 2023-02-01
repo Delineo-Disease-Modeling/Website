@@ -195,17 +195,18 @@ class GeneralSimulator extends Component {
 
           {/* Middle of screen - top: panel, bottom: chart */}
           <Grid item xs={7} style={{ border: '4px solid white', padding: '10px' }}>
-            {/* CONFIGURATIONS PANEL */}
 
-
+          
+            {/* Very basic map */}
             <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
               <LocationMarker />
-
             </MapContainer>
+
+
             <ConfigurationsPanel
               // TODO: replace line 162 with updateConfigs={this.fetchConfigurations}
               updateConfigs={this.updateConfigurations}
