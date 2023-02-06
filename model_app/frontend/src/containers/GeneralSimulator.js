@@ -116,17 +116,12 @@ class GeneralSimulator extends Component {
       configurations: configs,
     });
     try {
-      console.log(configs);
-      console.log("useDB: " + useDB);
-      console.log(location.actual);
+      configs.useDB = useDB;
+      configs.location = location.actual || "Oklahoma City";
+      let url = "https://covidmod.isi.jhu.edu/simulation/";
+      let testurl = "http://localhost:5000/simulation/";
       const res = await axios
-        .post(
-          "https://covidmod.isi.jhu.edu/simulation/",
-          configs,
-          useDB,
-          location.actual,
-          {}
-        )
+        .post(testurl, configs, {})
         .then((response) => console.log(response.data));
     } catch (error) {
       console.log(error);
