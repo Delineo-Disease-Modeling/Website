@@ -120,7 +120,7 @@ class GeneralSimulator extends Component {
       configs.location = location.actual || "Oklahoma City";
       let url = "https://covidmod.isi.jhu.edu/simulation/";
       let testurl = "http://localhost:5000/simulation/";
-      const res = await axios.post(url, configs); 
+      const res = await axios.post(url, configs, {timeout: 2000}); 
       console.log(res.data);
     } catch (error) {
       console.log(error);
