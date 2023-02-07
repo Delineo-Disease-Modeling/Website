@@ -15,7 +15,7 @@ const teamsList = (searchTerm) => {
   team.forEach((person) => {
     if (person.inDelineo) {
       if (
-        person.role === "Machine Learning" ||
+        person.role === "Algorithms" ||
         person.role === "Simulation" ||
         person.role === "Fullstack" ||
         person.role === "Information Support"
@@ -30,7 +30,7 @@ const teamsList = (searchTerm) => {
             teamFullList.push(person);
           }
           break;
-        case "Machine Learning":
+        case "Algorithms":
           if (type === "ml") {
             teamFullList.push(person);
           }
@@ -71,7 +71,7 @@ const teamsList = (searchTerm) => {
             teamFullList.push(person);
           }
           break;
-        case "Machine Learning Lead":
+        case "Algorithms Lead":
           if (type === "leader") {
             teamFullList[3] = person;
           } else if (type === "ml") {
