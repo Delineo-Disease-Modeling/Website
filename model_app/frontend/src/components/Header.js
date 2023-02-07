@@ -62,17 +62,6 @@ const Header = () => {
                 Simulators
               </DropdownToggle>
               <DropdownMenu id="dropdown-menu" style={{ paddingRight: "8%" }}>
-                <div style={{ marginBottom: "5%", marginLeft: "8%" }}>
-                  <NavLink
-                    className="Nav-link"
-                    id="dropdown-link"
-                    to="/simulator"
-                    activeClassName="active"
-                    activeStyle={active}
-                  >
-                    Anytown
-                  </NavLink>
-                </div>
                 <div
                   style={{
                     marginBottom: "5%",
@@ -87,7 +76,18 @@ const Header = () => {
                     activeClassName="active"
                     activeStyle={active}
                   >
-                    Oklahoma City
+                    COVID-19 Simulator
+                  </NavLink>
+                </div>
+                <div style={{ marginBottom: "5%", marginLeft: "8%" }}>
+                  <NavLink
+                    className="Nav-link"
+                    id="dropdown-link"
+                    to="/simulator"
+                    activeClassName="active"
+                    activeStyle={active}
+                  >
+                    Anytown
                   </NavLink>
                 </div>
               </DropdownMenu>

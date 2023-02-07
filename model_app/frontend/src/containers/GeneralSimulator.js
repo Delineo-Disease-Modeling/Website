@@ -120,9 +120,8 @@ class GeneralSimulator extends Component {
       configs.location = location.actual || "Oklahoma City";
       let url = "https://covidmod.isi.jhu.edu/simulation/";
       let testurl = "http://localhost:5000/simulation/";
-      const res = await axios
-        .post(testurl, configs, {})
-        .then((response) => console.log(response.data));
+      const res = await axios.post(url, configs); 
+      console.log(res.data);
     } catch (error) {
       console.log(error);
     }
@@ -147,7 +146,7 @@ class GeneralSimulator extends Component {
     return (
       <div className="content" style={{ backgroundColor: "#1F2325" }}>
         <Typography variant="h3" className={classes.boldTitle}>
-          Oklahoma City
+          COVID-19 Simulator
         </Typography>
 
         {/* Divide screen into left, middle, right */}
