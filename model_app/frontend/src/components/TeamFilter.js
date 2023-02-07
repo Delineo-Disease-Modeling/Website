@@ -288,7 +288,7 @@ const TeamFilter = (props) => {
                       type="body2"
                       style={{ fontWeight: "bold", fontSize: "16px" }}
                     >
-                      Machine Learning
+                      Algorithms
                     </Typography>
                   }
                 />
@@ -432,7 +432,7 @@ const TeamFilter = (props) => {
         <div>
           <div align="center">
             <Typography className={resize()}>
-              The machine learning group is tackling the challenge of learning
+              The algorithms group is tackling the challenge of learning
               from the massive amounts of geolocation data the Delineo project
               has access to. One of the main focuses is on developing machine
               learning models that are capable of discerning and generating
