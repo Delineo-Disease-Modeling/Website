@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, useEffect } from "react";
 import axios from "axios";
 import "./GeneralSimulator.css";
 import { withStyles } from "@material-ui/styles";
@@ -10,8 +10,10 @@ import Grid from "@material-ui/core/Grid";
 import { Cell, Legend, Pie, PieChart } from "recharts";
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis } from "recharts";
 import testdata from "../data/testdata.json";
-import { MapContainer, TileLayer, useMapEvents, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, useMapEvents, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
+import "leaflet-geosearch/dist/geosearch.css";
+import { GeoSearchControl, OpenStreetMapProvider } from "leaflet-geosearch";
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -46,6 +48,9 @@ const data = [
   },
 ];
 
+// Starting point for map: JHU
+const jhuCoords = [39.328888, -76.620277]
+
 // Typography for Parameter Summary 
 function SummaryTypography(props) {
 
@@ -62,7 +67,9 @@ function SummaryTypography(props) {
 }
 
 
-function LocationMarker() {
+
+// Location marker popup
+  function LocationMarker() {
   const [position, setPosition] = useState(null)
   const map = useMapEvents({
     async click(e) {
@@ -84,6 +91,25 @@ function LocationMarker() {
       <Popup>You are here</Popup>
     </Marker>
   )
+}
+
+// Location search feature
+function LeafletgeoSearch() {
+  const map = useMap();
+  useEffect(() => {
+    const provider = new OpenStreetMapProvider();
+
+    const searchControl = new GeoSearchControl({
+      provider,
+      showMarker: false
+    });
+
+    map.addControl(searchControl);
+
+    return () => map.removeControl(searchControl);
+  }, []);
+
+  return null;
 }
 
 class GeneralSimulator extends Component {
@@ -198,12 +224,14 @@ class GeneralSimulator extends Component {
 
           
             {/* Very basic map */}
-            <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+            <MapContainer center={jhuCoords} zoom={15} scrollWheelZoom={false}>
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
+              <LeafletgeoSearch />
               <LocationMarker />
+              
             </MapContainer>
 
 
