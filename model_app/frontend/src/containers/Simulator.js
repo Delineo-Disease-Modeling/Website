@@ -4,7 +4,7 @@ import "./Simulator.css";
 import axios from "axios";
 import { withStyles } from "@material-ui/styles";
 import Grid from "@material-ui/core/Grid";
-import Unity, { UnityContext } from "react-unity-webgl";
+import UnityObject from "../components/UnityObject";
 import Typography from "@material-ui/core/Typography";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -13,13 +13,6 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { Button } from "@material-ui/core";
 import { MobileView } from "react-device-detect";
-
-const unityContext = new UnityContext({
-  loaderUrl: "./Build/UnityBuild.loader.js",
-  dataUrl: "./Build/UnityBuild.data",
-  frameworkUrl: "./Build/UnityBuild.framework.js",
-  codeUrl: "./Build/UnityBuild.wasm",
-});
 
 const styles = (theme) => ({
   bubble: {
@@ -81,6 +74,7 @@ const styles = (theme) => ({
 });
 
 class Simulator extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -282,15 +276,7 @@ class Simulator extends Component {
               Welcome to Anytown, USA
             </Typography>
             <div>
-              <Unity
-                unityContext={unityContext}
-                style={{
-                  height: "100%",
-                  width: "950px",
-                  border: "2px solid black",
-                  background: "grey",
-                }}
-              />
+              <UnityObject />
             </div>
             <br></br>
 

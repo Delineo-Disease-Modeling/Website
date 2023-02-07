@@ -294,36 +294,40 @@ const TeamFilter = (props) => {
                 />
               </ColorListItem>
             </Grid>
-            <Grid item className={classes.gridItem}>
-              <ColorListItem
-                button
-                selected={info}
-                onClick={() =>
-                  setFilterState({
-                    all: false,
-                    fs: false,
-                    sim: false,
-                    ml: false,
-                    info: true,
-                    past: false,
-                  })
-                }
-              >
-                <ListItemText
-                  className={
-                    filterState.info ? classes.clickedOn : classes.selectedColor
+            {false ? (
+              <Grid item className={classes.gridItem}>
+                <ColorListItem
+                  button
+                  selected={info}
+                  onClick={() =>
+                    setFilterState({
+                      all: false,
+                      fs: false,
+                      sim: false,
+                      ml: false,
+                      info: true,
+                      past: false,
+                    })
                   }
-                  primary={
-                    <Typography
-                      type="body2"
-                      style={{ fontWeight: "bold", fontSize: "16px" }}
-                    >
-                      Information Support
-                    </Typography>
-                  }
-                />
-              </ColorListItem>
-            </Grid>
+                >
+                  <ListItemText
+                    className={
+                      filterState.info
+                        ? classes.clickedOn
+                        : classes.selectedColor
+                    }
+                    primary={
+                      <Typography
+                        type="body2"
+                        style={{ fontWeight: "bold", fontSize: "16px" }}
+                      >
+                        Information Support
+                      </Typography>
+                    }
+                  />
+                </ColorListItem>
+              </Grid>
+            ) : null}
             <Grid item className={classes.gridItem}>
               <ColorListItem
                 button
@@ -432,9 +436,9 @@ const TeamFilter = (props) => {
         <div>
           <div align="center">
             <Typography className={resize()}>
-              The algorithms group is tackling the challenge of learning
-              from the massive amounts of geolocation data the Delineo project
-              has access to. One of the main focuses is on developing machine
+              The algorithms group is tackling the challenge of learning from
+              the massive amounts of geolocation data the Delineo project has
+              access to. One of the main focuses is on developing machine
               learning models that are capable of discerning and generating
               population movement patterns within communities ranging from rural
               towns to urban cities.
