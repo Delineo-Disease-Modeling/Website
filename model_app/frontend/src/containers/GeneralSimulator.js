@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component, useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import "./GeneralSimulator.css";
 import { withStyles } from "@material-ui/styles";
@@ -50,6 +50,12 @@ const data = [
 // Starting point for map: JHU
 const jhuCoords = [39.328888, -76.620277]
 
+
+const usBounds = [
+  [49.3457868, -124.7844079],
+  [24.7433195, -66.9513812]
+];
+
 // Typography for Parameter Summary 
 function SummaryTypography(props) {
   return (
@@ -68,25 +74,48 @@ function SummaryTypography(props) {
 let location = {
   lat: 35.4676,
   lng: 97.5164,
-  actual: "Oklahoma City",
+  city: "Oklahoma City",
+  state: "Oklahoma",
+  country: "United States"
 };
 
 
 // Location marker popup
 function LocationMarker() {
   const [position, setPosition] = useState(null)
+  const [city, setCity] = useState(null);
+  const [state, setState] = useState(null);
+
   const map = useMapEvents({
     async click(e) {
-      setPosition(e.latlng);
+
       map.flyTo(e.latlng, map.getZoom());
 
-      location = { lat: e.latlng.lat, long: e.latlng.long };
+      const reverseGeocodeURL = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&featureTypes=&location=" + e.latlng.lng + "%2C" + e.latlng.lat;
+      const response = await axios.get(reverseGeocodeURL);
+
+      // Make sure there is no error in response, and that only USA regions can be selected (for now)
+      if (response.data.address != null && response.data.address.CntryName === "United States") {
+
+        location = {
+          lat: e.latlng.lat,
+          long: e.latlng.lng,
+          city: response.data.address.City,
+          state: response.data.address.Region,
+          country: response.data.address.CntryName
+        };
+
+        setPosition(e.latlng);
+        setCity(location.city);
+        setState(location.state);
+      }
+
     },
   });
 
   return position === null ? null : (
     <Marker position={position}>
-      <Popup>You are here</Popup>
+      <Popup>{city}, {state}</Popup>
     </Marker>
   );
 }
@@ -137,7 +166,8 @@ class GeneralSimulator extends Component {
     });
     try {
       configs.useDB = useDB;
-      configs.location = location.actual || "Oklahoma City";
+      configs.location = location;
+
       let url = "https://covidmod.isi.jhu.edu/simulation/";
       let testurl = "http://localhost:5000/simulation/";
       const res = await axios
@@ -238,14 +268,13 @@ class GeneralSimulator extends Component {
             style={{ border: "4px solid white", padding: "10px" }}
           >
             {/* Very basic map */}
-            <MapContainer center={jhuCoords} zoom={15} scrollWheelZoom={false}>
+            <MapContainer center={jhuCoords} zoom={15} scrollWheelZoom={false} >
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
               <LeafletgeoSearch />
               <LocationMarker />
-
             </MapContainer>
 
             <ConfigurationsPanel
