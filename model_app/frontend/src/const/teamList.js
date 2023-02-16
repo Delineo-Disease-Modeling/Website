@@ -108,6 +108,7 @@ import karAlaImg from "../images/Karry Alams.jpeg";
 import yooChaImg from "../images/Yoohyuk Chang.jpg";
 import josPinImg from "../images/Jose Pineda.jpeg";
 import aliYanImg from "../images/Yunyi Yang.JPG";
+import treBlaImg from "../images/Trevor Black.jpg";
 import invalid from "../images/person-icon.png";
 
 const teamList = [
@@ -1036,6 +1037,12 @@ const teamList = [
     role: "Algorithms",
     description: "N/A",
     img: invalid,
+    inDelineo: true,
+  }, {
+    name: "Trevor Black",
+    role: "Fullstack",
+    description: "Computer Science",
+    img: treBlaImg,
     inDelineo: true,
   }
 ];
