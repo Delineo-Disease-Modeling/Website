@@ -2,3 +2,4 @@ backend/package-lock.json
 package-lock.json
 node_modules/
 frontend/src/Unity/WebGL\ Builds/.DS_Store
+frontend/build
