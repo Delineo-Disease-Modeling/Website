@@ -63,6 +63,11 @@ function App() {
                 path="/teamapplication"
                 component={TeamApplication}
               />
+              <Route
+                exact
+                path="/generalsimulator"
+                component={GeneralSimulator}
+              />
             </Switch>
             <Footer />
           </Router>
