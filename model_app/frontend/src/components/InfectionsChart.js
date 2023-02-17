@@ -13,10 +13,10 @@ class InfectionsChart extends React.Component {
   render() {
     return (
       <AreaChart
-        width={730}
+        width={600}
         height={300}
         data={data}
-        margin={{ top: 50, right: 30, left: 0, bottom: 2 }}
+        margin={{ top: 20, right: 20, left: 20, bottom: 20 }}
       >
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">

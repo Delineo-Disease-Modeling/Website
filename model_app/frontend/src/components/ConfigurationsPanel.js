@@ -218,11 +218,10 @@ export default function ConfigurationsPanel(props) {
   return (
     <div
       style={{
-        borderBottom: "4px solid white",
-        margin: 0,
-        width: "1000px",
-        marginLeft: "auto",
-        marginRight: "auto",
+        width: "100%",
+        marginLeft: "10px",
+        marginRight: "10px",
+        marginBottom: "10px",
       }}
     >
       <div className={classes.root}>
