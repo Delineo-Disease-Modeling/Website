@@ -10,7 +10,7 @@ import Grid from "@material-ui/core/Grid";
 import { Cell, Legend, Pie, PieChart } from "recharts";
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis } from "recharts";
 import testdata from "../data/testdata.json";
-import { MapContainer, TileLayer, useMapEvents, Marker, Popup, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, useMapEvents, Marker, Popup, useMap, Polygon } from 'react-leaflet';
 import L from 'leaflet';
 import "leaflet-geosearch/dist/geosearch.css";
 import { GeoSearchControl, OpenStreetMapProvider } from "leaflet-geosearch";
@@ -51,10 +51,6 @@ const data = [
 const jhuCoords = [39.328888, -76.620277]
 
 
-const usBounds = [
-  [49.3457868, -124.7844079],
-  [24.7433195, -66.9513812]
-];
 
 // Typography for Parameter Summary 
 function SummaryTypography(props) {
@@ -85,6 +81,7 @@ function LocationMarker() {
   const [position, setPosition] = useState(null)
   const [city, setCity] = useState(null);
   const [state, setState] = useState(null);
+  const [polygon, setPolygon] = useState(null);
 
   const map = useMapEvents({
     async click(e) {
@@ -108,13 +105,26 @@ function LocationMarker() {
         setPosition(e.latlng);
         setCity(location.city);
         setState(location.state);
+
+        const coordsURL = "https://nominatim.openstreetmap.org/search.php?city= " + location.city + "&state=" + location.state + "&polygon_geojson=1&format=json";
+        const coordsResponse = await axios.get(coordsURL);
+      
+        let polygonCoords = coordsResponse.data[0].geojson.coordinates[0];
+
+        // swap array values to order them correctly: [long, lat] -> [lat, long]
+        for (let i = 0; i < polygonCoords.length; i++) {
+          [polygonCoords[i][0], polygonCoords[i][1]] = [polygonCoords[i][1], polygonCoords[i][0]]
+        }
+        setPolygon(polygonCoords);
+
       }
 
     },
   });
 
-  return position === null ? null : (
+  return polygon === null ? null : (
     <Marker position={position}>
+      <Polygon positions={polygon} />
       <Popup>{city}, {state}</Popup>
     </Marker>
   );
