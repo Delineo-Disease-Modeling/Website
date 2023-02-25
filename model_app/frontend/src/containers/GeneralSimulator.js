@@ -7,7 +7,7 @@ import { Typography, Card } from "@material-ui/core";
 import ToolTip from "../components/ToolTip";
 import InfectionsChart from "../components/InfectionsChart";
 import Grid from "@material-ui/core/Grid";
-import { Cell, Legend, Pie, PieChart } from "recharts";
+import { Cell, Legend, Line, Pie, PieChart } from "recharts";
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis } from "recharts";
 import testdata from "../data/testdata.json";
 import { MapContainer, TileLayer, useMapEvents, Marker, Popup, useMap, Polygon } from 'react-leaflet';
@@ -77,7 +77,7 @@ function SummaryTypography(props) {
       <Typography sytle={{ color: "white" }}>{props.parameter}:</Typography>
       <Typography
         variant="h6"
-        style={{ color: "red", fontWeight: 900, textAlign: "center" }}
+        style={{ color: "#66FCF1", fontWeight: 900, textAlign: "center", marginBottom:"15px"}}
       >
         {props.value}
       </Typography>
@@ -223,7 +223,7 @@ class GeneralSimulator extends Component {
 
       let url = "https://covidmod.isi.jhu.edu/simulation/";
       let testurl = "http://localhost:5000/simulation/";
-      const res = await axios.post(url, configs, {timeout: 2000}); 
+      const res = await axios.post(url, configs, { timeout: 2000 });
       console.log(res.data);
     } catch (error) {
       console.log(error);
@@ -258,11 +258,25 @@ class GeneralSimulator extends Component {
           justifyContent="center"
           alignItems={"stretch"}
           direction="row"
-          spacing={0}
+          rowSpacing={1}
+          columnSpacing={2}
         >
           {/* Left panel of screen = Summary */}
-          <Grid item xs={2} style={{ border: "4px solid white" }}>
+          <Grid item xs={2} style={{ border: "3px solid white", borderRadius: "10px", margin: "10px 10px 20px 20px" }}>
             {/* SUMMARY of parameter settings */}
+            <Card
+              style={{
+                textAlign: "center",
+                marginBottom: "5px",
+                width: "100%",
+                padding: "5px",
+                borderBottom: "1px solid white"
+              }}
+            >
+              <Typography variant="h5" style={{ color: "white" }}>
+                Settings:
+              </Typography>
+            </Card>
             <Card
               style={{
                 textAlign: "left",
@@ -271,43 +285,41 @@ class GeneralSimulator extends Component {
                 padding: "5px",
               }}
             >
-              <Typography variant="h5" style={{ color: "white" }}>
-                Settings:
-              </Typography>
               <SummaryTypography
-                parameter="mask wearing percent"
+                parameter="Mask-Wearing Percent"
                 value={this.state.configurations.maskPercent}
               />
               <SummaryTypography
-                parameter="capacity restrictions"
+                parameter="Capacity Restrictions"
                 value={this.state.configurations.capacityPercent}
               />
               <SummaryTypography
-                parameter="mass testing"
+                parameter="Mass Testing"
                 value={this.state.configurations.massPercent}
               />
               <SummaryTypography
-                parameter="stay at home order"
+                parameter="Stay at home order"
                 value={this.state.configurations.stayAtHome.toString()}
               />
+              <Line style={{ height: "5px" }}></Line>
               <SummaryTypography
-                parameter="schools"
+                parameter="Schools"
                 value={this.state.configurations.schoolsShutdown.toString()}
               />
               <SummaryTypography
-                parameter="restaurants"
+                parameter="Restaurants"
                 value={this.state.configurations.restaurantsShutdown.toString()}
               />
               <SummaryTypography
-                parameter="gyms"
+                parameter="Gyms"
                 value={this.state.configurations.gymsShutdown.toString()}
               />
               <SummaryTypography
-                parameter="bars"
+                parameter="Bars"
                 value={this.state.configurations.barsShutdown.toString()}
               />
               <SummaryTypography
-                parameter="vaccination percent"
+                parameter="Percent Vaccinated"
                 value={this.state.configurations.vaccinePercent}
               />
             </Card>
@@ -316,11 +328,11 @@ class GeneralSimulator extends Component {
           {/* Middle of screen - top: panel, bottom: chart */}
           <Grid
             item
-            xs={7}
-            style={{ border: "4px solid white", padding: "10px" }}
+            xs={9}
+            style={{ paddingBottom: "10px" }}
           >
             {/* Very basic map */}
-            <MapContainer center={jhuCoords} zoom={8} scrollWheelZoom={false} >
+            <MapContainer center={jhuCoords} zoom={15} scrollWheelZoom={false} style={{ borderRadius: "10px", margin: "10px" }}>
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -330,64 +342,69 @@ class GeneralSimulator extends Component {
               <PresetAreas />
             </MapContainer>
 
-            <ConfigurationsPanel
+            <ConfigurationsPanel 
               // TODO: replace line 162 with updateConfigs={this.fetchConfigurations}
               updateConfigs={this.updateConfigurations}
               configs={this.state.configurations}
             />
-
-            {/* Infections Chart */}
-            <InfectionsChart />
-          </Grid>
-
-          {/* Right panel - more chart(s) */}
-          <Grid
-            item
-            xs={3}
-            style={{ backgroundColor: "#1F2325", border: "4px solid white" }}
-          >
-            {/* PIE CHART */}
-            <PieChart width={350} height={300}>
-              <Pie
-                data={data}
-                color="#000000"
-                dataKey="count"
-                nameKey="name"
-                cx="50%"
-                cy="50%"
-                outerRadius={120}
-                fill="#8884d8"
-              >
-                {data.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={this.COLORS[index % this.COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <ToolTip description={"Percentage of infected individuals"} />
-              <Legend />
-            </PieChart>
           </Grid>
 
           {/* Bottom panel - more chart(s) */}
           <Grid
-            item
-            xs={12}
+            container
+            justifyContent="center"
+            alignItems={"stretch"}
+            direction="row"
+            xs={11}
             style={{
               backgroundColor: "#1F2325",
-              border: "4px solid white",
+              border: "3px solid white",
               padding: "10px",
+              borderRadius: "10px",
             }}
           >
+            {/* Infections Chart */}
+            <Grid
+              container
+              xs={6}>
+              <InfectionsChart />
+            </Grid>
+            {/* Pie Chart */}
+            <Grid
+              container
+              justifyContent="center"
+              xs={6}
+              style={{ padding:"auto"}}>
+              <PieChart width={350} height={300}>
+                <Pie
+                  data={data}
+                  color="#000000"
+                  dataKey="count"
+                  nameKey="name"
+                  cx="50%"
+                  cy="50%"
+                  outerRadius={120}
+                  fill="#8884d8"
+                >
+                  {data.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={this.COLORS[index % this.COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+                <ToolTip description={"Percentage of infected individuals"} />
+                <Legend />
+              </PieChart>
+            </Grid>
             {/* Bar Chart */}
             <BarChart width={1200} height={250} data={testdata}>
               <Legend verticalAlign="bottom" height={36} />
               <Bar dataKey="TotalNotInfected" stackId="a" fill="#8884d8" />
               <Bar dataKey="TotalInfections" stackId="a" fill="#82ca9d" />
               <CartesianGrid stroke="#ccc" />
-              <XAxis dataKey="BuildingName" />
-              <YAxis dataKey="TotalPeople" />
+              <XAxis dataKey="BuildingName" tick={{ fill: "#66FCF1"}}/>
+              <YAxis dataKey="TotalPeople" tick={{ fill: "#66FCF1"}}/>
             </BarChart>
           </Grid>
         </Grid>

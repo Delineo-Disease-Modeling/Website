@@ -11,13 +11,19 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  rootTop: {
     display: "flex",
-    backgroundColor: "rgba(196,196,196,255)",
-    // margin: "2%",
-    paddingBottom: "1%",
-    borderRadius: "0",
+    backgroundColor: "rgba(255, 255, 255, 1)",
+    borderRadius: "10px 10px 0px 0px",
     justifyContent: "space-around",
+    paddingBottom: "1%",
+  },
+  rootBottom: {
+    display: "flex",
+    backgroundColor: "white",
+    borderRadius: "0px 0px 10px 10px",
+    justifyContent: "space-around",
+    paddingBottom: "1%",
   },
   configurationsHeader: {
     backgroundColor: "rgba(49,53,56,255)",
@@ -218,17 +224,17 @@ export default function ConfigurationsPanel(props) {
   return (
     <div
       style={{
-        borderBottom: "4px solid white",
-        margin: 0,
-        width: "1000px",
-        marginLeft: "auto",
-        marginRight: "auto",
+        width: "100%",
+        marginLeft: "10px",
+        marginRight: "10px",
+        marginBottom: "10px",
+        paddingRight: "20px"
       }}
     >
-      <div className={classes.root}>
+      <div className={classes.rootTop}>
         <TabPanel conf={configs} />
       </div>
-      <div className={classes.root}>
+      <div className={classes.rootBottom}>
         <div className={classes.buttonSection}>
           <ConfirmButton
             className={classes.confBtn}
