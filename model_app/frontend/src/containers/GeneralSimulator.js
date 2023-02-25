@@ -63,7 +63,7 @@ function SummaryTypography(props) {
       <Typography sytle={{ color: "white" }}>{props.parameter}:</Typography>
       <Typography
         variant="h6"
-        style={{ color: "red", fontWeight: 900, textAlign: "center" }}
+        style={{ color: "#66FCF1", fontWeight: 900, textAlign: "center", marginBottom:"15px"}}
       >
         {props.value}
       </Typography>
@@ -209,7 +209,7 @@ class GeneralSimulator extends Component {
           columnSpacing={2}
         >
           {/* Left panel of screen = Summary */}
-          <Grid item xs={2} style={{ border: "4px solid white", borderRadius: "10px", margin: "10px" }}>
+          <Grid item xs={2} style={{ border: "3px solid white", borderRadius: "10px", margin: "20px" }}>
             {/* SUMMARY of parameter settings */}
             <Card
               style={{
@@ -288,7 +288,7 @@ class GeneralSimulator extends Component {
               <LocationMarker />
             </MapContainer>
 
-            <ConfigurationsPanel
+            <ConfigurationsPanel 
               // TODO: replace line 162 with updateConfigs={this.fetchConfigurations}
               updateConfigs={this.updateConfigurations}
               configs={this.state.configurations}
@@ -304,8 +304,9 @@ class GeneralSimulator extends Component {
             xs={11}
             style={{
               backgroundColor: "#1F2325",
-              border: "4px solid white",
+              border: "3px solid white",
               padding: "10px",
+              borderRadius: "10px",
             }}
           >
             {/* Infections Chart */}

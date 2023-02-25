@@ -306,8 +306,8 @@ export default function BasicTabs(conf) {
         <Tabs
           value={value}
           onChange={handleChange}
+          variant="fullWidth"
           aria-label="basic tabs example"
-          centered
         >
           <Tab label="NPI's" {...a11yProps(0)} />
           <Tab label="Targeted Shutdowns" {...a11yProps(1)} />
