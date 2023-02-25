@@ -28,9 +28,12 @@ class InfectionsChart extends React.Component {
             <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
           </linearGradient>
         </defs>
-        <XAxis dataKey="name" />
+        <XAxis 
+          dataKey="name"
+          tick={{ fill: "#66FCF1"}} />
 
-        <YAxis />
+        <YAxis 
+          tick={{ fill: "#66FCF1"}}/>
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip />
         <Legend />

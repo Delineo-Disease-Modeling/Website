@@ -209,7 +209,7 @@ class GeneralSimulator extends Component {
           columnSpacing={2}
         >
           {/* Left panel of screen = Summary */}
-          <Grid item xs={2} style={{ border: "3px solid white", borderRadius: "10px", margin: "20px" }}>
+          <Grid item xs={2} style={{ border: "3px solid white", borderRadius: "10px", margin: "10px 10px 20px 20px" }}>
             {/* SUMMARY of parameter settings */}
             <Card
               style={{
@@ -349,8 +349,8 @@ class GeneralSimulator extends Component {
               <Bar dataKey="TotalNotInfected" stackId="a" fill="#8884d8" />
               <Bar dataKey="TotalInfections" stackId="a" fill="#82ca9d" />
               <CartesianGrid stroke="#ccc" />
-              <XAxis dataKey="BuildingName" />
-              <YAxis dataKey="TotalPeople" />
+              <XAxis dataKey="BuildingName" tick={{ fill: "#66FCF1"}}/>
+              <YAxis dataKey="TotalPeople" tick={{ fill: "#66FCF1"}}/>
             </BarChart>
           </Grid>
         </Grid>
