@@ -10,7 +10,7 @@ import Grid from "@material-ui/core/Grid";
 import { Cell, Legend, Pie, PieChart } from "recharts";
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis } from "recharts";
 import testdata from "../data/testdata.json";
-import { MapContainer, TileLayer, useMapEvents, Marker, Popup, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, useMapEvents, Marker, Popup, useMap, Polygon } from 'react-leaflet';
 import L from 'leaflet';
 import "leaflet-geosearch/dist/geosearch.css";
 import { GeoSearchControl, OpenStreetMapProvider } from "leaflet-geosearch";
@@ -50,11 +50,25 @@ const data = [
 // Starting point for map: JHU
 const jhuCoords = [39.328888, -76.620277]
 
+// UPDATE THIS TO ADD MORE LOCATIONS - ALSO, CHECK ON https://nominatim.openstreetmap.org/ui/search.html IF THE API CONTAINS THE CITY BOUNDARIES
+const presetLocations = [
 
-const usBounds = [
-  [49.3457868, -124.7844079],
-  [24.7433195, -66.9513812]
-];
+  {
+    city: "Baltimore",
+    state: "Maryland"
+  },
+  {
+    city: "Washington",
+    state: "District of Columbia"
+  },
+  {
+    city: "Barnsdall",
+    state: "Oklahoma"
+  }
+
+
+]
+
 
 // Typography for Parameter Summary 
 function SummaryTypography(props) {
@@ -94,8 +108,8 @@ function LocationMarker() {
       const reverseGeocodeURL = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&featureTypes=&location=" + e.latlng.lng + "%2C" + e.latlng.lat;
       const response = await axios.get(reverseGeocodeURL);
 
-      // Make sure there is no error in response, and that only USA regions can be selected (for now)
-      if (response.data.address != null && response.data.address.CntryName === "United States") {
+      // Make sure there is no error in response, and that only preset locations can be selected
+      if (response.data.address != null && response.data.address.CntryName === "United States" && presetLocations.some(e => e.city === response.data.address.City) && presetLocations.some(e => e.state === response.data.address.Region)) {
 
         location = {
           lat: e.latlng.lat,
@@ -108,6 +122,7 @@ function LocationMarker() {
         setPosition(e.latlng);
         setCity(location.city);
         setState(location.state);
+
       }
 
     },
@@ -137,6 +152,44 @@ function LeafletgeoSearch() {
   }, []);
 
   return null;
+}
+
+
+function PresetAreas() {
+  const [boundaries, setBoundaries] = useState([]);
+
+  useEffect(() => {
+    async function getData() {
+
+      // Grab city boundaries for all present locations
+      for (let i = 0; i < presetLocations.length; i++) {
+
+        const coordsURL = "https://nominatim.openstreetmap.org/search.php?city= " + presetLocations[i].city + "&state=" + presetLocations[i].state + "&polygon_geojson=1&format=json";
+        const coordsResponse = await axios.get(coordsURL);
+
+        if (coordsResponse.data[0].geojson.type === "Polygon") {
+          setBoundaries(boundaries => [...boundaries, L.GeoJSON.coordsToLatLngs(coordsResponse.data[0].geojson.coordinates, 1)])
+        }
+        else if (coordsResponse.data[0].geojson.type === "MultiPolygon") {
+          setBoundaries(boundaries => [...boundaries, L.GeoJSON.coordsToLatLngs(coordsResponse.data[0].geojson.coordinates, 2)])
+        }
+
+      }
+
+    }
+    getData();
+  }, []);
+
+
+  const boundariesCollection = boundaries.map((coords) =>
+    <Polygon key={coords} positions={coords} />
+  );
+
+  return (
+    boundariesCollection
+  )
+
+
 }
 
 class GeneralSimulator extends Component {
@@ -267,13 +320,14 @@ class GeneralSimulator extends Component {
             style={{ border: "4px solid white", padding: "10px" }}
           >
             {/* Very basic map */}
-            <MapContainer center={jhuCoords} zoom={15} scrollWheelZoom={false} >
+            <MapContainer center={jhuCoords} zoom={8} scrollWheelZoom={false} >
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
               <LeafletgeoSearch />
               <LocationMarker />
+              <PresetAreas />
             </MapContainer>
 
             <ConfigurationsPanel
