@@ -10,8 +10,16 @@ import Grid from "@material-ui/core/Grid";
 import { Cell, Legend, Line, Pie, PieChart } from "recharts";
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis } from "recharts";
 import testdata from "../data/testdata.json";
-import { MapContainer, TileLayer, useMapEvents, Marker, Popup, useMap, Polygon } from 'react-leaflet';
-import L from 'leaflet';
+import {
+  MapContainer,
+  TileLayer,
+  useMapEvents,
+  Marker,
+  Popup,
+  useMap,
+  Polygon,
+} from "react-leaflet";
+import L from "leaflet";
 import "leaflet-geosearch/dist/geosearch.css";
 import { GeoSearchControl, OpenStreetMapProvider } from "leaflet-geosearch";
 
@@ -48,36 +56,37 @@ const data = [
 ];
 
 // Starting point for map: JHU
-const jhuCoords = [39.328888, -76.620277]
+const jhuCoords = [39.328888, -76.620277];
 
 // UPDATE THIS TO ADD MORE LOCATIONS - ALSO, CHECK ON https://nominatim.openstreetmap.org/ui/search.html IF THE API CONTAINS THE CITY BOUNDARIES
 const presetLocations = [
-
   {
     city: "Baltimore",
-    state: "Maryland"
+    state: "Maryland",
   },
   {
     city: "Washington",
-    state: "District of Columbia"
+    state: "District of Columbia",
   },
   {
     city: "Barnsdall",
-    state: "Oklahoma"
-  }
+    state: "Oklahoma",
+  },
+];
 
-
-]
-
-
-// Typography for Parameter Summary 
+// Typography for Parameter Summary
 function SummaryTypography(props) {
   return (
     <div>
       <Typography sytle={{ color: "white" }}>{props.parameter}:</Typography>
       <Typography
         variant="h6"
-        style={{ color: "#66FCF1", fontWeight: 900, textAlign: "center", marginBottom:"15px"}}
+        style={{
+          color: "#66FCF1",
+          fontWeight: 900,
+          textAlign: "center",
+          marginBottom: "15px",
+        }}
       >
         {props.value}
       </Typography>
@@ -90,47 +99,53 @@ let location = {
   lng: 97.5164,
   city: "Oklahoma City",
   state: "Oklahoma",
-  country: "United States"
+  country: "United States",
 };
-
 
 // Location marker popup
 function LocationMarker() {
-  const [position, setPosition] = useState(null)
+  const [position, setPosition] = useState(null);
   const [city, setCity] = useState(null);
   const [state, setState] = useState(null);
 
   const map = useMapEvents({
     async click(e) {
-
       map.flyTo(e.latlng, map.getZoom());
 
-      const reverseGeocodeURL = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&featureTypes=&location=" + e.latlng.lng + "%2C" + e.latlng.lat;
+      const reverseGeocodeURL =
+        "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&featureTypes=&location=" +
+        e.latlng.lng +
+        "%2C" +
+        e.latlng.lat;
       const response = await axios.get(reverseGeocodeURL);
 
       // Make sure there is no error in response, and that only preset locations can be selected
-      if (response.data.address != null && response.data.address.CntryName === "United States" && presetLocations.some(e => e.city === response.data.address.City) && presetLocations.some(e => e.state === response.data.address.Region)) {
-
+      if (
+        response.data.address != null &&
+        response.data.address.CntryName === "United States" &&
+        presetLocations.some((e) => e.city === response.data.address.City) &&
+        presetLocations.some((e) => e.state === response.data.address.Region)
+      ) {
         location = {
           lat: e.latlng.lat,
           long: e.latlng.lng,
           city: response.data.address.City,
           state: response.data.address.Region,
-          country: response.data.address.CntryName
+          country: response.data.address.CntryName,
         };
 
         setPosition(e.latlng);
         setCity(location.city);
         setState(location.state);
-
       }
-
     },
   });
 
   return position === null ? null : (
     <Marker position={position}>
-      <Popup>{city}, {state}</Popup>
+      <Popup>
+        {city}, {state}
+      </Popup>
     </Marker>
   );
 }
@@ -143,7 +158,7 @@ function LeafletgeoSearch() {
 
     const searchControl = new GeoSearchControl({
       provider,
-      showMarker: false
+      showMarker: false,
     });
 
     map.addControl(searchControl);
@@ -154,42 +169,48 @@ function LeafletgeoSearch() {
   return null;
 }
 
-
 function PresetAreas() {
   const [boundaries, setBoundaries] = useState([]);
 
   useEffect(() => {
     async function getData() {
-
       // Grab city boundaries for all present locations
       for (let i = 0; i < presetLocations.length; i++) {
-
-        const coordsURL = "https://nominatim.openstreetmap.org/search.php?city= " + presetLocations[i].city + "&state=" + presetLocations[i].state + "&polygon_geojson=1&format=json";
+        const coordsURL =
+          "https://nominatim.openstreetmap.org/search.php?city= " +
+          presetLocations[i].city +
+          "&state=" +
+          presetLocations[i].state +
+          "&polygon_geojson=1&format=json";
         const coordsResponse = await axios.get(coordsURL);
 
         if (coordsResponse.data[0].geojson.type === "Polygon") {
-          setBoundaries(boundaries => [...boundaries, L.GeoJSON.coordsToLatLngs(coordsResponse.data[0].geojson.coordinates, 1)])
+          setBoundaries((boundaries) => [
+            ...boundaries,
+            L.GeoJSON.coordsToLatLngs(
+              coordsResponse.data[0].geojson.coordinates,
+              1
+            ),
+          ]);
+        } else if (coordsResponse.data[0].geojson.type === "MultiPolygon") {
+          setBoundaries((boundaries) => [
+            ...boundaries,
+            L.GeoJSON.coordsToLatLngs(
+              coordsResponse.data[0].geojson.coordinates,
+              2
+            ),
+          ]);
         }
-        else if (coordsResponse.data[0].geojson.type === "MultiPolygon") {
-          setBoundaries(boundaries => [...boundaries, L.GeoJSON.coordsToLatLngs(coordsResponse.data[0].geojson.coordinates, 2)])
-        }
-
       }
-
     }
     getData();
   }, []);
 
-
-  const boundariesCollection = boundaries.map((coords) =>
+  const boundariesCollection = boundaries.map((coords) => (
     <Polygon key={coords} positions={coords} />
-  );
+  ));
 
-  return (
-    boundariesCollection
-  )
-
-
+  return boundariesCollection;
 }
 
 class GeneralSimulator extends Component {
@@ -261,78 +282,44 @@ class GeneralSimulator extends Component {
           rowSpacing={1}
           columnSpacing={2}
         >
-          {/* Left panel of screen = Summary */}
-          <Grid item xs={2} style={{ border: "3px solid white", borderRadius: "10px", margin: "10px 10px 20px 20px" }}>
-            {/* SUMMARY of parameter settings */}
-            <Card
-              style={{
-                textAlign: "center",
-                marginBottom: "5px",
-                width: "100%",
-                padding: "5px",
-                borderBottom: "1px solid white"
-              }}
-            >
-              <Typography variant="h5" style={{ color: "white" }}>
-                Settings:
-              </Typography>
-            </Card>
-            <Card
-              style={{
-                textAlign: "left",
-                margin: 0,
-                width: "100%",
-                padding: "5px",
-              }}
-            >
-              <SummaryTypography
-                parameter="Mask-Wearing Percent"
-                value={this.state.configurations.maskPercent}
-              />
-              <SummaryTypography
-                parameter="Capacity Restrictions"
-                value={this.state.configurations.capacityPercent}
-              />
-              <SummaryTypography
-                parameter="Mass Testing"
-                value={this.state.configurations.massPercent}
-              />
-              <SummaryTypography
-                parameter="Stay at home order"
-                value={this.state.configurations.stayAtHome.toString()}
-              />
-              <Line style={{ height: "5px" }}></Line>
-              <SummaryTypography
-                parameter="Schools"
-                value={this.state.configurations.schoolsShutdown.toString()}
-              />
-              <SummaryTypography
-                parameter="Restaurants"
-                value={this.state.configurations.restaurantsShutdown.toString()}
-              />
-              <SummaryTypography
-                parameter="Gyms"
-                value={this.state.configurations.gymsShutdown.toString()}
-              />
-              <SummaryTypography
-                parameter="Bars"
-                value={this.state.configurations.barsShutdown.toString()}
-              />
-              <SummaryTypography
-                parameter="Percent Vaccinated"
-                value={this.state.configurations.vaccinePercent}
-              />
-            </Card>
+          {/* Top of screen */}
+          <Grid item xs={12}>
+            <Typography variant="h5" className={classes.boldTitle}>
+              What is Delineo?
+            </Typography>
+            <Typography variant="body1">
+              Delineo is a COVID-19 simulator that allows users to simulate the
+              spread of COVID-19 in a given location. Users can select
+              configurations to simulate the spread of COVID-19 in a given
+              location. The simulator will then run a simulation and display the
+              results.
+            </Typography>
+            <Typography variant="h5" className={classes.boldTitle}>
+              Instructions
+            </Typography>
+            <Typography variant="body1">
+              1. Select a location on the map or search for a location in the
+              search bar.
+              <br />
+              Note: Valid locations are cities in the United States and are
+              highlighted in blue.
+              <br />
+              2. Select the configurations you would like to simulate.
+              <br />
+              3. Press the "Confirm" button to run the simulation.
+              <br />
+              4. Simulation results will be displayed in the charts below after a successful simulation.
+            </Typography>
           </Grid>
-
           {/* Middle of screen - top: panel, bottom: chart */}
-          <Grid
-            item
-            xs={9}
-            style={{ paddingBottom: "10px" }}
-          >
+          <Grid item xs={9} style={{ paddingBottom: "10px" }}>
             {/* Very basic map */}
-            <MapContainer center={jhuCoords} zoom={15} scrollWheelZoom={false} style={{ borderRadius: "10px", margin: "10px" }}>
+            <MapContainer
+              center={jhuCoords}
+              zoom={15}
+              scrollWheelZoom={false}
+              style={{ borderRadius: "10px", margin: "10px" }}
+            >
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -342,7 +329,7 @@ class GeneralSimulator extends Component {
               <PresetAreas />
             </MapContainer>
 
-            <ConfigurationsPanel 
+            <ConfigurationsPanel
               // TODO: replace line 162 with updateConfigs={this.fetchConfigurations}
               updateConfigs={this.updateConfigurations}
               configs={this.state.configurations}
@@ -364,9 +351,7 @@ class GeneralSimulator extends Component {
             }}
           >
             {/* Infections Chart */}
-            <Grid
-              container
-              xs={6}>
+            <Grid container xs={6}>
               <InfectionsChart />
             </Grid>
             {/* Pie Chart */}
@@ -374,7 +359,8 @@ class GeneralSimulator extends Component {
               container
               justifyContent="center"
               xs={6}
-              style={{ padding:"auto"}}>
+              style={{ padding: "auto" }}
+            >
               <PieChart width={350} height={300}>
                 <Pie
                   data={data}
@@ -403,8 +389,8 @@ class GeneralSimulator extends Component {
               <Bar dataKey="TotalNotInfected" stackId="a" fill="#8884d8" />
               <Bar dataKey="TotalInfections" stackId="a" fill="#82ca9d" />
               <CartesianGrid stroke="#ccc" />
-              <XAxis dataKey="BuildingName" tick={{ fill: "#66FCF1"}}/>
-              <YAxis dataKey="TotalPeople" tick={{ fill: "#66FCF1"}}/>
+              <XAxis dataKey="BuildingName" tick={{ fill: "#66FCF1" }} />
+              <YAxis dataKey="TotalPeople" tick={{ fill: "#66FCF1" }} />
             </BarChart>
           </Grid>
         </Grid>
