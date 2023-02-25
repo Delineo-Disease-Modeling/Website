@@ -244,8 +244,10 @@ class GeneralSimulator extends Component {
 
       let url = "https://covidmod.isi.jhu.edu/simulation/";
       let testurl = "http://localhost:5000/simulation/";
-      const res = await axios.post(url, configs, { timeout: 2000 });
-      console.log(res.data);
+      console.log(configs);
+      await axios.post(url, configs, { timeout: 2000 }).then((res) => {
+        this.updateConfigurations(res.data, true);
+      });
     } catch (error) {
       console.log(error);
     }
@@ -308,7 +310,8 @@ class GeneralSimulator extends Component {
               <br />
               3. Press the "Confirm" button to run the simulation.
               <br />
-              4. Simulation results will be displayed in the charts below after a successful simulation.
+              4. Simulation results will be displayed in the charts below after
+              a successful simulation.
             </Typography>
           </Grid>
           {/* Middle of screen - top: panel, bottom: chart */}
