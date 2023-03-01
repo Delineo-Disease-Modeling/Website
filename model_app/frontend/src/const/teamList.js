@@ -108,6 +108,7 @@ import karAlaImg from "../images/Karry Alams.jpeg";
 import yooChaImg from "../images/Yoohyuk Chang.jpg";
 import josPinImg from "../images/Jose Pineda.jpeg";
 import aliYanImg from "../images/Yunyi Yang.JPG";
+import treBlaImg from "../images/Trevor Black.jpg";
 import invalid from "../images/person-icon.png";
 
 const teamList = [
@@ -429,10 +430,10 @@ const teamList = [
   },
   {
     img: eugSonImg,
-    name: "Eugene Song ",
-    role: "Simulation",
+    name: "Eugene Song",
+    role: "Algorithms",
     description: "Computer Science, Applied Math and Statistics",
-    inDelineo: false,
+    inDelineo: true,
   },
   {
     img: oliWanImg,
@@ -795,7 +796,7 @@ const teamList = [
   {
     img: joyNeuImg,
     name: "Joy Neuberger",
-    role: "Fullstack",
+    role: "Simulation",
     description: "N/A",
     inDelineo: true,
   },
@@ -1037,7 +1038,14 @@ const teamList = [
     description: "N/A",
     img: invalid,
     inDelineo: true,
-  }
+  },
+  {
+    name: "Trevor Black",
+    role: "Fullstack",
+    description: "Computer Science",
+    img: treBlaImg,
+    inDelineo: true,
+  },
 ];
 
 export default teamList;
