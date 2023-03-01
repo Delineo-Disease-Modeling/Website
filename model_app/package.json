@@ -11,6 +11,7 @@
     "client-install": "cd frontend && npm i",
     "dev": "cd frontend && npm start",
     "build": "webpack",
+    "react-build": "cd frontend && npm run build",
     "start": "cd frontend && npm start",
     "pretty": "prettier --write \"./**/*.{js,jsx,json}\""
   },
@@ -35,6 +36,7 @@
   "devDependencies": {
     "@babel/core": "^7.18.10",
     "@babel/eslint-parser": "^7.18.9",
-    "eslint": "^8.21.0"
+    "eslint": "^8.21.0",
+    "webpack-cli": "^5.0.1"
   }
 }
