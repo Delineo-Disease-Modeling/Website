@@ -6,3 +6,9 @@
     
     height: 50vh;
   }
+
+hr {
+    height: 10px;
+    background-color: #66FCF1;
+    width: 50%;
+}

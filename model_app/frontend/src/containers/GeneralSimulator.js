@@ -6,9 +6,10 @@ import ConfigurationsPanel from "../components/ConfigurationsPanel";
 import { Typography, Card } from "@material-ui/core";
 import ToolTip from "../components/ToolTip";
 import InfectionsChart from "../components/InfectionsChart";
+import InfectionAnimation from "../components/InfectionAnimation";
 import Grid from "@material-ui/core/Grid";
 import { Cell, Legend, Line, Pie, PieChart } from "recharts";
-import { BarChart, Bar, CartesianGrid, XAxis, YAxis } from "recharts";
+import { BarChart, Bar, CartesianGrid, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import testdata from "../data/testdata.json";
 import {
   MapContainer,
@@ -355,7 +356,9 @@ class GeneralSimulator extends Component {
           >
             {/* Infections Chart */}
             <Grid container xs={6}>
-              <InfectionsChart />
+              <ResponsiveContainer width="100%" height={300}>
+                <InfectionsChart />
+              </ResponsiveContainer>
             </Grid>
             {/* Pie Chart */}
             <Grid
@@ -364,37 +367,42 @@ class GeneralSimulator extends Component {
               xs={6}
               style={{ padding: "auto" }}
             >
-              <PieChart width={350} height={300}>
-                <Pie
-                  data={data}
-                  color="#000000"
-                  dataKey="count"
-                  nameKey="name"
-                  cx="50%"
-                  cy="50%"
-                  outerRadius={120}
-                  fill="#8884d8"
-                >
-                  {data.map((entry, index) => (
-                    <Cell
-                      key={`cell-${index}`}
-                      fill={this.COLORS[index % this.COLORS.length]}
-                    />
-                  ))}
-                </Pie>
-                <ToolTip description={"Percentage of infected individuals"} />
-                <Legend />
-              </PieChart>
+              <ResponsiveContainer width="100%" height={300}>
+                <PieChart width={350} height={300}>
+                  <Pie
+                    data={data}
+                    color="#000000"
+                    dataKey="count"
+                    nameKey="name"
+                    cx="50%"
+                    cy="50%"
+                    outerRadius="80%"
+                    fill="#8884d8"
+                  >
+                    {data.map((entry, index) => (
+                      <Cell
+                        key={`cell-${index}`}
+                        fill={this.COLORS[index % this.COLORS.length]}
+                      />
+                    ))}
+                  </Pie>
+                  <ToolTip description={"Percentage of infected individuals"} />
+                  <Legend />
+                </PieChart>
+              </ResponsiveContainer>
             </Grid>
             {/* Bar Chart */}
-            <BarChart width={1200} height={250} data={testdata}>
-              <Legend verticalAlign="bottom" height={36} />
-              <Bar dataKey="TotalNotInfected" stackId="a" fill="#8884d8" />
-              <Bar dataKey="TotalInfections" stackId="a" fill="#82ca9d" />
-              <CartesianGrid stroke="#ccc" />
-              <XAxis dataKey="BuildingName" tick={{ fill: "#66FCF1" }} />
-              <YAxis dataKey="TotalPeople" tick={{ fill: "#66FCF1" }} />
-            </BarChart>
+            <ResponsiveContainer width="100%" height={250}>
+              <BarChart data={testdata}>
+                <Legend verticalAlign="bottom" height={36} />
+                <Bar dataKey="TotalNotInfected" stackId="a" fill="#8884d8" />
+                <Bar dataKey="TotalInfections" stackId="a" fill="#82ca9d" />
+                <CartesianGrid stroke="#ccc" />
+                <XAxis dataKey="BuildingName" tick={{ fill: "#66FCF1" }} />
+                <YAxis dataKey="TotalPeople" tick={{ fill: "#66FCF1" }} />
+              </BarChart>
+            </ResponsiveContainer>
+            <InfectionAnimation style={{width: 600, height: 600}}/>
           </Grid>
         </Grid>
       </div>

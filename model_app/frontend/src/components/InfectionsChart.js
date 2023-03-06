@@ -13,8 +13,8 @@ class InfectionsChart extends React.Component {
   render() {
     return (
       <AreaChart
-        width={600}
-        height={300}
+        width="100%"
+        height="100%"
         data={data}
         margin={{ top: 20, right: 20, left: 20, bottom: 20 }}
       >
