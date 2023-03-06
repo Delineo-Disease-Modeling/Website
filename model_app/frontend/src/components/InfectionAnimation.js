@@ -136,12 +136,15 @@ const CubeGridAnimation = () => {
   };
 
   return (
-    <div>
+    <div style={{backgroundColor: "rgba(0,0,0,0.1)",
+    border: "1px solid white",
+    padding: "10px",
+    borderRadius: "10px"}}>
       <div style={{color: "white", textAlign: "center"}}>Infection Animation Preview</div>
       <div id="dayCount" style={{color: "white", textAlign: "center"}}></div>
       <canvas ref={canvasRef} width={window.innerWidth/1.5} height={window.innerHeight/1.5} />
       <div>
-        <button onClick={handleStartAnimation} style={{borderRadius: 5}}>Start Animation</button>
+        <button onClick={handleStartAnimation} style={{backgroundColor: "white", border: "none", borderRadius: 5, width: 150, height: 40}}>Start Animation</button>
                 {data.map((item, index) => (
                   <div
                     key={index}
