@@ -246,6 +246,7 @@ class GeneralSimulator extends Component {
       let testurl = "http://localhost:5000/simulation/";
       console.log(configs);
       await axios.post(url, configs, { timeout: 65000 }).then((res) => {
+        
         this.updateConfigurations(res.data, true);
       });
     } catch (error) {
