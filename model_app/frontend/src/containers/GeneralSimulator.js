@@ -357,7 +357,7 @@ class GeneralSimulator extends Component {
             {/* Infections Chart */}
             <Grid container xs={6}>
               <ResponsiveContainer width="100%" height={300}>
-                <InfectionsChart />
+                <InfectionsChart/>
               </ResponsiveContainer>
             </Grid>
             {/* Pie Chart */}

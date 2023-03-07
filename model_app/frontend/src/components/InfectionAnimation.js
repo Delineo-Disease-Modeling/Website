@@ -1,23 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
 import data from "../data/linedata.json";
 
-
-//TODO: Clean up transition from cubes to circles (change name, optimize parameters, etc.)
-const CubeGridAnimation = () => {
+const CircleGridAnimation = () => {
   const canvasRef = useRef(null);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [cubeData, setCubeData] = useState([]);
-
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
 
     class Cube {
-      constructor(x, y, size) {
+      constructor(x, y, rad) {
         this.x = x;
         this.y = y;
-        this.size = size;
+        this.rad = rad;
+        //Initial x speed and y speed
         this.vx = Math.random() * 2 - 1;
         this.vy = Math.random() * 2 - 1;
         this.isInfected = false;
@@ -37,15 +34,15 @@ const CubeGridAnimation = () => {
         }
       }
 
+      //Draws each circle again, checking for infection
       draw() {
         if(this.isInfected) {
           ctx.fillStyle = 'rgba(255, 0, 0, 0.5)';
         } else {
           ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
         }
-        // ctx.fillRect(this.x, this.y, this.size, this.size);
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size/2, 0, 2*Math.PI);
+        ctx.arc(this.x, this.y, this.rad/2, 0, 2*Math.PI);
         ctx.fill();
       }
 
@@ -62,9 +59,17 @@ const CubeGridAnimation = () => {
       }
     }
 
+    //Day count + other info later
+    let text = "Day: 0";
+    const dayCount = document.getElementById("dayCount");
+    function updateTextBox(i, j, k) {
+      text = "Day: " + i + " | Infected: " + j + " | Current Total People " + k;
+      // Update the text box content
+      dayCount.textContent = text;
+    }
+
     //Update amount of red cubes based on data
     const jsonObject = data;
-    const totInfected = jsonObject[jsonObject.length - 1].infections;
     const totalPeople = jsonObject[jsonObject.length - 1].people;
     let currInfectedIt = 0;
     let currDay = 0;
@@ -79,7 +84,6 @@ const CubeGridAnimation = () => {
       }
     }
 
-    //TODO: Make updating of cubes slower. I think it goes too fast right now and instantly makes all cubes red
     //Animation code (only executes when button is pressed)
     if(isAnimating) {
       const intervalId = setInterval(() => {
@@ -106,35 +110,12 @@ const CubeGridAnimation = () => {
     }
   }, [isAnimating]);
 
-  //Day count + other info later
-  let text = "Day: 0";
-  const dayCount = document.getElementById("dayCount");
-  function updateTextBox(i, j, k) {
-    text = "Day: " + i + " | Infected: " + j + " | Current Total People " + k;
-    // Update the text box content
-    dayCount.textContent = text;
-  }
-
+  //Starts animation with click of button
   const handleStartAnimation = () => {
     setIsAnimating(true);
-  
-    const intervalId = setInterval(() => {
-      setCubeData((prevData) => {
-        const newData = prevData.map((item) => {
-          if (Math.random() < 0.1) {
-            item.isInfected = true;
-          }
-          return item;
-        });
-        return newData;
-      });
-    }, 500);
-  
-    return () => {
-      clearInterval(intervalId);
-    };
   };
 
+  //Return div containing all information and animation as component
   return (
     <div style={{backgroundColor: "rgba(0,0,0,0.1)",
     border: "1px solid white",
@@ -144,18 +125,15 @@ const CubeGridAnimation = () => {
       <div id="dayCount" style={{color: "white", textAlign: "center"}}></div>
       <canvas ref={canvasRef} width={window.innerWidth/1.5} height={window.innerHeight/1.5} />
       <div>
-        <button onClick={handleStartAnimation} style={{backgroundColor: "white", border: "none", borderRadius: 5, width: 150, height: 40}}>Start Animation</button>
-                {data.map((item, index) => (
-                  <div
-                    key={index}
-                    className="cube"
-                    style={{ backgroundColor: item.color }}
-                  />
-                ))}
+        <button onClick={handleStartAnimation} style={{backgroundColor: "white", 
+                border: "none", 
+                borderRadius: 5, 
+                width: 150, 
+                height: 40}}>Start Animation</button>
       </div>
     </div>
     );
     
 };
 
-export default CubeGridAnimation;
+export default CircleGridAnimation;
