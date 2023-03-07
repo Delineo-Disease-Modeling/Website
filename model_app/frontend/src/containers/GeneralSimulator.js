@@ -216,19 +216,55 @@ function PresetAreas() {
 class GeneralSimulator extends Component {
   COLORS = ["#82ca9d", "#8884d8", "#FFBB28", "#FF8042", "#AF19FF"];
 
+  updateConfigs = (valueName, newValue) => {
+    console.log(valueName);
+    switch (valueName) {
+      case "Mask-Wearing":
+        this.setState({
+          configurations: {
+            maskPercent: newValue,
+          },
+        });
+        break;
+      case "Capacity Restrictions":
+        this.setState({
+          configurations: {
+            capacityPercent: newValue,
+          },
+        });
+        break;
+      case "Mass Testing":
+        this.setState({
+          configurations: {
+            massPercent: newValue,
+          },
+        });
+        break;
+      case "Stay-at-Home Order":
+        this.setState({
+          configurations: {
+            stayAtHome: newValue,
+          },
+        });
+        break;
+      default:
+        break;
+    }
+  };
+
   constructor() {
     super();
     this.state = {
       configurations: {
-        maskPercent: 30,
-        capacityPercent: 30,
-        massPercent: 30,
+        maskPercent: 0,
+        capacityPercent: 0,
+        massPercent: 0,
         stayAtHome: false,
         schoolsShutdown: false,
         restaurantsShutdown: false,
         gymsShutdown: false,
         barsShutdown: false,
-        vaccinePercent: 30,
+        vaccinePercent: 0,
       },
     };
   }
@@ -244,7 +280,6 @@ class GeneralSimulator extends Component {
 
       let url = "https://covidmod.isi.jhu.edu/simulation/";
       let testurl = "http://localhost:5000/simulation/";
-      console.log(configs);
       await axios.post(url, configs, { timeout: 2000 }).then((res) => {
         this.updateConfigurations(res.data, true);
       });
@@ -281,8 +316,6 @@ class GeneralSimulator extends Component {
           justifyContent="center"
           alignItems={"stretch"}
           direction="row"
-          rowSpacing={1}
-          columnSpacing={2}
         >
           {/* Top of screen */}
           <Grid item xs={12}>
@@ -332,11 +365,7 @@ class GeneralSimulator extends Component {
               <PresetAreas />
             </MapContainer>
 
-            <ConfigurationsPanel
-              // TODO: replace line 162 with updateConfigs={this.fetchConfigurations}
-              updateConfigs={this.updateConfigurations}
-              configs={this.state.configurations}
-            />
+            <ConfigurationsPanel updateConfigs={this.updateConfigs} />
           </Grid>
 
           {/* Bottom panel - more chart(s) */}
