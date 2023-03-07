@@ -245,7 +245,7 @@ class GeneralSimulator extends Component {
       let url = "https://covidmod.isi.jhu.edu/simulation/";
       let testurl = "http://localhost:5000/simulation/";
       console.log(configs);
-      await axios.post(url, configs, { timeout: 2000 }).then((res) => {
+      await axios.post(url, configs, { timeout: 65000 }).then((res) => {
         this.updateConfigurations(res.data, true);
       });
     } catch (error) {
