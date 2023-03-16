@@ -287,7 +287,7 @@ class GeneralSimulator extends Component {
           {/* Top of screen */}
           <Grid item xs={12}>
             <Typography variant="h5" className={classes.boldTitle}>
-              What is Delineo? Curtis test
+              What is Delineo?
             </Typography>
             <Typography variant="body1">
               Delineo is a COVID-19 simulator that allows users to simulate the
