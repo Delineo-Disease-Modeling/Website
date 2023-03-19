@@ -136,114 +136,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ConfirmButton(props, configs) {
-  const classes = useStyles();
-  const [showError, setShowError] = React.useState(false);
-  const [showDBRequest, setShowDBRequest] = React.useState(false);
-  const handleClick = (event) => {
-    if (
-      configs.maskPercent < 0 ||
-      configs.capacityPercent < 0 ||
-      configs.massPercent < 0 ||
-      configs.vaccinePercent < 0
-    ) {
-      setShowError(true);
-    } else {
-      setShowDBRequest((prevState) => {
-        return !prevState;
-      });
-    }
-    console.log(configs);
-  };
-
-  const handleClickDB = (configs) => {
-    return (
-      <Dialog
-        open={showDBRequest}
-        onClose={() =>
-          setShowDBRequest((prevState) => {
-            return !prevState;
-          })
-        }
-      >
-        <DialogTitle className={classes.dialogTitle}>
-          Pre-Generated Simulation
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText className={classes.dialogText}>
-            Would you like to use a pre-existing simulation from our database?
-            This will greatly decrease runtime.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            onClick={() => {
-              setShowDBRequest((prevState) => {
-                return !prevState;
-              });
-              props.updateConfigs(configs, false); //configs get updated in parent component
-            }}
-            //autoFocus
-            className={classes.dialogButton}
-          >
-            No
-          </Button>
-          <Button
-            onClick={() => {
-              setShowDBRequest((prevState) => {
-                return !prevState;
-              });
-              props.updateConfigs(configs, true); //configs get updated in parent component
-            }}
-            //autoFocus
-            className={classes.dialogButton}
-          >
-            Yes
-          </Button>
-          <Button
-            onClick={() => {
-              setShowDBRequest((prevState) => {
-                return !prevState;
-              });
-            }}
-            //autoFocus
-            className={classes.dialogButton}
-          >
-            Cancel
-          </Button>
-        </DialogActions>
-      </Dialog>
-    );
-  };
-  //Closes invalid input toast
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setShowError(false);
-  };
-  if (showDBRequest) return handleClickDB(configs);
-
-  return (
-    <div>
-      <FormControl className={classes.formControl}></FormControl>
-      <Button
-        variant="contained"
-        className={classes.button}
-        onClick={handleClick}
-      >
-        Confirm
-      </Button>
-      <Snackbar
-        open={showError}
-        autoHideDuration={3000}
-        message="Invalid input value"
-        onClose={handleClose}
-      />
-    </div>
-  );
-}
-
 export function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -294,43 +186,202 @@ export default function ConfigurationsPanel(props) {
   /*  This function is used to create all the input sliders and switches for the configurations panel. 
 It takes in a list of lists, where each list is a configuration name and the component type. 
 It then creates a component for each configuration and returns a list of components. */
+
+  function ConfirmButton(props) {
+    const classes = useStyles();
+    const [showError, setShowError] = React.useState(false);
+    const [showDBRequest, setShowDBRequest] = React.useState(false);
+    const [configs] = React.useState(props.configs);
+    const handleClick = (event) => {
+      if (
+        configs.maskPercent < 0 ||
+        configs.capacityPercent < 0 ||
+        configs.massPercent < 0 ||
+        configs.vaccinePercent < 0
+      ) {
+        setShowError(true);
+      } else {
+        setShowDBRequest((prevState) => {
+          return !prevState;
+        });
+      }
+    };
+
+    const handleClickDB = (configs) => {
+      return (
+        <Dialog
+          open={showDBRequest}
+          onClose={() =>
+            setShowDBRequest((prevState) => {
+              return !prevState;
+            })
+          }
+        >
+          <DialogTitle className={classes.dialogTitle}>
+            Pre-Generated Simulation
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText className={classes.dialogText}>
+              Would you like to use a pre-existing simulation from our database?
+              This will greatly decrease runtime.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              onClick={() => {
+                setShowDBRequest((prevState) => {
+                  return !prevState;
+                });
+                props.updateConfigs(configs, false); //configs get updated in parent component
+              }}
+              //autoFocus
+              className={classes.dialogButton}
+            >
+              No
+            </Button>
+            <Button
+              onClick={() => {
+                setShowDBRequest((prevState) => {
+                  return !prevState;
+                });
+                props.updateConfigs(configs, true); //configs get updated in parent component
+              }}
+              //autoFocus
+              className={classes.dialogButton}
+            >
+              Yes
+            </Button>
+            <Button
+              onClick={() => {
+                setShowDBRequest((prevState) => {
+                  return !prevState;
+                });
+              }}
+              //autoFocus
+              className={classes.dialogButton}
+            >
+              Cancel
+            </Button>
+          </DialogActions>
+        </Dialog>
+      );
+    };
+    //Closes invalid input toast
+    const handleClose = (event, reason) => {
+      if (reason === "clickaway") {
+        return;
+      }
+      setShowError(false);
+    };
+    if (showDBRequest) return handleClickDB(configs);
+
+    return (
+      <div>
+        <FormControl className={classes.formControl}></FormControl>
+        <Button
+          variant="contained"
+          className={classes.button}
+          onClick={handleClick}
+        >
+          Confirm
+        </Button>
+        <Snackbar
+          open={showError}
+          autoHideDuration={3000}
+          message="Invalid input value"
+          onClose={handleClose}
+        />
+      </div>
+    );
+  }
   function createObj(configValue, type, name, classes) {
     if (type === InputSlider) {
       return (
-        <>
+        <object
+          key={configValue}
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100%",
+            height: "100%",
+            margin: "0px",
+            padding: "0px",
+          }}
+        >
           <Grid item xs={6}>
             <Typography className={classes.switchText}>{name}</Typography>
           </Grid>
           <Grid item xs={6} className={classes.gridItemRight}>
-            <InputSlider percentConfig={configs[configValue]} label={name} />
+            <InputSlider
+              percentConfig={configs[configValue]}
+              label={name}
+              onChange={(value) => {
+                updateConfigs((prevState) => {
+                  return {
+                    ...prevState,
+                    [configValue]: value,
+                  };
+                });
+              }}
+            />
           </Grid>
-        </>
+        </object>
       );
     } else if (type === Switch) {
       return (
-        <>
+        <object
+          key={configValue}
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100%",
+            height: "100%",
+            margin: "0px",
+            padding: "0px",
+          }}
+        >
           <Grid item xs={6}>
             <Typography className={classes.switchText}>{name}</Typography>
           </Grid>
           <Grid item xs={6} className={classes.gridItemRight}>
             <Switch
-              name={name}
-              configs={configs}
               checked={configs[configValue]}
+              onChange={() => {
+                updateConfigs((prevState) => {
+                  return {
+                    ...prevState,
+                    [configValue]: !prevState[configValue],
+                  };
+                });
+              }}
+              name={name}
               classes={{
                 track: classes.switchTrack,
                 switchBase: classes.switchBase,
               }}
-              onBlur={() => {
-                updateConfigs(configValue, !configs[configValue]);
-              }}
             />
           </Grid>
-        </>
+        </object>
       );
     } else if (type === TextField) {
       return (
-        <>
+        <object
+          key={configValue}
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100%",
+            height: "100%",
+            margin: "0px",
+            padding: "0px",
+          }}
+        >
           <Grid item xs={6}>
             <Typography className={classes.switchText}>{name}</Typography>
           </Grid>
@@ -344,25 +395,12 @@ It then creates a component for each configuration and returns a list of compone
               }}
             />
           </Grid>
-        </>
+        </object>
       );
     }
   }
 
   const classes = useStyles();
-  const [maskPercent, setMaskPercent] = React.useState(0);
-  const [capacityPercent, setCapacityPercent] = React.useState(0);
-  const [massPercent, setMassPercent] = React.useState(0);
-  const [vaccinePercent, setVaccinePercent] = React.useState(0);
-  const [stayAtHome, setStayAtHome] = React.useState(false);
-  const [schoolsShutdown, setSchoolsShutdown] = React.useState(false);
-  const [restaurantsShutdown, setRestaurantsShutdown] = React.useState(false);
-  const [gymsShutdown, setGymsShutdown] = React.useState(false);
-  const [barsShutdown, setBarsShutdown] = React.useState(false);
-  const [travelShutdown, setTravelShutdown] = React.useState(false);
-  const [socialDistancing, setSocialDistancing] = React.useState(false);
-  const [intitalInfected, setIntitalInfected] = React.useState(0);
-  
   const [configs, updateConfigs] = React.useState({
     maskPercent: 0,
     capacityPercent: 0,
@@ -411,15 +449,8 @@ It then creates a component for each configuration and returns a list of compone
           </Box>
           <TabPanel value={value} index={0}>
             <Grid container>
-              {NPIs.map((npi, idx) => {
-                return createObj(
-                  npi[2],
-                  npi[1],
-                  npi[0],
-                  classes,
-                  configs,
-                  updateConfigs
-                );
+              {NPIs.map((npi) => {
+                return createObj(npi[2], npi[1], npi[0], classes);
               })}
             </Grid>
           </TabPanel>

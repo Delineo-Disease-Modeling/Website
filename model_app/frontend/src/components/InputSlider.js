@@ -31,14 +31,19 @@ export default function InputSlider(props) {
 
   const handleSliderChange = (event, newValue) => {
     setValue(newValue);
+    props.onChange(newValue);
   };
+
+  let onChange = props.onChange;
 
   const handleBlur = () => {
     if (value < 0) {
       setValue(0);
+      onChange(0);
       // props.percentConfig = 0;
     } else if (value > 100) {
       setValue(100);
+      onChange(100);
     }
   };
 
@@ -65,6 +70,10 @@ export default function InputSlider(props) {
                 max: 100,
                 type: "number",
                 "aria-labelledby": "input-slider",
+              }}
+              onChange={(e) => {
+                setValue(e.target.value === "" ? "" : Number(e.target.value));
+                onChange(e.target.value === "" ? "" : Number(e.target.value));
               }}
             />
           </Grid>

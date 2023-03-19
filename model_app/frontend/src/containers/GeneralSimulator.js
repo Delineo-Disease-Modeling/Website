@@ -216,64 +216,7 @@ function PresetAreas() {
 class GeneralSimulator extends Component {
   COLORS = ["#82ca9d", "#8884d8", "#FFBB28", "#FF8042", "#AF19FF"];
 
-  updateConfigs = (valueName, newValue) => {
-    console.log(valueName);
-    switch (valueName) {
-      case "Mask-Wearing":
-        this.setState({
-          configurations: {
-            maskPercent: newValue,
-          },
-        });
-        break;
-      case "Capacity Restrictions":
-        this.setState({
-          configurations: {
-            capacityPercent: newValue,
-          },
-        });
-        break;
-      case "Mass Testing":
-        this.setState({
-          configurations: {
-            massPercent: newValue,
-          },
-        });
-        break;
-      case "Stay-at-Home Order":
-        this.setState({
-          configurations: {
-            stayAtHome: newValue,
-          },
-        });
-        break;
-      default:
-        break;
-    }
-  };
-
-  constructor() {
-    super();
-    this.state = {
-      configurations: {
-        maskPercent: 0,
-        capacityPercent: 0,
-        massPercent: 0,
-        stayAtHome: false,
-        schoolsShutdown: false,
-        restaurantsShutdown: false,
-        gymsShutdown: false,
-        barsShutdown: false,
-        vaccinePercent: 0,
-      },
-    };
-  }
-
-  //Update configurations once user presses confirm
-  updateConfigurations = async (configs, useDB) => {
-    this.setState({
-      configurations: configs,
-    });
+  updateConfigs = async (configs, useDB) => {
     try {
       configs.useDB = useDB;
       configs.location = location;
@@ -284,7 +227,8 @@ class GeneralSimulator extends Component {
         this.updateConfigurations(res.data, true);
       });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      console.log("Error in updating configurations");
     }
   };
 
@@ -374,7 +318,6 @@ class GeneralSimulator extends Component {
             justifyContent="center"
             alignItems={"stretch"}
             direction="row"
-            xs={11}
             style={{
               backgroundColor: "#1F2325",
               border: "3px solid white",
@@ -383,16 +326,11 @@ class GeneralSimulator extends Component {
             }}
           >
             {/* Infections Chart */}
-            <Grid container xs={6}>
+            <Grid container>
               <InfectionsChart />
             </Grid>
             {/* Pie Chart */}
-            <Grid
-              container
-              justifyContent="center"
-              xs={6}
-              style={{ padding: "auto" }}
-            >
+            <Grid container justifyContent="center" style={{ padding: "auto" }}>
               <PieChart width={350} height={300}>
                 <Pie
                   data={data}
