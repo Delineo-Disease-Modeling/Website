@@ -327,7 +327,7 @@ class GeneralSimulator extends Component {
       let url = "https://covidmod.isi.jhu.edu/simulation/";
       let testurl = "http://localhost:5000/simulation/";
       this.setState({ showReqPopup: true });
-      await axios.post(url, configs, {timeout: 13000}).then((res) => {
+      await axios.post(url, configs, {timeout: 130000}).then((res) => {
         this.updateConfigurations(res.data, true);
         this.setState({ showReqPopup: false });
         this.setState({ showSuccessPopup: true });
