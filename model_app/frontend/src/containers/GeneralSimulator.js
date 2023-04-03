@@ -300,8 +300,7 @@ class GeneralSimulator extends Component {
         </DialogTitle>
         <DialogContent>
           <DialogContentText className={styles.dialogText}>
-            Would you like to use a pre-existing simulation from our database?
-            This will greatly decrease runtime.
+            Your simulation has been generated. Please click the "View Results"
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -312,7 +311,7 @@ class GeneralSimulator extends Component {
             //autoFocus
             className={styles.dialogButton}
           >
-            Close
+            View Results
           </Button>
         </DialogActions>
       </Dialog>
@@ -328,7 +327,8 @@ class GeneralSimulator extends Component {
       let testurl = "http://localhost:5000/simulation/";
       this.setState({ showReqPopup: true });
       await axios.post(url, configs, {timeout: 130000}).then((res) => {
-        this.updateConfigurations(res.data, true);
+        console.log(res.data);
+        //this.updateConfigurations(res.data, true);
         this.setState({ showReqPopup: false });
         this.setState({ showSuccessPopup: true });
       });
@@ -361,6 +361,9 @@ class GeneralSimulator extends Component {
         <Typography variant="h3" className={classes.boldTitle}>
           COVID-19 Simulator
         </Typography>
+        {this.state.showErrorPopup ? this.handleError() : null}
+        {this.state.showReqPopup ? this.handleReq() : null}
+        {this.state.showSuccessPopup ? this.handleSuccess() : null}
 
         {/* Divide screen into left, middle, right */}
         <Grid
