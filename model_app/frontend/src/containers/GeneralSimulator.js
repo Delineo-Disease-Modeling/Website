@@ -10,6 +10,13 @@ import Grid from "@material-ui/core/Grid";
 import { Cell, Legend, Line, Pie, PieChart } from "recharts";
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis } from "recharts";
 import testdata from "../data/testdata.json";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+
 import {
   MapContainer,
   TileLayer,
@@ -41,6 +48,24 @@ const styles = (theme) => ({
     alignSelf: "center",
     alignItems: "center",
     whiteSpace: "pre-wrap",
+  },
+  dialogTitle: {
+    //textAlign: "center",
+  },
+
+  dialogText: {
+    color: "white",
+    //textAlign: "center",
+  },
+
+  dialogButton: {
+    color: "#66FCF1",
+    border: "2px solid #66FCF1",
+    alignSelf: "center",
+    "&:hover": {
+      color: "black",
+      backgroundColor: "#66FCF1",
+    },
   },
 });
 
@@ -215,6 +240,84 @@ function PresetAreas() {
 
 class GeneralSimulator extends Component {
   COLORS = ["#82ca9d", "#8884d8", "#FFBB28", "#FF8042", "#AF19FF"];
+  constructor(props) {
+    super(props);
+    this.state = {
+      showReqPopup: false,
+      showErrorPopup: false,
+      showSuccessPopup: false,
+    };
+  }
+
+  handleReq = () => {
+    return (
+      <Dialog open={this.state.showReqPopup}>
+        <DialogTitle className={styles.dialogTitle}>
+          Generating Simulation
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText className={styles.dialogText}>
+            Please wait while we generate a simulation for you. This may take a
+            few minutes.
+          </DialogContentText>
+        </DialogContent>
+      </Dialog>
+    );
+  };
+  handleError = () => {
+    return (
+      <Dialog open={this.state.showErrorPopup}>
+        <DialogTitle className={styles.dialogTitle}>
+          Error Generating Simulation
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText className={styles.dialogText}>
+            There was an error generating your simulation. Please try again. If
+            the problem persists, please contact us at
+            delineodiseasemodeling@gmail.com
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={() => {
+              this.setState({ showErrorPopup: false });
+            }}
+            //autoFocus
+            className={styles.dialogButton}
+          >
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+    );
+  };
+
+  handleSuccess = () => {
+    return (
+      <Dialog open={this.state.showSuccessPopup}>
+        <DialogTitle className={styles.dialogTitle}>
+          Pre-Generated Simulation
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText className={styles.dialogText}>
+            Would you like to use a pre-existing simulation from our database?
+            This will greatly decrease runtime.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={() => {
+              this.setState({ showSuccessPopup: false });
+            }}
+            //autoFocus
+            className={styles.dialogButton}
+          >
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+    );
+  };
 
   updateConfigs = async (configs, useDB) => {
     try {
@@ -223,12 +326,17 @@ class GeneralSimulator extends Component {
 
       let url = "https://covidmod.isi.jhu.edu/simulation/";
       let testurl = "http://localhost:5000/simulation/";
-      await axios.post(url, configs, { timeout: 2000 }).then((res) => {
+      this.setState({ showReqPopup: true });
+      await axios.post(url, configs, {timeout: 13000}).then((res) => {
         this.updateConfigurations(res.data, true);
+        this.setState({ showReqPopup: false });
+        this.setState({ showSuccessPopup: true });
       });
     } catch (error) {
-      // console.log(error);
+      console.log(error);
       console.log("Error in updating configurations");
+      this.setState({ showReqPopup: false });
+      this.setState({ showErrorPopup: true });
     }
   };
 
