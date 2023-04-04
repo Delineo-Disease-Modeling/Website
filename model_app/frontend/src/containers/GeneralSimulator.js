@@ -16,7 +16,6 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-
 import {
   MapContainer,
   TileLayer,
@@ -29,6 +28,11 @@ import {
 import L from "leaflet";
 import "leaflet-geosearch/dist/geosearch.css";
 import { GeoSearchControl, OpenStreetMapProvider } from "leaflet-geosearch";
+import {Buffer} from "buffer";
+const zlib = require("react-zlib-js");
+
+
+
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -325,10 +329,23 @@ class GeneralSimulator extends Component {
 
       let url = "https://covidmod.isi.jhu.edu/simulation/";
       let testurl = "http://localhost:5000/simulation/";
+      
+     
       this.setState({ showReqPopup: true });
       await axios.post(url, configs, {timeout: 130000}).then((res) => {
-        console.log(res.data);
+
+        
+
+        let decodedResult = zlib.inflateSync(Buffer.from(res.data["base64(zip(o))"], 'base64')).toString()
+       
+
+        console.log(decodedResult);
+
+
+        // TODO: use decodedResult to update stuff
         //this.updateConfigurations(res.data, true);
+
+
         this.setState({ showReqPopup: false });
         this.setState({ showSuccessPopup: true });
       });
