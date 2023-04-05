@@ -23,7 +23,7 @@ import {
   Marker,
   Popup,
   useMap,
-  Polygon,
+  Tooltip as MarkerTooltip,
 } from "react-leaflet";
 import L from "leaflet";
 import "leaflet-geosearch/dist/geosearch.css";
@@ -131,54 +131,6 @@ let location = {
   country: "United States",
 };
 
-// Location marker popup
-function LocationMarker() {
-  const [position, setPosition] = useState(null);
-  const [city, setCity] = useState(null);
-  const [state, setState] = useState(null);
-
-  const map = useMapEvents({
-    async click(e) {
-      map.flyTo(e.latlng, map.getZoom());
-
-      const reverseGeocodeURL =
-        "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&featureTypes=&location=" +
-        e.latlng.lng +
-        "%2C" +
-        e.latlng.lat;
-      const response = await axios.get(reverseGeocodeURL);
-
-      // Make sure there is no error in response, and that only preset locations can be selected
-      if (
-        response.data.address != null &&
-        response.data.address.CntryName === "United States" &&
-        presetLocations.some((e) => e.city === response.data.address.City) &&
-        presetLocations.some((e) => e.state === response.data.address.Region)
-      ) {
-        location = {
-          lat: e.latlng.lat,
-          long: e.latlng.lng,
-          city: response.data.address.City,
-          state: response.data.address.Region,
-          country: response.data.address.CntryName,
-        };
-
-        setPosition(e.latlng);
-        setCity(location.city);
-        setState(location.state);
-      }
-    },
-  });
-
-  return position === null ? null : (
-    <Marker position={position}>
-      <Popup>
-        {city}, {state}
-      </Popup>
-    </Marker>
-  );
-}
-
 // Location search feature
 function LeafletgeoSearch() {
   const map = useMap();
@@ -199,7 +151,9 @@ function LeafletgeoSearch() {
 }
 
 function PresetAreas() {
-  const [boundaries, setBoundaries] = useState([]);
+  const [markers, setMarkers] = useState([]);
+  const [city, setCity] = useState(null);
+  const [state, setState] = useState(null);
 
   useEffect(() => {
     async function getData() {
@@ -210,36 +164,43 @@ function PresetAreas() {
           presetLocations[i].city +
           "&state=" +
           presetLocations[i].state +
-          "&polygon_geojson=1&format=json";
+          "&format=json";
         const coordsResponse = await axios.get(coordsURL);
 
-        if (coordsResponse.data[0].geojson.type === "Polygon") {
-          setBoundaries((boundaries) => [
-            ...boundaries,
-            L.GeoJSON.coordsToLatLngs(
-              coordsResponse.data[0].geojson.coordinates,
-              1
-            ),
-          ]);
-        } else if (coordsResponse.data[0].geojson.type === "MultiPolygon") {
-          setBoundaries((boundaries) => [
-            ...boundaries,
-            L.GeoJSON.coordsToLatLngs(
-              coordsResponse.data[0].geojson.coordinates,
-              2
-            ),
-          ]);
-        }
+        setMarkers((markers) => [
+          ...markers,
+          [coordsResponse.data[0].lat,coordsResponse.data[0].lon]
+           
+  
+        ]);
+
       }
     }
     getData();
   }, []);
 
-  const boundariesCollection = boundaries.map((coords) => (
-    <Polygon key={coords} positions={coords} />
+  const markersCollection = markers.map((coords, index) => (
+    <Marker key = {coords} position={coords} eventHandlers={{
+      click: () => {
+        setCity(presetLocations[index].city);
+        setState(presetLocations[index].state);
+        location = {
+          lat: coords[0],
+          long: coords[1],
+          city: presetLocations[index].city,
+          state: presetLocations[index].state,
+          country: "United States",
+        };
+      },
+    }}>
+       {/* Only display the permanent tooltip if the Marker is the selected location */}
+      { city === presetLocations[index].city && state === presetLocations[index].state && <MarkerTooltip permanent> Location set to {city}, {state}! </MarkerTooltip>}
+       {( city != presetLocations[index].city || state != presetLocations[index].state) && <MarkerTooltip> {presetLocations[index].city}, {presetLocations[index].state} </MarkerTooltip>}
+
+      </Marker>
   ));
 
-  return boundariesCollection;
+  return markersCollection;
 }
 
 class GeneralSimulator extends Component {
@@ -424,7 +385,7 @@ class GeneralSimulator extends Component {
             {/* Very basic map */}
             <MapContainer
               center={jhuCoords}
-              zoom={15}
+              zoom={8}
               scrollWheelZoom={false}
               style={{ borderRadius: "10px", margin: "10px" }}
             >
@@ -433,7 +394,6 @@ class GeneralSimulator extends Component {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
               <LeafletgeoSearch />
-              <LocationMarker />
               <PresetAreas />
             </MapContainer>
 
