@@ -10,8 +10,6 @@
     "client": "npm start --prefix frontend",
     "client-install": "cd frontend && npm i",
     "dev": "cd frontend && npm start",
-    "build": "webpack",
-    "react-build": "cd frontend && npm run build",
     "start": "cd frontend && npm start",
     "pretty": "prettier --write \"./**/*.{js,jsx,json}\""
   },
@@ -23,6 +21,7 @@
     "@emotion/styled": "^11.10.0",
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
+    "buffer": "^6.0.3",
     "classnames": "^2.3.1",
     "concurrently": "^6.3.0",
     "leaflet": "1.7.1",
@@ -30,10 +29,11 @@
     "react-bootstrap": "^1.6.4",
     "react-day-picker": "^7.4.10",
     "react-dropdown-select": "^4.7.4",
+    "react-leaflet": "3.2.5",
     "react-scripts": "^4.0.3",
     "react-social": "^1.10.0",
     "react-unity-webgl": "^8.5.1",
-    "react-leaflet": "3.2.5"
+    "react-zlib-js": "^1.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.18.10",

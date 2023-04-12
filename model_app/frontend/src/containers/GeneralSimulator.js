@@ -11,6 +11,12 @@ import Grid from "@material-ui/core/Grid";
 import { Cell, Legend, Line, Pie, PieChart } from "recharts";
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import testdata from "../data/testdata.json";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 import {
   MapContainer,
   TileLayer,
@@ -18,11 +24,16 @@ import {
   Marker,
   Popup,
   useMap,
-  Polygon,
+  Tooltip as MarkerTooltip,
 } from "react-leaflet";
 import L from "leaflet";
 import "leaflet-geosearch/dist/geosearch.css";
 import { GeoSearchControl, OpenStreetMapProvider } from "leaflet-geosearch";
+import {Buffer} from "buffer";
+const zlib = require("react-zlib-js");
+
+
+
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -42,6 +53,24 @@ const styles = (theme) => ({
     alignSelf: "center",
     alignItems: "center",
     whiteSpace: "pre-wrap",
+  },
+  dialogTitle: {
+    //textAlign: "center",
+  },
+
+  dialogText: {
+    color: "white",
+    //textAlign: "center",
+  },
+
+  dialogButton: {
+    color: "#66FCF1",
+    border: "2px solid #66FCF1",
+    alignSelf: "center",
+    "&:hover": {
+      color: "black",
+      backgroundColor: "#66FCF1",
+    },
   },
 });
 
@@ -103,54 +132,6 @@ let location = {
   country: "United States",
 };
 
-// Location marker popup
-function LocationMarker() {
-  const [position, setPosition] = useState(null);
-  const [city, setCity] = useState(null);
-  const [state, setState] = useState(null);
-
-  const map = useMapEvents({
-    async click(e) {
-      map.flyTo(e.latlng, map.getZoom());
-
-      const reverseGeocodeURL =
-        "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&featureTypes=&location=" +
-        e.latlng.lng +
-        "%2C" +
-        e.latlng.lat;
-      const response = await axios.get(reverseGeocodeURL);
-
-      // Make sure there is no error in response, and that only preset locations can be selected
-      if (
-        response.data.address != null &&
-        response.data.address.CntryName === "United States" &&
-        presetLocations.some((e) => e.city === response.data.address.City) &&
-        presetLocations.some((e) => e.state === response.data.address.Region)
-      ) {
-        location = {
-          lat: e.latlng.lat,
-          long: e.latlng.lng,
-          city: response.data.address.City,
-          state: response.data.address.Region,
-          country: response.data.address.CntryName,
-        };
-
-        setPosition(e.latlng);
-        setCity(location.city);
-        setState(location.state);
-      }
-    },
-  });
-
-  return position === null ? null : (
-    <Marker position={position}>
-      <Popup>
-        {city}, {state}
-      </Popup>
-    </Marker>
-  );
-}
-
 // Location search feature
 function LeafletgeoSearch() {
   const map = useMap();
@@ -171,7 +152,9 @@ function LeafletgeoSearch() {
 }
 
 function PresetAreas() {
-  const [boundaries, setBoundaries] = useState([]);
+  const [markers, setMarkers] = useState([]);
+  const [city, setCity] = useState(null);
+  const [state, setState] = useState(null);
 
   useEffect(() => {
     async function getData() {
@@ -182,75 +165,157 @@ function PresetAreas() {
           presetLocations[i].city +
           "&state=" +
           presetLocations[i].state +
-          "&polygon_geojson=1&format=json";
+          "&format=json";
         const coordsResponse = await axios.get(coordsURL);
 
-        if (coordsResponse.data[0].geojson.type === "Polygon") {
-          setBoundaries((boundaries) => [
-            ...boundaries,
-            L.GeoJSON.coordsToLatLngs(
-              coordsResponse.data[0].geojson.coordinates,
-              1
-            ),
-          ]);
-        } else if (coordsResponse.data[0].geojson.type === "MultiPolygon") {
-          setBoundaries((boundaries) => [
-            ...boundaries,
-            L.GeoJSON.coordsToLatLngs(
-              coordsResponse.data[0].geojson.coordinates,
-              2
-            ),
-          ]);
-        }
+        setMarkers((markers) => [
+          ...markers,
+          [coordsResponse.data[0].lat,coordsResponse.data[0].lon]
+           
+  
+        ]);
+
       }
     }
     getData();
   }, []);
 
-  const boundariesCollection = boundaries.map((coords) => (
-    <Polygon key={coords} positions={coords} />
+  const markersCollection = markers.map((coords, index) => (
+    <Marker key = {coords} position={coords} eventHandlers={{
+      click: () => {
+        setCity(presetLocations[index].city);
+        setState(presetLocations[index].state);
+        location = {
+          lat: coords[0],
+          long: coords[1],
+          city: presetLocations[index].city,
+          state: presetLocations[index].state,
+          country: "United States",
+        };
+      },
+    }}>
+       {/* Only display the permanent tooltip if the Marker is the selected location */}
+      { city === presetLocations[index].city && state === presetLocations[index].state && <MarkerTooltip permanent> Location set to {city}, {state}! </MarkerTooltip>}
+       {( city != presetLocations[index].city || state != presetLocations[index].state) && <MarkerTooltip> {presetLocations[index].city}, {presetLocations[index].state} </MarkerTooltip>}
+
+      </Marker>
   ));
 
-  return boundariesCollection;
+  return markersCollection;
 }
 
 class GeneralSimulator extends Component {
   COLORS = ["#82ca9d", "#8884d8", "#FFBB28", "#FF8042", "#AF19FF"];
-
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      configurations: {
-        maskPercent: 30,
-        capacityPercent: 30,
-        massPercent: 30,
-        stayAtHome: false,
-        schoolsShutdown: false,
-        restaurantsShutdown: false,
-        gymsShutdown: false,
-        barsShutdown: false,
-        vaccinePercent: 30,
-      },
+      showReqPopup: false,
+      showErrorPopup: false,
+      showSuccessPopup: false,
     };
   }
 
-  //Update configurations once user presses confirm
-  updateConfigurations = async (configs, useDB) => {
-    this.setState({
-      configurations: configs,
-    });
+  handleReq = () => {
+    return (
+      <Dialog open={this.state.showReqPopup}>
+        <DialogTitle className={styles.dialogTitle}>
+          Generating Simulation
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText className={styles.dialogText}>
+            Please wait while we generate a simulation for you. This may take a
+            few minutes.
+          </DialogContentText>
+        </DialogContent>
+      </Dialog>
+    );
+  };
+  handleError = () => {
+    return (
+      <Dialog open={this.state.showErrorPopup}>
+        <DialogTitle className={styles.dialogTitle}>
+          Error Generating Simulation
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText className={styles.dialogText}>
+            There was an error generating your simulation. Please try again. If
+            the problem persists, please contact us at
+            delineodiseasemodeling@gmail.com
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={() => {
+              this.setState({ showErrorPopup: false });
+            }}
+            //autoFocus
+            className={styles.dialogButton}
+          >
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+    );
+  };
+
+  handleSuccess = () => {
+    return (
+      <Dialog open={this.state.showSuccessPopup}>
+        <DialogTitle className={styles.dialogTitle}>
+          Pre-Generated Simulation
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText className={styles.dialogText}>
+            Your simulation has been generated. Please click the "View Results"
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={() => {
+              this.setState({ showSuccessPopup: false });
+            }}
+            //autoFocus
+            className={styles.dialogButton}
+          >
+            View Results
+          </Button>
+        </DialogActions>
+      </Dialog>
+    );
+  };
+
+  updateConfigs = async (configs, useDB) => {
     try {
       configs.useDB = useDB;
       configs.location = location;
 
       let url = "https://covidmod.isi.jhu.edu/simulation/";
       let testurl = "http://localhost:5000/simulation/";
-      console.log(configs);
-      await axios.post(url, configs, { timeout: 2000 }).then((res) => {
-        this.updateConfigurations(res.data, true);
+      
+     
+      this.setState({ showReqPopup: true });
+      await axios.post(url, configs, {timeout: 130000}).then((res) => {
+
+        
+
+        let decodedResult = zlib.inflateSync(Buffer.from(res.data["base64(zip(o))"], 'base64')).toString()
+       
+
+        console.log(decodedResult);
+
+
+        // TODO: use decodedResult to update stuff
+        //this.updateConfigurations(res.data, true);
+
+
+        this.setState({ showReqPopup: false });
+        this.setState({ showSuccessPopup: true });
       });
     } catch (error) {
       console.log(error);
+      console.log("Error in updating configurations");
+      this.setState({ showReqPopup: false });
+      this.setState({ showErrorPopup: true });
     }
   };
 
@@ -275,6 +340,9 @@ class GeneralSimulator extends Component {
         <Typography variant="h3" className={classes.boldTitle}>
           COVID-19 Simulator
         </Typography>
+        {this.state.showErrorPopup ? this.handleError() : null}
+        {this.state.showReqPopup ? this.handleReq() : null}
+        {this.state.showSuccessPopup ? this.handleSuccess() : null}
 
         {/* Divide screen into left, middle, right */}
         <Grid
@@ -282,8 +350,6 @@ class GeneralSimulator extends Component {
           justifyContent="center"
           alignItems={"stretch"}
           direction="row"
-          rowSpacing={1}
-          columnSpacing={2}
         >
           {/* Top of screen */}
           <Grid item xs={12}>
@@ -320,7 +386,7 @@ class GeneralSimulator extends Component {
             {/* Very basic map */}
             <MapContainer
               center={jhuCoords}
-              zoom={15}
+              zoom={8}
               scrollWheelZoom={false}
               style={{ borderRadius: "10px", margin: "10px" }}
             >
@@ -329,15 +395,10 @@ class GeneralSimulator extends Component {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
               <LeafletgeoSearch />
-              <LocationMarker />
               <PresetAreas />
             </MapContainer>
 
-            <ConfigurationsPanel
-              // TODO: replace line 162 with updateConfigs={this.fetchConfigurations}
-              updateConfigs={this.updateConfigurations}
-              configs={this.state.configurations}
-            />
+            <ConfigurationsPanel updateConfigs={this.updateConfigs} />
           </Grid>
 
           {/* Bottom panel - more chart(s) */}
@@ -346,7 +407,6 @@ class GeneralSimulator extends Component {
             justifyContent="center"
             alignItems={"stretch"}
             direction="row"
-            xs={11}
             style={{
               backgroundColor: "#1F2325",
               border: "3px solid white",
@@ -390,6 +450,7 @@ class GeneralSimulator extends Component {
                   <Legend />
                 </PieChart>
               </ResponsiveContainer>
+
             </Grid>
             {/* Bar Chart */}
             <ResponsiveContainer width="100%" height={250}>
