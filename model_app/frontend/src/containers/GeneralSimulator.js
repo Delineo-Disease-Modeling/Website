@@ -74,7 +74,7 @@ const styles = (theme) => ({
   },
 });
 
-const data = [
+var data = [
   {
     name: "Total Infected",
     count: 219447,
@@ -84,6 +84,7 @@ const data = [
     count: 379777,
   },
 ];
+
 
 // Starting point for map: JHU
 const jhuCoords = [39.328888, -76.620277];
@@ -206,14 +207,20 @@ function PresetAreas() {
 
 class GeneralSimulator extends Component {
   COLORS = ["#82ca9d", "#8884d8", "#FFBB28", "#FF8042", "#AF19FF"];
+  
   constructor(props) {
     super(props);
     this.state = {
       showReqPopup: false,
       showErrorPopup: false,
       showSuccessPopup: false,
+      transformedData: [],
+      simpleData: data,
     };
+    
   }
+
+  
 
   handleReq = () => {
     return (
@@ -298,14 +305,15 @@ class GeneralSimulator extends Component {
 
         
 
-        let decodedResult = zlib.inflateSync(Buffer.from(res.data["base64(zip(o))"], 'base64')).toString()
+        let decodedResult = JSON.parse(zlib.inflateSync(Buffer.from(res.data["base64(zip(o))"], 'base64')).toString())
        
 
+        console.log(typeof decodedResult)
         console.log(decodedResult);
 
 
         // TODO: use decodedResult to update stuff
-        //this.updateConfigurations(res.data, true);
+        this.updateConfigurations(decodedResult);
 
 
         this.setState({ showReqPopup: false });
@@ -318,6 +326,46 @@ class GeneralSimulator extends Component {
       this.setState({ showErrorPopup: true });
     }
   };
+
+  //TODO: Move transformation logic
+  updateConfigurations = (apiResult) => {
+    apiResult = JSON.parse(apiResult)
+    const buildings = apiResult["Buildings"]
+    console.log(buildings[0])
+    const days = Object.keys(buildings[0]["InfectedDaily"]).length
+
+    console.log(days)
+    let newObj = {name: 0, people: 0, infections: 0};
+    const currObjectState = [...this.state.transformedData];  
+    for(let i = 0; i < days; i++) {
+      newObj["name"] = i;
+      currObjectState.push(newObj); 
+    }
+
+    buildings.forEach(element => {
+      for(let i = 0; i < days; i++) {
+        currObjectState[i]["infections"] += element["InfectedDaily"][i]
+        currObjectState[i]["people"] += element["PeopleDaily"][i]
+      }
+    });
+    console.log(currObjectState)
+    console.log(currObjectState[0])
+
+    //Updating total data
+    data = [
+      {
+        name: "Total Infected",
+        count: currObjectState[days - 1]["infections"]
+      },
+      {
+        name: "Total Not infected",
+        count: currObjectState[days - 1]["people"]
+      },
+    ]
+    this.setState({transformedData: currObjectState})
+    this.setState({simpleData: data});
+
+  }
 
   // Update configurations based on API call
   // TODO: Use this functions once API is implemented
@@ -415,55 +463,43 @@ class GeneralSimulator extends Component {
             }}
           >
             {/* Infections Chart */}
-            <Grid container xs={6}>
-              <ResponsiveContainer width="100%" height={300}>
-                <InfectionsChart/>
-              </ResponsiveContainer>
+            <Grid container>
+              <InfectionsChart data={this.state.transformedData}/>
             </Grid>
             {/* Pie Chart */}
-            <Grid
-              container
-              justifyContent="center"
-              xs={6}
-              style={{ padding: "auto" }}
-            >
-              <ResponsiveContainer width="100%" height={300}>
-                <PieChart width={350} height={300}>
-                  <Pie
-                    data={data}
-                    color="#000000"
-                    dataKey="count"
-                    nameKey="name"
-                    cx="50%"
-                    cy="50%"
-                    outerRadius="80%"
-                    fill="#8884d8"
-                  >
-                    {data.map((entry, index) => (
-                      <Cell
-                        key={`cell-${index}`}
-                        fill={this.COLORS[index % this.COLORS.length]}
-                      />
-                    ))}
-                  </Pie>
-                  <ToolTip description={"Percentage of infected individuals"} />
-                  <Legend />
-                </PieChart>
-              </ResponsiveContainer>
-
+            <Grid container justifyContent="center" style={{ padding: "auto" }}>
+              <PieChart width={350} height={300}>
+                <Pie
+                  data={this.state.simpleData}
+                  color="#000000"
+                  dataKey="count"
+                  nameKey="name"
+                  cx="50%"
+                  cy="50%"
+                  outerRadius={120}
+                  fill="#8884d8"
+                >
+                  {data.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={this.COLORS[index % this.COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+                <ToolTip description={"Percentage of infected individuals"} />
+                <Legend />
+              </PieChart>
             </Grid>
             {/* Bar Chart */}
-            <ResponsiveContainer width="100%" height={250}>
-              <BarChart data={testdata}>
-                <Legend verticalAlign="bottom" height={36} />
-                <Bar dataKey="TotalNotInfected" stackId="a" fill="#8884d8" />
-                <Bar dataKey="TotalInfections" stackId="a" fill="#82ca9d" />
-                <CartesianGrid stroke="#ccc" />
-                <XAxis dataKey="BuildingName" tick={{ fill: "#66FCF1" }} />
-                <YAxis dataKey="TotalPeople" tick={{ fill: "#66FCF1" }} />
-              </BarChart>
-            </ResponsiveContainer>
-            <InfectionAnimation style={{width: 600, height: 600}}/>
+            <BarChart width={1200} height={250} data={this.state.transformedData}>
+              <Legend verticalAlign="bottom" height={36} />
+              <Bar dataKey="TotalNotInfected" stackId="a" fill="#8884d8" />
+              <Bar dataKey="TotalInfections" stackId="a" fill="#82ca9d" />
+              <CartesianGrid stroke="#ccc" />
+              <XAxis dataKey="BuildingName" tick={{ fill: "#66FCF1" }} />
+              <YAxis dataKey="TotalPeople" tick={{ fill: "#66FCF1" }} />
+            </BarChart>
+
           </Grid>
         </Grid>
       </div>
