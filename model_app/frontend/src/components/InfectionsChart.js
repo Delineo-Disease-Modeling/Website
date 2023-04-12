@@ -8,14 +8,13 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import data from "../data/linedata.json";
 class InfectionsChart extends React.Component {
   render() {
     return (
       <AreaChart
         width={600}
         height={300}
-        data={data}
+        data={this.props.data}
         margin={{ top: 20, right: 20, left: 20, bottom: 20 }}
       >
         <defs>
