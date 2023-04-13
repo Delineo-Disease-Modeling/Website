@@ -12,14 +12,23 @@ const GraphDescriptionTabs = ({ graphData }) => {
   };
 
   return (
-    <Box sx={{ width: "100%", height:"100%", bgcolor: "rgba(0, 0, 0, .2)", borderRadius:"10px", }}>
-      <Tabs value={value} onChange={handleChange} centered sx={{"& button": {color: "white"}}}>
+    <Box sx={{ width: "100%", height:"100%", bgcolor: "rgba(0, 0, 0, 0)", borderRadius:"10px", }}>
+      <Tabs 
+         value={value} 
+         onChange={handleChange} 
+         centered 
+         TabIndicatorProps={{title: graphData.title,
+                             sx: {height: 0}}}
+         sx={{"& button": {color: "white", borderRadius: 50}, 
+              "& button.Mui-selected": {backgroundColor: "white"}}}>
         <Tab label="Description" />
         <Tab label="Terms" />
       </Tabs>
       <Box sx={{ p: 2, color: "white", fontSize: 26 }}>
-        {value === 0 && <div>{graphData.description}</div>}
-        {value === 1 && <div>{graphData.terms}</div>}
+         {/* Add more tabs here if needed */}
+        {value === 0 && <div style={{ whiteSpace: "pre-line" }}>{graphData.description.replace(/\\n/g, "\n")}</div>}
+        {value === 1 && <div style={{ whiteSpace: "pre-line", textAlign: "left"}}>{graphData.terms.replace(/\\n/g, "\n")}</div>
+}
       </Box>
     </Box>
   );
