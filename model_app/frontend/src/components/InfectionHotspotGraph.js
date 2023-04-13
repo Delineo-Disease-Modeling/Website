@@ -11,11 +11,10 @@ const InfectionHotspots = (HotspotData) => {
     let max = 0;
 
     
-
+   //TODO: Move transform data and drawing dots to different place to prevent lag when resizing
     const resizeCanvas = () => {
       canvas.width = canvas.parentElement.clientWidth;
       canvas.height = canvas.parentElement.clientHeight;
-      //Move somewhere else; causes lag when resizing
       transformData();
       drawDots();
     };
