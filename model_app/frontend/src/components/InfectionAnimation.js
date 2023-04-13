@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import data from "../data/linedata.json";
+// import data from "../data/linedata.json";
 
-const CircleGridAnimation = () => {
+const CircleGridAnimation = (data) => {
   const canvasRef = useRef(null);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -70,7 +70,7 @@ const CircleGridAnimation = () => {
 
     //Update amount of red cubes based on data
     const jsonObject = data;
-    const totalPeople = jsonObject[jsonObject.length - 1].people;
+    const totalPeople = jsonObject.data[Object.keys(jsonObject.data).length - 1].people;
     let currInfectedIt = 0;
     let currDay = 0;
 
@@ -89,9 +89,9 @@ const CircleGridAnimation = () => {
       const intervalId = setInterval(() => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         //Update amount of circles infected to match linedata.json
-        if(currInfectedIt < jsonObject.length) {
-          let currInfected = jsonObject[currInfectedIt].infections;
-          let currTotal = jsonObject[currInfectedIt].people;
+        if(currInfectedIt < Object.keys(jsonObject.data).length) {
+          let currInfected = jsonObject.data[currInfectedIt].infections;
+          let currTotal = jsonObject.data[currInfectedIt].people;
           let proportion = currInfected / totalPeople;
           cubes[Math.floor(proportion * cubes.length)].isInfected = true;
           currInfectedIt++;
