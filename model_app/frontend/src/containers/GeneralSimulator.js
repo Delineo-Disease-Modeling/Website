@@ -301,7 +301,7 @@ class GeneralSimulator extends Component {
 
 
       this.setState({ showReqPopup: true });
-      await axios.post(url, configs, { timeout: 130000 }).then((res) => {
+      await axios.post(url, configs, { timeout: 1300000 }).then((res) => {
 
 
 
