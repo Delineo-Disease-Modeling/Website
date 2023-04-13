@@ -12,9 +12,9 @@ class InfectionsChart extends React.Component {
   render() {
     return (
       <AreaChart
-        width={600}
-        height={300}
         data={this.props.data}
+        height={this.props.height}
+        width={this.props.width}
         margin={{ top: 20, right: 20, left: 20, bottom: 20 }}
       >
         <defs>

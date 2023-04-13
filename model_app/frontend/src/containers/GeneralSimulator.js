@@ -3,13 +3,14 @@ import axios from "axios";
 import "./GeneralSimulator.css";
 import { withStyles } from "@material-ui/styles";
 import ConfigurationsPanel from "../components/ConfigurationsPanel";
-import { Typography, Card } from "@material-ui/core";
+import { Typography, Card, Grid, } from "@material-ui/core";
 import ToolTip from "../components/ToolTip";
 import InfectionsChart from "../components/InfectionsChart";
+import GraphDescriptionTabs from "../components/GraphDescription";
+import graphDescriptionData from "../const/graphDescriptionData";
 import InfectionAnimation from "../components/InfectionAnimation";
-import Grid from "@material-ui/core/Grid";
-import { Cell, Legend, Line, Pie, PieChart } from "recharts";
-import { BarChart, Bar, CartesianGrid, XAxis, YAxis, ResponsiveContainer } from "recharts";
+import { Cell, Legend, Line, Pie, PieChart, ResponsiveContainer } from "recharts";
+import { BarChart, Bar, CartesianGrid, XAxis, YAxis } from "recharts";
 import testdata from "../data/testdata.json";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -17,6 +18,9 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import InfectionHotspots from "../components/InfectionHotspotGraph";
+import lineData from "../data/linedata.json";
+import testData from "../data/testdata.json";
 import {
   MapContainer,
   TileLayer,
@@ -214,8 +218,10 @@ class GeneralSimulator extends Component {
       showReqPopup: false,
       showErrorPopup: false,
       showSuccessPopup: false,
-      transformedData: [],
+      transformedData: lineData,
       simpleData: data,
+      perBuildingData: [],
+      apiResult: testData,
     };
 
   }
@@ -229,7 +235,7 @@ class GeneralSimulator extends Component {
           Generating Simulation
         </DialogTitle>
         <DialogContent>
-          <DialogContentText className={styles.dialogText}>
+          <DialogContentText className={styles.dialogText} color={"white"}>
             Please wait while we generate a simulation for you. This may take a
             few minutes.
           </DialogContentText>
@@ -244,7 +250,7 @@ class GeneralSimulator extends Component {
           Error Generating Simulation
         </DialogTitle>
         <DialogContent>
-          <DialogContentText className={styles.dialogText}>
+          <DialogContentText className={styles.dialogText} color={"white"}>
             There was an error generating your simulation. Please try again. If
             the problem persists, please contact us at
             delineodiseasemodeling@gmail.com
@@ -256,7 +262,7 @@ class GeneralSimulator extends Component {
               this.setState({ showErrorPopup: false });
             }}
             //autoFocus
-            className={styles.dialogButton}
+            className={styles.dialogButton} style={{backgroundColor: "#66FCF1"}}
           >
             Close
           </Button>
@@ -272,7 +278,7 @@ class GeneralSimulator extends Component {
           Pre-Generated Simulation
         </DialogTitle>
         <DialogContent>
-          <DialogContentText className={styles.dialogText}>
+          <DialogContentText className={styles.dialogText} color={"white"}>
             Your simulation has been generated. Please click the "View Results"
           </DialogContentText>
         </DialogContent>
@@ -282,7 +288,7 @@ class GeneralSimulator extends Component {
               this.setState({ showSuccessPopup: false });
             }}
             //autoFocus
-            className={styles.dialogButton}
+            className={styles.dialogButton} style={{backgroundColor: "#66FCF1"}}
           >
             View Results
           </Button>
@@ -302,8 +308,6 @@ class GeneralSimulator extends Component {
 
       this.setState({ showReqPopup: true });
       await axios.post(url, configs, { timeout: 1300000 }).then((res) => {
-
-
 
         let decodedResult = JSON.parse(zlib.inflateSync(Buffer.from(res.data["base64(zip(o))"], 'base64')).toString())
 
@@ -330,7 +334,8 @@ class GeneralSimulator extends Component {
   //TODO: Move transformation logic
   updateConfigurations = (apiResult) => {
     apiResult = JSON.parse(apiResult)
-    const buildings = apiResult["Buildings"]
+    const buildings = apiResult["Buildings"];
+    this.setState({apiResult: buildings});
     console.log(buildings[0])
     const days = Object.keys(buildings[0]["InfectedDaily"]).length
 
@@ -343,13 +348,15 @@ class GeneralSimulator extends Component {
     }
 
     buildings.forEach(element => {
-      for (let i = 0; i < days; i++) {
-        currObjectState[i]["infections"] += element["InfectedDaily"][i]
-        currObjectState[i]["people"] += element["PeopleDaily"][i]
+      for(let i = 0; i < days; i++) {
+        currObjectState[i]["infections"] += element["InfectedDaily"][i];
+        currObjectState[i]["people"] += element["PeopleDaily"][i];
       }
     });
-    console.log(currObjectState)
-    console.log(currObjectState[0])
+    console.log(currObjectState);
+    console.log(currObjectState[0]);
+    console.log(graphDescriptionData);
+
 
     //Updating total data
     data = [
@@ -453,65 +460,133 @@ class GeneralSimulator extends Component {
           <Grid
             container
             justifyContent="center"
-            alignItems={"stretch"}
             direction="row"
             style={{
               backgroundColor: "#1F2325",
               border: "3px solid white",
               padding: "10px",
               borderRadius: "10px",
+              width: "90%",
             }}
           >
-            {/* Infections Chart */}
+
+            {/* Infections Chart LEFT SIDE*/}
             <Grid container xs={6}>
               <ResponsiveContainer width="100%" height={300}>
-                <InfectionsChart data={this.state.transformedData} />
+                <InfectionsChart width="100%" height={300} data={this.state.transformedData}/>
+
               </ResponsiveContainer>
             </Grid>
-            {/* Pie Chart */}
+            {/* Infections Chart Description RIGHT SIDE*/}
             <Grid
               container
               justifyContent="center"
               xs={6}
-              style={{ padding: "auto" }}
-            >
+              style={{ padding: 10 }}>
               <ResponsiveContainer width="100%" height={300}>
-                <PieChart width={350} height={300}>
-                  <Pie
-                    data={this.state.simpleData}
-                    color="#000000"
-                    dataKey="count"
-                    nameKey="name"
-                    cx="50%"
-                    cy="50%"
-                    outerRadius="80%"
-                    fill="#8884d8"
-                  >
-                    {data.map((entry, index) => (
-                      <Cell
-                        key={`cell-${index}`}
-                        fill={this.COLORS[index % this.COLORS.length]}
-                      />
-                    ))}
-                  </Pie>
-                  <ToolTip description={"Percentage of infected individuals"} />
-                  <Legend />
-                </PieChart>
+                <GraphDescriptionTabs graphData={graphDescriptionData[0]}/>
               </ResponsiveContainer>
-
             </Grid>
+
+
+            {/* Pie Chart LEFT SIDE*/}
+            <Grid
+              container
+              justifyContent="center"
+              xs={6}>
+                <ResponsiveContainer width="100%" height={300}>
+                  <PieChart width={350} height={300}>
+                    <Pie
+                      data={this.state.simpleData}
+                      color="#000000"
+                      dataKey="count"
+                      nameKey="name"
+                      cx="50%"
+                      cy="50%"
+                      outerRadius="80%"
+                      fill="#8884d8"
+                    >
+                      {data.map((entry, index) => (
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={this.COLORS[index % this.COLORS.length]}
+                        />
+                      ))}
+                    </Pie>
+                    <ToolTip description={"Percentage of infected individuals"} />
+                    <Legend />
+                  </PieChart>
+                </ResponsiveContainer>
+            </Grid>
+            {/* Pie Chart Description RIGHT SIDE */}
+            <Grid
+              container
+              justifyContent="center"
+              xs={6}
+              style={{ padding: 10 }}>
+              <ResponsiveContainer width="100%" height={300}>
+                <GraphDescriptionTabs graphData={graphDescriptionData[1]}/>
+              </ResponsiveContainer>
+            </Grid>
+
             {/* Bar Chart */}
-            <ResponsiveContainer width="100%" height={250}>
-              <BarChart data={this.state.transformedData}>
-                <Legend verticalAlign="bottom" height={36} />
-                <Bar dataKey="TotalNotInfected" stackId="a" fill="#8884d8" />
-                <Bar dataKey="TotalInfections" stackId="a" fill="#82ca9d" />
-                <CartesianGrid stroke="#ccc" />
-                <XAxis dataKey="BuildingName" tick={{ fill: "#66FCF1" }} />
-                <YAxis dataKey="TotalPeople" tick={{ fill: "#66FCF1" }} />
-              </BarChart>
-            </ResponsiveContainer>
-            <InfectionAnimation style={{ width: 600, height: 600 }} />
+            <Grid
+              container
+              justifyContent="center"
+              xs={6}>
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={this.state.apiResult}>
+                  <Legend verticalAlign="bottom" height={36} />
+                  <Bar dataKey="TotalNotInfected" stackId="a" fill="#8884d8" />
+                  <Bar dataKey="TotalInfections" stackId="a" fill="#82ca9d" />
+                  <CartesianGrid stroke="#ccc" />
+                  <XAxis dataKey="BuildingName" tick={{ fill: "#66FCF1" }} />
+                  <YAxis dataKey="TotalPeople" tick={{ fill: "#66FCF1" }} />
+                </BarChart>
+              </ResponsiveContainer>
+            </Grid>
+            <Grid
+              container
+              justifyContent="center"
+              xs={6}
+              style={{ padding: 10 }}>
+              <ResponsiveContainer width="100%" height={300}>
+                <GraphDescriptionTabs graphData={graphDescriptionData[2]}/>
+              </ResponsiveContainer>
+            </Grid>
+            <Grid 
+              container
+              justifyContent="center"
+              xs={12}>
+                <InfectionAnimation style={{width: "85%", height: 600}} data={this.state.transformedData}/>
+            </Grid>
+            <Grid xs={3}/>
+            <Grid 
+              container
+              justifyContent="center"
+              xs={6}
+              style={{ padding: 10 }}>
+                <ResponsiveContainer width="100%" height={300}>
+                <GraphDescriptionTabs graphData={graphDescriptionData[3]}/>
+              </ResponsiveContainer>
+            </Grid>
+            <Grid xs={3}/>
+
+            <Grid
+              container
+              justifyContent="center"
+              xs={6}>
+                <InfectionHotspots HotspotData={this.state.apiResult}/>
+            </Grid>
+            <Grid 
+              container
+              justifyContent="center"
+              xs={6}
+              style={{ padding: 10 }}>
+              <ResponsiveContainer width="100%" height={300}>
+                <GraphDescriptionTabs graphData={graphDescriptionData[4]}/>
+              </ResponsiveContainer>
+            </Grid>
           </Grid>
         </Grid>
       </div>
