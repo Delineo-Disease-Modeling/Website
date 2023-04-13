@@ -29,7 +29,7 @@ import {
 import L from "leaflet";
 import "leaflet-geosearch/dist/geosearch.css";
 import { GeoSearchControl, OpenStreetMapProvider } from "leaflet-geosearch";
-import {Buffer} from "buffer";
+import { Buffer } from "buffer";
 const zlib = require("react-zlib-js");
 
 
@@ -171,9 +171,9 @@ function PresetAreas() {
 
         setMarkers((markers) => [
           ...markers,
-          [coordsResponse.data[0].lat,coordsResponse.data[0].lon]
-           
-  
+          [coordsResponse.data[0].lat, coordsResponse.data[0].lon]
+
+
         ]);
 
       }
@@ -182,7 +182,7 @@ function PresetAreas() {
   }, []);
 
   const markersCollection = markers.map((coords, index) => (
-    <Marker key = {coords} position={coords} eventHandlers={{
+    <Marker key={coords} position={coords} eventHandlers={{
       click: () => {
         setCity(presetLocations[index].city);
         setState(presetLocations[index].state);
@@ -195,11 +195,11 @@ function PresetAreas() {
         };
       },
     }}>
-       {/* Only display the permanent tooltip if the Marker is the selected location */}
-      { city === presetLocations[index].city && state === presetLocations[index].state && <MarkerTooltip permanent> Location set to {city}, {state}! </MarkerTooltip>}
-       {( city != presetLocations[index].city || state != presetLocations[index].state) && <MarkerTooltip> {presetLocations[index].city}, {presetLocations[index].state} </MarkerTooltip>}
+      {/* Only display the permanent tooltip if the Marker is the selected location */}
+      {city === presetLocations[index].city && state === presetLocations[index].state && <MarkerTooltip permanent> Location set to {city}, {state}! </MarkerTooltip>}
+      {(city != presetLocations[index].city || state != presetLocations[index].state) && <MarkerTooltip> {presetLocations[index].city}, {presetLocations[index].state} </MarkerTooltip>}
 
-      </Marker>
+    </Marker>
   ));
 
   return markersCollection;
@@ -207,7 +207,7 @@ function PresetAreas() {
 
 class GeneralSimulator extends Component {
   COLORS = ["#82ca9d", "#8884d8", "#FFBB28", "#FF8042", "#AF19FF"];
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -217,10 +217,10 @@ class GeneralSimulator extends Component {
       transformedData: [],
       simpleData: data,
     };
-    
+
   }
 
-  
+
 
   handleReq = () => {
     return (
@@ -298,15 +298,15 @@ class GeneralSimulator extends Component {
 
       let url = "https://covidmod.isi.jhu.edu/simulation/";
       let testurl = "http://localhost:5000/simulation/";
-      
-     
-      this.setState({ showReqPopup: true });
-      await axios.post(url, configs, {timeout: 130000}).then((res) => {
 
-        
+
+      this.setState({ showReqPopup: true });
+      await axios.post(url, configs, { timeout: 130000 }).then((res) => {
+
+
 
         let decodedResult = JSON.parse(zlib.inflateSync(Buffer.from(res.data["base64(zip(o))"], 'base64')).toString())
-       
+
 
         console.log(typeof decodedResult)
         console.log(decodedResult);
@@ -335,15 +335,15 @@ class GeneralSimulator extends Component {
     const days = Object.keys(buildings[0]["InfectedDaily"]).length
 
     console.log(days)
-    let newObj = {name: 0, people: 0, infections: 0};
-    const currObjectState = [...this.state.transformedData];  
-    for(let i = 0; i < days; i++) {
+    let newObj = { name: 0, people: 0, infections: 0 };
+    const currObjectState = [...this.state.transformedData];
+    for (let i = 0; i < days; i++) {
       newObj["name"] = i;
-      currObjectState.push(newObj); 
+      currObjectState.push(newObj);
     }
 
     buildings.forEach(element => {
-      for(let i = 0; i < days; i++) {
+      for (let i = 0; i < days; i++) {
         currObjectState[i]["infections"] += element["InfectedDaily"][i]
         currObjectState[i]["people"] += element["PeopleDaily"][i]
       }
@@ -362,8 +362,8 @@ class GeneralSimulator extends Component {
         count: currObjectState[days - 1]["people"]
       },
     ]
-    this.setState({transformedData: currObjectState})
-    this.setState({simpleData: data});
+    this.setState({ transformedData: currObjectState })
+    this.setState({ simpleData: data });
 
   }
 
@@ -465,7 +465,7 @@ class GeneralSimulator extends Component {
             {/* Infections Chart */}
             <Grid container xs={6}>
               <ResponsiveContainer width="100%" height={300}>
-                <InfectionsChart data={this.state.transformedData}/>
+                <InfectionsChart data={this.state.transformedData} />
               </ResponsiveContainer>
             </Grid>
             {/* Pie Chart */}
@@ -511,7 +511,7 @@ class GeneralSimulator extends Component {
                 <YAxis dataKey="TotalPeople" tick={{ fill: "#66FCF1" }} />
               </BarChart>
             </ResponsiveContainer>
-            <InfectionAnimation style={{width: 600, height: 600}}/>
+            <InfectionAnimation style={{ width: 600, height: 600 }} />
           </Grid>
         </Grid>
       </div>
