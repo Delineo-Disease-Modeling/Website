@@ -24,11 +24,10 @@ const GraphDescriptionTabs = ({ graphData }) => {
         <Tab label="Description" />
         <Tab label="Terms" />
       </Tabs>
-      <Box sx={{ p: 2, color: "white", fontSize: 26 }}>
+      <Box sx={{ p: 2, color: "white", fontSize: 26}}>
          {/* Add more tabs here if needed */}
-        {value === 0 && <div style={{ whiteSpace: "pre-line" }}>{graphData.description.replace(/\\n/g, "\n")}</div>}
-        {value === 1 && <div style={{ whiteSpace: "pre-line", textAlign: "left"}}>{graphData.terms.replace(/\\n/g, "\n")}</div>
-}
+        {value === 0 && <div style={{ whiteSpace: "pre-line",}}>{graphData.description.replace(/\\n/g, "\n")}</div>}
+        {value === 1 && <div style={{ whiteSpace: "pre-line", textAlign: "left", }}>{graphData.terms.replace(/\\n/g, "\n")}</div>}
       </Box>
     </Box>
   );
