@@ -2,7 +2,7 @@ const graphDescriptionData = [
    {
       id: 1,
       title: "Line Graph",
-      description: "Displays the total amount of infections as a proportion of the total amount of people that visited or interacted with Anytown.",
+      description: "Displays the total amount of infections as a proportion of the total amount of people that visitd or interacted with Delineo.",
       terms: "Infections: The amount of infected people as a running sum\nPeople: The total amount of people recorded"
     },
     {
@@ -26,7 +26,7 @@ const graphDescriptionData = [
     {
       id: 5,
       title: "Hotspot Graph",
-      description: "Visual representation of hotspots in Anytown. The larger the circle, the more infections in that building. This does not accurately show location, but is meant to show the relative spread of infection.",
+      description: "Visual representation of hotspots in Delineo. The larger the circle, the more infections in that building. This does not accurately show location, but is meant to show the relative spread of infection.",
       terms: "N/A"
     },
    ]
