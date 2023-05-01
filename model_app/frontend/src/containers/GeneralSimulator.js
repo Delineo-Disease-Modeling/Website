@@ -481,10 +481,10 @@ class GeneralSimulator extends Component {
             direction="row"
             style={{
               backgroundColor: "#1F2325",
-              border: "3px solid white",
-              padding: "10px",
+              border: "2px solid white",
+              padding: "20px",
               borderRadius: "10px",
-              width: "90%",
+              width: "95%",
             }}
           >
 
