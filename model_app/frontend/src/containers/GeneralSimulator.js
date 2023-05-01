@@ -218,10 +218,13 @@ class GeneralSimulator extends Component {
       showReqPopup: false,
       showErrorPopup: false,
       showSuccessPopup: false,
-      transformedData: lineData,
-      simpleData: data,
+      transformedData: null,
+      transformedDataDefault: lineData,
+      simpleData: null,
+      apiResult: null,
+      apiResultDefault: testData,
       perBuildingData: [],
-      apiResult: testData,
+      
     };
 
   }
@@ -328,9 +331,19 @@ class GeneralSimulator extends Component {
       console.log("Error in updating configurations");
       this.setState({ showReqPopup: false });
       this.setState({ showErrorPopup: true });
+      this.updateConfigurationsError();
+
     }
   };
 
+  //Remove when API works properly
+  updateConfigurationsError = () => {
+    this.setState({apiResult: testData});
+    this.setState({simpleData: data});
+    this.setState({transformedData: lineData});
+    this.setState({transformedDataDefault: lineData});
+    this.setState({apiResultDefault: testData});
+  }
   //TODO: Move transformation logic
   updateConfigurations = (apiResult) => {
     apiResult = JSON.parse(apiResult)
@@ -340,10 +353,12 @@ class GeneralSimulator extends Component {
     const days = Object.keys(buildings[0]["InfectedDaily"]).length
 
     console.log(days)
-    let newObj = { name: 0, people: 0, infections: 0 };
-    const currObjectState = [...this.state.transformedData];
+
+    //Make new set of data from API result and push it to graphs
+    
+    let currObjectState = [];
     for (let i = 0; i < days; i++) {
-      newObj["name"] = i;
+      let newObj = { name: i, people: 0, infections: 0 };
       currObjectState.push(newObj);
     }
 
@@ -359,7 +374,7 @@ class GeneralSimulator extends Component {
 
 
     //Updating total data
-    data = [
+    const dataTemp = [
       {
         name: "Total Infected",
         count: currObjectState[days - 1]["infections"]
@@ -369,9 +384,12 @@ class GeneralSimulator extends Component {
         count: currObjectState[days - 1]["people"]
       },
     ]
-    this.setState({ transformedData: currObjectState })
-    this.setState({ simpleData: data });
-
+    this.setState({ transformedData: currObjectState });
+    this.setState({transformedDataDefault: currObjectState});
+    this.setState({apiResultDefault: buildings});
+    this.setState({ simpleData: dataTemp });
+    //Remove the line below when API result works properly
+    this.updateConfigurationsError();
   }
 
   // Update configurations based on API call
@@ -558,7 +576,7 @@ class GeneralSimulator extends Component {
               container
               justifyContent="center"
               xs={12}>
-                <InfectionAnimation style={{width: "85%", height: 600}} data={this.state.transformedData}/>
+                <InfectionAnimation style={{width: "85%", height: 600}} data={this.state.transformedDataDefault}/>
             </Grid>
             <Grid xs={3}/>
             <Grid 
@@ -576,7 +594,7 @@ class GeneralSimulator extends Component {
               container
               justifyContent="center"
               xs={6}>
-                <InfectionHotspots HotspotData={this.state.apiResult}/>
+                <InfectionHotspots HotspotData={this.state.apiResultDefault}/>
             </Grid>
             <Grid 
               container

@@ -6,6 +6,8 @@ const CircleGridAnimation = (data) => {
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
+    
+    console.log(data);
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
 
@@ -110,6 +112,9 @@ const CircleGridAnimation = (data) => {
     }
   }, [isAnimating]);
 
+  if(!data) {
+    return null;
+  }
   //Starts animation with click of button
   const handleStartAnimation = () => {
     setIsAnimating(true);

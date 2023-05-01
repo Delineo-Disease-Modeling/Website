@@ -1,10 +1,15 @@
 import React, { useRef, useEffect } from "react";
 
 const InfectionHotspots = (HotspotData) => {
+   
   const canvasRef = useRef(null);
   let isSorted = false;
+  
 
   useEffect(() => {
+   if(!HotspotData) {
+      return;
+   }
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
     let transformedData = new Map();
@@ -79,7 +84,6 @@ const InfectionHotspots = (HotspotData) => {
 
          dotPositions.set([xPos, yPos].toString(), key);
        });
-       console.log(dotPositions);
     };
 
     /* Tracks cursor and does some activity based on location
@@ -91,10 +95,12 @@ const InfectionHotspots = (HotspotData) => {
       const x = Math.ceil((event.clientX - rect.left)/10)*10;
       const y = Math.ceil((event.clientY - rect.top)/10)*10;
       let temp = [x,y];
-      console.log(dotPositions);
-      console.log(dotPositions.get(temp.toString()));
       if(dotPositions.get(temp.toString()) != null) {
          //If hovered over a circle, do something (dotPositions.get(temp.toString()) == name of place)
+         context.fillStyle = "white";
+         context.fillText(dotPositions.get(temp.toString()), x, y);
+      } else {
+         
       }
     }
 
