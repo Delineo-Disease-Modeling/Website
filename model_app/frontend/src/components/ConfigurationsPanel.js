@@ -151,11 +151,11 @@ export function TabPanel(props) {
     </div>
   );
 }
-
+// modify labels as needed
 let NPIs = [
-  ["Mask-Wearing", InputSlider, "maskPercent"],
-  ["Capacity Restrictions", InputSlider, "capacityPercent"],
-  ["Mass Testing", InputSlider, "massPercent"],
+  ["Mask-Wearing", InputSlider, "maskPercent","Percentage of population correctly wearing a mask"],
+  ["Capacity Restrictions", InputSlider, "capacityPercent", "Percentage of capacity restrictions in place"],
+  ["Mass Testing", InputSlider, "massPercent", "Percentage of mass testing taking place"],
   ["Stay-at-Home Order", Switch, "stayAtHome"],
 ];
 let TargetedShutdowns = [
@@ -165,7 +165,7 @@ let TargetedShutdowns = [
   ["Bars", Switch, "barsShutdown"],
 ];
 
-let Vaccinations = [["Vaccination Population", InputSlider, "vaccinePercent"]];
+let Vaccinations = [["Vaccination Population", InputSlider, "vaccinePercent", "Percentage of vaccinated population"]];
 let Parameters = [["Initial Infected", TextField]];
 let Preventions = [];
 
@@ -294,7 +294,7 @@ It then creates a component for each configuration and returns a list of compone
       </div>
     );
   }
-  function createObj(configValue, type, name, classes) {
+  function createObj(configValue, type, name, classes, label) {
     if (type === InputSlider) {
       return (
         <object
@@ -316,7 +316,7 @@ It then creates a component for each configuration and returns a list of compone
           <Grid item xs={6} className={classes.gridItemRight}>
             <InputSlider
               percentConfig={configs[configValue]}
-              label={name}
+              label={label}
               onChange={(value) => {
                 updateConfigs((prevState) => {
                   return {
@@ -450,7 +450,7 @@ It then creates a component for each configuration and returns a list of compone
           <TabPanel value={value} index={0}>
             <Grid container>
               {NPIs.map((npi) => {
-                return createObj(npi[2], npi[1], npi[0], classes);
+                return createObj(npi[2], npi[1], npi[0], classes, npi[3]);
               })}
             </Grid>
           </TabPanel>
@@ -485,6 +485,7 @@ It then creates a component for each configuration and returns a list of compone
                   vaccination[1],
                   vaccination[0],
                   classes,
+                  vaccination[3],
                   configs
                 );
               })}
