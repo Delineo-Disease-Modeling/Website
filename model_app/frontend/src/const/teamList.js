@@ -1040,12 +1040,14 @@ const teamList = [
     inDelineo: true,
   },
   {
+  }, {
     name: "Trevor Black",
     role: "Fullstack",
     description: "Computer Science",
     img: treBlaImg,
     inDelineo: true,
   },
+  }
 ];
 
 export default teamList;

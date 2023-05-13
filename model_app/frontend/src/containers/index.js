@@ -9,6 +9,7 @@ import Post3 from "./BlogPost3";
 import Post4 from "./BlogPost4";
 import Simulator from "./Simulator";
 //import RealSimulator from './RealSimulator';
+import 'leaflet/dist/leaflet.css'
 
 export {
   About,
