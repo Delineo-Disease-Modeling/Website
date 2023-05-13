@@ -7,6 +7,7 @@ import Post1 from "./BlogPost1";
 import Post2 from "./BlogPost2";
 import Post3 from "./BlogPost3";
 import Post4 from "./BlogPost4";
+import Post5 from "./BlogPost5";
 import Simulator from "./Simulator";
 //import RealSimulator from './RealSimulator';
 import 'leaflet/dist/leaflet.css'
@@ -21,4 +22,5 @@ export {
   Post2,
   Post3,
   Post4,
+  Post5,
 };

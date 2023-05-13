@@ -11,6 +11,7 @@ import {
   Post2,
   Post3,
   Post4,
+  Post5,
 } from "./containers";
 import GeneralSimulator from "./containers/GeneralSimulator";
 import { Provider } from "react-redux";
@@ -57,6 +58,11 @@ function App() {
                 exact
                 path="/developmentblog/Wells-Riley-Equation"
                 component={Post4}
+              />
+              <Route
+                exact
+                path="/developmentblog/Delineo-A-COVID-19-Simulation"
+                component={Post5}
               />
               <Route
                 exact

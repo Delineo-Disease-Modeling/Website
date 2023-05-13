@@ -2,6 +2,7 @@ import Ameya from "../images/Ameya Dehade.jpg";
 import Shaopeng from "../images/Shaopeng Zeng.jpg";
 import Ian from "../images/Ian Zheng.JPG";
 import Xi from "../images/Xi He.jpeg";
+import Christian from "../images/Christian Bakhit.jpg";
 
 // link to default avatar
 // "https://www.portent.com/images/2012/02/avatar-jack-small-94x94.jpg"
@@ -55,5 +56,17 @@ const articles = [
     href: "/developmentblog/Wells-Riley-Equation",
     img: "https://i.postimg.cc/Y97qZcxc/1.jpg",
   },
+  {
+    id: 5,
+    type: "Article",
+    date: "May 2023",
+    author: "Christian Bakhit",
+    author_img: Christian,
+    title: "Delineo: A COVID-19 Simulation",
+    subtext:
+      "What is Delineo? Delineo mission, progress, and future.",
+    href: "/developmentblog/Delineo-A-COVID-19-Simulation",
+    img: "https://i.postimg.cc/pT8yRry9/Delineo-Background.png",
+  }
 ];
 export default articles;
