@@ -1047,7 +1047,6 @@ const teamList = [
     img: treBlaImg,
     inDelineo: true,
   },
-  }
 ];
 
 export default teamList;
